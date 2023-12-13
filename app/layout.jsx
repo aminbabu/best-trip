@@ -5,7 +5,10 @@ import { Poppins as FontSans } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 
-const fontSans = FontSans({ subsets: ["latin"] });
+const fontSans = FontSans({
+  subsets: ["latin"],
+  weights: ["400", "500", "600", "700", "800"],
+});
 
 export const metadata = {
   title: "Best Trip",
