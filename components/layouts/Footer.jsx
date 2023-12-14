@@ -1,5 +1,11 @@
+import Newsletter from "./Newsletter";
+
 const Footer = () => {
-  return <div>Footer</div>;
+  return (
+    <footer>
+      <Newsletter />
+    </footer>
+  );
 };
 
 export default Footer;
