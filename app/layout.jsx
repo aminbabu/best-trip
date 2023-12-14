@@ -4,6 +4,7 @@ import Navbar from "@/components/layouts/Navbar";
 import { Poppins as FontSans } from "next/font/google";
 
 import { cn } from "@/lib/utils";
+import Footer from "@/components/layouts/Footer";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ const RootLayout = ({ children }) => {
       >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
