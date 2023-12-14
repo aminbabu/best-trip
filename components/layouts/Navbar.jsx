@@ -1,13 +1,45 @@
+"use client";
+
+import { cn } from "@/lib/utils";
 import Brand from "../ui/Brand";
 import Container from "./Container";
 import Menu from "./Menu";
 import NavbarCta from "./NavbarCta";
 import NavSheet from "./NavSheet";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const [isSticky, setIsSticky] = useState(false);
+
+  // Handle sticky navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav>
-      <Container className="flex items-center gap-4 justify-between py-6">
+    <nav
+      className={cn("sticky top-0 bg-white/50 backdrop-blur-sm duration-300", {
+        "shadow-md": isSticky,
+      })}
+    >
+      <Container
+        className={cn(
+          "flex items-center gap-4 justify-between py-6 duration-300",
+          {
+            "py-3": isSticky,
+          }
+        )}
+      >
         <Brand
           logo="/images/brand-logo.png"
           width="108"
