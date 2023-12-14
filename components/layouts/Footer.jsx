@@ -2,7 +2,7 @@ import Newsletter from "./Newsletter";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="bg-secondary mt-auto">
       <Newsletter />
     </footer>
   );
