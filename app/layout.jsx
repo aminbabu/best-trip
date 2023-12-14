@@ -21,7 +21,7 @@ const RootLayout = ({ children }) => {
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen flex flex-col overflow-hidden bg-white antialiased",
+          "min-h-screen flex flex-col overflow-x-hidden bg-white antialiased",
           fontSans.className
         )}
       >
