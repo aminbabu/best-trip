@@ -3,7 +3,7 @@ import NewsletterForm from "./NewsletterForm";
 
 const Newsletter = () => {
   return (
-    <section>
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:pt-[120px] xl:pb-[100px]">
       <Container>
         <h2 className="text-3xl lg:text-4xl text-t-800 font-semibold text-center mb-6 lg:mb-8">
           Subscribe to Get Special Price
