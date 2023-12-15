@@ -1,7 +1,7 @@
 "use client";
 
 import { SplideSlide, SplideTrack } from "@splidejs/react-splide";
-import Section from "@/components/global/Section";
+// import Section from "@/components/global/Section";
 import SectionHeader from "@/components/global/SectionHeader";
 import Slider from "@/components/global/splide/Slider";
 import HotelSlideItem from "@/components/home/HotelSlideItem";
@@ -33,7 +33,8 @@ const options = {
 
 const Hotels = ({ title, description, items }) => {
   return (
-    <Section className="bg-secondary">
+    <>
+      {/* <Section className="bg-secondary"> */}
       <SectionHeader title={title} description={description} />
       <Slider hasTrack={false} options={options}>
         <SplideTrack>
@@ -44,7 +45,8 @@ const Hotels = ({ title, description, items }) => {
           ))}
         </SplideTrack>
       </Slider>
-    </Section>
+      {/* </Section> */}
+    </>
   );
 };
 
