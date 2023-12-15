@@ -1,25 +1,25 @@
 import dynamic from "next/dynamic";
 
-const Banners = dynamic(() => import("../home/Banners"), {
+const Banners = dynamic(() => import("@/components/home/Banners"), {
   loading: () => <p>Banners Loading...</p>,
 });
 
-const Hotels = dynamic(() => import("../home/Hotels"), {
+const Hotels = dynamic(() => import("@/components/home/Hotels"), {
   loading: () => <p>Hotels Loading...</p>,
 });
 
 const PopularDestinations = dynamic(
-  () => import("../home/PopularDestinations"),
+  () => import("@/components/home/PopularDestinations"),
   {
     loading: () => <p>Popular Destinations Loading...</p>,
   }
 );
 
-const UmrahZiyarah = dynamic(() => import("../home/UmrahZiyarah"), {
+const UmrahZiyarah = dynamic(() => import("@/components/home/UmrahZiyarah"), {
   loading: () => <p>Umrah Ziyarah Loading...</p>,
 });
 
-const PlacesInBD = dynamic(() => import("../home/PlacesInBd"), {
+const PlacesInBD = dynamic(() => import("@/components/home/PlacesInBd"), {
   loading: () => <p>Places In BD Loading...</p>,
 });
 
