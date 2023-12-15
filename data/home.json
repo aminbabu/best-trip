@@ -156,7 +156,7 @@
     "items": [
       {
         "id": 1,
-        "place": "Patenga Sea Beach",
+        "title": "Patenga Sea Beach",
         "image": "/images/home/places-in-bd/01.png",
         "rating": 4.5,
         "count": 5600,
@@ -164,7 +164,7 @@
       },
       {
         "id": 2,
-        "place": "Radiant Fish World",
+        "title": "Radiant Fish World",
         "image": "/images/home/places-in-bd/02.png",
         "rating": 4.1,
         "count": 13500,
@@ -172,7 +172,7 @@
       },
       {
         "id": 3,
-        "place": "Lakkatura Tea Garden",
+        "title": "Lakkatura Tea Garden",
         "image": "/images/home/places-in-bd/03.png",
         "rating": 4.5,
         "count": 2500,
@@ -180,7 +180,7 @@
       },
       {
         "id": 4,
-        "place": "Sajek Valley",
+        "title": "Sajek Valley",
         "image": "/images/home/places-in-bd/04.png",
         "rating": 4.6,
         "count": 12200,
