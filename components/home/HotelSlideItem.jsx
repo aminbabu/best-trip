@@ -28,7 +28,7 @@ const HotelSlideItem = ({ item }) => {
           </Link>
         </h3>
         <div className="flex items-center gap-x-1.5">
-          <span className="flex-shrink-0 text-t-600">
+          <span className="flex-shrink-0 text-t-500">
             <LocationIcon />
           </span>
           <p className="flex-1 text-t-600 text-sm line-clamp-1">
