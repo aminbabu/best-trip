@@ -1,0 +1,191 @@
+[
+  {
+    "name": "banners",
+    "title": "Best Trip! Travel Agency",
+    "description": "Best Trip! is a travel agency that provides the best travel deals for your next trip. We offer flights, hotels, car rentals, and more. Book now!",
+    "banners": [
+      {
+        "id": 1,
+        "title": "Best Trip! Travel Agency",
+        "description": "Best Trip! is a travel agency that provides the best travel deals for your next trip. We offer flights, hotels, car rentals, and more. Book now!",
+        "image": "/images/home/banners/01.png"
+      },
+      {
+        "id": 2,
+        "title": "Best Trip! Travel Agency",
+        "description": "Best Trip! is a travel agency that provides the best travel deals for your next trip. We offer flights, hotels, car rentals, and more. Book now!",
+        "image": "/images/home/banners/02.png"
+      },
+      {
+        "id": 3,
+        "title": "Best Trip! Travel Agency",
+        "description": "Best Trip! is a travel agency that provides the best travel deals for your next trip. We offer flights, hotels, car rentals, and more. Book now!",
+        "image": "/images/home/banners/03.png"
+      }
+    ]
+  },
+  {
+    "name": "hotels",
+    "title": "Discover Hotels For Your Next Trip",
+    "description": "Save on your next trip with the Best Trip! Find great hotel or apartment deals and book in just a few minutes. You can also book flights, rental cars, and many more. ",
+    "hotels": [
+      {
+        "id": 1,
+        "name": "Hotel Sea Crown",
+        "location": "Cox's Bazar",
+        "rating": "4.5",
+        "count": 5600,
+        "price": 1200,
+        "image": "/images/home/hotels/01.png"
+      },
+      {
+        "id": 2,
+        "name": "Hotel Sea Alif",
+        "location": "Cox's Bazar",
+        "rating": "4.1",
+        "count": 13500,
+        "price": 1200,
+        "image": "/images/home/hotels/02.png"
+      },
+      {
+        "id": 3,
+        "name": "Hotel Sea Cox",
+        "location": "Cox's Bazar",
+        "rating": "4.5",
+        "count": 2500,
+        "price": 1200,
+        "image": "/images/home/hotels/03.png"
+      },
+      {
+        "id": 4,
+        "name": "Hotel Sea Inn",
+        "location": "Cox's Bazar",
+        "rating": "4.6",
+        "count": 12200,
+        "price": 1200,
+        "image": "/images/home/hotels/04.png"
+      }
+    ]
+  },
+  {
+    "name": "popular_destinations",
+    "title": "Most Popular Travel Destinations",
+    "description": "Best of the Best Destinations · 01. Dubai, 02. Bali, 03. London, 04. Rome, 05. Paris, 06. Bangkok, 07. Singapore, 08. Malaysia, 09. Egypt, 10. India.",
+    "destinations": [
+      {
+        "id": 1,
+        "from": "Dhaka",
+        "to": "Cox's Bazar",
+        "airline": "Biman Bangladesh Airlines",
+        "price": 4200,
+        "image": "/images/home/popular-destinations/01.png"
+      },
+      {
+        "id": 2,
+        "from": "Dhaka",
+        "to": "Chittagong",
+        "airline": "Biman Bangladesh Airlines",
+        "price": 3200,
+        "image": "/images/home/popular-destinations/02.png"
+      },
+      {
+        "id": 3,
+        "from": "Dhaka",
+        "to": "Sylhet",
+        "airline": "Biman Bangladesh Airlines",
+        "price": 2200,
+        "image": "/images/home/popular-destinations/03.png"
+      },
+      {
+        "id": 4,
+        "from": "Dhaka",
+        "to": "Rangamati",
+        "airline": "Biman Bangladesh Airlines",
+        "price": 1200,
+        "image": "/images/home/popular-destinations/04.png"
+      }
+    ]
+  },
+  {
+    "name": "umrah_ziyarah",
+    "title": "VisitPlan Your Umrah And Ziyarah",
+    "description": "We offer affordable packages for Umrah pilgrims with outstanding customer service & price. Apply your Umrah visa online 2023 with Best Trip!",
+    "packages": [
+      {
+        "id": 1,
+        "name": "Premium Umrah Package",
+        "from": "Dhaka",
+        "price": 122000,
+        "days": 15,
+        "nights": 14,
+        "image": "/images/home/umrah-ziyarah/01.png"
+      },
+      {
+        "id": 2,
+        "name": "Deluxe Umrah Package",
+        "from": "Dhaka",
+        "price": 112000,
+        "days": 15,
+        "nights": 14,
+        "image": "/images/home/umrah-ziyarah/02.png"
+      },
+      {
+        "id": 3,
+        "name": "Standard Umrah Package",
+        "from": "Dhaka",
+        "price": 102000,
+        "days": 15,
+        "nights": 14,
+        "image": "/images/home/umrah-ziyarah/03.png"
+      },
+      {
+        "id": 4,
+        "name": "Economy Umrah Package",
+        "from": "Dhaka",
+        "price": 92000,
+        "days": 15,
+        "nights": 14,
+        "image": "/images/home/umrah-ziyarah/04.png"
+      }
+    ]
+  },
+  {
+    "name": "places_in_bd",
+    "title": "Visit Beautiful Places in Bangladesh",
+    "description": "Explore the beauty of Bangladesh with Best Trip! Most Popular Place Chittagong, Cox’s Bazar, Sylhet, Bandarban, Sajek Valley, Rangamati etc.",
+    "places": [
+      {
+        "id": 1,
+        "place": "Patenga Sea Beach",
+        "image": "/images/home/places-in-bd/01.png",
+        "rating": "4.5",
+        "count": 5600,
+        "address": "Chittagong, Bangladesh"
+      },
+      {
+        "id": 2,
+        "place": "Radiant Fish World",
+        "image": "/images/home/places-in-bd/02.png",
+        "rating": "4.1",
+        "count": 13500,
+        "address": "Cox's Bazar, Bangladesh"
+      },
+      {
+        "id": 3,
+        "place": "Lakkatura Tea Garden",
+        "image": "/images/home/places-in-bd/03.png",
+        "rating": "4.5",
+        "count": 2500,
+        "address": "Sylhet, Bangladesh"
+      },
+      {
+        "id": 4,
+        "place": "Sajek Valley",
+        "image": "/images/home/places-in-bd/04.png",
+        "rating": "4.6",
+        "count": 12200,
+        "address": "Rangamati, Bangladesh"
+      }
+    ]
+  }
+]
