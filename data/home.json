@@ -33,7 +33,7 @@
         "id": 1,
         "name": "Hotel Sea Crown",
         "location": "Cox's Bazar",
-        "rating": "4.5",
+        "rating": 4.5,
         "count": 5600,
         "price": 1200,
         "image": "/images/home/hotels/01.png"
@@ -42,7 +42,7 @@
         "id": 2,
         "name": "Hotel Sea Alif",
         "location": "Cox's Bazar",
-        "rating": "4.1",
+        "rating": 4.1,
         "count": 13500,
         "price": 1200,
         "image": "/images/home/hotels/02.png"
@@ -51,7 +51,7 @@
         "id": 3,
         "name": "Hotel Sea Cox",
         "location": "Cox's Bazar",
-        "rating": "4.5",
+        "rating": 4.5,
         "count": 2500,
         "price": 1200,
         "image": "/images/home/hotels/03.png"
@@ -60,7 +60,7 @@
         "id": 4,
         "name": "Hotel Sea Inn",
         "location": "Cox's Bazar",
-        "rating": "4.6",
+        "rating": 4.6,
         "count": 12200,
         "price": 1200,
         "image": "/images/home/hotels/04.png"
@@ -158,7 +158,7 @@
         "id": 1,
         "place": "Patenga Sea Beach",
         "image": "/images/home/places-in-bd/01.png",
-        "rating": "4.5",
+        "rating": 4.5,
         "count": 5600,
         "address": "Chittagong, Bangladesh"
       },
@@ -166,7 +166,7 @@
         "id": 2,
         "place": "Radiant Fish World",
         "image": "/images/home/places-in-bd/02.png",
-        "rating": "4.1",
+        "rating": 4.1,
         "count": 13500,
         "address": "Cox's Bazar, Bangladesh"
       },
@@ -174,7 +174,7 @@
         "id": 3,
         "place": "Lakkatura Tea Garden",
         "image": "/images/home/places-in-bd/03.png",
-        "rating": "4.5",
+        "rating": 4.5,
         "count": 2500,
         "address": "Sylhet, Bangladesh"
       },
@@ -182,7 +182,7 @@
         "id": 4,
         "place": "Sajek Valley",
         "image": "/images/home/places-in-bd/04.png",
-        "rating": "4.6",
+        "rating": 4.6,
         "count": 12200,
         "address": "Rangamati, Bangladesh"
       }
