@@ -28,9 +28,12 @@ const Navbar = () => {
 
   return (
     <nav
-      className={cn("sticky top-0 bg-white/50 backdrop-blur-sm duration-300", {
-        "shadow-md": isSticky,
-      })}
+      className={cn(
+        "fixed top-0 left-0 right-0 z-40 bg-white/50 backdrop-blur-sm duration-300",
+        {
+          "shadow-md": isSticky,
+        }
+      )}
     >
       <Container
         className={cn(
