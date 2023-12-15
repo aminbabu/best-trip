@@ -3,7 +3,7 @@
     "name": "banners",
     "title": "Best Trip! Travel Agency",
     "description": "Best Trip! is a travel agency that provides the best travel deals for your next trip. We offer flights, hotels, car rentals, and more. Book now!",
-    "banners": [
+    "items": [
       {
         "id": 1,
         "title": "Best Trip! Travel Agency",
@@ -28,7 +28,7 @@
     "name": "hotels",
     "title": "Discover Hotels For Your Next Trip",
     "description": "Save on your next trip with the Best Trip! Find great hotel or apartment deals and book in just a few minutes. You can also book flights, rental cars, and many more. ",
-    "hotels": [
+    "items": [
       {
         "id": 1,
         "name": "Hotel Sea Crown",
@@ -71,7 +71,7 @@
     "name": "popular_destinations",
     "title": "Most Popular Travel Destinations",
     "description": "Best of the Best Destinations · 01. Dubai, 02. Bali, 03. London, 04. Rome, 05. Paris, 06. Bangkok, 07. Singapore, 08. Malaysia, 09. Egypt, 10. India.",
-    "destinations": [
+    "items": [
       {
         "id": 1,
         "from": "Dhaka",
@@ -110,7 +110,7 @@
     "name": "umrah_ziyarah",
     "title": "VisitPlan Your Umrah And Ziyarah",
     "description": "We offer affordable packages for Umrah pilgrims with outstanding customer service & price. Apply your Umrah visa online 2023 with Best Trip!",
-    "packages": [
+    "items": [
       {
         "id": 1,
         "name": "Premium Umrah Package",
@@ -153,7 +153,7 @@
     "name": "places_in_bd",
     "title": "Visit Beautiful Places in Bangladesh",
     "description": "Explore the beauty of Bangladesh with Best Trip! Most Popular Place Chittagong, Cox’s Bazar, Sylhet, Bandarban, Sajek Valley, Rangamati etc.",
-    "places": [
+    "items": [
       {
         "id": 1,
         "place": "Patenga Sea Beach",
