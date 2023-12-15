@@ -14,7 +14,6 @@
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@reduxjs/toolkit": "^2.0.1",
-    "@splidejs/react-splide": "^0.7.12",
     "@svgr/webpack": "^8.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
