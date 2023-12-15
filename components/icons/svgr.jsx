@@ -5,6 +5,11 @@ import YoutubeIcon from "@/public/icons/youtube.svg";
 import LocationIcon from "@/public/icons/location.svg";
 import StarIcon from "@/public/icons/star.svg";
 import ExchangeIcon from "@/public/icons/exchange.svg";
+import PlaneIcon from "@/public/icons/plane.svg";
+import BusIcon from "@/public/icons/bus.svg";
+import PassportIcon from "@/public/icons/passport.svg";
+import HotelIcon from "@/public/icons/hotel.svg";
+import ClockIcon from "@/public/icons/clock.svg";
 
 export {
   FacebookIcon,
@@ -14,4 +19,9 @@ export {
   LocationIcon,
   StarIcon,
   ExchangeIcon,
+  PlaneIcon,
+  BusIcon,
+  PassportIcon,
+  HotelIcon,
+  ClockIcon,
 };
