@@ -28,10 +28,10 @@ const UmrahZiyarahSlideItem = ({ item }) => {
         />
       </Link>
       <div className="flex flex-col gap-y-4">
-        <h3 className="text-lg font-medium line-clamp-1 leading-tight">
+        <h3 className="text-lg font-medium leading-tight">
           <Link
             href="#"
-            className="text-t-800 duration-300 group-hover:text-p-900"
+            className="text-t-800 duration-300 group-hover:text-p-900 line-clamp-1"
           >
             {item?.title}
           </Link>
