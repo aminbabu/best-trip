@@ -113,7 +113,7 @@
     "items": [
       {
         "id": 1,
-        "name": "Premium Umrah Package",
+        "title": "Premium Umrah Package",
         "from": "Dhaka",
         "price": 122000,
         "days": 15,
@@ -122,7 +122,7 @@
       },
       {
         "id": 2,
-        "name": "Deluxe Umrah Package",
+        "title": "Deluxe Umrah Package",
         "from": "Dhaka",
         "price": 112000,
         "days": 15,
@@ -131,7 +131,7 @@
       },
       {
         "id": 3,
-        "name": "Standard Umrah Package",
+        "title": "Standard Umrah Package",
         "from": "Dhaka",
         "price": 102000,
         "days": 15,
@@ -140,7 +140,7 @@
       },
       {
         "id": 4,
-        "name": "Economy Umrah Package",
+        "title": "Economy Umrah Package",
         "from": "Dhaka",
         "price": 92000,
         "days": 15,
