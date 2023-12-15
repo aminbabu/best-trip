@@ -43,6 +43,6 @@
   right: -1.125rem;
 
   @media (min-width: 1280px) {
-    left: -3.25rem;
+    right: -3.25rem;
   }
 }
