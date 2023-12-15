@@ -1,0 +1,52 @@
+"use client";
+
+import { SplideSlide, SplideTrack } from "@splidejs/react-splide";
+import Section from "../global/Section";
+import SectionHeader from "../global/SectionHeader";
+import Slider from "../global/splide/Slider";
+import PlacesInBDSlideItem from "./PlacesInBDSlideItem";
+
+const options = {
+  type: "loop",
+  perPage: 1,
+  perMove: 1,
+  gap: 16,
+  arrows: false,
+  pagination: false,
+  mediaQuery: "min",
+  breakpoints: {
+    640: {
+      perPage: 2,
+    },
+    768: {
+      perPage: 3,
+      arrows: true,
+    },
+    1024: {
+      perPage: 4,
+      arrows: true,
+    },
+    1280: {
+      gap: 32,
+    },
+  },
+};
+
+const PlacesInBD = ({ title, description, items }) => {
+  return (
+    <Section>
+      <SectionHeader title={title} description={description} />
+      <Slider hasTrack={false} options={options}>
+        <SplideTrack>
+          {items.map((item, index) => (
+            <SplideSlide key={index}>
+              <PlacesInBDSlideItem item={item} />
+            </SplideSlide>
+          ))}
+        </SplideTrack>
+      </Slider>
+    </Section>
+  );
+};
+
+export default PlacesInBD;
