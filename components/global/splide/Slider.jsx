@@ -2,6 +2,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { forwardRef } from "react";
 
 import "@splidejs/react-splide/css/core";
+import "@/styles/libraries/splide/splide.min.css";
 
 const Slider = forwardRef(({ children, options, hasTrack, ...props }, ref) => {
   return (
