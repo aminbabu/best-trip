@@ -19,11 +19,16 @@ const UmrahZiyarah = dynamic(() => import("../home/UmrahZiyarah"), {
   loading: () => <p>Umrah Ziyarah Loading...</p>,
 });
 
+const PlacesInBD = dynamic(() => import("../home/PlacesInBd"), {
+  loading: () => <p>Places In BD Loading...</p>,
+});
+
 const Components = {
   banners: Banners,
   hotels: Hotels,
   popular_destinations: PopularDestinations,
   umrah_ziyarah: UmrahZiyarah,
+  places_in_bd: PlacesInBD,
 };
 
 export default Components;
