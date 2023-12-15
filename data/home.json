@@ -31,8 +31,8 @@
     "items": [
       {
         "id": 1,
-        "name": "Hotel Sea Crown",
-        "location": "Cox's Bazar",
+        "title": "Hotel Sea Crown",
+        "location": "Sukhumvit Bangkok 10110, Thailand",
         "rating": 4.5,
         "count": 5600,
         "price": 1200,
@@ -40,8 +40,8 @@
       },
       {
         "id": 2,
-        "name": "Hotel Sea Alif",
-        "location": "Cox's Bazar",
+        "title": "Hotel Sea Alif",
+        "location": "Sukhumvit Bangkok 10110, Thailand",
         "rating": 4.1,
         "count": 13500,
         "price": 1200,
@@ -49,8 +49,8 @@
       },
       {
         "id": 3,
-        "name": "Hotel Sea Cox",
-        "location": "Cox's Bazar",
+        "title": "Hotel Sea Cox",
+        "location": "Sukhumvit Bangkok 10110, Thailand",
         "rating": 4.5,
         "count": 2500,
         "price": 1200,
@@ -58,8 +58,8 @@
       },
       {
         "id": 4,
-        "name": "Hotel Sea Inn",
-        "location": "Cox's Bazar",
+        "title": "Hotel Sea Inn",
+        "location": "Sukhumvit Bangkok 10110, Thailand",
         "rating": 4.6,
         "count": 12200,
         "price": 1200,
