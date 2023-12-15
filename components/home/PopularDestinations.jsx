@@ -20,7 +20,6 @@ const options = {
     },
     768: {
       perPage: 3,
-      arrows: true,
     },
     1024: {
       perPage: 4,
