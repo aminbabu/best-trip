@@ -33,7 +33,7 @@ const options = {
 
 const UmrahZiyarah = ({ title, description, items }) => {
   return (
-    <section className="py-12 sm:py-16 lg:py-20 xl:py-24">
+    <section className="py-12 sm:py-16 lg:py-20 xl:py-24 bg-secondary">
       <Container>
         <SectionHeader title={title} description={description} />
         <Slider hasTrack={false} options={options}>
