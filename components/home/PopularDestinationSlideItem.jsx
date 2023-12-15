@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ExchangeIcon, LocationIcon, StarIcon } from "../icons/svgr";
+import { ExchangeIcon } from "../icons/svgr";
 import numeral from "numeral";
 import Link from "next/link";
 

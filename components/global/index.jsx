@@ -19,7 +19,7 @@ const UmrahZiyarah = dynamic(() => import("@/components/home/UmrahZiyarah"), {
   loading: () => <p>Umrah Ziyarah Loading...</p>,
 });
 
-const PlacesInBD = dynamic(() => import("@/components/home/PlacesInBd"), {
+const PlacesInBD = dynamic(() => import("@/components/home/PlacesInBD"), {
   loading: () => <p>Places In BD Loading...</p>,
 });
 
