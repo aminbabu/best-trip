@@ -47,6 +47,9 @@ dependencies:
   react-hook-form:
     specifier: ^7.49.2
     version: 7.49.2(react@18.2.0)
+  react-id-swiper:
+    specifier: ^4.0.0
+    version: 4.0.0(react-dom@18.2.0)(react@18.2.0)(swiper@11.0.5)
   react-redux:
     specifier: ^9.0.4
     version: 9.0.4(react@18.2.0)(redux@5.0.0)
@@ -4181,6 +4184,20 @@ packages:
       react: ^16.8.0 || ^17 || ^18
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /react-id-swiper@4.0.0(react-dom@18.2.0)(react@18.2.0)(swiper@11.0.5):
+    resolution: {integrity: sha512-BFY8VQYgc1ECkT1Ek6MYSF8MADjWYZctdeRlMA202mjGcdjq1Bugfhg207KHTjGWKWZlY/7/nxFShqQo74RslA==}
+    engines: {node: '>= 6.11.0'}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+      swiper: '>=5.0.0'
+    dependencies:
+      object-assign: 4.1.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      swiper: 11.0.5
     dev: false
 
   /react-is@16.13.1:
