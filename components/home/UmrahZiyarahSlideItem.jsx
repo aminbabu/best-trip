@@ -2,12 +2,10 @@ import Image from "next/image";
 import {
   BusIcon,
   ClockIcon,
-  ExchangeIcon,
   HotelIcon,
   LocationIcon,
   PassportIcon,
   PlaneIcon,
-  StarIcon,
 } from "../icons/svgr";
 import numeral from "numeral";
 import Link from "next/link";
