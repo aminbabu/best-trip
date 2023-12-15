@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import Container from "../layouts/Container";
 
-const Section = ({ title, description, className, children }) => {
+const Section = ({ className, children }) => {
   return (
     <section className={cn("py-12 sm:py-16 lg:py-20 xl:py-24", className)}>
       <Container>{children}</Container>
