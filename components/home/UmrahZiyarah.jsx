@@ -1,10 +1,10 @@
 "use client";
 
 import { SplideSlide, SplideTrack } from "@splidejs/react-splide";
-// import Section from "@/components/global/Section";
 import SectionHeader from "@/components/global/SectionHeader";
 import Slider from "@/components/global/splide/Slider";
 import UmrahZiyarahSlideItem from "@/components/home/UmrahZiyarahSlideItem";
+import Container from "../layouts/Container";
 
 const options = {
   type: "loop",
@@ -33,20 +33,20 @@ const options = {
 
 const UmrahZiyarah = ({ title, description, items }) => {
   return (
-    <>
-      {/* <Section className="bg-secondary"> */}
-      <SectionHeader title={title} description={description} />
-      <Slider hasTrack={false} options={options}>
-        <SplideTrack>
-          {items.map((item, index) => (
-            <SplideSlide key={index}>
-              <UmrahZiyarahSlideItem item={item} />
-            </SplideSlide>
-          ))}
-        </SplideTrack>
-      </Slider>
-      {/* </Section> */}
-    </>
+    <section className="py-12 sm:py-16 lg:py-20 xl:py-24">
+      <Container>
+        <SectionHeader title={title} description={description} />
+        <Slider hasTrack={false} options={options}>
+          <SplideTrack>
+            {items.map((item, index) => (
+              <SplideSlide key={index}>
+                <UmrahZiyarahSlideItem item={item} />
+              </SplideSlide>
+            ))}
+          </SplideTrack>
+        </Slider>
+      </Container>
+    </section>
   );
 };
 
