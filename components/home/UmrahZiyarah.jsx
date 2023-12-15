@@ -33,7 +33,7 @@ const options = {
 
 const UmrahZiyarah = ({ title, description, items }) => {
   return (
-    <Section>
+    <Section className="bg-secondary">
       <SectionHeader title={title} description={description} />
       <Slider hasTrack={false} options={options}>
         <SplideTrack>
