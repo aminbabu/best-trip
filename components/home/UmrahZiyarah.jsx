@@ -1,10 +1,10 @@
 "use client";
 
 import { SplideSlide, SplideTrack } from "@splidejs/react-splide";
-import Section from "../global/Section";
-import SectionHeader from "../global/SectionHeader";
-import Slider from "../global/splide/Slider";
-import UmrahZiyarahSlideItem from "./UmrahZiyarahSlideItem";
+import Section from "@/components/global/Section";
+import SectionHeader from "@/components/global/SectionHeader";
+import Slider from "@/components/global/splide/Slider";
+import UmrahZiyarahSlideItem from "@/components/home/UmrahZiyarahSlideItem";
 
 const options = {
   type: "loop",

@@ -1,8 +1,8 @@
 "use client";
 
-import Section from "../global/Section";
+import Section from "@/components/global/Section";
 import Image from "next/image";
-import Slider from "../global/splide/Slider";
+import Slider from "@/components/global/splide/Slider";
 import { SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import Link from "next/link";
 
