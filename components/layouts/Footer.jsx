@@ -9,7 +9,7 @@ import {
   InstagramIcon,
   TwitterIcon,
   YoutubeIcon,
-} from "../icons/svgr";
+} from "@/components/icons/svgr";
 
 const menu = {
   title: "About Us",

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { StarIcon } from "../icons/svgr";
+import { StarIcon } from "@/components/icons/svgr";
 import numeral from "numeral";
 import Link from "next/link";
 

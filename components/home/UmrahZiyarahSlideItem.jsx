@@ -6,7 +6,7 @@ import {
   LocationIcon,
   PassportIcon,
   PlaneIcon,
-} from "../icons/svgr";
+} from "@/components/icons/svgr";
 import numeral from "numeral";
 import Link from "next/link";
 

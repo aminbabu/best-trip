@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ExchangeIcon } from "../icons/svgr";
+import { ExchangeIcon } from "@/components/icons/svgr";
 import numeral from "numeral";
 import Link from "next/link";
 
