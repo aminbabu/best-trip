@@ -1,4 +1,4 @@
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Splide } from "@splidejs/react-splide";
 import { forwardRef } from "react";
 
 import "@splidejs/react-splide/css/core";
