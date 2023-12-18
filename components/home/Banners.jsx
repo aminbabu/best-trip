@@ -5,6 +5,7 @@ import Slider from "@/components/global/splide/Slider";
 import { SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import Link from "next/link";
 import Section from "@/components/global/Section";
+import data from "@/data/banners.json";
 
 const options = {
   type: "loop",
@@ -29,7 +30,9 @@ const options = {
   },
 };
 
-const Banners = ({ items }) => {
+const Banners = () => {
+  const { items } = data;
+
   return (
     <Section>
       <Slider hasTrack={false} options={options}>

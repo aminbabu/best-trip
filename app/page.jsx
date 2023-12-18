@@ -1,24 +1,19 @@
-import Components from "@/components/global";
-import data from "../data/home.json";
+import Banners from "@/components/home/Banners";
+import Filters from "@/components/home/Filters";
+import Hotels from "@/components/home/Hotels";
+import PlacesInBD from "@/components/home/PlacesInBD";
+import PopularDestinations from "@/components/home/PopularDestinations";
+import UmrahZiyarah from "@/components/home/UmrahZiyarah";
 
 const Home = () => {
   return (
     <main>
-      {data.map((item, index) => {
-        const { name, title, description, items } = item;
-        const Component = Components[name];
-
-        if (!Component) return null;
-
-        return (
-          <Component
-            key={index}
-            title={title}
-            description={description}
-            items={items}
-          />
-        );
-      })}
+      <Filters />
+      <Banners />
+      <Hotels />
+      <PopularDestinations />
+      <UmrahZiyarah />
+      <PlacesInBD />
     </main>
   );
 };

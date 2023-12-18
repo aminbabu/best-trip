@@ -1,0 +1,39 @@
+{
+  "name": "places_in_bd",
+  "title": "Visit Beautiful Places in Bangladesh",
+  "description": "Explore the beauty of Bangladesh with Best Trip! Most Popular Place Chittagong, Cox’s Bazar, Sylhet, Bandarban, Sajek Valley, Rangamati etc.",
+  "items": [
+    {
+      "id": 1,
+      "title": "Patenga Sea Beach",
+      "image": "/images/home/places-in-bd/01.png",
+      "rating": 4.5,
+      "count": 5600,
+      "address": "Chittagong, Bangladesh"
+    },
+    {
+      "id": 2,
+      "title": "Radiant Fish World",
+      "image": "/images/home/places-in-bd/02.png",
+      "rating": 4.1,
+      "count": 13500,
+      "address": "Cox's Bazar, Bangladesh"
+    },
+    {
+      "id": 3,
+      "title": "Lakkatura Tea Garden",
+      "image": "/images/home/places-in-bd/03.png",
+      "rating": 4.5,
+      "count": 2500,
+      "address": "Sylhet, Bangladesh"
+    },
+    {
+      "id": 4,
+      "title": "Sajek Valley",
+      "image": "/images/home/places-in-bd/04.png",
+      "rating": 4.6,
+      "count": 12200,
+      "address": "Rangamati, Bangladesh"
+    }
+  ]
+}

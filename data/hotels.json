@@ -1,0 +1,43 @@
+{
+  "name": "hotels",
+  "title": "Discover Hotels For Your Next Trip",
+  "description": "Save on your next trip with the Best Trip! Find great hotel or apartment deals and book in just a few minutes. You can also book flights, rental cars, and many more. ",
+  "items": [
+    {
+      "id": 1,
+      "title": "Hotel Sea Crown",
+      "location": "Sukhumvit Bangkok 10110, Thailand",
+      "rating": 4.5,
+      "count": 5600,
+      "price": 1200,
+      "image": "/images/home/hotels/01.png"
+    },
+    {
+      "id": 2,
+      "title": "Hotel Sea Alif",
+      "location": "Sukhumvit Bangkok 10110, Thailand",
+      "rating": 4.1,
+      "count": 13500,
+      "price": 1200,
+      "image": "/images/home/hotels/02.png"
+    },
+    {
+      "id": 3,
+      "title": "Hotel Sea Cox",
+      "location": "Sukhumvit Bangkok 10110, Thailand",
+      "rating": 4.5,
+      "count": 2500,
+      "price": 1200,
+      "image": "/images/home/hotels/03.png"
+    },
+    {
+      "id": 4,
+      "title": "Hotel Sea Inn",
+      "location": "Sukhumvit Bangkok 10110, Thailand",
+      "rating": 4.6,
+      "count": 12200,
+      "price": 1200,
+      "image": "/images/home/hotels/04.png"
+    }
+  ]
+}

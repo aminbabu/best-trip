@@ -5,6 +5,7 @@ import SectionHeader from "@/components/global/SectionHeader";
 import Slider from "@/components/global/splide/Slider";
 import PopularDestinationSlideItem from "@/components/home/PopularDestinationSlideItem";
 import Section from "@/components/global/Section";
+import data from "@/data/popular-destinations.json";
 
 const options = {
   type: "loop",
@@ -31,7 +32,9 @@ const options = {
   },
 };
 
-const PopularDestinations = ({ title, description, items }) => {
+const PopularDestinations = () => {
+  const { title, description, items } = data;
+
   return (
     <Section>
       <SectionHeader title={title} description={description} />

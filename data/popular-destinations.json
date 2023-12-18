@@ -1,0 +1,39 @@
+{
+  "name": "popular_destinations",
+  "title": "Most Popular Travel Destinations",
+  "description": "Best of the Best Destinations · 01. Dubai, 02. Bali, 03. London, 04. Rome, 05. Paris, 06. Bangkok, 07. Singapore, 08. Malaysia, 09. Egypt, 10. India.",
+  "items": [
+    {
+      "id": 1,
+      "from": "Dhaka",
+      "to": "Cox's Bazar",
+      "airline": "Biman Bangladesh Airlines",
+      "price": 4200,
+      "image": "/images/home/popular-destinations/01.png"
+    },
+    {
+      "id": 2,
+      "from": "Dhaka",
+      "to": "Chittagong",
+      "airline": "Biman Bangladesh Airlines",
+      "price": 3200,
+      "image": "/images/home/popular-destinations/02.png"
+    },
+    {
+      "id": 3,
+      "from": "Dhaka",
+      "to": "Sylhet",
+      "airline": "Biman Bangladesh Airlines",
+      "price": 2200,
+      "image": "/images/home/popular-destinations/03.png"
+    },
+    {
+      "id": 4,
+      "from": "Dhaka",
+      "to": "Rangamati",
+      "airline": "Biman Bangladesh Airlines",
+      "price": 1200,
+      "image": "/images/home/popular-destinations/04.png"
+    }
+  ]
+}

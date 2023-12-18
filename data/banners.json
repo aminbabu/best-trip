@@ -1,0 +1,25 @@
+{
+  "name": "banners",
+  "title": "Best Trip! Travel Agency",
+  "description": "Best Trip! is a travel agency that provides the best travel deals for your next trip. We offer flights, hotels, car rentals, and more. Book now!",
+  "items": [
+    {
+      "id": 1,
+      "title": "Best Trip! Travel Agency",
+      "description": "Best Trip! is a travel agency that provides the best travel deals for your next trip. We offer flights, hotels, car rentals, and more. Book now!",
+      "image": "/images/home/banners/01.png"
+    },
+    {
+      "id": 2,
+      "title": "Best Trip! Travel Agency",
+      "description": "Best Trip! is a travel agency that provides the best travel deals for your next trip. We offer flights, hotels, car rentals, and more. Book now!",
+      "image": "/images/home/banners/02.png"
+    },
+    {
+      "id": 3,
+      "title": "Best Trip! Travel Agency",
+      "description": "Best Trip! is a travel agency that provides the best travel deals for your next trip. We offer flights, hotels, car rentals, and more. Book now!",
+      "image": "/images/home/banners/03.png"
+    }
+  ]
+}

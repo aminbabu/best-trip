@@ -5,6 +5,7 @@ import SectionHeader from "@/components/global/SectionHeader";
 import Slider from "@/components/global/splide/Slider";
 import UmrahZiyarahSlideItem from "@/components/home/UmrahZiyarahSlideItem";
 import Section from "@/components/global/Section";
+import data from "@/data/umrah-ziyarah.json";
 
 const options = {
   type: "loop",
@@ -31,7 +32,9 @@ const options = {
   },
 };
 
-const UmrahZiyarah = ({ title, description, items }) => {
+const UmrahZiyarah = () => {
+  const { title, description, items } = data;
+
   return (
     <Section className="bg-secondary">
       <SectionHeader title={title} description={description} />

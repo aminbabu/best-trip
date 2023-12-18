@@ -1,0 +1,43 @@
+{
+  "name": "umrah_ziyarah",
+  "title": "Plan Your Umrah And Ziyarah",
+  "description": "We offer affordable packages for Umrah pilgrims with outstanding customer service & price. Apply your Umrah visa online 2023 with Best Trip!",
+  "items": [
+    {
+      "id": 1,
+      "title": "Premium Umrah Package",
+      "from": "Dhaka",
+      "price": 122000,
+      "days": 15,
+      "nights": 14,
+      "image": "/images/home/umrah-ziyarah/01.png"
+    },
+    {
+      "id": 2,
+      "title": "Deluxe Umrah Package",
+      "from": "Dhaka",
+      "price": 112000,
+      "days": 15,
+      "nights": 14,
+      "image": "/images/home/umrah-ziyarah/02.png"
+    },
+    {
+      "id": 3,
+      "title": "Standard Umrah Package",
+      "from": "Dhaka",
+      "price": 102000,
+      "days": 15,
+      "nights": 14,
+      "image": "/images/home/umrah-ziyarah/03.png"
+    },
+    {
+      "id": 4,
+      "title": "Economy Umrah Package",
+      "from": "Dhaka",
+      "price": 92000,
+      "days": 15,
+      "nights": 14,
+      "image": "/images/home/umrah-ziyarah/04.png"
+    }
+  ]
+}
