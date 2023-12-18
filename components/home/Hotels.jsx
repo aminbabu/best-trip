@@ -4,7 +4,7 @@ import { SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import SectionHeader from "@/components/global/SectionHeader";
 import Slider from "@/components/global/splide/Slider";
 import HotelSlideItem from "@/components/home/HotelSlideItem";
-import Container from "../layouts/Container";
+import Section from "@/components/global/Section";
 
 const options = {
   type: "loop",
@@ -33,20 +33,18 @@ const options = {
 
 const Hotels = ({ title, description, items }) => {
   return (
-    <section className="py-12 sm:py-16 lg:py-20 xl:py-24 bg-secondary">
-      <Container>
-        <SectionHeader title={title} description={description} />
-        <Slider hasTrack={false} options={options}>
-          <SplideTrack>
-            {items.map((item, index) => (
-              <SplideSlide key={index}>
-                <HotelSlideItem item={item} />
-              </SplideSlide>
-            ))}
-          </SplideTrack>
-        </Slider>
-      </Container>
-    </section>
+    <Section className="bg-secondary">
+      <SectionHeader title={title} description={description} />
+      <Slider hasTrack={false} options={options}>
+        <SplideTrack>
+          {items.map((item, index) => (
+            <SplideSlide key={index}>
+              <HotelSlideItem item={item} />
+            </SplideSlide>
+          ))}
+        </SplideTrack>
+      </Slider>
+    </Section>
   );
 };
 
