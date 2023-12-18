@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import Brand from "../ui/Brand";
+import Brand from "../global/Brand";
 import Container from "./Container";
 import Menu from "./Menu";
 import NavbarCta from "./NavbarCta";

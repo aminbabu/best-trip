@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Brand from "../ui/Brand";
+import Brand from "../global/Brand";
 import Container from "./Container";
 import Copyright from "./Copyright";
 import Newsletter from "./Newsletter";
