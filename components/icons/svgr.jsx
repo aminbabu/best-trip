@@ -10,6 +10,8 @@ import BusIcon from "@/public/icons/bus.svg";
 import PassportIcon from "@/public/icons/passport.svg";
 import HotelIcon from "@/public/icons/hotel.svg";
 import ClockIcon from "@/public/icons/clock.svg";
+import KabaIcon from "@/public/icons/kaba.svg";
+import KabaHumanIcon from "@/public/icons/kaba-human.svg";
 
 export {
   FacebookIcon,
@@ -24,4 +26,6 @@ export {
   PassportIcon,
   HotelIcon,
   ClockIcon,
+  KabaIcon,
+  KabaHumanIcon,
 };
