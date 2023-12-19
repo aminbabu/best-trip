@@ -1,6 +1,6 @@
 import Tabs from "@/components/global/Tabs";
 import {
-  KabaHumanIcon,
+  BuildingHumanIcon,
   KabaIcon,
   PassportIcon,
   PlaneIcon,
@@ -37,7 +37,7 @@ const filters = {
     },
     {
       id: 4,
-      icon: <KabaHumanIcon width="26" height="26" viewBox="0 0 26 26" />,
+      icon: <BuildingHumanIcon width="26" height="26" viewBox="0 0 26 26" />,
       title: "Customs",
       value: "customs",
     },
