@@ -20,12 +20,15 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="en">
-      <body className={cn("bg-white antialiased", fontSans.className)}>
-        <div className="min-h-screen flex flex-col overflow-hidden">
-          <Navbar />
-          {children}
-          <Footer />
-        </div>
+      <body
+        className={cn(
+          "min-h-screen flex flex-col overflow-x-hidden bg-white antialiased",
+          fontSans.className
+        )}
+      >
+        <Navbar />
+        {children}
+        <Footer />
       </body>
     </html>
   );
