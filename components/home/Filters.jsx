@@ -50,7 +50,7 @@ const Filters = () => {
   return (
     <div className="pt-32">
       <Container>
-        <Tabs data={data} />
+        <Tabs data={data} defaultValue={data[1].value} />
       </Container>
     </div>
   );
