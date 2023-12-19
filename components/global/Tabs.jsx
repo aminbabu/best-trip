@@ -6,11 +6,11 @@ import {
 } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 
-const Tabs = ({ tabs, tabpanes }) => {
+const Tabs = ({ data }) => {
   return (
     <TabsComponent defaultValue={tabs[1].value}>
       <TabsList className="justify-start h-auto p-0 rounded-b-none rounded-t-md overflow-x-auto max-w-full">
-        {tabs.map((tab, index) => (
+        {data.map((tab, index) => (
           <TabsTrigger
             key={tab.id}
             value={tab.value}
@@ -26,7 +26,7 @@ const Tabs = ({ tabs, tabpanes }) => {
           </TabsTrigger>
         ))}
       </TabsList>
-      {tabpanes.map((tabpane) => (
+      {data.map((tabpane) => (
         <TabsContent
           key={tabpane.id}
           value={tabpane.value}
