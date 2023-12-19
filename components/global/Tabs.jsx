@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 const Tabs = ({ tabs, tabpanes }) => {
   return (
     <TabsComponent defaultValue={tabs[1].value}>
-      <TabsList className="h-auto p-0 rounded-b-none rounded-t-md">
+      <TabsList className="justify-start h-auto p-0 rounded-b-none rounded-t-md overflow-x-auto max-w-full">
         {tabs.map((tab, index) => (
           <TabsTrigger
             key={tab.id}
@@ -30,7 +30,7 @@ const Tabs = ({ tabs, tabpanes }) => {
         <TabsContent
           key={tabpane.id}
           value={tabpane.value}
-          className="mt-0 p-2 rounded-md rounded-tl-none"
+          className="mt-0 p-2 lg:p-4 rounded-b-md rounded-t-none min-[618px]:rounded-tr-md"
         >
           {tabpane.component}
         </TabsContent>
