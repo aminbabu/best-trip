@@ -6,9 +6,9 @@ import {
 } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 
-const Tabs = ({ data }) => {
+const Tabs = ({ data, defaultValue }) => {
   return (
-    <TabsComponent defaultValue={tabs[1].value}>
+    <TabsComponent defaultValue={defaultValue}>
       <TabsList className="justify-start h-auto p-0 rounded-b-none rounded-t-md overflow-x-auto max-w-full">
         {data.map((tab, index) => (
           <TabsTrigger
