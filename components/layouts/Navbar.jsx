@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-40 bg-white/50 backdrop-blur-sm duration-300",
+        "sticky top-0 z-40 bg-white/50 backdrop-blur-sm duration-300",
         {
           "shadow-md": isSticky,
         }
