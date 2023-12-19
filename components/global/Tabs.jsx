@@ -18,7 +18,7 @@ const Tabs = ({ data, defaultValue }) => {
               "px-6 py-4 gap-x-1 text-base lg:text-lg text-t-700 bg-white rounded-none data-[state=active]:bg-p-900 data-[state=active]:text-white data-[state=active]:border-b-p-900",
               {
                 "rounded-tl-md": index === 0,
-                "rounded-tr-md": index === tabs.length - 1,
+                "rounded-tr-md": index === data.length - 1,
               }
             )}
           >
