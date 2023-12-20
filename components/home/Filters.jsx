@@ -7,7 +7,8 @@ import {
 } from "../icons/svgr";
 import Container from "@/components/layouts/Container";
 import UmrahTabpane from "./UmrahTabpane";
-import BgCurve from "@/public/images/home/filters/curve.svg";
+import BgCurve from "@/public/images/home/filters/curve.svg?url";
+import Image from "next/image";
 
 const data = [
   {
@@ -50,7 +51,11 @@ const data = [
 const Filters = () => {
   return (
     <div className="relative">
-      <BgCurve className="absolute top-0 left-0 right-0 -z-10 object-cover object-center text-p-300/60" />
+      <Image
+        src={BgCurve}
+        alt="Bg curve"
+        className="absolute top-0 left-0 w-full -z-10 object-cover object-center"
+      />
       <Container>
         <Tabs data={data} defaultValue={data[1].value} />
       </Container>
