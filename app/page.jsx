@@ -1,13 +1,15 @@
-import Banners from "@/components/home/Banners";
+import Hero from "@/components/home/hero";
 import Filters from "@/components/home/Filters";
+import Banners from "@/components/home/Banners";
 import Hotels from "@/components/home/Hotels";
-import PlacesInBD from "@/components/home/PlacesInBD";
-import PopularDestinations from "@/components/home/PopularDestinations";
 import UmrahZiyarah from "@/components/home/UmrahZiyarah";
+import PopularDestinations from "@/components/home/PopularDestinations";
+import PlacesInBD from "@/components/home/PlacesInBD";
 
 const Home = () => {
   return (
     <main>
+      <Hero />
       <Filters />
       <Banners />
       <Hotels />
