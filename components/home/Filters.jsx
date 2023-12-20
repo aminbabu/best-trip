@@ -50,7 +50,7 @@ const data = [
 
 const Filters = () => {
   return (
-    <div className="relative">
+    <div className="relative -mt-0.5">
       <Image
         src={BgCurve}
         alt="Bg curve"
