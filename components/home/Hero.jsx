@@ -10,7 +10,7 @@ const Hero = () => {
             <h1 className="text-3xl leading-tight sm:text-4xl sm:leading-tight lg:text-[2.75rem] lg:leading-tight text-t-800 font-medium mb-6">
               Discover A Beautiful Place With Us
             </h1>
-            <p>
+            <p className="text-base lg:text-lg text-t-600">
               Would you explore nature paradise in the world, lets find the best
               destination in the world with us.
             </p>
