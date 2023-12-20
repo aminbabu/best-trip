@@ -30,7 +30,7 @@ const Tabs = ({ data, defaultValue }) => {
         <TabsContent
           key={tabpane.id}
           value={tabpane.value}
-          className="mt-0 p-2 lg:p-4 rounded-b-md rounded-t-none min-[618px]:rounded-tr-md"
+          className="mt-0 p-2 lg:p-4 rounded-b-md rounded-t-none min-[618px]:rounded-tr-md bg-white"
         >
           {tabpane.component}
         </TabsContent>
