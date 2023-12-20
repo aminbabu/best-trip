@@ -14,6 +14,8 @@ import KabaIcon from "@/public/icons/kaba.svg";
 import BuildingHumanIcon from "@/public/icons/building-human.svg";
 import SearchIcon from "@/public/icons/search.svg";
 import ArrowIcon from "@/public/icons/arrow.svg";
+import MinusIcon from "@/public/icons/minus.svg";
+import PlusIcon from "@/public/icons/plus.svg";
 
 export {
   FacebookIcon,
@@ -32,4 +34,6 @@ export {
   BuildingHumanIcon,
   SearchIcon,
   ArrowIcon,
+  MinusIcon,
+  PlusIcon,
 };
