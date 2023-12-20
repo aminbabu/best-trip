@@ -276,7 +276,7 @@ const UmrahTabpane = () => {
           </ScrollArea>
         </DropdownMenuContent>
       </DropdownMenu>
-      <Button size="lg" onCLick={handleFilter}>
+      <Button size="lg" onClick={handleFilter}>
         <SearchIcon />
       </Button>
     </div>
