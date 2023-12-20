@@ -1,0 +1,9 @@
+import { cn } from "@/lib/utils";
+
+const ScrollArea = ({ className, children }) => {
+  return (
+    <div className={cn("overflow-y-auto max-h-64", className)}>{children}</div>
+  );
+};
+
+export default ScrollArea;
