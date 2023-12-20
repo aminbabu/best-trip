@@ -1,4 +1,4 @@
-import Hero from "@/components/home/hero";
+import Hero from "@/components/home/Hero";
 import Filters from "@/components/home/Filters";
 import Banners from "@/components/home/Banners";
 import Hotels from "@/components/home/Hotels";
