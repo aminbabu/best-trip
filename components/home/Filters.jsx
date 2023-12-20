@@ -48,7 +48,7 @@ const data = [
 
 const Filters = () => {
   return (
-    <div className="pt-32">
+    <div>
       <Container>
         <Tabs data={data} defaultValue={data[1].value} />
       </Container>
