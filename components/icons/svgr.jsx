@@ -16,6 +16,7 @@ import SearchIcon from "@/public/icons/search.svg";
 import ArrowIcon from "@/public/icons/arrow.svg";
 import MinusIcon from "@/public/icons/minus.svg";
 import PlusIcon from "@/public/icons/plus.svg";
+import PencilIcon from "@/public/icons/pencil.svg";
 
 export {
   FacebookIcon,
@@ -36,4 +37,5 @@ export {
   ArrowIcon,
   MinusIcon,
   PlusIcon,
+  PencilIcon,
 };
