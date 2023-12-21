@@ -15,7 +15,7 @@ const FilterResult = ({ slug, data }) => {
   switch (slug) {
     case "umrah-flight":
       return (
-        <div className="grid grid-cols-1 gap-4 mt-8 sm:mt-10 lg:mt-12">
+        <div className="grid grid-cols-1 gap-y-6 lg:gap-y-8">
           {data.map((item) => (
             <UmrahFlightCard key={item.id} data={item} />
           ))}
@@ -23,7 +23,7 @@ const FilterResult = ({ slug, data }) => {
       );
     case "umrah":
       return (
-        <div className="grid grid-cols-1 gap-4 mt-8 sm:mt-10 lg:mt-12">
+        <div className="grid grid-cols-1 gap-y-6 lg:gap-y-8">
           {data.map((item) => (
             <UmrahCard key={item.id} data={item} />
           ))}
@@ -31,7 +31,7 @@ const FilterResult = ({ slug, data }) => {
       );
     case "visa":
       return (
-        <div className="grid grid-cols-1 gap-4 mt-8 sm:mt-10 lg:mt-12">
+        <div className="grid grid-cols-1 gap-y-6 lg:gap-y-8">
           {data.map((item) => (
             <VisaCard key={item.id} data={item} />
           ))}
@@ -39,7 +39,7 @@ const FilterResult = ({ slug, data }) => {
       );
     case "customs":
       return (
-        <div className="grid grid-cols-1 gap-4 mt-8 sm:mt-10 lg:mt-12">
+        <div className="grid grid-cols-1 gap-y-6 lg:gap-y-8">
           {data.map((item) => (
             <CustomsCard key={item.id} data={item} />
           ))}
