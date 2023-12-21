@@ -51,7 +51,7 @@ const travellers = [
   },
 ];
 
-const UmrahTabpane = () => {
+const UmrahTabpane = ({ icon }) => {
   const [open, setOpen] = useState(0);
   const [schedule, setSchedule] = useState("");
   const [type, setType] = useState("");
@@ -277,7 +277,7 @@ const UmrahTabpane = () => {
         </DropdownMenuContent>
       </DropdownMenu>
       <Button size="lg" onClick={handleFilter}>
-        <SearchIcon />
+        {icon ? icon : <SearchIcon />}
       </Button>
     </div>
   );
