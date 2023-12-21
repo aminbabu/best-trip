@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "type": "standard",
     "name": "Quad Share Basis Package",
     "from": "Dhaka, Bangladesh",
     "days": 4,
@@ -16,6 +17,7 @@
   },
   {
     "id": 2,
+    "type": "standard",
     "name": "Triple Share Basis Package",
     "from": "Dhaka, Bangladesh",
     "days": 4,
@@ -31,6 +33,7 @@
   },
   {
     "id": 3,
+    "type": "standard",
     "name": "Double Share Basis Package",
     "from": "Dhaka, Bangladesh",
     "days": 4,
@@ -46,6 +49,7 @@
   },
   {
     "id": 4,
+    "type": "standard",
     "name": "Single Share Basis Package",
     "from": "Dhaka, Bangladesh",
     "days": 4,
