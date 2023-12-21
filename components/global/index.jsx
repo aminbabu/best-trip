@@ -15,7 +15,7 @@ const PopularDestinations = dynamic(
   }
 );
 
-const UmrahZiyarah = dynamic(() => import("@/components/global/UmrahZiyarah"), {
+const UmrahZiyarah = dynamic(() => import("@/components/home/UmrahZiyarah"), {
   loading: () => <p>Umrah Ziyarah Loading...</p>,
 });
 
