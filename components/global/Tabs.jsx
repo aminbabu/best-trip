@@ -27,11 +27,7 @@ const Tabs = ({ data, defaultValue }) => {
         ))}
       </TabsList>
       {data.map((tabpane) => (
-        <TabsContent
-          key={tabpane.id}
-          value={tabpane.value}
-          className="mt-0 p-2 lg:p-4 rounded-b-md rounded-t-none min-[618px]:rounded-tr-md bg-white"
-        >
+        <TabsContent key={tabpane.id} value={tabpane.value} className="mt-0">
           {tabpane.component}
         </TabsContent>
       ))}
