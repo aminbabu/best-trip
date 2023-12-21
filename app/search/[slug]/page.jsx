@@ -2,6 +2,8 @@ import Container from "@/components/layouts/Container";
 import Image from "next/image";
 import BgCurve from "@/public/images/search/curve.svg?url";
 import Filters from "@/components/serach/Filters";
+import FilterResult from "@/components/serach/FilterResult";
+import data from "@/data/umrah-result.json";
 
 const SearchPage = async ({ params }) => {
   const { slug } = params;
@@ -17,6 +19,7 @@ const SearchPage = async ({ params }) => {
       />
       <Container>
         <Filters slug={slug} />
+        <FilterResult slug={slug} data={data} />
       </Container>
     </div>
   );
