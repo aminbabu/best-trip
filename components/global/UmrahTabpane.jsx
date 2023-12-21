@@ -99,7 +99,7 @@ const UmrahTabpane = ({ icon, className }) => {
   return (
     <div
       className={cn(
-        "bg-white flex flex-col lg:flex-row gap-x-4 gap-y-5 lg:gap-x-5",
+        "bg-white flex flex-col lg:flex-row gap-x-4 gap-y-5 lg:gap-x-5 px-2 py-4 xs:px-4 xs:py-6 lg:px-6 sm:py-8 md:py-10 lg:py-12 rounded-md shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]",
         className
       )}
     >

@@ -30,7 +30,9 @@ const data = [
     icon: <KabaIcon width="26" height="26" viewBox="0 0 26 26" />,
     title: "Umrah",
     value: "umrah",
-    component: <UmrahTabpane />,
+    component: (
+      <UmrahTabpane className="rounded-t-none min-[618px]:rounded-tr-md" />
+    ),
   },
   {
     id: 3,
