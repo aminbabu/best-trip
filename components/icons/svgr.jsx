@@ -17,6 +17,9 @@ import ArrowIcon from "@/public/icons/arrow.svg";
 import MinusIcon from "@/public/icons/minus.svg";
 import PlusIcon from "@/public/icons/plus.svg";
 import PencilIcon from "@/public/icons/pencil.svg";
+import LocationCircleIcon from "@/public/icons/location-circle.svg";
+import ClockAltIcon from "@/public/icons/clock-alt.svg";
+import PeopleIcon from "@/public/icons/people.svg";
 
 export {
   FacebookIcon,
@@ -38,4 +41,7 @@ export {
   MinusIcon,
   PlusIcon,
   PencilIcon,
+  LocationCircleIcon,
+  ClockAltIcon,
+  PeopleIcon,
 };
