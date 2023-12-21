@@ -17,7 +17,7 @@ const SearchPage = async ({ params }) => {
         alt="Bg curve"
         className="absolute top-0 left-0 w-full -z-10 object-cover object-center"
       />
-      <Container>
+      <Container className="space-y-6 lg:space-y-8">
         <Filters slug={slug} />
         <FilterResult slug={slug} data={data} />
       </Container>
