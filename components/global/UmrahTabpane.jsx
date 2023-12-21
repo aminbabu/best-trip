@@ -52,7 +52,7 @@ const travellers = [
   },
 ];
 
-const UmrahTabpane = ({ icon }) => {
+const UmrahTabpane = ({ icon, className }) => {
   const [open, setOpen] = useState(0);
   const [schedule, setSchedule] = useState("");
   const [type, setType] = useState("");
@@ -97,7 +97,12 @@ const UmrahTabpane = ({ icon }) => {
   };
 
   return (
-    <div className="py-4 flex flex-col lg:flex-row gap-x-4 gap-y-5 lg:gap-x-5">
+    <div
+      className={cn(
+        "bg-white flex flex-col lg:flex-row gap-x-4 gap-y-5 lg:gap-x-5",
+        className
+      )}
+    >
       <DropdownMenu
         open={open === 1}
         onOpenChange={(state) => handleDropdown(state ? 1 : 0)}
