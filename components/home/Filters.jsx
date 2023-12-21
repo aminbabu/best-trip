@@ -18,9 +18,7 @@ const data = [
     id: 1,
     icon: (
       <PlaneIcon
-        className="rotate-45"
-        width="26"
-        height="26"
+        className="w-5 h-5 sm:w-6 sm:h-6 rotate-45"
         viewBox="0 0 14 14"
       />
     ),
@@ -32,7 +30,7 @@ const data = [
   },
   {
     id: 2,
-    icon: <KabaIcon width="26" height="26" viewBox="0 0 26 26" />,
+    icon: <KabaIcon className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 26 26" />,
     title: "Umrah",
     value: "umrah",
     component: (
@@ -41,7 +39,9 @@ const data = [
   },
   {
     id: 3,
-    icon: <PassportIcon width="26" height="26" viewBox="0 0 14 14" />,
+    icon: (
+      <PassportIcon className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 14 14" />
+    ),
     title: "Visa",
     value: "visa",
     component: (
@@ -50,7 +50,12 @@ const data = [
   },
   {
     id: 4,
-    icon: <BuildingHumanIcon width="26" height="26" viewBox="0 0 26 26" />,
+    icon: (
+      <BuildingHumanIcon
+        className="w-5 h-5 sm:w-6 sm:h-6"
+        viewBox="0 0 26 26"
+      />
+    ),
     title: "Customs",
     value: "customs",
     component: (
