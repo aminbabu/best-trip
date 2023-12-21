@@ -9,7 +9,7 @@ const SearchPage = async ({ params }) => {
   // api call
 
   return (
-    <div className="relative">
+    <div className="relative pt-12 sm:pt-16 lg:pt-20">
       <Image
         src={BgCurve}
         alt="Bg curve"
