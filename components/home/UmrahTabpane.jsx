@@ -13,6 +13,7 @@ import { Fragment, useState } from "react";
 import ScrollArea from "@/components/global/ScrollArea";
 import { cn } from "@/lib/utils";
 import Counter from "@/components/global/Counter";
+import Link from "next/link";
 
 const schedules = [
   "January",
@@ -276,8 +277,8 @@ const UmrahTabpane = ({ icon }) => {
           </ScrollArea>
         </DropdownMenuContent>
       </DropdownMenu>
-      <Button size="lg" onClick={handleFilter}>
-        {icon ? icon : <SearchIcon />}
+      <Button size="lg" onClick={handleFilter} asChild>
+        <Link href="/search/umrah">{icon ? icon : <SearchIcon />}</Link>
       </Button>
     </div>
   );
