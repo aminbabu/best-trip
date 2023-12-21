@@ -6,7 +6,7 @@ import {
   PlaneIcon,
 } from "../icons/svgr";
 import Container from "@/components/layouts/Container";
-import UmrahTabpane from "./UmrahTabpane";
+import UmrahTabpane from "../global/UmrahTabpane";
 import BgCurve from "@/public/images/home/filters/curve.svg?url";
 import Image from "next/image";
 
