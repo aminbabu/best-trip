@@ -4,11 +4,14 @@ import {
   KabaIcon,
   PassportIcon,
   PlaneIcon,
-} from "../icons/svgr";
+} from "@/components/icons/svgr";
 import Container from "@/components/layouts/Container";
-import UmrahTabpane from "../global/UmrahTabpane";
+import UmrahTabpane from "@/components/global/UmrahTabpane";
 import BgCurve from "@/public/images/home/filters/curve.svg?url";
 import Image from "next/image";
+import VisaTabpane from "@/components/global/VisaTabpane";
+import CustomsTabpane from "@/components/global/CustomsTabpane";
+import UmrahFlightTabpane from "@/components/global/UmrahFlightTabpane";
 
 const data = [
   {
@@ -23,7 +26,9 @@ const data = [
     ),
     title: "Umrah Flight",
     value: "umrah-flight",
-    component: "Umrah flight in under development",
+    component: (
+      <UmrahFlightTabpane className="rounded-t-none min-[618px]:rounded-tr-md" />
+    ),
   },
   {
     id: 2,
@@ -39,14 +44,18 @@ const data = [
     icon: <PassportIcon width="26" height="26" viewBox="0 0 14 14" />,
     title: "Visa",
     value: "visa",
-    component: "Visa in under development",
+    component: (
+      <VisaTabpane className="rounded-t-none min-[618px]:rounded-tr-md" />
+    ),
   },
   {
     id: 4,
     icon: <BuildingHumanIcon width="26" height="26" viewBox="0 0 26 26" />,
     title: "Customs",
     value: "customs",
-    component: "Customs in under development",
+    component: (
+      <CustomsTabpane className="rounded-t-none min-[618px]:rounded-tr-md" />
+    ),
   },
 ];
 
