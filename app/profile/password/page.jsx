@@ -88,9 +88,9 @@ const ProfilePasswordPage = () => {
                 </FormItem>
               )}
             />
-            <div className="grid">
-              <Button type="submit">Update Password</Button>
-            </div>
+            <Button type="submit" className="w-full max-w-xs">
+              Update Password
+            </Button>
           </form>
         </Form>
       </CardContent>
