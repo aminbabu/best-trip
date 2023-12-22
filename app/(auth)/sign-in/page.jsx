@@ -21,9 +21,6 @@ import { CheckIcon } from "lucide-react";
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
-  phone: z.string().refine(validator.isMobilePhone, {
-    message: "Please enter a valid phone number",
-  }),
   password: z.string().min(8, "Please enter a valid password"),
 });
 
