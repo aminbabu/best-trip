@@ -75,7 +75,7 @@ const ProfileForm = ({ edit, setEdit }) => {
             <h2 className="text-t-700 text-xl lg:text-2xl font-medium mb-6 lg:mb-8">
               User Info
             </h2>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-5 lg:gap-x-12">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-5 xl:gap-x-12">
               <div className="col-span-2 md:col-span-1 hidden md:block">
                 <div className="flex items-center gap-x-2 rounded-md px-5 py-4 bg-primary-foreground text-t-600 leading-normal">
                   <UserAltIcon
@@ -166,7 +166,7 @@ const ProfileForm = ({ edit, setEdit }) => {
             <h2 className="text-t-700 text-xl lg:text-2xl font-medium mb-6 lg:mb-8">
               Contact Info
             </h2>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-5 lg:gap-x-12">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-5 xl:gap-x-12">
               <div className="col-span-2 md:col-span-1 hidden md:block">
                 <div className="flex items-center gap-x-2 rounded-md px-5 py-4 bg-primary-foreground text-t-600 leading-normal">
                   <EnvelopIcon
