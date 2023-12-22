@@ -5,7 +5,7 @@ const ProfileLayout = ({ children }) => {
   return (
     <section className="py-12 lg:py-16 bg-primary-foreground">
       <Container className="flex items-start">
-        <div className="sticky top-20">
+        <div className="sticky top-20 w-80">
           <Sidebar />
         </div>
         <div className="flex-1">{children}</div>
