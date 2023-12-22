@@ -58,7 +58,7 @@ const SignInPage = () => {
                     <FormControl>
                       <Input
                         type="email"
-                        className="h-[3.25rem] text-base text-t-700 placeholder:text-t-300"
+                        className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300"
                         placeholder="Enter email address"
                         {...field}
                       />
@@ -78,7 +78,7 @@ const SignInPage = () => {
                     <FormControl>
                       <Input
                         type="password"
-                        className="h-[3.25rem] text-base text-t-700 placeholder:text-t-300"
+                        className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300"
                         placeholder="Enter password"
                         {...field}
                       />

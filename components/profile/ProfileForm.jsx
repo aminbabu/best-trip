@@ -95,7 +95,7 @@ const ProfileForm = ({ edit, setEdit }) => {
                         <Input
                           disabled={!edit}
                           type="text"
-                          className="h-[3.25rem] text-base text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
                           placeholder="Enter your full name"
                           {...field}
                         />
@@ -126,7 +126,7 @@ const ProfileForm = ({ edit, setEdit }) => {
                             <Button
                               variant={"outline"}
                               className={cn(
-                                "text-left",
+                                "text-left justify-start",
                                 !field.value && "text-muted-foreground"
                               )}
                               disabled={!edit}
@@ -182,7 +182,7 @@ const ProfileForm = ({ edit, setEdit }) => {
                         <Input
                           disabled={!edit}
                           type="email"
-                          className="h-[3.25rem] text-base text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
                           placeholder="Enter email address"
                           {...field}
                         />
@@ -211,7 +211,7 @@ const ProfileForm = ({ edit, setEdit }) => {
                         <Input
                           disabled={!edit}
                           type="text"
-                          className="h-[3.25rem] text-base text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
                           placeholder="Enter phone number"
                           {...field}
                         />
@@ -240,7 +240,7 @@ const ProfileForm = ({ edit, setEdit }) => {
                         <Input
                           disabled={!edit}
                           type="text"
-                          className="h-[3.25rem] text-base text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
                           placeholder="Enter phone number"
                           {...field}
                         />
@@ -269,7 +269,7 @@ const ProfileForm = ({ edit, setEdit }) => {
                         <Input
                           disabled={!edit}
                           type="text"
-                          className="h-[3.25rem] text-base text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
                           placeholder="Enter phone number"
                           {...field}
                         />
@@ -298,7 +298,7 @@ const ProfileForm = ({ edit, setEdit }) => {
                         <Input
                           disabled={!edit}
                           type="text"
-                          className="h-[3.25rem] text-base text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
                           placeholder="Enter phone number"
                           {...field}
                         />
@@ -327,7 +327,7 @@ const ProfileForm = ({ edit, setEdit }) => {
                         <Input
                           disabled={!edit}
                           type="text"
-                          className="h-[3.25rem] text-base text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
                           placeholder="Enter phone number"
                           {...field}
                         />
