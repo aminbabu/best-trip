@@ -76,7 +76,7 @@ const SignUpPage = () => {
                     <FormControl>
                       <Input
                         type="text"
-                        className="h-[3.25rem] text-t-700 placeholder:text-t-300"
+                        className="h-[3.25rem] text-base text-t-700 placeholder:text-t-300"
                         placeholder="Enter your name"
                         {...field}
                       />
@@ -96,7 +96,7 @@ const SignUpPage = () => {
                     <FormControl>
                       <Input
                         type="email"
-                        className="h-[3.25rem] text-t-700 placeholder:text-t-300"
+                        className="h-[3.25rem] text-base text-t-700 placeholder:text-t-300"
                         placeholder="Enter email address"
                         {...field}
                       />
@@ -116,7 +116,7 @@ const SignUpPage = () => {
                     <FormControl>
                       <Input
                         type="tel"
-                        className="h-[3.25rem] text-t-700 placeholder:text-t-300"
+                        className="h-[3.25rem] text-base text-t-700 placeholder:text-t-300"
                         placeholder="Enter phone number"
                         {...field}
                       />
@@ -136,7 +136,7 @@ const SignUpPage = () => {
                     <FormControl>
                       <Input
                         type="password"
-                        className="h-[3.25rem] text-t-700 placeholder:text-t-300"
+                        className="h-[3.25rem] text-base text-t-700 placeholder:text-t-300"
                         placeholder="Enter password"
                         {...field}
                       />
@@ -156,7 +156,7 @@ const SignUpPage = () => {
                     <FormControl>
                       <Input
                         type="password"
-                        className="h-[3.25rem] text-t-700 placeholder:text-t-300"
+                        className="h-[3.25rem] text-base text-t-700 placeholder:text-t-300"
                         placeholder="Enter confirm password"
                         {...field}
                       />
