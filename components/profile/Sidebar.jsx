@@ -37,10 +37,10 @@ const Sidebar = () => {
           <Link
             href={link.href}
             className={cn(
-              "flex items-center gap-x-3 p-4 lg:p-6 text-base lg:text-lg text-t-700 leading-relaxed duration-300 hover:bg-primary hover:text-white",
-              {
-                "bg-primary text-white": pathname === link.href,
-              }
+              "flex items-center gap-x-3 p-4 lg:p-6 text-base lg:text-lg text-t-700 leading-relaxed duration-300 ",
+              pathname === link.href
+                ? "bg-primary text-white"
+                : "hover:bg-p-300 hover:text-primary"
             )}
           >
             <span>{link.icon}</span>
