@@ -34,6 +34,7 @@ import PhoneIcon from "@/public/icons/phone.svg";
 import LandmarkIcon from "@/public/icons/landmark.svg";
 import FlagIcon from "@/public/icons/flag.svg";
 import FoldingDocIcon from "@/public/icons/folding-doc.svg";
+import LocationAltIcon from "@/public/icons/location-alt.svg";
 
 export {
   FacebookIcon,
@@ -72,4 +73,5 @@ export {
   LandmarkIcon,
   FlagIcon,
   FoldingDocIcon,
+  LocationAltIcon,
 };
