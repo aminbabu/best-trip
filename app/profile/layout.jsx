@@ -4,7 +4,7 @@ import Sidebar from "@/components/profile/Sidebar";
 const ProfileLayout = ({ children }) => {
   return (
     <section className="py-12 lg:py-16 bg-primary-foreground">
-      <Container className="flex items-start">
+      <Container className="flex items-start gap-8">
         <div className="sticky top-20 w-80">
           <Sidebar />
         </div>
