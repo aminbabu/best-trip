@@ -1,6 +1,7 @@
 "use client";
 
 import { ICircleIcon, PencilSquareIcon } from "@/components/icons/svgr";
+import ProfileForm from "@/components/profile/ProfileForm";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -9,7 +10,7 @@ const MyProfilePage = () => {
   const [edit, setEdit] = useState(false);
 
   return (
-    <div className="lg:p-6 xl:p-10">
+    <div className="lg:p-6 xl:p-10 space-y-10">
       <div className="text-center">
         <Avatar className="h-40 w-40 mb-5 mx-auto">
           <AvatarImage src="/images/profile/avatar.png" />
@@ -27,13 +28,14 @@ const MyProfilePage = () => {
             <PencilSquareIcon />
           </Button>
         )}
-        <div className="flex justify-center gap-x-1 text-base lg:text-lg text-t-600 leading-relaxed mt-8 mb-10">
+        <div className="flex justify-center gap-x-1 text-base lg:text-lg text-t-600 leading-relaxed mt-8">
           <span className="text-primary">
             <ICircleIcon />
           </span>
           Enter details exactly as they appear on your passport
         </div>
       </div>
+      <ProfileForm edit={edit} setEdit={setEdit} />
     </div>
   );
 };
