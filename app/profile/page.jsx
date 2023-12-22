@@ -29,7 +29,7 @@ const MyProfilePage = () => {
           </Button>
         )}
         <div className="flex justify-center gap-x-1 text-base lg:text-lg text-t-600 leading-relaxed mt-8">
-          <span className="text-primary">
+          <span className="text-primary inline-flex items-center justify-center">
             <ICircleIcon />
           </span>
           Enter details exactly as they appear on your passport
