@@ -14,7 +14,7 @@ const MyProfilePage = () => {
       <div className="text-center">
         <Avatar className="h-40 w-40 mb-5 mx-auto">
           <AvatarImage src="/images/profile/avatar.png" />
-          <AvatarFallback>IH</AvatarFallback>
+          <AvatarFallback className="text-4xl">I.H</AvatarFallback>
         </Avatar>
         <h1 className="text-t-800 text-2xl lg:text-[2rem] font-semibold mb-2.5">
           Irfanul Haque
