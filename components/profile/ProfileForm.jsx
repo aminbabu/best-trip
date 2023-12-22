@@ -21,7 +21,6 @@ import {
   FoldingDocIcon,
   LandmarkIcon,
   LocationAltIcon,
-  LocationIcon,
   PhoneIcon,
   UserAltIcon,
 } from "@/components/icons/svgr";
@@ -31,7 +30,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   fullname: z.string().min(3, "Please enter your full name"),
@@ -51,9 +49,9 @@ const formSchema = z.object({
 const ProfileForm = ({ edit, setEdit }) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
-    defaultValues: {
+    values: {
       fullname: "Md Irfan",
-      dob: moment(new Date(2015, 10, 6)).format("DD-MMM-YYYY"),
+      dob: moment("06-Oct-1998", "DD-MMM-YYYY").toDate(),
       email: "irfan@cholotrip.net",
       phone: "+880 1871 24 9015",
       address: "Dhaka, Bangladesh",
@@ -61,6 +59,7 @@ const ProfileForm = ({ edit, setEdit }) => {
       country: "Bangladesh",
       flyerNo: "5874564000",
     },
+    disabled: !edit,
   });
 
   const onSubmit = (data) => {
@@ -93,10 +92,13 @@ const ProfileForm = ({ edit, setEdit }) => {
                     <FormItem className="space-y-3">
                       <FormControl>
                         <Input
-                          disabled={!edit}
                           type="text"
-                          className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
                           placeholder="Enter your full name"
+                          onChange={(e) => {
+                            console.log(e.target.value);
+                            field.onChange(e);
+                          }}
                           {...field}
                         />
                       </FormControl>
@@ -125,16 +127,13 @@ const ProfileForm = ({ edit, setEdit }) => {
                           <FormControl>
                             <Button
                               variant={"outline"}
-                              className={cn(
-                                "text-left justify-start",
-                                !field.value && "text-muted-foreground"
-                              )}
+                              className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-600 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
                               disabled={!edit}
                             >
                               {field.value ? (
                                 moment(field.value).format("DD-MMM-YYYY")
                               ) : (
-                                <span>Pick a date</span>
+                                <span>Select your date of birth</span>
                               )}
                             </Button>
                           </FormControl>
@@ -142,11 +141,15 @@ const ProfileForm = ({ edit, setEdit }) => {
                         <PopoverContent className="w-auto p-0" align="start">
                           <Calendar
                             mode="single"
-                            selected={field.value}
+                            defaultMonth={moment(field.value).toDate()}
+                            captionLayout="dropdown-buttons"
+                            selected={moment(field.value).toDate()}
                             onSelect={field.onChange}
                             disabled={(date) =>
                               date > new Date() || date < new Date("1900-01-01")
                             }
+                            fromYear={1900}
+                            toYear={moment().year()}
                             initialFocus
                           />
                         </PopoverContent>
@@ -180,9 +183,8 @@ const ProfileForm = ({ edit, setEdit }) => {
                     <FormItem className="space-y-3">
                       <FormControl>
                         <Input
-                          disabled={!edit}
                           type="email"
-                          className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
                           placeholder="Enter email address"
                           {...field}
                         />
@@ -209,9 +211,8 @@ const ProfileForm = ({ edit, setEdit }) => {
                     <FormItem className="space-y-3">
                       <FormControl>
                         <Input
-                          disabled={!edit}
                           type="text"
-                          className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
                           placeholder="Enter phone number"
                           {...field}
                         />
@@ -238,9 +239,8 @@ const ProfileForm = ({ edit, setEdit }) => {
                     <FormItem className="space-y-3">
                       <FormControl>
                         <Input
-                          disabled={!edit}
                           type="text"
-                          className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
                           placeholder="Enter phone number"
                           {...field}
                         />
@@ -267,9 +267,8 @@ const ProfileForm = ({ edit, setEdit }) => {
                     <FormItem className="space-y-3">
                       <FormControl>
                         <Input
-                          disabled={!edit}
                           type="text"
-                          className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
                           placeholder="Enter phone number"
                           {...field}
                         />
@@ -296,9 +295,8 @@ const ProfileForm = ({ edit, setEdit }) => {
                     <FormItem className="space-y-3">
                       <FormControl>
                         <Input
-                          disabled={!edit}
                           type="text"
-                          className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
                           placeholder="Enter phone number"
                           {...field}
                         />
@@ -325,9 +323,8 @@ const ProfileForm = ({ edit, setEdit }) => {
                     <FormItem className="space-y-3">
                       <FormControl>
                         <Input
-                          disabled={!edit}
                           type="text"
-                          className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
                           placeholder="Enter phone number"
                           {...field}
                         />
