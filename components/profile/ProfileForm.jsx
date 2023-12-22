@@ -64,6 +64,7 @@ const ProfileForm = ({ edit, setEdit }) => {
 
   const onSubmit = (data) => {
     console.log(data);
+    setEdit(false);
   };
 
   return (
