@@ -4,11 +4,7 @@ import { Card } from "@/components/ui/card";
 const AuthLayout = ({ children }) => {
   return (
     <section className="py-12 lg:py-16 bg-primary-foreground">
-      <Container>
-        <Card className="max-w-[648px] mx-auto border-transparent">
-          {children}
-        </Card>
-      </Container>
+      <Container>{children}</Container>
     </section>
   );
 };
