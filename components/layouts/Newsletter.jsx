@@ -1,4 +1,3 @@
-import Container from "./Container";
 import NewsletterForm from "./NewsletterForm";
 
 const Newsletter = () => {
