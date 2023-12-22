@@ -25,7 +25,7 @@ const formSchema = z
     path: ["confirmPassword"],
   });
 
-const SignUpPage = () => {
+const ResetPasswordPage = () => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -100,4 +100,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default ResetPasswordPage;
