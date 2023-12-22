@@ -20,6 +20,11 @@ import PencilIcon from "@/public/icons/pencil.svg";
 import LocationCircleIcon from "@/public/icons/location-circle.svg";
 import ClockAltIcon from "@/public/icons/clock-alt.svg";
 import PeopleIcon from "@/public/icons/people.svg";
+import UserIcon from "@/public/icons/user.svg";
+import CalenderCheckIcon from "@/public/icons/calender-check.svg";
+import CreditCardIcon from "@/public/icons/credit-card.svg";
+import SecurityLockIcon from "@/public/icons/security-lock.svg";
+import LogoutIcon from "@/public/icons/logout.svg";
 
 export {
   FacebookIcon,
@@ -44,4 +49,9 @@ export {
   LocationCircleIcon,
   ClockAltIcon,
   PeopleIcon,
+  UserIcon,
+  CalenderCheckIcon,
+  CreditCardIcon,
+  SecurityLockIcon,
+  LogoutIcon,
 };
