@@ -25,6 +25,7 @@ import CalenderCheckIcon from "@/public/icons/calender-check.svg";
 import CreditCardIcon from "@/public/icons/credit-card.svg";
 import SecurityLockIcon from "@/public/icons/security-lock.svg";
 import LogoutIcon from "@/public/icons/logout.svg";
+import PencilSquareIcon from "@/public/icons/pencil-square.svg";
 
 export {
   FacebookIcon,
@@ -54,4 +55,5 @@ export {
   CreditCardIcon,
   SecurityLockIcon,
   LogoutIcon,
+  PencilSquareIcon,
 };
