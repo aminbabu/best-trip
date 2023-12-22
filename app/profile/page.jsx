@@ -30,7 +30,7 @@ const MyProfilePage = () => {
             </Button>
           </div>
         )}
-        <div className="flex items-start justify-center gap-x-1 text-base lg:text-lg text-t-600 leading-relaxed mt-8">
+        <div className="flex items-start justify-center gap-x-2 text-base lg:text-lg text-t-600 leading-relaxed mt-8">
           <span className="text-primary inline-flex items-center justify-center">
             <ICircleIcon />
           </span>
