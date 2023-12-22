@@ -23,7 +23,7 @@ const MyProfilePage = () => {
           mdirfanulhaque2020@gmail.com
         </p>
         {!edit && (
-          <Button size="sm" onCLick={() => setEdit(true)}>
+          <Button size="sm" onClick={() => setEdit(true)}>
             Edit Profile
             <PencilSquareIcon />
           </Button>
