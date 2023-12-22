@@ -170,7 +170,7 @@ const SignUpPage = () => {
                 name="agree"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex items-start flex-wrap gap-3">
                       <div className="relative">
                         <FormControl>
                           <Input
