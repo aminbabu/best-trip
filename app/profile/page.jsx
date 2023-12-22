@@ -27,7 +27,7 @@ const MyProfilePage = () => {
             <PencilSquareIcon />
           </Button>
         )}
-        <div className="flex items-center justify-center gap-x-1 text-base lg:text-lg text-t-600 leading-relaxed mt-8 mb-10">
+        <div className="flex justify-center gap-x-1 text-base lg:text-lg text-t-600 leading-relaxed mt-8 mb-10">
           <span className="text-primary">
             <ICircleIcon />
           </span>
