@@ -21,12 +21,19 @@ import LocationCircleIcon from "@/public/icons/location-circle.svg";
 import ClockAltIcon from "@/public/icons/clock-alt.svg";
 import PeopleIcon from "@/public/icons/people.svg";
 import UserIcon from "@/public/icons/user.svg";
-import CalenderCheckIcon from "@/public/icons/calender-check.svg";
+import CalendarCheckIcon from "@/public/icons/calendar-check.svg";
 import CreditCardIcon from "@/public/icons/credit-card.svg";
 import SecurityLockIcon from "@/public/icons/security-lock.svg";
 import LogoutIcon from "@/public/icons/logout.svg";
 import PencilSquareIcon from "@/public/icons/pencil-square.svg";
 import ICircleIcon from "@/public/icons/i-circle.svg";
+import UserAltIcon from "@/public/icons/user-alt.svg";
+import CalendarIcon from "@/public/icons/calendar.svg";
+import EnvelopIcon from "@/public/icons/envelop.svg";
+import PhoneIcon from "@/public/icons/phone.svg";
+import LandmarkIcon from "@/public/icons/landmark.svg";
+import FlagIcon from "@/public/icons/flag.svg";
+import FoldingDocIcon from "@/public/icons/folding-doc.svg";
 
 export {
   FacebookIcon,
@@ -52,10 +59,17 @@ export {
   ClockAltIcon,
   PeopleIcon,
   UserIcon,
-  CalenderCheckIcon,
+  CalendarCheckIcon,
   CreditCardIcon,
   SecurityLockIcon,
   LogoutIcon,
   PencilSquareIcon,
   ICircleIcon,
+  UserAltIcon,
+  CalendarIcon,
+  EnvelopIcon,
+  PhoneIcon,
+  LandmarkIcon,
+  FlagIcon,
+  FoldingDocIcon,
 };
