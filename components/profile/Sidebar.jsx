@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import {
-  CalenderCheckIcon,
+  CalendarCheckIcon,
   CreditCardIcon,
   LogoutIcon,
   SecurityLockIcon,
@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { name: "Profile", href: "/profile", icon: <UserIcon /> },
-  { name: "My Booking", href: "/profile/booking", icon: <CalenderCheckIcon /> },
+  { name: "My Booking", href: "/profile/booking", icon: <CalendarCheckIcon /> },
   {
     name: "Payment History",
     href: "/profile/payment",
