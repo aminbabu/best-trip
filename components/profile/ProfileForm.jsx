@@ -32,10 +32,17 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 
 const formSchema = z.object({
-  fullname: z.string().min(3, "Please enter your full name"),
-  dob: z.date({
-    required_error: "Please enter your date of birth",
-  }),
+  fullname: z.string().min(1, "Please enter your full name"),
+  dob: z
+    .string()
+    .refine((val) => moment(val).isValid(), {
+      message: "Please enter a valid date",
+    })
+    .or(
+      z.date({
+        required_error: "Please enter a valid date",
+      })
+    ),
   email: z.string().email("Please enter a valid email address"),
   phone: z.string().refine(validator.isMobilePhone, {
     message: "Please enter a valid phone number",
@@ -49,11 +56,21 @@ const formSchema = z.object({
 const ProfileForm = ({ edit, setEdit }) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      fullname: "",
+      dob: "",
+      email: "",
+      phone: "",
+      address: "",
+      city: "",
+      country: "",
+      flyerNo: "",
+    },
     values: {
       fullname: "Md Irfan",
       dob: moment("06-Oct-1998", "DD-MMM-YYYY").toDate(),
       email: "irfan@cholotrip.net",
-      phone: "+880 1871 24 9015",
+      phone: "+8801871249015",
       address: "Dhaka, Bangladesh",
       city: "Dhaka",
       country: "Bangladesh",
@@ -64,7 +81,7 @@ const ProfileForm = ({ edit, setEdit }) => {
 
   const onSubmit = (data) => {
     console.log(data);
-    setEdit(false);
+    setEdit(false); // Change to false to disable editing
   };
 
   return (
