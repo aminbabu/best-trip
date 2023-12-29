@@ -35,7 +35,7 @@ import LandmarkIcon from "@/public/icons/landmark.svg";
 import FlagIcon from "@/public/icons/flag.svg";
 import FoldingDocIcon from "@/public/icons/folding-doc.svg";
 import LocationAltIcon from "@/public/icons/location-alt.svg";
-import BookingIcon from "@/public/icons/bookins.svg";
+import BookingIcon from "@/public/icons/booking.svg";
 import CheckSheildIcon from "@/public/icons/check-sheild.svg";
 
 export {
