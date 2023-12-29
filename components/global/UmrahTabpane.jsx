@@ -16,7 +16,7 @@ import ScrollArea from "@/components/global/ScrollArea";
 import { cn, formatError } from "@/lib/utils";
 import Counter from "@/components/global/Counter";
 import { Loader } from "lucide-react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const schedules = [
   "January",
@@ -56,6 +56,7 @@ const travellers = [
 ];
 
 const UmrahTabpane = ({ icon, className }) => {
+  const router = useRouter();
   const [open, setOpen] = useState(0);
   const [schedule, setSchedule] = useState("");
   const [type, setType] = useState("");
@@ -125,7 +126,7 @@ const UmrahTabpane = ({ icon, className }) => {
     setTimeout(() => {
       console.log(data);
       setLoading(false);
-      redirect("/search/umrah");
+      router.push("/search/umrah");
     }, 2000);
   };
 
