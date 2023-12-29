@@ -6,7 +6,7 @@ const Filters = ({ slug }) => {
     case "umrah-flight":
       return <h1>Umrah Flight</h1>;
     case "umrah":
-      return <UmrahTabpane icon={<PencilIcon />} />;
+      return <UmrahTabpane disabled icon={<PencilIcon />} />;
     case "visa":
       return <h1>Visa</h1>;
     case "customs":

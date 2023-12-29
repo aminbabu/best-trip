@@ -55,8 +55,9 @@ const travellers = [
   },
 ];
 
-const UmrahTabpane = ({ icon, className }) => {
+const UmrahTabpane = ({ icon, disabled, className }) => {
   const router = useRouter();
+  const [isDisabled, setIsDisabled] = useState(disabled);
   const [open, setOpen] = useState(0);
   const [schedule, setSchedule] = useState("");
   const [type, setType] = useState("");
@@ -114,6 +115,10 @@ const UmrahTabpane = ({ icon, className }) => {
     setTravellerCounts(newTravellers);
   };
 
+  const handleDisableFields = () => {
+    setIsDisabled(false);
+  };
+
   const handleSubmit = async () => {
     setLoading(true);
     const data = checkValidation();
@@ -144,7 +149,7 @@ const UmrahTabpane = ({ icon, className }) => {
           handleDropdown(state ? 1 : 0);
         }}
       >
-        <DropdownMenuTrigger asChild className="flex-1">
+        <DropdownMenuTrigger asChild className="flex-1" disabled={isDisabled}>
           <Button
             variant="outline"
             className={cn("flex-col items-stretch gap-y-1 text-left", {
@@ -193,7 +198,7 @@ const UmrahTabpane = ({ icon, className }) => {
           handleDropdown(state ? 2 : 0);
         }}
       >
-        <DropdownMenuTrigger asChild className="flex-1">
+        <DropdownMenuTrigger asChild className="flex-1" disabled={isDisabled}>
           <Button
             variant="outline"
             className={cn("flex-col items-stretch gap-y-1 text-left", {
@@ -240,7 +245,7 @@ const UmrahTabpane = ({ icon, className }) => {
           handleDropdown(state ? 3 : 0);
         }}
       >
-        <DropdownMenuTrigger asChild className="flex-1">
+        <DropdownMenuTrigger asChild className="flex-1" disabled={isDisabled}>
           <Button
             variant="outline"
             className={cn("flex-col items-stretch gap-y-1 text-left", {
@@ -289,7 +294,7 @@ const UmrahTabpane = ({ icon, className }) => {
           handleDropdown(state ? 4 : 0);
         }}
       >
-        <DropdownMenuTrigger asChild className="flex-1">
+        <DropdownMenuTrigger asChild className="flex-1" disabled={isDisabled}>
           <Button
             variant="outline"
             className={cn("flex-col items-stretch gap-y-1 text-left", {
@@ -336,10 +341,14 @@ const UmrahTabpane = ({ icon, className }) => {
           </ScrollArea>
         </DropdownMenuContent>
       </DropdownMenu>
-      <Button size="lg" onClick={handleSubmit} disabled={loading}>
+      <Button
+        size="lg"
+        onClick={isDisabled ? handleDisableFields : handleSubmit}
+        disabled={loading}
+      >
         {loading ? (
           <Loader className="animate-spin w-8 h-8" />
-        ) : icon ? (
+        ) : isDisabled ? (
           icon
         ) : (
           <SearchIcon />
