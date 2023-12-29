@@ -1,5 +1,7 @@
 "use client";
 
+import { umrahSchema } from "@/schema/zod";
+
 import { Button } from "@/components/ui/button";
 import { ArrowIcon, SearchIcon } from "@/components/icons/svgr";
 import {
@@ -11,9 +13,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Fragment, useState } from "react";
 import ScrollArea from "@/components/global/ScrollArea";
-import { cn } from "@/lib/utils";
+import { cn, formatError } from "@/lib/utils";
 import Counter from "@/components/global/Counter";
-import Link from "next/link";
+import { Loader } from "lucide-react";
+import { redirect } from "next/navigation";
 
 const schedules = [
   "January",
@@ -59,6 +62,24 @@ const UmrahTabpane = ({ icon, className }) => {
   const [duration, setDuration] = useState("");
   const [traveller, setTraveller] = useState(0);
   const [travellerCounts, setTravellerCounts] = useState(travellers);
+  const [errors, setErrors] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const checkValidation = () => {
+    try {
+      const validatedData = umrahSchema.parse({
+        schedule,
+        type,
+        duration,
+        traveller,
+      });
+      return validatedData;
+    } catch (error) {
+      // parse zod error
+      setErrors(formatError(error));
+      return false;
+    }
+  };
 
   const handleDropdown = (index) => {
     setOpen(index);
@@ -92,8 +113,20 @@ const UmrahTabpane = ({ icon, className }) => {
     setTravellerCounts(newTravellers);
   };
 
-  const handleFilter = () => {
-    console.log(schedule, type, duration, traveller);
+  const handleSubmit = async () => {
+    setLoading(true);
+    const data = checkValidation();
+
+    if (!data) {
+      return setLoading(false);
+    }
+
+    // TODO: Handle submit
+    setTimeout(() => {
+      console.log(data);
+      setLoading(false);
+      redirect("/search/umrah");
+    }, 2000);
   };
 
   return (
@@ -105,12 +138,17 @@ const UmrahTabpane = ({ icon, className }) => {
     >
       <DropdownMenu
         open={open === 1}
-        onOpenChange={(state) => handleDropdown(state ? 1 : 0)}
+        onOpenChange={(state) => {
+          setErrors((prevState) => ({ ...prevState, schedule: null }));
+          handleDropdown(state ? 1 : 0);
+        }}
       >
         <DropdownMenuTrigger asChild className="flex-1">
           <Button
             variant="outline"
-            className="flex-col items-stretch gap-y-1 text-left"
+            className={cn("flex-col items-stretch gap-y-1 text-left", {
+              "border-p-900 text-p-900": errors?.schedule,
+            })}
           >
             <span className="text-sm text-t-600 font-normal">
               Package Schedule
@@ -149,12 +187,17 @@ const UmrahTabpane = ({ icon, className }) => {
       </DropdownMenu>
       <DropdownMenu
         open={open === 2}
-        onOpenChange={(state) => handleDropdown(state ? 2 : 0)}
+        onOpenChange={(state) => {
+          setErrors((prevState) => ({ ...prevState, type: null }));
+          handleDropdown(state ? 2 : 0);
+        }}
       >
         <DropdownMenuTrigger asChild className="flex-1">
           <Button
             variant="outline"
-            className="flex-col items-stretch gap-y-1 text-left"
+            className={cn("flex-col items-stretch gap-y-1 text-left", {
+              "border-p-900 text-p-900": errors?.type,
+            })}
           >
             <span className="text-sm text-t-600 font-normal">Package Type</span>
             <span className="flex items-center justify-between gap-x-4">
@@ -191,12 +234,17 @@ const UmrahTabpane = ({ icon, className }) => {
       </DropdownMenu>
       <DropdownMenu
         open={open === 3}
-        onOpenChange={(state) => handleDropdown(state ? 3 : 0)}
+        onOpenChange={(state) => {
+          setErrors((prevState) => ({ ...prevState, duration: null }));
+          handleDropdown(state ? 3 : 0);
+        }}
       >
         <DropdownMenuTrigger asChild className="flex-1">
           <Button
             variant="outline"
-            className="flex-col items-stretch gap-y-1 text-left"
+            className={cn("flex-col items-stretch gap-y-1 text-left", {
+              "border-p-900 text-p-900": errors?.duration,
+            })}
           >
             <span className="text-sm text-t-600 font-normal">
               Package Duration
@@ -235,12 +283,17 @@ const UmrahTabpane = ({ icon, className }) => {
       </DropdownMenu>
       <DropdownMenu
         open={open === 4}
-        onOpenChange={(state) => handleDropdown(state ? 4 : 0)}
+        onOpenChange={(state) => {
+          setErrors((prevState) => ({ ...prevState, traveller: null }));
+          handleDropdown(state ? 4 : 0);
+        }}
       >
         <DropdownMenuTrigger asChild className="flex-1">
           <Button
             variant="outline"
-            className="flex-col items-stretch gap-y-1 text-left"
+            className={cn("flex-col items-stretch gap-y-1 text-left", {
+              "border-p-900 text-p-900": errors?.traveller,
+            })}
           >
             <span className="text-sm text-t-600 font-normal">Travellers</span>
             <span className="flex items-center justify-between gap-x-4">
@@ -282,8 +335,14 @@ const UmrahTabpane = ({ icon, className }) => {
           </ScrollArea>
         </DropdownMenuContent>
       </DropdownMenu>
-      <Button size="lg" onClick={handleFilter} asChild>
-        <Link href="/search/umrah">{icon ? icon : <SearchIcon />}</Link>
+      <Button size="lg" onClick={handleSubmit} disabled={loading}>
+        {loading ? (
+          <Loader className="animate-spin w-8 h-8" />
+        ) : icon ? (
+          icon
+        ) : (
+          <SearchIcon />
+        )}
       </Button>
     </div>
   );
