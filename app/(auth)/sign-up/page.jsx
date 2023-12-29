@@ -21,7 +21,7 @@ import { CheckIcon } from "lucide-react";
 
 const formSchema = z
   .object({
-    fullname: z.string().min(3, "Please enter your full name"),
+    fullname: z.string().min(1, "Please enter your full name"),
     email: z.string().email("Please enter a valid email address"),
     phone: z.string().refine(validator.isMobilePhone, {
       message: "Please enter a valid phone number",
@@ -30,7 +30,7 @@ const formSchema = z
     confirmPassword: z.string().min(8, "Please enter a valid password"),
     agree: z
       .boolean()
-      .refine((v) => v, { message: "Please agree to the terms" }),
+      .refine((v) => v, { message: "Please agree to the terms & policy" }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
