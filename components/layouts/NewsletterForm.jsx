@@ -41,7 +41,11 @@ const NewsletterForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormControl className="h-16 pr-36 lg:pr-48">
-                <Input placeholder="Enter your mail address" {...field} />
+                <Input
+                  placeholder="Enter your mail address"
+                  {...field}
+                  className="lg:pl-4"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
