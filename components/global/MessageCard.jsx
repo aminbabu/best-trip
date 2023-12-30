@@ -17,7 +17,9 @@ const MessageCard = ({
       <CardContent className="text-center px-6 py-8 lg:px-12 lg:py-14">
         {icon && <div className="mb-8">{icon}</div>}
         {title && (
-          <h4 className="text-t-800 text-2xl lg:text-[2rem] mb-4">{title}</h4>
+          <h4 className="text-t-800 text-2xl lg:text-[2rem] font-semibold mb-4">
+            {title}
+          </h4>
         )}
         {description && (
           <p className="text-base lg:text-lg mb-4">{description}</p>
