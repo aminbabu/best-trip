@@ -59,10 +59,10 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
   const router = useRouter();
   const [isDisabled, setIsDisabled] = useState(disabled);
   const [open, setOpen] = useState(0);
-  const [schedule, setSchedule] = useState("");
-  const [type, setType] = useState("");
-  const [duration, setDuration] = useState("");
-  const [traveller, setTraveller] = useState(0);
+  const [schedule, setSchedule] = useState("January");
+  const [type, setType] = useState("Economy");
+  const [duration, setDuration] = useState("5 Days");
+  const [traveller, setTraveller] = useState(1);
   const [travellerCounts, setTravellerCounts] = useState(travellers);
   const [errors, setErrors] = useState(null);
   const [loading, setLoading] = useState(false);
