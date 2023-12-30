@@ -21,7 +21,7 @@ export const columns = [
             className="rounded-full w-11 h-11 object-cover flex-shrink-0"
           />
         ) : (
-          <div className="w-11 h-11 rounded-full bg-t-400/25 flex items-center justify-center text-t-700 text-lg">
+          <div className="flex-shrink-0 w-11 h-11 rounded-full bg-t-400/25 flex items-center justify-center text-t-700 text-lg">
             {row.getValue("name").charAt(0)}
           </div>
         )}
