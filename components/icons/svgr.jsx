@@ -39,6 +39,7 @@ import BookingIcon from "@/public/icons/booking.svg";
 import CheckSheildIcon from "@/public/icons/check-sheild.svg";
 import BalakaIcon from "@/public/icons/balaka.svg";
 import DocIcon from "@/public/icons/doc.svg";
+import LoaderIcon from "@/public/icons/loader.svg";
 
 export {
   FacebookIcon,
@@ -82,4 +83,5 @@ export {
   CheckSheildIcon,
   BalakaIcon,
   DocIcon,
+  LoaderIcon,
 };
