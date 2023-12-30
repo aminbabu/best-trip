@@ -10,6 +10,7 @@ import {
   TwitterIcon,
   YoutubeIcon,
 } from "@/components/icons/svgr";
+import { cn } from "@/lib/utils";
 
 const menu = {
   title: "About Us",
@@ -61,9 +62,9 @@ const socialMedia = {
   ],
 };
 
-const Footer = () => {
+const Footer = ({ className }) => {
   return (
-    <footer className="bg-secondary mt-auto">
+    <footer className={cn("bg-secondary mt-auto", className)}>
       <Container className="grid gap-10">
         <Newsletter />
         <div className="grid grid-cols-4 gap-12 text-t-600">
