@@ -1,7 +1,6 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import * as z from "zod";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -17,9 +16,12 @@ import { Separator } from "../ui/separator";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { XIcon } from "lucide-react";
+import { useState } from "react";
 
 const DepositForm = () => {
   const router = useRouter();
+  const [error, setError] = useState(null);
   const form = useForm({
     defaultValues: {
       manual: false,
@@ -46,7 +48,15 @@ const DepositForm = () => {
       router.push("/payment-method/manual-banking");
     }
 
-    if (values.online && values.ssl && values.agree) {
+    if (values.online) {
+      if (!values.ssl) {
+        return setError("Please select a payment method");
+      }
+
+      if (!values.agree) {
+        return setError("Please agree with our terms and conditions");
+      }
+
       router.push("/payment-method/online-banking");
     }
   }
@@ -54,6 +64,19 @@ const DepositForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        {error && (
+          <div className="flex items-center gap-4 justify-between bg-p-300 border border-p-300 text-p-900 px-4 py-3 rounded-md">
+            {error}
+            <Button
+              variant="icon"
+              className="p-1"
+              onClick={() => setError(null)}
+              aria-label="Close"
+            >
+              <XIcon size={16} />
+            </Button>
+          </div>
+        )}
         <div className="grid grid-cols-2 gap-x-6 gap-y-4">
           <FormField
             control={form.control}
