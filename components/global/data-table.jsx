@@ -27,6 +27,7 @@ const DataTable = ({
   errors,
   pagintaion = true,
   ToolbarComponent,
+  showTravellerForm,
 }) => {
   const [rowSelection, setRowSelection] = useState({});
   const [columnVisibility, setColumnVisibility] = useState({});
@@ -56,21 +57,27 @@ const DataTable = ({
   });
 
   return (
-    <div className="space-y-4">
-      {ToolbarComponent && <ToolbarComponent table={table} errors={errors} />}
+    <div className="space-y-10">
+      {ToolbarComponent && (
+        <ToolbarComponent
+          table={table}
+          errors={errors}
+          showTravellerForm={showTravellerForm}
+        />
+      )}
       {!errors && (
         <>
-          <div className="bg-white rounded-md">
-            <Table className="text-[#333333]">
-              <TableHeader>
+          <div className="bg-white rounded-md lg:text-base">
+            <Table className="text-t-800 text-center">
+              <TableHeader className="bg-p-300">
                 {table.getHeaderGroups().map((headerGroup) => (
-                  <TableRow key={headerGroup.id} className="border-b-[#E3E3E3]">
+                  <TableRow key={headerGroup.id} className="border-none">
                     {headerGroup.headers.map((header) => {
                       return (
                         <TableHead
                           key={header.id}
                           colSpan={header.colSpan}
-                          className="text-[#1D1D1D] font-medium [&:last-child]:text-right"
+                          className="text-t-800 font-normal text-center"
                         >
                           {header.isPlaceholder
                             ? null
