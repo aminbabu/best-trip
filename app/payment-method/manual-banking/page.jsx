@@ -68,6 +68,7 @@ const ManualBankingPage = () => {
       date: "",
       remarks: "",
       agree: false,
+      payment_prove: "",
     },
   });
 
@@ -227,7 +228,7 @@ const ManualBankingPage = () => {
                           {...field}
                           onChange={(event) => {
                             const { file, displayUrl } = getImageData(event);
-                            field.onChange(file?.name);
+                            field.onChange(event?.target?.value);
                             setFile(file);
                           }}
                         />
