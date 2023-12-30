@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/table";
 import { useState } from "react";
 import DataTablePagination from "./data-table-pagination";
+import { cn } from "@/lib/utils";
 
 const DataTable = ({
   columns,
@@ -67,8 +68,8 @@ const DataTable = ({
       )}
       {!errors && (
         <>
-          <div className="bg-white rounded-md lg:text-base">
-            <Table className="text-t-800 text-center">
+          <div className="bg-white rounded-md">
+            <Table className="text-t-800 text-center lg:text-base xl:text-lg">
               <TableHeader className="bg-p-300">
                 {table.getHeaderGroups().map((headerGroup) => (
                   <TableRow key={headerGroup.id} className="border-none">
@@ -93,14 +94,19 @@ const DataTable = ({
               </TableHeader>
               <TableBody>
                 {table.getRowModel().rows?.length ? (
-                  table.getRowModel().rows.map((row) => (
+                  table.getRowModel().rows.map((row, index) => (
                     <TableRow
                       key={row.id}
                       data-state={row.getIsSelected() && "selected"}
-                      className="border-b-[#E3E3E3]"
+                      className={cn("border-b-secondary", {
+                        "bg-[#F8F9FB]": index % 2 === 0,
+                      })}
                     >
                       {row.getVisibleCells().map((cell) => (
-                        <TableCell key={cell.id}>
+                        <TableCell
+                          key={cell.id}
+                          className="first:text-left first:pl-8"
+                        >
                           {flexRender(
                             cell.column.columnDef.cell,
                             cell.getContext()
