@@ -1,7 +1,7 @@
-const UmrahDetailsPage = ({ params }) => {
-  const { id } = params;
+import { permanentRedirect } from "next/navigation";
 
-  return <div>Details</div>;
+const Page = ({ params }) => {
+  return permanentRedirect(`/umrah/${params.id}/package-details`);
 };
 
-export default UmrahDetailsPage;
+export default Page;
