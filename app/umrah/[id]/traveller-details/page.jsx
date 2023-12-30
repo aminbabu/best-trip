@@ -4,14 +4,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PlusCircle } from "lucide-react";
 import Link from "next/link";
 
-const TravellerDetailsPage = () => {
+const TravellerDetailsPage = ({ params }) => {
+  const { id } = params;
+
   return (
     <main className="bg-secondary py-20">
       <Container>
         <Card className="max-w-3xl mx-auto border-transparent">
           <CardContent className="text-t-700 text-center leading-relaxed px-6 py-8 lg:px-12 lg:py-14">
             <Link
-              href="/umrah/traveller-details/add"
+              href={`/umrah/${id}/traveller-details/add`}
               className="mb-8 inline-block text-primary duration-300 hover:text-primary/75"
             >
               <PlusCircle size={60} />
