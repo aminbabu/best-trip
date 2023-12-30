@@ -79,12 +79,12 @@ const UmrahDetailsPage = ({ params }) => {
   return (
     <div className="py-4">
       <Accordion type="multiple" className="space-y-6" collapsible>
-        <AccordionItem className="border-none bg-white" value="item-1">
+        <AccordionItem className="border-none" value="item-1">
           <h2 className="text-base lg:text-lg text-t-800 mb-4 lg:mb-6">
             Outbound Flight Details
           </h2>
           <AccordionTrigger
-            className="hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
+            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
             iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
           >
             <div className="flex-1 flex flex-col lg:flex-row lg:items-center">
@@ -148,7 +148,7 @@ const UmrahDetailsPage = ({ params }) => {
               </div>
             </div>
           </AccordionTrigger>
-          <AccordionContent className="flex flex-col lg:flex-row gap-8 xl:gap-x-10 text-sm md:text-base text-t-600 p-4 sm:p-6 md:p-8 xl:px-12">
+          <AccordionContent className="bg-white flex flex-col lg:flex-row gap-8 xl:gap-x-10 text-sm md:text-base text-t-600 p-4 sm:p-6 md:p-8 xl:px-12">
             <div className="flex-shrink-0 flex flex-col sm:flex-row gap-6">
               <div className="flex sm:flex-col justify-between gap-x-8 gap-y-4">
                 <p>08:00</p>
@@ -194,12 +194,12 @@ const UmrahDetailsPage = ({ params }) => {
             </div>
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem className="border-none bg-white" value="item-2">
+        <AccordionItem className="border-none" value="item-2">
           <h2 className="text-base lg:text-lg text-t-800 mb-4 lg:mb-6">
             Inbound Flight Details
           </h2>
           <AccordionTrigger
-            className="hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
+            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
             iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
           >
             <div className="flex-1 flex flex-col lg:flex-row lg:items-center">
@@ -263,7 +263,7 @@ const UmrahDetailsPage = ({ params }) => {
               </div>
             </div>
           </AccordionTrigger>
-          <AccordionContent className="flex flex-col lg:flex-row gap-8 xl:gap-x-10 text-sm md:text-base text-t-600 p-4 sm:p-6 md:p-8 xl:px-12">
+          <AccordionContent className="bg-white flex flex-col lg:flex-row gap-8 xl:gap-x-10 text-sm md:text-base text-t-600 p-4 sm:p-6 md:p-8 xl:px-12">
             <div className="flex-shrink-0 flex flex-col sm:flex-row gap-6">
               <div className="flex sm:flex-col justify-between gap-x-8 gap-y-4">
                 <p>08:00</p>
