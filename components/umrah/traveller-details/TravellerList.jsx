@@ -1,13 +1,20 @@
+"use client";
+
 import DataTable from "@/components/global/data-table";
 import { columns } from "@/components/umrah/traveller-details/columns";
 import DataTableToolbar from "./data-table-toolbar";
 import tavellers from "@/data/travellers.json";
 import { Button } from "../../ui/button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const TravellerList = ({ showTravellerForm }) => {
+  const router = useRouter();
+
   const onBook = () => {
     console.log("Booked");
+
+    router.push("/");
   };
 
   return (
