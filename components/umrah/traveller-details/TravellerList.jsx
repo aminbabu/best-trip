@@ -8,7 +8,7 @@ import { Button } from "../../ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-const TravellerList = ({ showTravellerForm }) => {
+const TravellerList = ({ showTravellerForm, id }) => {
   const router = useRouter();
 
   const onBook = () => {
@@ -30,7 +30,7 @@ const TravellerList = ({ showTravellerForm }) => {
           Book & Exit
         </Button>
         <Button className="w-80" onClick={onBook} asChild>
-          <Link href="/umrah/payment">Continue</Link>
+          <Link href={`/umrah/${id}/payment`}>Continue</Link>
         </Button>
       </div>
     </div>

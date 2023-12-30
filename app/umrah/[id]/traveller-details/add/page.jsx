@@ -5,7 +5,8 @@ import TravellerDetailsForm from "@/components/umrah/traveller-details/Traveller
 import TravellerList from "@/components/umrah/traveller-details/TravellerList";
 import { useState } from "react";
 
-const AddTravellersPage = () => {
+const AddTravellersPage = ({ params }) => {
+  const { id } = params;
   const [addTraveller, setAddTraveller] = useState(false);
 
   return (
@@ -16,7 +17,10 @@ const AddTravellersPage = () => {
             hideTravellerForm={() => setAddTraveller(false)}
           />
         ) : (
-          <TravellerList showTravellerForm={() => setAddTraveller(true)} />
+          <TravellerList
+            showTravellerForm={() => setAddTraveller(true)}
+            id={id}
+          />
         )}
       </Container>
     </main>
