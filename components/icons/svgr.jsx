@@ -37,6 +37,7 @@ import FoldingDocIcon from "@/public/icons/folding-doc.svg";
 import LocationAltIcon from "@/public/icons/location-alt.svg";
 import BookingIcon from "@/public/icons/booking.svg";
 import CheckSheildIcon from "@/public/icons/check-sheild.svg";
+import BalakaIcon from "@/public/icons/balaka.svg";
 
 export {
   FacebookIcon,
@@ -78,4 +79,5 @@ export {
   LocationAltIcon,
   BookingIcon,
   CheckSheildIcon,
+  BalakaIcon,
 };
