@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -16,7 +15,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
-import { CheckIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Container from "@/components/layouts/Container";
 import {
@@ -77,7 +75,7 @@ const ManualBankingPage = () => {
     setTimeout(() => {
       setLoading(false);
       console.log(data);
-      // router.push("/payment-method/review");
+      router.push("/payment-method/review");
     }, 2000);
   };
 
