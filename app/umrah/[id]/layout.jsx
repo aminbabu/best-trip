@@ -22,7 +22,7 @@ const UmrahDetailsLayout = ({ children, params }) => {
         {children}
         <div className="grid">
           <Button asChild>
-            <Link href="#">Continue Booking</Link>
+            <Link href="/umrah/traveller-details">Continue Booking</Link>
           </Button>
         </div>
       </Container>
