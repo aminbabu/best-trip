@@ -1,0 +1,11 @@
+.umrah-package-overview {
+  .splide__arrow--prev {
+    left: 0;
+    transform: translateX(-50%);
+  }
+
+  .splide__arrow--next {
+    right: 0;
+    transform: translateX(50%);
+  }
+}
