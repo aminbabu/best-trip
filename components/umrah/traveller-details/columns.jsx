@@ -1,7 +1,7 @@
 "use client";
 
 import DataTableColumnHeader from "@/components/global/data-table-column-header";
-import DataTableRowActions from "@/components/traveller-details/data-table-row-actions";
+import DataTableRowActions from "@/components/umrah/traveller-details/data-table-row-actions";
 
 export const columns = [
   {
@@ -14,29 +14,20 @@ export const columns = [
     enableHiding: false,
   },
   {
-    accessorKey: "phone",
+    accessorKey: "nationality",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Phone" />
+      <DataTableColumnHeader column={column} title="Nationality" />
     ),
-    cell: ({ row }) => row.getValue("phone") || "N/A",
+    cell: ({ row }) => row.getValue("nationality"),
     enableSorting: false,
     enableHiding: false,
   },
   {
-    accessorKey: "email",
+    accessorKey: "password_no",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Email" />
+      <DataTableColumnHeader column={column} title="Passport No" />
     ),
-    cell: ({ row }) => row.getValue("email") || "N/A",
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
-    accessorKey: "location",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Location" />
-    ),
-    cell: ({ row }) => row.getValue("location")?.name,
+    cell: ({ row }) => row.getValue("password_no"),
     enableSorting: false,
     enableHiding: false,
   },
@@ -45,11 +36,7 @@ export const columns = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Type" />
     ),
-    cell: ({ row }) =>
-      row
-        .getValue("type")
-        .replace(/\bb2b\b/gi, "B2B")
-        .replace(/\bb2c\b/gi, "B2C"),
+    cell: ({ row }) => row.getValue("type"),
     enableSorting: false,
     enableHiding: false,
   },
@@ -58,11 +45,30 @@ export const columns = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Status" />
     ),
-    cell: ({ row }) => (
-      <span className="text-sm text-black px-4 py-1.5 rounded-full bg-[#F5F5F5] inline-block capitalize">
-        {row.getValue("status")}
-      </span>
-    ),
+    cell: ({ row }) => {
+      switch (row.getValue("status")) {
+        case "pending":
+          return (
+            <span className="text-[#9747FF] capitalize">
+              {row.getValue("status")}
+            </span>
+          );
+
+        case "completed":
+          return (
+            <span className="text-[#23BD33] capitalize">
+              {row.getValue("status")}
+            </span>
+          );
+
+        default:
+          return (
+            <span className="text-[#FD8E1F] capitalize">
+              {row.getValue("status")}
+            </span>
+          );
+      }
+    },
     enableSorting: false,
     enableHiding: false,
   },
