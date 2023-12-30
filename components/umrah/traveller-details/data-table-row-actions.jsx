@@ -4,13 +4,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Trash } from "lucide-react";
-import { Pencil } from "lucide-react";
-import { MoreHorizontal } from "lucide-react";
+import { MoreHorizontal, PencilLine, Trash2 } from "lucide-react";
 
 const DataTableRowActions = ({ row }) => {
   const user = { ...row.original };
@@ -35,17 +32,23 @@ const DataTableRowActions = ({ row }) => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger className="focus:border-none focus:ring-0 focus:outline-none">
         <MoreHorizontal />
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem onClick={onEdit}>
-          <Pencil />
+      <DropdownMenuContent className="border-transparent">
+        <DropdownMenuItem
+          className="flex items-center gap-2.5 text-sm text-t-700 cursor-pointer"
+          onClick={onEdit}
+        >
+          <PencilLine size={16} />
           Edit
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={onDelete}>
-          <Trash />
+        <DropdownMenuItem
+          className="flex items-center gap-2.5 text-sm text-t-700 cursor-pointer"
+          onClick={onDelete}
+        >
+          <Trash2 size={16} />
           Delete
         </DropdownMenuItem>
       </DropdownMenuContent>
