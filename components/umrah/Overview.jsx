@@ -43,7 +43,7 @@ const Overview = () => {
     <section className="umrah-package-overview">
       <Container>
         <Card className="border-transparent">
-          <CardContent className="grid grid-cols-2 gap-y-8 p-4 lg:p-6">
+          <CardContent className="grid grid-cols-2 gap-y-8 p-4 sm:p-6 lg:p-8">
             <div className="col-span-2 lg:col-span-1 space-y-6">
               <Slider hasTrack={false} options={options}>
                 <SplideTrack>
