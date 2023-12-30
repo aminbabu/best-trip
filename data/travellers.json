@@ -3,6 +3,7 @@
     "id": 1,
     "name": "John Doe",
     "nationality": "Bangladeshi",
+    "avatar": "",
     "passport": {
       "number": "A02487585",
       "expiry": "2030-12-31"
@@ -14,6 +15,7 @@
     "id": 2,
     "name": "Md Irfanul Haque",
     "nationality": "Bangladeshi",
+    "avatar": "",
     "passport": {
       "number": "A02487587",
       "expiry": "2025-12-31"
@@ -25,6 +27,7 @@
     "id": 3,
     "name": "Stanly",
     "nationality": "Bangladeshi",
+    "avatar": "",
     "passport": {
       "number": "A02547587",
       "expiry": "2026-12-31"
@@ -36,6 +39,7 @@
     "id": 4,
     "name": "John Doe",
     "nationality": "Bangladeshi",
+    "avatar": "",
     "passport": {
       "number": "A02487585",
       "expiry": "2030-12-31"
@@ -47,6 +51,7 @@
     "id": 5,
     "name": "Md Irfanul Haque",
     "nationality": "Bangladeshi",
+    "avatar": "",
     "passport": {
       "number": "A02487587",
       "expiry": "2025-12-31"
@@ -58,6 +63,7 @@
     "id": 6,
     "name": "Stanly",
     "nationality": "Bangladeshi",
+    "avatar": "",
     "passport": {
       "number": "A02547587",
       "expiry": "2026-12-31"
@@ -69,6 +75,7 @@
     "id": 7,
     "name": "John Doe",
     "nationality": "Bangladeshi",
+    "avatar": "",
     "passport": {
       "number": "A02487585",
       "expiry": "2030-12-31"
@@ -80,6 +87,7 @@
     "id": 8,
     "name": "Stanly",
     "nationality": "Bangladeshi",
+    "avatar": "",
     "passport": {
       "number": "A02547587",
       "expiry": "2026-12-31"
@@ -91,6 +99,7 @@
     "id": 9,
     "name": "Md Irfanul Haque",
     "nationality": "Bangladeshi",
+    "avatar": "",
     "passport": {
       "number": "A02487587",
       "expiry": "2025-12-31"
@@ -102,6 +111,7 @@
     "id": 10,
     "name": "Stanly",
     "nationality": "Bangladeshi",
+    "avatar": "",
     "passport": {
       "number": "A02547587",
       "expiry": "2026-12-31"
