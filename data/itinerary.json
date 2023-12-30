@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "Arrival Jeddah To Makkah",
+    "day": "Day 1",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown.",
+    "image": "/images/itinerary/01.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Arrival Jeddah To Makkah",
+    "day": "Day 2",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500.",
+    "image": "/images/itinerary/02.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Arrival Jeddah To Makkah",
+    "day": "Day 3",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.",
+    "image": "/images/itinerary/03.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Arrival Jeddah To Makkah",
+    "day": "Day 4",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.",
+    "image": "/images/itinerary/04.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Arrival Jeddah To Makkah",
+    "day": "Day 5",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown.",
+    "image": "/images/itinerary/01.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Arrival Jeddah To Makkah",
+    "day": "Day 6",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500.",
+    "image": "/images/itinerary/02.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Arrival Jeddah To Makkah",
+    "day": "Day 7",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.",
+    "image": "/images/itinerary/03.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Arrival Jeddah To Makkah",
+    "day": "Day 8",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.",
+    "image": "/images/itinerary/04.jpg"
+  }
+]
