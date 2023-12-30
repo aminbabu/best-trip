@@ -11,7 +11,7 @@ const SearchPage = async ({ params }) => {
   // api call
 
   return (
-    <div className="relative pt-12 sm:pt-16 lg:pt-20 bg-primary-foreground">
+    <main className="relative pt-12 sm:pt-16 lg:pt-20 bg-primary-foreground">
       <Image
         src={BgCurve}
         alt="Bg curve"
@@ -21,7 +21,7 @@ const SearchPage = async ({ params }) => {
         <Filters slug={slug} />
         <FilterResult slug={slug} data={data} />
       </Container>
-    </div>
+    </main>
   );
 };
 
