@@ -14,7 +14,7 @@ const UmrahDetailsLayout = ({ children, params }) => {
   return (
     <main className="bg-secondary py-10 xs:py-12 sm:py-14 md:py-16 lg:py-20 space-y-6">
       <Overview />
-      <DetailsTab />
+      <DetailsTab id={id} />
       {children}
     </main>
   );
