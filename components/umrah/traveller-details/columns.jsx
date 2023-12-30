@@ -2,6 +2,7 @@
 
 import DataTableColumnHeader from "@/components/global/data-table-column-header";
 import DataTableRowActions from "@/components/umrah/traveller-details/data-table-row-actions";
+import Image from "next/image";
 
 export const columns = [
   {
@@ -9,7 +10,24 @@ export const columns = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Name" />
     ),
-    cell: ({ row }) => row.getValue("name"),
+    cell: ({ row }) => (
+      <div className="flex items-center gap-x-2.5">
+        {row.original?.avatar ? (
+          <Image
+            src={row.getValue("avatar")}
+            alt="avatar"
+            width={44}
+            height={44}
+            className="rounded-full w-11 h-11 object-cover flex-shrink-0"
+          />
+        ) : (
+          <div className="w-11 h-11 rounded-full bg-t-400/25 flex items-center justify-center text-t-700 text-lg">
+            {row.getValue("name").charAt(0)}
+          </div>
+        )}
+        {row.getValue("name")}
+      </div>
+    ),
     enableSorting: false,
     enableHiding: false,
   },
@@ -23,11 +41,11 @@ export const columns = [
     enableHiding: false,
   },
   {
-    accessorKey: "password_no",
+    accessorKey: "passport",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Passport No" />
     ),
-    cell: ({ row }) => row.getValue("password_no"),
+    cell: ({ row }) => row.getValue("passport")?.number ?? "N/A",
     enableSorting: false,
     enableHiding: false,
   },
@@ -36,7 +54,9 @@ export const columns = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Type" />
     ),
-    cell: ({ row }) => row.getValue("type"),
+    cell: ({ row }) => (
+      <span className="uppercase">{row.getValue("type")}</span>
+    ),
     enableSorting: false,
     enableHiding: false,
   },
@@ -49,7 +69,7 @@ export const columns = [
       switch (row.getValue("status")) {
         case "pending":
           return (
-            <span className="text-[#9747FF] capitalize">
+            <span className="text-[#2A0CDF] capitalize">
               {row.getValue("status")}
             </span>
           );
