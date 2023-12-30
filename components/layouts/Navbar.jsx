@@ -50,7 +50,7 @@ const Navbar = () => {
           alt="Best Trip"
         />
         <div className="hidden lg:block">
-          <Menu />
+          <Menu isNavbarSticky={isSticky} />
         </div>
         <div className="hidden lg:block">
           <NavbarCta />
