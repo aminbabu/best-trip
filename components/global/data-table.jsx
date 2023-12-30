@@ -69,7 +69,7 @@ const DataTable = ({
       {!errors && (
         <>
           <div className="bg-white rounded-md">
-            <Table className="text-t-800 text-center lg:text-base xl:text-lg">
+            <Table className="text-t-800 text-center lg:text-base xl:text-lg whitespace-nowrap">
               <TableHeader className="bg-p-300">
                 {table.getHeaderGroups().map((headerGroup) => (
                   <TableRow key={headerGroup.id} className="border-none">
