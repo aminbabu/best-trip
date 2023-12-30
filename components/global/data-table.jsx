@@ -26,7 +26,6 @@ const DataTable = ({
   data,
   errors,
   pagintaion = true,
-  collector,
   ToolbarComponent,
 }) => {
   const [rowSelection, setRowSelection] = useState({});
@@ -58,9 +57,7 @@ const DataTable = ({
 
   return (
     <div className="space-y-4">
-      {ToolbarComponent && (
-        <ToolbarComponent table={table} errors={errors} collector={collector} />
-      )}
+      {ToolbarComponent && <ToolbarComponent table={table} errors={errors} />}
       {!errors && (
         <>
           <div className="bg-white rounded-md">
