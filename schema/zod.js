@@ -15,6 +15,10 @@ export const umrahSchema = z.object({
  * @description Schema for uuid validation
  *
  */
-export const uuidSchema = z.object({
-  uuid: z.string().uuid({ message: "Invalid uuid" }),
-});
+export const uuidSchema = z.string().uuid({ message: "Invalid uuid" });
+
+/**
+ * @description Schema for number validation
+ *
+ */
+export const numberSchema = z.number().min(1, { message: "Invalid number" });
