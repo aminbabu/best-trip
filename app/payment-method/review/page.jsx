@@ -1,6 +1,6 @@
 import MessageCard from "@/components/global/MessageCard";
+import { DocIcon, FoldingDocIcon } from "@/components/icons/svgr";
 import Container from "@/components/layouts/Container";
-import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 
 const PaymentReviewPage = () => {
@@ -8,6 +8,11 @@ const PaymentReviewPage = () => {
     <main className="py-20 bg-secondary">
       <Container>
         <MessageCard
+          icon={
+            <div className="w-28 aspect-square rounded-full bg-p-900 text-white grid place-items-center p-2 mx-auto">
+              <DocIcon />
+            </div>
+          }
           title="Your Booking Under Review"
           description="Your booking confirmation we will send you soon!"
         >
