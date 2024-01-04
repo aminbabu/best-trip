@@ -40,6 +40,15 @@ import CheckSheildIcon from "@/public/icons/check-sheild.svg";
 import BalakaIcon from "@/public/icons/balaka.svg";
 import DocIcon from "@/public/icons/doc.svg";
 import LoaderIcon from "@/public/icons/loader.svg";
+import StarAltIcon from "@/public/icons/star-alt.svg";
+import GMapIcon from "@/public/icons/g-map.svg";
+import ManWalkingIcon from "@/public/icons/man-walking.svg";
+import LocationDistanceIcon from "@/public/icons/location-distance.svg";
+import BulbOnIcon from "@/public/icons/bulb-on.svg";
+import ExchangeAltIcon from "@/public/icons/exchange-alt.svg";
+import VisaIcon from "@/public/icons/visa.svg";
+import CheckCircleFilledIcon from "@/public/icons/check-circle-filled.svg";
+import CheckXCircleFilledIcon from "@/public/icons/check-x-circle-filled.svg";
 
 export {
   FacebookIcon,
@@ -84,4 +93,13 @@ export {
   BalakaIcon,
   DocIcon,
   LoaderIcon,
+  StarAltIcon,
+  GMapIcon,
+  ManWalkingIcon,
+  LocationDistanceIcon,
+  BulbOnIcon,
+  ExchangeAltIcon,
+  VisaIcon,
+  CheckCircleFilledIcon,
+  CheckXCircleFilledIcon,
 };
