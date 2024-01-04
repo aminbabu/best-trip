@@ -1,5 +1,26 @@
-import { BalakaIcon, LocationIcon, PlaneIcon } from "@/components/icons/svgr";
-import Container from "@/components/layouts/Container";
+"use client";
+
+import Slider from "@/components/global/splide/Slider";
+import { SplideSlide, SplideTrack } from "@splidejs/react-splide";
+import {
+  BalakaIcon,
+  BulbOnIcon,
+  BusIcon,
+  CheckCircleFilledIcon,
+  CheckXCircleFilledIcon,
+  ExchangeAltIcon,
+  GMapIcon,
+  HotelIcon,
+  KabaIcon,
+  LocationCircleIcon,
+  LocationDistanceIcon,
+  LocationIcon,
+  ManWalkingIcon,
+  MinusIcon,
+  PlaneIcon,
+  StarAltIcon,
+  VisaIcon,
+} from "@/components/icons/svgr";
 import {
   Accordion,
   AccordionContent,
@@ -8,6 +29,15 @@ import {
 } from "@/components/ui/accordion";
 import { Separator } from "@/components/ui/separator";
 import InfoTable from "@/components/umrah/InfoTable";
+import Image from "next/image";
+import data from "@/data/umrah-ziyarah.json";
+
+import "@/styles/umrah/splide.css";
+import Link from "next/link";
+import { CheckCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { MinusCircle } from "lucide-react";
+import { Minus } from "lucide-react";
 
 const table = {
   header: [
@@ -73,12 +103,22 @@ const table = {
   ],
 };
 
+const options = {
+  type: "loop",
+  fixedWidth: 168,
+  perMove: 1,
+  gap: 16,
+  arrows: true,
+  pagination: false,
+};
+
 const UmrahDetailsPage = ({ params }) => {
   const { id } = params;
+  const { items } = data;
 
   return (
-    <div className="py-4">
-      <Accordion type="multiple" className="space-y-6" collapsible>
+    <div className="py-4 umrah-details-cards">
+      <Accordion type="multiple" className="space-y-6" collapsible="true">
         <AccordionItem className="border-none" value="item-1">
           <h2 className="text-base lg:text-lg text-t-800 mb-4 lg:mb-6">
             Outbound Flight Details
@@ -87,9 +127,9 @@ const UmrahDetailsPage = ({ params }) => {
             className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
             iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
           >
-            <div className="flex-1 flex flex-col lg:flex-row lg:items-center">
-              <div className="flex-shrink-0 hidden md:flex items-center gap-x-4 bg-p-300 p-6 lg:px-8 lg:py-12">
-                <BalakaIcon className="text-primary" />
+            <div className="flex-1 flex flex-col lg:flex-row">
+              <div className="flex-shrink-0 hidden md:flex items-center gap-x-4 bg-p-300 p-6 lg:px-8 lg:py-12 lg:w-80">
+                <BalakaIcon className="text-primary flex-shrink-0" />
                 <div>
                   <div className="text-t-900 text-lg">Biman Bangladesh</div>
                   <div className="text-t-800">BG611</div>
@@ -148,53 +188,317 @@ const UmrahDetailsPage = ({ params }) => {
               </div>
             </div>
           </AccordionTrigger>
-          <AccordionContent className="bg-white flex flex-col lg:flex-row gap-8 xl:gap-x-10 text-sm md:text-base text-t-600 p-4 sm:p-6 md:p-8 xl:px-12">
-            <div className="flex-shrink-0 flex flex-col sm:flex-row gap-6">
-              <div className="flex sm:flex-col justify-between gap-x-8 gap-y-4">
-                <p>08:00</p>
-                <p>01 h 25m</p>
-                <p>13:45</p>
-              </div>
-              <div className="flex sm:flex-col items-center justify-between gap-4">
-                <PlaneIcon
-                  className="text-primary w-4 h-4 rotate-90 sm:rotate-180"
-                  viewBox="0 0 14 14"
-                />
-                <Separator
-                  className="flex-1 bg-[#E1E1E1] hidden sm:block"
-                  orientation="vertical"
-                />
-                <Separator className="flex-1 bg-[#E1E1E1] sm:hidden" />
-                <LocationIcon
-                  className="text-primary w-4 h-4"
-                  viewBox="0 0 14 14"
-                />
-              </div>
-              <div className="flex flex-col justify-between gap-y-4 sm:gap-y-6">
-                <p>Hazrat Shahjalal International Ariport (DAC)</p>
-                <div className="flex items-center gap-x-2.5">
-                  <BalakaIcon
-                    className="text-primary w-6 h-6"
-                    viewBox="0 0 51 51"
+          <AccordionContent className="bg-white text-sm md:text-base text-t-600 p-4 sm:p-6 md:p-8 xl:px-12 space-y-8">
+            <div className="flex flex-col lg:flex-row gap-8 xl:gap-x-10">
+              <div className="flex-shrink-0 flex flex-col sm:flex-row gap-6">
+                <div className="flex sm:flex-col justify-between gap-x-8 gap-y-4">
+                  <p>08:00</p>
+                  <p>01 h 25m</p>
+                  <p>13:45</p>
+                </div>
+                <div className="flex sm:flex-col items-center justify-between gap-4">
+                  <PlaneIcon
+                    className="text-primary w-4 h-4 rotate-90 sm:rotate-180"
+                    viewBox="0 0 14 14"
                   />
-                  <p>Biman Bangladesh Airlines</p>
+                  <Separator
+                    className="flex-1 bg-[#E1E1E1] hidden sm:block"
+                    orientation="vertical"
+                  />
+                  <Separator className="flex-1 bg-[#E1E1E1] sm:hidden" />
+                  <LocationIcon
+                    className="text-primary w-4 h-4"
+                    viewBox="0 0 14 14"
+                  />
                 </div>
-                <div className="flex gap-x-2 h-5 leading-tight">
-                  <div>BG611</div>
-                  <Separator className="bg-[#E1E1E1]" orientation="vertical" />
-                  <div>Economy</div>
-                  <Separator className="bg-[#E1E1E1]" orientation="vertical" />
-                  <div>Boing-787</div>
+                <div className="flex flex-col justify-between gap-y-4 sm:gap-y-6">
+                  <p>Hazrat Shahjalal International Ariport (DAC)</p>
+                  <div className="flex items-center gap-x-2.5">
+                    <BalakaIcon
+                      className="text-primary w-6 h-6"
+                      viewBox="0 0 51 51"
+                    />
+                    <p>Biman Bangladesh Airlines</p>
+                  </div>
+                  <div className="flex gap-x-2 h-5 leading-tight">
+                    <div>BG611</div>
+                    <Separator
+                      className="bg-[#E1E1E1]"
+                      orientation="vertical"
+                    />
+                    <div>Economy</div>
+                    <Separator
+                      className="bg-[#E1E1E1]"
+                      orientation="vertical"
+                    />
+                    <div>Boing-787</div>
+                  </div>
+                  <p>Jeddah - King Abdulaziz International Airport (JED) </p>
                 </div>
-                <p>Jeddah - King Abdulaziz International Airport (JED) </p>
               </div>
-            </div>
-            <div className="flex-1">
-              <InfoTable table={table} />
+              <div className="flex-1">
+                <InfoTable table={table} />
+              </div>
             </div>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem className="border-none" value="item-2">
+          <h2 className="text-base lg:text-lg text-t-800 mb-4 lg:mb-6">
+            Hotel Details
+          </h2>
+          <AccordionTrigger
+            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
+            iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
+          >
+            <div className="flex-1 flex flex-col lg:flex-row">
+              <div className="flex-shrink-0 hidden md:flex items-center gap-x-4 bg-p-300 p-6 lg:px-8 lg:py-12 lg:w-80">
+                <HotelIcon
+                  className="text-primary"
+                  width="60"
+                  height="60"
+                  viewBox="0 0 14 14"
+                />
+                <div>
+                  <div className="text-t-900 text-lg">Stay 7 Night</div>
+                  <div className="text-t-800">In Makkah</div>
+                </div>
+              </div>
+              <div className="flex-1 flex items-center md:justify-around gap-5 px-3 xs:px-4 py-4 sm:px-6 md:px-4 lg:px-8 xl:px-14">
+                <div className="aspect-[171/127] overflow-hidden flex-shrink-0 w-32 md:w-44 hidden xs:block">
+                  <Image
+                    src="/images/details/umrah/01.png"
+                    alt="Hotel"
+                    width="171"
+                    height="127"
+                    className="rounded-sm w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1 text-sm md:text-base">
+                  <h4 className="text-base md:text-lg text-t-900 mb-1 line-clamp-2">
+                    Swissotel Al Maqam Makkah / Similar Hotel{" "}
+                  </h4>
+                  <p className="text-t-800 mb-1 line-clamp-2">
+                    St Tower F, Ibrahim Al Khalil, St, Tower F, Al Maqam
+                  </p>
+                  <div className="flex items-center gap-x-2 text-t-600">
+                    <ul className="flex items-center gap-x-2">
+                      <li className="text-[#FF7B39]">
+                        <StarAltIcon size={18} />
+                      </li>
+                      <li className="text-[#FF7B39]">
+                        <StarAltIcon size={18} />
+                      </li>
+                      <li className="text-[#FF7B39]">
+                        <StarAltIcon size={18} />
+                      </li>
+                      <li className="text-[#FF7B39]">
+                        <StarAltIcon size={18} />
+                      </li>
+                      <li className="text-[#FF7B39]">
+                        <StarAltIcon size={18} />
+                      </li>
+                    </ul>
+                    4.8
+                  </div>
+                </div>
+              </div>
+            </div>
+          </AccordionTrigger>
+          <AccordionContent className="bg-white text-sm md:text-base text-t-600 p-4 sm:p-6 md:p-8 xl:px-12 space-y-8">
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="md:w-[352px]">
+                <Slider hasTrack={false} options={options}>
+                  <SplideTrack>
+                    {items.map((item, index) => (
+                      <SplideSlide key={index}>
+                        <div className="aspect-square overflow-hidden  rounded-sm">
+                          <Image
+                            src={item.image}
+                            alt={item.title}
+                            width={156}
+                            height={146}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </SplideSlide>
+                    ))}
+                  </SplideTrack>
+                </Slider>
+              </div>
+              <Separator
+                className="bg-[#E1E1E1] hidden md:block h-auto"
+                orientation="vertical"
+              />
+              <Separator className="bg-[#E1E1E1] md:hidden" />
+              <div className="text-t-600 space-y-3">
+                <p>Swissotel Al Maqam Makkah / Similar Hotel </p>
+                <ul className="grid gap-y-3">
+                  <li className="flex gap-x-2.5">
+                    <LocationCircleIcon className="text-primary flex-shrink-0" />
+                    <span>
+                      St Tower F, Ibrahim Al Khalil, St, Tower F, Al Maqam
+                    </span>
+                  </li>
+                  <li className="flex gap-x-2.5">
+                    <LocationDistanceIcon className="text-primary flex-shrink-0" />
+                    <span>
+                      Hotel Distance from Masjid Al Haram : 1000 Mettter
+                    </span>
+                  </li>
+                  <li className="flex gap-x-2.5">
+                    <ManWalkingIcon className="text-primary flex-shrink-0" />
+                    <span>
+                      Hotel to Majid Al Haram Walking Distance : 5-10 Minutes
+                    </span>
+                  </li>
+                  <li className="flex gap-x-2.5">
+                    <GMapIcon className="text-primary flex-shrink-0" />
+                    <span>
+                      Google Map Link :{" "}
+                      <Link href="#" className="text-primary">
+                        Click Here
+                      </Link>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="flex items-center gap-x-2.5 text-t-800 bg-p-300 rounded-sm p-2.5">
+              <BulbOnIcon className="text-t-600 flex-shrink-0" />
+              Breakfast / Lunch / Dinner facilities depend on your booking
+              package
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem className="border-none" value="item-3">
+          <h2 className="text-base lg:text-lg text-t-800 mb-4 lg:mb-6">
+            Hotel Details
+          </h2>
+          <AccordionTrigger
+            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
+            iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
+          >
+            <div className="flex-1 flex flex-col lg:flex-row">
+              <div className="flex-shrink-0 hidden md:flex items-center gap-x-4 bg-p-300 p-6 lg:px-8 lg:py-12 lg:w-80">
+                <HotelIcon
+                  className="text-primary"
+                  width="60"
+                  height="60"
+                  viewBox="0 0 14 14"
+                />
+                <div>
+                  <div className="text-t-900 text-lg">Stay 7 Night</div>
+                  <div className="text-t-800">In Makkah</div>
+                </div>
+              </div>
+              <div className="flex-1 flex items-center md:justify-around gap-5 px-3 xs:px-4 py-4 sm:px-6 md:px-4 lg:px-8 xl:px-14">
+                <div className="aspect-[171/127] overflow-hidden flex-shrink-0 w-32 md:w-44 hidden xs:block">
+                  <Image
+                    src="/images/details/umrah/01.png"
+                    alt="Hotel"
+                    width="171"
+                    height="127"
+                    className="rounded-sm w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1 text-sm md:text-base">
+                  <h4 className="text-base md:text-lg text-t-900 mb-1 line-clamp-2">
+                    Swissotel Al Maqam Makkah / Similar Hotel{" "}
+                  </h4>
+                  <p className="text-t-800 mb-1 line-clamp-2">
+                    St Tower F, Ibrahim Al Khalil, St, Tower F, Al Maqam
+                  </p>
+                  <div className="flex items-center gap-x-2 text-t-600">
+                    <ul className="flex items-center gap-x-2">
+                      <li className="text-[#FF7B39]">
+                        <StarAltIcon size={18} />
+                      </li>
+                      <li className="text-[#FF7B39]">
+                        <StarAltIcon size={18} />
+                      </li>
+                      <li className="text-[#FF7B39]">
+                        <StarAltIcon size={18} />
+                      </li>
+                      <li className="text-[#FF7B39]">
+                        <StarAltIcon size={18} />
+                      </li>
+                      <li className="text-[#FF7B39]">
+                        <StarAltIcon size={18} />
+                      </li>
+                    </ul>
+                    4.8
+                  </div>
+                </div>
+              </div>
+            </div>
+          </AccordionTrigger>
+          <AccordionContent className="bg-white text-sm md:text-base text-t-600 p-4 sm:p-6 md:p-8 xl:px-12 space-y-8">
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="md:w-[352px]">
+                <Slider hasTrack={false} options={options}>
+                  <SplideTrack>
+                    {items.map((item, index) => (
+                      <SplideSlide key={index}>
+                        <div className="aspect-square overflow-hidden  rounded-sm">
+                          <Image
+                            src={item.image}
+                            alt={item.title}
+                            width={156}
+                            height={146}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </SplideSlide>
+                    ))}
+                  </SplideTrack>
+                </Slider>
+              </div>
+              <Separator
+                className="bg-[#E1E1E1] hidden md:block h-auto"
+                orientation="vertical"
+              />
+              <Separator className="bg-[#E1E1E1] md:hidden" />
+              <div className="text-t-600 space-y-3">
+                <p>Swissotel Al Maqam Makkah / Similar Hotel </p>
+                <ul className="grid gap-y-3">
+                  <li className="flex gap-x-2.5">
+                    <LocationCircleIcon className="text-primary flex-shrink-0" />
+                    <span>
+                      St Tower F, Ibrahim Al Khalil, St, Tower F, Al Maqam
+                    </span>
+                  </li>
+                  <li className="flex gap-x-2.5">
+                    <LocationDistanceIcon className="text-primary flex-shrink-0" />
+                    <span>
+                      Hotel Distance from Masjid Al Haram : 1000 Mettter
+                    </span>
+                  </li>
+                  <li className="flex gap-x-2.5">
+                    <ManWalkingIcon className="text-primary flex-shrink-0" />
+                    <span>
+                      Hotel to Majid Al Haram Walking Distance : 5-10 Minutes
+                    </span>
+                  </li>
+                  <li className="flex gap-x-2.5">
+                    <GMapIcon className="text-primary flex-shrink-0" />
+                    <span>
+                      Google Map Link :{" "}
+                      <Link href="#" className="text-primary">
+                        Click Here
+                      </Link>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="flex items-center gap-x-2.5 text-t-800 bg-p-300 rounded-sm p-2.5">
+              <BulbOnIcon className="text-t-600 flex-shrink-0" />
+              Breakfast / Lunch / Dinner facilities depend on your booking
+              package
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem className="border-none" value="item-4">
           <h2 className="text-base lg:text-lg text-t-800 mb-4 lg:mb-6">
             Inbound Flight Details
           </h2>
@@ -202,9 +506,9 @@ const UmrahDetailsPage = ({ params }) => {
             className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
             iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
           >
-            <div className="flex-1 flex flex-col lg:flex-row lg:items-center">
-              <div className="flex-shrink-0 hidden md:flex items-center gap-x-4 bg-p-300 p-6 lg:px-8 lg:py-12">
-                <BalakaIcon className="text-primary" />
+            <div className="flex-1 flex flex-col lg:flex-row">
+              <div className="flex-shrink-0 hidden md:flex items-center gap-x-4 bg-p-300 p-6 lg:px-8 lg:py-12 lg:w-80">
+                <BalakaIcon className="text-primary flex-shrink-0" />
                 <div>
                   <div className="text-t-900 text-lg">Biman Bangladesh</div>
                   <div className="text-t-800">BG611</div>
@@ -263,49 +567,554 @@ const UmrahDetailsPage = ({ params }) => {
               </div>
             </div>
           </AccordionTrigger>
-          <AccordionContent className="bg-white flex flex-col lg:flex-row gap-8 xl:gap-x-10 text-sm md:text-base text-t-600 p-4 sm:p-6 md:p-8 xl:px-12">
-            <div className="flex-shrink-0 flex flex-col sm:flex-row gap-6">
-              <div className="flex sm:flex-col justify-between gap-x-8 gap-y-4">
-                <p>08:00</p>
-                <p>01 h 25m</p>
-                <p>13:45</p>
-              </div>
-              <div className="flex sm:flex-col items-center justify-between gap-4">
-                <PlaneIcon
-                  className="text-primary w-4 h-4 rotate-90 sm:rotate-180"
-                  viewBox="0 0 14 14"
-                />
-                <Separator
-                  className="flex-1 bg-[#E1E1E1] hidden sm:block"
-                  orientation="vertical"
-                />
-                <Separator className="flex-1 bg-[#E1E1E1] sm:hidden" />
-                <LocationIcon
-                  className="text-primary w-4 h-4"
-                  viewBox="0 0 14 14"
-                />
-              </div>
-              <div className="flex flex-col justify-between gap-y-4 sm:gap-y-6">
-                <p>Hazrat Shahjalal International Ariport (DAC)</p>
-                <div className="flex items-center gap-x-2.5">
-                  <BalakaIcon
-                    className="text-primary w-6 h-6"
-                    viewBox="0 0 51 51"
+          <AccordionContent className="bg-white text-sm md:text-base text-t-600 p-4 sm:p-6 md:p-8 xl:px-12 space-y-8">
+            <div className="flex flex-col lg:flex-row gap-8 xl:gap-x-10">
+              <div className="flex-shrink-0 flex flex-col sm:flex-row gap-6">
+                <div className="flex sm:flex-col justify-between gap-x-8 gap-y-4">
+                  <p>08:00</p>
+                  <p>01 h 25m</p>
+                  <p>13:45</p>
+                </div>
+                <div className="flex sm:flex-col items-center justify-between gap-4">
+                  <PlaneIcon
+                    className="text-primary w-4 h-4 rotate-90 sm:rotate-180"
+                    viewBox="0 0 14 14"
                   />
-                  <p>Biman Bangladesh Airlines</p>
+                  <Separator
+                    className="flex-1 bg-[#E1E1E1] hidden sm:block"
+                    orientation="vertical"
+                  />
+                  <Separator className="flex-1 bg-[#E1E1E1] sm:hidden" />
+                  <LocationIcon
+                    className="text-primary w-4 h-4"
+                    viewBox="0 0 14 14"
+                  />
                 </div>
-                <div className="flex gap-x-2 h-5 leading-tight">
-                  <div>BG611</div>
-                  <Separator className="bg-[#E1E1E1]" orientation="vertical" />
-                  <div>Economy</div>
-                  <Separator className="bg-[#E1E1E1]" orientation="vertical" />
-                  <div>Boing-787</div>
+                <div className="flex flex-col justify-between gap-y-4 sm:gap-y-6">
+                  <p>Hazrat Shahjalal International Ariport (DAC)</p>
+                  <div className="flex items-center gap-x-2.5">
+                    <BalakaIcon
+                      className="text-primary w-6 h-6"
+                      viewBox="0 0 51 51"
+                    />
+                    <p>Biman Bangladesh Airlines</p>
+                  </div>
+                  <div className="flex gap-x-2 h-5 leading-tight">
+                    <div>BG611</div>
+                    <Separator
+                      className="bg-[#E1E1E1]"
+                      orientation="vertical"
+                    />
+                    <div>Economy</div>
+                    <Separator
+                      className="bg-[#E1E1E1]"
+                      orientation="vertical"
+                    />
+                    <div>Boing-787</div>
+                  </div>
+                  <p>Jeddah - King Abdulaziz International Airport (JED) </p>
                 </div>
-                <p>Jeddah - King Abdulaziz International Airport (JED) </p>
+              </div>
+              <div className="flex-1">
+                <InfoTable table={table} />
               </div>
             </div>
-            <div className="flex-1">
-              <InfoTable table={table} />
+            <div className="flex items-center gap-x-2.5 text-t-800 bg-p-300 rounded-sm p-2.5">
+              <ExchangeAltIcon className="text-t-600 flex-shrink-0" />
+              Breakfast / Lunch / Dinner facilities depend on your booking
+              package
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem className="border-none" value="item-5">
+          <h2 className="text-base lg:text-lg text-t-800 mb-4 lg:mb-6">
+            Visa Details
+          </h2>
+          <AccordionTrigger
+            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
+            iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
+          >
+            <div className="flex-1 flex flex-col lg:flex-row">
+              <div className="flex-shrink-0 hidden md:flex items-center gap-x-4 bg-p-300 p-6 lg:px-8 lg:py-12 lg:w-80">
+                <VisaIcon className="text-primary flex-shrink-0" />
+                <div>
+                  <div className="text-t-900 text-lg">Visa Type</div>
+                  <div className="text-t-800">Umrah Visa</div>
+                </div>
+              </div>
+              <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 px-3 xs:px-4 py-4 sm:px-6 md:px-4">
+                <div className="flex-1 text-right sm:text-left">
+                  <div className="text-t-900 text-sm sm:text-base lg:text-lg">
+                    Number Of Entries
+                  </div>
+                  <div className="text-t-800 text-xs sm:text-sm lg:text-base">
+                    Single
+                  </div>
+                </div>
+                <div className="flex-1 text-center sm:text-left">
+                  <div className="text-t-900 text-sm sm:text-base lg:text-lg">
+                    Max Stay
+                  </div>
+                  <div className="text-t-800 text-xs sm:text-sm lg:text-base">
+                    15 Days
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <div className="text-t-900 text-sm sm:text-base lg:text-lg">
+                    Visa Valid
+                  </div>
+                  <div className="text-t-800 text-xs sm:text-sm lg:text-base">
+                    30 Days
+                  </div>
+                </div>
+              </div>
+            </div>
+          </AccordionTrigger>
+          <AccordionContent className="bg-white text-sm md:text-base text-t-600 p-4 sm:p-6 md:p-8 xl:px-12 space-y-8">
+            <div className="space-y-4">
+              <p className="text-t-800">Visa Required</p>
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
+                <li className="col-span-2 md:col-span-1">
+                  *Passport copy with minimum 6 months validity
+                </li>
+                <li className="col-span-2 md:col-span-1">
+                  *Passport size photo (white background)
+                </li>
+                <li className="col-span-2 md:col-span-1">
+                  *ID card / Birth certificate
+                </li>
+                <li className="col-span-2 md:col-span-1">
+                  *Return ticket booking copy
+                </li>
+                <li className="col-span-2 md:col-span-1">
+                  *Hotel booking copy
+                </li>
+                <li className="col-span-2 md:col-span-1">
+                  *Required covid 19 vaccines certificate
+                </li>
+              </ul>
+            </div>
+            <div className="flex items-center gap-x-2.5 text-t-800 bg-p-300 rounded-sm p-2.5">
+              <BulbOnIcon className="text-t-600 flex-shrink-0" />
+              <span>
+                Visa Fee is <span className="text-primary">Non-Refundable</span>{" "}
+                ** Visa Fee is{" "}
+                <span className="text-primary">Non-Refundable</span> ** Visa Fee
+                is <span className="text-primary">Non-Refundable</span>
+              </span>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem className="border-none" value="item-6">
+          <h2 className="text-base lg:text-lg text-t-800 mb-4 lg:mb-6">
+            Transport Details
+          </h2>
+          <AccordionTrigger
+            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
+            iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
+          >
+            <div className="flex-1 flex flex-col lg:flex-row">
+              <div className="flex-shrink-0 hidden md:flex items-center gap-x-4 bg-p-300 p-6 lg:px-8 lg:py-12 lg:w-80">
+                <BusIcon
+                  className="text-primary flex-shrink-0"
+                  width="60"
+                  height="60"
+                  viewBox="0 0 14 14"
+                />
+                <div>
+                  <div className="text-t-900 text-lg">Transport Type</div>
+                  <div className="text-t-800">by Bus</div>
+                </div>
+              </div>
+              <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 px-3 xs:px-4 py-4 sm:px-6 md:px-4">
+                <div className="flex-1 text-right sm:text-left">
+                  <div className="text-t-900 text-sm sm:text-base lg:text-lg">
+                    Airport to Hotel
+                  </div>
+                  <div className="text-t-800 text-xs sm:text-sm lg:text-base">
+                    Yes
+                  </div>
+                </div>
+                <div className="flex-1 text-center sm:text-left">
+                  <div className="text-t-900 text-sm sm:text-base lg:text-lg">
+                    Visitor Place
+                  </div>
+                  <div className="text-t-800 text-xs sm:text-sm lg:text-base">
+                    Yes
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <div className="text-t-900 text-sm sm:text-base lg:text-lg">
+                    Hotel to Aiport
+                  </div>
+                  <div className="text-t-800 text-xs sm:text-sm lg:text-base">
+                    Yes
+                  </div>
+                </div>
+              </div>
+            </div>
+          </AccordionTrigger>
+          <AccordionContent className="bg-white text-sm md:text-base text-t-600 p-4 sm:p-6 md:p-8 xl:px-12 space-y-8">
+            <div className="space-y-4">
+              <p className="text-t-800">Bus Service (Round Trip)</p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="col-span-2 md:col-span-1 flex flex-col md:items-start">
+                  <ul className="space-y-3 h-40 lg:h-44 overflow-y-auto pr-4">
+                    <li className="flex gap-x-2">
+                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                      *Passport copy with minimum 6 months validity
+                    </li>
+                    <li className="flex gap-x-2">
+                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                      *Passport size photo (white background)
+                    </li>
+                    <li className="flex gap-x-2">
+                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                      *ID card / Birth certificate
+                    </li>
+                    <li className="flex gap-x-2">
+                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                      *Return ticket booking copy
+                    </li>
+                    <li className="flex gap-x-2">
+                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                      *Hotel booking copy
+                    </li>
+                    <li className="flex gap-x-2">
+                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                      *Required covid 19 vaccines certificate
+                    </li>
+                    <li className="flex gap-x-2">
+                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                      *Passport copy with minimum 6 months validity
+                    </li>
+                    <li className="flex gap-x-2">
+                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                      *Passport size photo (white background)
+                    </li>
+                    <li className="flex gap-x-2">
+                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                      *ID card / Birth certificate
+                    </li>
+                    <li className="flex gap-x-2">
+                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                      *Return ticket booking copy
+                    </li>
+                    <li className="flex gap-x-2">
+                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                      *Hotel booking copy
+                    </li>
+                    <li className="flex gap-x-2">
+                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                      *Required covid 19 vaccines certificate
+                    </li>
+                  </ul>
+                  <Button
+                    variant="ghost"
+                    className="text-primary justify-start px-0.5 hover:bg-transparent"
+                  >
+                    <span className="flex-shrink-0 w-5 h-5 inline-flex items-center justify-center bg-primary text-white rounded-full">
+                      <Minus size={16} />
+                    </span>
+                    Show Less
+                  </Button>
+                </div>
+                <div className="col-span-2 md:col-span-1 flex flex-col md:items-start">
+                  <ul className="space-y-3 h-40 lg:h-44 overflow-y-auto pr-4">
+                    <li className="flex gap-x-2">
+                      <CheckXCircleFilledIcon className="text-primary flex-shrink-0" />
+                      *Passport copy with minimum 6 months validity
+                    </li>
+                    <li className="flex gap-x-2">
+                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                      *Passport size photo (white background)
+                    </li>
+                    <li className="flex gap-x-2">
+                      <CheckXCircleFilledIcon className="text-primary flex-shrink-0" />
+                      *ID card / Birth certificate
+                    </li>
+                    <li className="flex gap-x-2">
+                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                      *Return ticket booking copy
+                    </li>
+                    <li className="flex gap-x-2">
+                      <CheckXCircleFilledIcon className="text-primary flex-shrink-0" />
+                      *Hotel booking copy
+                    </li>
+                  </ul>
+                  {/* <Button
+                    variant="ghost"
+                    className="text-primary justify-start px-0.5 hover:bg-transparent"
+                  >
+                    <span className="flex-shrink-0 w-5 h-5 inline-flex items-center justify-center bg-primary text-white rounded-full">
+                      <Minus size={16} />
+                    </span>
+                    Show Less
+                  </Button> */}
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-x-2.5 text-t-800 bg-p-300 rounded-sm p-2.5">
+              <BulbOnIcon className="text-t-600 flex-shrink-0" />
+              <span>
+                Note: Pickup Time and Location will be according to the time and
+                date you prescribe.
+              </span>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem className="border-none" value="item-7">
+          <h2 className="text-base lg:text-lg text-t-800 mb-4 lg:mb-6">
+            Ziyara Details
+          </h2>
+          <AccordionTrigger
+            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
+            iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
+          >
+            <div className="flex-1 flex flex-col lg:flex-row">
+              <div className="flex-shrink-0 hidden md:flex items-center gap-x-4 bg-p-300 p-6 lg:px-8 lg:py-12 lg:w-80">
+                <KabaIcon
+                  className="text-primary flex-shrink-0"
+                  width="60"
+                  height="60"
+                  viewBox="0 0 26 27"
+                />
+                <div>
+                  <div className="text-t-900 text-lg">Ziyara /Sightseeing</div>
+                  <div className="text-t-800">Within 14 Days</div>
+                </div>
+              </div>
+              <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 px-3 xs:px-4 py-4 sm:px-6 md:px-4">
+                <div className="flex-1 text-right sm:text-left">
+                  <div className="text-t-900 text-sm sm:text-base lg:text-lg">
+                    Makkah Ziyara
+                  </div>
+                  <div className="text-t-800 text-xs sm:text-sm lg:text-base">
+                    Included
+                  </div>
+                </div>
+                <div className="flex-1 text-center sm:text-left">
+                  <div className="text-t-900 text-sm sm:text-base lg:text-lg">
+                    Madina Ziyara
+                  </div>
+                  <div className="text-t-800 text-xs sm:text-sm lg:text-base">
+                    Included
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <div className="text-t-900 text-sm sm:text-base lg:text-lg">
+                    Taif Ziyara
+                  </div>
+                  <div className="text-t-800 text-xs sm:text-sm lg:text-base">
+                    Not Included
+                  </div>
+                </div>
+              </div>
+            </div>
+          </AccordionTrigger>
+          <AccordionContent className="bg-white text-sm md:text-base text-t-600 p-4 sm:p-6 md:p-8 xl:px-12 space-y-8">
+            <div className="space-y-4">
+              <div className="flex flex-col md:flex-row justify-between gap-4">
+                <div className="flex flex-col md:items-start gap-y-4">
+                  <p className="text-t-800">Makkah Ziyarah</p>
+                  <div>
+                    <ul className="space-y-3 h-40 lg:h-44 overflow-y-auto pr-4">
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Cave of Hira
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Cave of Thawr
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Mina
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Masjid al-jhaif
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Jamarat
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Mount Arafat
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Cave of Hira
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Cave of Thawr
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Mina
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Masjid al-jhaif
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Jamarat
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Mount Arafat
+                      </li>
+                    </ul>
+                    <Button
+                      variant="ghost"
+                      className="text-primary justify-start px-0.5 hover:bg-transparent"
+                    >
+                      <span className="flex-shrink-0 w-5 h-5 inline-flex items-center justify-center bg-primary text-white rounded-full">
+                        <Minus size={16} />
+                      </span>
+                      Show Less
+                    </Button>
+                  </div>
+                </div>
+                <div className="flex flex-col md:items-start gap-y-4">
+                  <p className="text-t-800">Makkah Ziyarah</p>
+                  <div>
+                    <ul className="space-y-3 h-40 lg:h-44 overflow-y-auto pr-4">
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Cave of Hira
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Cave of Thawr
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Mina
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Masjid al-jhaif
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Jamarat
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Mount Arafat
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Cave of Hira
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Cave of Thawr
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Mina
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Masjid al-jhaif
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Jamarat
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Mount Arafat
+                      </li>
+                    </ul>
+                    <Button
+                      variant="ghost"
+                      className="text-primary justify-start px-0.5 hover:bg-transparent"
+                    >
+                      <span className="flex-shrink-0 w-5 h-5 inline-flex items-center justify-center bg-primary text-white rounded-full">
+                        <Minus size={16} />
+                      </span>
+                      Show Less
+                    </Button>
+                  </div>
+                </div>
+                <div className="flex flex-col md:items-start gap-y-4">
+                  <p className="text-t-800">Makkah Ziyarah</p>
+                  <div>
+                    <ul className="space-y-3 h-40 lg:h-44 overflow-y-auto pr-4">
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Cave of Hira
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Cave of Thawr
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Mina
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Masjid al-jhaif
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Jamarat
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Mount Arafat
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Cave of Hira
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Cave of Thawr
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Mina
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Masjid al-jhaif
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Jamarat
+                      </li>
+                      <li className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        Mount Arafat
+                      </li>
+                    </ul>
+                    <Button
+                      variant="ghost"
+                      className="text-primary justify-start px-0.5 hover:bg-transparent"
+                    >
+                      <span className="flex-shrink-0 w-5 h-5 inline-flex items-center justify-center bg-primary text-white rounded-full">
+                        <Minus size={16} />
+                      </span>
+                      Show Less
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-x-2.5 text-t-800 bg-p-300 rounded-sm p-2.5">
+              <BulbOnIcon className="text-t-600 flex-shrink-0" />
+              <span>
+                Note: Pickup Time and Location will be according to the time and
+                date you prescribe.
+              </span>
             </div>
           </AccordionContent>
         </AccordionItem>
