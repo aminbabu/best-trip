@@ -1,6 +1,5 @@
 "use client";
 
-import Container from "@/components/layouts/Container";
 import Slider from "@/components/global/splide/Slider";
 import { SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import data from "@/data/umrah-ziyarah.json";
@@ -48,7 +47,7 @@ const Overview = () => {
               <SplideTrack>
                 {items.map((item, index) => (
                   <SplideSlide key={index}>
-                    <div className="aspect-square overflow-hidden">
+                    <div className="aspect-square overflow-hidden rounded-sm">
                       <Image
                         src={item.image}
                         alt={item.title}
