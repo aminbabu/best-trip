@@ -16,7 +16,7 @@ const OnlineBankingPage = () => {
           }
         >
           <p className="lg:text-lg text-primary font-medium">
-            Don’t close the browser
+            Don&apos;t close the browser
           </p>
         </MessageCard>
       </Container>
