@@ -44,7 +44,7 @@ const NavSheet = () => {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger className="border border-border p-1 rounded-sm lg:hidden">
+      <SheetTrigger className="border border-border p-1 rounded-sm z-50 lg:hidden">
         <MenuIcon />
       </SheetTrigger>
       <SheetContent>
