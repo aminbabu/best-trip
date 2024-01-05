@@ -49,6 +49,7 @@ import ExchangeAltIcon from "@/public/icons/exchange-alt.svg";
 import VisaIcon from "@/public/icons/visa.svg";
 import CheckCircleFilledIcon from "@/public/icons/check-circle-filled.svg";
 import CheckXCircleFilledIcon from "@/public/icons/check-x-circle-filled.svg";
+import DocAltIcon from "@/public/icons/doc-outline.svg";
 
 export {
   FacebookIcon,
@@ -102,4 +103,5 @@ export {
   VisaIcon,
   CheckCircleFilledIcon,
   CheckXCircleFilledIcon,
+  DocAltIcon,
 };
