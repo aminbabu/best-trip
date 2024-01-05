@@ -16,7 +16,10 @@ const NavbarCta = () => {
       <li>
         <Link
           href="/sign-in"
-          className={cn(buttonVariants({ variant: "default" }), "py-2.5 px-9")}
+          className={cn(
+            buttonVariants({ variant: "default" }),
+            "py-2.5 px-6 lg:px-9"
+          )}
         >
           Sign In
         </Link>
