@@ -79,7 +79,7 @@ const Footer = ({ className }) => {
               <span className="text-p-900">Best Trip</span> Lorem Ipsum is
               simply dummy text of the printing and typesetting industry. Lorem{" "}
               <Link
-                href="#"
+                href="/about-us"
                 className="text-t-800 inline-flex duration-300 hover:text-p-900"
               >
                 Read more...
