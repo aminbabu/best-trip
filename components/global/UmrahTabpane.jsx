@@ -73,7 +73,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         schedule,
         type,
         duration,
-        travellers,
+        travellers: travellers.reduce((acc, item) => acc + item.count, 0),
       });
       return validatedData;
     } catch (error) {
@@ -132,8 +132,6 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
       router.push("/search/umrah");
     }, 2000);
   };
-
-  console.log(errors);
 
   return (
     <div
