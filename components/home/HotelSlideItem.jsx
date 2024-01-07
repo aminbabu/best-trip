@@ -18,7 +18,7 @@ const HotelSlideItem = ({ item }) => {
           className="rounded-t-md object-cover w-full h-full duration-300 group-hover:scale-110"
         />
       </Link>
-      <div className="flex flex-col gap-y-4 p-2.5">
+      <div className="flex flex-col gap-y-4 p-2.5 pt-0">
         <h3 className="text-lg font-medium leading-tight">
           <Link
             href="#"
