@@ -35,14 +35,7 @@ const Navbar = () => {
         }
       )}
     >
-      <Container
-        className={cn(
-          "flex items-center gap-4 justify-between py-6 duration-300",
-          {
-            "py-3": isSticky,
-          }
-        )}
-      >
+      <Container className="flex items-center gap-4 justify-between py-6 duration-300">
         <Brand
           logo="/images/brand-logo.png"
           width="108"
