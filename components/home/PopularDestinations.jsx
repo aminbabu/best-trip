@@ -15,6 +15,7 @@ const options = {
   arrows: false,
   pagination: false,
   autoplay: true,
+  speed: 1000,
   mediaQuery: "min",
   breakpoints: {
     640: {
