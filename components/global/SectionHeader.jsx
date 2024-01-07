@@ -5,7 +5,7 @@ const SectionHeader = ({ title, description, className }) => {
     (title || description) && (
       <div
         className={cn(
-          "max-w-[700px] mx-auto mb-10 sm:mb-14 lg:mb-20 text-center",
+          "max-w-[800px] mx-auto mb-10 sm:mb-14 lg:mb-20 text-center",
           className
         )}
       >
@@ -14,7 +14,11 @@ const SectionHeader = ({ title, description, className }) => {
             {title}
           </h2>
         )}
-        {description && <p className="text-t-700 text-base">{description}</p>}
+        {description && (
+          <p className="text-t-700 text-base max-w-[654px] mx-auto">
+            {description}
+          </p>
+        )}
       </div>
     )
   );
