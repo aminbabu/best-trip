@@ -39,7 +39,7 @@ const traveller = [
   {
     id: 1,
     title: "Adults",
-    description: "12+ years",
+    description: "12 years+",
     count: 1,
   },
   {
