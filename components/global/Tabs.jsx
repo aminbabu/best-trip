@@ -15,7 +15,7 @@ const Tabs = ({ data, defaultValue }) => {
             key={tab.id}
             value={tab.value}
             className={cn(
-              "p-3 lg:px-6 lg:py-4 flex-col xs:flex-row gap-1 text-sm md:text-base lg:text-lg text-t-700 bg-white rounded-none data-[state=active]:bg-p-900 data-[state=active]:text-white data-[state=active]:border-b-p-900",
+              "p-3 lg:px-6 lg:py-4 flex-col xs:flex-row gap-1 text-sm md:text-base lg:text-lg text-t-700 bg-white rounded-none data-[state=active]:bg-p-900 data-[state=active]:text-white data-[state=active]:border-b-p-900 font-normal focus-visible:ring-transparent",
               {
                 "rounded-tl-md": index === 0,
                 "rounded-tr-md": index === data.length - 1,
