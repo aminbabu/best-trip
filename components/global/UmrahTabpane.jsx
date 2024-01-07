@@ -331,7 +331,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
                 onIncrement={() => handleCounterIncrement(item.id)}
                 onDecrement={() => handleCounterDecrement(item.id)}
               />
-              <DropdownMenuSeparator className="bg-border h-[0.5px]" />
+              <DropdownMenuSeparator className="bg-border/25 h-[1px]" />
             </Fragment>
           ))}
           <Button
