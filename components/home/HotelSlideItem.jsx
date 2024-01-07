@@ -18,7 +18,7 @@ const HotelSlideItem = ({ item }) => {
           className="rounded-t-md object-cover w-full h-full duration-300 group-hover:scale-110"
         />
       </Link>
-      <div className="flex flex-col gap-y-4">
+      <div className="flex flex-col gap-y-4 p-2.5">
         <h3 className="text-lg font-medium leading-tight">
           <Link
             href="#"
@@ -44,7 +44,7 @@ const HotelSlideItem = ({ item }) => {
               <span className="font-medium">({item?.rating})</span> reviews
             </p>
           </div>
-          <div className="text-right text-sm">
+          <div className="text-right text-sm leading-relaxed">
             <p className="text-t-600">Starting from </p>
             <p className="text-p-900 font-medium">
               {numeral(item?.price).format("$0,0.00")}
