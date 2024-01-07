@@ -13,7 +13,7 @@ import {
 import { cn } from "@/lib/utils";
 
 const menu = {
-  title: "About Us",
+  title: "Discover",
   links: [
     {
       name: "Home",
