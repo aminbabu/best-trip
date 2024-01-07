@@ -12,7 +12,10 @@ export const umrahSchema = z.object({
     .string()
     .min(1, { message: "Duration is required" })
     .or(z.number().min(1, { message: "Duration is required" })),
-  travellers: z.number().min(1, { message: "Traveller is required" }),
+  travellers: z
+    .string()
+    .min(1, { message: "Travellers is required" })
+    .or(z.number().min(1, { message: "Travellers is required" })),
 });
 
 /**
