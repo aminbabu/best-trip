@@ -25,7 +25,7 @@ const UmrahZiyarahSlideItem = ({ item }) => {
           className="rounded-t-md object-cover w-full h-full duration-300 group-hover:scale-110"
         />
       </Link>
-      <div className="flex flex-col gap-y-4">
+      <div className="flex flex-col gap-y-4 p-2.5 pt-0">
         <h3 className="text-lg font-medium leading-tight">
           <Link
             href="#"
@@ -56,7 +56,7 @@ const UmrahZiyarahSlideItem = ({ item }) => {
             {item?.days} Days | {item?.nights} Nights
           </p>
         </div>
-        <div className="flex items-center justify-between text-sm gap-x-4">
+        <div className="flex items-center justify-between text-sm gap-x-4 leading-relaxed">
           <p className="text-t-600">Starting from </p>
           <p className="text-p-900 font-medium">
             {numeral(item?.price).format("$0,0.00")}
