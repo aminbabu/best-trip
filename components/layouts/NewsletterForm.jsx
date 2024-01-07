@@ -42,9 +42,9 @@ const NewsletterForm = () => {
             <FormItem>
               <FormControl className="h-16 pr-36 lg:pr-48">
                 <Input
-                  placeholder="Enter your mail address"
                   {...field}
-                  className="lg:pl-4"
+                  placeholder="Enter your mail address"
+                  className="lg:pl-4 focus-visible:ring-transparent border-[#EDEDED]"
                 />
               </FormControl>
               <FormMessage />
