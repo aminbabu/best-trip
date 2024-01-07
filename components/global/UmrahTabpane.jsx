@@ -168,7 +168,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
-          className="px-0 py-2 border-transparent min-w-[17rem]"
+          className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
             {schedules.map((item) => (
@@ -214,7 +214,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
-          className="px-0 py-2 border-transparent min-w-[17rem]"
+          className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
             {types.map((item) => (
@@ -262,7 +262,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
-          className="px-0 py-2 border-transparent min-w-[17rem]"
+          className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
             {durations.map((item) => (
@@ -317,7 +317,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
-          className="px-0 py-2 border-transparent min-w-[17rem]"
+          className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-80">
             <div className="text-primary font-semibold text-lg px-4 py-3">
