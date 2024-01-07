@@ -319,7 +319,10 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
           align="start"
           className="px-0 py-2 border-transparent min-w-[17rem]"
         >
-          <ScrollArea className="max-h-64">
+          <ScrollArea className="max-h-80">
+            <div className="text-primary font-semibold text-lg px-4 py-3">
+              Travelers
+            </div>
             {travellers.map((item) => (
               <Fragment key={item.id}>
                 <Counter
@@ -329,13 +332,13 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
                   onIncrement={() => handleCounterIncrement(item.id)}
                   onDecrement={() => handleCounterDecrement(item.id)}
                 />
-                <DropdownMenuSeparator className="bg-border/50" />
+                <DropdownMenuSeparator className="bg-border" />
               </Fragment>
             ))}
             <Button
               size="sm"
               onClick={() => handleDropdown(0)}
-              className="px-8 py-2 mx-4 my-2"
+              className="px-8 py-2 mx-4 my-3"
             >
               Done
             </Button>
