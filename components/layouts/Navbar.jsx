@@ -31,7 +31,7 @@ const Navbar = () => {
       className={cn(
         "sticky top-0 z-40 bg-white/50 backdrop-blur-sm duration-300",
         {
-          "shadow-md": isSticky,
+          "border-b border-b-[#eaeaea]": isSticky,
         }
       )}
     >
