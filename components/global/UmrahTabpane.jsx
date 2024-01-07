@@ -17,29 +17,30 @@ import { cn, formatError } from "@/lib/utils";
 import Counter from "@/components/global/Counter";
 import { Loader } from "lucide-react";
 import { useRouter } from "next/navigation";
+import moment from "moment";
 
 const schedules = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "Auguest",
-  "September",
-  "October",
-  "November",
-  "December",
+  "january",
+  "february",
+  "march",
+  "april",
+  "may",
+  "june",
+  "july",
+  "auguest",
+  "september",
+  "dctober",
+  "november",
+  "december",
 ];
-const types = ["Economy", "Standard", "Premium"];
-const durations = ["5 Days", "10 Days", "15 Days", "20 Days", "25 Days"];
-const travellers = [
+const types = ["economy", "standard", "premium"];
+const durations = [14, 20, 30, 35, 40];
+const traveller = [
   {
     id: 1,
     title: "Adults",
     description: "12+ years",
-    count: 0,
+    count: 1,
   },
   {
     id: 2,
@@ -59,11 +60,10 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
   const router = useRouter();
   const [isDisabled, setIsDisabled] = useState(disabled);
   const [open, setOpen] = useState(0);
-  const [schedule, setSchedule] = useState("January");
-  const [type, setType] = useState("Economy");
-  const [duration, setDuration] = useState("5 Days");
-  const [traveller, setTraveller] = useState(1);
-  const [travellerCounts, setTravellerCounts] = useState(travellers);
+  const [schedule, setSchedule] = useState(moment().format("MMMM"));
+  const [type, setType] = useState("economy");
+  const [duration, setDuration] = useState(14);
+  const [travellers, setTravellers] = useState(traveller);
   const [errors, setErrors] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -73,7 +73,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         schedule,
         type,
         duration,
-        traveller,
+        travellers,
       });
       return validatedData;
     } catch (error) {
@@ -88,7 +88,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
   };
 
   const handleCounterIncrement = (id) => {
-    const newTravellers = travellerCounts.map((item) => {
+    const newTravellers = travellers.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -97,12 +97,11 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
       }
       return item;
     });
-    setTraveller(newTravellers.reduce((acc, item) => acc + item.count, 0));
-    setTravellerCounts(newTravellers);
+    setTravellers(newTravellers);
   };
 
   const handleCounterDecrement = (id) => {
-    const newTravellers = travellerCounts.map((item) => {
+    const newTravellers = travellers.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -111,8 +110,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
       }
       return item;
     });
-    setTraveller(newTravellers.reduce((acc, item) => acc + item.count, 0));
-    setTravellerCounts(newTravellers);
+    setTravellers(newTravellers);
   };
 
   const handleDisableFields = () => {
@@ -135,6 +133,8 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
     }, 2000);
   };
 
+  console.log(errors);
+
   return (
     <div
       className={cn(
@@ -146,26 +146,25 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         open={open === 1}
         onOpenChange={(state) => {
           setErrors((prevState) => ({ ...prevState, schedule: null }));
-          handleDropdown(state ? 1 : 0);
+          handleDropdown(state ? 1 : -1);
         }}
       >
         <DropdownMenuTrigger asChild className="flex-1" disabled={isDisabled}>
           <Button
             variant="outline"
-            className={cn("flex-col items-stretch gap-y-1 text-left", {
-              "border-p-900 text-p-900": errors?.schedule,
-            })}
+            className={cn(
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent",
+              {
+                "border-p-900 text-p-900": errors?.schedule,
+              }
+            )}
           >
             <span className="text-sm text-t-600 font-normal">
               Package Schedule
             </span>
-            <span className="flex items-center justify-between gap-x-4">
+            <span className="flex items-center justify-between gap-x-4 text-t-700 capitalize">
               {schedule ? schedule : "Select"}
-              <ArrowIcon
-                className={cn("duration-300", {
-                  "transform rotate-180": open === 1,
-                })}
-              />
+              <ArrowIcon />
             </span>
           </Button>
         </DropdownMenuTrigger>
@@ -195,24 +194,23 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         open={open === 2}
         onOpenChange={(state) => {
           setErrors((prevState) => ({ ...prevState, type: null }));
-          handleDropdown(state ? 2 : 0);
+          handleDropdown(state ? 2 : -1);
         }}
       >
         <DropdownMenuTrigger asChild className="flex-1" disabled={isDisabled}>
           <Button
             variant="outline"
-            className={cn("flex-col items-stretch gap-y-1 text-left", {
-              "border-p-900 text-p-900": errors?.type,
-            })}
+            className={cn(
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent",
+              {
+                "border-p-900 text-p-900": errors?.type,
+              }
+            )}
           >
             <span className="text-sm text-t-600 font-normal">Package Type</span>
-            <span className="flex items-center justify-between gap-x-4">
+            <span className="flex items-center justify-between gap-x-4 text-t-700 capitalize">
               {type ? type : "Select"}
-              <ArrowIcon
-                className={cn("duration-300", {
-                  "transform rotate-180": open === 2,
-                })}
-              />
+              <ArrowIcon />
             </span>
           </Button>
         </DropdownMenuTrigger>
@@ -242,26 +240,25 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         open={open === 3}
         onOpenChange={(state) => {
           setErrors((prevState) => ({ ...prevState, duration: null }));
-          handleDropdown(state ? 3 : 0);
+          handleDropdown(state ? 3 : -1);
         }}
       >
         <DropdownMenuTrigger asChild className="flex-1" disabled={isDisabled}>
           <Button
             variant="outline"
-            className={cn("flex-col items-stretch gap-y-1 text-left", {
-              "border-p-900 text-p-900": errors?.duration,
-            })}
+            className={cn(
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent",
+              {
+                "border-p-900 text-p-900": errors?.duration,
+              }
+            )}
           >
             <span className="text-sm text-t-600 font-normal">
               Package Duration
             </span>
-            <span className="flex items-center justify-between gap-x-4">
-              {duration ? duration : "Select"}
-              <ArrowIcon
-                className={cn("duration-300", {
-                  "transform rotate-180": open === 3,
-                })}
-              />
+            <span className="flex items-center justify-between gap-x-4 text-t-700">
+              {duration ? `${duration} Days` : "Select"}
+              <ArrowIcon />
             </span>
           </Button>
         </DropdownMenuTrigger>
@@ -281,7 +278,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
                   }
                 )}
               >
-                {item}
+                {item} Days
               </DropdownMenuItem>
             ))}
           </ScrollArea>
@@ -290,27 +287,33 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
       <DropdownMenu
         open={open === 4}
         onOpenChange={(state) => {
-          setErrors((prevState) => ({ ...prevState, traveller: null }));
-          handleDropdown(state ? 4 : 0);
+          setErrors((prevState) => ({ ...prevState, travellers: null }));
+          handleDropdown(state ? 4 : -1);
         }}
       >
         <DropdownMenuTrigger asChild className="flex-1" disabled={isDisabled}>
           <Button
             variant="outline"
-            className={cn("flex-col items-stretch gap-y-1 text-left", {
-              "border-p-900 text-p-900": errors?.traveller,
-            })}
+            className={cn(
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent",
+              {
+                "border-p-900 text-p-900": errors?.travellers,
+              }
+            )}
           >
             <span className="text-sm text-t-600 font-normal">Travellers</span>
-            <span className="flex items-center justify-between gap-x-4">
-              {traveller
-                ? `${traveller} Traveller${traveller > 1 ? "s" : ""}`
+            <span className="flex items-center justify-between gap-x-4 text-t-700">
+              {travellers.some((item) => item.count > 0)
+                ? `${travellers.reduce(
+                    (acc, item) => acc + item.count,
+                    0
+                  )} Traveller${
+                    travellers.reduce((acc, item) => acc + item.count, 0) > 1
+                      ? "s"
+                      : ""
+                  }`
                 : "Select"}
-              <ArrowIcon
-                className={cn("duration-300", {
-                  "transform rotate-180": open === 4,
-                })}
-              />
+              <ArrowIcon />
             </span>
           </Button>
         </DropdownMenuTrigger>
@@ -319,7 +322,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
           className="px-0 py-2 border-transparent min-w-[17rem]"
         >
           <ScrollArea className="max-h-64">
-            {travellerCounts.map((item) => (
+            {travellers.map((item) => (
               <Fragment key={item.id}>
                 <Counter
                   title={item.title}
