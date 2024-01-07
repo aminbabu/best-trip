@@ -10,7 +10,7 @@ const SectionHeader = ({ title, description, className }) => {
         )}
       >
         {title && (
-          <h2 className="text-t-800 text-2xl sm:text-[2rem] lg:text-[2.5rem] font-semibold mb-2.5">
+          <h2 className="text-t-800 text-2xl leading-[1.3] sm:text-[2rem] sm:leading-[1.3] lg:text-[2.5rem] lg:leading-[1.3] font-semibold mb-2.5">
             {title}
           </h2>
         )}
