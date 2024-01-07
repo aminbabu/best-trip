@@ -8,7 +8,7 @@ const PlacesInBDSlideItem = ({ item }) => {
     <div className="group flex flex-col gap-y-4 relative">
       <Link
         href="places-in-bd/1"
-        className="rounded-t-md flex aspect-[262/320] overflow-hidden relative before:block before:absolute before:pointer-events-none before:-inset-0 before:bg-gradient-to-b before:from-black/0 before:to-black before:z-10"
+        className="rounded-md flex aspect-[262/320] overflow-hidden relative before:block before:absolute before:pointer-events-none before:-inset-0 before:bg-gradient-to-b before:from-black/0 before:to-black before:z-10"
       >
         <Image
           src={item?.image}
