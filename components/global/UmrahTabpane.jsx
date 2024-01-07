@@ -319,30 +319,28 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
           align="start"
           className="px-0 py-2 border-transparent min-w-[308px]"
         >
-          <ScrollArea className="max-h-80">
-            <div className="text-primary font-semibold text-lg px-4 py-3">
-              Travelers
-            </div>
-            {travellers.map((item) => (
-              <Fragment key={item.id}>
-                <Counter
-                  title={item.title}
-                  description={item.description}
-                  count={item.count}
-                  onIncrement={() => handleCounterIncrement(item.id)}
-                  onDecrement={() => handleCounterDecrement(item.id)}
-                />
-                <DropdownMenuSeparator className="bg-border h-[0.5px]" />
-              </Fragment>
-            ))}
-            <Button
-              size="sm"
-              onClick={() => handleDropdown(0)}
-              className="px-8 py-2 mx-4 my-3"
-            >
-              Done
-            </Button>
-          </ScrollArea>
+          <div className="text-primary font-semibold text-lg px-4 pt-1 pb-5 mb-1">
+            Travelers
+          </div>
+          {travellers.map((item) => (
+            <Fragment key={item.id}>
+              <Counter
+                title={item.title}
+                description={item.description}
+                count={item.count}
+                onIncrement={() => handleCounterIncrement(item.id)}
+                onDecrement={() => handleCounterDecrement(item.id)}
+              />
+              <DropdownMenuSeparator className="bg-border h-[0.5px]" />
+            </Fragment>
+          ))}
+          <Button
+            size="sm"
+            onClick={() => handleDropdown(0)}
+            className="px-8 py-2 mx-4 my-4"
+          >
+            Done
+          </Button>
         </DropdownMenuContent>
       </DropdownMenu>
       <Button
