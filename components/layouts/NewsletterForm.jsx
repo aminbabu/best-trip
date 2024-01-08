@@ -53,7 +53,7 @@ const NewsletterForm = () => {
         />
         <Button
           type="submit"
-          className="absolute top-1.5 right-2 px-6 lg:px-11"
+          className="absolute top-1/2 -translate-y-1/2 right-2 px-6 lg:px-11 text-sm font-semibold"
         >
           Subscribe
         </Button>
