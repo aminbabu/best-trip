@@ -60,7 +60,9 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
   const router = useRouter();
   const [isDisabled, setIsDisabled] = useState(disabled);
   const [open, setOpen] = useState(0);
-  const [schedule, setSchedule] = useState(moment().format("MMMM"));
+  const [schedule, setSchedule] = useState(
+    moment().format("MMMM").toLowerCase()
+  );
   const [type, setType] = useState("economy");
   const [duration, setDuration] = useState(14);
   const [travellers, setTravellers] = useState(traveller);
@@ -221,7 +223,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
               <DropdownMenuItem
                 key={item}
                 className={cn(
-                  "px-5 py-2.5 text-base text-t-700 font-medium hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer",
+                  "px-5 py-2.5 text-base text-t-700 font-medium hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
                   {
                     "bg-p-900 text-white": type === item,
                   }
