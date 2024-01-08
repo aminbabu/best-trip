@@ -34,7 +34,7 @@ const schedules = [
   "december",
 ];
 const types = ["economy", "standard", "premium"];
-const durations = [14, 20, 30, 35, 40];
+const durations = [10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 90];
 const traveller = [
   {
     id: 1,
@@ -64,7 +64,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
     moment().format("MMMM").toLowerCase()
   );
   const [type, setType] = useState("economy");
-  const [duration, setDuration] = useState(14);
+  const [duration, setDuration] = useState(15);
   const [travellers, setTravellers] = useState(traveller);
   const [errors, setErrors] = useState(null);
   const [loading, setLoading] = useState(false);
