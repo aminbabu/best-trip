@@ -178,7 +178,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
                 key={item}
                 onClick={() => setSchedule(item)}
                 className={cn(
-                  "px-5 py-2.5 text-base text-t-700 font-medium hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer",
+                  "px-5 py-2.5 text-base text-t-700 font-medium hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
                   {
                     "bg-p-900 text-white": schedule === item,
                   }
