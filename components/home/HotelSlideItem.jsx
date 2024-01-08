@@ -45,7 +45,6 @@ const HotelSlideItem = ({ item }) => {
             </p>
           </div>
           <div className="text-right text-sm leading-relaxed">
-            <p className="text-t-600">Starting from </p>
             <p className="text-p-900 font-medium">
               {numeral(item?.price).format("$0,0.00")}
             </p>
