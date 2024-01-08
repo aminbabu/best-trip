@@ -3,7 +3,6 @@ import Brand from "../global/Brand";
 import Container from "./Container";
 import Copyright from "./Copyright";
 import Newsletter from "./Newsletter";
-import Image from "next/image";
 import {
   FacebookIcon,
   InstagramIcon,
