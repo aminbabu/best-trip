@@ -17,6 +17,7 @@ import AtabLogo from "@/public/images/footer/atab.svg";
 import ToabLogo from "@/public/images/footer/toab.svg";
 import BasisLogo from "@/public/images/footer/basis.svg";
 import EcabLogo from "@/public/images/footer/ecab.svg";
+import PaymentMethodIcons from "@/public/images/footer/payment-methods.svg";
 
 const menu = {
   title: "Discover",
@@ -115,13 +116,7 @@ const Footer = ({ className }) => {
               <h2 className="text-base lg:text-lg text-inherit font-medium mb-5">
                 Accpeted Payment
               </h2>
-              <Image
-                src="/images/footer/payment-methods.png"
-                width="212"
-                height="70"
-                alt="Payment Methods"
-                className="object-contain"
-              />
+              <PaymentMethodIcons />
             </div>
             <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-xs mx-auto lg:mx-0 col-span-4 lg:col-span-1">
               <h2 className="text-base lg:text-lg text-inherit font-medium mb-5">
