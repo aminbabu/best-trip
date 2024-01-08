@@ -178,7 +178,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
                 key={item}
                 onClick={() => setSchedule(item)}
                 className={cn(
-                  "px-5 py-2.5 text-base text-t-700 font-medium hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
+                  "px-5 py-2.5 text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
                   {
                     "bg-p-900 text-white": schedule === item,
                   }
@@ -223,7 +223,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
               <DropdownMenuItem
                 key={item}
                 className={cn(
-                  "px-5 py-2.5 text-base text-t-700 font-medium hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
+                  "px-5 py-2.5 text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
                   {
                     "bg-p-900 text-white": type === item,
                   }
@@ -257,7 +257,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
               Package Duration
             </span>
             <span className="flex items-center justify-between gap-x-4 text-t-700">
-              {duration ? `${duration} Days` : "Select"}
+              {duration ? `${duration} days` : "Select"}
               <ArrowIcon />
             </span>
           </Button>
@@ -272,7 +272,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
                 key={item}
                 onSelect={() => setDuration(item)}
                 className={cn(
-                  "px-5 py-2.5 text-base text-t-700 font-medium hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer",
+                  "px-5 py-2.5 text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer",
                   {
                     "bg-p-900 text-white": duration === item,
                   }
