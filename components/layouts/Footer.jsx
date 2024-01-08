@@ -12,6 +12,12 @@ import {
 } from "@/components/icons/svgr";
 import { cn } from "@/lib/utils";
 
+import IataLogo from "@/public/images/footer/iata.svg";
+import AtabLogo from "@/public/images/footer/atab.svg";
+import ToabLogo from "@/public/images/footer/toab.svg";
+import BasisLogo from "@/public/images/footer/basis.svg";
+import EcabLogo from "@/public/images/footer/ecab.svg";
+
 const menu = {
   title: "Discover",
   links: [
@@ -176,15 +182,9 @@ const Footer = ({ className }) => {
                 <li className="inline-flex">
                   <Link
                     href="#"
-                    className="duration-300 hover:opacity-75 inline-flex py-0.5"
+                    className="duration-300 hover:opacity-75 inline-flex py-0.5 ml-8"
                   >
-                    <Image
-                      src="/images/footer/iata.svg"
-                      width="51"
-                      height="40"
-                      alt="IATA"
-                      className="object-contain h-8 w-auto"
-                    />
+                    <IataLogo />
                   </Link>
                 </li>
               </ul>
@@ -199,13 +199,7 @@ const Footer = ({ className }) => {
                     href="#"
                     className="duration-300 hover:opacity-75 inline-flex py-0.5"
                   >
-                    <Image
-                      src="/images/footer/atab.svg"
-                      width="175"
-                      height="26"
-                      alt="ATAB"
-                      className="object-contain h-8 w-auto"
-                    />
+                    <AtabLogo />
                   </Link>
                 </li>
                 <li className="inline-flex">
@@ -213,13 +207,7 @@ const Footer = ({ className }) => {
                     href="#"
                     className="duration-300 hover:opacity-75 inline-flex py-0.5"
                   >
-                    <Image
-                      src="/images/footer/toab.svg"
-                      width="61"
-                      height="26"
-                      alt="ToaB"
-                      className="object-contain h-8 w-auto"
-                    />
+                    <ToabLogo />
                   </Link>
                 </li>
               </ul>
@@ -234,13 +222,7 @@ const Footer = ({ className }) => {
                     href="#"
                     className="duration-300 hover:opacity-75 inline-flex py-0.5"
                   >
-                    <Image
-                      src="/images/footer/basis.svg"
-                      width="104"
-                      height="43"
-                      alt="BASIS"
-                      className="object-contain h-8 w-auto"
-                    />
+                    <BasisLogo />
                   </Link>
                 </li>
                 <li className="inline-flex">
@@ -248,13 +230,7 @@ const Footer = ({ className }) => {
                     href="#"
                     className="duration-300 hover:opacity-75 inline-flex py-0.5"
                   >
-                    <Image
-                      src="/images/footer/ecab.svg"
-                      width="52"
-                      height="43"
-                      alt="eCAB"
-                      className="object-contain h-8 w-auto"
-                    />
+                    <EcabLogo />
                   </Link>
                 </li>
               </ul>
