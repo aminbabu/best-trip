@@ -1,5 +1,4 @@
 import Container from "@/components/layouts/Container";
-import data from "@/data/qna.json";
 
 const RefundPolicyPage = () => {
   return (
