@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 const Tabs = ({ data, defaultValue }) => {
   return (
     <TabsComponent defaultValue={defaultValue}>
-      <TabsList className="h-auto p-0 rounded-t-md rounded-b-none flex md:inline-flex bg-white">
+      <TabsList className="h-auto p-0 rounded-t-md rounded-b-none flex sm:inline-flex bg-white">
         {data.map((tab, index) => (
           <TabsTrigger
             key={tab.id}
