@@ -1,5 +1,5 @@
 import MessageCard from "@/components/global/MessageCard";
-import { DocIcon, FoldingDocIcon } from "@/components/icons/svgr";
+import { DocIcon } from "@/components/icons/svgr";
 import Container from "@/components/layouts/Container";
 import Link from "next/link";
 
