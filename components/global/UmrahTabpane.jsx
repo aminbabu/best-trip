@@ -164,12 +164,13 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
             </span>
             <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-700 capitalize">
               {schedule ? schedule : "Select"}
-              <ArrowIcon />
+              <ArrowIcon className="hidden lg:inline-block" />
             </span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
+          forceMount="false"
           className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
@@ -212,12 +213,13 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
             </span>
             <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-700 capitalize">
               {type ? type : "Select"}
-              <ArrowIcon />
+              <ArrowIcon className="hidden lg:inline-block" />
             </span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
+          forceMount="false"
           className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
@@ -260,12 +262,13 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
             </span>
             <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-700">
               {duration ? `${duration} days` : "Select"}
-              <ArrowIcon />
+              <ArrowIcon className="hidden lg:inline-block" />
             </span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
+          forceMount="false"
           className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
@@ -317,12 +320,13 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
                       : ""
                   }`
                 : "Select"}
-              <ArrowIcon />
+              <ArrowIcon className="hidden lg:inline-block" />
             </span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
+          forceMount="false"
           className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <div className="text-primary font-semibold text-lg px-4 pt-1 pb-5 mb-1">
