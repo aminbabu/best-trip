@@ -14,9 +14,6 @@ const options = {
   gap: 16,
   arrows: false,
   pagination: false,
-  autoplay: true,
-  interval: 3000,
-  speed: 1000,
   mediaQuery: "min",
   breakpoints: {
     640: {
@@ -25,6 +22,9 @@ const options = {
     1024: {
       perPage: 3,
       arrows: true,
+      autoplay: true,
+      interval: 3000,
+      speed: 1000,
     },
     1280: {
       gap: 32,
