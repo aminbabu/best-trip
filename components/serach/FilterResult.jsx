@@ -1,7 +1,7 @@
-import CustomsCard from "./CustomsCard";
-import UmrahCard from "./UmrahCard";
-import UmrahFlightCard from "./UmrahFlightCard";
-import VisaCard from "./VisaCard";
+import CustomsCard from "@/components/serach/CustomsCard";
+import UmrahCard from "@/components/serach/UmrahCard";
+import UmrahFlightCard from "@/components/serach/UmrahFlightCard";
+import VisaCard from "@/components/serach/VisaCard";
 
 const FilterResult = ({ slug, data }) => {
   if (data.length === 0) {

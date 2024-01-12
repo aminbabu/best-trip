@@ -4,7 +4,7 @@ import DataTable from "@/components/global/data-table";
 import { columns } from "@/components/umrah/traveller-details/columns";
 import DataTableToolbar from "./data-table-toolbar";
 import tavellers from "@/data/travellers.json";
-import { Button } from "../../ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 

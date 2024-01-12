@@ -9,8 +9,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { MenuIcon } from "lucide-react";
-import Menu from "./Menu";
-import NavbarCta from "./NavbarCta";
+import Menu from "@/components/layouts/Menu";
+import NavbarCta from "@/components/layouts/NavbarCta";
 import { useEffect, useState } from "react";
 
 const NavSheet = () => {

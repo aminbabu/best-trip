@@ -1,11 +1,11 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import Brand from "../global/Brand";
-import Container from "./Container";
-import Menu from "./Menu";
-import NavbarCta from "./NavbarCta";
-import NavSheet from "./NavSheet";
+import Brand from "@/components/global/Brand";
+import Container from "@/components/layouts/Container";
+import Menu from "@/components/layouts/Menu";
+import NavbarCta from "@/components/layouts/NavbarCta";
+import NavSheet from "@/components/layouts/NavSheet";
 import { useEffect, useState } from "react";
 
 const Navbar = () => {

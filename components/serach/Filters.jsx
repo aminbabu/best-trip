@@ -1,4 +1,4 @@
-import UmrahTabpane from "../global/UmrahTabpane";
+import UmrahTabpane from "@/components/global/UmrahTabpane";
 import { PencilIcon } from "@/components/icons/svgr";
 
 const Filters = ({ slug }) => {

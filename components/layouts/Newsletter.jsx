@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import NewsletterForm from "./NewsletterForm";
+import NewsletterForm from "@/components/layouts/NewsletterForm";
 
 const routes = ["/profile", "/sign", "/forgot", "/reset"];
 
