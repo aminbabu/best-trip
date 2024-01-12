@@ -38,7 +38,10 @@ const HotelSlideItem = ({ item }) => {
         <div className="flex justify-between gap-x-4 text-xs lg:text-sm">
           <div className="flex gap-x-1.5">
             <span className="flex-shrink-0 text-[#FFD600]">
-              <StarIcon />
+              <StarIcon
+                viewBox="0 0 18 17"
+                className="w-3.5 lg:w-[1.125rem] h-3.5 lg:h-[1.125rem]"
+              />
             </span>
             <p className="text-t-700">
               <span className="font-medium">({item?.rating})</span> reviews
