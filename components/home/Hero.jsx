@@ -5,10 +5,10 @@ const Hero = () => {
   return (
     <header className="bg-p-300/60 py-12 sm:py-16">
       <Container>
-        <div className="flex flex-col lg:flex-row items-center gap-x-6 gap-y-12 text-center lg:text-left">
+        <div className="flex flex-col lg:flex-row items-center gap-x-6 gap-y-12">
           <div className="max-w-[29rem] lg:max-w-lg mx-auto lg:mx-0">
-            <h1 className="text-3xl leading-tight sm:text-4xl sm:leading-tight lg:text-[2.75rem] lg:leading-tight text-t-800 font-medium mb-6">
-              Discover A Beautiful Place With Us
+            <h1 className="text-2xl leading-tight sm:text-4xl sm:leading-tight lg:text-[2.75rem] lg:leading-tight text-t-800 font-medium mb-6">
+              Discover A Beautiful <br className="sm:hidden" /> Place With Us
             </h1>
             <p className="text-base lg:text-lg text-t-600">
               Would you explore nature paradise in the world, lets find the best
