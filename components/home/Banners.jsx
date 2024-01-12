@@ -9,7 +9,7 @@ import data from "@/data/banners.json";
 
 const options = {
   type: "loop",
-  perPage: 1,
+  perPage: 1.5,
   perMove: 1,
   gap: 16,
   arrows: false,
@@ -20,7 +20,7 @@ const options = {
   mediaQuery: "min",
   breakpoints: {
     640: {
-      perPage: 2,
+      perPage: 2.5,
     },
     1024: {
       perPage: 3,
