@@ -18,8 +18,8 @@ const HotelSlideItem = ({ item }) => {
           className="rounded-t-md object-cover w-full h-full duration-300 group-hover:scale-110"
         />
       </Link>
-      <div className="flex flex-col gap-y-4 p-2.5 pt-0">
-        <h3 className="text-lg font-medium leading-tight">
+      <div className="flex flex-col gap-y-1.5 lg:gap-y-4 p-2.5 pt-0">
+        <h3 className="text-base lg:text-lg font-medium leading-tight">
           <Link
             href="#"
             className="text-t-800 duration-300 group-hover:text-p-900 line-clamp-1"
@@ -27,24 +27,24 @@ const HotelSlideItem = ({ item }) => {
             {item?.title}
           </Link>
         </h3>
-        <div className="flex items-center gap-x-1.5">
+        <div className="flex items-center gap-x-1.5 mb-2.5">
           <span className="flex-shrink-0 text-t-500">
             <LocationIcon />
           </span>
-          <p className="flex-1 text-t-600 text-sm line-clamp-1">
+          <p className="flex-1 text-t-600 text-xs lg:text-sm line-clamp-1">
             {item?.location}
           </p>
         </div>
-        <div className="flex justify-between gap-x-4">
+        <div className="flex justify-between gap-x-4 text-xs lg:text-sm">
           <div className="flex gap-x-1.5">
             <span className="flex-shrink-0 text-[#FFD600]">
               <StarIcon />
             </span>
-            <p className="text-t-700 text-sm">
+            <p className="text-t-700">
               <span className="font-medium">({item?.rating})</span> reviews
             </p>
           </div>
-          <div className="text-right text-sm leading-relaxed">
+          <div className="text-right leading-relaxed">
             <p className="text-p-900 font-medium">
               {numeral(item?.price).format("$0,0.00")}
             </p>
