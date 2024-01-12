@@ -12,6 +12,7 @@ import { MenuIcon } from "lucide-react";
 import Menu from "@/components/layouts/Menu";
 import NavbarCta from "@/components/layouts/NavbarCta";
 import { useEffect, useState } from "react";
+import Brand from "@/components/global/Brand";
 
 const NavSheet = () => {
   const [open, setOpen] = useState(false);
@@ -47,12 +48,16 @@ const NavSheet = () => {
       <SheetTrigger className="border border-border p-1 rounded-sm z-50 lg:hidden">
         <MenuIcon />
       </SheetTrigger>
-      <SheetContent>
-        <SheetHeader className="mb-6 text-left">
-          <SheetTitle>Menu</SheetTitle>
-          <SheetDescription>Explore our website</SheetDescription>
+      <SheetContent className="flex lg:block flex-col">
+        <SheetHeader className="text-left">
+          <Brand
+            logo="/images/brand-logo.png"
+            width="108"
+            height="46"
+            alt="Best Trip"
+          />
         </SheetHeader>
-        <div className="grid gap-y-1.5">
+        <div className="grid gap-y-1.5 flex-1">
           <Menu />
           <NavbarCta />
         </div>
