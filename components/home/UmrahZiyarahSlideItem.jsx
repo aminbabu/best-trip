@@ -25,8 +25,8 @@ const UmrahZiyarahSlideItem = ({ item }) => {
           className="rounded-t-md object-cover w-full h-full duration-300 group-hover:scale-110"
         />
       </Link>
-      <div className="flex flex-col gap-y-4 p-2.5 pt-0">
-        <h3 className="text-lg font-medium leading-tight">
+      <div className="flex flex-col gap-y-1.5 lg:gap-y-4 p-2.5 pt-0">
+        <h3 className="text-base lg:text-lg font-medium leading-tight mb-1 lg:mb-0">
           <Link
             href="#"
             className="text-t-800 duration-300 group-hover:text-p-900 line-clamp-1"
@@ -34,8 +34,8 @@ const UmrahZiyarahSlideItem = ({ item }) => {
             {item?.title}
           </Link>
         </h3>
-        <div className="flex items-center justify-between gap-x-4 text-sm">
-          <div className="flex items-center gap-x-1.5 text-sm text-t-600">
+        <div className="flex items-center justify-between gap-x-4 text-xs lg:text-sm">
+          <div className="flex items-center gap-x-1.5 text-t-600">
             <span className="text-t-500">
               <LocationIcon />
             </span>
@@ -48,15 +48,15 @@ const UmrahZiyarahSlideItem = ({ item }) => {
             <HotelIcon />
           </div>
         </div>
-        <div className="flex items-center gap-x-2.5">
+        <div className="flex items-center gap-x-2.5 text-xs lg:text-sm mb-1 lg:mb-0">
           <span className="text-t-500">
             <ClockIcon />
           </span>
-          <p className="text-sm text-t-600">
+          <p className="text-t-600">
             {item?.days} Days | {item?.nights} Nights
           </p>
         </div>
-        <div className="flex items-center justify-between text-sm gap-x-4 leading-relaxed">
+        <div className="flex items-center justify-between text-xs lg:text-sm gap-x-4 leading-relaxed">
           <p className="text-t-600">Starting from </p>
           <p className="text-p-900 font-medium">
             {numeral(item?.price).format("$0,0.00")}
