@@ -15,7 +15,7 @@ const Newsletter = () => {
   }
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:pt-[120px] xl:pb-[100px]">
+    <section className="hidden lg:block py-12 sm:py-16 md:py-20 lg:py-24 xl:pt-[120px] xl:pb-[100px]">
       <h2 className="text-2xl leading-[1.3] sm:text-[2rem] sm:leading-[1.3] lg:text-[2.5rem] lg:leading-[1.3] text-t-800 font-semibold text-center mb-6 lg:mb-8">
         Subscribe to Get Special Price
       </h2>
