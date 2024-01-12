@@ -4,8 +4,8 @@ import { cn } from "@/lib/utils";
 
 const NavbarCta = () => {
   return (
-    <ul className="flex gap-x-6 items-center">
-      <li>
+    <ul className="flex gap-x-3 lg:gap-x-6 items-center mt-auto lg:mt-0">
+      <li className="hidden lg:block">
         <Link
           href="/sign-up"
           className="text-sm lg:text-base text-t-800 inline-flex py-2 lg:py-2 duration-300 hover:text-p-900"
@@ -13,12 +13,23 @@ const NavbarCta = () => {
           Sign Up
         </Link>
       </li>
-      <li>
+      <li className="flex-1 grid lg:hidden">
+        <Link
+          href="/sign-up"
+          className={cn(
+            buttonVariants({ variant: "outline" }),
+            "py-2 px-6 lg:px-9 border-primary text-primary"
+          )}
+        >
+          Sign Up
+        </Link>
+      </li>
+      <li className="flex-1 lg:flex-auto grid lg:block">
         <Link
           href="/sign-in"
           className={cn(
             buttonVariants({ variant: "default" }),
-            "py-2.5 px-6 lg:px-9"
+            "py-2 px-6 lg:px-9"
           )}
         >
           Sign In
