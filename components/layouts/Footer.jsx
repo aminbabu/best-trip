@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Brand from "@/components/global/Brand";
-import Container from "@/components/Container";
-import Copyright from "@/components/Copyright";
-import Newsletter from "@/components/Newsletter";
+import Container from "@/components/layouts/Container";
+import Copyright from "@/components/layouts/Copyright";
+import Newsletter from "@/components/layouts/Newsletter";
 import {
   FacebookIcon,
   InstagramIcon,
