@@ -29,10 +29,13 @@ const PlacesInBDSlideItem = ({ item }) => {
         </h3>
         <div className="flex gap-x-4 font-medium text-white pointer-events-auto text-xs lg:text-sm">
           <div className="flex-shrink-0 flex items-center gap-x-1.5">
-            <span>{item?.rating}</span>
             <span className="flex-shrink-0 text-[#FFD600]">
-              <StarIcon />
+              <StarIcon
+                viewBox="0 0 18 17"
+                className="w-3.5 lg:w-[1.125rem] h-3.5 lg:h-[1.125rem]"
+              />
             </span>
+            <span>{item?.rating}</span>
           </div>
           <span>({numeral(item?.count).format("0a.0")})</span>
         </div>
