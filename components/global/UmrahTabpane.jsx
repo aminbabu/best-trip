@@ -138,7 +138,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
   return (
     <div
       className={cn(
-        "bg-white flex flex-col lg:flex-row gap-x-4 gap-y-3 lg:gap-5 px-4 py-5 xs:px-4 xs:py-6 lg:px-6 sm:py-8 md:py-10 lg:py-12 rounded-md shadow-[0_2px_8px_0_rgba(0,0,0,0.06)] lg:shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]",
+        "bg-white flex flex-col lg:flex-row gap-x-4 gap-y-3 lg:gap-5 px-4 py-5 xs:px-4 xs:py-6 lg:px-6 sm:py-8 md:py-10 lg:py-12 rounded-md shadow-[0_2px_8px_0_rgba(0,0,0,0.1)] lg:shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]",
         className
       )}
     >
@@ -170,7 +170,6 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
-          forceMount="false"
           className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
@@ -219,7 +218,6 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
-          forceMount="false"
           className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
@@ -268,7 +266,6 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
-          forceMount="false"
           className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
@@ -326,7 +323,6 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
-          forceMount="false"
           className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <div className="text-primary font-semibold text-lg px-4 pt-1 pb-5 mb-1">
