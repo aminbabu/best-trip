@@ -19,7 +19,7 @@ const PlacesInBDSlideItem = ({ item }) => {
         />
       </Link>
       <div className="flex flex-col justify-end gap-y-1 absolute inset-0 px-5 py-4 pointer-events-none z-20">
-        <h3 className="text-lg font-medium leading-tight pointer-events-auto">
+        <h3 className="text-base lg:text-lg font-medium leading-tight pointer-events-auto">
           <Link
             href="#"
             className="text-white duration-300 hover:text-p-900 flex items-center gap-x-2.5 line-clamp-1"
@@ -27,18 +27,16 @@ const PlacesInBDSlideItem = ({ item }) => {
             {item?.title}
           </Link>
         </h3>
-        <div className="flex gap-x-4 font-medium text-white pointer-events-auto">
+        <div className="flex gap-x-4 font-medium text-white pointer-events-auto text-xs lg:text-sm">
           <div className="flex-shrink-0 flex items-center gap-x-1.5">
-            <span className="text-sm">{item?.rating}</span>
+            <span>{item?.rating}</span>
             <span className="flex-shrink-0 text-[#FFD600]">
               <StarIcon />
             </span>
           </div>
-          <span className="text-sm">
-            ({numeral(item?.count).format("0a.0")})
-          </span>
+          <span>({numeral(item?.count).format("0a.0")})</span>
         </div>
-        <p className="text-sm text-white line-clamp-1 pointer-events-auto">
+        <p className="text-xs lg:text-sm text-white line-clamp-1 pointer-events-auto">
           {item?.address}
         </p>
       </div>
