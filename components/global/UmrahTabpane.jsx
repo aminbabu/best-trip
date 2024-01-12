@@ -138,7 +138,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
   return (
     <div
       className={cn(
-        "bg-white flex flex-col lg:flex-row gap-x-4 gap-y-5 lg:gap-x-5 px-2 py-4 xs:px-4 xs:py-6 lg:px-6 sm:py-8 md:py-10 lg:py-12 rounded-md shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]",
+        "bg-white flex flex-col lg:flex-row gap-x-4 gap-y-3 lg:gap-5 px-4 py-5 xs:px-4 xs:py-6 lg:px-6 sm:py-8 md:py-10 lg:py-12 rounded-md shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]",
         className
       )}
     >
@@ -153,16 +153,16 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
           <Button
             variant="outline"
             className={cn(
-              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent",
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5",
               {
                 "border-p-900 text-p-900": errors?.schedule,
               }
             )}
           >
-            <span className="text-sm text-t-600 font-normal">
+            <span className="text-xs lg:text-sm text-t-600 font-normal">
               Package Schedule
             </span>
-            <span className="flex items-center justify-between gap-x-4 text-t-700 capitalize">
+            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-700 capitalize">
               {schedule ? schedule : "Select"}
               <ArrowIcon />
             </span>
@@ -201,14 +201,16 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
           <Button
             variant="outline"
             className={cn(
-              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent",
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5",
               {
                 "border-p-900 text-p-900": errors?.type,
               }
             )}
           >
-            <span className="text-sm text-t-600 font-normal">Package Type</span>
-            <span className="flex items-center justify-between gap-x-4 text-t-700 capitalize">
+            <span className="text-xs lg:text-sm text-t-600 font-normal">
+              Package Type
+            </span>
+            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-700 capitalize">
               {type ? type : "Select"}
               <ArrowIcon />
             </span>
@@ -247,16 +249,16 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
           <Button
             variant="outline"
             className={cn(
-              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent",
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5",
               {
                 "border-p-900 text-p-900": errors?.duration,
               }
             )}
           >
-            <span className="text-sm text-t-600 font-normal">
+            <span className="text-xs lg:text-sm text-t-600 font-normal">
               Package Duration
             </span>
-            <span className="flex items-center justify-between gap-x-4 text-t-700">
+            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-700">
               {duration ? `${duration} days` : "Select"}
               <ArrowIcon />
             </span>
@@ -295,14 +297,16 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
           <Button
             variant="outline"
             className={cn(
-              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent",
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5",
               {
                 "border-p-900 text-p-900": errors?.travellers,
               }
             )}
           >
-            <span className="text-sm text-t-600 font-normal">Travellers</span>
-            <span className="flex items-center justify-between gap-x-4 text-t-700">
+            <span className="text-xs lg:text-sm text-t-600 font-normal">
+              Travellers
+            </span>
+            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-700">
               {travellers.some((item) => item.count > 0)
                 ? `${travellers.reduce(
                     (acc, item) => acc + item.count,
@@ -347,6 +351,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
       </DropdownMenu>
       <Button
         size="lg"
+        className="py-3 lg:py-5"
         onClick={isDisabled ? handleDisableFields : handleSubmit}
         disabled={loading}
       >
@@ -355,7 +360,12 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         ) : isDisabled ? (
           icon
         ) : (
-          <SearchIcon />
+          <>
+            <span className="hidden lg:block">
+              <SearchIcon />
+            </span>
+            <span className="lg:hidden">Search</span>
+          </>
         )}
       </Button>
     </div>
