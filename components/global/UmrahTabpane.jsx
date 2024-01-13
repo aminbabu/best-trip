@@ -351,7 +351,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
       </DropdownMenu>
       <Button
         size="lg"
-        className="py-3 lg:py-5"
+        className="py-2.5 lg:py-5 rounded-lg lg:rounded-md text-sm lg:text-base"
         onClick={isDisabled ? handleDisableFields : handleSubmit}
         disabled={loading}
       >
