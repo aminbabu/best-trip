@@ -64,7 +64,8 @@ const data = [
 
 const Filters = () => {
   return (
-    <div>
+    <div className="relative">
+      <div className="absolute inset-0 -z-[1] text-[#FCE6E6] bg-[url('/images/home/filters/bg-curve-sm.svg')] lg:bg-[url('/images/home/filters/bg-curve.svg')] bg-no-repeat bg-contain lg:bg-cover 2xl:scale-105 min-[2160px]:scale-[115%] bg-[center_top_383px] lg:bg-bottom -mt-[1px] before:absolute before:inset-0 before:bg-[#FCE6E6] before:h-[384px] before:lg:hidden"></div>
       <Container>
         <Tabs data={data} defaultValue={data[1].value} />
       </Container>
