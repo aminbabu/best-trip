@@ -5,7 +5,7 @@ import { BookingIcon, CheckSheildIcon } from "../icons/svgr";
 
 const HeroAlt = () => {
   return (
-    <header className="bg-p-900/20 pt-20 pb-32 md:pb-48 lg:pb-60 -mb-16 md:-mb-32 lg:-mb-44 relative">
+    <header className="bg-p-900/20 pt-20 pb-96 lg:pb-60 -mb-80 lg:-mb-44 relative [&+div_.absolute]:hidden">
       <Image
         src="/images/home/hero/banner.png"
         alt="hero"
