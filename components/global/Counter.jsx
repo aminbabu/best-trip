@@ -4,7 +4,7 @@ const Counter = ({ title, description, count, onIncrement, onDecrement }) => {
   return (
     <div className="flex items-center justify-between gap-4 px-4 py-3">
       <div className="flex items-center gap-2">
-        <span className="text-base text-t-700">{title}</span>
+        <span className="text-sm lg:text-base text-t-700">{title}</span>
         <span className="text-xs text-t-600">{description}</span>
       </div>
       <div className="flex items-center gap-x-2">
@@ -15,7 +15,7 @@ const Counter = ({ title, description, count, onIncrement, onDecrement }) => {
         >
           <MinusIcon width="16" height="16" viewBox="0 0 24 24" />
         </button>
-        <span className="w-5 text-center text-base text-t-700 font-medium">
+        <span className="w-5 text-center text-sm lg:text-base text-t-700 font-medium">
           {count}
         </span>
         <button

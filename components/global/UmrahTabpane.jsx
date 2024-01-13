@@ -178,7 +178,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
                 key={item}
                 onClick={() => setSchedule(item)}
                 className={cn(
-                  "px-5 py-2.5 text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
+                  "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
                   {
                     "bg-p-900 text-white": schedule === item,
                   }
@@ -225,7 +225,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
               <DropdownMenuItem
                 key={item}
                 className={cn(
-                  "px-5 py-2.5 text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
+                  "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
                   {
                     "bg-p-900 text-white": type === item,
                   }
@@ -258,7 +258,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
             <span className="text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal">
               Package Duration
             </span>
-            <span className="text-sm lg:text-base flex items-center justify-between gap-x text-t-800-lg:4 text-t-700">
+            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
               {duration ? `${duration} days` : "Select"}
               <ArrowIcon className="hidden lg:inline-block" />
             </span>
@@ -274,7 +274,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
                 key={item}
                 onSelect={() => setDuration(item)}
                 className={cn(
-                  "px-5 py-2.5 text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer",
+                  "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer",
                   {
                     "bg-p-900 text-white": duration === item,
                   }
@@ -306,7 +306,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
             <span className="text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal">
               Travellers
             </span>
-            <span className="text-sm lg:text-base flex items-center justify-between gap-x text-t-800-lg:4 text-t-700">
+            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
               {travellers.some((item) => item.count > 0)
                 ? `${travellers.reduce(
                     (acc, item) => acc + item.count,
@@ -343,7 +343,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
           <Button
             size="sm"
             onClick={() => handleDropdown(0)}
-            className="px-8 py-2 mx-4 my-4"
+            className="px-8 py-2 mx-4 my-4 text-sm lg:text-base"
           >
             Done
           </Button>
@@ -351,7 +351,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
       </DropdownMenu>
       <Button
         size="lg"
-        className="py-2.5 lg:py-5 rounded-lg lg:rounded-md text-sm lg:text-base"
+        className="py-2.5 lg:py-5 rounded-lg lg:roundemd text-sm lg:text-base"
         onClick={isDisabled ? handleDisableFields : handleSubmit}
         disabled={loading}
       >
