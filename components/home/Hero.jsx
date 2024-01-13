@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <header className="bg-p-300/60 py-12 sm:py-16">
+    <header className="bg-[#FCE6E6] lg:bg-p-300/60 py-12 sm:py-16">
       <Container>
         <div className="flex flex-col lg:flex-row lg:items-center gap-x-6 gap-y-12">
           <div className="lg:max-w-lg">
