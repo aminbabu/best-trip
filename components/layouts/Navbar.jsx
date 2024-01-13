@@ -35,7 +35,7 @@ const Navbar = () => {
         }
       )}
     >
-      <Container className="flex items-center gap-4 justify-between py-6 duration-300">
+      <Container className="flex items-center gap-4 justify-between py-3 lg:py-6 duration-300">
         <Brand
           logo="/images/brand-logo.png"
           width="108"
