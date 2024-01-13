@@ -14,6 +14,7 @@ import ScrollArea from "@/components/global/ScrollArea";
 import { cn } from "@/lib/utils";
 import Counter from "@/components/global/Counter";
 import Link from "next/link";
+import UnderDevelopment from "./UnderDevelopment";
 
 const schedules = [
   "January",
@@ -285,9 +286,7 @@ const VisaTabpane = ({ icon, className }) => {
       <Button size="lg" onClick={handleFilter} asChild>
         <Link href="/search/umrah">{icon ? icon : <SearchIcon />}</Link>
       </Button> */}
-      <div className="text-lg text-primary">
-        Visa options in under development
-      </div>
+      <UnderDevelopment />
     </div>
   );
 };
