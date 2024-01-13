@@ -29,7 +29,7 @@ const Menu = ({ isNavbarSticky }) => {
           <Link
             href={item.path}
             className={cn(
-              "text-sm lg:text-base text-t-700 inline-flex py-2 lg:px-2 duration-300 hover:text-p-900",
+              "text-sm lg:text-base text-t-700 inline-flex py-1 lg:px-2 duration-300 hover:text-p-900",
               {
                 "text-t-900": isNavbarSticky,
               }

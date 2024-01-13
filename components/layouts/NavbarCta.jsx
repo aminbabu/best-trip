@@ -13,23 +13,12 @@ const NavbarCta = () => {
           Sign Up
         </Link>
       </li>
-      <li className="flex-1 grid lg:hidden">
-        <Link
-          href="/sign-up"
-          className={cn(
-            buttonVariants({ variant: "outline" }),
-            "py-2 px-6 lg:px-9 border-primary text-primary"
-          )}
-        >
-          Sign Up
-        </Link>
-      </li>
       <li className="flex-1 lg:flex-auto grid lg:block">
         <Link
           href="/sign-in"
           className={cn(
             buttonVariants({ variant: "default" }),
-            "py-2 px-6 lg:px-9"
+            "py-2 px-6 lg:px-9 text-sm rounded-lg"
           )}
         >
           Sign In

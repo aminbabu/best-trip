@@ -48,7 +48,7 @@ const NavSheet = () => {
       <SheetTrigger className="border border-border p-1 rounded-sm z-50 lg:hidden">
         <MenuIcon />
       </SheetTrigger>
-      <SheetContent className="flex lg:block flex-col">
+      <SheetContent className="flex lg:block flex-col p-4">
         <SheetHeader className="text-left">
           <Brand
             logo="/images/brand-logo.png"
