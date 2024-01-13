@@ -153,16 +153,16 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
           <Button
             variant="outline"
             className={cn(
-              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5",
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5 border-t-400/50 lg:border-border",
               {
                 "border-p-900 text-p-900": errors?.schedule,
               }
             )}
           >
-            <span className="text-xs lg:text-sm text-t-600 font-normal">
+            <span className="text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal">
               Package Schedule
             </span>
-            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-700 capitalize">
+            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
               {schedule ? schedule : "Select"}
               <ArrowIcon className="hidden lg:inline-block" />
             </span>
@@ -201,16 +201,16 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
           <Button
             variant="outline"
             className={cn(
-              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5",
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5 border-t-400/50 lg:border-border",
               {
                 "border-p-900 text-p-900": errors?.type,
               }
             )}
           >
-            <span className="text-xs lg:text-sm text-t-600 font-normal">
+            <span className="text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal">
               Package Type
             </span>
-            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-700 capitalize">
+            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
               {type ? type : "Select"}
               <ArrowIcon className="hidden lg:inline-block" />
             </span>
@@ -249,16 +249,16 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
           <Button
             variant="outline"
             className={cn(
-              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5",
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5 border-t-400/50 lg:border-border",
               {
                 "border-p-900 text-p-900": errors?.duration,
               }
             )}
           >
-            <span className="text-xs lg:text-sm text-t-600 font-normal">
+            <span className="text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal">
               Package Duration
             </span>
-            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-700">
+            <span className="text-sm lg:text-base flex items-center justify-between gap-x text-t-800-lg:4 text-t-700">
               {duration ? `${duration} days` : "Select"}
               <ArrowIcon className="hidden lg:inline-block" />
             </span>
@@ -297,16 +297,16 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
           <Button
             variant="outline"
             className={cn(
-              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5",
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5 border-t-400/50 lg:border-border",
               {
                 "border-p-900 text-p-900": errors?.travellers,
               }
             )}
           >
-            <span className="text-xs lg:text-sm text-t-600 font-normal">
+            <span className="text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal">
               Travellers
             </span>
-            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-700">
+            <span className="text-sm lg:text-base flex items-center justify-between gap-x text-t-800-lg:4 text-t-700">
               {travellers.some((item) => item.count > 0)
                 ? `${travellers.reduce(
                     (acc, item) => acc + item.count,
