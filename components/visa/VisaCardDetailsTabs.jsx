@@ -1,6 +1,7 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import VisaBasicInfo from "./VisaBasicInfo";
+import RequirementList from "./RequirementList";
 
 const VisaCardDetailsTabs = () => {
   const tabItems = [
@@ -14,7 +15,7 @@ const VisaCardDetailsTabs = () => {
       id: 2,
       name: "Requirement list",
       value: "requirement list",
-      element: "Requirement list are here",
+      element: <RequirementList />,
     },
     {
       id: 3,

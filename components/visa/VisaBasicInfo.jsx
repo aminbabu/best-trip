@@ -9,12 +9,12 @@ import Notice from "./Notice";
 
 const VisaBasicInfo = () => {
   return (
-    <div className="pt-[30px] px-[34px] pb-10 space-y-10">
+    <div className="pt-5 xl:pt-[30px] px-6 xl:px-[34px] pb-8 xl:pb-10 space-y-10">
       <div>
-        <h4 className="text-base text-t-800 font-medium leading-relaxed mb-[18px]">
+        <h4 className="text-sm xl:text-base text-t-800 font-medium leading-relaxed mb-[18px]">
           For Dubai Tourist Visa Best Trip Provides
         </h4>
-        <p className="text-base text-t-600 font-normal leading-normal">
+        <p className="text-sm xl:text-base text-t-600 font-normal leading-normal">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry&apos;s standard dummy text
           ever since the 1500s, when an unknown printer took a galley of type
@@ -35,10 +35,10 @@ const VisaBasicInfo = () => {
         </p>
       </div>
       <div>
-        <h4 className="text-base text-t-800 font-medium leading-relaxed mb-[18px]">
+        <h4 className="text-sm xl:text-base text-t-800 font-medium leading-relaxed mb-[18px]">
           About UAE Embassy, Dhaka
         </h4>
-        <p className="text-base text-t-600 font-normal leading-normal">
+        <p className="text-sm xl:text-base text-t-600 font-normal leading-normal">
           The UAE Embassy, Dhaka plays an important role in the strong
           partnership between the UAE and Bangladesh Governments that supports
           understanding, recovery and prosperity for both countries. Since the
@@ -57,19 +57,19 @@ const VisaBasicInfo = () => {
       <div className="flex flex-col justify-between max-w-[655px] mx-auto">
         <ul className="grid lg:grid-cols-3 gap-x-[150px] gap-y-3 lg:gap-y-2 xl:gap-y-3 mb-[30px]">
           <li className="flex gap-x-2 text-sm xl:text-base text-t-800 leading-normal col-span-1">
-            <PhoneRedIcon className="mt-0.5 flex-shrink-0" />
+            <PhoneRedIcon className="mt-1 flex-shrink-0" />
             <span className="flex-shrink-0">008802222282277</span>
           </li>
           <li className="flex gap-x-2 text-sm xl:text-base text-t-800 leading-normal col-span-2">
-            <EnvelopeRedIcon className="mt-0.5 flex-shrink-0" />
+            <EnvelopeRedIcon className="mt-1 flex-shrink-0" />
             <span className="flex-shrink-0">dhakaemd@mofaic.gov.ae</span>
           </li>
           <li className="flex gap-x-2 text-sm xl:text-base text-t-800 leading-normal col-span-1">
-            <PrinterRedIcon className="mt-0.5 flex-shrink-0" />
+            <PrinterRedIcon className="mt-1 flex-shrink-0" />
             <span className="flex-shrink-0">880284789845738</span>
           </li>
           <li className="flex gap-x-2 text-sm xl:text-base text-t-800 leading-normal col-span-2">
-            <LocationRedIcon className="mt-0.5 flex-shrink-0" />
+            <LocationRedIcon className="mt-1 flex-shrink-0" />
             <span className="">
               House No: 191, Road No: 69, Gulshan North Ave, Dhaka 1212, Dhaka,
               Bangladesh

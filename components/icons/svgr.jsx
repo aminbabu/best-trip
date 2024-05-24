@@ -58,6 +58,7 @@ import PhoneRedIcon from "@/public/icons/phone-red.svg";
 import EnvelopeRedIcon from "@/public/icons/envelope-red.svg";
 import PrinterRedIcon from "@/public/icons/printer-red.svg";
 import LocationRedIcon from "@/public/icons/location-red.svg";
+import TickRedIcon from "@/public/icons/tick-red.svg";
 
 export {
   FacebookIcon,
@@ -120,4 +121,5 @@ export {
   EnvelopeRedIcon,
   PrinterRedIcon,
   LocationRedIcon,
+  TickRedIcon,
 };
