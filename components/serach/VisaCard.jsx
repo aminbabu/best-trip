@@ -1,5 +1,5 @@
 const VisaCard = ({ data }) => {
-  return <div>VisaCard changed</div>;
+  return <div>VisaCard </div>;
 };
 
 export default VisaCard;
