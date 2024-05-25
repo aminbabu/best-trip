@@ -2,6 +2,61 @@ import React from "react";
 import { TickRedIcon } from "../icons/svgr";
 import Notice from "./Notice";
 
+let reqList = [
+  {
+    id: 1,
+    req: "Passport (6 months validation on travel date)",
+  },
+  {
+    id: 2,
+    req: "Bank Statement last 6 Month (Last balance per person minimum BDT 70,000/- )",
+  },
+  {
+    id: 3,
+    req: "Bank Solvency",
+  },
+  {
+    id: 4,
+    req: "Trade license (Notarized with English translation)/ NOC for Job Holder",
+  },
+  {
+    id: 5,
+    req: "Tin (If Have)",
+  },
+  {
+    id: 6,
+    req: "Company pad/letterhead (Business Profession)",
+  },
+  {
+    id: 7,
+    req: "Visiting Card/Office ID card",
+  },
+  {
+    id: 8,
+    req: "Photo",
+  },
+  {
+    id: 9,
+    req: "35/45 (4 Copy- Lab print, mat paper, white background)",
+  },
+  {
+    id: 10,
+    req: "35/50 (2Copy- Lab print, mat paper, white background for Malaysia)",
+  },
+  {
+    id: 11,
+    req: "Vaccination Card (for Singapore, Malaysia)",
+  },
+  {
+    id: 12,
+    req: "Marriage certificate (for Newly Married couple)",
+  },
+  {
+    id: 13,
+    req: "NOC letter from school/college/University of children and ID card",
+  },
+];
+
 const RequirementList = () => {
   return (
     <div className="pt-5 xl:pt-[30px] px-6 xl:px-[34px] pb-8 xl:pb-10">
@@ -18,72 +73,15 @@ const RequirementList = () => {
       </div>
       <div className="mt-5 mb-10">
         <ul className="space-y-4">
-          <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
-            <TickRedIcon className="mt-1 flex-shrink-0" />
-            <span>Passport (6 months validation on travel date)</span>
-          </li>
-          <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
-            <TickRedIcon className="mt-1 flex-shrink-0" />
-            <span>
-              Bank Statement last 6 Month (Last balance per person minimum BDT
-              70,000/- )
-            </span>
-          </li>
-          <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
-            <TickRedIcon className="mt-1 flex-shrink-0" />
-            <span>Bank Solvency</span>
-          </li>
-          <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
-            <TickRedIcon className="mt-1 flex-shrink-0" />
-            <span>
-              Trade license (Notarized with English translation)/ NOC for Job
-              Holder
-            </span>
-          </li>
-          <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
-            <TickRedIcon className="mt-1 flex-shrink-0" />
-            <span>Tin (If Have)</span>
-          </li>
-          <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
-            <TickRedIcon className="mt-1 flex-shrink-0" />
-            <span>Company pad/letterhead (Business Profession)</span>
-          </li>
-          <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
-            <TickRedIcon className="mt-1 flex-shrink-0" />
-            <span>Visiting Card/Office ID card</span>
-          </li>
-          <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
-            <TickRedIcon className="mt-1 flex-shrink-0" />
-            <span>Salary Certificate with pay slip (For Job Holder)</span>
-          </li>
-          <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
-            <TickRedIcon className="mt-1 flex-shrink-0" />
-            <span>Photo</span>
-          </li>
-          <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
-            <TickRedIcon className="mt-1 flex-shrink-0" />
-            <span>35/45 (4 Copy- Lab print, mat paper, white background)</span>
-          </li>
-          <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
-            <TickRedIcon className="mt-1 flex-shrink-0" />
-            <span>
-              35/50 (2Copy- Lab print, mat paper, white background for Malaysia)
-            </span>
-          </li>
-          <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
-            <TickRedIcon className="mt-1 flex-shrink-0" />
-            <span>Vaccination Card (for Singapore, Malaysia)</span>
-          </li>
-          <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
-            <TickRedIcon className="mt-1 flex-shrink-0" />
-            <span>Marriage certificate (for Newly Married couple)</span>
-          </li>
-          <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
-            <TickRedIcon className="mt-1 flex-shrink-0" />
-            <span>
-              NOC letter from school/college/University of children and ID card
-            </span>
-          </li>
+          {reqList.map((item) => (
+            <li
+              key={item.id}
+              className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal"
+            >
+              <TickRedIcon className="mt-1 flex-shrink-0" />
+              <span>{item.req}</span>
+            </li>
+          ))}
         </ul>
       </div>
       <Notice

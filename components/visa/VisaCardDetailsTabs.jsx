@@ -2,6 +2,7 @@ import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import VisaBasicInfo from "./VisaBasicInfo";
 import RequirementList from "./RequirementList";
+import TermsAnsConditions from "./TermsAnsConditions";
 
 const VisaCardDetailsTabs = () => {
   const tabItems = [
@@ -27,7 +28,7 @@ const VisaCardDetailsTabs = () => {
       id: 4,
       name: "Terms & Conditions",
       value: "terms & Conditions",
-      element: "Terms & Conditions are here",
+      element: <TermsAnsConditions />,
     },
   ];
 
