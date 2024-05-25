@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import VisaBasicInfo from "./VisaBasicInfo";
 import RequirementList from "./RequirementList";
 import TermsAnsConditions from "./TermsAnsConditions";
+import CountryInfo from "./CountryInfo";
 
 const VisaCardDetailsTabs = () => {
   const tabItems = [
@@ -22,7 +23,7 @@ const VisaCardDetailsTabs = () => {
       id: 3,
       name: "Country Information",
       value: "country Information",
-      element: "Country Information are here",
+      element: <CountryInfo />,
     },
     {
       id: 4,
