@@ -5,7 +5,7 @@ import {
   PhoneRedIcon,
   PrinterRedIcon,
 } from "../icons/svgr";
-import Notice from "./Notice";
+import Notice from "../global/Notice";
 
 const VisaBasicInfo = () => {
   return (

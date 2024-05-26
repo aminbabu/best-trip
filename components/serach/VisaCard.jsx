@@ -22,6 +22,7 @@ const VisaCard = ({ data }) => {
   const toggleCollapsible = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <Card className="border-transparent relative overflow-hidden">
       <Collapsible>
@@ -37,10 +38,10 @@ const VisaCard = ({ data }) => {
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 md:pr-[14px]">
               <div>
                 <h4 className="text-base xl:text-lg text-t-900 font-medium leading-relaxed mb-1.5">
-                  Dubai - Electronic Visa
+                  {data.name}
                 </h4>
                 <p className="text-sm lg:text-base text-t-800 mb-[35px] lg:mb-4 xl:mb-[35px]">
-                  Tourist Visa
+                  {data.type}
                 </p>
                 <div className="flex gap-y-4">
                   <div className="text-t-600 text-sm lg:text-base leading-normal xl:text-center px-[10px] py-[5px] rounded-sm bg-p-300 mb-[18px]">
@@ -52,25 +53,25 @@ const VisaCard = ({ data }) => {
                     <li className="flex gap-x-2 text-sm xl:text-md text-t-500 leading-normal">
                       <DocRedIcon className="mt-0.5 flex-shrink-0" />
                       <span className="flex-shrink-0">
-                        Visa Type : E - Visa
+                        Visa Type : {data.visaType}
                       </span>
                     </li>
                     <li className="flex gap-x-2 text-sm xl:text-md text-t-600 leading-normal">
                       <ClockRedIcon className="mt-0.5 flex-shrink-0" />
                       <span className="flex-shrink-0">
-                        Maximum Stays : 30 Days
+                        Maximum Stays : {data.maxStays} Days
                       </span>
                     </li>
                     <li className="flex gap-x-2 text-sm xl:text-md text-t-600 leading-normal">
                       <VisaEntryTypeIcon className="mt-0.5 flex-shrink-0" />
                       <span className="flex-shrink-0">
-                        Entry Type : Single Entry
+                        Entry Type : {data.entryType}
                       </span>
                     </li>
                     <li className="flex gap-x-2 text-sm xl:text-md text-t-600 leading-normal">
                       <CalenderRedIcon className="mt-0.5 flex-shrink-0" />
                       <span className="flex-shrink-0">
-                        Validity: Max 30 Days
+                        Validity: Max {data.validity} Days
                       </span>
                     </li>
                   </ul>
@@ -81,20 +82,20 @@ const VisaCard = ({ data }) => {
                   <li className="col-span-2 text-t-600 text-sm lg:text-base xl:text-lg">
                     Per Pax Price:
                     <span className="text-t-900 ml-2">
-                      {numeral(data.prices.adult).format("0,0")} BDT
+                      {numeral(data.visaFee).format("0,0")} BDT
                     </span>
                   </li>
                   <li className="col-span-2 text-t-600 text-sm lg:text-base xl:text-lg">
                     Sub Total:
                     <span className="text-t-900 ml-2">
-                      {numeral(data.prices.adult).format("0,0")} BDT
+                      {numeral(data.visaFee).format("0,0")} BDT
                     </span>
                   </li>
                 </ul>
                 <Button
                   size="sm"
                   className="font-semibold text-sm lg:text-base"
-                  href={`/umrah/${data.id}`}
+                  href={`/visa/${data.id}`}
                   asChild
                 >
                   <Link>Select For Processing</Link>
@@ -102,14 +103,17 @@ const VisaCard = ({ data }) => {
               </div>
             </div>
             <div className="flex flex-col lg:flex-row justify-between items-center text-t-600 leading-normal text-sm lg:text-base xl:text-lg mt-[35px] md:pr-[14px] gap-4">
-              <p>Processing Time : 5 - 7 Working Days</p>
+              <p>
+                Processing Time : {data.processingTime.from} -{" "}
+                {data.processingTime.to} Working Days
+              </p>
               <CollapsibleTrigger
                 onClick={toggleCollapsible}
                 className="flex items-center lg:gap-[10px]"
               >
                 {isOpen ? "Hide Details" : "View More Details"}
                 <ArrowIcon
-                  className={`text-red-500 ${isOpen ? "rotate-180" : ""}`}
+                  className={`text-primary ${isOpen ? "rotate-180" : ""}`}
                 />
               </CollapsibleTrigger>
             </div>

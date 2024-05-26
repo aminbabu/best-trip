@@ -2,6 +2,7 @@ import CustomsCard from "@/components/serach/CustomsCard";
 import UmrahCard from "@/components/serach/UmrahCard";
 import UmrahFlightCard from "@/components/serach/UmrahFlightCard";
 import VisaCard from "@/components/serach/VisaCard";
+import visaData from "@/data/visa-result.json";
 
 const FilterResult = ({ slug, data }) => {
   if (data.length === 0) {
@@ -32,7 +33,7 @@ const FilterResult = ({ slug, data }) => {
     case "visa":
       return (
         <div className="grid grid-cols-1 gap-y-6 lg:gap-y-8">
-          {data.map((item) => (
+          {visaData.map((item) => (
             <VisaCard key={item.id} data={item} />
           ))}
         </div>

@@ -1,63 +1,8 @@
 import React from "react";
 import { TickRedIcon } from "../icons/svgr";
-import Notice from "./Notice";
+import Notice from "../global/Notice";
 
-let reqList = [
-  {
-    id: 1,
-    req: "Passport (6 months validation on travel date)",
-  },
-  {
-    id: 2,
-    req: "Bank Statement last 6 Month (Last balance per person minimum BDT 70,000/- )",
-  },
-  {
-    id: 3,
-    req: "Bank Solvency",
-  },
-  {
-    id: 4,
-    req: "Trade license (Notarized with English translation)/ NOC for Job Holder",
-  },
-  {
-    id: 5,
-    req: "Tin (If Have)",
-  },
-  {
-    id: 6,
-    req: "Company pad/letterhead (Business Profession)",
-  },
-  {
-    id: 7,
-    req: "Visiting Card/Office ID card",
-  },
-  {
-    id: 8,
-    req: "Photo",
-  },
-  {
-    id: 9,
-    req: "35/45 (4 Copy- Lab print, mat paper, white background)",
-  },
-  {
-    id: 10,
-    req: "35/50 (2Copy- Lab print, mat paper, white background for Malaysia)",
-  },
-  {
-    id: 11,
-    req: "Vaccination Card (for Singapore, Malaysia)",
-  },
-  {
-    id: 12,
-    req: "Marriage certificate (for Newly Married couple)",
-  },
-  {
-    id: 13,
-    req: "NOC letter from school/college/University of children and ID card",
-  },
-];
-
-const RequirementList = () => {
+const RequirementList = ({ reqList }) => {
   return (
     <div className="pt-5 xl:pt-[30px] px-6 xl:px-[34px] pb-8 xl:pb-10">
       <div>
