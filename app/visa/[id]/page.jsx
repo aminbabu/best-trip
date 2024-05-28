@@ -381,7 +381,7 @@ const Page = () => {
                                 <FormControl>
                                   <Input
                                     type="text"
-                                    placeholder="Enter last name"
+                                    placeholder="Passport Number"
                                     className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
                                     {...field}
                                   />
@@ -475,292 +475,6 @@ const Page = () => {
                         </div>
                       </div>
                     ))}
-                    {/* <div className="col-span-6">
-                      <h2 className="text-t-800 text-lg font-medium">
-                        Traveler 1
-                      </h2>
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <FormField
-                        control={form.control}
-                        name="first_name"
-                        render={({ field }) => (
-                          <FormItem className="space-y-3">
-                            <FormLabel className="text-t-800 lg:text-lg font-normal">
-                              First Name<span className="text-primary">*</span>
-                            </FormLabel>
-                            <FormControl>
-                              <Input
-                                type="text"
-                                placeholder="Enter first name"
-                                className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <FormField
-                        control={form.control}
-                        name="last_name"
-                        render={({ field }) => (
-                          <FormItem className="space-y-3">
-                            <FormLabel className="text-t-800 lg:text-lg font-normal">
-                              Last Name<span className="text-primary">*</span>
-                            </FormLabel>
-                            <FormControl>
-                              <Input
-                                type="text"
-                                placeholder="Enter last name"
-                                className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <FormField
-                        control={form.control}
-                        name="gender"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-t-800 lg:text-lg font-normal">
-                              Gender<span className="text-primary">*</span>
-                            </FormLabel>
-                            <Select
-                              onValueChange={field.onChange}
-                              defaultValue={field.value}
-                            >
-                              <FormControl>
-                                <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
-                                  <SelectValue placeholder="Select gender" />
-                                </SelectTrigger>
-                              </FormControl>
-                              <SelectContent>
-                                <SelectItem value="male">Male</SelectItem>
-                                <SelectItem value="female">Female</SelectItem>
-                              </SelectContent>
-                            </Select>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <FormField
-                        control={form.control}
-                        name="dob"
-                        render={({ field }) => (
-                          <FormItem className="flex flex-col">
-                            <FormLabel className="text-t-800 lg:text-lg font-normal">
-                              Date of Birth
-                              <span className="text-primary">*</span>
-                            </FormLabel>
-                            <Popover>
-                              <PopoverTrigger asChild>
-                                <FormControl>
-                                  <Button
-                                    variant={"outline"}
-                                    className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                                  >
-                                    {field.value ? (
-                                      moment(field.value).format("DD-MMM-YYYY")
-                                    ) : (
-                                      <span>Select a date</span>
-                                    )}
-                                  </Button>
-                                </FormControl>
-                              </PopoverTrigger>
-                              <PopoverContent
-                                className="w-auto p-0"
-                                align="start"
-                              >
-                                <Calendar
-                                  mode="single"
-                                  defaultMonth={
-                                    field.value && moment(field.value).toDate()
-                                  }
-                                  captionLayout="dropdown-buttons"
-                                  selected={moment(field.value).toDate()}
-                                  onSelect={field.onChange}
-                                  disabled={(date) =>
-                                    date > new Date() ||
-                                    date < new Date("1900-01-01")
-                                  }
-                                  fromYear={1900}
-                                  toYear={moment().year()}
-                                  initialFocus
-                                />
-                              </PopoverContent>
-                            </Popover>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <FormField
-                        control={form.control}
-                        name="passport_expiry_date"
-                        render={({ field }) => (
-                          <FormItem className="flex flex-col">
-                            <FormLabel className="text-t-800 lg:text-lg font-normal">
-                              Passport Expiry Date
-                              <span className="text-primary">*</span>
-                            </FormLabel>
-                            <Popover>
-                              <PopoverTrigger asChild>
-                                <FormControl>
-                                  <Button
-                                    variant={"outline"}
-                                    className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                                  >
-                                    {field.value ? (
-                                      moment(field.value).format("DD-MMM-YYYY")
-                                    ) : (
-                                      <span>Select a date</span>
-                                    )}
-                                  </Button>
-                                </FormControl>
-                              </PopoverTrigger>
-                              <PopoverContent
-                                className="w-auto p-0"
-                                align="start"
-                              >
-                                <Calendar
-                                  mode="single"
-                                  defaultMonth={
-                                    field.value && moment(field.value).toDate()
-                                  }
-                                  captionLayout="dropdown-buttons"
-                                  selected={moment(field.value).toDate()}
-                                  onSelect={field.onChange}
-                                  disabled={(date) =>
-                                    date > new Date() ||
-                                    date < new Date("1900-01-01")
-                                  }
-                                  fromYear={1900}
-                                  toYear={moment().year()}
-                                  initialFocus
-                                />
-                              </PopoverContent>
-                            </Popover>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <FormField
-                        control={form.control}
-                        name={"passport_no"}
-                        render={({ field }) => (
-                          <FormItem className="space-y-3">
-                            <FormLabel className="text-t-800 lg:text-lg font-normal">
-                              Passport Number
-                              <span className="text-primary">*</span>
-                            </FormLabel>
-                            <FormControl>
-                              <Input
-                                type="text"
-                                placeholder="Enter last name"
-                                className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <FormField
-                        control={form.control}
-                        name="country"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-t-800 lg:text-lg font-normal">
-                              Country<span className="text-primary">*</span>
-                            </FormLabel>
-                            <Select
-                              onValueChange={field.onChange}
-                              defaultValue={field.value}
-                            >
-                              <FormControl>
-                                <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
-                                  <SelectValue placeholder="Select option" />
-                                </SelectTrigger>
-                              </FormControl>
-                              <SelectContent>
-                                <SelectItem value="bangladesh">
-                                  Bangladesh
-                                </SelectItem>
-                                <SelectItem value="india">India</SelectItem>
-                                <SelectItem value="pakistan">
-                                  Pakistan
-                                </SelectItem>
-                              </SelectContent>
-                            </Select>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="col-span-6">
-                      <h3 className="text-t-800 lg:text-lg font-medium">
-                        Contact Details
-                      </h3>
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem className="space-y-3">
-                            <FormLabel className="text-t-800 lg:text-lg font-normal">
-                              Email<span className="text-primary">*</span>
-                            </FormLabel>
-                            <FormControl>
-                              <Input
-                                type="email"
-                                placeholder="Enter email"
-                                className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <FormField
-                        control={form.control}
-                        name="phone"
-                        render={({ field }) => (
-                          <FormItem className="space-y-3">
-                            <FormLabel className="text-t-800 lg:text-lg font-normal">
-                              Phone<span className="text-primary">*</span>
-                            </FormLabel>
-                            <FormControl>
-                              <Input
-                                type="tel"
-                                placeholder="Enter phone number"
-                                className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div> */}
                     <div className="col-span-6 flex flex-col justify-end">
                       <Button type="submit" disabled={loading}>
                         {loading && <Loader className="w-6 h-6 opacity-75" />}
@@ -804,40 +518,42 @@ const Page = () => {
                   <li className="flex justify-between items-center py-[11px]">
                     <p className="text-sm leading-6">Visa Fee</p>
                     <p className="text-sm leading-6">
-                      BDT <span className="text-t-800">30000</span>
+                      BDT <span className="text-t-800">30,000</span>
                     </p>
                   </li>
                   <li className="space-y-0.5">
                     <div className="flex justify-between items-center">
                       <p className="text-sm leading-6">Total Traveler</p>
                       <p className="text-sm leading-6">
-                        BDT <span className="text-t-800">30000</span>
+                        BDT <span className="text-t-800">30,000</span>
                       </p>
                     </div>
                     <span className="grid justify-end text-xs">
-                      (3 X 30000)
+                      (3 X 30,000)
                     </span>
                   </li>
                   <li className="space-y-0.5">
                     <div className="flex justify-between items-center">
                       <p className="text-sm leading-6">BT Service Fee</p>
                       <p className="text-sm leading-6">
-                        BDT <span className="text-t-800">2000</span>
+                        BDT <span className="text-t-800">2,000</span>
                       </p>
                     </div>
-                    <span className="grid justify-end text-xs">(3 X 2000)</span>
+                    <span className="grid justify-end text-xs">
+                      (3 X 2,000)
+                    </span>
                   </li>
                   <li className="flex justify-between items-center pt-2">
                     <p className="text-sm leading-6">Sub - Total (3 pax)</p>
                     <p className="text-sm leading-6 text-t-800">
-                      BDT <span>96000</span>
+                      BDT <span>96,000</span>
                     </p>
                   </li>
                 </ul>
                 <div className="flex justify-between items-center text-white text-sm lg:text-base font-semibold leading-normal px-[10px] py-2 rounded-sm bg-primary">
-                  <p>Sub - Total (3 pax)</p>
-                  <p>
-                    BDT <span>96000</span>
+                  <p className="text-sm leading-6">Pay For (3 pax)</p>
+                  <p className="text-sm leading-6">
+                    BDT <span>96,000</span>
                   </p>
                 </div>
               </div>

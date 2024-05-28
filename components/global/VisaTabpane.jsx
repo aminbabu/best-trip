@@ -11,33 +11,77 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Fragment, useState } from "react";
 import ScrollArea from "@/components/global/ScrollArea";
-import { cn } from "@/lib/utils";
+import { cn, formatError } from "@/lib/utils";
 import Counter from "@/components/global/Counter";
-import Link from "next/link";
-import UnderDevelopment from "./UnderDevelopment";
+import { Loader } from "lucide-react";
+import { visaSchema } from "@/schema/zod";
+import { useRouter } from "next/navigation";
 
-const schedules = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "Auguest",
-  "September",
-  "October",
-  "November",
-  "December",
+const destinations = [
+  {
+    id: 1,
+    name: "United states",
+    code: "US",
+  },
+  {
+    id: 2,
+    name: "Australia",
+    code: "AU",
+  },
+  {
+    id: 3,
+    name: "Canada",
+    code: "CA",
+  },
+  {
+    id: 4,
+    name: "Bangladesh",
+    code: "BD",
+  },
+  {
+    id: 5,
+    name: "India",
+    code: "IN",
+  },
+  {
+    id: 6,
+    name: "Singapore",
+    code: "SG",
+  },
+  {
+    id: 7,
+    name: "Thailand",
+    code: "TH",
+  },
+  {
+    id: 8,
+    name: "Sri Lanka",
+    code: "LK",
+  },
+  {
+    id: 9,
+    name: "United Kingdom",
+    code: "UK",
+  },
 ];
-const types = ["Economy", "Standard", "Premium"];
-const durations = ["5 Days", "10 Days", "15 Days", "20 Days", "25 Days"];
+const nationalities = [
+  "United states",
+  "Australia",
+  "Canada",
+  "Bangladesh",
+  "India",
+  "Singapore",
+  "Thailand",
+  "Sri Lanka",
+  "United Kingdom",
+];
+const types = ["Tourist Visa", "Medical Visa", "Business Visa"];
 const travellers = [
   {
     id: 1,
     title: "Adults",
     description: "12+ years",
-    count: 0,
+    count: 1,
   },
   {
     id: 2,
@@ -53,13 +97,37 @@ const travellers = [
   },
 ];
 
-const VisaTabpane = ({ icon, className }) => {
+const VisaTabpane = ({ icon, disabled, className }) => {
+  const router = useRouter();
+  const [isDisabled, setIsDisabled] = useState(disabled);
   const [open, setOpen] = useState(0);
-  const [schedule, setSchedule] = useState("");
-  const [type, setType] = useState("");
-  const [duration, setDuration] = useState("");
-  const [traveller, setTraveller] = useState(0);
+  const [destination, setDestination] = useState("Bangladesh");
+  const [nationality, setNationality] = useState("Bangladesh");
+  const [type, setType] = useState("Tourist Type");
+  const [traveller, setTraveller] = useState(1);
   const [travellerCounts, setTravellerCounts] = useState(travellers);
+  const [errors, setErrors] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const checkValidation = () => {
+    try {
+      const validatedData = visaSchema.parse({
+        destination,
+        type,
+        nationality,
+        travellers: travellers.reduce((acc, item) => acc + item.count, 0),
+      });
+      return validatedData;
+    } catch (error) {
+      // parse zod error
+      setErrors(formatError(error));
+      return false;
+    }
+  };
+
+  const handleDisableFields = () => {
+    setIsDisabled(false);
+  };
 
   const handleDropdown = (index) => {
     setOpen(index);
@@ -94,7 +162,23 @@ const VisaTabpane = ({ icon, className }) => {
   };
 
   const handleFilter = () => {
-    console.log(schedule, type, duration, traveller);
+    console.log(destination, type, nationality, traveller);
+  };
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    const data = checkValidation();
+
+    if (!data) {
+      return setLoading(false);
+    }
+
+    // TODO: Handle submit
+    setTimeout(() => {
+      console.log(data);
+      setLoading(false);
+      router.push("/search/visa");
+    }, 2000);
   };
 
   return (
@@ -106,18 +190,24 @@ const VisaTabpane = ({ icon, className }) => {
     >
       <DropdownMenu
         open={open === 1}
-        onOpenChange={(state) => handleDropdown(state ? 1 : 0)}
+        onOpenChange={(state) => {
+          setErrors((prevState) => ({ ...prevState, destination: null }));
+          handleDropdown(state ? 1 : 0);
+        }}
       >
-        <DropdownMenuTrigger asChild className="flex-1">
+        <DropdownMenuTrigger asChild className="flex-1" disabled={isDisabled}>
           <Button
             variant="outline"
-            className="flex-col items-stretch gap-y-1 text-left"
+            className={cn(
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5 border-t-400/50 lg:border-border",
+              {
+                "border-p-900 text-p-900": errors?.destination,
+              }
+            )}
           >
-            <span className="text-sm text-t-600 font-normal">
-              Package Schedule
-            </span>
-            <span className="flex items-center justify-between gap-x-4">
-              {schedule ? schedule : "Select"}
+            <span className="text-sm text-t-600 font-normal">Destination</span>
+            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
+              {destination ? destination : "Select Destination"}
               <ArrowIcon
                 className={cn("duration-300", {
                   "transform rotate-180": open === 1,
@@ -131,18 +221,21 @@ const VisaTabpane = ({ icon, className }) => {
           className="px-0 py-2 border-transparent min-w-[17rem]"
         >
           <ScrollArea className="max-h-64">
-            {schedules.map((item) => (
+            {destinations.map((item) => (
               <DropdownMenuItem
-                key={item}
-                onClick={() => setSchedule(item)}
+                key={item.id}
+                onClick={() => setDestination(item.name)}
                 className={cn(
-                  "px-5 py-2.5 text-base text-t-700 font-medium hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer",
+                  "flex justify-between items-center px-5 py-2.5 text-base text-t-800 font-medium hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer group",
                   {
-                    "bg-p-900 text-white": schedule === item,
+                    "bg-p-900 text-white": destination === item,
                   }
                 )}
               >
-                {item}
+                <span>{item.name}</span>
+                <span className="text-t-600 group-hover:text-p-900 group-focus:text-p-900">
+                  {item.code}
+                </span>
               </DropdownMenuItem>
             ))}
           </ScrollArea>
@@ -150,16 +243,24 @@ const VisaTabpane = ({ icon, className }) => {
       </DropdownMenu>
       <DropdownMenu
         open={open === 2}
-        onOpenChange={(state) => handleDropdown(state ? 2 : 0)}
+        onOpenChange={(state) => {
+          handleDropdown(state ? 2 : 0);
+          setErrors((prevState) => ({ ...prevState, nationality: null }));
+        }}
       >
-        <DropdownMenuTrigger asChild className="flex-1">
+        <DropdownMenuTrigger asChild className="flex-1" disabled={isDisabled}>
           <Button
             variant="outline"
-            className="flex-col items-stretch gap-y-1 text-left"
+            className={cn(
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5 border-t-400/50 lg:border-border",
+              {
+                "border-p-900 text-p-900": errors?.nationality,
+              }
+            )}
           >
-            <span className="text-sm text-t-600 font-normal">Package Type</span>
-            <span className="flex items-center justify-between gap-x-4">
-              {type ? type : "Select"}
+            <span className="text-sm text-t-600 font-normal">Nationality</span>
+            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
+              {nationality ? nationality : "Select Nationality"}
               <ArrowIcon
                 className={cn("duration-300", {
                   "transform rotate-180": open === 2,
@@ -173,16 +274,16 @@ const VisaTabpane = ({ icon, className }) => {
           className="px-0 py-2 border-transparent min-w-[17rem]"
         >
           <ScrollArea className="max-h-64">
-            {types.map((item) => (
+            {nationalities.map((item) => (
               <DropdownMenuItem
                 key={item}
                 className={cn(
                   "px-5 py-2.5 text-base text-t-700 font-medium hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer",
                   {
-                    "bg-p-900 text-white": type === item,
+                    "bg-p-900 text-white": nationality === item,
                   }
                 )}
-                onSelect={() => setType(item)}
+                onSelect={() => setNationality(item)}
               >
                 {item}
               </DropdownMenuItem>
@@ -192,18 +293,24 @@ const VisaTabpane = ({ icon, className }) => {
       </DropdownMenu>
       <DropdownMenu
         open={open === 3}
-        onOpenChange={(state) => handleDropdown(state ? 3 : 0)}
+        onOpenChange={(state) => {
+          handleDropdown(state ? 3 : 0);
+          setErrors((prevState) => ({ ...prevState, type: null }));
+        }}
       >
-        <DropdownMenuTrigger asChild className="flex-1">
+        <DropdownMenuTrigger asChild className="flex-1" disabled={isDisabled}>
           <Button
             variant="outline"
-            className="flex-col items-stretch gap-y-1 text-left"
+            className={cn(
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5 border-t-400/50 lg:border-border",
+              {
+                "border-p-900 text-p-900": errors?.type,
+              }
+            )}
           >
-            <span className="text-sm text-t-600 font-normal">
-              Package Duration
-            </span>
-            <span className="flex items-center justify-between gap-x-4">
-              {duration ? duration : "Select"}
+            <span className="text-sm text-t-600 font-normal">Visa Type</span>
+            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
+              {type ? type : "Select Type"}
               <ArrowIcon
                 className={cn("duration-300", {
                   "transform rotate-180": open === 3,
@@ -217,14 +324,14 @@ const VisaTabpane = ({ icon, className }) => {
           className="px-0 py-2 border-transparent min-w-[17rem]"
         >
           <ScrollArea className="max-h-64">
-            {durations.map((item) => (
+            {types.map((item) => (
               <DropdownMenuItem
                 key={item}
-                onSelect={() => setDuration(item)}
+                onSelect={() => setType(item)}
                 className={cn(
                   "px-5 py-2.5 text-base text-t-700 font-medium hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer",
                   {
-                    "bg-p-900 text-white": duration === item,
+                    "bg-p-900 text-white": type === item,
                   }
                 )}
               >
@@ -236,15 +343,23 @@ const VisaTabpane = ({ icon, className }) => {
       </DropdownMenu>
       <DropdownMenu
         open={open === 4}
-        onOpenChange={(state) => handleDropdown(state ? 4 : 0)}
+        onOpenChange={(state) => {
+          setErrors((prevState) => ({ ...prevState, travellerCounts: null }));
+          handleDropdown(state ? 4 : 0);
+        }}
       >
-        <DropdownMenuTrigger asChild className="flex-1">
+        <DropdownMenuTrigger asChild className="flex-1" disabled={isDisabled}>
           <Button
             variant="outline"
-            className="flex-col items-stretch gap-y-1 text-left"
+            className={cn(
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5 border-t-400/50 lg:border-border",
+              {
+                "border-p-900 text-p-900": errors?.travellerCounts,
+              }
+            )}
           >
-            <span className="text-sm text-t-600 font-normal">Travellers</span>
-            <span className="flex items-center justify-between gap-x-4">
+            <span className="text-sm text-t-600 font-normal">Traveler</span>
+            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
               {traveller
                 ? `${traveller} Traveller${traveller > 1 ? "s" : ""}`
                 : "Select"}
@@ -283,8 +398,24 @@ const VisaTabpane = ({ icon, className }) => {
           </ScrollArea>
         </DropdownMenuContent>
       </DropdownMenu>
-      <Button size="lg" onClick={handleFilter} asChild>
-        <Link href="/search/visa">{icon ? icon : <SearchIcon />}</Link>
+      <Button
+        size="lg"
+        className="py-2.5 lg:py-5 rounded-lg lg:roundemd text-sm lg:text-base"
+        onClick={isDisabled ? handleDisableFields : handleSubmit}
+        disabled={loading}
+      >
+        {loading ? (
+          <Loader className="animate-spin w-8 h-8" />
+        ) : isDisabled ? (
+          icon
+        ) : (
+          <>
+            <span className="hidden lg:block">
+              <SearchIcon />
+            </span>
+            <span className="lg:hidden">Search</span>
+          </>
+        )}
       </Button>
     </div>
   );
