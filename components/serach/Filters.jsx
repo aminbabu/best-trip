@@ -1,5 +1,6 @@
 import UmrahTabpane from "@/components/global/UmrahTabpane";
 import { PencilIcon } from "@/components/icons/svgr";
+import VisaTabpane from "../global/VisaTabpane";
 
 const Filters = ({ slug }) => {
   switch (slug) {
@@ -8,7 +9,7 @@ const Filters = ({ slug }) => {
     case "umrah":
       return <UmrahTabpane disabled icon={<PencilIcon />} />;
     case "visa":
-      return <h1>Visa</h1>;
+      return <VisaTabpane disabled icon={<PencilIcon />} />;
     case "customs":
       return <h1>Customs</h1>;
     default:

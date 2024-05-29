@@ -50,6 +50,15 @@ import VisaIcon from "@/public/icons/visa.svg";
 import CheckCircleFilledIcon from "@/public/icons/check-circle-filled.svg";
 import CheckXCircleFilledIcon from "@/public/icons/check-x-circle-filled.svg";
 import DocAltIcon from "@/public/icons/doc-outline.svg";
+import DocRedIcon from "@/public/icons/doc-red.svg";
+import ClockRedIcon from "@/public/icons/clock-red.svg";
+import VisaEntryTypeIcon from "@/public/icons/visa-entry-type.svg";
+import CalenderRedIcon from "@/public/icons/calender-red.svg";
+import PhoneRedIcon from "@/public/icons/phone-red.svg";
+import EnvelopeRedIcon from "@/public/icons/envelope-red.svg";
+import PrinterRedIcon from "@/public/icons/printer-red.svg";
+import LocationRedIcon from "@/public/icons/location-red.svg";
+import TickRedIcon from "@/public/icons/tick-red.svg";
 
 export {
   FacebookIcon,
@@ -104,4 +113,13 @@ export {
   CheckCircleFilledIcon,
   CheckXCircleFilledIcon,
   DocAltIcon,
+  DocRedIcon,
+  ClockRedIcon,
+  VisaEntryTypeIcon,
+  CalenderRedIcon,
+  PhoneRedIcon,
+  EnvelopeRedIcon,
+  PrinterRedIcon,
+  LocationRedIcon,
+  TickRedIcon,
 };

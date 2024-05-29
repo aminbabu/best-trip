@@ -19,6 +19,20 @@ export const umrahSchema = z.object({
 });
 
 /**
+ * @description Schema for visa search
+ *
+ */
+export const visaSchema = z.object({
+  destination: z.string().min(1, { message: "Destination is required" }),
+  nationality: z.string().min(1, { message: "Nationality is required" }),
+  type: z.string().min(1, { message: "Visa Type is required" }),
+  travellers: z
+    .string()
+    .min(1, { message: "Travellers is required" })
+    .or(z.number().min(1, { message: "Travellers is required" })),
+});
+
+/**
  * @description Schema for uuid validation
  *
  */
