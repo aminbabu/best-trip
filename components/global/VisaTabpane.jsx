@@ -76,11 +76,11 @@ const nationalities = [
   "United Kingdom",
 ];
 const types = ["Umrah Visa"];
-const travellers = [
+const traveller = [
   {
     id: 1,
     title: "Adults",
-    description: "12+ years",
+    description: "12 years+",
     count: 1,
   },
   {
@@ -104,8 +104,10 @@ const VisaTabpane = ({ icon, disabled, className }) => {
   const [destination, setDestination] = useState("Saudi Arabia");
   const [nationality, setNationality] = useState("Bangladesh");
   const [type, setType] = useState("Umrah Visa");
-  const [traveller, setTraveller] = useState(1);
-  const [travellerCounts, setTravellerCounts] = useState(travellers);
+  // const [traveller, setTraveller] = useState(1);
+  // const [travellerCounts, setTravellerCounts] = useState(travellers);
+
+  const [travellers, setTravellers] = useState(traveller);
   const [errors, setErrors] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -134,7 +136,7 @@ const VisaTabpane = ({ icon, disabled, className }) => {
   };
 
   const handleCounterIncrement = (id) => {
-    const newTravellers = travellerCounts.map((item) => {
+    const newTravellers = travellers.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -143,12 +145,12 @@ const VisaTabpane = ({ icon, disabled, className }) => {
       }
       return item;
     });
-    setTraveller(newTravellers.reduce((acc, item) => acc + item.count, 0));
-    setTravellerCounts(newTravellers);
+    setTravellers(newTravellers.reduce((acc, item) => acc + item.count, 0));
+    setTravellers(newTravellers);
   };
 
   const handleCounterDecrement = (id) => {
-    const newTravellers = travellerCounts.map((item) => {
+    const newTravellers = travellers.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -157,8 +159,8 @@ const VisaTabpane = ({ icon, disabled, className }) => {
       }
       return item;
     });
-    setTraveller(newTravellers.reduce((acc, item) => acc + item.count, 0));
-    setTravellerCounts(newTravellers);
+    setTravellers(newTravellers.reduce((acc, item) => acc + item.count, 0));
+    setTravellers(newTravellers);
   };
 
   const handleFilter = () => {
@@ -216,7 +218,7 @@ const VisaTabpane = ({ icon, disabled, className }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
-          className="px-0 py-2 border-transparent min-w-[17rem]"
+          className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
             {destinations.map((item) => (
@@ -272,7 +274,7 @@ const VisaTabpane = ({ icon, disabled, className }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
-          className="px-0 py-2 border-transparent min-w-[17rem]"
+          className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
             {nationalities.map((item) => (
@@ -320,7 +322,7 @@ const VisaTabpane = ({ icon, disabled, className }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
-          className="px-0 py-2 border-transparent min-w-[17rem]"
+          className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
             {types.map((item) => (
