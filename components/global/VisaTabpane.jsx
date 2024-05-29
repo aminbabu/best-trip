@@ -58,11 +58,6 @@ const destinations = [
   //   name: "Sri Lanka",
   //   code: "LK",
   // },
-  // {
-  //   id: 9,
-  //   name: "United Kingdom",
-  //   code: "UK",
-  // },
 ];
 const nationalities = [
   "United states",
