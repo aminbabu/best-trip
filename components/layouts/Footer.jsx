@@ -162,7 +162,7 @@ const Footer = ({ className }) => {
               <h2 className="text-xs xs:text-sm sm:text-base lg:text-lg text-inherit font-medium mb-3 lg:mb-5">
                 Office Address
               </h2>
-              <p className="xl:text-lg leading-relaxed xl:leading-relaxed">
+              <p className="xl:text-base leading-relaxed xl:leading-relaxed">
                 Rajlazmi Complex, Lift 6 Rajlaxmi, Uttara Sector 03 Dhaka,
                 Bangladesh.
               </p>
