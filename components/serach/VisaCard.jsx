@@ -30,10 +30,10 @@ const VisaCard = ({ data }) => {
         <CardContent className="p-4 sm:p-5 lg:p-[34px] xl:leading-8 flex flex-col md:flex-row lg:items-center justify-between gap-6 lg:gap-9">
           <Image
             src={data.img}
-            width={270}
-            height={285}
+            width={266}
+            height={266}
             alt={data.name}
-            className="aspect-square w-full md:mx-0 md:w-1/2 lg:w-[270px] lg:h-[285px] flex-shrink-0 rounded-[0.1785rem] object-cover"
+            className="aspect-square w-full md:mx-0 md:w-1/2 lg:w-64 flex-shrink-0 rounded-[0.1785rem] object-cover"
           />
           <div className="flex-1">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 md:pr-[14px]">
@@ -88,7 +88,7 @@ const VisaCard = ({ data }) => {
                   </ul>
                 </div>
               </div>
-              <div className="lg:self-end space-y-4 lg:text-right">
+              <div className="lg:self-end lg:text-right space-y-4">
                 <ul className="grid grid-cols-2 gap-1.5">
                   <li className="col-span-2 text-t-600 text-sm lg:text-base xl:text-lg">
                     Per Pax Price:
@@ -111,7 +111,7 @@ const VisaCard = ({ data }) => {
                 >
                   <Link>Select For Processing</Link>
                 </Button>
-                {/* <div className="flex justify-center mb-auto">
+                <div className="flex flex-col lg:flex-row justify-end items-center text-t-600 leading-normal text-sm lg:text-base md:pr-2 gap-4 mt-[51px]">
                   <CollapsibleTrigger
                     onClick={toggleCollapsible}
                     className="flex items-center lg:gap-[10px]"
@@ -121,10 +121,10 @@ const VisaCard = ({ data }) => {
                       className={`text-primary ${isOpen ? "rotate-180" : ""}`}
                     />
                   </CollapsibleTrigger>
-                </div> */}
+                </div>
               </div>
             </div>
-            <div className="flex flex-col lg:flex-row justify-end items-center text-t-600 leading-normal text-sm lg:text-base mt-[35px] md:pr-[14px] gap-4">
+            {/* <div className="flex flex-col lg:flex-row justify-end items-center text-t-600 leading-normal text-sm lg:text-base md:pr-[14px] gap-4">
               <CollapsibleTrigger
                 onClick={toggleCollapsible}
                 className="flex items-center lg:gap-[10px]"
@@ -134,7 +134,7 @@ const VisaCard = ({ data }) => {
                   className={`text-primary ${isOpen ? "rotate-180" : ""}`}
                 />
               </CollapsibleTrigger>
-            </div>
+            </div> */}
           </div>
         </CardContent>
         <CardCollapsibleContent />
