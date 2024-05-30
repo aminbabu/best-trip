@@ -1,51 +1,68 @@
 import React from "react";
 
-let ConditionList = [
-  {
-    id: 1,
-    condition:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised",
-  },
-  {
-    id: 2,
-    condition:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised",
-  },
-  {
-    id: 3,
-    condition:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised",
-  },
-  {
-    id: 4,
-    condition:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised",
-  },
-  {
-    id: 5,
-    condition:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised",
-  },
-  {
-    id: 6,
-    condition:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised",
-  },
-];
-
 const TermsAnsConditions = () => {
   return (
     <div className="pt-5 xl:pt-[30px] px-6 xl:px-[34px] pb-8 xl:pb-10 space-y-[30px]">
-      {ConditionList.map((item) => (
-        <div key={item.id}>
-          <h4 className="text-base xl:text-lg text-t-800 font-medium leading-relaxed mb-3.5">
-            Privacy Policy
-          </h4>
-          <p className="text-sm xl:text-base text-t-600 font-normal leading-normal">
-            {item.condition}
-          </p>
-        </div>
-      ))}
+      <div>
+        <h4 className="text-base xl:text-lg text-t-800 font-medium leading-relaxed mb-3.5">
+          These Terms / Title
+        </h4>
+        <p className="text-sm xl:text-base text-t-600 font-normal leading-normal">
+          The Kingdom of Saudi Arabia (&quot;KSA&quot;) has introduced an
+          electronic visa service (&quot;eVisa&quot;). The eVisa is a
+          multi-entry electronic travel authorization that allows citizens from
+          eligible countries to visit KSA for a short-term stay. The eVisa has
+          been designed to speed up the process of getting a visa for KSA. The
+          eVisa service is operated by Ministry of Tourism, 7775 Amr Al Damri
+          Street Assafarat Dist. Riyadh 12512-3135 P.O. Box 66680 Riyadh 11586
+          KSA.
+          <br />
+          <br />
+          These terms (&quot;Terms&quot;) provide you with the terms and
+          conditions governing your use of the eVisa scheme and our provision of
+          the eVisa service (&quot;Service&quot;).
+          <br />
+          <br />
+          The Service can be accessed via our website at:
+          <a href="#"> https://besttrip.travel </a> (our &quot;Website&quot;).
+          <br />
+          <br />
+          Please read these Terms carefully before applying for an eVisa or
+          using the Service. You should read the complete terms as this is a
+          legally binding contract and contains information about your legal
+          rights. These Terms tell you who we are, how we will provide Services
+          to you and other important information relating to the eVisa.
+          <br />
+          <br />
+          These terms govern the Service, all of which are offered subject to
+          your acceptance of the Terms, without modification. By using the
+          Service, you confirm that you accept these Terms and that you agree to
+          comply with them without qualification. If you do not agree to these
+          terms, you must not use the Service.
+          <br />
+          <br />
+          We may amend the Terms from time to time. Every time you wish to use
+          the Service, please check these Terms to ensure you understand the
+          terms that apply at that time. In addition, we reserve the right to
+          update and / or change the Website from time to time
+          <br />
+          <br />
+          Besttrip provides only consultancy services and doesn&apos;t provide
+          any guarantee for visas. Visa issuance rights reserved by the embassy.
+          File processing for visas will start only after receiving all
+          necessary documents. Processing time, requirements, and fees are
+          subject to change by the Embassy without any prior notice. The Embassy
+          reserves the right to ask for any additional documents with the
+          above-mentioned checklist. Visa fee and biometric submission fee to
+          embassy are non-refundable. Service charges are non-refundable.
+          <br />
+          <br />
+          For Saudi Arabia Umrah Visa Best Trip Provides
+          <br />
+          <br />
+          About Kingdom of Saudi Arabia KSA Embassy, Dhaka
+        </p>
+      </div>
     </div>
   );
 };

@@ -21,7 +21,7 @@ const CountryInfo = () => {
         <h4 className="text-sm xl:text-base text-t-800 font-medium leading-relaxed mb-[26px]">
           Country Information
         </h4>
-        <p className="text-sm xl:text-base text-t-800 font-normal leading-normal">
+        <p className="text-sm xl:text-base text-t-600 font-normal leading-normal">
           Saudi Arabia, officially the Kingdom of Saudi Arabia, is a country in
           West Asia. It covers the bulk of the Arabian Peninsula and has a land
           area of about 2150000 km², making it the fifth-largest country in Asia
