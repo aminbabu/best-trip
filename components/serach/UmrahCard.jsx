@@ -3,6 +3,7 @@ import Image from "next/image";
 import {
   BusIcon,
   BusRedIcon,
+  CalenderRedIcon,
   ClockAltIcon,
   ClockRedIcon,
   HotelIcon,
@@ -15,6 +16,7 @@ import {
   PeopleRedIcon,
   PlaneIcon,
   PlaneRedIcon,
+  SpoonKnifeRedIcon,
 } from "@/components/icons/svgr";
 import numeral from "numeral";
 import { Button } from "@/components/ui/button";
@@ -24,17 +26,17 @@ const UmrahCard = ({ data }) => {
   const renderInclusionIcon = (item) => {
     switch (item.toLowerCase()) {
       case "flight":
-        return (
-          <PlaneRedIcon className="w-5 h-5 rotate-45" viewBox="0 0 14 14" />
-        );
+        return <PlaneRedIcon className="w-4 h-4" viewBox="0 0 14 14" />;
       case "hotel":
-        return <HotelRedIcon className="w-5 h-5" viewBox="0 0 14 14" />;
+        return <HotelRedIcon className="w-4 h-4" viewBox="0 0 14 14" />;
       case "visa":
         return (
-          <PassportCircleRedIcon className="w-5 h-5" viewBox="0 0 14 14" />
+          <PassportCircleRedIcon className="w-4 h-4" viewBox="0 0 14 14" />
         );
-      case "transport":
-        return <BusRedIcon className="w-5 h-5" viewBox="0 0 14 14" />;
+      case "trns":
+        return <BusRedIcon className="w-4 h-4" viewBox="0 0 16 16" />;
+      case "food":
+        return <SpoonKnifeRedIcon className="w-4 h-4" viewBox="0 0 16 16" />;
       default:
         return null;
     }
@@ -44,15 +46,15 @@ const UmrahCard = ({ data }) => {
       <div className="absolute top-5 -right-9 rotate-45 bg-p-300 px-10 py-2 text-sm lg:text-base text-t-700 font-medium leading-snug capitalize pointer-events-none">
         {data.type}
       </div>
-      <CardContent className="p-4 sm:p-5 lg:p-6 xl:leading-8 flex flex-col md:flex-row lg:items-center justify-between gap-6">
+      <CardContent className="p-4 sm:p-5 lg:p-10 xl:leading-8 flex flex-col md:flex-row lg:items-center justify-between gap-6 lg:gap-9">
         <Image
           src={data.img}
           width={266}
           height={266}
           alt={data.name}
-          className="aspect-square w-full md:mx-0 md:w-1/2 lg:w-64 flex-shrink-0 rounded-[0.1785rem] object-cover"
+          className="aspect-[240/263] w-full md:mx-0 md:w-1/2 lg:w-60 flex-shrink-0 rounded-[0.1785rem] object-cover"
         />
-        <div className="flex-1 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 md:pr-12">
+        <div className="flex-1 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-9">
           <div>
             <h4 className="text-base xl:text-lg text-t-900 font-medium leading-relaxed mb-1.5">
               {data.name}
@@ -60,12 +62,18 @@ const UmrahCard = ({ data }) => {
             <p className="text-sm lg:text-base text-t-800 mb-12 lg:mb-4 xl:mb-12">
               1 Friday In Makkah- 1 Friday In Madinah
             </p>
-            <div className="flex flex-col xl:flex-row justify-between gap-4 xl:gap-x-12">
+            <div className="flex flex-col xl:flex-row justify-between gap-4 xl:gap-10">
               <ul className="space-y-3 lg:space-y-2 xl:space-y-3">
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
                   <LocationCircleRedIcon className="mt-0.5 flex-shrink-0" />
                   <span className="flex-shrink-0">
-                    From <span className="text-primary">{data.from}</span>
+                    From <span className="">{data.from}</span>
+                  </span>
+                </li>
+                <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
+                  <CalenderRedIcon className="mt-0.5 flex-shrink-0" />
+                  <span className="flex-shrink-0">
+                    Journey Date : 20 Jun, 2024
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
@@ -77,11 +85,11 @@ const UmrahCard = ({ data }) => {
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
                   <PeopleRedIcon className="mt-0.5 flex-shrink-0" />
                   <span className="flex-shrink-0">
-                    Group Available {data.group} Pax
+                    Group Available : {data.group} Pax
                   </span>
                 </li>
               </ul>
-              <div className="flex flex-col gap-y-4">
+              <div className="flex flex-col gap-y-4 justify-end">
                 <div className="text-t-600 text-sm lg:text-base leading-normal xl:text-center px-4 py-2 rounded-sm bg-p-300">
                   Package Inclusion
                 </div>

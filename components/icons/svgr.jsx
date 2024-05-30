@@ -65,6 +65,7 @@ import HotelRedIcon from "@/public/icons/hotel-red.svg";
 import PlaneRedIcon from "@/public/icons/plane-red.svg";
 import LocationCircleRedIcon from "@/public/icons/location-circle-red.svg";
 import PeopleRedIcon from "@/public/icons/people-red.svg";
+import SpoonKnifeRedIcon from "@/public/icons/spoon-knife-red.svg";
 
 export {
   FacebookIcon,
@@ -134,4 +135,5 @@ export {
   PlaneRedIcon,
   LocationCircleRedIcon,
   PeopleRedIcon,
+  SpoonKnifeRedIcon,
 };
