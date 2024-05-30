@@ -60,6 +60,11 @@ import PrinterRedIcon from "@/public/icons/printer-red.svg";
 import LocationRedIcon from "@/public/icons/location-red.svg";
 import TickRedIcon from "@/public/icons/tick-red.svg";
 import BusRedIcon from "@/public/icons/bus-red.svg";
+import PassportCircleRedIcon from "@/public/icons/passport-circle-red.svg";
+import HotelRedIcon from "@/public/icons/hotel-red.svg";
+import PlaneRedIcon from "@/public/icons/plane-red.svg";
+import LocationCircleRedIcon from "@/public/icons/location-circle-red.svg";
+import PeopleRedIcon from "@/public/icons/people-red.svg";
 
 export {
   FacebookIcon,
@@ -124,4 +129,9 @@ export {
   LocationRedIcon,
   TickRedIcon,
   BusRedIcon,
+  PassportCircleRedIcon,
+  HotelRedIcon,
+  PlaneRedIcon,
+  LocationCircleRedIcon,
+  PeopleRedIcon,
 };

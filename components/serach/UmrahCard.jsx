@@ -2,12 +2,19 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import {
   BusIcon,
+  BusRedIcon,
   ClockAltIcon,
+  ClockRedIcon,
   HotelIcon,
+  HotelRedIcon,
   LocationCircleIcon,
+  LocationCircleRedIcon,
+  PassportCircleRedIcon,
   PassportIcon,
   PeopleIcon,
+  PeopleRedIcon,
   PlaneIcon,
+  PlaneRedIcon,
 } from "@/components/icons/svgr";
 import numeral from "numeral";
 import { Button } from "@/components/ui/button";
@@ -17,13 +24,17 @@ const UmrahCard = ({ data }) => {
   const renderInclusionIcon = (item) => {
     switch (item.toLowerCase()) {
       case "flight":
-        return <PlaneIcon className="w-5 h-5 rotate-45" viewBox="0 0 14 14" />;
+        return (
+          <PlaneRedIcon className="w-5 h-5 rotate-45" viewBox="0 0 14 14" />
+        );
       case "hotel":
-        return <HotelIcon className="w-5 h-5" viewBox="0 0 14 14" />;
+        return <HotelRedIcon className="w-5 h-5" viewBox="0 0 14 14" />;
       case "visa":
-        return <PassportIcon className="w-5 h-5" viewBox="0 0 14 14" />;
+        return (
+          <PassportCircleRedIcon className="w-5 h-5" viewBox="0 0 14 14" />
+        );
       case "transport":
-        return <BusIcon className="w-5 h-5" viewBox="0 0 14 14" />;
+        return <BusRedIcon className="w-5 h-5" viewBox="0 0 14 14" />;
       default:
         return null;
     }
@@ -52,19 +63,19 @@ const UmrahCard = ({ data }) => {
             <div className="flex flex-col xl:flex-row justify-between gap-4 xl:gap-x-12">
               <ul className="space-y-3 lg:space-y-2 xl:space-y-3">
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
-                  <LocationCircleIcon className="mt-0.5 flex-shrink-0" />
+                  <LocationCircleRedIcon className="mt-0.5 flex-shrink-0" />
                   <span className="flex-shrink-0">
                     From <span className="text-primary">{data.from}</span>
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
-                  <ClockAltIcon className="mt-0.5 flex-shrink-0" />
+                  <ClockRedIcon className="mt-0.5 flex-shrink-0" />
                   <span className="flex-shrink-0">
                     {data.days} Days | {data.nights} Nights
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
-                  <PeopleIcon className="mt-0.5 flex-shrink-0" />
+                  <PeopleRedIcon className="mt-0.5 flex-shrink-0" />
                   <span className="flex-shrink-0">
                     Group Available {data.group} Pax
                   </span>
