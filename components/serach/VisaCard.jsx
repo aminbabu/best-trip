@@ -102,7 +102,7 @@ const VisaCard = ({ data }) => {
                 </Button>
               </div>
             </div>
-            <div className="flex flex-col lg:flex-row justify-between items-center text-t-600 leading-normal text-sm lg:text-base xl:text-lg mt-[35px] md:pr-[14px] gap-4">
+            <div className="flex flex-col lg:flex-row justify-between items-center text-t-600 leading-normal text-sm lg:text-base mt-[35px] md:pr-[14px] gap-4">
               <p>
                 Processing Time : {data.processingTime.from} -{" "}
                 {data.processingTime.to} Working Days
