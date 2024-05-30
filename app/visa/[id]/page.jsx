@@ -527,7 +527,7 @@ const Page = () => {
                 <ul className="px-2.5 py-5 space-y-2 text-t-600 font-medium leading-6">
                   <li className="flex justify-between items-center py-[11px]">
                     <p className="text-sm font-normal leading-6">Visa Fee</p>
-                    <p className="text-sm leading-6 font-normal">
+                    <p className="text-base leading-7 font-normal">
                       BDT <span className="text-t-800 font-medium">30,000</span>
                     </p>
                   </li>
@@ -536,12 +536,12 @@ const Page = () => {
                       <p className="text-sm font-normal leading-6">
                         Total Traveler
                       </p>
-                      <p className="text-sm leading-6 font-normal">
+                      <p className="text-base leading-7 font-normal">
                         BDT{" "}
                         <span className="text-t-800 font-medium">30,000</span>
                       </p>
                     </div>
-                    <span className="grid justify-end text-xs leading-relaxed">
+                    <span className="grid justify-end text-sm leading-relaxed">
                       (3 X 30,000)
                     </span>
                   </li>
@@ -550,27 +550,27 @@ const Page = () => {
                       <p className="text-sm font-normal leading-6">
                         BT Service Fee
                       </p>
-                      <p className="text-sm leading-6 font-normal">
+                      <p className="text-base leading-7 font-normal">
                         BDT{" "}
                         <span className="text-t-800 font-medium">2,000</span>
                       </p>
                     </div>
-                    <span className="grid justify-end text-xs leading-relaxed">
+                    <span className="grid justify-end text-sm leading-relaxed">
                       (3 X 2,000)
                     </span>
                   </li>
                   <li className="flex justify-between items-center pt-2">
-                    <p className="text-sm font-normal leading-6">
+                    <p className="text-base font-normal leading-6">
                       Sub - Total (3 pax)
                     </p>
-                    <p className="text-sm leading-6 text-t-800">
+                    <p className="text-base leading-6 text-t-800">
                       BDT <span>96,000</span>
                     </p>
                   </li>
                 </ul>
-                <div className="flex justify-between items-center text-white text-sm lg:text-base font-semibold leading-normal px-[10px] py-2 rounded-sm bg-primary">
+                <div className="flex justify-between items-center text-white text-base lg:text-base font-semibold leading-normal px-[11px] py-2.5 rounded-sm bg-primary">
                   <p className="text-sm leading-snug">Pay For (3 pax)</p>
-                  <p className="text-sm leading-snug">
+                  <p className="text-base leading-snug">
                     BDT <span>96,000</span>
                   </p>
                 </div>

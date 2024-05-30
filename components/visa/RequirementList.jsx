@@ -2,7 +2,30 @@ import React from "react";
 import { TickRedIcon } from "../icons/svgr";
 import Notice from "../global/Notice";
 
-const RequirementList = ({ reqList }) => {
+let reqList = [
+  {
+    id: 1,
+    req: "Passport copy with minimum 6 months validity",
+  },
+  {
+    id: 2,
+    req: "Passport size photo (white background)",
+  },
+  {
+    id: 3,
+    req: "ID card/ Birth certificate",
+  },
+  {
+    id: 4,
+    req: "Return Ticket Booking copy",
+  },
+  {
+    id: 5,
+    req: "Hotel Booking copy",
+  },
+];
+
+const RequirementList = () => {
   return (
     <div className="pt-5 xl:pt-[30px] px-6 xl:px-[34px] pb-8 xl:pb-10">
       {/* <div>
