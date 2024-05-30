@@ -124,17 +124,6 @@ const VisaCard = ({ data }) => {
                 </div>
               </div>
             </div>
-            {/* <div className="flex flex-col lg:flex-row justify-end items-center text-t-600 leading-normal text-sm lg:text-base md:pr-[14px] gap-4">
-              <CollapsibleTrigger
-                onClick={toggleCollapsible}
-                className="flex items-center lg:gap-[10px]"
-              >
-                {isOpen ? "Hide Details" : "View More Details"}
-                <ArrowIcon
-                  className={`text-primary ${isOpen ? "rotate-180" : ""}`}
-                />
-              </CollapsibleTrigger>
-            </div> */}
           </div>
         </CardContent>
         <CardCollapsibleContent />

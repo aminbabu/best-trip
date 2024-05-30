@@ -10,7 +10,7 @@ import { ArrowIcon } from "../icons/svgr";
 import Notice from "../global/Notice";
 
 const CountryInfo = ({ countryInfo }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const toggleCollapsible = () => {
     setIsOpen(!isOpen);
@@ -81,7 +81,7 @@ const CountryInfo = ({ countryInfo }) => {
           </ul>
         </div>
         <div className="col-span-12 md:col-span-8">
-          <Collapsible className="grid space-y-6">
+          <Collapsible open={isOpen} className="grid space-y-6">
             <CollapsibleTrigger
               className="flex items-center lg:gap-[10px] justify-self-end text-primary"
               onClick={toggleCollapsible}

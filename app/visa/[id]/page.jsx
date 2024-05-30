@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import visaCardImg from "@/public/images/search/visa/visa-card-img.png";
 import {
+  BusRedIcon,
   CalenderRedIcon,
   ClockRedIcon,
   DocRedIcon,
@@ -103,19 +104,19 @@ const Page = () => {
               <CardContent className="p-4 sm:p-5 lg:pl-6 lg:pr-[30px] lg:py-[34px] xl:leading-8 flex flex-col md:flex-row lg:items-center justify-between gap-6">
                 <Image
                   src={visaCardImg}
-                  width={270}
-                  height={285}
+                  width={266}
+                  height={266}
                   alt="Dubai - Electronic Visa"
-                  className="aspect-square w-full md:mx-0 md:w-1/2 lg:w-[245px] lg:h-[285px] flex-shrink-0 rounded-[0.1785rem] object-cover"
+                  className="aspect-square w-full md:mx-0 md:w-1/2 lg:w-64 flex-shrink-0 rounded-[0.1785rem] object-cover"
                 />
                 <div className="flex-1">
                   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
                     <div>
                       <h4 className="text-base xl:text-lg text-t-900 font-medium leading-relaxed mb-1.5">
-                        Dubai - Electronic Visa
+                        Saudi Arabia Umrah Visa
                       </h4>
                       <p className="text-sm lg:text-base text-t-800 mb-[35px] lg:mb-4 xl:mb-[35px]">
-                        Tourist Visa
+                        Electronic Visa (E-Visa)
                       </p>
                       <div className="flex gap-y-4">
                         <div className="text-t-600 text-sm lg:text-base leading-normal xl:text-center px-[10px] py-[5px] rounded-sm bg-p-300 mb-[18px]">
@@ -148,12 +149,21 @@ const Page = () => {
                               Validity: Max 30 Days
                             </span>
                           </li>
+                          <li className="flex gap-x-2 text-sm xl:text-md text-t-600 leading-normal">
+                            <CalenderRedIcon className="mt-0.5 flex-shrink-0" />
+                            <span className="flex-shrink-0">
+                              Processing Time: 7 Days
+                            </span>
+                          </li>
+                          <li className="flex gap-x-2 text-sm xl:text-md text-t-600 leading-normal">
+                            <BusRedIcon className="mt-0.5 flex-shrink-0" />
+                            <span className="flex-shrink-0">
+                              With Transport
+                            </span>
+                          </li>
                         </ul>
                       </div>
                     </div>
-                  </div>
-                  <div className="flex flex-col lg:flex-row justify-between items-center text-t-600 leading-normal text-sm lg:text-base xl:text-lg mt-[35px] md:pr-[14px] gap-4">
-                    <p>Processing Time : 5 - 7 Working Days</p>
                   </div>
                 </div>
               </CardContent>
@@ -503,11 +513,11 @@ const Page = () => {
             </div>
             <div>
               <div className="pt-6 space-y-1.5">
-                <h2 className="text-t-800 text-lg text-center font-medium leading-normal">
-                  Dubai - Electronic Visa
+                <h2 className="text-t-800 text-lg text-center font-medium leading-snug">
+                  Saudi Arabia Umrah Visa
                 </h2>
-                <p className="text-t-600 text-sm text-center font-medium leading-normal">
-                  Tourist Visa
+                <p className="text-t-600 text-sm text-center leading-relaxed">
+                  Electronic Visa (E-Visa)
                 </p>
               </div>
               <div className="px-6 pt-5 pb-[34px]">
@@ -516,43 +526,49 @@ const Page = () => {
                 </div>
                 <ul className="px-2.5 py-5 space-y-2 text-t-600 font-medium leading-6">
                   <li className="flex justify-between items-center py-[11px]">
-                    <p className="text-sm leading-6">Visa Fee</p>
+                    <p className="text-sm font-normal leading-6">Visa Fee</p>
                     <p className="text-sm leading-6">
                       BDT <span className="text-t-800">30,000</span>
                     </p>
                   </li>
                   <li className="space-y-0.5">
                     <div className="flex justify-between items-center">
-                      <p className="text-sm leading-6">Total Traveler</p>
+                      <p className="text-sm font-normal leading-6">
+                        Total Traveler
+                      </p>
                       <p className="text-sm leading-6">
                         BDT <span className="text-t-800">30,000</span>
                       </p>
                     </div>
-                    <span className="grid justify-end text-xs">
+                    <span className="grid justify-end text-xs leading-relaxed">
                       (3 X 30,000)
                     </span>
                   </li>
                   <li className="space-y-0.5">
                     <div className="flex justify-between items-center">
-                      <p className="text-sm leading-6">BT Service Fee</p>
+                      <p className="text-sm font-normal leading-6">
+                        BT Service Fee
+                      </p>
                       <p className="text-sm leading-6">
                         BDT <span className="text-t-800">2,000</span>
                       </p>
                     </div>
-                    <span className="grid justify-end text-xs">
+                    <span className="grid justify-end text-xs leading-relaxed">
                       (3 X 2,000)
                     </span>
                   </li>
                   <li className="flex justify-between items-center pt-2">
-                    <p className="text-sm leading-6">Sub - Total (3 pax)</p>
+                    <p className="text-sm font-normal leading-6">
+                      Sub - Total (3 pax)
+                    </p>
                     <p className="text-sm leading-6 text-t-800">
                       BDT <span>96,000</span>
                     </p>
                   </li>
                 </ul>
                 <div className="flex justify-between items-center text-white text-sm lg:text-base font-semibold leading-normal px-[10px] py-2 rounded-sm bg-primary">
-                  <p className="text-sm leading-6">Pay For (3 pax)</p>
-                  <p className="text-sm leading-6">
+                  <p className="text-sm leading-snug">Pay For (3 pax)</p>
+                  <p className="text-sm leading-snug">
                     BDT <span>96,000</span>
                   </p>
                 </div>
