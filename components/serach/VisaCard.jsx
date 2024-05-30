@@ -54,19 +54,19 @@ const VisaCard = ({ data }) => {
                     <li className="flex gap-x-2 text-sm xl:text-md text-t-500 leading-normal">
                       <DocRedIcon className="mt-0.5 flex-shrink-0" />
                       <span className="flex-shrink-0">
-                        Visa Type : {data.visaType}
+                        Visa Category : Single Visa
                       </span>
                     </li>
                     <li className="flex gap-x-2 text-sm xl:text-md text-t-600 leading-normal">
                       <ClockRedIcon className="mt-0.5 flex-shrink-0" />
                       <span className="flex-shrink-0">
-                        Maximum Stays : {data.maxStays} Days
+                        Maximum Stays : 15 Days
                       </span>
                     </li>
                     <li className="flex gap-x-2 text-sm xl:text-md text-t-600 leading-normal">
                       <VisaEntryTypeIcon className="mt-0.5 flex-shrink-0" />
                       <span className="flex-shrink-0">
-                        Entry Type : {data.entryType}
+                        Entry Type : Single Entry
                       </span>
                     </li>
                     <li className="flex gap-x-2 text-sm xl:text-md text-t-600 leading-normal">
@@ -91,13 +91,13 @@ const VisaCard = ({ data }) => {
               <div className="lg:self-end lg:text-right space-y-4">
                 <ul className="grid grid-cols-2 gap-1.5">
                   <li className="col-span-2 text-t-600 text-sm lg:text-base xl:text-lg">
-                    Per Pax Price:
+                    Per Pax Price :
                     <span className="text-t-900 ml-2">
                       {numeral(data.visaFee).format("0,0")} BDT
                     </span>
                   </li>
                   <li className="col-span-2 text-t-600 text-sm lg:text-base xl:text-lg">
-                    Sub Total:
+                    Sub Total :
                     <span className="text-t-900 ml-2">
                       {numeral(data.visaFee).format("0,0")} BDT
                     </span>
@@ -111,7 +111,7 @@ const VisaCard = ({ data }) => {
                 >
                   <Link>Select For Processing</Link>
                 </Button>
-                <div className="flex flex-col lg:flex-row justify-end items-center text-t-600 leading-normal text-sm lg:text-base md:pr-2 gap-4 mt-[51px]">
+                <div className="flex flex-col lg:flex-row justify-end lg:items-center text-t-600 leading-normal text-sm lg:text-base md:pr-2 gap-4 mt-[51px]">
                   <CollapsibleTrigger
                     onClick={toggleCollapsible}
                     className="flex items-center lg:gap-[10px]"
