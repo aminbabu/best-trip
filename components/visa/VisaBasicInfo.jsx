@@ -30,19 +30,18 @@ const VisaBasicInfo = () => {
           About Kingdom of Saudi Arabia KSA Embassy, Dhaka
         </h4>
         <p className="text-sm xl:text-base text-t-600 font-normal leading-normal">
-          The UAE Embassy, Dhaka plays an important role in the strong
-          partnership between the UAE and Bangladesh Governments that supports
-          understanding, recovery and prosperity for both countries. Since the
-          establishment of the United Arab Emirates on 2 December 1971, the UAE
-          adopted a balanced foreign policy based on adoption of dialogue,
-          respect of international conventions, commitment to the United Nations
-          Charter and non-interference of other country&apos;s internal affairs,
-          and the settlement of disputes by peaceful means. One of the main
-          anchoresses of the UAE&apos;s foreign policy has been building
-          cooperation-based relations with all countries of the world. As a part
-          of this UAE embassy, Dhaka was established in 1987.since its creation,
-          the UAE Embassy has been playing an important role in fostering the
-          strong and close relationship between UAE and Bangladesh.
+          Saudi Arabian Embassy in Dhaka runs an inclusive range of consular
+          services to local, Saudi Arabian, and international citizens in
+          Bangladesh.The Saudi Arabian Embassy in Dhaka supports Bangladesh
+          citizens through its consular services, if they: Need general or
+          specific info regarding Saudi Arabian economy, culture, sports,
+          education and more. Need information regarding requirements
+          andimmigration process in Kingdom of Saudi Arabia.Specific contacts
+          and information in Saudi Arabia. Want to apply and obtain Saudi
+          Arabian Visa. Office Address : House 5 (NE) L, Road
+          83,Gulshan-2,Dhaka-1212. Phone Number : 0088028834078, 0088028834079.
+          Fax : 00880248810948. Email : bdemb@mofa.gov.sa Operational Hours :
+          From 9:00 a.m. to 16:00 p.m. Holidays : Friday and Saturday.
         </p>
       </div>
       {/* <div className="flex flex-col justify-between max-w-[655px] mx-auto">

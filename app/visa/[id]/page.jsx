@@ -146,7 +146,7 @@ const Page = () => {
                           <li className="flex gap-x-2 text-sm xl:text-md text-t-600 leading-normal">
                             <CalenderRedIcon className="mt-0.5 flex-shrink-0" />
                             <span className="flex-shrink-0">
-                              Validity: Max 30 Days
+                              Validity : Max 30 Days
                             </span>
                           </li>
                           <li className="flex gap-x-2 text-sm xl:text-md text-t-600 leading-normal">
