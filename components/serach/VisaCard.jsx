@@ -8,6 +8,7 @@ import {
   ArrowIcon,
   ClockRedIcon,
   CalenderRedIcon,
+  BusRedIcon,
 } from "../icons/svgr";
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -38,10 +39,10 @@ const VisaCard = ({ data }) => {
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 md:pr-[14px]">
               <div>
                 <h4 className="text-base xl:text-lg text-t-900 font-medium leading-relaxed mb-1.5">
-                  {data.name}
+                  Saudi Arabia Umrah Visa
                 </h4>
                 <p className="text-sm lg:text-base text-t-800 mb-[35px] lg:mb-4 xl:mb-[35px]">
-                  {data.type}
+                  Electronic Visa (E-Visa)
                 </p>
                 <div className="flex gap-y-4">
                   <div className="text-t-600 text-sm lg:text-base leading-normal xl:text-center px-[10px] py-[5px] rounded-sm bg-p-300 mb-[18px]">
@@ -74,10 +75,20 @@ const VisaCard = ({ data }) => {
                         Validity : Max {data.validity} Days
                       </span>
                     </li>
+                    <li className="flex gap-x-2 text-sm xl:text-md text-t-600 leading-normal">
+                      <CalenderRedIcon className="mt-0.5 flex-shrink-0" />
+                      <span className="flex-shrink-0">
+                        Processing Time: {data.processingTime} Days
+                      </span>
+                    </li>
+                    <li className="flex gap-x-2 text-sm xl:text-md text-t-600 leading-normal">
+                      <BusRedIcon className="mt-0.5 flex-shrink-0" />
+                      <span className="flex-shrink-0">With Transport</span>
+                    </li>
                   </ul>
                 </div>
               </div>
-              <div className="lg:self-end space-y-4 lg:text-right lg:pb-4">
+              <div className="lg:self-end space-y-4 lg:text-right">
                 <ul className="grid grid-cols-2 gap-1.5">
                   <li className="col-span-2 text-t-600 text-sm lg:text-base xl:text-lg">
                     Per Pax Price:
@@ -100,13 +111,20 @@ const VisaCard = ({ data }) => {
                 >
                   <Link>Select For Processing</Link>
                 </Button>
+                {/* <div className="flex justify-center mb-auto">
+                  <CollapsibleTrigger
+                    onClick={toggleCollapsible}
+                    className="flex items-center lg:gap-[10px]"
+                  >
+                    {isOpen ? "Hide Details" : "View More Details"}
+                    <ArrowIcon
+                      className={`text-primary ${isOpen ? "rotate-180" : ""}`}
+                    />
+                  </CollapsibleTrigger>
+                </div> */}
               </div>
             </div>
-            <div className="flex flex-col lg:flex-row justify-between items-center text-t-600 leading-normal text-sm lg:text-base mt-[35px] md:pr-[14px] gap-4">
-              <p>
-                Processing Time : {data.processingTime.from} -{" "}
-                {data.processingTime.to} Working Days
-              </p>
+            <div className="flex flex-col lg:flex-row justify-end items-center text-t-600 leading-normal text-sm lg:text-base mt-[35px] md:pr-[14px] gap-4">
               <CollapsibleTrigger
                 onClick={toggleCollapsible}
                 className="flex items-center lg:gap-[10px]"
