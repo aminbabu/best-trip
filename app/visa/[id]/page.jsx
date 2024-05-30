@@ -73,14 +73,17 @@ const Page = () => {
     {
       id: 1,
       travelerNo: 1,
+      type: "Adult",
     },
     {
       id: 2,
       travelerNo: 2,
+      type: "Children",
     },
     {
       id: 3,
       travelerNo: 3,
+      type: "Infant",
     },
   ];
 
@@ -189,7 +192,7 @@ const Page = () => {
                       >
                         <div className="col-span-6">
                           <h2 className="text-t-800 text-lg font-medium">
-                            Traveler {item.travelerNo}
+                            Traveler {item.travelerNo} ({item.type})
                           </h2>
                         </div>
                         <div className="col-span-6 sm:col-span-3">
@@ -434,57 +437,57 @@ const Page = () => {
                             )}
                           />
                         </div>
-                        <div className="col-span-6">
-                          <h3 className="text-t-800 lg:text-lg font-medium">
-                            Contact Details
-                          </h3>
-                        </div>
-                        <div className="col-span-6 sm:col-span-3">
-                          <FormField
-                            control={form.control}
-                            name="email"
-                            render={({ field }) => (
-                              <FormItem className="space-y-3">
-                                <FormLabel className="text-t-800 lg:text-lg font-normal">
-                                  Email<span className="text-primary">*</span>
-                                </FormLabel>
-                                <FormControl>
-                                  <Input
-                                    type="email"
-                                    placeholder="Enter email"
-                                    className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                                    {...field}
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                        <div className="col-span-6 sm:col-span-3">
-                          <FormField
-                            control={form.control}
-                            name="phone"
-                            render={({ field }) => (
-                              <FormItem className="space-y-3">
-                                <FormLabel className="text-t-800 lg:text-lg font-normal">
-                                  Phone<span className="text-primary">*</span>
-                                </FormLabel>
-                                <FormControl>
-                                  <Input
-                                    type="tel"
-                                    placeholder="Enter phone number"
-                                    className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                                    {...field}
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
                       </div>
                     ))}
+                    <div className="col-span-6">
+                      <h3 className="text-t-800 lg:text-lg font-medium">
+                        Contact Details
+                      </h3>
+                    </div>
+                    <div className="col-span-6 sm:col-span-3">
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem className="space-y-3">
+                            <FormLabel className="text-t-800 lg:text-lg font-normal">
+                              Email<span className="text-primary">*</span>
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                type="email"
+                                placeholder="Enter email"
+                                className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    <div className="col-span-6 sm:col-span-3">
+                      <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                          <FormItem className="space-y-3">
+                            <FormLabel className="text-t-800 lg:text-lg font-normal">
+                              Phone<span className="text-primary">*</span>
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                type="tel"
+                                placeholder="Enter phone number"
+                                className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
                     <div className="col-span-6 flex flex-col justify-end">
                       <Button type="submit" disabled={loading}>
                         {loading && <Loader className="w-6 h-6 opacity-75" />}
@@ -525,10 +528,10 @@ const Page = () => {
                   Fare Summary
                 </div>
                 <ul className="px-2.5 py-5 space-y-2 text-t-600 font-medium leading-6">
-                  <li className="flex justify-between items-center py-[11px]">
+                  <li className="flex justify-between items-center py-[5px]">
                     <p className="text-sm font-normal leading-6">Visa Fee</p>
                     <p className="text-base leading-7 font-normal">
-                      BDT <span className="text-t-800 font-medium">30,000</span>
+                      BDT 30,000
                     </p>
                   </li>
                   <li className="space-y-0.5">
@@ -537,8 +540,7 @@ const Page = () => {
                         Total Traveler
                       </p>
                       <p className="text-base leading-7 font-normal">
-                        BDT{" "}
-                        <span className="text-t-800 font-medium">30,000</span>
+                        BDT 30,000
                       </p>
                     </div>
                     <span className="grid justify-end text-sm leading-relaxed">
@@ -551,8 +553,7 @@ const Page = () => {
                         BT Service Fee
                       </p>
                       <p className="text-base leading-7 font-normal">
-                        BDT{" "}
-                        <span className="text-t-800 font-medium">2,000</span>
+                        BDT 2,000
                       </p>
                     </div>
                     <span className="grid justify-end text-sm leading-relaxed">
@@ -563,9 +564,7 @@ const Page = () => {
                     <p className="text-base font-normal leading-6">
                       Sub - Total (3 pax)
                     </p>
-                    <p className="text-base leading-6 text-t-800">
-                      BDT <span>96,000</span>
-                    </p>
+                    <p className="text-base leading-6 text-t-600">BDT 96,000</p>
                   </li>
                 </ul>
                 <div className="flex justify-between items-center text-white text-base lg:text-base font-semibold leading-normal px-[11px] py-2.5 rounded-sm bg-primary">
