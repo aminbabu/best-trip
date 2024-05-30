@@ -49,7 +49,7 @@ const VisaCard = ({ data }) => {
                   </div>
                 </div>
                 <div className="flex flex-col xl:flex-row justify-between gap-4 xl:gap-x-12">
-                  <ul className="grid xl:grid-cols-2 gap-x-[50px] gap-y-3 lg:gap-y-2 xl:gap-y-3">
+                  <ul className="grid xl:grid-cols-2 gap-x-[50px] gap-y-3 lg:gap-y-2 xl:gap-y-3 font-medium">
                     <li className="flex gap-x-2 text-sm xl:text-md text-t-500 leading-normal">
                       <DocRedIcon className="mt-0.5 flex-shrink-0" />
                       <span className="flex-shrink-0">
