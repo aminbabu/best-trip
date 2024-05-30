@@ -30,29 +30,29 @@ const CountryInfo = ({ countryInfo }) => {
           <ul className="space-y-4">
             <li>
               <span className="text-sm xl:text-base text-t-800 font-normal leading-normal">
-                Country:{" "}
+                Country :{" "}
                 <span className="text-t-600">{countryInfo.countryName}</span>
               </span>
             </li>
             <li>
               <span className="text-sm xl:text-base text-t-800 font-normal leading-normal">
-                Capital:{" "}
+                Capital :{" "}
                 <span className="text-t-600">{countryInfo.capital}</span>
               </span>
             </li>
             <li>
               <span className="text-sm xl:text-base text-t-800 font-normal leading-normal">
-                King: <span className="text-t-600">{countryInfo.king}</span>
+                King : <span className="text-t-600">{countryInfo.king}</span>
               </span>
             </li>
             <li>
               <span className="text-sm xl:text-base text-t-800 font-normal leading-normal">
-                Currency: <span className="text-t-600">Saudi Riyal</span>
+                Currency : <span className="text-t-600">Saudi Riyal</span>
               </span>
             </li>
             <li>
               <span className="text-sm xl:text-base text-t-800 font-normal leading-normal">
-                Government:{" "}
+                Government :{" "}
                 <span className="text-t-600">
                   Monarchy, Absolute monarchy, Unitary state, Islamic state
                 </span>
@@ -60,7 +60,7 @@ const CountryInfo = ({ countryInfo }) => {
             </li>
             <li>
               <span className="text-sm xl:text-base text-t-800 font-normal leading-normal">
-                Population:{" "}
+                Population :{" "}
                 <span className="text-t-600">
                   35.95 million (2021) World Bank
                 </span>
@@ -68,13 +68,13 @@ const CountryInfo = ({ countryInfo }) => {
             </li>
             <li>
               <span className="text-sm xl:text-base text-t-800 font-normal leading-normal">
-                Dialing code:{" "}
+                Dialing code :{" "}
                 <span className="text-t-600">{countryInfo.dialingCode}</span>
               </span>
             </li>
             <li>
               <span className="text-sm xl:text-base text-t-800 font-normal leading-normal">
-                Date format:{" "}
+                Date format :{" "}
                 <span className="text-t-600">{countryInfo.dateFormat}</span>
               </span>
             </li>

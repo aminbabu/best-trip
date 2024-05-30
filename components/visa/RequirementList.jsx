@@ -5,7 +5,7 @@ import Notice from "../global/Notice";
 const RequirementList = ({ reqList }) => {
   return (
     <div className="pt-5 xl:pt-[30px] px-6 xl:px-[34px] pb-8 xl:pb-10">
-      <div>
+      {/* <div>
         <h4 className="text-sm xl:text-base text-t-800 font-medium leading-relaxed mb-[26px]">
           Required Documents For Dubai Tourist Visa
         </h4>
@@ -15,7 +15,7 @@ const RequirementList = ({ reqList }) => {
           area of about 2150000 km², making it the fifth-largest country in Asia
           and the largest in the Middle East.
         </p>
-      </div>
+      </div> */}
       <div className="mt-5 mb-10">
         <ul className="space-y-4">
           {reqList.map((item) => (

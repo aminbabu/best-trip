@@ -71,7 +71,7 @@ const VisaCard = ({ data }) => {
                     <li className="flex gap-x-2 text-sm xl:text-md text-t-600 leading-normal">
                       <CalenderRedIcon className="mt-0.5 flex-shrink-0" />
                       <span className="flex-shrink-0">
-                        Validity: Max {data.validity} Days
+                        Validity : Max {data.validity} Days
                       </span>
                     </li>
                   </ul>

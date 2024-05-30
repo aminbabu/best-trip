@@ -54,7 +54,7 @@ const VisaBasicInfo = () => {
           strong and close relationship between UAE and Bangladesh.
         </p>
       </div>
-      <div className="flex flex-col justify-between max-w-[655px] mx-auto">
+      {/* <div className="flex flex-col justify-between max-w-[655px] mx-auto">
         <ul className="grid lg:grid-cols-3 gap-x-[150px] gap-y-3 lg:gap-y-2 xl:gap-y-3 mb-[30px]">
           <li className="flex gap-x-2 text-sm xl:text-base text-t-800 leading-normal col-span-1">
             <PhoneRedIcon className="mt-1 flex-shrink-0" />
@@ -83,7 +83,7 @@ const VisaBasicInfo = () => {
           Office Hours: Sunday to Thursday (9;00 AM to 1:00 PM and 2:00 PM to
           5:00 PM)
         </p>
-      </div>
+      </div> */}
       <Notice
         message={
           "Please contact support team for Document processing after the payment. Visa rate may change without any prior notice"
