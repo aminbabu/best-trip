@@ -527,8 +527,8 @@ const Page = () => {
                 <ul className="px-2.5 py-5 space-y-2 text-t-600 font-medium leading-6">
                   <li className="flex justify-between items-center py-[11px]">
                     <p className="text-sm font-normal leading-6">Visa Fee</p>
-                    <p className="text-sm leading-6">
-                      BDT <span className="text-t-800">30,000</span>
+                    <p className="text-sm leading-6 font-normal">
+                      BDT <span className="text-t-800 font-medium">30,000</span>
                     </p>
                   </li>
                   <li className="space-y-0.5">
@@ -536,8 +536,9 @@ const Page = () => {
                       <p className="text-sm font-normal leading-6">
                         Total Traveler
                       </p>
-                      <p className="text-sm leading-6">
-                        BDT <span className="text-t-800">30,000</span>
+                      <p className="text-sm leading-6 font-normal">
+                        BDT{" "}
+                        <span className="text-t-800 font-medium">30,000</span>
                       </p>
                     </div>
                     <span className="grid justify-end text-xs leading-relaxed">
@@ -549,8 +550,9 @@ const Page = () => {
                       <p className="text-sm font-normal leading-6">
                         BT Service Fee
                       </p>
-                      <p className="text-sm leading-6">
-                        BDT <span className="text-t-800">2,000</span>
+                      <p className="text-sm leading-6 font-normal">
+                        BDT{" "}
+                        <span className="text-t-800 font-medium">2,000</span>
                       </p>
                     </div>
                     <span className="grid justify-end text-xs leading-relaxed">
