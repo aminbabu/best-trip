@@ -5,7 +5,7 @@ const TermsAnsConditions = () => {
     <div className="pt-5 xl:pt-[30px] px-6 xl:px-[34px] pb-8 xl:pb-10 space-y-[30px]">
       <div>
         <h4 className="text-base xl:text-lg text-t-800 font-medium leading-relaxed mb-3.5">
-          These Terms / Title
+          These Terms
         </h4>
         <p className="text-sm xl:text-base text-t-600 font-normal leading-normal">
           The Kingdom of Saudi Arabia (&quot;KSA&quot;) has introduced an
@@ -44,23 +44,7 @@ const TermsAnsConditions = () => {
           We may amend the Terms from time to time. Every time you wish to use
           the Service, please check these Terms to ensure you understand the
           terms that apply at that time. In addition, we reserve the right to
-          update and / or change the Website from time to time
-          <br />
-          <br />
-          Besttrip provides only consultancy services and doesn&apos;t provide
-          any guarantee for visas. Visa issuance rights reserved by the embassy.
-          File processing for visas will start only after receiving all
-          necessary documents. Processing time, requirements, and fees are
-          subject to change by the Embassy without any prior notice. The Embassy
-          reserves the right to ask for any additional documents with the
-          above-mentioned checklist. Visa fee and biometric submission fee to
-          embassy are non-refundable. Service charges are non-refundable.
-          <br />
-          <br />
-          For Saudi Arabia Umrah Visa Best Trip Provides
-          <br />
-          <br />
-          About Kingdom of Saudi Arabia KSA Embassy, Dhaka
+          update and / or change the Website from time to time.
         </p>
       </div>
     </div>

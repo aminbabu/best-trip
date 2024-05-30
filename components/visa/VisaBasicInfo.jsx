@@ -12,31 +12,22 @@ const VisaBasicInfo = () => {
     <div className="pt-5 xl:pt-[30px] px-6 xl:px-[34px] pb-8 xl:pb-10 space-y-10">
       <div>
         <h4 className="text-sm xl:text-base text-t-800 font-medium leading-relaxed mb-[18px]">
-          For Dubai Tourist Visa Best Trip Provides
+          For Saudi Arabia Umrah Visa Best Trip Provides
         </h4>
         <p className="text-sm xl:text-base text-t-600 font-normal leading-normal">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry&apos;s standard dummy text
-          ever since the 1500s, when an unknown printer took a galley of type
-          and scrambled it to make a type specimen book. It has survived not
-          only five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of
-          the printing and typesetting industry. Lorem Ipsum has been the
-          industry&apos;s standard dummy text ever since the 1500s, when an
-          unknown printer took a galley of type and scrambled it to make a type
-          specimen book. It has survived not only five centuries, but also the
-          leap into electronic typesetting, remaining essentially unchanged. It
-          was popularised in the 1960s with the release of Letraset sheets
-          containing Lorem passages, and more recently with desktop publishing
-          software like Aldus PageMaker including versions of Lorem Ipsum.
+          Besttrip provides only consultancy services and doesn&apos;t provide
+          any guarantee for visas. Visa issuance rights reserved by the embassy.
+          File processing for visas will start only after receiving all
+          necessary documents. Processing time, requirements, and fees are
+          subject to change by the Embassy without any prior notice. The Embassy
+          reserves the right to ask for any additional documents with the
+          above-mentioned checklist. Visa fee and biometric submission fee to
+          embassy are non-refundable. Service charges are non-refundable.
         </p>
       </div>
       <div>
         <h4 className="text-sm xl:text-base text-t-800 font-medium leading-relaxed mb-[18px]">
-          About UAE Embassy, Dhaka
+          About Kingdom of Saudi Arabia KSA Embassy, Dhaka
         </h4>
         <p className="text-sm xl:text-base text-t-600 font-normal leading-normal">
           The UAE Embassy, Dhaka plays an important role in the strong
@@ -86,7 +77,7 @@ const VisaBasicInfo = () => {
       </div> */}
       <Notice
         message={
-          "Please contact support team for Document processing after the payment. Visa rate may change without any prior notice"
+          "** VISA FEES IS NON-REFUNDABLE **** VISA FEES IS NON-REFUNDABLE **"
         }
       />
     </div>
