@@ -51,37 +51,35 @@ const VisaCard = ({ data }) => {
                 </div>
                 <div className="flex flex-col xl:flex-row justify-between gap-4 xl:gap-x-12">
                   <ul className="grid xl:grid-cols-2 gap-x-[36px] gap-y-3 lg:gap-y-2 xl:gap-y-3 font-normal">
-                    <li className="flex gap-x-2 text-md xl:text-base text-t-500 leading-normal">
+                    <li className="flex gap-x-2 text-sm xl:text-base text-t-500 leading-normal">
                       <DocRedIcon className="mt-0.5 flex-shrink-0" />
                       <span className="flex-shrink-0">
                         Visa Category : Single Visa
                       </span>
                     </li>
-                    <li className="flex gap-x-2 text-md xl:text-base text-t-600 leading-normal">
+                    <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
                       <ClockRedIcon className="mt-0.5 flex-shrink-0" />
-                      <span className="flex-shrink-0">
-                        Maximum Stays : 15 Days
-                      </span>
+                      <span className="flex-shrink-0">Max Stay : 15 Days</span>
                     </li>
-                    <li className="flex gap-x-2 text-md xl:text-base text-t-600 leading-normal">
+                    <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
                       <VisaEntryTypeIcon className="mt-0.5 flex-shrink-0" />
                       <span className="flex-shrink-0">
                         Entry Type : Single Entry
                       </span>
                     </li>
-                    <li className="flex gap-x-2 text-md xl:text-base text-t-600 leading-normal">
+                    <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
                       <CalenderRedIcon className="mt-0.5 flex-shrink-0" />
                       <span className="flex-shrink-0">
-                        Validity : Max {data.validity} Days
+                        Validity : {data.validity} Days
                       </span>
                     </li>
-                    <li className="flex gap-x-2 text-md xl:text-base text-t-600 leading-normal">
+                    <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
                       <CalenderRedIcon className="mt-0.5 flex-shrink-0" />
                       <span className="flex-shrink-0">
                         Processing Time : {data.processingTime} Days
                       </span>
                     </li>
-                    <li className="flex gap-x-2 text-md xl:text-base text-t-600 leading-normal">
+                    <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
                       <BusRedIcon className="mt-0.5 flex-shrink-0" />
                       <span className="flex-shrink-0">With Transport</span>
                     </li>
