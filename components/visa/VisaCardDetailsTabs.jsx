@@ -109,7 +109,7 @@ const VisaCardDetailsTabs = () => {
         {tabItems.map((tab) => (
           <TabsTrigger
             key={tab.id}
-            className="flex-shrink-0 flex items-center justify-center text-base font-normal leading-normal data-[state=active]:bg-p-300 data-[state=active]:text-primary data-[state=active]:shadow-none"
+            className="flex-shrink-0 flex items-center justify-center text-base leading-normal data-[state=active]:bg-p-300 data-[state=active]:text-primary data-[state=active]:shadow-none"
             value={tab.value}
           >
             {tab.name}
