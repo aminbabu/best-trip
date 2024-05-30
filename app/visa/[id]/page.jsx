@@ -175,7 +175,7 @@ const Page = () => {
               <h2 className="text-t-800 text-lg font-medium p-5 lg:px-10 lg:py-[30px]">
                 Traveler Details
               </h2>
-              <div className="bg-p-300 font-normal lg:text-lg text-t-800 rounded-sm px-10 py-2.5 flex items-center gap-x-2.5">
+              <div className="bg-p-300 font-normal text-t-800 rounded-sm px-10 py-2.5 flex items-center gap-x-2.5">
                 <InfoCircledIcon className="w-6 h-6 text-p-900 flex-shrink-0" />
                 Enter details exactly as they appear on your passport
               </div>
@@ -184,14 +184,14 @@ const Page = () => {
                   onSubmit={form.handleSubmit(onSubmit)}
                   className="space-y-16"
                 >
-                  <div className="p-5 lg:px-10 lg:pt-[30px] lg:pb-[92px] space-y-[30px]">
+                  <div className="p-5 lg:px-10 lg:pt-[30px] lg:pb-[56px] space-y-[30px]">
                     {travelers.map((item) => (
                       <div
                         className="grid grid-cols-6 gap-8 lg:gap-x-10"
                         key={item.id}
                       >
                         <div className="col-span-6">
-                          <h2 className="text-t-800 text-lg font-medium">
+                          <h2 className="text-t-800 font-medium">
                             Traveler {item.travelerNo} ({item.type})
                           </h2>
                         </div>
@@ -201,7 +201,7 @@ const Page = () => {
                             name="first_name"
                             render={({ field }) => (
                               <FormItem className="space-y-3">
-                                <FormLabel className="text-t-800 lg:text-lg font-normal">
+                                <FormLabel className="text-t-800 lg:text-base font-normal">
                                   First Name
                                   <span className="text-primary">*</span>
                                 </FormLabel>
@@ -224,7 +224,7 @@ const Page = () => {
                             name="last_name"
                             render={({ field }) => (
                               <FormItem className="space-y-3">
-                                <FormLabel className="text-t-800 lg:text-lg font-normal">
+                                <FormLabel className="text-t-800 lg:text-base font-normal">
                                   Last Name
                                   <span className="text-primary">*</span>
                                 </FormLabel>
@@ -247,7 +247,7 @@ const Page = () => {
                             name="gender"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="text-t-800 lg:text-lg font-normal">
+                                <FormLabel className="text-t-800 lg:text-base font-normal">
                                   Gender<span className="text-primary">*</span>
                                 </FormLabel>
                                 <Select
@@ -277,7 +277,7 @@ const Page = () => {
                             name="dob"
                             render={({ field }) => (
                               <FormItem className="flex flex-col">
-                                <FormLabel className="text-t-800 lg:text-lg font-normal">
+                                <FormLabel className="text-t-800 lg:text-base font-normal">
                                   Date of Birth
                                   <span className="text-primary">*</span>
                                 </FormLabel>
@@ -332,7 +332,7 @@ const Page = () => {
                             name="passport_expiry_date"
                             render={({ field }) => (
                               <FormItem className="flex flex-col">
-                                <FormLabel className="text-t-800 lg:text-lg font-normal">
+                                <FormLabel className="text-t-800 lg:text-base font-normal">
                                   Passport Expiry Date
                                   <span className="text-primary">*</span>
                                 </FormLabel>
@@ -387,7 +387,7 @@ const Page = () => {
                             name={"passport_no"}
                             render={({ field }) => (
                               <FormItem className="space-y-3">
-                                <FormLabel className="text-t-800 lg:text-lg font-normal">
+                                <FormLabel className="text-t-800 lg:text-base font-normal">
                                   Passport Number
                                   <span className="text-primary">*</span>
                                 </FormLabel>
@@ -410,7 +410,7 @@ const Page = () => {
                             name="country"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="text-t-800 lg:text-lg font-normal">
+                                <FormLabel className="text-t-800 lg:text-base font-normal">
                                   Country<span className="text-primary">*</span>
                                 </FormLabel>
                                 <Select
@@ -441,7 +441,7 @@ const Page = () => {
                     ))}
                     <div className="grid grid-cols-6 gap-8 lg:gap-x-10">
                       <div className="col-span-6">
-                        <h3 className="text-t-800 lg:text-lg font-medium">
+                        <h3 className="text-t-800 lg:text-base font-medium">
                           Contact Details
                         </h3>
                       </div>
@@ -451,7 +451,7 @@ const Page = () => {
                           name="email"
                           render={({ field }) => (
                             <FormItem className="space-y-3">
-                              <FormLabel className="text-t-800 lg:text-lg font-normal">
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
                                 Email<span className="text-primary">*</span>
                               </FormLabel>
                               <FormControl>
@@ -473,7 +473,7 @@ const Page = () => {
                           name="phone"
                           render={({ field }) => (
                             <FormItem className="space-y-3">
-                              <FormLabel className="text-t-800 lg:text-lg font-normal">
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
                                 Phone<span className="text-primary">*</span>
                               </FormLabel>
                               <FormControl>
