@@ -439,60 +439,62 @@ const Page = () => {
                         </div>
                       </div>
                     ))}
-                    <div className="col-span-6">
-                      <h3 className="text-t-800 lg:text-lg font-medium">
-                        Contact Details
-                      </h3>
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem className="space-y-3">
-                            <FormLabel className="text-t-800 lg:text-lg font-normal">
-                              Email<span className="text-primary">*</span>
-                            </FormLabel>
-                            <FormControl>
-                              <Input
-                                type="email"
-                                placeholder="Enter email"
-                                className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <FormField
-                        control={form.control}
-                        name="phone"
-                        render={({ field }) => (
-                          <FormItem className="space-y-3">
-                            <FormLabel className="text-t-800 lg:text-lg font-normal">
-                              Phone<span className="text-primary">*</span>
-                            </FormLabel>
-                            <FormControl>
-                              <Input
-                                type="tel"
-                                placeholder="Enter phone number"
-                                className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="col-span-6 flex flex-col justify-end">
-                      <Button type="submit" disabled={loading}>
-                        {loading && <Loader className="w-6 h-6 opacity-75" />}
-                        Continue
-                      </Button>
+                    <div className="grid grid-cols-6 gap-8 lg:gap-x-10">
+                      <div className="col-span-6">
+                        <h3 className="text-t-800 lg:text-lg font-medium">
+                          Contact Details
+                        </h3>
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="email"
+                          render={({ field }) => (
+                            <FormItem className="space-y-3">
+                              <FormLabel className="text-t-800 lg:text-lg font-normal">
+                                Email<span className="text-primary">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="email"
+                                  placeholder="Enter email"
+                                  className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="phone"
+                          render={({ field }) => (
+                            <FormItem className="space-y-3">
+                              <FormLabel className="text-t-800 lg:text-lg font-normal">
+                                Phone<span className="text-primary">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="tel"
+                                  placeholder="Enter phone number"
+                                  className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 flex flex-col justify-end">
+                        <Button type="submit" disabled={loading}>
+                          {loading && <Loader className="w-6 h-6 opacity-75" />}
+                          Continue
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </form>
