@@ -104,8 +104,6 @@ const VisaTabpane = ({ icon, disabled, className }) => {
   const [destination, setDestination] = useState("Saudi Arabia");
   const [nationality, setNationality] = useState("Bangladesh");
   const [type, setType] = useState("Umrah Visa");
-  // const [traveller, setTraveller] = useState(1);
-  // const [travellerCounts, setTravellerCounts] = useState(travellers);
 
   const [travellers, setTravellers] = useState(traveller);
   const [errors, setErrors] = useState(null);
