@@ -21,6 +21,7 @@ import {
 import numeral from "numeral";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Skeleton } from "../ui/skeleton";
 
 const UmrahCard = ({ data }) => {
   const renderInclusionIcon = (item) => {

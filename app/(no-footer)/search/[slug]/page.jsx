@@ -43,11 +43,11 @@ const SearchPage = async ({ params }) => {
           </Button>
         </CollapsibleTrigger>
       </div>
-      <main className="relative pt-12 sm:pt-16 lg:pt-20 bg-[#F6F6F6] pb-10 sm:pb-14 lg:pb-8">
+      <main className="relative pt-8 bg-[#F6F6F6] pb-10 sm:pb-14 lg:pb-8">
         <Image
           src={BgCurve}
           alt="Bg curve"
-          className="absolute top-0 left-0 w-full -mt-6 2xl:-mt-24 z-10 object-cover object-center hidden lg:block"
+          className="absolute top-0 left-0 w-full -mt-10 2xl:-mt-24 z-10 object-cover object-center hidden lg:block"
         />
 
         <Container className="space-y-6 lg:space-y-8 relative z-20">

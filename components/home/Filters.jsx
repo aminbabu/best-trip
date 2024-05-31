@@ -32,7 +32,7 @@ const data = [
     title: "Umrah",
     value: "umrah",
     component: (
-      <UmrahTabpane className="rounded-t-none sm:rounded-tr-md min-h-[174px]" />
+      <UmrahTabpane className="rounded-t-none sm:rounded-tr-md min-h-[174px] shadow-[0_2px_8px_0_rgba(0,0,0,0.07)] lg:shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]" />
     ),
   },
   {
@@ -43,7 +43,7 @@ const data = [
     title: "Visa",
     value: "visa",
     component: (
-      <VisaTabpane className="rounded-t-none sm:rounded-tr-md min-h-[174px]" />
+      <VisaTabpane className="rounded-t-none sm:rounded-tr-md min-h-[174px] shadow-[0_2px_8px_0_rgba(0,0,0,0.07)] lg:shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]" />
     ),
   },
   {
