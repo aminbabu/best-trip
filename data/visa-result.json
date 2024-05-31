@@ -46,5 +46,53 @@
     "img": "/images/search/visa/visa-card-img.png",
     "processingTime": 7,
     "visaFee": 30000
+  },
+  {
+    "id": 5,
+    "name": "Dubai - Electronic Visa",
+    "type": "Tourist Visa",
+    "visaType": "E-Visa",
+    "maxStays": 30,
+    "validity": 30,
+    "entryType": "Single Entry",
+    "img": "/images/search/visa/visa-card-img.png",
+    "processingTime": 7,
+    "visaFee": 30000
+  },
+  {
+    "id": 6,
+    "name": "Dubai - Electronic Visa",
+    "type": "Tourist Visa",
+    "visaType": "E-Visa",
+    "maxStays": 30,
+    "validity": 30,
+    "entryType": "Single Entry",
+    "img": "/images/search/visa/visa-card-img.png",
+    "processingTime": 7,
+    "visaFee": 30000
+  },
+  {
+    "id": 7,
+    "name": "Dubai - Electronic Visa",
+    "type": "Tourist Visa",
+    "visaType": "E-Visa",
+    "maxStays": 30,
+    "validity": 30,
+    "entryType": "Single Entry",
+    "img": "/images/search/visa/visa-card-img.png",
+    "processingTime": 7,
+    "visaFee": 30000
+  },
+  {
+    "id": 8,
+    "name": "Dubai - Electronic Visa",
+    "type": "Tourist Visa",
+    "visaType": "E-Visa",
+    "maxStays": 30,
+    "validity": 30,
+    "entryType": "Single Entry",
+    "img": "/images/search/visa/visa-card-img.png",
+    "processingTime": 7,
+    "visaFee": 30000
   }
 ]

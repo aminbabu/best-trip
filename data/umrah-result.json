@@ -62,5 +62,69 @@
       "child": 8000,
       "infant": 5000
     }
+  },
+  {
+    "id": 5,
+    "type": "standard",
+    "name": "Single Share Basis Package",
+    "from": "Dhaka, Bangladesh",
+    "days": 15,
+    "nights": 14,
+    "group": 30,
+    "img": "/images/search/04.png",
+    "inclusion": ["flight", "hotel", "visa", "trns", "food"],
+    "prices": {
+      "adult": 10000,
+      "child": 8000,
+      "infant": 5000
+    }
+  },
+  {
+    "id": 6,
+    "type": "standard",
+    "name": "Single Share Basis Package",
+    "from": "Dhaka, Bangladesh",
+    "days": 15,
+    "nights": 14,
+    "group": 30,
+    "img": "/images/search/04.png",
+    "inclusion": ["flight", "hotel", "visa", "trns", "food"],
+    "prices": {
+      "adult": 10000,
+      "child": 8000,
+      "infant": 5000
+    }
+  },
+  {
+    "id": 7,
+    "type": "standard",
+    "name": "Single Share Basis Package",
+    "from": "Dhaka, Bangladesh",
+    "days": 15,
+    "nights": 14,
+    "group": 30,
+    "img": "/images/search/04.png",
+    "inclusion": ["flight", "hotel", "visa", "trns", "food"],
+    "prices": {
+      "adult": 10000,
+      "child": 8000,
+      "infant": 5000
+    }
+  },
+  {
+    "id": 8,
+    "type": "standard",
+    "name": "Single Share Basis Package",
+    "from": "Dhaka, Bangladesh",
+    "days": 15,
+    "nights": 14,
+    "group": 30,
+    "img": "/images/search/04.png",
+    "inclusion": ["flight", "hotel", "visa", "trns", "food"],
+    "prices": {
+      "adult": 10000,
+      "child": 8000,
+      "infant": 5000
+    }
   }
 ]
