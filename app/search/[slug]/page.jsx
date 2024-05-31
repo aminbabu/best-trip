@@ -15,7 +15,7 @@ const SearchPage = async ({ params, noFooter = true }) => {
       <Image
         src={BgCurve}
         alt="Bg curve"
-        className="absolute top-0 left-0 w-full z-10 object-cover object-center"
+        className="absolute top-0 left-0 w-full 2xl:-mt-24 z-10 object-cover object-center"
       />
       <Container className="space-y-6 lg:space-y-8 relative z-20">
         <Filters slug={slug} />
