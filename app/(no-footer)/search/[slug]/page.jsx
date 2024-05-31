@@ -13,6 +13,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import VisaCardSkeleton from "@/components/serach/VisaCardSkeleton";
 
 const SearchPage = async ({ params }) => {
   const { slug } = params;
@@ -47,7 +48,7 @@ const SearchPage = async ({ params }) => {
         <Image
           src={BgCurve}
           alt="Bg curve"
-          className="absolute top-0 left-0 w-full -mt-10 2xl:-mt-24 z-10 object-cover object-center hidden lg:block"
+          className="absolute top-0 left-0 w-full -mt-12 2xl:-mt-40 z-10 object-cover object-center hidden lg:block"
         />
 
         <Container className="space-y-6 lg:space-y-8 relative z-20">
@@ -58,6 +59,7 @@ const SearchPage = async ({ params }) => {
           <div className="hidden xs:block">
             <Filters slug={slug} />
           </div>
+          <VisaCardSkeleton />
           <FilterResult slug={slug} data={data} />
           <div className="relative flex py-4 items-center my-6">
             <div className="flex-grow border-t border-gray-200"></div>
