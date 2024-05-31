@@ -1,5 +1,5 @@
 const NoFooterLayout = ({ children }) => {
-  return <div className="pb-[350px]">{children}</div>;
+  return <div>{children}</div>;
 };
 
 export default NoFooterLayout;

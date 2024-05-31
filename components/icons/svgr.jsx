@@ -66,6 +66,7 @@ import PlaneRedIcon from "@/public/icons/plane-red.svg";
 import LocationCircleRedIcon from "@/public/icons/location-circle-red.svg";
 import PeopleRedIcon from "@/public/icons/people-red.svg";
 import SpoonKnifeRedIcon from "@/public/icons/spoon-knife-red.svg";
+import PencliLineIcon from "@/public/icons/PencilLine.svg";
 
 export {
   FacebookIcon,
@@ -136,4 +137,5 @@ export {
   LocationCircleRedIcon,
   PeopleRedIcon,
   SpoonKnifeRedIcon,
+  PencliLineIcon,
 };

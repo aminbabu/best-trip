@@ -110,25 +110,25 @@ const UmrahCard = ({ data }) => {
           <div className="lg:self-end space-y-4 lg:text-right">
             <ul className="grid grid-cols-2 gap-1.5">
               <li className="col-span-2 text-t-600 text-sm lg:text-base xl:text-lg">
-                Adult Price:
+                Adult Price :
                 <span className="text-t-900 ml-2">
                   {numeral(data.prices.adult).format("0,0")} BDT
                 </span>
               </li>
               <li className="col-span-2 text-t-600 text-sm lg:text-base xl:text-lg">
-                Children Price:
+                Children Price :
                 <span className="text-t-900 ml-2">
                   {numeral(data.prices.adult).format("0,0")} BDT
                 </span>
               </li>
               <li className="col-span-2 text-t-600 text-sm lg:text-base xl:text-lg">
-                Infant Price:
+                Infant Price :
                 <span className="text-t-900 ml-2">
                   {numeral(data.prices.adult).format("0,0")} BDT
                 </span>
               </li>
               <li className="col-span-2 text-t-600 text-sm lg:text-base xl:text-lg">
-                Sub Total:
+                Sub Total :
                 <span className="text-t-900 ml-2">
                   {numeral(
                     Object.values(data.prices).reduce((acc, cur) => acc + cur)
