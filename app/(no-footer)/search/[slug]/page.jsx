@@ -59,7 +59,6 @@ const SearchPage = async ({ params }) => {
           <div className="hidden xs:block">
             <Filters slug={slug} />
           </div>
-          <VisaCardSkeleton />
           <FilterResult slug={slug} data={data} />
           <div className="relative flex py-4 items-center my-6">
             <div className="flex-grow border-t border-gray-200"></div>

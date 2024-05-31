@@ -1,12 +1,14 @@
 import React from "react";
-import { Skeleton } from "@/components/ui/skeleton";
 import VisaCardSkeleton from "@/components/serach/VisaCardSkeleton";
+import Container from "@/components/layouts/Container";
 
 const loading = () => {
   return (
-    <div className="">
-      <VisaCardSkeleton />
-    </div>
+    <Container>
+      {"abcdefgh".split("").map((i) => (
+        <VisaCardSkeleton key={i} />
+      ))}
+    </Container>
   );
 };
 
