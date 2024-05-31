@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Brand from "@/components/global/Brand";
 import Container from "@/components/layouts/Container";
@@ -17,6 +19,7 @@ import ToabLogo from "@/public/images/footer/toab.svg";
 import BasisLogo from "@/public/images/footer/basis.svg";
 import EcabLogo from "@/public/images/footer/ecab.svg";
 import PaymentMethodIcons from "@/public/images/footer/payment-methods.svg";
+import { usePathname } from "next/navigation";
 
 const menu = {
   title: "Discover",
@@ -68,12 +71,18 @@ const socialMedia = {
   ],
 };
 
+const noNewsletterLinks = ["/search/visa", "/search/umrah"];
+
 const Footer = ({ className }) => {
+  const pathname = usePathname();
+
+  const hideNewsletter = noNewsletterLinks.includes(pathname);
+
   return (
     <footer className={cn("bg-secondary mt-auto pt-10 lg:pt-0", className)}>
       <Container>
-        <Newsletter />
-        <div className="space-y-10">
+        {hideNewsletter || <Newsletter />}
+        <div className={`space-y-10 ${hideNewsletter ? "pt-[60px]" : ""}`}>
           <div className="grid grid-cols-4 gap-x-5 gap-y-10 lg:gap-12 text-t-600">
             <div className="flex flex-col max-w-sm lg:max-w-[264px] col-span-4 lg:col-span-1 lg:-mr-11">
               <Brand

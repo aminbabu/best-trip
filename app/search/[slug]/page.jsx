@@ -5,13 +5,13 @@ import Filters from "@/components/serach/Filters";
 import FilterResult from "@/components/serach/FilterResult";
 import data from "@/data/umrah-result.json";
 
-const SearchPage = async ({ params }) => {
+const SearchPage = async ({ params, noFooter = true }) => {
   const { slug } = params;
 
   // api call
 
   return (
-    <main className="relative pt-12 sm:pt-16 lg:pt-20 bg-primary-foreground">
+    <main className="relative pt-12 sm:pt-16 lg:pt-20 bg-[#F6F6F6] pb-10 sm:pb-14 lg:pb-[100px]">
       <Image
         src={BgCurve}
         alt="Bg curve"
