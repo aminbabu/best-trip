@@ -4,7 +4,7 @@ import Container from "@/components/layouts/Container";
 
 const loading = () => {
   return (
-    <Container>
+    <Container className="bg-[#F6F6F6]">
       {"abcdefgh".split("").map((i) => (
         <VisaCardSkeleton key={i} />
       ))}

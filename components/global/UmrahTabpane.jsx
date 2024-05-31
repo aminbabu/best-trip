@@ -126,13 +126,14 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
     if (!data) {
       return setLoading(false);
     }
+    router.push("/search/umrah");
 
     // TODO: Handle submit
-    setTimeout(() => {
-      console.log(data);
-      setLoading(false);
-      router.push("/search/umrah");
-    }, 2000);
+    // setTimeout(() => {
+    //   console.log(data);
+    //   setLoading(false);
+    //   router.push("/search/umrah");
+    // }, 2000);
   };
 
   return (
