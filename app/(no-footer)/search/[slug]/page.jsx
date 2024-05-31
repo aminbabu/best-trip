@@ -5,7 +5,7 @@ import Filters from "@/components/serach/Filters";
 import FilterResult from "@/components/serach/FilterResult";
 import data from "@/data/umrah-result.json";
 
-const SearchPage = async ({ params, noFooter = true }) => {
+const SearchPage = async ({ params }) => {
   const { slug } = params;
 
   // api call
