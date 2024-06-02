@@ -11,7 +11,7 @@ const VisaCardSkeleton = () => {
             <Skeleton className="w-[228px] h-7 bg-gray-200 mb-1.5"></Skeleton>
             <Skeleton className="w-[186px] h-6 bg-gray-200 mb-[35px] lg:mb-4 xl:mb-[35px]"></Skeleton>
             <div className="flex gap-y-4">
-              <Skeleton className="w-[342px] h-[34px] rounded-sm bg-p-300 mb-[18px]"></Skeleton>
+              <Skeleton className="w-[342px] h-[34px] rounded-sm bg-gray-200 mb-[18px]"></Skeleton>
             </div>
             <div className="flex flex-col xl:flex-row justify-between gap-4 xl:gap-x-12">
               <ul className="grid xl:grid-cols-2 gap-x-[36px] gap-y-3 lg:gap-y-2 xl:gap-y-3 font-normal">
@@ -29,7 +29,7 @@ const VisaCardSkeleton = () => {
               <Skeleton className="col-span-2 w-[224px] h-[26px] bg-gray-200"></Skeleton>
               <Skeleton className="col-span-2 w-[224px] h-[26px] bg-gray-200"></Skeleton>
             </ul>
-            <Skeleton className="w-[200px] h-[40px] bg-primary/20"></Skeleton>
+            <Skeleton className="w-[200px] h-[40px] bg-gray-200"></Skeleton>
             <Skeleton className="w-[175px] h-[24px] mt-[51px] bg-gray-200"></Skeleton>
           </div>
         </div>
