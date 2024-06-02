@@ -18,7 +18,7 @@ const Hero = () => {
           </div>
           <div className="flex-shrink-0 hidden lg:block ml-auto">
             <Image
-              src="/images/home/hero/illustration.png"
+              src="/images/home/hero/illustration.svg"
               alt="Luggage"
               width={465}
               height={274}
