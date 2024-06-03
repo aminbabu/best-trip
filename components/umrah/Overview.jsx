@@ -5,17 +5,21 @@ import { SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import data from "@/data/umrah-ziyarah.json";
 import {
   BusIcon,
+  CalenderRedIcon,
   ClockAltIcon,
   HotelIcon,
   LocationCircleIcon,
   PassportIcon,
   PeopleIcon,
   PlaneIcon,
+  SpoonKnifeRedIcon,
 } from "@/components/icons/svgr";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 
 import "@/styles/umrah/splide.css";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const options = {
   type: "loop",
@@ -37,11 +41,13 @@ const options = {
 
 const Overview = () => {
   const { items } = data;
+  const pathname = usePathname();
+  const cardId = pathname.split("/")[2];
 
   return (
     <section className="umrah-package-overview">
       <Card className="border-transparent">
-        <CardContent className="grid grid-cols-2 gap-y-8 p-4 sm:p-6 lg:p-8">
+        <CardContent className="grid grid-cols-2 gap-y-8 p-4 sm:p-6 lg:p-[30px]">
           <div className="col-span-2 lg:col-span-1 space-y-6">
             <Slider hasTrack={false} options={options}>
               <SplideTrack>
@@ -60,6 +66,17 @@ const Overview = () => {
                 ))}
               </SplideTrack>
             </Slider>
+            <div>
+              <p className="text-xs lg:text-base text-t-600 leading-relaxed">
+                <span className="text-base text-primary">About Umrah : </span>
+                Umrah is an act of worshipping Allah by entering the state of
+                Ihram, circumambulating the House, running between Safa and
+                Marwa, and having the head shaved or trimmed{" "}
+                <Link className="text-t-900" href={`/umrah/${cardId}/about`}>
+                  Read more...
+                </Link>
+              </p>
+            </div>
           </div>
           <div className="col-span-2 lg:col-span-1 space-y-9 lg:pl-12">
             <div>
@@ -82,6 +99,16 @@ const Overview = () => {
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
+                  <CalenderRedIcon
+                    className="mt-0.5 flex-shrink-0 h-6 w-6 text-primary"
+                    viewBox="0 0 16 17"
+                  />
+                  <span className="flex-shrink-0">
+                    Journey Date :{" "}
+                    <span className="text-t-900">20 Jun, 2024</span>
+                  </span>
+                </li>
+                <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
                   <ClockAltIcon
                     className="mt-0.5 flex-shrink-0 h-6 w-6 text-primary"
                     viewBox="0 0 16 17"
@@ -95,7 +122,9 @@ const Overview = () => {
                     className="mt-0.5 flex-shrink-0 h-6 w-6 text-primary"
                     viewBox="0 0 16 17"
                   />
-                  <span className="flex-shrink-0">Group Available 30 Pax</span>
+                  <span className="flex-shrink-0">
+                    Group Available : <span className="text-t-900">30 Pax</span>
+                  </span>
                 </li>
               </ul>
               <div className="flex flex-col gap-y-4">
@@ -130,6 +159,13 @@ const Overview = () => {
                       viewBox="0 0 14 14"
                     />
                     Transport
+                  </li>
+                  <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-900 capitalize">
+                    <SpoonKnifeRedIcon
+                      className="w-6 h-6 text-primary"
+                      viewBox="0 0 16 16"
+                    />
+                    Food
                   </li>
                 </ul>
               </div>
