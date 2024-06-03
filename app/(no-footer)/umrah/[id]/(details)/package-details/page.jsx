@@ -642,8 +642,8 @@ const UmrahDetailsPage = ({ params }) => {
                   <div className="text-t-800">Umrah Visa</div>
                 </div>
               </div>
-              <div className="flex-1 grid grid-cols-12 sm:grid-cols-10 md:grid-cols-9 xl:grid-cols-11 items-center justify-between md:justify-around gap-x-3 sm:gap-x-6 md:gap-x-2 lg:gap-x-8 xl:gap-x-6 px-3 xs:px-4 py-4 sm:px-6 md:px-10 lg:px-4">
-                <div className="flex-1 text-right sm:text-left col-span-4 sm:col-span-4 md:col-span-3 xl:col-span-4">
+              <div className="flex-1 grid grid-cols-12 sm:grid-cols-10 md:grid-cols-9 xl:grid-cols-10 items-center justify-between md:justify-around gap-x-3 sm:gap-x-6 md:gap-x-2 lg:gap-x-8 xl:gap-x-6 px-3 xs:px-4 py-4 sm:px-6 md:px-10 lg:px-4">
+                <div className="flex-1 text-right sm:text-left col-span-4 sm:col-span-4 md:col-span-3 xl:col-span-3">
                   <div className="text-t-900 text-sm sm:text-base lg:text-lg">
                     Number Of Entries
                   </div>
