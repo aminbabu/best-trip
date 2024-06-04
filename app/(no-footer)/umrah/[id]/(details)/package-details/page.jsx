@@ -136,7 +136,7 @@ const UmrahDetailsPage = ({ params }) => {
                 </div>
               </div>
               <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 px-3 xs:px-4 py-4 sm:px-6 md:px-4">
-                <div className="text-right space-y-1 lg:space-y-1.5">
+                <div className="text-right space-y-1 lg:space-y-1.5 border-l border-[#f4f4f4] pl-[1px]">
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     Dhaka
                   </p>
@@ -243,7 +243,9 @@ const UmrahDetailsPage = ({ params }) => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem className="border-none" value="item-2">
-          <h2 className="text-base text-t-800 mb-4 lg:mb-6">Hotel Details</h2>
+          <h2 className="text-base text-t-800 mb-4 lg:mb-6">
+            Makkah Hotel Details
+          </h2>
           <AccordionTrigger
             className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
             iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
@@ -369,7 +371,9 @@ const UmrahDetailsPage = ({ params }) => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem className="border-none" value="item-3">
-          <h2 className="text-base text-t-800 mb-4 lg:mb-6">Hotel Details</h2>
+          <h2 className="text-base text-t-800 mb-4 lg:mb-6">
+            Madinah Hotel Details
+          </h2>
           <AccordionTrigger
             className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
             iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
@@ -511,7 +515,7 @@ const UmrahDetailsPage = ({ params }) => {
                 </div>
               </div>
               <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 px-3 xs:px-4 py-4 sm:px-6 md:px-4">
-                <div className="text-right space-y-1 lg:space-y-1.5">
+                <div className="text-right space-y-1 lg:space-y-1.5 border-l border-[#f4f4f4] pl-[1px]">
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     Dhaka
                   </p>
@@ -617,8 +621,8 @@ const UmrahDetailsPage = ({ params }) => {
             </div>
             <div className="flex items-center gap-x-2.5 text-t-800 bg-p-300 rounded-sm p-2.5">
               <ExchangeAltIcon className="text-t-600 flex-shrink-0" />
-              Breakfast / Lunch / Dinner facilities depend on your booking
-              package
+              4h 20m layover in Madinah - Prince Mohammad bin Abdulaziz
+              International Airport (MED)
             </div>
           </AccordionContent>
         </AccordionItem>
@@ -636,7 +640,7 @@ const UmrahDetailsPage = ({ params }) => {
                   <div className="text-t-800">Umrah Visa</div>
                 </div>
               </div>
-              <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 md:gap-x-16 px-3 xs:px-4 py-4 sm:px-6 md:pl-16 md:pr-2">
+              <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 md:gap-x-16 px-3 xs:px-4 py-4 sm:px-6 md:pl-[50px] md:pr-1 lg:px-4 xl:pl-14 xl:pr-2">
                 <div className="flex-1 text-right sm:text-left border-l border-[#f4f4f4] pl-[1px]">
                   <div className="text-t-900 text-sm sm:text-base lg:text-lg">
                     Number Of Entries
@@ -720,7 +724,7 @@ const UmrahDetailsPage = ({ params }) => {
                   <div className="text-t-800">by Bus</div>
                 </div>
               </div>
-              <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 md:gap-x-16 px-3 xs:px-4 py-4 sm:px-6 md:pl-16 md:pr-2">
+              <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 md:gap-x-16 px-3 xs:px-4 py-4 sm:px-6 md:pl-[50px] md:pr-1 lg:px-4 xl:pl-14 xl:pr-2">
                 <div className="flex-1 text-right sm:text-left border-l border-[#f4f4f4] pl-[1px]">
                   <div className="text-t-900 text-sm sm:text-base lg:text-lg">
                     Airport to Hotel
@@ -876,7 +880,7 @@ const UmrahDetailsPage = ({ params }) => {
                   <div className="text-t-800">Within 14 Days</div>
                 </div>
               </div>
-              <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 md:gap-x-16 px-3 xs:px-4 py-4 sm:px-6 md:pl-16 md:pr-2">
+              <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 md:gap-x-16 px-3 xs:px-4 py-4 sm:px-6 md:pl-[50px] md:pr-1 lg:px-4 xl:pl-14 xl:pr-2">
                 <div className="flex-1 text-right sm:text-left border-l border-[#f4f4f4] pl-[1px]">
                   <div className="text-t-900 text-sm sm:text-base lg:text-lg">
                     Makkah Ziyara
