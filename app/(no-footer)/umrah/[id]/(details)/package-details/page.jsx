@@ -645,7 +645,7 @@ const UmrahDetailsPage = ({ params }) => {
                     Single
                   </div>
                 </div>
-                <div className="flex-1 text-left border-l border-[#f4f4f4] pl-[1px]">
+                <div className="flex-1 text-center md:text-left border-l border-[#f4f4f4] pl-[1px]">
                   <div className="text-t-900 text-sm sm:text-base lg:text-lg">
                     Max Stay
                   </div>
@@ -729,7 +729,7 @@ const UmrahDetailsPage = ({ params }) => {
                     Yes
                   </div>
                 </div>
-                <div className="flex-1 text-left border-l border-[#f4f4f4] pl-[1px]">
+                <div className="flex-1 text-center md:text-left border-l border-[#f4f4f4] pl-[1px]">
                   <div className="text-t-900 text-sm sm:text-base lg:text-lg">
                     Visitor Place
                   </div>
@@ -885,7 +885,7 @@ const UmrahDetailsPage = ({ params }) => {
                     Included
                   </div>
                 </div>
-                <div className="flex-1 text-left border-l border-[#f4f4f4] pl-[1px]">
+                <div className="flex-1 text-center md:text-left border-l border-[#f4f4f4] pl-[1px]">
                   <div className="text-t-900 text-sm sm:text-base lg:text-lg">
                     Madina Ziyara
                   </div>
