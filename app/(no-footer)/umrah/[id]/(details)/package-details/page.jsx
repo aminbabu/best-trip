@@ -806,7 +806,7 @@ const UmrahDetailsPage = ({ params }) => {
                     className="text-primary justify-start px-0.5 hover:bg-transparent"
                     onClick={handleShowBusMore}
                   >
-                    <span className="flex-shrink-0 w-5 h-5 inline-flex items-center justify-center bg-primary text-white rounded-full">
+                    <span className="flex-shrink-0 w-4 h-4 inline-flex items-center justify-center bg-primary text-white rounded-full">
                       {showBus ? <Plus size={16} /> : <Minus size={16} />}
                     </span>
                     {showBus ? "Show more" : "Show less"}
@@ -828,7 +828,7 @@ const UmrahDetailsPage = ({ params }) => {
                     className="text-primary justify-start px-0.5 hover:bg-transparent"
                     onClick={handleShowTrasnportTypesMore}
                   >
-                    <span className="flex-shrink-0 w-5 h-5 inline-flex items-center justify-center bg-primary text-white rounded-full">
+                    <span className="flex-shrink-0 w-4 h-4 inline-flex items-center justify-center bg-primary text-white rounded-full">
                       {showTransportTypes ? (
                         <Plus size={16} />
                       ) : (
@@ -917,7 +917,7 @@ const UmrahDetailsPage = ({ params }) => {
                       className="text-primary justify-start px-0.5 hover:bg-transparent"
                       onClick={handleShowMakkahMore}
                     >
-                      <span className="flex-shrink-0 w-5 h-5 inline-flex items-center justify-center bg-primary text-white rounded-full">
+                      <span className="flex-shrink-0 w-4 h-4 inline-flex items-center justify-center bg-primary text-white rounded-full">
                         {showMakkah ? <Plus size={16} /> : <Minus size={16} />}
                       </span>
                       {showMakkah ? "Show more" : "Show less"}
@@ -942,7 +942,7 @@ const UmrahDetailsPage = ({ params }) => {
                       className="text-primary justify-start px-0.5 hover:bg-transparent"
                       onClick={handleShowMadinahMore}
                     >
-                      <span className="flex-shrink-0 w-5 h-5 inline-flex items-center justify-center bg-primary text-white rounded-full">
+                      <span className="flex-shrink-0 w-4 h-4 inline-flex items-center justify-center bg-primary text-white rounded-full">
                         {showMadinah ? <Plus size={16} /> : <Minus size={16} />}
                       </span>
                       {showMadinah ? "Show more" : "Show less"}
@@ -967,7 +967,7 @@ const UmrahDetailsPage = ({ params }) => {
                       className="text-primary justify-start px-0.5 hover:bg-transparent"
                       onClick={handleShowTaifMore}
                     >
-                      <span className="flex-shrink-0 w-5 h-5 inline-flex items-center justify-center bg-primary text-white rounded-full">
+                      <span className="flex-shrink-0 w-4 h-4 inline-flex items-center justify-center bg-primary text-white rounded-full">
                         {showTaif ? <Plus size={16} /> : <Minus size={16} />}
                       </span>
                       {showTaif ? "Show more" : "Show less"}
