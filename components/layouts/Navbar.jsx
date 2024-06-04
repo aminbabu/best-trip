@@ -37,7 +37,7 @@ const Navbar = () => {
     >
       <Container className="flex items-center gap-4 justify-between py-3 lg:py-6 duration-300">
         <Brand
-          logo="/images/brand-logo.png"
+          logo="/images/brand-logo.svg"
           width="108"
           height="46"
           alt="Best Trip"

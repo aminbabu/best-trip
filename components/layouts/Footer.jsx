@@ -86,7 +86,7 @@ const Footer = ({ className }) => {
           <div className="grid grid-cols-4 gap-x-5 gap-y-10 lg:gap-12 text-t-600">
             <div className="flex flex-col max-w-sm lg:max-w-[264px] col-span-4 lg:col-span-1 lg:-mr-11">
               <Brand
-                logo="/images/brand-logo.png"
+                logo="/images/brand-logo.svg"
                 width="132"
                 height="56"
                 alt="Best Trip"
