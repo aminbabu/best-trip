@@ -78,7 +78,7 @@ const DataTable = ({
                         <TableHead
                           key={header.id}
                           colSpan={header.colSpan}
-                          className="text-t-800 font-normal text-center"
+                          className="text-t-800 font-normal text-center xl:h-[60px]"
                         >
                           {header.isPlaceholder
                             ? null
@@ -98,14 +98,17 @@ const DataTable = ({
                     <TableRow
                       key={row.id}
                       data-state={row.getIsSelected() && "selected"}
-                      className={cn("border-b-secondary", {
-                        "bg-[#F8F9FB]": index % 2 === 0,
-                      })}
+                      className={cn(
+                        "border-b-secondary bg-[#F8F9FB] xl:h-[82px]",
+                        {
+                          "bg-[#fff] xl:h-[130px]": index % 2 === 0,
+                        }
+                      )}
                     >
                       {row.getVisibleCells().map((cell) => (
                         <TableCell
                           key={cell.id}
-                          className="first:text-left first:pl-8"
+                          className="first:text-left first:pl-8 mb-6"
                         >
                           {flexRender(
                             cell.column.columnDef.cell,
