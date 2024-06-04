@@ -72,13 +72,13 @@ const Overview = () => {
                 Umrah is an act of worshipping Allah by entering the state of
                 Ihram, circumambulating the House, running between Safa and
                 Marwa, and having the head shaved or trimmed{" "}
-                <Link className="text-t-900" href={`/umrah/${cardId}/about`}>
+                <Link className="text-t-800" href={`/umrah/${cardId}/about`}>
                   Read more...
                 </Link>
               </p>
             </div>
           </div>
-          <div className="col-span-2 lg:col-span-1 space-y-7 lg:pl-12">
+          <div className="col-span-2 lg:col-span-1 space-y-7 lg:pl-[50px]">
             <div>
               <h1 className="text-lg xl:text-[22px] text-t-800 font-medium mb-2.5">
                 Quad Share Basis Package
