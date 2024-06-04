@@ -120,7 +120,7 @@ const UmrahDetailsPage = ({ params }) => {
     <div className="py-4 umrah-details-cards">
       <Accordion type="multiple" className="space-y-6" collapsible="true">
         <AccordionItem className="border-none" value="item-1">
-          <h2 className="text-base lg:text-lg text-t-800 mb-4 lg:mb-6">
+          <h2 className="text-base text-t-800 mb-4 lg:mb-6">
             Outbound Flight Details
           </h2>
           <AccordionTrigger
@@ -243,9 +243,7 @@ const UmrahDetailsPage = ({ params }) => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem className="border-none" value="item-2">
-          <h2 className="text-base lg:text-lg text-t-800 mb-4 lg:mb-6">
-            Hotel Details
-          </h2>
+          <h2 className="text-base text-t-800 mb-4 lg:mb-6">Hotel Details</h2>
           <AccordionTrigger
             className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
             iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
@@ -371,9 +369,7 @@ const UmrahDetailsPage = ({ params }) => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem className="border-none" value="item-3">
-          <h2 className="text-base lg:text-lg text-t-800 mb-4 lg:mb-6">
-            Hotel Details
-          </h2>
+          <h2 className="text-base text-t-800 mb-4 lg:mb-6">Hotel Details</h2>
           <AccordionTrigger
             className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
             iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
@@ -499,7 +495,7 @@ const UmrahDetailsPage = ({ params }) => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem className="border-none" value="item-4">
-          <h2 className="text-base lg:text-lg text-t-800 mb-4 lg:mb-6">
+          <h2 className="text-base text-t-800 mb-4 lg:mb-6">
             Inbound Flight Details
           </h2>
           <AccordionTrigger
@@ -627,9 +623,7 @@ const UmrahDetailsPage = ({ params }) => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem className="border-none" value="item-5">
-          <h2 className="text-base lg:text-lg text-t-800 mb-4 lg:mb-6">
-            Visa Details
-          </h2>
+          <h2 className="text-base text-t-800 mb-4 lg:mb-6">Visa Details</h2>
           <AccordionTrigger
             className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
             iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
@@ -706,7 +700,7 @@ const UmrahDetailsPage = ({ params }) => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem className="border-none" value="item-6">
-          <h2 className="text-base lg:text-lg text-t-800 mb-4 lg:mb-6">
+          <h2 className="text-base text-t-800 mb-4 lg:mb-6">
             Transport Details
           </h2>
           <AccordionTrigger
@@ -864,9 +858,7 @@ const UmrahDetailsPage = ({ params }) => {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem className="border-none" value="item-7">
-          <h2 className="text-base lg:text-lg text-t-800 mb-4 lg:mb-6">
-            Ziyara Details
-          </h2>
+          <h2 className="text-base text-t-800 mb-4 lg:mb-6">Ziyara Details</h2>
           <AccordionTrigger
             className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
             iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
