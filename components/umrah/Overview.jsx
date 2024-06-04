@@ -80,7 +80,7 @@ const Overview = () => {
           </div>
           <div className="col-span-2 lg:col-span-1 space-y-7 lg:pl-12">
             <div>
-              <h1 className="text-lg xl:text-[22px] text-t-900 font-medium mb-2.5">
+              <h1 className="text-lg xl:text-[22px] text-t-800 font-medium mb-2.5">
                 Quad Share Basis Package
               </h1>
               <p className="text-t-800">
@@ -126,39 +126,39 @@ const Overview = () => {
                 {/* <div className="text-t-700 text-base lg:text-lg leading-normal">
                   Inclusions
                 </div> */}
-                <div className="text-t-600 text-sm lg:text-base leading-normal xl:text-left px-4 py-2 rounded-sm bg-p-300 ">
+                <div className="text-t-600 text-sm lg:text-base leading-normal xl:text-center px-4 py-2 rounded-sm bg-p-300 ">
                   Package Inclusion
                 </div>
                 <ul className="flex items-center gap-x-4">
-                  <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-900 capitalize">
+                  <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
                     <PlaneIcon
                       className="w-6 h-6 rotate-45 text-primary"
                       viewBox="0 0 14 14"
                     />
                     Flight
                   </li>
-                  <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-900 capitalize">
+                  <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
                     <HotelIcon
                       className="w-6 h-6 text-primary"
                       viewBox="0 0 14 14"
                     />
                     Hotel
                   </li>
-                  <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-900 capitalize">
+                  <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
                     <PassportIcon
                       className="w-6 h-6 text-primary"
                       viewBox="0 0 14 14"
                     />
                     Visa
                   </li>
-                  <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-900 capitalize">
+                  <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
                     <BusIcon
                       className="w-6 h-6 text-primary"
                       viewBox="0 0 14 14"
                     />
                     Transport
                   </li>
-                  <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-900 capitalize">
+                  <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
                     <SpoonKnifeRedIcon
                       className="w-6 h-6 text-primary"
                       viewBox="0 0 16 16"

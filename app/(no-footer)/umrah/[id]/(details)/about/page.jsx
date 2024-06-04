@@ -16,7 +16,7 @@ const ItineraryPage = () => {
               />
             </div>
             <div className="flex-1">
-              <p className="text-lg text-primary mb-1">Day 1</p>
+              {/* <p className="text-lg text-primary mb-1">Day 1</p> */}
               <h3 className="text-lg text-t-800 font-medium mb-1.5">
                 What is the Umrah?
               </h3>
@@ -28,7 +28,7 @@ const ItineraryPage = () => {
             </div>
           </div>
           <div className="space-y-4">
-            <h2 className="text-lg text-t-800 font-medium">
+            <h2 className="text-lg text-t-800 font-normal">
               How do I enter into the state of Ihram?
             </h2>
             <p className="text-t-600">
