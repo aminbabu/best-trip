@@ -100,7 +100,7 @@ const Page = () => {
 
   return (
     <main className="bg-[#F6F6F6]">
-      <section className="max-w-[calc(1280px-12px)] mx-auto px-7 lg:px-12 xl:px-16 py-[95px]">
+      <section className="max-w-[calc(1280px-12px)] mx-auto px-7 lg:px-12 xl:px-16 py-8">
         <div className="grid grid-cols-12 xl:gap-x-[30px] gap-y-6">
           <div className="col-span-12 xl:col-span-8 space-y-6">
             <Card className="border-transparent relative overflow-hidden rounded-sm">
