@@ -18,6 +18,7 @@ import {
   ManWalkingIcon,
   MinusIcon,
   PlaneIcon,
+  PlusIcon,
   StarAltIcon,
   VisaIcon,
 } from "@/components/icons/svgr";
@@ -34,10 +35,18 @@ import data from "@/data/umrah-ziyarah.json";
 
 import "@/styles/umrah/splide.css";
 import Link from "next/link";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MinusCircle } from "lucide-react";
 import { Minus } from "lucide-react";
+import { useState } from "react";
+import {
+  busServiceList,
+  madinahZiyarahList,
+  makkahZiyarahList,
+  taifZiyarahList,
+  transportTypes,
+} from "@/data/package-details";
 
 const table = {
   header: [
@@ -115,6 +124,31 @@ const options = {
 const UmrahDetailsPage = ({ params }) => {
   const { id } = params;
   const { items } = data;
+  const [showBus, isShowBus] = useState(true);
+  const [showTransportTypes, isShowTransportTypes] = useState(true);
+  const [showMakkah, isShowMakkah] = useState(true);
+  const [showMadinah, isShowMadinah] = useState(true);
+  const [showTaif, isShowTaif] = useState(true);
+
+  const handleShowBusMore = () => {
+    isShowBus(!showBus);
+  };
+
+  const handleShowTrasnportTypesMore = () => {
+    isShowTransportTypes(!showTransportTypes);
+  };
+
+  const handleShowMakkahMore = () => {
+    isShowMakkah(!showMakkah);
+  };
+
+  const handleShowMadinahMore = () => {
+    isShowMadinah(!showMadinah);
+  };
+
+  const handleShowTaifMore = () => {
+    isShowTaif(!showTaif);
+  };
 
   return (
     <div className="py-4 umrah-details-cards">
@@ -757,98 +791,52 @@ const UmrahDetailsPage = ({ params }) => {
               <p className="text-t-800">Bus Service (Round Trip)</p>
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2 md:col-span-1 flex flex-col md:items-start">
-                  <ul className="space-y-3 h-40 lg:h-44 overflow-y-auto pr-4">
-                    <li className="flex gap-x-2">
-                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                      *Passport copy with minimum 6 months validity
-                    </li>
-                    <li className="flex gap-x-2">
-                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                      *Passport size photo (white background)
-                    </li>
-                    <li className="flex gap-x-2">
-                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                      *ID card / Birth certificate
-                    </li>
-                    <li className="flex gap-x-2">
-                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                      *Return ticket booking copy
-                    </li>
-                    <li className="flex gap-x-2">
-                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                      *Hotel booking copy
-                    </li>
-                    <li className="flex gap-x-2">
-                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                      *Required covid 19 vaccines certificate
-                    </li>
-                    <li className="flex gap-x-2">
-                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                      *Passport copy with minimum 6 months validity
-                    </li>
-                    <li className="flex gap-x-2">
-                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                      *Passport size photo (white background)
-                    </li>
-                    <li className="flex gap-x-2">
-                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                      *ID card / Birth certificate
-                    </li>
-                    <li className="flex gap-x-2">
-                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                      *Return ticket booking copy
-                    </li>
-                    <li className="flex gap-x-2">
-                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                      *Hotel booking copy
-                    </li>
-                    <li className="flex gap-x-2">
-                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                      *Required covid 19 vaccines certificate
-                    </li>
+                  <ul
+                    className={`space-y-3 h-40 lg:h-44 ${showBus ? "overflow-hidden" : "overflow-y-auto"} pr-4 scrollbar-thin scrollbar-thumb-[#CFD1D4] scrollbar-track-[#F4F4F4]`}
+                  >
+                    {busServiceList.map((service) => (
+                      <li key={service.id} className="flex gap-x-2">
+                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                        {service.serviceName}
+                      </li>
+                    ))}
                   </ul>
                   <Button
                     variant="ghost"
                     className="text-primary justify-start px-0.5 hover:bg-transparent"
+                    onClick={handleShowBusMore}
                   >
                     <span className="flex-shrink-0 w-5 h-5 inline-flex items-center justify-center bg-primary text-white rounded-full">
-                      <Minus size={16} />
+                      {showBus ? <Plus size={16} /> : <Minus size={16} />}
                     </span>
-                    Show Less
+                    {showBus ? "Show more" : "Show less"}
                   </Button>
                 </div>
                 <div className="col-span-2 md:col-span-1 flex flex-col md:items-start">
-                  <ul className="space-y-3 h-40 lg:h-44 overflow-y-auto pr-4">
-                    <li className="flex gap-x-2">
-                      <CheckXCircleFilledIcon className="text-primary flex-shrink-0" />
-                      *Passport copy with minimum 6 months validity
-                    </li>
-                    <li className="flex gap-x-2">
-                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                      *Passport size photo (white background)
-                    </li>
-                    <li className="flex gap-x-2">
-                      <CheckXCircleFilledIcon className="text-primary flex-shrink-0" />
-                      *ID card / Birth certificate
-                    </li>
-                    <li className="flex gap-x-2">
-                      <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                      *Return ticket booking copy
-                    </li>
-                    <li className="flex gap-x-2">
-                      <CheckXCircleFilledIcon className="text-primary flex-shrink-0" />
-                      *Hotel booking copy
-                    </li>
+                  <ul
+                    className={`space-y-3 h-40 lg:h-44 ${showTransportTypes ? "overflow-hidden" : "overflow-y-auto"} pr-4 scrollbar-thin scrollbar-thumb-[#CFD1D4] scrollbar-track-[#F4F4F4]`}
+                  >
+                    {transportTypes.map((type) => (
+                      <li key={type.id} className="flex gap-x-2">
+                        {type.icon}
+                        {type.name}
+                      </li>
+                    ))}
                   </ul>
-                  {/* <Button
+                  <Button
                     variant="ghost"
                     className="text-primary justify-start px-0.5 hover:bg-transparent"
+                    onClick={handleShowTrasnportTypesMore}
                   >
                     <span className="flex-shrink-0 w-5 h-5 inline-flex items-center justify-center bg-primary text-white rounded-full">
-                      <Minus size={16} />
+                      {showTransportTypes ? (
+                        <Plus size={16} />
+                      ) : (
+                        <Minus size={16} />
+                      )}
                     </span>
-                    Show Less
-                  </Button> */}
+                    {showTransportTypes ? "Show more" : "Show less"}
+                  </Button>
                 </div>
               </div>
             </div>
@@ -914,192 +902,75 @@ const UmrahDetailsPage = ({ params }) => {
                 <div className="flex flex-col md:items-start gap-y-4">
                   <p className="text-t-800">Makkah Ziyarah</p>
                   <div>
-                    <ul className="space-y-3 h-40 lg:h-44 overflow-y-auto pr-4">
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Cave of Hira
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Cave of Thawr
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Mina
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Masjid al-jhaif
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Jamarat
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Mount Arafat
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Cave of Hira
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Cave of Thawr
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Mina
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Masjid al-jhaif
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Jamarat
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Mount Arafat
-                      </li>
+                    <ul
+                      className={`space-y-3 h-40 lg:h-44 ${showMakkah ? "overflow-hidden" : "overflow-y-auto"} pr-4 scrollbar-thin scrollbar-thumb-[#CFD1D4] scrollbar-track-[#F4F4F4]`}
+                    >
+                      {makkahZiyarahList.map((item) => (
+                        <li key={item.id} className="flex gap-x-2">
+                          <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                          {item.name}
+                        </li>
+                      ))}
                     </ul>
                     <Button
                       variant="ghost"
                       className="text-primary justify-start px-0.5 hover:bg-transparent"
+                      onClick={handleShowMakkahMore}
                     >
                       <span className="flex-shrink-0 w-5 h-5 inline-flex items-center justify-center bg-primary text-white rounded-full">
-                        <Minus size={16} />
+                        {showMakkah ? <Plus size={16} /> : <Minus size={16} />}
                       </span>
-                      Show Less
+                      {showMakkah ? "Show more" : "Show less"}
                     </Button>
                   </div>
                 </div>
                 <div className="flex flex-col md:items-start gap-y-4">
-                  <p className="text-t-800">Makkah Ziyarah</p>
+                  <p className="text-t-800">Madinah Ziyarah</p>
                   <div>
-                    <ul className="space-y-3 h-40 lg:h-44 overflow-y-auto pr-4">
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Cave of Hira
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Cave of Thawr
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Mina
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Masjid al-jhaif
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Jamarat
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Mount Arafat
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Cave of Hira
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Cave of Thawr
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Mina
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Masjid al-jhaif
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Jamarat
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Mount Arafat
-                      </li>
+                    <ul
+                      className={`space-y-3 h-40 lg:h-44 ${showMadinah ? "overflow-hidden" : "overflow-y-auto"} pr-4 scrollbar-thin scrollbar-thumb-[#CFD1D4] scrollbar-track-[#F4F4F4]`}
+                    >
+                      {madinahZiyarahList.map((item) => (
+                        <li key={item.id} className="flex gap-x-2">
+                          <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                          {item.name}
+                        </li>
+                      ))}
                     </ul>
                     <Button
                       variant="ghost"
                       className="text-primary justify-start px-0.5 hover:bg-transparent"
+                      onClick={handleShowMadinahMore}
                     >
                       <span className="flex-shrink-0 w-5 h-5 inline-flex items-center justify-center bg-primary text-white rounded-full">
-                        <Minus size={16} />
+                        {showMadinah ? <Plus size={16} /> : <Minus size={16} />}
                       </span>
-                      Show Less
+                      {showMadinah ? "Show more" : "Show less"}
                     </Button>
                   </div>
                 </div>
                 <div className="flex flex-col md:items-start gap-y-4">
-                  <p className="text-t-800">Makkah Ziyarah</p>
+                  <p className="text-t-800">Taif Ziyarah</p>
                   <div>
-                    <ul className="space-y-3 h-40 lg:h-44 overflow-y-auto pr-4">
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Cave of Hira
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Cave of Thawr
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Mina
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Masjid al-jhaif
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Jamarat
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Mount Arafat
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Cave of Hira
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Cave of Thawr
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Mina
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Masjid al-jhaif
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Jamarat
-                      </li>
-                      <li className="flex gap-x-2">
-                        <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
-                        Mount Arafat
-                      </li>
+                    <ul
+                      className={`space-y-3 h-40 lg:h-44 ${showTaif ? "overflow-hidden" : "overflow-y-auto"} pr-4 scrollbar-thin scrollbar-thumb-[#CFD1D4] scrollbar-track-[#F4F4F4]`}
+                    >
+                      {taifZiyarahList.map((item) => (
+                        <li key={item.id} className="flex gap-x-2">
+                          <CheckCircleFilledIcon className="text-primary flex-shrink-0" />
+                          {item.name}
+                        </li>
+                      ))}
                     </ul>
                     <Button
                       variant="ghost"
                       className="text-primary justify-start px-0.5 hover:bg-transparent"
+                      onClick={handleShowTaifMore}
                     >
                       <span className="flex-shrink-0 w-5 h-5 inline-flex items-center justify-center bg-primary text-white rounded-full">
-                        <Minus size={16} />
+                        {showTaif ? <Plus size={16} /> : <Minus size={16} />}
                       </span>
-                      Show Less
+                      {showTaif ? "Show more" : "Show less"}
                     </Button>
                   </div>
                 </div>
