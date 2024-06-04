@@ -80,7 +80,7 @@ const Overview = () => {
           </div>
           <div className="col-span-2 lg:col-span-1 space-y-9 lg:pl-12">
             <div>
-              <h1 className="text-xl lg:text-2xl text-t-900 font-medium mb-2.5">
+              <h1 className="text-lg text-t-900 font-medium mb-2.5">
                 Quad Share Basis Package
               </h1>
               <p className="text-t-800">
@@ -94,9 +94,7 @@ const Overview = () => {
                     className="mt-0.5 flex-shrink-0 h-6 w-6 text-primary"
                     viewBox="0 0 16 17"
                   />
-                  <span className="flex-shrink-0">
-                    From <span className="text-t-900">Dhaka , Bangladesh</span>
-                  </span>
+                  <span className="flex-shrink-0">From Dhaka , Bangladesh</span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
                   <CalenderRedIcon
@@ -104,8 +102,7 @@ const Overview = () => {
                     viewBox="0 0 16 17"
                   />
                   <span className="flex-shrink-0">
-                    Journey Date :{" "}
-                    <span className="text-t-900">20 Jun, 2024</span>
+                    Journey Date :20 Jun, 2024
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
@@ -113,9 +110,7 @@ const Overview = () => {
                     className="mt-0.5 flex-shrink-0 h-6 w-6 text-primary"
                     viewBox="0 0 16 17"
                   />
-                  <span className="flex-shrink-0">
-                    15 Days | <span className="text-t-900">14 Nights</span>
-                  </span>
+                  <span className="flex-shrink-0">15 Days | 14 Nights</span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
                   <PeopleIcon
@@ -123,13 +118,16 @@ const Overview = () => {
                     viewBox="0 0 16 17"
                   />
                   <span className="flex-shrink-0">
-                    Group Available : <span className="text-t-900">30 Pax</span>
+                    Group Available : 30 Pax
                   </span>
                 </li>
               </ul>
               <div className="flex flex-col gap-y-4">
-                <div className="text-t-700 text-base lg:text-lg leading-normal">
+                {/* <div className="text-t-700 text-base lg:text-lg leading-normal">
                   Inclusions
+                </div> */}
+                <div className="text-t-600 text-sm lg:text-base leading-normal xl:text-left px-4 py-2 rounded-sm bg-p-300 max-w-fit">
+                  Package Inclusion
                 </div>
                 <ul className="flex items-center gap-x-4">
                   <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-900 capitalize">
