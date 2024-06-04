@@ -976,13 +976,6 @@ const UmrahDetailsPage = ({ params }) => {
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-x-2.5 text-t-800 bg-p-300 rounded-sm p-2.5">
-              <BulbOnIcon className="text-t-600 flex-shrink-0" />
-              <span>
-                Note: Pickup Time and Location will be according to the time and
-                date you prescribe.
-              </span>
-            </div>
           </AccordionContent>
         </AccordionItem>
       </Accordion>
