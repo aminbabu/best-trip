@@ -9,7 +9,7 @@ const TravellerDetailsPage = ({ params }) => {
   return (
     <main className="bg-secondary py-20 min-h-[calc(100vh-93px)]">
       <Container>
-        <Card className="max-w-3xl mx-auto border-transparent">
+        <Card className="max-w-[648px] mx-auto border-transparent">
           <CardContent className="text-t-700 text-center leading-relaxed px-6 py-8 lg:px-10 lg:py-10">
             <Link
               href={`/umrah/${id}/traveller-details/add`}
