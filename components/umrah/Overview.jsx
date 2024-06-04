@@ -102,7 +102,7 @@ const Overview = () => {
                     viewBox="0 0 16 17"
                   />
                   <span className="flex-shrink-0">
-                    Journey Date :20 Jun, 2024
+                    Journey Date : 20 Jun, 2024
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
