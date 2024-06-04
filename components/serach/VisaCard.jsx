@@ -112,7 +112,7 @@ const VisaCard = ({ data }) => {
                 <div className="flex flex-col lg:flex-row justify-end lg:items-center text-t-600 leading-normal text-sm lg:text-base md:pr-2 gap-4 mt-[51px]">
                   <CollapsibleTrigger
                     onClick={toggleCollapsible}
-                    className="flex items-center lg:gap-[10px]"
+                    className="flex items-center lg:gap-[10px] text-t-900"
                   >
                     {isOpen ? "Hide Details" : "View More Details"}
                     <ArrowIcon

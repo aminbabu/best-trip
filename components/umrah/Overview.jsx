@@ -78,16 +78,16 @@ const Overview = () => {
               </p>
             </div>
           </div>
-          <div className="col-span-2 lg:col-span-1 space-y-9 lg:pl-12">
+          <div className="col-span-2 lg:col-span-1 space-y-7 lg:pl-12">
             <div>
-              <h1 className="text-lg text-t-900 font-medium mb-2.5">
+              <h1 className="text-lg xl:text-[22px] text-t-900 font-medium mb-2.5">
                 Quad Share Basis Package
               </h1>
               <p className="text-t-800">
                 1 Friday In Makkah- 1 Friday In Madinah
               </p>
             </div>
-            <div className="flex flex-col gap-y-9">
+            <div className="flex flex-col gap-y-7">
               <ul className="space-y-3 lg:space-y-2 xl:space-y-3">
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
                   <LocationCircleIcon
@@ -122,11 +122,11 @@ const Overview = () => {
                   </span>
                 </li>
               </ul>
-              <div className="flex flex-col gap-y-4">
+              <div className="flex flex-col gap-y-4 lg:max-w-fit">
                 {/* <div className="text-t-700 text-base lg:text-lg leading-normal">
                   Inclusions
                 </div> */}
-                <div className="text-t-600 text-sm lg:text-base leading-normal xl:text-left px-4 py-2 rounded-sm bg-p-300 max-w-fit">
+                <div className="text-t-600 text-sm lg:text-base leading-normal xl:text-left px-4 py-2 rounded-sm bg-p-300 ">
                   Package Inclusion
                 </div>
                 <ul className="flex items-center gap-x-4">
