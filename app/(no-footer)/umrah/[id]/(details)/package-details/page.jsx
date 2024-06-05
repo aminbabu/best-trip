@@ -16,9 +16,7 @@ import {
   LocationDistanceIcon,
   LocationIcon,
   ManWalkingIcon,
-  MinusIcon,
   PlaneIcon,
-  PlusIcon,
   StarAltIcon,
   VisaIcon,
 } from "@/components/icons/svgr";
@@ -35,9 +33,8 @@ import data from "@/data/umrah-ziyarah.json";
 
 import "@/styles/umrah/splide.css";
 import Link from "next/link";
-import { CheckCircle, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { MinusCircle } from "lucide-react";
 import { Minus } from "lucide-react";
 import { useState } from "react";
 import {
@@ -158,23 +155,25 @@ const UmrahDetailsPage = ({ params }) => {
             Outbound Flight Details
           </h2>
           <AccordionTrigger
-            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
-            iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
+            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
+            iconClassName="h-5 w-5 text-primary absolute lg:static top-[2.125rem] right-4 md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
           >
             <div className="flex-1 flex flex-col lg:flex-row">
-              <div className="flex-shrink-0 hidden md:flex items-center gap-x-4 bg-p-300 p-6 lg:px-8 lg:py-12 lg:w-80">
+              <div className="flex-shrink-0 flex items-center gap-x-4 bg-p-300 p-4 md:p-6 lg:px-8 lg:py-12 lg:w-80">
                 <BalakaIcon className="text-primary flex-shrink-0" />
                 <div>
-                  <div className="text-t-900 text-lg">Biman Bangladesh</div>
+                  <div className="text-t-900 text-base md:text-lg">
+                    Biman Bangladesh
+                  </div>
                   <div className="text-t-800">BG611</div>
                 </div>
               </div>
-              <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 px-3 xs:px-4 py-4 sm:px-6 md:px-4">
+              <div className="flex-1 flex items-center justify-around gap-x-4 px-3 xs:px-4 py-4 sm:px-6 md:px-4">
                 <div className="text-right space-y-1 lg:space-y-1.5 border-l border-[#f4f4f4] pl-[1px]">
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     Dhaka
                   </p>
-                  <div className="text-sm sm:text-base md:text-lg lg:text-[1.375rem] text-t-900">
+                  <div className="text-xs font-medium md:font-normal sm:text-base md:text-lg lg:text-[1.375rem] text-t-900">
                     DAC 08:00
                   </div>
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
@@ -185,25 +184,25 @@ const UmrahDetailsPage = ({ params }) => {
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     06h 46m
                   </p>
-                  <div className="hidden md:flex items-center gap-x-4">
+                  <div className="flex items-center gap-x-3 md:gap-x-4">
                     <PlaneIcon
                       className="text-primary w-4 h-4 rotate-90"
                       viewBox="0 0 14 14"
                     />
-                    <Separator className="flex-1 bg-t-800 w-28" />
+                    <Separator className="flex-1 bg-t-800 w-9 md:w-28" />
                     <LocationIcon
                       className="text-primary w-4 h-4"
                       viewBox="0 0 14 14"
                     />
                   </div>
-                  <div className="flex md:hidden items-center gap-x-1">
+                  {/* <div className="flex md:hidden items-center gap-x-1">
                     <Separator className="flex-1 bg-t-800 w-6 sm:w-10" />
                     <BalakaIcon
                       className="text-primary w-5 h-5 sm:w-6 sm:h-6"
                       viewBox="0 0 51 51"
                     />
                     <Separator className="flex-1 bg-t-800 w-6 sm:w-10" />
-                  </div>
+                  </div> */}
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     (Non Stop)
                   </p>
@@ -212,7 +211,7 @@ const UmrahDetailsPage = ({ params }) => {
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     Jeddah
                   </p>
-                  <div className="text-sm sm:text-base md:text-lg lg:text-[1.375rem] text-t-900">
+                  <div className="text-xs font-medium md:font-normal sm:text-base md:text-lg lg:text-[1.375rem] text-t-900">
                     JED 13:45
                   </div>
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">

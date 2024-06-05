@@ -55,6 +55,7 @@ export const travellerSchema = z.object({
   covid_certificate: z
     .string()
     .min(1, { message: "Please provide a valid covid certificate" }),
+  travellers: z.string().min(1, { message: "Please select a traveller" }),
   first_name: z
     .string()
     .min(1, { message: "Please provide a valid first name" }),

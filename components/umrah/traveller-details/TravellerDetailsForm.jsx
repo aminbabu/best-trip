@@ -16,7 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useState } from "react";
-import { getImageData } from "@/lib/utils";
+import { cn, getImageData } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -40,6 +40,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
+import ScrollArea from "@/components/global/ScrollArea";
 
 const TravellerDetailsForm = ({ hideTravellerForm }) => {
   const [loading, setLoading] = useState(false);
@@ -48,6 +49,10 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
   const [photo, setPhoto] = useState(null);
   const [nid, setNid] = useState(null);
   const [covid_certificate, setCovidCertificate] = useState(null);
+  const [calendarStates, setCalenderStates] = useState({
+    dob: false,
+    exprireDate: false,
+  });
   const form = useForm({
     resolver: zodResolver(travellerSchema),
     defaultValues: {
@@ -55,6 +60,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
       photo: "",
       nid: "",
       covid_certificate: "",
+      travellers: "",
       first_name: "",
       last_name: "",
       gender: "",
@@ -72,6 +78,59 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
     },
   });
 
+  const travellersList = [
+    {
+      id: 1,
+      travellerNo: 1,
+      travellerType: "Adult",
+    },
+    {
+      id: 2,
+      travellerNo: 2,
+      travellerType: "Adult",
+    },
+    {
+      id: 3,
+      travellerNo: 3,
+      travellerType: "Adult",
+    },
+    {
+      id: 4,
+      travellerNo: 4,
+      travellerType: "Adult",
+    },
+    {
+      id: 5,
+      travellerNo: 5,
+      travellerType: "Child",
+    },
+    {
+      id: 6,
+      travellerNo: 6,
+      travellerType: "Child",
+    },
+    {
+      id: 7,
+      travellerNo: 7,
+      travellerType: "Child",
+    },
+    {
+      id: 8,
+      travellerNo: 8,
+      travellerType: "Child",
+    },
+    {
+      id: 9,
+      travellerNo: 9,
+      travellerType: "Infant",
+    },
+    {
+      id: 10,
+      travellerNo: 10,
+      travellerType: "Infant",
+    },
+  ];
+
   const onSubmit = (data) => {
     setError(null);
     setLoading(true);
@@ -84,7 +143,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
   };
 
   return (
-    <div className="space-y-7 bg-white">
+    <div className="space-y-7 bg-white p-4 lg:p-[50px]">
       <h2 className="text-t-500 text-lg font-medium">Traveler Details</h2>
       <div className="bg-p-300 font-normal lg:text-lg text-t-800 rounded-sm px-4 py-3 flex items-center gap-x-2.5">
         <InfoCircledIcon className="w-6 h-6 text-p-900 flex-shrink-0" />
@@ -220,6 +279,41 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                   )}
                 />
               </div>
+              <div className="col-span-2 sm:col-span-1 lg:col-span-2">
+                <FormField
+                  control={form.control}
+                  name="travellers"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-t-800 lg:text-lg font-normal">
+                        Travellers<span className="text-primary">*</span>
+                      </FormLabel>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-800">
+                            <SelectValue placeholder="Select traveller" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent className="max-h-40">
+                          {travellersList.map((traveller) => (
+                            <SelectItem
+                              key={traveller.id}
+                              value={`Travellers ${traveller.travellerNo} (${traveller.travellerType})`}
+                            >
+                              Travellers {traveller.travellerNo} (
+                              {traveller.travellerType})
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
             </div>
           </div>
           <div className="grid grid-cols-6 gap-8 lg:gap-x-10">
@@ -339,7 +433,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu> */}
-                    <Popover>
+                    <Popover onOpenChange={calendarStates.dob}>
                       <PopoverTrigger asChild>
                         <FormControl>
                           <Button
@@ -362,7 +456,10 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                           }
                           captionLayout="dropdown-buttons"
                           selected={moment(field.value).toDate()}
-                          onSelect={field.onChange}
+                          onSelect={(value) => {
+                            field.onChange(value);
+                            setCalenderStates((prev) => !prev);
+                          }}
                           disabled={(date) =>
                             date > new Date() || date < new Date("1900-01-01")
                           }
