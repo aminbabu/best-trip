@@ -40,6 +40,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { travellerSchema } from "@/schema/zod";
 import { Input } from "@/components/ui/input";
 import moment from "moment";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Page = () => {
   const [loading, setLoading] = useState(false);
@@ -281,7 +287,49 @@ const Page = () => {
                                   Date of Birth
                                   <span className="text-primary">*</span>
                                 </FormLabel>
-                                <Popover>
+                                <DropdownMenu>
+                                  <DropdownMenuTrigger asChild>
+                                    <FormControl>
+                                      <Button
+                                        variant={"outline"}
+                                        className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                      >
+                                        {field.value ? (
+                                          moment(field.value).format(
+                                            "DD-MMM-YYYY"
+                                          )
+                                        ) : (
+                                          <span>Select a date</span>
+                                        )}
+                                      </Button>
+                                    </FormControl>
+                                  </DropdownMenuTrigger>
+                                  <DropdownMenuContent
+                                    className="w-auto p-0"
+                                    align="start"
+                                  >
+                                    <DropdownMenuItem>
+                                      <Calendar
+                                        mode="single"
+                                        defaultMonth={
+                                          field.value &&
+                                          moment(field.value).toDate()
+                                        }
+                                        captionLayout="dropdown-buttons"
+                                        selected={moment(field.value).toDate()}
+                                        onSelect={field.onChange}
+                                        disabled={(date) =>
+                                          date > new Date() ||
+                                          date < new Date("1900-01-01")
+                                        }
+                                        fromYear={1900}
+                                        toYear={moment().year()}
+                                        initialFocus
+                                      />
+                                    </DropdownMenuItem>
+                                  </DropdownMenuContent>
+                                </DropdownMenu>
+                                {/* <Popover>
                                   <PopoverTrigger asChild>
                                     <FormControl>
                                       <Button
@@ -320,7 +368,7 @@ const Page = () => {
                                       initialFocus
                                     />
                                   </PopoverContent>
-                                </Popover>
+                                </Popover> */}
                                 <FormMessage />
                               </FormItem>
                             )}

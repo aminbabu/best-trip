@@ -7,10 +7,10 @@ import { useState } from "react";
 
 const AddTravellersPage = ({ params }) => {
   const { id } = params;
-  const [addTraveller, setAddTraveller] = useState(false);
+  const [addTraveller, setAddTraveller] = useState(true);
 
   return (
-    <main className="py-16 bg-secondary">
+    <main className="py-16 bg-[#fbfbfb]">
       <Container>
         {addTraveller ? (
           <TravellerDetailsForm

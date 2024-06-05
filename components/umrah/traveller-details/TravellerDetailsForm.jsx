@@ -34,6 +34,12 @@ import { Calendar } from "@/components/ui/calendar";
 import moment from "moment";
 import { Loader } from "lucide-react";
 import { DocAltIcon, DocIcon } from "@/components/icons/svgr";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
 
 const TravellerDetailsForm = ({ hideTravellerForm }) => {
   const [loading, setLoading] = useState(false);
@@ -78,7 +84,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
   };
 
   return (
-    <div className="space-y-7 bg-[#FBFBFB]">
+    <div className="space-y-7 bg-white">
       <h2 className="text-t-500 text-lg font-medium">Traveler Details</h2>
       <div className="bg-p-300 font-normal lg:text-lg text-t-800 rounded-sm px-4 py-3 flex items-center gap-x-2.5">
         <InfoCircledIcon className="w-6 h-6 text-p-900 flex-shrink-0" />
@@ -158,7 +164,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 </p>
               </div>
             </div>
-            <div className="col-span-6 sm:col-span-3 lg:col-span-2 grid grid-cols-2 gap-8">
+            <div className="col-span-6 sm:col-span-3 lg:col-span-2 flex flex-col gap-8">
               <div className="col-span-2 sm:col-span-1 lg:col-span-2">
                 <FormField
                   control={form.control}
@@ -298,6 +304,41 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                     <FormLabel className="text-t-800 lg:text-lg font-normal">
                       Date of Birth<span className="text-primary">*</span>
                     </FormLabel>
+                    {/* <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <FormControl>
+                          <Button
+                            variant={"outline"}
+                            className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                          >
+                            {field.value ? (
+                              moment(field.value).format("DD-MMM-YYYY")
+                            ) : (
+                              <span>Select a date</span>
+                            )}
+                          </Button>
+                        </FormControl>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className="w-auto p-0" align="start">
+                        <DropdownMenuItem>
+                          <Calendar
+                            mode="single"
+                            defaultMonth={
+                              field.value && moment(field.value).toDate()
+                            }
+                            captionLayout="dropdown-buttons"
+                            selected={moment(field.value).toDate()}
+                            onSelect={field.onChange}
+                            disabled={(date) =>
+                              date > new Date() || date < new Date("1900-01-01")
+                            }
+                            fromYear={1900}
+                            toYear={moment().year()}
+                            initialFocus
+                          />
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu> */}
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
@@ -336,7 +377,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 )}
               />
             </div>
-            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+            {/* <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
                 name="marital_status"
@@ -363,7 +404,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                   </FormItem>
                 )}
               />
-            </div>
+            </div> */}
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
@@ -422,7 +463,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 )}
               />
             </div>
-            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+            {/* <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
                 name="present_address"
@@ -443,8 +484,8 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                   </FormItem>
                 )}
               />
-            </div>
-            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+            </div> */}
+            {/* <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
                 name="permanent_address"
@@ -465,7 +506,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                   </FormItem>
                 )}
               />
-            </div>
+            </div> */}
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
@@ -528,7 +569,42 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                       Passport Expiry Date
                       <span className="text-primary">*</span>
                     </FormLabel>
-                    <Popover>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <FormControl>
+                          <Button
+                            variant={"outline"}
+                            className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                          >
+                            {field.value ? (
+                              moment(field.value).format("DD-MMM-YYYY")
+                            ) : (
+                              <span>Select a date</span>
+                            )}
+                          </Button>
+                        </FormControl>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className="w-auto p-0" align="start">
+                        <DropdownMenuItem>
+                          <Calendar
+                            mode="single"
+                            defaultMonth={
+                              field.value && moment(field.value).toDate()
+                            }
+                            captionLayout="dropdown-buttons"
+                            selected={moment(field.value).toDate()}
+                            onSelect={field.onChange}
+                            disabled={(date) =>
+                              date < new Date() || date < new Date("1900-01-01")
+                            }
+                            fromYear={moment().year()}
+                            toYear={2100}
+                            initialFocus
+                          />
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                    {/* <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
                           <Button
@@ -553,14 +629,14 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                           selected={moment(field.value).toDate()}
                           onSelect={field.onChange}
                           disabled={(date) =>
-                            date > new Date() || date < new Date("1900-01-01")
+                            date < new Date() || date < new Date("1900-01-01")
                           }
-                          fromYear={1900}
-                          toYear={moment().year()}
+                          fromYear={moment().year()}
+                          toYear={2100}
                           initialFocus
                         />
                       </PopoverContent>
-                    </Popover>
+                    </Popover> */}
                     <FormMessage />
                   </FormItem>
                 )}
