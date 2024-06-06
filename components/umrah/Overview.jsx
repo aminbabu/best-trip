@@ -66,8 +66,8 @@ const Overview = () => {
                 ))}
               </SplideTrack>
             </Slider>
-            <div>
-              <p className="text-xs lg:text-base text-t-600 leading-relaxed">
+            <div className="hidden lg:block">
+              <p className="text-base text-t-600 leading-relaxed">
                 <span className="text-base text-primary">About Umrah : </span>
                 Umrah is an act of worshipping Allah by entering the state of
                 Ihram, circumambulating the House, running between Safa and
@@ -83,7 +83,7 @@ const Overview = () => {
               <h1 className="text-lg xl:text-[22px] text-t-800 font-medium mb-2.5">
                 Quad Share Basis Package
               </h1>
-              <p className="text-t-800">
+              <p className="text-sm md:text-base text-t-800">
                 1 Friday In Makkah- 1 Friday In Madinah
               </p>
             </div>
@@ -166,6 +166,19 @@ const Overview = () => {
                     Food
                   </li>
                 </ul>
+              </div>
+              <div className="lg:hidden">
+                <p className="text-sm md:text-base text-t-600 leading-relaxed">
+                  <span className="text-sm md:text-base text-primary">
+                    About Umrah :{" "}
+                  </span>
+                  Umrah is an act of worshipping Allah by entering the state of
+                  Ihram, circumambulating the House, running between Safa and
+                  Marwa, and having the head shaved or trimmed{" "}
+                  <Link className="text-t-800" href={`/umrah/${cardId}/about`}>
+                    Read more...
+                  </Link>
+                </p>
               </div>
             </div>
           </div>

@@ -40,7 +40,7 @@ const DetailsTab = ({ id }) => {
           >
             <Link
               href={`${item.href}`}
-              className={cn("text-base text-t-800 py-3", {
+              className={cn("text-sm md:text-base text-t-800 py-3", {
                 "text-primary": item.href === pathname,
               })}
             >
