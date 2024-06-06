@@ -159,8 +159,11 @@ const UmrahDetailsPage = ({ params }) => {
             iconClassName="h-5 w-5 text-primary absolute lg:static top-[2.125rem] right-4 md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
           >
             <div className="flex-1 flex flex-col lg:flex-row">
-              <div className="flex-shrink-0 flex items-center gap-x-4 bg-p-300 p-4 md:p-6 lg:px-8 lg:py-12 lg:w-80">
-                <BalakaIcon className="text-primary flex-shrink-0" />
+              <div className="flex-shrink-0 flex items-center gap-x-4 bg-p-300 px-4 py-6 md:p-6 lg:px-8 lg:py-12 lg:w-80">
+                <BalakaIcon
+                  className="text-primary h-10 w-10 md:h-[51px] md:w-[51px]"
+                  viewBox="0 0 51 51"
+                />
                 <div>
                   <div className="text-t-900 text-base md:text-lg">
                     Biman Bangladesh
@@ -168,8 +171,8 @@ const UmrahDetailsPage = ({ params }) => {
                   <div className="text-t-800">BG611</div>
                 </div>
               </div>
-              <div className="flex-1 flex items-center justify-around gap-x-4 px-3 xs:px-4 py-4 sm:px-6 md:px-4">
-                <div className="text-right space-y-1 lg:space-y-1.5 border-l border-[#f4f4f4] pl-[1px]">
+              <div className="flex-1 flex items-center justify-around gap-x-4 px-4 xs:px-4 py-5 sm:px-6 md:px-4">
+                <div className="text-right space-y-1.5 border-l border-[#f4f4f4] pl-[1px]">
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     Dhaka
                   </p>
@@ -180,16 +183,16 @@ const UmrahDetailsPage = ({ params }) => {
                     Wed, 25 Dec 2023
                   </p>
                 </div>
-                <div className="text-center space-y-1 lg:space-y-1.5">
+                <div className="text-center space-y-1.5">
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     06h 46m
                   </p>
-                  <div className="flex items-center gap-x-3 md:gap-x-4">
+                  <div className="flex items-center gap-x-2 md:gap-x-4">
                     <PlaneIcon
                       className="text-primary w-4 h-4 rotate-90"
                       viewBox="0 0 14 14"
                     />
-                    <Separator className="flex-1 bg-t-800 w-9 md:w-28" />
+                    <Separator className="flex-1 bg-t-800 w-10 md:w-28" />
                     <LocationIcon
                       className="text-primary w-4 h-4"
                       viewBox="0 0 14 14"
@@ -207,7 +210,7 @@ const UmrahDetailsPage = ({ params }) => {
                     (Non Stop)
                   </p>
                 </div>
-                <div className="text-left  space-y-1 lg:space-y-1.5">
+                <div className="text-left space-y-1.5">
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     Jeddah
                   </p>
@@ -280,24 +283,24 @@ const UmrahDetailsPage = ({ params }) => {
             Makkah Hotel Details
           </h2>
           <AccordionTrigger
-            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
-            iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
+            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-0 sm:pr-6 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
+            iconClassName="h-5 w-5 text-primary absolute lg:static top-[2.125rem] right-4 md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
           >
             <div className="flex-1 flex flex-col lg:flex-row">
-              <div className="flex-shrink-0 hidden md:flex items-center gap-x-4 bg-p-300 p-6 lg:px-8 lg:py-12 lg:w-80">
+              <div className="flex-shrink-0 flex items-center gap-x-4 bg-p-300 px-4 py-6 md:p-6 lg:px-8 lg:py-12 lg:w-80">
                 <HotelIcon
-                  className="text-primary"
-                  width="60"
-                  height="60"
+                  className="text-primary h-10 w-10 md:h-[60px] md:w-[60px]"
                   viewBox="0 0 14 14"
                 />
                 <div>
-                  <div className="text-t-900 text-lg">Stay 7 Night</div>
+                  <div className="text-t-900 text-base md:text-lg">
+                    Stay 7 Night
+                  </div>
                   <div className="text-t-800">In Makkah</div>
                 </div>
               </div>
-              <div className="flex-1 flex items-center md:justify-around gap-5 px-3 xs:px-4 py-4 sm:px-6 md:px-4 lg:px-8 xl:px-14">
-                <div className="aspect-[171/127] overflow-hidden flex-shrink-0 w-32 md:w-44 hidden xs:block">
+              <div className="flex-1 flex items-center justify-around gap-5 px-4 xs:px-4 py-5 sm:px-6 md:px-4 lg:px-8 xl:px-14">
+                <div className="aspect-[70/85] md:aspect-[171/127] overflow-hidden flex-shrink-0 w-[75px] md:w-44 ">
                   <Image
                     src="/images/details/umrah/01.png"
                     alt="Hotel"
@@ -307,14 +310,14 @@ const UmrahDetailsPage = ({ params }) => {
                   />
                 </div>
                 <div className="flex-1 text-sm md:text-base">
-                  <h4 className="text-base md:text-lg text-t-900 mb-1 line-clamp-2">
+                  <h4 className="text-xs line-clamp-1 md:text-lg text-t-900 mb-1 md:line-clamp-2 leading-loose  md:leading-normal">
                     Swissotel Al Maqam Makkah / Similar Hotel{" "}
                   </h4>
-                  <p className="text-t-800 mb-1 line-clamp-2">
+                  <p className="text-xs line-clamp-1 text-t-800 mb-1 md:line-clamp-2 leading-loose md:leading-normal">
                     St Tower F, Ibrahim Al Khalil, St, Tower F, Al Maqam
                   </p>
-                  <div className="flex items-center gap-x-2 text-t-600">
-                    <ul className="flex items-center gap-x-2">
+                  <div className="flex items-center gap-x-2 text-t-600  leading-loose md:leading-normal">
+                    <ul className="flex items-center gap-x-1 md:gap-x-2">
                       <li className="text-[#FF7B39]">
                         <StarAltIcon size={18} />
                       </li>
@@ -331,7 +334,9 @@ const UmrahDetailsPage = ({ params }) => {
                         <StarAltIcon size={18} />
                       </li>
                     </ul>
-                    4.8
+                    <span className="mt-1.5 md:mt-1 text-xs md:text-base">
+                      4.8
+                    </span>
                   </div>
                 </div>
               </div>
@@ -408,24 +413,24 @@ const UmrahDetailsPage = ({ params }) => {
             Madinah Hotel Details
           </h2>
           <AccordionTrigger
-            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
-            iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
+            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-0 sm:pr-6 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
+            iconClassName="h-5 w-5 text-primary absolute lg:static top-[2.125rem] right-4 md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
           >
             <div className="flex-1 flex flex-col lg:flex-row">
-              <div className="flex-shrink-0 hidden md:flex items-center gap-x-4 bg-p-300 p-6 lg:px-8 lg:py-12 lg:w-80">
+              <div className="flex-shrink-0 flex items-center gap-x-4 bg-p-300 px-4 py-6 md:p-6 lg:px-8 lg:py-12 lg:w-80">
                 <HotelIcon
-                  className="text-primary"
-                  width="60"
-                  height="60"
+                  className="text-primary h-10 w-10 md:h-[60px] md:w-[60px]"
                   viewBox="0 0 14 14"
                 />
                 <div>
-                  <div className="text-t-900 text-lg">Stay 7 Night</div>
-                  <div className="text-t-800">In Makkah</div>
+                  <div className="text-t-900 text-base md:text-lg">
+                    Stay 7 Night
+                  </div>
+                  <div className="text-t-800">In Madinah</div>
                 </div>
               </div>
-              <div className="flex-1 flex items-center md:justify-around gap-5 px-3 xs:px-4 py-4 sm:px-6 md:px-4 lg:px-8 xl:px-14">
-                <div className="aspect-[171/127] overflow-hidden flex-shrink-0 w-32 md:w-44 hidden xs:block">
+              <div className="flex-1 flex items-center justify-around gap-5 px-4 xs:px-4 py-5 sm:px-6 md:px-4 lg:px-8 xl:px-14">
+                <div className="aspect-[70/85] md:aspect-[171/127] overflow-hidden flex-shrink-0 w-[75px] md:w-44 ">
                   <Image
                     src="/images/details/umrah/01.png"
                     alt="Hotel"
@@ -435,14 +440,14 @@ const UmrahDetailsPage = ({ params }) => {
                   />
                 </div>
                 <div className="flex-1 text-sm md:text-base">
-                  <h4 className="text-base md:text-lg text-t-900 mb-1 line-clamp-2">
+                  <h4 className="text-xs line-clamp-1 md:text-lg text-t-900 mb-1 md:line-clamp-2 leading-loose  md:leading-normal">
                     Swissotel Al Maqam Makkah / Similar Hotel{" "}
                   </h4>
-                  <p className="text-t-800 mb-1 line-clamp-2">
+                  <p className="text-xs line-clamp-1 text-t-800 mb-1 md:line-clamp-2 leading-loose md:leading-normal">
                     St Tower F, Ibrahim Al Khalil, St, Tower F, Al Maqam
                   </p>
-                  <div className="flex items-center gap-x-2 text-t-600">
-                    <ul className="flex items-center gap-x-2">
+                  <div className="flex items-center gap-x-2 text-t-600  leading-loose md:leading-normal">
+                    <ul className="flex items-center gap-x-1 md:gap-x-2">
                       <li className="text-[#FF7B39]">
                         <StarAltIcon size={18} />
                       </li>
@@ -459,7 +464,9 @@ const UmrahDetailsPage = ({ params }) => {
                         <StarAltIcon size={18} />
                       </li>
                     </ul>
-                    4.8
+                    <span className="mt-1.5 md:mt-1 text-xs md:text-base">
+                      4.8
+                    </span>
                   </div>
                 </div>
               </div>
@@ -536,61 +543,66 @@ const UmrahDetailsPage = ({ params }) => {
             Inbound Flight Details
           </h2>
           <AccordionTrigger
-            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
-            iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
+            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
+            iconClassName="h-5 w-5 text-primary absolute lg:static top-[2.125rem] right-4 md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
           >
             <div className="flex-1 flex flex-col lg:flex-row">
-              <div className="flex-shrink-0 hidden md:flex items-center gap-x-4 bg-p-300 p-6 lg:px-8 lg:py-12 lg:w-80">
-                <BalakaIcon className="text-primary flex-shrink-0" />
+              <div className="flex-shrink-0 flex items-center gap-x-4 bg-p-300 px-4 py-6 md:p-6 lg:px-8 lg:py-12 lg:w-80">
+                <BalakaIcon
+                  className="text-primary h-10 w-10 md:h-[51px] md:w-[51px]"
+                  viewBox="0 0 51 51"
+                />
                 <div>
-                  <div className="text-t-900 text-lg">Biman Bangladesh</div>
+                  <div className="text-t-900 text-base md:text-lg">
+                    Biman Bangladesh
+                  </div>
                   <div className="text-t-800">BG611</div>
                 </div>
               </div>
-              <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 px-3 xs:px-4 py-4 sm:px-6 md:px-4">
-                <div className="text-right space-y-1 lg:space-y-1.5 border-l border-[#f4f4f4] pl-[1px]">
+              <div className="flex-1 flex items-center justify-around gap-x-4 px-4 xs:px-4 py-5 sm:px-6 md:px-4">
+                <div className="text-right space-y-1.5 border-l border-[#f4f4f4] pl-[1px]">
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     Dhaka
                   </p>
-                  <div className="text-sm sm:text-base md:text-lg lg:text-[1.375rem] text-t-900">
+                  <div className="text-xs font-medium md:font-normal sm:text-base md:text-lg lg:text-[1.375rem] text-t-900">
                     DAC 08:00
                   </div>
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     Wed, 25 Dec 2023
                   </p>
                 </div>
-                <div className="text-center space-y-1 lg:space-y-1.5">
+                <div className="text-center space-y-1.5">
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     06h 46m
                   </p>
-                  <div className="hidden md:flex items-center gap-x-4">
+                  <div className="flex items-center gap-x-2 md:gap-x-4">
                     <PlaneIcon
                       className="text-primary w-4 h-4 rotate-90"
                       viewBox="0 0 14 14"
                     />
-                    <Separator className="flex-1 bg-t-800 w-28" />
+                    <Separator className="flex-1 bg-t-800 w-10 md:w-28" />
                     <LocationIcon
                       className="text-primary w-4 h-4"
                       viewBox="0 0 14 14"
                     />
                   </div>
-                  <div className="flex md:hidden items-center gap-x-1">
+                  {/* <div className="flex md:hidden items-center gap-x-1">
                     <Separator className="flex-1 bg-t-800 w-6 sm:w-10" />
                     <BalakaIcon
                       className="text-primary w-5 h-5 sm:w-6 sm:h-6"
                       viewBox="0 0 51 51"
                     />
                     <Separator className="flex-1 bg-t-800 w-6 sm:w-10" />
-                  </div>
+                  </div> */}
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     (Non Stop)
                   </p>
                 </div>
-                <div className="text-left  space-y-1 lg:space-y-1.5">
+                <div className="text-left space-y-1.5">
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     Jeddah
                   </p>
-                  <div className="text-sm sm:text-base md:text-lg lg:text-[1.375rem] text-t-900">
+                  <div className="text-xs font-medium md:font-normal sm:text-base md:text-lg lg:text-[1.375rem] text-t-900">
                     JED 13:45
                   </div>
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
@@ -662,18 +674,23 @@ const UmrahDetailsPage = ({ params }) => {
         <AccordionItem className="border-none" value="item-5">
           <h2 className="text-base text-t-800 mb-4 lg:mb-6">Visa Details</h2>
           <AccordionTrigger
-            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
-            iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
+            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
+            iconClassName="h-5 w-5 text-primary absolute lg:static top-[2.125rem] right-4 md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
           >
             <div className="flex-1 flex flex-col lg:flex-row">
-              <div className="flex-shrink-0 hidden md:flex items-center gap-x-4 bg-p-300 p-6 lg:px-8 lg:py-12 lg:w-80">
-                <VisaIcon className="text-primary flex-shrink-0" />
+              <div className="flex-shrink-0 flex items-center gap-x-4 bg-p-300 px-4 py-6 md:p-6 lg:px-8 lg:py-12 lg:w-80">
+                <VisaIcon
+                  className="text-primary flex-shrink-0 w-10 h-10 md:w-[61px] md:h-[62px]"
+                  viewBox="0 0 61 62"
+                />
                 <div>
-                  <div className="text-t-900 text-lg">Visa Type</div>
+                  <div className="text-t-900 text-base md:text-lg">
+                    Visa Type
+                  </div>
                   <div className="text-t-800">Umrah Visa</div>
                 </div>
               </div>
-              <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 md:gap-x-16 px-3 xs:px-4 py-4 sm:px-6 md:pl-[50px] md:pr-1 lg:px-4 xl:pl-14 xl:pr-2">
+              <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 md:gap-x-16 px-4 py-5 sm:px-6 md:pl-[50px] md:pr-1 lg:px-4 xl:pl-14 xl:pr-2">
                 <div className="flex-1 text-right sm:text-left border-l border-[#f4f4f4] pl-[1px]">
                   <div className="text-t-900 text-sm sm:text-base lg:text-lg">
                     Number Of Entries
@@ -741,23 +758,23 @@ const UmrahDetailsPage = ({ params }) => {
             Transport Details
           </h2>
           <AccordionTrigger
-            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
-            iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
+            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
+            iconClassName="h-5 w-5 text-primary absolute lg:static top-[2.125rem] right-4 md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
           >
             <div className="flex-1 flex flex-col lg:flex-row">
-              <div className="flex-shrink-0 hidden md:flex items-center gap-x-4 bg-p-300 p-6 lg:px-8 lg:py-12 lg:w-80">
+              <div className="flex-shrink-0 flex items-center gap-x-4 bg-p-300 px-4 py-6 md:p-6 lg:px-8 lg:py-12 lg:w-80">
                 <BusIcon
-                  className="text-primary flex-shrink-0"
-                  width="60"
-                  height="60"
+                  className="text-primary flex-shrink-0 w-10 h-10 md:w-[60] md:h-[60]"
                   viewBox="0 0 14 14"
                 />
                 <div>
-                  <div className="text-t-900 text-lg">Transport Type</div>
+                  <div className="text-t-900 text-base md:text-lg">
+                    Transport Type
+                  </div>
                   <div className="text-t-800">by Bus</div>
                 </div>
               </div>
-              <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 md:gap-x-16 px-3 xs:px-4 py-4 sm:px-6 md:pl-[50px] md:pr-1 lg:px-4 xl:pl-14 xl:pr-2">
+              <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 md:gap-x-16 px-4 py-5 sm:px-6 md:pl-[50px] md:pr-1 lg:px-4 xl:pl-14 xl:pr-2">
                 <div className="flex-1 text-right sm:text-left border-l border-[#f4f4f4] pl-[1px]">
                   <div className="text-t-900 text-sm sm:text-base lg:text-lg">
                     Airport to Hotel
@@ -851,23 +868,23 @@ const UmrahDetailsPage = ({ params }) => {
         <AccordionItem className="border-none" value="item-7">
           <h2 className="text-base text-t-800 mb-4 lg:mb-6">Ziyara Details</h2>
           <AccordionTrigger
-            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-4 sm:pr-6 md:pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
-            iconClassName="h-5 w-5 text-primary md:absolute lg:static md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
+            className="bg-white hover:no-underline relative font-normal text-left py-0 pr-0 lg:pr-8 shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]"
+            iconClassName="h-5 w-5 text-primary absolute lg:static top-[2.125rem] right-4 md:top-[3.25rem] lg:top-0 md:-translate-y-1/2 lg:translate-y-0 md:right-4 lg:right-0"
           >
             <div className="flex-1 flex flex-col lg:flex-row">
-              <div className="flex-shrink-0 hidden md:flex items-center gap-x-4 bg-p-300 p-6 lg:px-8 lg:py-12 lg:w-80">
+              <div className="flex-shrink-0 flex items-center gap-x-4 bg-p-300 p-6 lg:px-8 lg:py-12 lg:w-80">
                 <KabaIcon
-                  className="text-primary flex-shrink-0"
-                  width="60"
-                  height="60"
+                  className="text-primary flex-shrink-0 w-10 h-10 md:w-[60px] md:h-[60px]"
                   viewBox="0 0 26 27"
                 />
                 <div>
-                  <div className="text-t-900 text-lg">Ziyara /Sightseeing</div>
+                  <div className="text-t-900 text-base md:text-lg">
+                    Ziyara /Sightseeing
+                  </div>
                   <div className="text-t-800">Within 14 Days</div>
                 </div>
               </div>
-              <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 md:gap-x-16 px-3 xs:px-4 py-4 sm:px-6 md:pl-[50px] md:pr-1 lg:px-4 xl:pl-14 xl:pr-2">
+              <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 md:gap-x-16 px-4 py-5 sm:px-6 md:pl-[50px] md:pr-1 lg:px-4 xl:pl-14 xl:pr-2">
                 <div className="flex-1 text-right sm:text-left border-l border-[#f4f4f4] pl-[1px]">
                   <div className="text-t-900 text-sm sm:text-base lg:text-lg">
                     Makkah Ziyara
