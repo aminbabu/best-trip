@@ -7,7 +7,7 @@ const ItineraryPage = () => {
         <CardContent className="space-y-8 p-4 sm:p-6 lg:p-8">
           <div className="space-y-8">
             <div>
-              <h2 className="text-lg text-t-800 font-medium mb-3.5">
+              <h2 className="text-base md:text-lg text-t-800 font-medium mb-3.5">
                 How do I enter into the state of Ihram?
               </h2>
               <p className="text-t-600">
@@ -21,7 +21,7 @@ const ItineraryPage = () => {
               </p>
             </div>
             <div>
-              <h2 className="text-lg text-t-800 font-medium mb-3.5">
+              <h2 className="text-base md:text-lg text-t-800 font-medium mb-3.5">
                 How do I enter into the state of Ihram?
               </h2>
               <p className="text-t-600">
@@ -35,7 +35,7 @@ const ItineraryPage = () => {
               </p>
             </div>
             <div>
-              <h2 className="text-lg text-t-800 font-medium mb-3.5">
+              <h2 className="text-base md:text-lg text-t-800 font-medium mb-3.5">
                 How do I enter into the state of Ihram?
               </h2>
               <p className="text-t-600">
@@ -49,7 +49,7 @@ const ItineraryPage = () => {
               </p>
             </div>
             <div>
-              <h2 className="text-lg text-t-800 font-medium mb-3.5">
+              <h2 className="text-base md:text-lg text-t-800 font-medium mb-3.5">
                 How do I enter into the state of Ihram?
               </h2>
               <p className="text-t-600">
@@ -63,7 +63,7 @@ const ItineraryPage = () => {
               </p>
             </div>
             <div>
-              <h2 className="text-lg text-t-800 font-medium mb-3.5">
+              <h2 className="text-base md:text-lg text-t-800 font-medium mb-3.5">
                 How do I enter into the state of Ihram?
               </h2>
               <p className="text-t-600">
@@ -77,7 +77,7 @@ const ItineraryPage = () => {
               </p>
             </div>
             <div>
-              <h2 className="text-lg text-t-800 font-medium mb-3.5">
+              <h2 className="text-base md:text-lg text-t-800 font-medium mb-3.5">
                 How do I enter into the state of Ihram?
               </h2>
               <p className="text-t-600">
@@ -91,7 +91,7 @@ const ItineraryPage = () => {
               </p>
             </div>
             <div>
-              <h2 className="text-lg text-t-800 font-medium mb-3.5">
+              <h2 className="text-base md:text-lg text-t-800 font-medium mb-3.5">
                 How do I enter into the state of Ihram?
               </h2>
               <p className="text-t-600">

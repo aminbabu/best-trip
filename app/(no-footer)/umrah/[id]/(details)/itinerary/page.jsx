@@ -18,8 +18,10 @@ const ItineraryPage = () => {
                 />
               </div>
               <div className="flex-1">
-                <p className="text-lg text-primary mb-1">{item?.day}</p>
-                <h3 className="text-lg text-t-800 font-medium mb-1.5">
+                <p className="text-base md:text-lg text-primary mb-1">
+                  {item?.day}
+                </p>
+                <h3 className="text-base md:text-lg text-t-800 font-medium mb-1.5">
                   {item?.title}
                 </h3>
                 <p className="text-t-600 line-clamp-2">{item?.description}</p>

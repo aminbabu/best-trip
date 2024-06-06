@@ -173,8 +173,7 @@ const Overview = () => {
                     About Umrah :{" "}
                   </span>
                   Umrah is an act of worshipping Allah by entering the state of
-                  Ihram, circumambulating the House, running between Safa and
-                  Marwa, and having the head shaved or trimmed{" "}
+                  Ihram, circumambulat{" "}
                   <Link className="text-t-800" href={`/umrah/${cardId}/about`}>
                     Read more...
                   </Link>
