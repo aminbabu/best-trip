@@ -168,7 +168,7 @@ const UmrahDetailsPage = ({ params }) => {
                   <div className="text-t-900 text-base md:text-lg">
                     Biman Bangladesh
                   </div>
-                  <div className="text-t-800">BG611</div>
+                  <div className="text-t-800 text-sm md:text-base">BG611</div>
                 </div>
               </div>
               <div className="flex-1 flex items-center justify-around gap-x-4 px-4 xs:px-4 py-5 sm:px-6 md:px-4">
@@ -296,7 +296,9 @@ const UmrahDetailsPage = ({ params }) => {
                   <div className="text-t-900 text-base md:text-lg">
                     Stay 7 Night
                   </div>
-                  <div className="text-t-800">In Makkah</div>
+                  <div className="text-t-800 text-sm md:text-base">
+                    In Makkah
+                  </div>
                 </div>
               </div>
               <div className="flex-1 flex items-center justify-around gap-5 px-4 xs:px-4 py-5 sm:px-6 md:px-4 lg:px-8 xl:px-14">
@@ -426,7 +428,9 @@ const UmrahDetailsPage = ({ params }) => {
                   <div className="text-t-900 text-base md:text-lg">
                     Stay 7 Night
                   </div>
-                  <div className="text-t-800">In Madinah</div>
+                  <div className="text-t-800 text-sm md:text-base">
+                    In Madinah
+                  </div>
                 </div>
               </div>
               <div className="flex-1 flex items-center justify-around gap-5 px-4 xs:px-4 py-5 sm:px-6 md:px-4 lg:px-8 xl:px-14">
@@ -556,7 +560,7 @@ const UmrahDetailsPage = ({ params }) => {
                   <div className="text-t-900 text-base md:text-lg">
                     Biman Bangladesh
                   </div>
-                  <div className="text-t-800">BG611</div>
+                  <div className="text-t-800 text-sm md:text-base">BG611</div>
                 </div>
               </div>
               <div className="flex-1 flex items-center justify-around gap-x-4 px-4 xs:px-4 py-5 sm:px-6 md:px-4">
@@ -689,7 +693,9 @@ const UmrahDetailsPage = ({ params }) => {
                   <div className="text-t-900 text-base md:text-lg">
                     Visa Type
                   </div>
-                  <div className="text-t-800">Umrah Visa</div>
+                  <div className="text-t-800 text-sm md:text-base">
+                    Umrah Visa
+                  </div>
                 </div>
               </div>
               <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 md:gap-x-16 px-4 py-5 sm:px-6 md:pl-[50px] md:pr-1 lg:px-4 xl:pl-14 xl:pr-2">
@@ -773,7 +779,7 @@ const UmrahDetailsPage = ({ params }) => {
                   <div className="text-t-900 text-base md:text-lg">
                     Transport Type
                   </div>
-                  <div className="text-t-800">by Bus</div>
+                  <div className="text-t-800 text-sm md:text-base">by Bus</div>
                 </div>
               </div>
               <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 md:gap-x-16 px-4 py-5 sm:px-6 md:pl-[50px] md:pr-1 lg:px-4 xl:pl-14 xl:pr-2">
@@ -885,7 +891,9 @@ const UmrahDetailsPage = ({ params }) => {
                   <div className="text-t-900 text-base md:text-lg">
                     Ziyara /Sightseeing
                   </div>
-                  <div className="text-t-800">Within 14 Days</div>
+                  <div className="text-t-800 text-sm md:text-base">
+                    Within 14 Days
+                  </div>
                 </div>
               </div>
               <div className="flex-1 flex items-center justify-between md:justify-around gap-x-4 md:gap-x-16 px-4 py-5 sm:px-6 md:pl-[50px] md:pr-1 lg:px-4 xl:pl-14 xl:pr-2">
