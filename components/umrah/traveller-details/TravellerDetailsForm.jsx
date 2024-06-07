@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
-import { InfoIcon } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { travellerSchema } from "@/schema/zod";
 import {
@@ -15,8 +14,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useState } from "react";
-import { cn, getImageData } from "@/lib/utils";
+import { useEffect, useState } from "react";
+import { getImageData } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -33,14 +32,7 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 import moment from "moment";
 import { Loader } from "lucide-react";
-import { DocAltIcon, DocIcon } from "@/components/icons/svgr";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
-import ScrollArea from "@/components/global/ScrollArea";
+import { DocAltIcon } from "@/components/icons/svgr";
 
 const TravellerDetailsForm = ({ hideTravellerForm }) => {
   const [loading, setLoading] = useState(false);
@@ -51,6 +43,21 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
   const [covid_certificate, setCovidCertificate] = useState(null);
   const [isOpenDob, setIsOpenDob] = useState(false);
   const [isOpenExpiryDate, setIsOpenExpiryDate] = useState(false);
+  const [travelerType, setTravellerType] = useState("");
+  const [dobFrom, setDobFrom] = useState(1900);
+
+  useEffect(() => {
+    if (travelerType === "A") {
+      setDobFrom(moment().year() - 12);
+    }
+    if (travelerType === "C") {
+      setDobFrom(moment().year() - 8);
+    }
+    if (travelerType === "I") {
+      setDobFrom(moment().year() - 2);
+    }
+  }, [travelerType]);
+
   const form = useForm({
     resolver: zodResolver(travellerSchema),
     defaultValues: {
@@ -287,7 +294,10 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                         Travellers<span className="text-primary">*</span>
                       </FormLabel>
                       <Select
-                        onValueChange={field.onChange}
+                        onValueChange={(value) => {
+                          field.onChange(value);
+                          setTravellerType(value.split(" ")[2].split("")[1]);
+                        }}
                         defaultValue={field.value}
                       >
                         <FormControl>
@@ -301,8 +311,8 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                               key={traveller.id}
                               value={`Travellers ${traveller.travellerNo} (${traveller.travellerType})`}
                             >
-                              Travellers {traveller.travellerNo} (
-                              {traveller.travellerType})
+                              Travellers {traveller.travellerNo} ({" "}
+                              {traveller.travellerType} )
                             </SelectItem>
                           ))}
                         </SelectContent>
@@ -426,7 +436,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                           disabled={(date) =>
                             date > new Date() || date < new Date("1900-01-01")
                           }
-                          fromYear={1900}
+                          fromYear={dobFrom}
                           toYear={moment().year()}
                           initialFocus
                         />
@@ -655,8 +665,8 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                           }
                           captionLayout="dropdown-buttons"
                           selected={moment(field.value).toDate()}
-                          onSelect={() => {
-                            field.onChange();
+                          onSelect={(value) => {
+                            field.onChange(value);
                             setIsOpenExpiryDate(false);
                           }}
                           disabled={(date) => date < new Date()}

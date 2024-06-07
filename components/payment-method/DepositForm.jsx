@@ -143,12 +143,15 @@ const DepositForm = () => {
                     checked={field.value}
                     onCheckedChange={(value) => {
                       field.onChange(value);
-                      handleOnlineBanking(value);
+                      handleFromWallet(value);
                     }}
                     disabled={form.watch("online")}
                   />
                 </FormControl>
                 <FormLabel>From Wallet</FormLabel>
+                <p className="ml-auto text-sm">
+                  $ {form.watch("wallet") && 100}
+                </p>
                 <FormMessage />
               </FormItem>
             )}
@@ -292,7 +295,7 @@ const DepositForm = () => {
                       checked={field.value}
                       onCheckedChange={(value) => {
                         field.onChange(value);
-                        handleOnlineBanking(value);
+                        handleFromWallet(value);
                       }}
                     />
                   </FormControl>

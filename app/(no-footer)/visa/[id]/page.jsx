@@ -50,7 +50,9 @@ import {
 const Page = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [isOpenDob, setIsOpenDob] = useState(false);
+  const [isOpenDobAdult, setIsOpenDobAdult] = useState(false);
+  const [isOpenDobChild, setIsOpenDobChild] = useState(false);
+  const [isOpenDobInfant, setIsOpenDobInfant] = useState(false);
   const [isOpenExpiryDate, setIsOpenExpiryDate] = useState(false);
 
   const form = useForm({
@@ -76,24 +78,6 @@ const Page = () => {
       phone: "",
     },
   });
-
-  let travelers = [
-    {
-      id: 1,
-      travelerNo: 1,
-      type: "Adult",
-    },
-    {
-      id: 2,
-      travelerNo: 2,
-      type: "Children",
-    },
-    {
-      id: 3,
-      travelerNo: 3,
-      type: "Infant",
-    },
-  ];
 
   const onSubmit = (data) => {
     setError(null);
@@ -199,272 +183,784 @@ const Page = () => {
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-16"
+                  className="p-5 lg:px-10 lg:pt-[30px] lg:pb-[56px] space-y-16"
                 >
-                  <div className="p-5 lg:px-10 lg:pt-[30px] lg:pb-[56px] space-y-[30px]">
-                    {travelers.map((item) => (
-                      <div
-                        className="grid grid-cols-6 gap-8 lg:gap-x-10"
-                        key={item.id}
-                      >
-                        <div className="col-span-6">
-                          <h2 className="text-t-800 font-medium">
-                            Traveler {item.travelerNo} ({item.type})
-                          </h2>
-                        </div>
-                        <div className="col-span-6 sm:col-span-3">
-                          <FormField
-                            control={form.control}
-                            name="first_name"
-                            render={({ field }) => (
-                              <FormItem className="space-y-3">
-                                <FormLabel className="text-t-800 lg:text-base font-normal">
-                                  First Name
-                                  <span className="text-primary">*</span>
-                                </FormLabel>
-                                <FormControl>
-                                  <Input
-                                    type="text"
-                                    placeholder="Enter first name"
-                                    className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                                    {...field}
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                        <div className="col-span-6 sm:col-span-3">
-                          <FormField
-                            control={form.control}
-                            name="last_name"
-                            render={({ field }) => (
-                              <FormItem className="space-y-3">
-                                <FormLabel className="text-t-800 lg:text-base font-normal">
-                                  Last Name
-                                  <span className="text-primary">*</span>
-                                </FormLabel>
-                                <FormControl>
-                                  <Input
-                                    type="text"
-                                    placeholder="Enter last name"
-                                    className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                                    {...field}
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                        <div className="col-span-6 sm:col-span-3">
-                          <FormField
-                            control={form.control}
-                            name="gender"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-t-800 lg:text-base font-normal">
-                                  Gender<span className="text-primary">*</span>
-                                </FormLabel>
-                                <Select
-                                  onValueChange={field.onChange}
-                                  defaultValue={field.value}
-                                >
-                                  <FormControl>
-                                    <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
-                                      <SelectValue placeholder="Select gender" />
-                                    </SelectTrigger>
-                                  </FormControl>
-                                  <SelectContent>
-                                    <SelectItem value="male">Male</SelectItem>
-                                    <SelectItem value="female">
-                                      Female
-                                    </SelectItem>
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                        <div className="col-span-6 sm:col-span-3">
-                          <FormField
-                            control={form.control}
-                            name="dob"
-                            render={({ field }) => (
-                              <FormItem className="flex flex-col">
-                                <FormLabel className="text-t-800 lg:text-base font-normal">
-                                  Date of Birth
-                                  <span className="text-primary">*</span>
-                                </FormLabel>
-                                <Popover
-                                  open={isOpenDob}
-                                  onOpenChange={setIsOpenDob}
-                                >
-                                  <PopoverTrigger asChild>
-                                    <FormControl>
-                                      <Button
-                                        variant={"outline"}
-                                        className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                                      >
-                                        {field.value ? (
-                                          moment(field.value).format(
-                                            "DD-MMM-YYYY"
-                                          )
-                                        ) : (
-                                          <span>Select a date</span>
-                                        )}
-                                      </Button>
-                                    </FormControl>
-                                  </PopoverTrigger>
-                                  <PopoverContent
-                                    className="w-auto p-0"
-                                    align="start"
-                                  >
-                                    <Calendar
-                                      mode="single"
-                                      defaultMonth={
-                                        field.value &&
-                                        moment(field.value).toDate()
-                                      }
-                                      captionLayout="dropdown-buttons"
-                                      selected={moment(field.value).toDate()}
-                                      onSelect={() => {
-                                        field.onChange();
-                                        setIsOpenDob(false);
-                                      }}
-                                      disabled={(date) =>
-                                        date > new Date() ||
-                                        date < new Date("1900-01-01")
-                                      }
-                                      fromYear={1900}
-                                      toYear={moment().year()}
-                                      initialFocus
-                                    />
-                                  </PopoverContent>
-                                </Popover>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                        <div className="col-span-6 sm:col-span-3">
-                          <FormField
-                            control={form.control}
-                            name="passport_expiry_date"
-                            render={({ field }) => (
-                              <FormItem className="flex flex-col">
-                                <FormLabel className="text-t-800 lg:text-base font-normal">
-                                  Passport Expiry Date
-                                  <span className="text-primary">*</span>
-                                </FormLabel>
-                                <Popover
-                                  open={isOpenExpiryDate}
-                                  onOpenChange={setIsOpenExpiryDate}
-                                >
-                                  <PopoverTrigger asChild>
-                                    <FormControl>
-                                      <Button
-                                        variant={"outline"}
-                                        className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                                      >
-                                        {field.value ? (
-                                          moment(field.value).format(
-                                            "DD-MMM-YYYY"
-                                          )
-                                        ) : (
-                                          <span>Select a date</span>
-                                        )}
-                                      </Button>
-                                    </FormControl>
-                                  </PopoverTrigger>
-                                  <PopoverContent
-                                    className="w-auto p-0"
-                                    align="start"
-                                  >
-                                    <Calendar
-                                      mode="single"
-                                      defaultMonth={
-                                        field.value &&
-                                        moment(field.value).toDate()
-                                      }
-                                      captionLayout="dropdown-buttons"
-                                      selected={moment(field.value).toDate()}
-                                      onSelect={() => {
-                                        field.onChange();
-                                        setIsOpenExpiryDate(false);
-                                      }}
-                                      disabled={(date) => date > new Date()}
-                                      fromYear={1900}
-                                      toYear={moment().year()}
-                                      initialFocus
-                                    />
-                                  </PopoverContent>
-                                </Popover>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                        <div className="col-span-6 sm:col-span-3">
-                          <FormField
-                            control={form.control}
-                            name={"passport_no"}
-                            render={({ field }) => (
-                              <FormItem className="space-y-3">
-                                <FormLabel className="text-t-800 lg:text-base font-normal">
-                                  Passport Number
-                                  <span className="text-primary">*</span>
-                                </FormLabel>
-                                <FormControl>
-                                  <Input
-                                    type="text"
-                                    placeholder="Passport Number"
-                                    className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                                    {...field}
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                        <div className="col-span-6 sm:col-span-3">
-                          <FormField
-                            control={form.control}
-                            name="country"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-t-800 lg:text-base font-normal">
-                                  Country<span className="text-primary">*</span>
-                                </FormLabel>
-                                <Select
-                                  onValueChange={field.onChange}
-                                  defaultValue={field.value}
-                                >
-                                  <FormControl>
-                                    <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
-                                      <SelectValue placeholder="Select option" />
-                                    </SelectTrigger>
-                                  </FormControl>
-                                  <SelectContent>
-                                    <SelectItem value="bangladesh">
-                                      Bangladesh
-                                    </SelectItem>
-                                    <SelectItem value="india">India</SelectItem>
-                                    <SelectItem value="pakistan">
-                                      Pakistan
-                                    </SelectItem>
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
+                  {/* Adult */}
+                  <div className="space-y-[30px]">
+                    <div className="grid grid-cols-6 gap-8 lg:gap-x-10">
+                      <div className="col-span-6">
+                        <h2 className="text-t-800 font-medium">
+                          Traveler 1 (Adult)
+                        </h2>
                       </div>
-                    ))}
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="first_name"
+                          render={({ field }) => (
+                            <FormItem className="space-y-3">
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                First Name
+                                <span className="text-primary">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="text"
+                                  placeholder="Enter first name"
+                                  className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="last_name"
+                          render={({ field }) => (
+                            <FormItem className="space-y-3">
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                Last Name
+                                <span className="text-primary">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="text"
+                                  placeholder="Enter last name"
+                                  className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="gender"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                Gender<span className="text-primary">*</span>
+                              </FormLabel>
+                              <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                              >
+                                <FormControl>
+                                  <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
+                                    <SelectValue placeholder="Select gender" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="male">Male</SelectItem>
+                                  <SelectItem value="female">Female</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="dob"
+                          render={({ field }) => (
+                            <FormItem className="flex flex-col">
+                              <FormLabel className="text-t-800 lg:text-lg font-normal">
+                                Date of Birth
+                                <span className="text-primary">*</span>
+                              </FormLabel>
+                              <Popover
+                                open={isOpenDobAdult}
+                                onOpenChange={setIsOpenDobAdult}
+                              >
+                                <PopoverTrigger asChild>
+                                  <FormControl>
+                                    <Button
+                                      variant={"outline"}
+                                      className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                    >
+                                      {field.value ? (
+                                        moment(field.value).format(
+                                          "DD-MMM-YYYY"
+                                        )
+                                      ) : (
+                                        <span>Select a date</span>
+                                      )}
+                                    </Button>
+                                  </FormControl>
+                                </PopoverTrigger>
+                                <PopoverContent
+                                  className="w-auto p-0"
+                                  align="start"
+                                >
+                                  <Calendar
+                                    mode="single"
+                                    defaultMonth={
+                                      field.value &&
+                                      moment(field.value).toDate()
+                                    }
+                                    captionLayout="dropdown-buttons"
+                                    selected={moment(field.value).toDate()}
+                                    onSelect={(value) => {
+                                      field.onChange(value);
+                                      setIsOpenDobAdult(false);
+                                    }}
+                                    disabled={(date) =>
+                                      date > new Date() ||
+                                      date < new Date("1900-01-01")
+                                    }
+                                    fromYear={moment().year() - 12}
+                                    toYear={moment().year()}
+                                    initialFocus
+                                  />
+                                </PopoverContent>
+                              </Popover>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="passport_expiry_date"
+                          render={({ field }) => (
+                            <FormItem className="flex flex-col">
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                Passport Expiry Date
+                                <span className="text-primary">*</span>
+                              </FormLabel>
+                              <Popover
+                                open={isOpenExpiryDate}
+                                onOpenChange={setIsOpenExpiryDate}
+                              >
+                                <PopoverTrigger asChild>
+                                  <FormControl>
+                                    <Button
+                                      variant={"outline"}
+                                      className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                    >
+                                      {field.value ? (
+                                        moment(field.value).format(
+                                          "DD-MMM-YYYY"
+                                        )
+                                      ) : (
+                                        <span>Select a date</span>
+                                      )}
+                                    </Button>
+                                  </FormControl>
+                                </PopoverTrigger>
+                                <PopoverContent
+                                  className="w-auto p-0"
+                                  align="start"
+                                >
+                                  <Calendar
+                                    mode="single"
+                                    defaultMonth={
+                                      field.value &&
+                                      moment(field.value).toDate()
+                                    }
+                                    captionLayout="dropdown-buttons"
+                                    selected={moment(field.value).toDate()}
+                                    onSelect={(value) => {
+                                      field.onChange(value);
+                                      setIsOpenExpiryDate(false);
+                                    }}
+                                    disabled={(date) => date > new Date()}
+                                    fromYear={1900}
+                                    toYear={moment().year()}
+                                    initialFocus
+                                  />
+                                </PopoverContent>
+                              </Popover>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name={"passport_no"}
+                          render={({ field }) => (
+                            <FormItem className="space-y-3">
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                Passport Number
+                                <span className="text-primary">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="text"
+                                  placeholder="Passport Number"
+                                  className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="country"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                Country<span className="text-primary">*</span>
+                              </FormLabel>
+                              <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                              >
+                                <FormControl>
+                                  <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
+                                    <SelectValue placeholder="Select option" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="bangladesh">
+                                    Bangladesh
+                                  </SelectItem>
+                                  <SelectItem value="india">India</SelectItem>
+                                  <SelectItem value="pakistan">
+                                    Pakistan
+                                  </SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Child */}
+                  <div className="space-y-[30px]">
+                    <div className="grid grid-cols-6 gap-8 lg:gap-x-10">
+                      <div className="col-span-6">
+                        <h2 className="text-t-800 font-medium">
+                          Traveler 2 (Child)
+                        </h2>
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="first_name"
+                          render={({ field }) => (
+                            <FormItem className="space-y-3">
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                First Name
+                                <span className="text-primary">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="text"
+                                  placeholder="Enter first name"
+                                  className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="last_name"
+                          render={({ field }) => (
+                            <FormItem className="space-y-3">
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                Last Name
+                                <span className="text-primary">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="text"
+                                  placeholder="Enter last name"
+                                  className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="gender"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                Gender<span className="text-primary">*</span>
+                              </FormLabel>
+                              <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                              >
+                                <FormControl>
+                                  <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
+                                    <SelectValue placeholder="Select gender" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="male">Male</SelectItem>
+                                  <SelectItem value="female">Female</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="dob"
+                          render={({ field }) => (
+                            <FormItem className="flex flex-col">
+                              <FormLabel className="text-t-800 lg:text-lg font-normal">
+                                Date of Birth
+                                <span className="text-primary">*</span>
+                              </FormLabel>
+                              <Popover
+                                open={isOpenDobChild}
+                                onOpenChange={setIsOpenDobChild}
+                              >
+                                <PopoverTrigger asChild>
+                                  <FormControl>
+                                    <Button
+                                      variant={"outline"}
+                                      className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                    >
+                                      {field.value ? (
+                                        moment(field.value).format(
+                                          "DD-MMM-YYYY"
+                                        )
+                                      ) : (
+                                        <span>Select a date</span>
+                                      )}
+                                    </Button>
+                                  </FormControl>
+                                </PopoverTrigger>
+                                <PopoverContent
+                                  className="w-auto p-0"
+                                  align="start"
+                                >
+                                  <Calendar
+                                    mode="single"
+                                    defaultMonth={
+                                      field.value &&
+                                      moment(field.value).toDate()
+                                    }
+                                    captionLayout="dropdown-buttons"
+                                    selected={moment(field.value).toDate()}
+                                    onSelect={(value) => {
+                                      field.onChange(value);
+                                      setIsOpenDobChild(false);
+                                    }}
+                                    disabled={(date) =>
+                                      date > new Date() ||
+                                      date < new Date("1900-01-01")
+                                    }
+                                    fromYear={moment().year() - 8}
+                                    toYear={moment().year()}
+                                    initialFocus
+                                  />
+                                </PopoverContent>
+                              </Popover>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="passport_expiry_date"
+                          render={({ field }) => (
+                            <FormItem className="flex flex-col">
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                Passport Expiry Date
+                                <span className="text-primary">*</span>
+                              </FormLabel>
+                              <Popover
+                                open={isOpenExpiryDate}
+                                onOpenChange={setIsOpenExpiryDate}
+                              >
+                                <PopoverTrigger asChild>
+                                  <FormControl>
+                                    <Button
+                                      variant={"outline"}
+                                      className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                    >
+                                      {field.value ? (
+                                        moment(field.value).format(
+                                          "DD-MMM-YYYY"
+                                        )
+                                      ) : (
+                                        <span>Select a date</span>
+                                      )}
+                                    </Button>
+                                  </FormControl>
+                                </PopoverTrigger>
+                                <PopoverContent
+                                  className="w-auto p-0"
+                                  align="start"
+                                >
+                                  <Calendar
+                                    mode="single"
+                                    defaultMonth={
+                                      field.value &&
+                                      moment(field.value).toDate()
+                                    }
+                                    captionLayout="dropdown-buttons"
+                                    selected={moment(field.value).toDate()}
+                                    onSelect={(value) => {
+                                      field.onChange(value);
+                                      setIsOpenExpiryDate(false);
+                                    }}
+                                    disabled={(date) => date > new Date()}
+                                    fromYear={1900}
+                                    toYear={moment().year()}
+                                    initialFocus
+                                  />
+                                </PopoverContent>
+                              </Popover>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name={"passport_no"}
+                          render={({ field }) => (
+                            <FormItem className="space-y-3">
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                Passport Number
+                                <span className="text-primary">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="text"
+                                  placeholder="Passport Number"
+                                  className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="country"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                Country<span className="text-primary">*</span>
+                              </FormLabel>
+                              <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                              >
+                                <FormControl>
+                                  <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
+                                    <SelectValue placeholder="Select option" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="bangladesh">
+                                    Bangladesh
+                                  </SelectItem>
+                                  <SelectItem value="india">India</SelectItem>
+                                  <SelectItem value="pakistan">
+                                    Pakistan
+                                  </SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Infant */}
+                  <div className="space-y-[30px]">
+                    <div className="grid grid-cols-6 gap-8 lg:gap-x-10">
+                      <div className="col-span-6">
+                        <h2 className="text-t-800 font-medium">
+                          Traveler 3 (Infant)
+                        </h2>
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="first_name"
+                          render={({ field }) => (
+                            <FormItem className="space-y-3">
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                First Name
+                                <span className="text-primary">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="text"
+                                  placeholder="Enter first name"
+                                  className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="last_name"
+                          render={({ field }) => (
+                            <FormItem className="space-y-3">
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                Last Name
+                                <span className="text-primary">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="text"
+                                  placeholder="Enter last name"
+                                  className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="gender"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                Gender<span className="text-primary">*</span>
+                              </FormLabel>
+                              <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                              >
+                                <FormControl>
+                                  <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
+                                    <SelectValue placeholder="Select gender" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="male">Male</SelectItem>
+                                  <SelectItem value="female">Female</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="dob"
+                          render={({ field }) => (
+                            <FormItem className="flex flex-col">
+                              <FormLabel className="text-t-800 lg:text-lg font-normal">
+                                Date of Birth
+                                <span className="text-primary">*</span>
+                              </FormLabel>
+                              <Popover
+                                open={isOpenDobInfant}
+                                onOpenChange={setIsOpenDobInfant}
+                              >
+                                <PopoverTrigger asChild>
+                                  <FormControl>
+                                    <Button
+                                      variant={"outline"}
+                                      className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                    >
+                                      {field.value ? (
+                                        moment(field.value).format(
+                                          "DD-MMM-YYYY"
+                                        )
+                                      ) : (
+                                        <span>Select a date</span>
+                                      )}
+                                    </Button>
+                                  </FormControl>
+                                </PopoverTrigger>
+                                <PopoverContent
+                                  className="w-auto p-0"
+                                  align="start"
+                                >
+                                  <Calendar
+                                    mode="single"
+                                    defaultMonth={
+                                      field.value &&
+                                      moment(field.value).toDate()
+                                    }
+                                    captionLayout="dropdown-buttons"
+                                    selected={moment(field.value).toDate()}
+                                    onSelect={(value) => {
+                                      field.onChange(value);
+                                      setIsOpenDobInfant(false);
+                                    }}
+                                    disabled={(date) =>
+                                      date > new Date() ||
+                                      date < new Date("1900-01-01")
+                                    }
+                                    fromYear={moment().year() - 2}
+                                    toYear={moment().year()}
+                                    initialFocus
+                                  />
+                                </PopoverContent>
+                              </Popover>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="passport_expiry_date"
+                          render={({ field }) => (
+                            <FormItem className="flex flex-col">
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                Passport Expiry Date
+                                <span className="text-primary">*</span>
+                              </FormLabel>
+                              <Popover
+                                open={isOpenExpiryDate}
+                                onOpenChange={setIsOpenExpiryDate}
+                              >
+                                <PopoverTrigger asChild>
+                                  <FormControl>
+                                    <Button
+                                      variant={"outline"}
+                                      className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                    >
+                                      {field.value ? (
+                                        moment(field.value).format(
+                                          "DD-MMM-YYYY"
+                                        )
+                                      ) : (
+                                        <span>Select a date</span>
+                                      )}
+                                    </Button>
+                                  </FormControl>
+                                </PopoverTrigger>
+                                <PopoverContent
+                                  className="w-auto p-0"
+                                  align="start"
+                                >
+                                  <Calendar
+                                    mode="single"
+                                    defaultMonth={
+                                      field.value &&
+                                      moment(field.value).toDate()
+                                    }
+                                    captionLayout="dropdown-buttons"
+                                    selected={moment(field.value).toDate()}
+                                    onSelect={(value) => {
+                                      field.onChange(value);
+                                      setIsOpenExpiryDate(false);
+                                    }}
+                                    disabled={(date) => date > new Date()}
+                                    fromYear={1900}
+                                    toYear={moment().year()}
+                                    initialFocus
+                                  />
+                                </PopoverContent>
+                              </Popover>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name={"passport_no"}
+                          render={({ field }) => (
+                            <FormItem className="space-y-3">
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                Passport Number
+                                <span className="text-primary">*</span>
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="text"
+                                  placeholder="Passport Number"
+                                  className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <FormField
+                          control={form.control}
+                          name="country"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-t-800 lg:text-base font-normal">
+                                Country<span className="text-primary">*</span>
+                              </FormLabel>
+                              <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                              >
+                                <FormControl>
+                                  <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
+                                    <SelectValue placeholder="Select option" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="bangladesh">
+                                    Bangladesh
+                                  </SelectItem>
+                                  <SelectItem value="india">India</SelectItem>
+                                  <SelectItem value="pakistan">
+                                    Pakistan
+                                  </SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                    </div>
                     <div className="grid grid-cols-6 gap-8 lg:gap-x-10">
                       <div className="col-span-6">
                         <h3 className="text-t-800 lg:text-base font-medium">
