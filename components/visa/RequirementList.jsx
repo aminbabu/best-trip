@@ -1,5 +1,5 @@
 import React from "react";
-import { TickRedIcon } from "../icons/svgr";
+import { TickIcon } from "../icons/svgr";
 import Notice from "../global/Notice";
 
 let reqList = [
@@ -46,7 +46,7 @@ const RequirementList = () => {
               key={item.id}
               className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal"
             >
-              <TickRedIcon className="mt-1 flex-shrink-0" />
+              <TickIcon fill="#F50308" className="mt-1 flex-shrink-0" />
               <span>{item.req}</span>
             </li>
           ))}

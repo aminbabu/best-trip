@@ -1,10 +1,12 @@
 import {
-  BusIcon,
+  BusRedIcon,
+  CalenderIcon,
   ClockAltIcon,
   HotelIcon,
   LocationCircleIcon,
   PassportIcon,
   PlaneIcon,
+  SpoonKnifeIcon,
 } from "@/components/icons/svgr";
 import Container from "@/components/layouts/Container";
 import { Button } from "@/components/ui/button";
@@ -40,6 +42,12 @@ const PaymentPage = ({ params }) => {
                     </span>
                   </li>
                   <li className="flex gap-x-2 text-sm lg:text-base leading-normal">
+                    <CalenderIcon className="mt-0.5 flex-shrink-0" />
+                    <span className="flex-shrink-0">
+                      Journey Date : 20 Jun, 2024
+                    </span>
+                  </li>
+                  <li className="flex gap-x-2 text-sm lg:text-base leading-normal">
                     <ClockAltIcon className="mt-0.5 flex-shrink-0" />
                     <span className="flex-shrink-0">15 Days | 14 Nights</span>
                   </li>
@@ -61,8 +69,12 @@ const PaymentPage = ({ params }) => {
                     Visa
                   </li>
                   <li className="flex flex-col items-center gap-y-1 lg:text-sm capitalize">
-                    <BusIcon className="w-4 h-4" viewBox="0 0 14 14" />
+                    <BusRedIcon className="w-4 h-4" viewBox="0 0 16 16" />
                     Transport
+                  </li>
+                  <li className="flex flex-col items-center gap-y-1 lg:text-sm capitalize">
+                    <SpoonKnifeIcon className="w-4 h-4 " viewBox="0 0 17 15" />
+                    Food
                   </li>
                 </ul>
               </div>

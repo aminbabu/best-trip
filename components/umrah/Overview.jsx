@@ -5,14 +5,14 @@ import { SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import data from "@/data/umrah-ziyarah.json";
 import {
   BusIcon,
-  CalenderRedIcon,
+  CalenderIcon,
   ClockAltIcon,
   HotelIcon,
   LocationCircleIcon,
   PassportIcon,
   PeopleIcon,
   PlaneIcon,
-  SpoonKnifeRedIcon,
+  SpoonKnifeIcon,
 } from "@/components/icons/svgr";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
@@ -97,7 +97,8 @@ const Overview = () => {
                   <span className="flex-shrink-0">From Dhaka , Bangladesh</span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
-                  <CalenderRedIcon
+                  <CalenderIcon
+                    fill="#F50308"
                     className="mt-0.5 flex-shrink-0 h-6 w-6 text-primary"
                     viewBox="0 0 16 17"
                   />
@@ -159,7 +160,8 @@ const Overview = () => {
                     Transport
                   </li>
                   <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
-                    <SpoonKnifeRedIcon
+                    <SpoonKnifeIcon
+                      fill="#F50308"
                       className="w-6 h-6 text-primary"
                       viewBox="0 0 16 16"
                     />

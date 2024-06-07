@@ -7,6 +7,7 @@ import StarIcon from "@/public/icons/star.svg";
 import ExchangeIcon from "@/public/icons/exchange.svg";
 import PlaneIcon from "@/public/icons/plane.svg";
 import BusIcon from "@/public/icons/bus.svg";
+import BusRedIcon from "@/public/icons/bus-red.svg";
 import PassportIcon from "@/public/icons/passport.svg";
 import HotelIcon from "@/public/icons/hotel.svg";
 import ClockIcon from "@/public/icons/clock.svg";
@@ -53,19 +54,12 @@ import DocAltIcon from "@/public/icons/doc-outline.svg";
 import DocRedIcon from "@/public/icons/doc-red.svg";
 import ClockRedIcon from "@/public/icons/clock-red.svg";
 import VisaEntryTypeIcon from "@/public/icons/visa-entry-type.svg";
-import CalenderRedIcon from "@/public/icons/calender-red.svg";
-import PhoneRedIcon from "@/public/icons/phone-red.svg";
-import EnvelopeRedIcon from "@/public/icons/envelope-red.svg";
-import PrinterRedIcon from "@/public/icons/printer-red.svg";
-import LocationRedIcon from "@/public/icons/location-red.svg";
-import TickRedIcon from "@/public/icons/tick-red.svg";
-import BusRedIcon from "@/public/icons/bus-red.svg";
-import PassportCircleRedIcon from "@/public/icons/passport-circle-red.svg";
-import HotelRedIcon from "@/public/icons/hotel-red.svg";
-import PlaneRedIcon from "@/public/icons/plane-red.svg";
-import LocationCircleRedIcon from "@/public/icons/location-circle-red.svg";
-import PeopleRedIcon from "@/public/icons/people-red.svg";
-import SpoonKnifeRedIcon from "@/public/icons/spoon-knife-red.svg";
+import CalenderIcon from "@/public/icons/calender.svg";
+import EnvelopeIcon from "@/public/icons/envelop.svg";
+import PrinterIcon from "@/public/icons/printer.svg";
+import TickIcon from "@/public/icons/tick.svg";
+import PassportCircleIcon from "@/public/icons/passport-circle.svg";
+import SpoonKnifeIcon from "@/public/icons/spoon-knife-red.svg";
 import PencliLineIcon from "@/public/icons/PencilLine.svg";
 
 export {
@@ -124,18 +118,12 @@ export {
   DocRedIcon,
   ClockRedIcon,
   VisaEntryTypeIcon,
-  CalenderRedIcon,
-  PhoneRedIcon,
-  EnvelopeRedIcon,
-  PrinterRedIcon,
-  LocationRedIcon,
-  TickRedIcon,
-  BusRedIcon,
-  PassportCircleRedIcon,
-  HotelRedIcon,
-  PlaneRedIcon,
-  LocationCircleRedIcon,
-  PeopleRedIcon,
-  SpoonKnifeRedIcon,
+  CalenderIcon,
+  EnvelopeIcon,
+  PrinterIcon,
+  TickIcon,
+  PassportCircleIcon,
+  SpoonKnifeIcon,
   PencliLineIcon,
+  BusRedIcon,
 };

@@ -28,6 +28,7 @@ const DepositForm = () => {
       online: false,
       ssl: false,
       agree: false,
+      wallet: false,
     },
   });
 
@@ -43,12 +44,26 @@ const DepositForm = () => {
     }
   };
 
+  const handleFromWallet = (value) => {
+    if (value) {
+      console.log("wallet is selected");
+    }
+  };
+
   function onSubmit(values) {
     if (values.manual) {
       router.push("/payment-method/manual-banking");
     }
 
-    if (values.online) {
+    if (values.wallet) {
+      if (!values.agree) {
+        return setError("Please agree with our terms and conditions");
+      }
+
+      router.push("/payment-method/online-banking");
+    }
+
+    if (values.online || values.wallet) {
       if (!values.ssl) {
         return setError("Please select a payment method");
       }
@@ -78,7 +93,7 @@ const DepositForm = () => {
           </div>
         )}
         <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-          <FormField
+          {/* <FormField
             control={form.control}
             name="manual"
             render={({ field }) => (
@@ -117,10 +132,30 @@ const DepositForm = () => {
                 <FormMessage />
               </FormItem>
             )}
+          /> */}
+          <FormField
+            control={form.control}
+            name="wallet"
+            render={({ field }) => (
+              <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md p-4 space-y-0">
+                <FormControl>
+                  <Checkbox
+                    checked={field.value}
+                    onCheckedChange={(value) => {
+                      field.onChange(value);
+                      handleOnlineBanking(value);
+                    }}
+                    disabled={form.watch("online")}
+                  />
+                </FormControl>
+                <FormLabel>From Wallet</FormLabel>
+                <FormMessage />
+              </FormItem>
+            )}
           />
         </div>
         <Separator className="bg-[#F5F5F5]" />
-        {form.watch("manual") && (
+        {/* {form.watch("manual") && (
           <div className="grid grid-cols-2 gap-x-6 gap-y-7">
             <div className="col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED]">
               <h3 className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
@@ -244,11 +279,53 @@ const DepositForm = () => {
               )}
             />
           </div>
+        )} */}
+        {form.watch("wallet") && (
+          <div className="space-y-8">
+            <FormField
+              control={form.control}
+              name="agree"
+              render={({ field }) => (
+                <FormItem className="flex items-center gap-x-2 space-y-0">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={(value) => {
+                        field.onChange(value);
+                        handleOnlineBanking(value);
+                      }}
+                    />
+                  </FormControl>
+                  <FormLabel className="flex items-center gap-x-2 font-normal">
+                    I agree with Best Trips{" "}
+                    <Link
+                      href="/privacy-policy"
+                      className="text-primary duration-300 hover:text-primary/75"
+                    >
+                      Privacy Policy
+                    </Link>
+                    and{" "}
+                    <Link
+                      href="/terms-and-conditions"
+                      className="text-primary duration-300 hover:text-primary/75"
+                    >
+                      Terms & Conditions
+                    </Link>
+                  </FormLabel>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
         )}
         <div className="col-span-2 grid pt-6">
           <Button
             type="submit"
-            disabled={!form.watch("manual") && !form.watch("online")}
+            disabled={
+              !form.watch("manual") &&
+              !form.watch("online") &&
+              !form.watch("wallet")
+            }
           >
             Continue
           </Button>

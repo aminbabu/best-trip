@@ -5,7 +5,7 @@ import Image from "next/image";
 import visaCardImg from "@/public/images/search/visa/visa-card-img.png";
 import {
   BusRedIcon,
-  CalenderRedIcon,
+  CalenderIcon,
   ClockRedIcon,
   DocRedIcon,
   VisaEntryTypeIcon,
@@ -50,6 +50,8 @@ import {
 const Page = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isOpenDob, setIsOpenDob] = useState(false);
+  const [isOpenExpiryDate, setIsOpenExpiryDate] = useState(false);
 
   const form = useForm({
     resolver: zodResolver(travellerSchema),
@@ -153,19 +155,28 @@ const Page = () => {
                             </span>
                           </li>
                           <li className="flex gap-x-2 text-sm xl:text-md text-t-600 leading-normal">
-                            <CalenderRedIcon className="mt-0.5 flex-shrink-0" />
+                            <CalenderIcon
+                              fill="#F50308"
+                              className="mt-0.5 flex-shrink-0"
+                            />
                             <span className="flex-shrink-0">
                               Validity : Max 30 Days
                             </span>
                           </li>
                           <li className="flex gap-x-2 text-sm xl:text-md text-t-600 leading-normal">
-                            <CalenderRedIcon className="mt-0.5 flex-shrink-0" />
+                            <CalenderIcon
+                              fill="#F50308"
+                              className="mt-0.5 flex-shrink-0"
+                            />
                             <span className="flex-shrink-0">
                               Processing Time : 7 Days
                             </span>
                           </li>
                           <li className="flex gap-x-2 text-sm xl:text-md text-t-600 leading-normal">
-                            <BusRedIcon className="mt-0.5 flex-shrink-0" />
+                            <BusRedIcon
+                              fill="#F50308"
+                              className="mt-0.5 flex-shrink-0"
+                            />
                             <span className="flex-shrink-0">
                               With Transport
                             </span>
@@ -287,49 +298,10 @@ const Page = () => {
                                   Date of Birth
                                   <span className="text-primary">*</span>
                                 </FormLabel>
-                                <DropdownMenu>
-                                  <DropdownMenuTrigger asChild>
-                                    <FormControl>
-                                      <Button
-                                        variant={"outline"}
-                                        className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                                      >
-                                        {field.value ? (
-                                          moment(field.value).format(
-                                            "DD-MMM-YYYY"
-                                          )
-                                        ) : (
-                                          <span>Select a date</span>
-                                        )}
-                                      </Button>
-                                    </FormControl>
-                                  </DropdownMenuTrigger>
-                                  <DropdownMenuContent
-                                    className="w-auto p-0"
-                                    align="start"
-                                  >
-                                    <DropdownMenuItem>
-                                      <Calendar
-                                        mode="single"
-                                        defaultMonth={
-                                          field.value &&
-                                          moment(field.value).toDate()
-                                        }
-                                        captionLayout="dropdown-buttons"
-                                        selected={moment(field.value).toDate()}
-                                        onSelect={field.onChange}
-                                        disabled={(date) =>
-                                          date > new Date() ||
-                                          date < new Date("1900-01-01")
-                                        }
-                                        fromYear={1900}
-                                        toYear={moment().year()}
-                                        initialFocus
-                                      />
-                                    </DropdownMenuItem>
-                                  </DropdownMenuContent>
-                                </DropdownMenu>
-                                {/* <Popover>
+                                <Popover
+                                  open={isOpenDob}
+                                  onOpenChange={setIsOpenDob}
+                                >
                                   <PopoverTrigger asChild>
                                     <FormControl>
                                       <Button
@@ -358,7 +330,10 @@ const Page = () => {
                                       }
                                       captionLayout="dropdown-buttons"
                                       selected={moment(field.value).toDate()}
-                                      onSelect={field.onChange}
+                                      onSelect={() => {
+                                        field.onChange();
+                                        setIsOpenDob(false);
+                                      }}
                                       disabled={(date) =>
                                         date > new Date() ||
                                         date < new Date("1900-01-01")
@@ -368,7 +343,7 @@ const Page = () => {
                                       initialFocus
                                     />
                                   </PopoverContent>
-                                </Popover> */}
+                                </Popover>
                                 <FormMessage />
                               </FormItem>
                             )}
@@ -384,7 +359,10 @@ const Page = () => {
                                   Passport Expiry Date
                                   <span className="text-primary">*</span>
                                 </FormLabel>
-                                <Popover>
+                                <Popover
+                                  open={isOpenExpiryDate}
+                                  onOpenChange={setIsOpenExpiryDate}
+                                >
                                   <PopoverTrigger asChild>
                                     <FormControl>
                                       <Button
@@ -413,11 +391,11 @@ const Page = () => {
                                       }
                                       captionLayout="dropdown-buttons"
                                       selected={moment(field.value).toDate()}
-                                      onSelect={field.onChange}
-                                      disabled={(date) =>
-                                        date > new Date() ||
-                                        date < new Date("1900-01-01")
-                                      }
+                                      onSelect={() => {
+                                        field.onChange();
+                                        setIsOpenExpiryDate(false);
+                                      }}
+                                      disabled={(date) => date > new Date()}
                                       fromYear={1900}
                                       toYear={moment().year()}
                                       initialFocus

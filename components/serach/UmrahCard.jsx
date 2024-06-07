@@ -1,22 +1,16 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import {
-  BusIcon,
   BusRedIcon,
-  CalenderRedIcon,
+  CalenderIcon,
   ClockAltIcon,
   ClockRedIcon,
   HotelIcon,
-  HotelRedIcon,
   LocationCircleIcon,
-  LocationCircleRedIcon,
-  PassportCircleRedIcon,
-  PassportIcon,
+  PassportCircleIcon,
   PeopleIcon,
-  PeopleRedIcon,
   PlaneIcon,
-  PlaneRedIcon,
-  SpoonKnifeRedIcon,
+  SpoonKnifeIcon,
 } from "@/components/icons/svgr";
 import numeral from "numeral";
 import { Button } from "@/components/ui/button";
@@ -26,17 +20,33 @@ const UmrahCard = ({ data }) => {
   const renderInclusionIcon = (item) => {
     switch (item.toLowerCase()) {
       case "flight":
-        return <PlaneRedIcon className="w-4 h-4" viewBox="0 0 14 14" />;
+        return (
+          <PlaneIcon fill="#F50308" className="w-4 h-4" viewBox="0 0 14 14" />
+        );
       case "hotel":
-        return <HotelRedIcon className="w-4 h-4" viewBox="0 0 14 14" />;
+        return (
+          <HotelIcon fill="#F50308" className="w-4 h-4" viewBox="0 0 14 14" />
+        );
       case "visa":
         return (
-          <PassportCircleRedIcon className="w-4 h-4" viewBox="0 0 14 14" />
+          <PassportCircleIcon
+            fill="#F50308"
+            className="w-4 h-4"
+            viewBox="0 0 14 14"
+          />
         );
       case "trns":
-        return <BusRedIcon className="w-4 h-4" viewBox="0 0 16 16" />;
+        return (
+          <BusRedIcon fill="#F50308" className="w-4 h-4" viewBox="0 0 16 16" />
+        );
       case "food":
-        return <SpoonKnifeRedIcon className="w-4 h-4" viewBox="0 0 16 16" />;
+        return (
+          <SpoonKnifeIcon
+            fill="#F50308"
+            className="w-4 h-4"
+            viewBox="0 0 16 16"
+          />
+        );
       default:
         return null;
     }
@@ -65,13 +75,19 @@ const UmrahCard = ({ data }) => {
             <div className="flex flex-col xl:flex-row justify-between gap-4 xl:gap-5">
               <ul className="space-y-3 lg:space-y-2 xl:space-y-3">
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
-                  <LocationCircleRedIcon className="mt-0.5 flex-shrink-0" />
+                  <LocationCircleIcon
+                    fill="#F50308"
+                    className="mt-0.5 flex-shrink-0"
+                  />
                   <span className="flex-shrink-0">
                     From <span className="">{data.from}</span>
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
-                  <CalenderRedIcon className="mt-0.5 flex-shrink-0" />
+                  <CalenderIcon
+                    fill="#F50308"
+                    className="mt-0.5 flex-shrink-0"
+                  />
                   <span className="flex-shrink-0">
                     Journey Date : 20 Jun, 2024
                   </span>
@@ -83,7 +99,7 @@ const UmrahCard = ({ data }) => {
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
-                  <PeopleRedIcon className="mt-0.5 flex-shrink-0" />
+                  <PeopleIcon fill="#F50308" className="mt-0.5 flex-shrink-0" />
                   <span className="flex-shrink-0">
                     Group Available : {data.group} Pax
                   </span>

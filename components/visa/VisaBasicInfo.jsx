@@ -1,9 +1,9 @@
 import React from "react";
 import {
-  EnvelopeRedIcon,
-  LocationRedIcon,
-  PhoneRedIcon,
-  PrinterRedIcon,
+  EnvelopeIcon,
+  LocationIcon,
+  PhoneIcon,
+  PrinterIcon,
 } from "../icons/svgr";
 import Notice from "../global/Notice";
 
@@ -47,19 +47,19 @@ const VisaBasicInfo = () => {
       {/* <div className="flex flex-col justify-between max-w-[655px] mx-auto">
         <ul className="grid lg:grid-cols-3 gap-x-[150px] gap-y-3 lg:gap-y-2 xl:gap-y-3 mb-[30px]">
           <li className="flex gap-x-2 text-sm xl:text-base text-t-800 leading-normal col-span-1">
-            <PhoneRedIcon className="mt-1 flex-shrink-0" />
+            <PhoneIcon fill="#F50308" className="mt-1 flex-shrink-0" />
             <span className="flex-shrink-0">008802222282277</span>
           </li>
           <li className="flex gap-x-2 text-sm xl:text-base text-t-800 leading-normal col-span-2">
-            <EnvelopeRedIcon className="mt-1 flex-shrink-0" />
+            <EnvelopeIcon fill="#F50308" className="mt-1 flex-shrink-0" />
             <span className="flex-shrink-0">dhakaemd@mofaic.gov.ae</span>
           </li>
           <li className="flex gap-x-2 text-sm xl:text-base text-t-800 leading-normal col-span-1">
-            <PrinterRedIcon className="mt-1 flex-shrink-0" />
+            <PrinterIcon fill="#F50308" className="mt-1 flex-shrink-0" />
             <span className="flex-shrink-0">880284789845738</span>
           </li>
           <li className="flex gap-x-2 text-sm xl:text-base text-t-800 leading-normal col-span-2">
-            <LocationRedIcon className="mt-1 flex-shrink-0" />
+            <LocationIcon fill="#F50308" className="mt-1 flex-shrink-0" />
             <span className="">
               House No: 191, Road No: 69, Gulshan North Ave, Dhaka 1212, Dhaka,
               Bangladesh

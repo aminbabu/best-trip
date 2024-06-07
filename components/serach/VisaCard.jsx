@@ -7,7 +7,7 @@ import {
   DocRedIcon,
   ArrowIcon,
   ClockRedIcon,
-  CalenderRedIcon,
+  CalenderIcon,
   BusRedIcon,
 } from "../icons/svgr";
 import Link from "next/link";
@@ -68,19 +68,28 @@ const VisaCard = ({ data }) => {
                       </span>
                     </li>
                     <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
-                      <CalenderRedIcon className="mt-0.5 flex-shrink-0" />
+                      <CalenderIcon
+                        fill="#F50308"
+                        className="mt-0.5 flex-shrink-0"
+                      />
                       <span className="flex-shrink-0">
                         Validity : {data.validity} Days
                       </span>
                     </li>
                     <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
-                      <CalenderRedIcon className="mt-0.5 flex-shrink-0" />
+                      <CalenderIcon
+                        fill="#F50308"
+                        className="mt-0.5 flex-shrink-0 size-4"
+                      />
                       <span className="flex-shrink-0">
                         Processing Time : {data.processingTime} Days
                       </span>
                     </li>
                     <li className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal">
-                      <BusRedIcon className="mt-0.5 flex-shrink-0" />
+                      <BusRedIcon
+                        fill="#F50308"
+                        className="mt-0.5 flex-shrink-0"
+                      />
                       <span className="flex-shrink-0">With Transport</span>
                     </li>
                   </ul>

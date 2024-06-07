@@ -772,7 +772,7 @@ const UmrahDetailsPage = ({ params }) => {
             <div className="flex-1 flex flex-col lg:flex-row">
               <div className="flex-shrink-0 flex items-center gap-x-4 bg-p-300 px-4 py-6 md:p-6 lg:px-8 lg:py-12 lg:w-80">
                 <BusIcon
-                  className="text-primary flex-shrink-0 w-10 h-10 md:w-[60] md:h-[60]"
+                  className="text-primary flex-shrink-0 w-10 h-10 md:w-[60px] md:h-[60px]"
                   viewBox="0 0 14 14"
                 />
                 <div>

@@ -49,10 +49,8 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
   const [photo, setPhoto] = useState(null);
   const [nid, setNid] = useState(null);
   const [covid_certificate, setCovidCertificate] = useState(null);
-  const [calendarStates, setCalenderStates] = useState({
-    dob: false,
-    exprireDate: false,
-  });
+  const [isOpenDob, setIsOpenDob] = useState(false);
+  const [isOpenExpiryDate, setIsOpenExpiryDate] = useState(false);
   const form = useForm({
     resolver: zodResolver(travellerSchema),
     defaultValues: {
@@ -398,42 +396,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                     <FormLabel className="text-t-800 lg:text-lg font-normal">
                       Date of Birth<span className="text-primary">*</span>
                     </FormLabel>
-                    {/* <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <FormControl>
-                          <Button
-                            variant={"outline"}
-                            className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                          >
-                            {field.value ? (
-                              moment(field.value).format("DD-MMM-YYYY")
-                            ) : (
-                              <span>Select a date</span>
-                            )}
-                          </Button>
-                        </FormControl>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent className="w-auto p-0" align="start">
-                        <DropdownMenuItem>
-                          <Calendar
-                            mode="single"
-                            defaultMonth={
-                              field.value && moment(field.value).toDate()
-                            }
-                            captionLayout="dropdown-buttons"
-                            selected={moment(field.value).toDate()}
-                            onSelect={field.onChange}
-                            disabled={(date) =>
-                              date > new Date() || date < new Date("1900-01-01")
-                            }
-                            fromYear={1900}
-                            toYear={moment().year()}
-                            initialFocus
-                          />
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu> */}
-                    <Popover onOpenChange={calendarStates.dob}>
+                    <Popover open={isOpenDob} onOpenChange={setIsOpenDob}>
                       <PopoverTrigger asChild>
                         <FormControl>
                           <Button
@@ -458,7 +421,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                           selected={moment(field.value).toDate()}
                           onSelect={(value) => {
                             field.onChange(value);
-                            setCalenderStates((prev) => !prev);
+                            setIsOpenDob(false);
                           }}
                           disabled={(date) =>
                             date > new Date() || date < new Date("1900-01-01")
@@ -666,42 +629,10 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                       Passport Expiry Date
                       <span className="text-primary">*</span>
                     </FormLabel>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <FormControl>
-                          <Button
-                            variant={"outline"}
-                            className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                          >
-                            {field.value ? (
-                              moment(field.value).format("DD-MMM-YYYY")
-                            ) : (
-                              <span>Select a date</span>
-                            )}
-                          </Button>
-                        </FormControl>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent className="w-auto p-0" align="start">
-                        <DropdownMenuItem>
-                          <Calendar
-                            mode="single"
-                            defaultMonth={
-                              field.value && moment(field.value).toDate()
-                            }
-                            captionLayout="dropdown-buttons"
-                            selected={moment(field.value).toDate()}
-                            onSelect={field.onChange}
-                            disabled={(date) =>
-                              date < new Date() || date < new Date("1900-01-01")
-                            }
-                            fromYear={moment().year()}
-                            toYear={2100}
-                            initialFocus
-                          />
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                    {/* <Popover>
+                    <Popover
+                      open={isOpenExpiryDate}
+                      onOpenChange={setIsOpenExpiryDate}
+                    >
                       <PopoverTrigger asChild>
                         <FormControl>
                           <Button
@@ -724,16 +655,17 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                           }
                           captionLayout="dropdown-buttons"
                           selected={moment(field.value).toDate()}
-                          onSelect={field.onChange}
-                          disabled={(date) =>
-                            date < new Date() || date < new Date("1900-01-01")
-                          }
+                          onSelect={() => {
+                            field.onChange();
+                            setIsOpenExpiryDate(false);
+                          }}
+                          disabled={(date) => date < new Date()}
                           fromYear={moment().year()}
                           toYear={2100}
                           initialFocus
                         />
                       </PopoverContent>
-                    </Popover> */}
+                    </Popover>
                     <FormMessage />
                   </FormItem>
                 )}
