@@ -315,7 +315,7 @@ const UmrahDetailsPage = ({ params }) => {
                   <h4 className="text-xs line-clamp-1 md:text-lg text-t-900 mb-1 md:line-clamp-2 leading-loose  md:leading-normal">
                     Swissotel Al Maqam Makkah / Similar Hotel{" "}
                   </h4>
-                  <p className="text-xs line-clamp-1 text-t-800 mb-1 md:line-clamp-2 leading-loose md:leading-normal">
+                  <p className="text-xs md:text-base line-clamp-1 text-t-800 mb-1 md:line-clamp-2 leading-loose md:leading-normal">
                     St Tower F, Ibrahim Al Khalil, St, Tower F, Al Maqam
                   </p>
                   <div className="flex items-center gap-x-2 text-t-600  leading-loose md:leading-normal">
@@ -447,7 +447,7 @@ const UmrahDetailsPage = ({ params }) => {
                   <h4 className="text-xs line-clamp-1 md:text-lg text-t-900 mb-1 md:line-clamp-2 leading-loose  md:leading-normal">
                     Swissotel Al Maqam Makkah / Similar Hotel{" "}
                   </h4>
-                  <p className="text-xs line-clamp-1 text-t-800 mb-1 md:line-clamp-2 leading-loose md:leading-normal">
+                  <p className="text-xs md:text-base line-clamp-1 text-t-800 mb-1 md:line-clamp-2 leading-loose md:leading-normal">
                     St Tower F, Ibrahim Al Khalil, St, Tower F, Al Maqam
                   </p>
                   <div className="flex items-center gap-x-2 text-t-600  leading-loose md:leading-normal">
