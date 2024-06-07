@@ -35,6 +35,12 @@ import { Loader } from "lucide-react";
 import { DocAltIcon } from "@/components/icons/svgr";
 
 const TravellerDetailsForm = ({ hideTravellerForm }) => {
+  const today = new Date();
+  const twoYearsBack = new Date(today);
+  const twelveYearsBack = new Date(today);
+  twoYearsBack.setFullYear(today.getFullYear() - 2);
+  twelveYearsBack.setFullYear(today.getFullYear() - 12);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [passport, setPassport] = useState(null);
@@ -45,16 +51,29 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
   const [isOpenExpiryDate, setIsOpenExpiryDate] = useState(false);
   const [travelerType, setTravellerType] = useState("");
   const [dobFrom, setDobFrom] = useState(1900);
+  const [dobTo, setDobTo] = useState(moment().year());
+
+  let initialSelectedDate;
+  if (travelerType === "A") {
+    initialSelectedDate = twelveYearsBack;
+  } else if (travelerType === "C") {
+    initialSelectedDate = twoYearsBack;
+  } else {
+    initialSelectedDate = moment().toDate();
+  }
 
   useEffect(() => {
     if (travelerType === "A") {
-      setDobFrom(moment().year() - 12);
+      setDobFrom(1900);
+      setDobTo(moment().year() - 12);
     }
     if (travelerType === "C") {
-      setDobFrom(moment().year() - 8);
+      setDobFrom(moment().year() - 12);
+      setDobTo(moment().year() - 2);
     }
     if (travelerType === "I") {
       setDobFrom(moment().year() - 2);
+      setDobTo(moment().year());
     }
   }, [travelerType]);
 
@@ -135,6 +154,18 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
       travellerType: "Infant",
     },
   ];
+
+  const handleDisableDate = (date) => {
+    if (travelerType === "A") {
+      return date > twelveYearsBack || date < new Date("1900-01-01");
+    }
+    if (travelerType === "C") {
+      return date > twoYearsBack || date < twelveYearsBack;
+    }
+    if (travelerType === "I") {
+      return date > today || date < twoYearsBack;
+    }
+  };
 
   const onSubmit = (data) => {
     setError(null);
@@ -424,20 +455,16 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                       <PopoverContent className="w-auto p-0" align="start">
                         <Calendar
                           mode="single"
-                          defaultMonth={
-                            field.value && moment(field.value).toDate()
-                          }
+                          defaultMonth={initialSelectedDate}
                           captionLayout="dropdown-buttons"
                           selected={moment(field.value).toDate()}
                           onSelect={(value) => {
                             field.onChange(value);
                             setIsOpenDob(false);
                           }}
-                          disabled={(date) =>
-                            date > new Date() || date < new Date("1900-01-01")
-                          }
+                          disabled={(date) => handleDisableDate(date)}
                           fromYear={dobFrom}
-                          toYear={moment().year()}
+                          toYear={dobTo}
                           initialFocus
                         />
                       </PopoverContent>

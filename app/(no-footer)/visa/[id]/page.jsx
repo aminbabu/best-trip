@@ -48,12 +48,20 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const Page = () => {
+  const today = new Date();
+  const twoYearsBack = new Date(today);
+  const twelveYearsBack = new Date(today);
+  twoYearsBack.setFullYear(today.getFullYear() - 2);
+  twelveYearsBack.setFullYear(today.getFullYear() - 12);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isOpenDobAdult, setIsOpenDobAdult] = useState(false);
   const [isOpenDobChild, setIsOpenDobChild] = useState(false);
   const [isOpenDobInfant, setIsOpenDobInfant] = useState(false);
-  const [isOpenExpiryDate, setIsOpenExpiryDate] = useState(false);
+  const [isOpenExpiryDateAdult, setIsOpenExpiryDateAdult] = useState(false);
+  const [isOpenExpiryDateChild, setIsOpenExpiryDateChild] = useState(false);
+  const [isOpenExpiryDateInfant, setIsOpenExpiryDateInfant] = useState(false);
 
   const form = useForm({
     resolver: zodResolver(travellerSchema),
@@ -303,22 +311,19 @@ const Page = () => {
                                 >
                                   <Calendar
                                     mode="single"
-                                    defaultMonth={
-                                      field.value &&
-                                      moment(field.value).toDate()
-                                    }
+                                    defaultMonth={twelveYearsBack}
                                     captionLayout="dropdown-buttons"
-                                    selected={moment(field.value).toDate()}
+                                    selected={twelveYearsBack}
                                     onSelect={(value) => {
                                       field.onChange(value);
                                       setIsOpenDobAdult(false);
                                     }}
                                     disabled={(date) =>
-                                      date > new Date() ||
+                                      date > twelveYearsBack ||
                                       date < new Date("1900-01-01")
                                     }
-                                    fromYear={moment().year() - 12}
-                                    toYear={moment().year()}
+                                    fromYear={1900}
+                                    toYear={moment().year() - 12}
                                     initialFocus
                                   />
                                 </PopoverContent>
@@ -339,8 +344,8 @@ const Page = () => {
                                 <span className="text-primary">*</span>
                               </FormLabel>
                               <Popover
-                                open={isOpenExpiryDate}
-                                onOpenChange={setIsOpenExpiryDate}
+                                open={isOpenExpiryDateAdult}
+                                onOpenChange={setIsOpenExpiryDateAdult}
                               >
                                 <PopoverTrigger asChild>
                                   <FormControl>
@@ -372,7 +377,7 @@ const Page = () => {
                                     selected={moment(field.value).toDate()}
                                     onSelect={(value) => {
                                       field.onChange(value);
-                                      setIsOpenExpiryDate(false);
+                                      setIsOpenExpiryDateAdult(false);
                                     }}
                                     disabled={(date) => date > new Date()}
                                     fromYear={1900}
@@ -562,22 +567,19 @@ const Page = () => {
                                 >
                                   <Calendar
                                     mode="single"
-                                    defaultMonth={
-                                      field.value &&
-                                      moment(field.value).toDate()
-                                    }
+                                    defaultMonth={twoYearsBack}
                                     captionLayout="dropdown-buttons"
-                                    selected={moment(field.value).toDate()}
+                                    selected={twoYearsBack}
                                     onSelect={(value) => {
                                       field.onChange(value);
                                       setIsOpenDobChild(false);
                                     }}
                                     disabled={(date) =>
-                                      date > new Date() ||
-                                      date < new Date("1900-01-01")
+                                      date > twoYearsBack ||
+                                      date < twelveYearsBack
                                     }
-                                    fromYear={moment().year() - 8}
-                                    toYear={moment().year()}
+                                    fromYear={moment().year() - 12}
+                                    toYear={moment().year() - 2}
                                     initialFocus
                                   />
                                 </PopoverContent>
@@ -598,8 +600,8 @@ const Page = () => {
                                 <span className="text-primary">*</span>
                               </FormLabel>
                               <Popover
-                                open={isOpenExpiryDate}
-                                onOpenChange={setIsOpenExpiryDate}
+                                open={isOpenExpiryDateChild}
+                                onOpenChange={setIsOpenExpiryDateChild}
                               >
                                 <PopoverTrigger asChild>
                                   <FormControl>
@@ -631,7 +633,7 @@ const Page = () => {
                                     selected={moment(field.value).toDate()}
                                     onSelect={(value) => {
                                       field.onChange(value);
-                                      setIsOpenExpiryDate(false);
+                                      setIsOpenExpiryDateC(false);
                                     }}
                                     disabled={(date) => date > new Date()}
                                     fromYear={1900}
@@ -832,8 +834,7 @@ const Page = () => {
                                       setIsOpenDobInfant(false);
                                     }}
                                     disabled={(date) =>
-                                      date > new Date() ||
-                                      date < new Date("1900-01-01")
+                                      date > today || date < twoYearsBack
                                     }
                                     fromYear={moment().year() - 2}
                                     toYear={moment().year()}
@@ -857,8 +858,8 @@ const Page = () => {
                                 <span className="text-primary">*</span>
                               </FormLabel>
                               <Popover
-                                open={isOpenExpiryDate}
-                                onOpenChange={setIsOpenExpiryDate}
+                                open={isOpenExpiryDateInfant}
+                                onOpenChange={setIsOpenExpiryDateInfant}
                               >
                                 <PopoverTrigger asChild>
                                   <FormControl>
@@ -890,7 +891,7 @@ const Page = () => {
                                     selected={moment(field.value).toDate()}
                                     onSelect={(value) => {
                                       field.onChange(value);
-                                      setIsOpenExpiryDate(false);
+                                      setIsOpenExpiryDateInfant(false);
                                     }}
                                     disabled={(date) => date > new Date()}
                                     fromYear={1900}
