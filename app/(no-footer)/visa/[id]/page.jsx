@@ -311,7 +311,9 @@ const Page = () => {
                                 >
                                   <Calendar
                                     mode="single"
-                                    defaultMonth={twelveYearsBack}
+                                    defaultMonth={
+                                      field.value && twelveYearsBack
+                                    }
                                     captionLayout="dropdown-buttons"
                                     selected={twelveYearsBack}
                                     onSelect={(value) => {
@@ -567,7 +569,7 @@ const Page = () => {
                                 >
                                   <Calendar
                                     mode="single"
-                                    defaultMonth={twoYearsBack}
+                                    defaultMonth={field.value && twoYearsBack}
                                     captionLayout="dropdown-buttons"
                                     selected={twoYearsBack}
                                     onSelect={(value) => {

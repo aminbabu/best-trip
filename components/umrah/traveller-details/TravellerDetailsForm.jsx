@@ -53,7 +53,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
   const [dobFrom, setDobFrom] = useState(1900);
   const [dobTo, setDobTo] = useState(moment().year());
 
-  let initialSelectedDate;
+  let initialSelectedDate = moment().toDate();
   if (travelerType === "A") {
     initialSelectedDate = twelveYearsBack;
   } else if (travelerType === "C") {
@@ -455,7 +455,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                       <PopoverContent className="w-auto p-0" align="start">
                         <Calendar
                           mode="single"
-                          defaultMonth={initialSelectedDate}
+                          defaultMonth={field.value || initialSelectedDate}
                           captionLayout="dropdown-buttons"
                           selected={moment(field.value).toDate()}
                           onSelect={(value) => {
