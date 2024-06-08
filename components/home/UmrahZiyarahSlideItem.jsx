@@ -59,7 +59,7 @@ const UmrahZiyarahSlideItem = ({ item }) => {
         <div className="flex items-center justify-between text-xs lg:text-sm gap-x-4 leading-relaxed">
           <p className="text-t-600">Starting from </p>
           <p className="text-p-900 font-medium">
-            {numeral(item?.price).format("$0,0.00")}
+            BDT {numeral(item?.price).format("0,0.00")}
           </p>
         </div>
       </div>
