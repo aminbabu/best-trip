@@ -211,7 +211,7 @@ const SignUpPage = () => {
           </Form>
         </CardContent>
       </Card>
-      <p className="text-t-600 text-center">
+      <p className="text-t-600 text-center pb-6 lg:pb-10">
         Have an account?{" "}
         <Link
           href="/sign-in"
