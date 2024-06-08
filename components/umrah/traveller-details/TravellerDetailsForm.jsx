@@ -33,6 +33,7 @@ import { Calendar } from "@/components/ui/calendar";
 import moment from "moment";
 import { Loader } from "lucide-react";
 import { DocAltIcon } from "@/components/icons/svgr";
+import { countries } from "@/data/countries";
 
 const TravellerDetailsForm = ({ hideTravellerForm }) => {
   const today = new Date();
@@ -52,6 +53,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
   const [travelerType, setTravellerType] = useState("");
   const [dobFrom, setDobFrom] = useState(1900);
   const [dobTo, setDobTo] = useState(moment().year());
+  const [countryValue, setCountryValue] = useState("Bangladesh");
 
   let initialSelectedDate = moment().toDate();
   if (travelerType === "A") {
@@ -91,6 +93,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
       dob: "",
       marital_status: "",
       country: "",
+      city: "",
       division: "",
       present_address: "",
       permanent_address: "",
@@ -474,34 +477,6 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 )}
               />
             </div>
-            {/* <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-              <FormField
-                control={form.control}
-                name="marital_status"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-t-800 lg:text-lg font-normal">
-                      Marital Status<span className="text-primary">*</span>
-                    </FormLabel>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <FormControl>
-                        <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
-                          <SelectValue placeholder="Select option" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="married">Married</SelectItem>
-                        <SelectItem value="unmarried">Unmarried</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div> */}
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
@@ -512,8 +487,11 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                       Country<span className="text-primary">*</span>
                     </FormLabel>
                     <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
+                      onValueChange={(value) => {
+                        field.onChange(value);
+                        setCountryValue(value);
+                      }}
+                      defaultValue={"Bangladesh"}
                     >
                       <FormControl>
                         <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
@@ -521,9 +499,11 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="bangladesh">Bangladesh</SelectItem>
-                        <SelectItem value="india">India</SelectItem>
-                        <SelectItem value="pakistan">Pakistan</SelectItem>
+                        {countries.map((country) => (
+                          <SelectItem value={country.name} key={country.id}>
+                            {country.name}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -531,7 +511,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 )}
               />
             </div>
-            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+            {/* <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
                 name="division"
@@ -559,51 +539,29 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                   </FormItem>
                 )}
               />
+            </div> */}
+            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+              <FormField
+                control={form.control}
+                name="city"
+                render={({ field }) => (
+                  <FormItem className="space-y-3">
+                    <FormLabel className="text-t-800 lg:text-lg font-normal">
+                      City Name<span className="text-primary">*</span>
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type="text"
+                        placeholder="Enter city name"
+                        className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </div>
-            {/* <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-              <FormField
-                control={form.control}
-                name="present_address"
-                render={({ field }) => (
-                  <FormItem className="space-y-3">
-                    <FormLabel className="text-t-800 lg:text-lg font-normal">
-                      Present Address<span className="text-primary">*</span>
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        type="text"
-                        placeholder="Enter last name"
-                        className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div> */}
-            {/* <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-              <FormField
-                control={form.control}
-                name="permanent_address"
-                render={({ field }) => (
-                  <FormItem className="space-y-3">
-                    <FormLabel className="text-t-800 lg:text-lg font-normal">
-                      Permanent Address<span className="text-primary">*</span>
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        type="text"
-                        placeholder="Enter last name"
-                        className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div> */}
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
@@ -637,8 +595,10 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                       <span className="text-primary">*</span>
                     </FormLabel>
                     <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
+                      onValueChange={(value) => {
+                        field.onChange(value);
+                      }}
+                      defaultValue={"Bangladesh"}
                     >
                       <FormControl>
                         <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
@@ -646,9 +606,11 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="bangladesh">Bangladesh</SelectItem>
-                        <SelectItem value="india">India</SelectItem>
-                        <SelectItem value="pakistan">Pakistan</SelectItem>
+                        {countries.map((country) => (
+                          <SelectItem value={country.name} key={country.id}>
+                            {country.name}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                     <FormMessage />

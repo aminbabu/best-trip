@@ -76,6 +76,7 @@ export const travellerSchema = z.object({
     .min(1, { message: "Please select a valid marital status" }),
   country: z.string().min(1, { message: "Please select a valid country" }),
   division: z.string().min(1, { message: "Please select a valid division" }),
+  city: z.string().min(1, { message: "Please provide a city name" }),
   present_address: z
     .string()
     .min(1, { message: "Please provide a valid present address" }),

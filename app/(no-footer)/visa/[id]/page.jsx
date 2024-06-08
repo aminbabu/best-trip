@@ -59,9 +59,14 @@ const Page = () => {
   const [isOpenDobAdult, setIsOpenDobAdult] = useState(false);
   const [isOpenDobChild, setIsOpenDobChild] = useState(false);
   const [isOpenDobInfant, setIsOpenDobInfant] = useState(false);
+  const [calendarAdultDate, setCalendarAdultDate] = useState(null);
+  const [calendarChildDate, setCalendarChildDate] = useState(null);
+  const [calendarInfantDate, setCalendarInfantDate] = useState(null);
   const [isOpenExpiryDateAdult, setIsOpenExpiryDateAdult] = useState(false);
   const [isOpenExpiryDateChild, setIsOpenExpiryDateChild] = useState(false);
   const [isOpenExpiryDateInfant, setIsOpenExpiryDateInfant] = useState(false);
+
+  console.log(calendarAdultDate, calendarChildDate, calendarInfantDate);
 
   const form = useForm({
     resolver: zodResolver(travellerSchema),
@@ -312,12 +317,18 @@ const Page = () => {
                                   <Calendar
                                     mode="single"
                                     defaultMonth={
-                                      field.value && twelveYearsBack
+                                      calendarAdultDate || twelveYearsBack
                                     }
                                     captionLayout="dropdown-buttons"
-                                    selected={twelveYearsBack}
+                                    selected={
+                                      calendarAdultDate
+                                        ? moment(calendarAdultDate).toDate()
+                                        : null
+                                    }
                                     onSelect={(value) => {
+                                      setCalendarAdultDate(value);
                                       field.onChange(value);
+                                      console.log(value, calendarAdultDate);
                                       setIsOpenDobAdult(false);
                                     }}
                                     disabled={(date) =>
@@ -569,11 +580,18 @@ const Page = () => {
                                 >
                                   <Calendar
                                     mode="single"
-                                    defaultMonth={field.value && twoYearsBack}
+                                    defaultMonth={
+                                      calendarChildDate || twoYearsBack
+                                    }
                                     captionLayout="dropdown-buttons"
-                                    selected={twoYearsBack}
+                                    selected={
+                                      calendarChildDate
+                                        ? moment(calendarChildDate).toDate()
+                                        : null
+                                    }
                                     onSelect={(value) => {
-                                      field.onChange(value);
+                                      setCalendarChildDate(value);
+                                      field.onChange(calendarChildDate);
                                       setIsOpenDobChild(false);
                                     }}
                                     disabled={(date) =>
