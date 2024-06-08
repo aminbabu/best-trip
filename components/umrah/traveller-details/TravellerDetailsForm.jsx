@@ -34,6 +34,8 @@ import moment from "moment";
 import { Loader } from "lucide-react";
 import { DocAltIcon } from "@/components/icons/svgr";
 import { countries } from "@/data/countries";
+import PhoneInput from "react-phone-input-2";
+import PhoneInputComponent from "./PhoneInputComponent";
 
 const TravellerDetailsForm = ({ hideTravellerForm }) => {
   const today = new Date();
@@ -54,6 +56,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
   const [dobFrom, setDobFrom] = useState(1900);
   const [dobTo, setDobTo] = useState(moment().year());
   const [countryValue, setCountryValue] = useState("Bangladesh");
+  const [contactNumber, setContactNumber] = useState("bd");
 
   let initialSelectedDate = moment().toDate();
   if (travelerType === "A") {
@@ -173,6 +176,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
   const onSubmit = (data) => {
     setError(null);
     setLoading(true);
+    console.log(data);
 
     setTimeout(() => {
       console.log(data);
@@ -697,7 +701,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 )}
               />
             </div>
-            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+            <div className="col-span-6 sm:col-span-3 lg:col-span-2 relative">
               <FormField
                 control={form.control}
                 name="phone"
@@ -713,6 +717,12 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                         className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
                         {...field}
                       />
+                      {/* <PhoneInputComponent
+                        value={field.value}
+                        onChange={field.onChange}
+                        onBlur={field.onBlur}
+                        name={field.name}
+                      /> */}
                     </FormControl>
                     <FormMessage />
                   </FormItem>

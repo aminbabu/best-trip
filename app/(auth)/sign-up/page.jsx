@@ -55,28 +55,28 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="max-w-[648px] mx-auto">
-      <Card className="border-transparent mb-8">
-        <CardHeader className="lg:p-10">
-          <CardTitle className="lg:text-[2rem] text-t-800 text-center pt-5">
+    <div className="max-w-[500px] mx-auto">
+      <Card className="border-transparent mb-8 shadow-[0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] border border-[#f1f1f4] p-6 lg:p-10">
+        <CardHeader className="p-0">
+          <CardTitle className="text-lg lg:text-2xl text-gray-900 text-center pb-5 lg:pb-8">
             Create your account
           </CardTitle>
         </CardHeader>
-        <CardContent className="lg:p-10 lg:pt-0">
+        <CardContent className="pb-0 p-0">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
                 control={form.control}
                 name="fullname"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-t-700 text-base lg:text-lg">
-                      Your name<span className="text-primary">*</span>
+                    <FormLabel className="text-gray-900 text-sm lg:text-base">
+                      Your name<span className="text-primary"> *</span>
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="text"
-                        className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300"
+                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9]"
                         placeholder="Enter your name"
                         {...field}
                       />
@@ -90,13 +90,13 @@ const SignUpPage = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-t-700 text-base lg:text-lg">
-                      Email address<span className="text-primary">*</span>
+                    <FormLabel className="text-gray-900 text-sm lg:text-base">
+                      Email address<span className="text-primary"> *</span>
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="email"
-                        className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300"
+                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9]"
                         placeholder="Enter email address"
                         {...field}
                       />
@@ -110,13 +110,13 @@ const SignUpPage = () => {
                 name="phone"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-t-700 text-base lg:text-lg">
-                      Phone number<span className="text-primary">*</span>
+                    <FormLabel className="text-gray-900 text-sm lg:text-base">
+                      Phone number<span className="text-primary"> *</span>
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="tel"
-                        className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300"
+                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9]"
                         placeholder="Enter phone number"
                         {...field}
                       />
@@ -130,13 +130,13 @@ const SignUpPage = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-t-700 text-base lg:text-lg">
-                      Password<span className="text-primary">*</span>
+                    <FormLabel className="text-gray-900v text-sm lg:text-base">
+                      Password<span className="text-primary"> *</span>
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="password"
-                        className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300"
+                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9]"
                         placeholder="Enter password"
                         {...field}
                       />
@@ -150,13 +150,13 @@ const SignUpPage = () => {
                 name="confirmPassword"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-t-700 text-base lg:text-lg">
-                      Confirm password<span className="text-primary">*</span>
+                    <FormLabel className="text-gray-900 text-sm lg:text-base">
+                      Confirm password<span className="text-primary"> *</span>
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="password"
-                        className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300"
+                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-900 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9]"
                         placeholder="Enter confirm password"
                         {...field}
                       />
@@ -181,7 +181,7 @@ const SignUpPage = () => {
                         </FormControl>
                         <CheckIcon className="invisible opacity-0 duration-200 absolute inset-0 m-auto w-4 h-4 text-white pointer-events-none peer-checked:visible peer-checked:opacity-100" />
                       </div>
-                      <FormLabel className="flex-1 text-t-700 text-base font-normal leading-normal">
+                      <FormLabel className="flex-1 text-t-700 text-sm font-normal leading-normal">
                         I agree to the{" "}
                         <Link
                           href="#"
@@ -203,7 +203,9 @@ const SignUpPage = () => {
                 )}
               />
               <div className="grid">
-                <Button type="submit">Sign up</Button>
+                <Button className="py-2.5" type="submit">
+                  Sign up
+                </Button>
               </div>
             </form>
           </Form>
