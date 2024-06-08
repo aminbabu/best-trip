@@ -33,12 +33,9 @@ const PaymentPage = ({ params }) => {
               <div className="flex flex-col md:flex-row justify-between gap-4 px-4 md:px-5 py-6">
                 <ul className="space-y-3 lg:space-y-2 xl:space-y-3">
                   <li className="flex gap-x-2 text-sm lg:text-base leading-normal">
-                    Quad Share Basis Package
-                  </li>
-                  <li className="flex gap-x-2 text-sm lg:text-base leading-normal">
                     <LocationCircleIcon className="mt-0.5 flex-shrink-0" />
                     <span className="flex-shrink-0">
-                      From From Dhaka , Bangladesh
+                      From Dhaka , Bangladesh
                     </span>
                   </li>
                   <li className="flex gap-x-2 text-sm lg:text-base leading-normal">

@@ -71,7 +71,13 @@ const socialMedia = {
   ],
 };
 
-const noNewsletterLinks = ["/search/visa", "/search/umrah"];
+const noNewsletterLinks = [
+  "/search/visa",
+  "/search/umrah",
+  "/terms-and-conditions",
+  "/privacy-policy",
+  "/refund-policy",
+];
 
 const Footer = ({ className }) => {
   const pathname = usePathname();
