@@ -1,9 +1,8 @@
 import Container from "@/components/layouts/Container";
-import { Card } from "@/components/ui/card";
 
 const AuthLayout = ({ children }) => {
   return (
-    <section className="py-10 bg-[#fbfbfb]">
+    <section className="bg-[#fbfbfb] min-h-[calc(100vh-94px)]">
       <Container>{children}</Container>
     </section>
   );
