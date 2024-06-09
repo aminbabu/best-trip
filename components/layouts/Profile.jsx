@@ -2,8 +2,16 @@ import React, { useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import Image from "next/image";
 import profileAvatar from "@/public/images/profile/avatar.png";
-import { ArrowIcon, CalenderTickIcon, UserProfileIcon } from "../icons/svgr";
+import {
+  ArrowIcon,
+  CalenderTickIcon,
+  CreditCardIcon,
+  LockCircleIcon,
+  SignOutIcon,
+  UserProfileIcon,
+} from "../icons/svgr";
 import Link from "next/link";
+import { profileDropDownItems } from "@/data/navbar";
 
 const Profile = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,18 +39,16 @@ const Profile = () => {
         className="px-0.5 py-2 border-transparent min-w-[308px]"
       >
         <ul>
-          <Link href="#">
-            <li className="px-5 py-3 text-sm lg:text-base text-t-700 hover:bg-p-900 focus:bg-p-900 hover:text-white focus:text-white rounded-none cursor-pointer capitalize flex items-center gap-3">
-              <UserProfileIcon viewBox="0 0 16 18" className="size-5" /> My
-              Profile
+          {profileDropDownItems.map((item) => (
+            <li key={item.id}>
+              <Link
+                href={item.path}
+                className="px-5 py-3 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize flex items-center gap-3"
+              >
+                {item.icon} {item.name}
+              </Link>
             </li>
-          </Link>{" "}
-          <Link href="#">
-            <li className="px-5 py-3 text-sm lg:text-base text-t-700 hover:bg-p-900 focus:bg-p-900 hover:text-white focus:text-white rounded-none cursor-pointer capitalize  flex items-center gap-3">
-              <CalenderTickIcon viewBox="0 0 22 22" className="size-5" /> My
-              Bookings
-            </li>
-          </Link>
+          ))}
         </ul>
       </PopoverContent>
     </Popover>

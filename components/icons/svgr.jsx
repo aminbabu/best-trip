@@ -64,6 +64,8 @@ import PencliLineIcon from "@/public/icons/PencilLine.svg";
 import ReverseExchangeIcon from "@/public/icons/reverse-exchange.svg";
 import UserProfileIcon from "@/public/icons/user-profile.svg";
 import CalenderTickIcon from "@/public/icons/calender-tick.svg";
+import SignOutIcon from "@/public/icons/sign-out.svg";
+import LockCircleIcon from "@/public/icons/lock-cirlce.svg";
 
 export {
   FacebookIcon,
@@ -132,4 +134,6 @@ export {
   ReverseExchangeIcon,
   CalenderTickIcon,
   UserProfileIcon,
+  SignOutIcon,
+  LockCircleIcon,
 };

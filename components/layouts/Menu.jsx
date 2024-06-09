@@ -1,32 +1,13 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Separator } from "../ui/separator";
-
-// menu
-const menu = [
-  {
-    name: "Flight",
-    path: "/flight",
-  },
-  {
-    name: "Umrah",
-    path: "/umrah",
-  },
-  {
-    name: "Hotel",
-    path: "/hotel",
-  },
-  {
-    name: "Visa",
-    path: "/visa",
-  },
-];
+import { menu, profileDropDownItems } from "@/data/navbar";
 
 const Menu = ({ isNavbarSticky }) => {
   return (
     <ul className="flex flex-col gap-y-3 lg:flex-row lg:gap-x-8 xl:gap-x-10">
-      {menu.map((item, index) => (
-        <li key={index}>
+      {menu.map((item) => (
+        <li key={item.id}>
           <Link
             href={item.path}
             className={cn(
@@ -41,12 +22,16 @@ const Menu = ({ isNavbarSticky }) => {
         </li>
       ))}
       <Separator className="lg:hidden" />
-      <li className="text-sm lg:text-base text-t-700 inline-flex py-1 lg:px-2 duration-300 hover:text-p-900 lg:hidden">
-        My Account
-      </li>
-      <li className="text-sm lg:text-base text-t-700 inline-flex py-1 lg:px-2 duration-300 hover:text-p-900 lg:hidden">
-        My Bookings
-      </li>
+      {profileDropDownItems.map((item) => (
+        <li key={item.id}>
+          <Link
+            href={item.path}
+            className="text-sm lg:text-base text-t-700 inline-flex py-1 lg:px-2 duration-300 hover:text-p-900 lg:hidden"
+          >
+            {item.name}
+          </Link>
+        </li>
+      ))}
     </ul>
   );
 };
