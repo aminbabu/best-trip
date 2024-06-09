@@ -9,12 +9,13 @@ const PhoneInputComponent = ({ value, onChange, onBlur, name }) => {
       value={value}
       onChange={onChange}
       onBlur={onBlur}
+      buttonClass="w-[85px] !bg-[#FFEFEF] !border-none left-0"
       inputProps={{
         name: name,
         required: true,
         autoFocus: true,
         className:
-          "h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100",
+          "h-[3.25rem] w-full text-base pr-5 pl-24 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100",
         placeholder: "Enter phone number",
       }}
     />

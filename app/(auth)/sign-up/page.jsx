@@ -59,12 +59,15 @@ const SignUpPage = () => {
       <Card className="border-transparent mb-8 shadow-[0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] border border-[#f1f1f4] p-6 lg:p-10">
         <CardHeader className="p-0">
           <CardTitle className="text-lg lg:text-2xl text-gray-900 text-center pb-5 lg:pb-8">
-            Create your account
+            Sign Up
           </CardTitle>
         </CardHeader>
         <CardContent className="pb-0 p-0">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-[26px]"
+            >
               <FormField
                 control={form.control}
                 name="fullname"
@@ -76,7 +79,7 @@ const SignUpPage = () => {
                     <FormControl>
                       <Input
                         type="text"
-                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9]"
+                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter your name"
                         {...field}
                       />
@@ -96,7 +99,7 @@ const SignUpPage = () => {
                     <FormControl>
                       <Input
                         type="email"
-                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9]"
+                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter email address"
                         {...field}
                       />
@@ -116,7 +119,7 @@ const SignUpPage = () => {
                     <FormControl>
                       <Input
                         type="tel"
-                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9]"
+                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter phone number"
                         {...field}
                       />
@@ -136,7 +139,7 @@ const SignUpPage = () => {
                     <FormControl>
                       <Input
                         type="password"
-                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9]"
+                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter password"
                         {...field}
                       />
@@ -156,7 +159,7 @@ const SignUpPage = () => {
                     <FormControl>
                       <Input
                         type="password"
-                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-900 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9]"
+                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-900 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter confirm password"
                         {...field}
                       />
@@ -210,16 +213,16 @@ const SignUpPage = () => {
             </form>
           </Form>
         </CardContent>
+        <p className="text-t-600 text-center pt-[26px]">
+          Have an account?{" "}
+          <Link
+            href="/sign-in"
+            className="text-primary duration-300 hover:underline hover:opacity-75 focus:underline"
+          >
+            Sign In
+          </Link>
+        </p>
       </Card>
-      <p className="text-t-600 text-center pb-6 lg:pb-10">
-        Have an account?{" "}
-        <Link
-          href="/sign-in"
-          className="text-primary duration-300 hover:underline hover:opacity-75 focus:underline"
-        >
-          Sign In
-        </Link>
-      </p>
     </div>
   );
 };

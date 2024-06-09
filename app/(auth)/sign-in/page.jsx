@@ -41,12 +41,15 @@ const SignInPage = () => {
       <Card className="border-transparent mb-8 shadow-[0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] border border-[#f1f1f4] p-6 lg:p-10">
         <CardHeader className="p-0">
           <CardTitle className="text-lg lg:text-2xl text-gray-900 text-center pb-5 lg:pb-8">
-            Sign in to your account
+            Sign In
           </CardTitle>
         </CardHeader>
         <CardContent className="pb-0 p-0">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-[26px]"
+            >
               <FormField
                 control={form.control}
                 name="email"
@@ -58,7 +61,7 @@ const SignInPage = () => {
                     <FormControl>
                       <Input
                         type="email"
-                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9]"
+                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter email address"
                         {...field}
                       />
@@ -73,12 +76,12 @@ const SignInPage = () => {
                 render={({ field }) => (
                   <FormItem className="space-y-3">
                     <FormLabel className="text-gray-900 text-sm lg:text-base">
-                      Password<span className="text-primary">*</span>
+                      Password<span className="text-primary"> *</span>
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="password"
-                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9]"
+                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter password"
                         {...field}
                       />
@@ -104,7 +107,7 @@ const SignInPage = () => {
                           </FormControl>
                           <CheckIcon className="invisible opacity-0 duration-200 absolute inset-0 m-auto w-4 h-4 text-white pointer-events-none peer-checked:visible peer-checked:opacity-100" />
                         </div>
-                        <FormLabel className="flex-1 text-t-700 text-base font-normal leading-normal">
+                        <FormLabel className="flex-1 text-sm text-t-700 font-normal leading-normal">
                           Remember me
                         </FormLabel>
                       </div>
@@ -114,27 +117,29 @@ const SignInPage = () => {
                 />
                 <Link
                   href="/forgot-password"
-                  className="text-primary duration-300 hover:underline hover:opacity-75 focus:underline"
+                  className="text-primary lg:text-sm duration-300 hover:underline hover:opacity-75 focus:underline"
                 >
-                  Forgot Password?
+                  Forgot Password ?
                 </Link>
               </div>
               <div className="grid">
-                <Button type="submit">Sign in</Button>
+                <Button className="py-2.5" type="submit">
+                  Sign in
+                </Button>
               </div>
             </form>
           </Form>
+          <p className="text-t-600 text-center pt-[26px]">
+            Don’t have an account?{" "}
+            <Link
+              href="/sign-up"
+              className="text-primary duration-300 hover:underline hover:opacity-75 focus:underline"
+            >
+              Sign up
+            </Link>
+          </p>
         </CardContent>
       </Card>
-      <p className="text-t-600 text-center">
-        Don’t have an account?{" "}
-        <Link
-          href="/sign-up"
-          className="text-primary duration-300 hover:underline hover:opacity-75 focus:underline"
-        >
-          Sign up
-        </Link>
-      </p>
     </div>
   );
 };

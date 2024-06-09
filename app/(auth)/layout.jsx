@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 
 const AuthLayout = ({ children }) => {
   return (
-    <section className="py-10 bg-[#fbfbfb] h-[calc(100vh-94px)]">
+    <section className="py-10 bg-[#fbfbfb]">
       <Container>{children}</Container>
     </section>
   );
