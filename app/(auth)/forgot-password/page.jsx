@@ -72,7 +72,7 @@ const ForgotPasswordPage = () => {
                 <Button className="py-2.5" type="submit">
                   Send
                 </Button>
-                <Button className="py-2.5 bg-white text-t-800 mt-3 hover:bg-white-300">
+                <Button className="py-2.5 bg-[#f9f9f9] text-t-800 mt-3">
                   Cancel
                 </Button>
               </div>
