@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
 
 const formSchema = z
   .object({
@@ -26,6 +28,19 @@ const formSchema = z
   });
 
 const ResetPasswordPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const handleShowPassword = (e) => {
+    e.preventDefault();
+    setShowPassword(!showPassword);
+  };
+
+  const handleShowConfirmPassword = (e) => {
+    e.preventDefault();
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -60,14 +75,26 @@ const ResetPasswordPage = () => {
                     <FormLabel className="ext-gray-900 text-sm lg:text-base">
                       Password<span className="text-primary"> *</span>
                     </FormLabel>
-                    <FormControl>
-                      <Input
-                        type="password"
-                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
-                        placeholder="Enter password"
-                        {...field}
-                      />
-                    </FormControl>
+                    <div className="relative">
+                      <FormControl>
+                        <Input
+                          type={showPassword ? "text" : "password"}
+                          className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
+                          placeholder="Enter password"
+                          {...field}
+                        />
+                      </FormControl>
+                      <button
+                        onClick={(e) => handleShowPassword(e)}
+                        className="absolute right-4 bottom-3.5"
+                      >
+                        {showPassword ? (
+                          <EyeOff size={16} />
+                        ) : (
+                          <Eye size={16} />
+                        )}
+                      </button>
+                    </div>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -80,14 +107,26 @@ const ResetPasswordPage = () => {
                     <FormLabel className="text-gray-900 text-sm lg:text-base">
                       Confirm password<span className="text-primary"> *</span>
                     </FormLabel>
-                    <FormControl>
-                      <Input
-                        type="password"
-                        placeholder="Enter confirm password"
-                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
-                        {...field}
-                      />
-                    </FormControl>
+                    <div className="relative">
+                      <FormControl>
+                        <Input
+                          type={showConfirmPassword ? "text" : "password"}
+                          placeholder="Enter confirm password"
+                          className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
+                          {...field}
+                        />
+                      </FormControl>
+                      <button
+                        onClick={(e) => handleShowConfirmPassword(e)}
+                        className="absolute right-4 bottom-3.5"
+                      >
+                        {showConfirmPassword ? (
+                          <EyeOff size={16} />
+                        ) : (
+                          <Eye size={16} />
+                        )}
+                      </button>
+                    </div>
                     <FormMessage />
                   </FormItem>
                 )}
