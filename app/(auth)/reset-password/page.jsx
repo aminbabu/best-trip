@@ -39,28 +39,31 @@ const ResetPasswordPage = () => {
   };
 
   return (
-    <div className="max-w-[648px] mx-auto">
-      <Card className="border-transparent mb-8">
-        <CardHeader className="lg:p-10">
-          <CardTitle className="lg:text-[2rem] text-t-800 text-center pt-5">
+    <div className="max-w-[500px] mx-auto">
+      <Card className="border-transparent mb-8 shadow-[0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] border border-[#f1f1f4] p-6 lg:p-10 my-10">
+        <CardHeader className="p-0">
+          <CardTitle className="text-lg lg:text-2xl text-gray-900 text-center pb-5 lg:pb-8">
             Change Password
           </CardTitle>
         </CardHeader>
-        <CardContent className="lg:p-10 lg:pt-0">
+        <CardContent className="pb-0 p-0">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-[26px]"
+            >
               <FormField
                 control={form.control}
                 name="password"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-t-700 text-base lg:text-lg">
-                      Password<span className="text-primary">*</span>
+                    <FormLabel className="ext-gray-900 text-sm lg:text-base">
+                      Password<span className="text-primary"> *</span>
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="password"
-                        className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300"
+                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter password"
                         {...field}
                       />
@@ -74,14 +77,14 @@ const ResetPasswordPage = () => {
                 name="confirmPassword"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-t-700 text-base lg:text-lg">
-                      Confirm password<span className="text-primary">*</span>
+                    <FormLabel className="text-gray-900 text-sm lg:text-base">
+                      Confirm password<span className="text-primary"> *</span>
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="password"
-                        className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300"
                         placeholder="Enter confirm password"
+                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
                         {...field}
                       />
                     </FormControl>
@@ -90,7 +93,9 @@ const ResetPasswordPage = () => {
                 )}
               />
               <div className="grid">
-                <Button type="submit">Update Password</Button>
+                <Button className="py-2.5" type="submit">
+                  Update Password
+                </Button>
               </div>
             </form>
           </Form>
