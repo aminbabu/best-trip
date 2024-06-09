@@ -711,18 +711,19 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                       Phone<span className="text-primary">*</span>
                     </FormLabel>
                     <FormControl>
-                      <Input
+                      {/* <Input
                         type="tel"
                         placeholder="Enter phone number"
                         className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
                         {...field}
-                      />
-                      {/* <PhoneInputComponent
+                      /> */}
+                      <PhoneInputComponent
                         value={field.value}
                         onChange={field.onChange}
                         onBlur={field.onBlur}
                         name={field.name}
-                      /> */}
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

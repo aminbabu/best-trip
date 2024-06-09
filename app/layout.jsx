@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "react-phone-input-2/lib/style.css";
 import Navbar from "@/components/layouts/Navbar";
 
 import { Poppins as FontSans } from "next/font/google";
