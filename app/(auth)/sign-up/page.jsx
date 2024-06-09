@@ -184,7 +184,7 @@ const SignUpPage = () => {
                         </FormControl>
                         <CheckIcon className="invisible opacity-0 duration-200 absolute inset-0 m-auto w-4 h-4 text-white pointer-events-none peer-checked:visible peer-checked:opacity-100" />
                       </div>
-                      <FormLabel className="flex-1 text-t-700 text-sm font-normal leading-normal">
+                      <FormLabel className="flex-1 text-t-700 text-sm lg:text-base font-normal leading-normal">
                         I agree to the{" "}
                         <Link
                           href="#"

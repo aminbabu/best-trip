@@ -107,7 +107,7 @@ const SignInPage = () => {
                           </FormControl>
                           <CheckIcon className="invisible opacity-0 duration-200 absolute inset-0 m-auto w-4 h-4 text-white pointer-events-none peer-checked:visible peer-checked:opacity-100" />
                         </div>
-                        <FormLabel className="flex-1 text-sm text-t-700 font-normal leading-normal">
+                        <FormLabel className="flex-1 text-sm lg:text-base text-t-700 font-normal leading-normal">
                           Remember me
                         </FormLabel>
                       </div>
@@ -117,7 +117,7 @@ const SignInPage = () => {
                 />
                 <Link
                   href="/forgot-password"
-                  className="text-primary lg:text-sm duration-300 hover:underline hover:opacity-75 focus:underline"
+                  className="text-primary text-sm lg:text-base duration-300 hover:underline hover:opacity-75 focus:underline"
                 >
                   Forgot Password ?
                 </Link>

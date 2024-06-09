@@ -35,9 +35,12 @@ const ForgotPasswordPage = () => {
     <div className="max-w-[500px] mx-auto">
       <Card className="border-transparent mb-8 shadow-[0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] border border-[#f1f1f4] p-6 lg:p-10 my-10">
         <CardHeader className="p-0">
-          <CardTitle className="text-lg lg:text-2xl text-gray-900 text-center pb-5 lg:pb-8">
-            Enter your email
+          <CardTitle className="text-lg lg:text-2xl text-gray-900 text-center ">
+            Forgot Password ?
           </CardTitle>
+          <p className="text-center pb-5 lg:pb-8 text-t-600 lg:pt-1.5">
+            Enter your email to reset your password
+          </p>
         </CardHeader>
         <CardContent className="pb-0 p-0">
           <Form {...form}>
@@ -68,6 +71,9 @@ const ForgotPasswordPage = () => {
               <div className="grid">
                 <Button className="py-2.5" type="submit">
                   Send
+                </Button>
+                <Button className="py-2.5 bg-white text-t-800 mt-3 hover:bg-white-300">
+                  Cancel
                 </Button>
               </div>
             </form>
