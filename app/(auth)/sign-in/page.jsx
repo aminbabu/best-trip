@@ -15,7 +15,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
-import { CheckIcon, Eye } from "lucide-react";
+import { CheckIcon, Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -23,6 +24,13 @@ const formSchema = z.object({
 });
 
 const SignInPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = (e) => {
+    e.preventDefault();
+    setShowPassword(!showPassword);
+  };
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -78,14 +86,27 @@ const SignInPage = () => {
                     <FormLabel className="text-gray-900 text-sm lg:text-base">
                       Password<span className="text-primary"> *</span>
                     </FormLabel>
-                    <FormControl>
-                      <Input
-                        type="password"
-                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
-                        placeholder="Enter password"
-                        {...field}
-                      />
-                    </FormControl>
+                    <div className="relative">
+                      <FormControl>
+                        <Input
+                          type={showPassword ? "text" : "password"}
+                          className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
+                          placeholder="Enter password"
+                          {...field}
+                        />
+                      </FormControl>
+                      <button
+                        onClick={(e) => handleShowPassword(e)}
+                        className="absolute right-4 bottom-3.5"
+                      >
+                        {showPassword ? (
+                          <EyeOff size={16} />
+                        ) : (
+                          <Eye size={16} />
+                        )}
+                      </button>
+                    </div>
+
                     <FormMessage />
                   </FormItem>
                 )}

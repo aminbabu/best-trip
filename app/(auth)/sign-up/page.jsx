@@ -46,6 +46,7 @@ const SignUpPage = () => {
     e.preventDefault();
     setShowPassword(!showPassword);
   };
+
   const handleShowConfirmPassword = (e) => {
     e.preventDefault();
     setShowConfirmPassword(!showConfirmPassword);
