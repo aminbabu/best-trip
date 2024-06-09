@@ -4,6 +4,7 @@ import {
   Sheet,
   SheetContent,
   SheetDescription,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -13,6 +14,10 @@ import Menu from "@/components/layouts/Menu";
 import NavbarCta from "@/components/layouts/NavbarCta";
 import { useEffect, useState } from "react";
 import Brand from "@/components/global/Brand";
+import { Separator } from "../ui/separator";
+import { Button } from "../ui/button";
+import Image from "next/image";
+import profileAvatar from "@/public/images/profile/avatar.png";
 
 const NavSheet = () => {
   const [open, setOpen] = useState(false);
@@ -59,8 +64,23 @@ const NavSheet = () => {
         </SheetHeader>
         <div className="grid gap-y-1.5 flex-1">
           <Menu />
-          <NavbarCta />
+          {/* <NavbarCta /> */}
         </div>
+        <SheetFooter>
+          <div className="flex items-center justify-between gap-3">
+            <Image
+              src={profileAvatar}
+              alt="user-profile"
+              height={"40px"}
+              width={"40px"}
+              className="aspect-square w-8"
+            ></Image>
+            <p className="text-sm mr-auto line-clamp-1">Md. Irfanul Haque</p>
+            <Button className="py-1.5 px-3 text-sm font-medium">
+              Sign Out
+            </Button>
+          </div>
+        </SheetFooter>
       </SheetContent>
     </Sheet>
   );

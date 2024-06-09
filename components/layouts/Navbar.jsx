@@ -7,6 +7,7 @@ import Menu from "@/components/layouts/Menu";
 import NavbarCta from "@/components/layouts/NavbarCta";
 import NavSheet from "@/components/layouts/NavSheet";
 import { useEffect, useState } from "react";
+import Profile from "./Profile";
 
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -46,7 +47,8 @@ const Navbar = () => {
           <Menu isNavbarSticky={isSticky} />
         </div>
         <div className="hidden lg:block">
-          <NavbarCta />
+          {/* <NavbarCta /> */}
+          <Profile />
         </div>
         <NavSheet />
       </Container>

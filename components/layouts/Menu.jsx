@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { Separator } from "../ui/separator";
 
 // menu
 const menu = [
@@ -39,6 +40,13 @@ const Menu = ({ isNavbarSticky }) => {
           </Link>
         </li>
       ))}
+      <Separator className="lg:hidden" />
+      <li className="text-sm lg:text-base text-t-700 inline-flex py-1 lg:px-2 duration-300 hover:text-p-900 lg:hidden">
+        My Account
+      </li>
+      <li className="text-sm lg:text-base text-t-700 inline-flex py-1 lg:px-2 duration-300 hover:text-p-900 lg:hidden">
+        My Bookings
+      </li>
     </ul>
   );
 };
