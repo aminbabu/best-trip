@@ -61,6 +61,7 @@ import TickIcon from "@/public/icons/tick.svg";
 import PassportCircleIcon from "@/public/icons/passport-circle.svg";
 import SpoonKnifeIcon from "@/public/icons/spoon-knife-red.svg";
 import PencliLineIcon from "@/public/icons/PencilLine.svg";
+import ReverseExchangeIcon from "@/public/icons/reverse-exchange.svg";
 
 export {
   FacebookIcon,
@@ -126,4 +127,5 @@ export {
   SpoonKnifeIcon,
   PencliLineIcon,
   BusRedIcon,
+  ReverseExchangeIcon,
 };

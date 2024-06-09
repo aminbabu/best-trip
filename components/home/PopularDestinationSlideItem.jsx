@@ -1,5 +1,9 @@
 import Image from "next/image";
-import { ExchangeIcon } from "@/components/icons/svgr";
+import {
+  ExchangeAltIcon,
+  ExchangeIcon,
+  ReverseExchangeIcon,
+} from "@/components/icons/svgr";
 import numeral from "numeral";
 import Link from "next/link";
 
@@ -26,7 +30,7 @@ const PopularDestinationSlideItem = ({ item }) => {
           >
             {item?.from}
             <span className="text-p-900">
-              <ExchangeIcon />
+              <ReverseExchangeIcon />
             </span>
             {item?.to}
           </Link>
