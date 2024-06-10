@@ -20,12 +20,8 @@ const BestTripWallet = () => {
           </div>
           <div>
             <Link href="/profile/add-balance">
-              <Button className="px-3.5 py-2 lg:px-5 lg:py-2.5 gap-1 text-xs lg:text-base bg-p-300 text-primary hover:text-white">
-                <PlusIcon
-                  className="w-4 h-4 lg:w-5 lg:h-5"
-                  viewBox="0 0 24 24"
-                />{" "}
-                Add Balance
+              <Button className="px-3.5 py-2 lg:px-5 lg:py-2.5 gap-1 text-xs lg:text-sm bg-p-300 text-primary hover:text-white">
+                <PlusIcon className="w-4 h-4" viewBox="0 0 24 24" /> Add Balance
               </Button>
             </Link>
           </div>
