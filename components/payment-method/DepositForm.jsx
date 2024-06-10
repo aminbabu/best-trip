@@ -189,21 +189,11 @@ const DepositForm = () => {
                 </h3>
                 <div className="px-4 md:px-5 py-6">
                   <ul className="space-y-2">
-                    <li className="text-sm lg:text-base">
-                      Account : Best Travels Ltd.
-                    </li>
-                    <li className="text-sm lg:text-base">
-                      A/C Type : Current Account
-                    </li>
-                    <li className="text-sm lg:text-base">
-                      Account No : 13876342617476218
-                    </li>
-                    <li className="text-sm lg:text-base">
-                      Branch Name : Uttara Branch
-                    </li>
-                    <li className="text-sm lg:text-base">
-                      Routing No : 02026439324
-                    </li>
+                    <li className="text-sm">Account : Best Travels Ltd.</li>
+                    <li className="text-sm">A/C Type : Current Account</li>
+                    <li className="text-sm">Account No : 13876342617476218</li>
+                    <li className="text-sm">Branch Name : Uttara Branch</li>
+                    <li className="text-sm">Routing No : 02026439324</li>
                   </ul>
                 </div>
               </div>
@@ -213,21 +203,11 @@ const DepositForm = () => {
                 </h3>
                 <div className="px-4 md:px-5 py-6">
                   <ul className="space-y-2">
-                    <li className="text-sm lg:text-base">
-                      Account : Best Travels Ltd.
-                    </li>
-                    <li className="text-sm lg:text-base">
-                      A/C Type : Current Account
-                    </li>
-                    <li className="text-sm lg:text-base">
-                      Account No : 13876342617476218
-                    </li>
-                    <li className="text-sm lg:text-base">
-                      Branch Name : Uttara Branch
-                    </li>
-                    <li className="text-sm lg:text-base">
-                      Routing No : 02026439324
-                    </li>
+                    <li className="text-sm">Account : Best Travels Ltd.</li>
+                    <li className="text-sm">A/C Type : Current Account</li>
+                    <li className="text-sm">Account No : 13876342617476218</li>
+                    <li className="text-sm">Branch Name : Uttara Branch</li>
+                    <li className="text-sm">Routing No : 02026439324</li>
                   </ul>
                 </div>
               </div>
@@ -237,21 +217,11 @@ const DepositForm = () => {
                 </h3>
                 <div className="px-4 md:px-5 py-6">
                   <ul className="space-y-2">
-                    <li className="text-sm lg:text-base">
-                      Account : Best Travels Ltd.
-                    </li>
-                    <li className="text-sm lg:text-base">
-                      A/C Type : Current Account
-                    </li>
-                    <li className="text-sm lg:text-base">
-                      Account No : 13876342617476218
-                    </li>
-                    <li className="text-sm lg:text-base">
-                      Branch Name : Uttara Branch
-                    </li>
-                    <li className="text-sm lg:text-base">
-                      Routing No : 02026439324
-                    </li>
+                    <li className="text-sm">Account : Best Travels Ltd.</li>
+                    <li className="text-sm">A/C Type : Current Account</li>
+                    <li className="text-sm">Account No : 13876342617476218</li>
+                    <li className="text-sm">Branch Name : Uttara Branch</li>
+                    <li className="text-sm">Routing No : 02026439324</li>
                   </ul>
                 </div>
               </div>
@@ -261,21 +231,11 @@ const DepositForm = () => {
                 </h3>
                 <div className="px-4 md:px-5 py-6">
                   <ul className="space-y-2">
-                    <li className="text-sm lg:text-base">
-                      Account : Best Travels Ltd.
-                    </li>
-                    <li className="text-sm lg:text-base">
-                      A/C Type : Current Account
-                    </li>
-                    <li className="text-sm lg:text-base">
-                      Account No : 13876342617476218
-                    </li>
-                    <li className="text-sm lg:text-base">
-                      Branch Name : Uttara Branch
-                    </li>
-                    <li className="text-sm lg:text-base">
-                      Routing No : 02026439324
-                    </li>
+                    <li className="text-sm">Account : Best Travels Ltd.</li>
+                    <li className="text-sm">A/C Type : Current Account</li>
+                    <li className="text-sm">Account No : 13876342617476218</li>
+                    <li className="text-sm">Branch Name : Uttara Branch</li>
+                    <li className="text-sm">Routing No : 02026439324</li>
                   </ul>
                 </div>
               </div>
