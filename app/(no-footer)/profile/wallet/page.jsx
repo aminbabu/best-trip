@@ -13,7 +13,7 @@ const BestTripWallet = () => {
             <h2 className="text-base lg:text-lg text-t-900 leading-relaxed font-medium">
               Wallet Balance{" "}
             </h2>
-            <div className="text-base lg:text-lg text-t-900 leading-relaxed font-medium">
+            <div className="text-base lg:text-lg text-t-800 leading-relaxed font-medium">
               ৳ 32,487.57{" "}
               <span className="text-t-600 text-base leading-normal">BDT</span>
             </div>
