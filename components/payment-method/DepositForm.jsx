@@ -23,6 +23,8 @@ const DepositForm = () => {
   const router = useRouter();
   const [error, setError] = useState(null);
   const pathname = usePathname();
+  const [openOnline, setopenOnline] = useState(false);
+  const [openManual, setOpenManual] = useState(false);
 
   const form = useForm({
     defaultValues: {
@@ -36,19 +38,21 @@ const DepositForm = () => {
 
   const handleManualBanking = (value) => {
     if (value) {
-      console.log("manual banking selected");
+      console.log("manual banking selected", value);
+      setopenOnline(false);
     }
   };
 
   const handleOnlineBanking = (value) => {
     if (value) {
-      console.log("online banking selected");
+      console.log("online banking selected", value);
+      setOpenManual(false);
     }
   };
 
   const handleFromWallet = (value) => {
     if (value) {
-      console.log("wallet is selected");
+      console.log("wallet is selected", value);
     }
   };
 
@@ -136,12 +140,12 @@ const DepositForm = () => {
                     <FormControl>
                       <Checkbox
                         className="border-[#EDEDED]"
-                        checked={field.value}
+                        checked={openManual}
                         onCheckedChange={(value) => {
                           field.onChange(value);
                           handleManualBanking(value);
+                          setOpenManual(value);
                         }}
-                        disabled={form.watch("online")}
                       />
                     </FormControl>
                     <FormLabel className="text-base font-normal">
@@ -159,12 +163,12 @@ const DepositForm = () => {
                     <FormControl>
                       <Checkbox
                         className="border-[#EDEDED]"
-                        checked={field.value}
+                        checked={openOnline}
                         onCheckedChange={(value) => {
                           field.onChange(value);
                           handleOnlineBanking(value);
+                          setopenOnline(value);
                         }}
-                        disabled={form.watch("manual")}
                       />
                     </FormControl>
                     <FormLabel className="text-base font-normal">
@@ -177,8 +181,7 @@ const DepositForm = () => {
             </div>
           )}
 
-          {/* <Separator className="bg-[#F5F5F5]" /> */}
-          {form.watch("manual") && (
+          {openManual && (
             <div className="grid grid-cols-2 gap-x-6 gap-y-7">
               <div className="col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED]">
                 <h3 className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
@@ -238,71 +241,74 @@ const DepositForm = () => {
               </div>
             </div>
           )}
-          {form.watch("online") && (
-            <div className="space-y-8">
-              <FormField
-                control={form.control}
-                name="ssl"
-                render={({ field }) => (
-                  <FormItem className="flex items-center gap-x-2 border border-[#F5F5F5] rounded-md p-4 space-y-0">
-                    <FormControl>
-                      <Checkbox
-                        className="border-[#EDEDED]"
-                        checked={field.value}
-                        onCheckedChange={(value) => {
-                          field.onChange(value);
-                          handleOnlineBanking(value);
-                        }}
-                      />
-                    </FormControl>
-                    <FormLabel className="flex items-center gap-x-2 font-normal">
-                      <Image
-                        src="/images/payment/ssl-commerz.png"
-                        width={70}
-                        height={16}
-                        alt="SSL Commerz"
-                      />
-                      SSL Commerz
-                    </FormLabel>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="agree"
-                render={({ field }) => (
-                  <FormItem className="flex items-center gap-x-2 space-y-0">
-                    <FormControl>
-                      <Checkbox
-                        className="border-[#EDEDED]"
-                        checked={field.value}
-                        onCheckedChange={(value) => {
-                          field.onChange(value);
-                          handleOnlineBanking(value);
-                        }}
-                      />
-                    </FormControl>
-                    <FormLabel className="flex items-center gap-x-2 font-normal">
-                      I agree with Best Trips{" "}
-                      <Link
-                        href="/privacy-policy"
-                        className="text-primary duration-300 hover:text-primary/75"
-                      >
-                        Privacy Policy
-                      </Link>
-                      and{" "}
-                      <Link
-                        href="/terms-and-conditions"
-                        className="text-primary duration-300 hover:text-primary/75"
-                      >
-                        Terms & Conditions
-                      </Link>
-                    </FormLabel>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+          {openOnline && (
+            <div>
+              <Separator className="bg-[#F5F5F5] mb-4" />
+              <div className="space-y-10">
+                <FormField
+                  control={form.control}
+                  name="ssl"
+                  render={({ field }) => (
+                    <FormItem className="flex items-center gap-x-2 border border-[#F5F5F5] rounded-md px-4 py-3.5 space-y-0">
+                      <FormControl>
+                        <Checkbox
+                          className="border-[#EDEDED]"
+                          checked={field.value}
+                          onCheckedChange={(value) => {
+                            field.onChange(value);
+                            handleOnlineBanking(value);
+                          }}
+                        />
+                      </FormControl>
+                      <FormLabel className="flex items-center gap-x-2 font-normal text-base">
+                        <Image
+                          src="/images/payment/ssl-commerz.png"
+                          width={70}
+                          height={16}
+                          alt="SSL Commerz"
+                        />
+                        SSL Commerz
+                      </FormLabel>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="agree"
+                  render={({ field }) => (
+                    <FormItem className="flex items-center gap-x-2 space-y-0">
+                      <FormControl>
+                        <Checkbox
+                          className="border-[#EDEDED]"
+                          checked={field.value}
+                          onCheckedChange={(value) => {
+                            field.onChange(value);
+                            handleOnlineBanking(value);
+                          }}
+                        />
+                      </FormControl>
+                      <FormLabel className="flex items-center gap-x-2 font-normal text-base">
+                        I agree with Best Trips{" "}
+                        <Link
+                          href="/privacy-policy"
+                          className="text-primary duration-300 hover:text-primary/75"
+                        >
+                          Privacy Policy
+                        </Link>
+                        and{" "}
+                        <Link
+                          href="/terms-and-conditions"
+                          className="text-primary duration-300 hover:text-primary/75"
+                        >
+                          Terms & Conditions
+                        </Link>
+                      </FormLabel>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
             </div>
           )}
           {form.watch("wallet") && (
@@ -344,9 +350,9 @@ const DepositForm = () => {
               />
             </div>
           )}
-          <div className="col-span-2 grid pt-6">
+          <div className="col-span-2 grid">
             <Button
-              className="py-[15px]"
+              className={`py-[15px] ${openOnline || form.watch("wallet") ? "" : "mt-6"} `}
               type="submit"
               disabled={
                 !form.watch("manual") &&
