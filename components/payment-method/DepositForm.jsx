@@ -85,7 +85,7 @@ const DepositForm = () => {
   return (
     <>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-[18px]">
           {error && (
             <div className="flex items-center gap-4 justify-between bg-p-300 border border-p-300 text-p-900 px-4 py-3 rounded-md">
               {error}
@@ -242,9 +242,9 @@ const DepositForm = () => {
             </div>
           )}
           {openOnline && (
-            <div>
-              <Separator className="bg-[#F5F5F5] mb-4" />
-              <div className="space-y-10">
+            <div className="grid grid-cols-2 gap-x-6">
+              <Separator className="bg-[#F5F5F5] mb-[18px] col-span-2" />
+              <div className="space-y-10 col-span-1 ">
                 <FormField
                   control={form.control}
                   name="ssl"
@@ -273,7 +273,7 @@ const DepositForm = () => {
                     </FormItem>
                   )}
                 />
-                <FormField
+                {/* <FormField
                   control={form.control}
                   name="agree"
                   render={({ field }) => (
@@ -307,13 +307,13 @@ const DepositForm = () => {
                       <FormMessage />
                     </FormItem>
                   )}
-                />
+                /> */}
               </div>
             </div>
           )}
           {form.watch("wallet") && (
             <div className="space-y-8">
-              <FormField
+              {/* <FormField
                 control={form.control}
                 name="agree"
                 render={({ field }) => (
@@ -347,7 +347,7 @@ const DepositForm = () => {
                     <FormMessage />
                   </FormItem>
                 )}
-              />
+              /> */}
             </div>
           )}
           <div className="col-span-2 grid">
