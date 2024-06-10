@@ -188,7 +188,7 @@ const DepositForm = () => {
                   Pubali Bank Limited
                 </h3>
                 <div className="px-4 md:px-5 py-6">
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-2">
                     <li className="text-sm">Account : Best Travels Ltd.</li>
                     <li className="text-sm">A/C Type : Current Account</li>
                     <li className="text-sm">Account No : 13876342617476218</li>
@@ -202,7 +202,7 @@ const DepositForm = () => {
                   Islami Bank Ltd.
                 </h3>
                 <div className="px-4 md:px-5 py-6">
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-2">
                     <li className="text-sm">Account : Best Travels Ltd.</li>
                     <li className="text-sm">A/C Type : Current Account</li>
                     <li className="text-sm">Account No : 13876342617476218</li>
@@ -216,7 +216,7 @@ const DepositForm = () => {
                   AB Bank Ltd.
                 </h3>
                 <div className="px-4 md:px-5 py-6">
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-2">
                     <li className="text-sm">Account : Best Travels Ltd.</li>
                     <li className="text-sm">A/C Type : Current Account</li>
                     <li className="text-sm">Account No : 13876342617476218</li>
@@ -230,7 +230,7 @@ const DepositForm = () => {
                   Duth-Bangla Bank Limited
                 </h3>
                 <div className="px-4 md:px-5 py-6">
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-2">
                     <li className="text-sm">Account : Best Travels Ltd.</li>
                     <li className="text-sm">A/C Type : Current Account</li>
                     <li className="text-sm">Account No : 13876342617476218</li>
