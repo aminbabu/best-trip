@@ -176,12 +176,12 @@ const DepositForm = () => {
                   Pubali Bank Limited
                 </h3>
                 <div className="px-4 md:px-5 py-6">
-                  <ul className="space-y-1">
-                    <li className="text-sm">Account: Best Travels Ltd.</li>
-                    <li className="text-sm">A/C Type: Current Account</li>
-                    <li className="text-sm">Account No: 13876342617476218</li>
-                    <li className="text-sm">Branch Name: Uttara Branch</li>
-                    <li className="text-sm">Routing No: 02026439324</li>
+                  <ul className="space-y-1.5">
+                    <li className="text-sm">Account : Best Travels Ltd.</li>
+                    <li className="text-sm">A/C Type : Current Account</li>
+                    <li className="text-sm">Account No : 13876342617476218</li>
+                    <li className="text-sm">Branch Name : Uttara Branch</li>
+                    <li className="text-sm">Routing No : 02026439324</li>
                   </ul>
                 </div>
               </div>
@@ -190,12 +190,12 @@ const DepositForm = () => {
                   Islami Bank Ltd.
                 </h3>
                 <div className="px-4 md:px-5 py-6">
-                  <ul className="space-y-1">
-                    <li className="text-sm">Account: Best Travels Ltd.</li>
-                    <li className="text-sm">A/C Type: Current Account</li>
-                    <li className="text-sm">Account No: 13876342617476218</li>
-                    <li className="text-sm">Branch Name: Uttara Branch</li>
-                    <li className="text-sm">Routing No: 02026439324</li>
+                  <ul className="space-y-1.5">
+                    <li className="text-sm">Account : Best Travels Ltd.</li>
+                    <li className="text-sm">A/C Type : Current Account</li>
+                    <li className="text-sm">Account No : 13876342617476218</li>
+                    <li className="text-sm">Branch Name : Uttara Branch</li>
+                    <li className="text-sm">Routing No : 02026439324</li>
                   </ul>
                 </div>
               </div>
@@ -204,12 +204,12 @@ const DepositForm = () => {
                   AB Bank Ltd.
                 </h3>
                 <div className="px-4 md:px-5 py-6">
-                  <ul className="space-y-1">
-                    <li className="text-sm">Account: Best Travels Ltd.</li>
-                    <li className="text-sm">A/C Type: Current Account</li>
-                    <li className="text-sm">Account No: 13876342617476218</li>
-                    <li className="text-sm">Branch Name: Uttara Branch</li>
-                    <li className="text-sm">Routing No: 02026439324</li>
+                  <ul className="space-y-1.5">
+                    <li className="text-sm">Account : Best Travels Ltd.</li>
+                    <li className="text-sm">A/C Type : Current Account</li>
+                    <li className="text-sm">Account No : 13876342617476218</li>
+                    <li className="text-sm">Branch Name : Uttara Branch</li>
+                    <li className="text-sm">Routing No : 02026439324</li>
                   </ul>
                 </div>
               </div>
@@ -218,12 +218,12 @@ const DepositForm = () => {
                   Duth-Bangla Bank Limited
                 </h3>
                 <div className="px-4 md:px-5 py-6">
-                  <ul className="space-y-1">
-                    <li className="text-sm">Account: Best Travels Ltd.</li>
-                    <li className="text-sm">A/C Type: Current Account</li>
-                    <li className="text-sm">Account No: 13876342617476218</li>
-                    <li className="text-sm">Branch Name: Uttara Branch</li>
-                    <li className="text-sm">Routing No: 02026439324</li>
+                  <ul className="space-y-1.5">
+                    <li className="text-sm">Account : Best Travels Ltd.</li>
+                    <li className="text-sm">A/C Type : Current Account</li>
+                    <li className="text-sm">Account No : 13876342617476218</li>
+                    <li className="text-sm">Branch Name : Uttara Branch</li>
+                    <li className="text-sm">Routing No : 02026439324</li>
                   </ul>
                 </div>
               </div>
