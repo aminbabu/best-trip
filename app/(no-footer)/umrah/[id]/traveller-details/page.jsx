@@ -29,7 +29,7 @@ const TravellerDetailsPage = ({ params }) => {
                 href="tel:+088 1708568965"
                 className="text-primary duration-300 hover:text-primary/75"
               >
-                +088 1708568965
+                +880 1708568965
               </Link>{" "}
               or by sending mail to:{" "}
               <Link

@@ -128,3 +128,10 @@
 .country.highlight {
   background-color: #ffefef !important;
 }
+
+.react-tel-input .selected-flag .flag {
+  margin-right: 8px;
+}
+.react-tel-input .selected-flag .arrow {
+  margin-left: 8px;
+}
