@@ -71,18 +71,18 @@ export const travellerSchema = z.object({
         message: "Please provide a valid date of birth",
       })
     ),
-  marital_status: z
-    .string()
-    .min(1, { message: "Please select a valid marital status" }),
+  // marital_status: z
+  //   .string()
+  //   .min(1, { message: "Please select a valid marital status" }),
   country: z.string().min(1, { message: "Please select a valid country" }),
-  division: z.string().min(1, { message: "Please select a valid division" }),
+  // division: z.string().min(1, { message: "Please select a valid division" }),
   city: z.string().min(1, { message: "Please provide a city name" }),
-  present_address: z
-    .string()
-    .min(1, { message: "Please provide a valid present address" }),
-  permanent_address: z
-    .string()
-    .min(1, { message: "Please provide a valid permanent address" }),
+  // present_address: z
+  //   .string()
+  //   .min(1, { message: "Please provide a valid present address" }),
+  // permanent_address: z
+  //   .string()
+  //   .min(1, { message: "Please provide a valid permanent address" }),
   passport_no: z
     .string()
     .min(1, { message: "Please provide a valid passport no" }),

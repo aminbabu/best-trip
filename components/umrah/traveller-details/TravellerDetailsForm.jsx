@@ -2,10 +2,6 @@
 
 import { useForm } from "react-hook-form";
 
-import { Button } from "@/components/ui/button";
-import { InfoCircledIcon } from "@radix-ui/react-icons";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { travellerSchema } from "@/schema/zod";
 import {
   Form,
   FormControl,
@@ -14,9 +10,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useEffect, useState } from "react";
-import { getImageData } from "@/lib/utils";
-import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -29,12 +22,18 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import { InfoCircledIcon } from "@radix-ui/react-icons";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { travellerSchema } from "@/schema/zod";
+import { useEffect, useState } from "react";
+import { getImageData } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
 import { Calendar } from "@/components/ui/calendar";
 import moment from "moment";
 import { Loader } from "lucide-react";
 import { DocAltIcon } from "@/components/icons/svgr";
 import { countries } from "@/data/countries";
-import PhoneInput from "react-phone-input-2";
 import PhoneInputComponent from "./PhoneInputComponent";
 
 const TravellerDetailsForm = ({ hideTravellerForm }) => {
@@ -56,7 +55,9 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
   const [dobFrom, setDobFrom] = useState(1900);
   const [dobTo, setDobTo] = useState(moment().year());
   const [countryValue, setCountryValue] = useState("Bangladesh");
-  const [contactNumber, setContactNumber] = useState("bd");
+  // const [contactNumber, setContactNumber] = useState("bd");
+
+  console.log(countryValue);
 
   let initialSelectedDate = moment().toDate();
   if (travelerType === "A") {
@@ -94,12 +95,12 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
       last_name: "",
       gender: "",
       dob: "",
-      marital_status: "",
+      // marital_status: "",
       country: "",
       city: "",
-      division: "",
-      present_address: "",
-      permanent_address: "",
+      // division: "",
+      // present_address: "",
+      // permanent_address: "",
       passport_no: "",
       document_issue_country: "",
       passport_expiry_date: "",
@@ -122,41 +123,16 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
     {
       id: 3,
       travellerNo: 3,
-      travellerType: "Adult",
+      travellerType: "Child",
     },
     {
       id: 4,
       travellerNo: 4,
-      travellerType: "Adult",
+      travellerType: "Child",
     },
     {
       id: 5,
       travellerNo: 5,
-      travellerType: "Child",
-    },
-    {
-      id: 6,
-      travellerNo: 6,
-      travellerType: "Child",
-    },
-    {
-      id: 7,
-      travellerNo: 7,
-      travellerType: "Child",
-    },
-    {
-      id: 8,
-      travellerNo: 8,
-      travellerType: "Child",
-    },
-    {
-      id: 9,
-      travellerNo: 9,
-      travellerType: "Infant",
-    },
-    {
-      id: 10,
-      travellerNo: 10,
       travellerType: "Infant",
     },
   ];
@@ -176,7 +152,6 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
   const onSubmit = (data) => {
     setError(null);
     setLoading(true);
-    console.log(data);
 
     setTimeout(() => {
       console.log(data);
@@ -207,7 +182,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                     <FormControl>
                       <Input
                         type="file"
-                        className="p-0 file:h-[3.25rem] file:mr-4 file:text-sm text-t-500 placeholder:text-t-300 file:py-4 file:px-5 file:rounded-l-md file:border-0 file:bg-p-300 file:text-p-900 border-transparent bg-[#F8F8F8]"
+                        className="p-0 file:h-[3.25rem] file:mr-4 file:text-sm text-t-500 placeholder:text-t-300 file:py-4 file:px-5 file:rounded-l-md file:border-0 file:bg-p-300 file:text-p-900 border-transparent bg-[#F8F8F8] focus-visible:ring-0 focus-visible:ring-offset-0"
                         accept=".png,.jpg,.jpeg"
                         {...field}
                         onChange={(event) => {
@@ -495,7 +470,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                         field.onChange(value);
                         setCountryValue(value);
                       }}
-                      defaultValue={"Bangladesh"}
+                      defaultValue={countryValue}
                     >
                       <FormControl>
                         <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
@@ -578,7 +553,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                     <FormControl>
                       <Input
                         type="text"
-                        placeholder="Enter last name"
+                        placeholder="Type passport number"
                         className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
                         {...field}
                       />
@@ -711,12 +686,6 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                       Phone<span className="text-primary">*</span>
                     </FormLabel>
                     <FormControl>
-                      {/* <Input
-                        type="tel"
-                        placeholder="Enter phone number"
-                        className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                        {...field}
-                      /> */}
                       <PhoneInputComponent
                         value={field.value}
                         onChange={field.onChange}
