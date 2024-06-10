@@ -101,7 +101,7 @@ const DepositForm = () => {
                 control={form.control}
                 name="wallet"
                 render={({ field }) => (
-                  <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md p-4 space-y-0">
+                  <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md px-4 py-3.5 space-y-0">
                     <FormControl>
                       <Checkbox
                         className="border-[#EDEDED]"
@@ -132,7 +132,7 @@ const DepositForm = () => {
                 control={form.control}
                 name="manual"
                 render={({ field }) => (
-                  <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md p-4 space-y-0">
+                  <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md px-4 py-3.5 space-y-0">
                     <FormControl>
                       <Checkbox
                         className="border-[#EDEDED]"
@@ -155,7 +155,7 @@ const DepositForm = () => {
                 control={form.control}
                 name="online"
                 render={({ field }) => (
-                  <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md p-4 space-y-0">
+                  <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md px-4 py-3.5 space-y-0">
                     <FormControl>
                       <Checkbox
                         className="border-[#EDEDED]"
@@ -346,6 +346,7 @@ const DepositForm = () => {
           )}
           <div className="col-span-2 grid pt-6">
             <Button
+              className="py-[15px]"
               type="submit"
               disabled={
                 !form.watch("manual") &&
