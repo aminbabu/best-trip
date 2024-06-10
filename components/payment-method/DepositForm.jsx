@@ -74,9 +74,9 @@ const DepositForm = () => {
         return setError("Please select a payment method");
       }
 
-      if (!values.agree) {
-        return setError("Please agree with our terms and conditions");
-      }
+      // if (!values.agree) {
+      //   return setError("Please agree with our terms and conditions");
+      // }
 
       router.push("/payment-method/online-banking");
     }
