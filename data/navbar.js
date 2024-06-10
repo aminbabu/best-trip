@@ -1,41 +1,45 @@
 import {
+  CalendarCheckIcon,
   CalenderTickIcon,
   CreditCardIcon,
   LockCircleIcon,
+  LogoutIcon,
+  SecurityLockIcon,
   SignOutIcon,
+  UserIcon,
   UserProfileIcon,
 } from "@/components/icons/svgr";
 
-export let profileDropDownItems = [
+export const navLinks = [
   {
     id: 1,
-    icon: <UserProfileIcon viewBox="0 0 16 18" className="w-5 h-5" />,
-    name: "My Profile",
-    path: "/profile",
+    name: "Profile",
+    href: "/profile",
+    icon: <UserIcon viewBox="0 0 24 24" className="h-5 w-5" />,
   },
   {
     id: 2,
-    icon: <CalenderTickIcon viewBox="0 0 22 22" className="w-5 h-5" />,
-    name: "My Bookings",
-    path: "/bookings",
+    name: "My Booking",
+    href: "/profile/booking",
+    icon: <CalendarCheckIcon viewBox="0 0 24 24" className="h-5 w-5" />,
   },
   {
     id: 3,
-    icon: <CreditCardIcon viewBox="0 0 24 24" className="w-5 h-5" />,
-    name: "Payment History",
-    path: "/payment-history",
+    name: "Best-trip wallet",
+    href: "/profile/wallet",
+    icon: <CreditCardIcon viewBox="0 0 24 24" className="h-5 w-5" />,
   },
   {
     id: 4,
-    icon: <LockCircleIcon viewBox="0 0 24 24" className="w-5 h-5" />,
     name: "Change Password",
-    path: "/change-password",
+    href: "/profile/password",
+    icon: <SecurityLockIcon viewBox="0 0 24 24" className="h-5 w-5" />,
   },
   {
     id: 5,
-    icon: <SignOutIcon viewBox="0 0 20 21" className="w-5 h-5" />,
-    name: "Sign Out",
-    path: "/signout",
+    name: "Logout",
+    href: "/logout",
+    icon: <LogoutIcon viewBox="0 0 24 25" className="h-5 w-5" />,
   },
 ];
 

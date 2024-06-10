@@ -15,13 +15,15 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { XIcon } from "lucide-react";
 import { useState } from "react";
 
 const DepositForm = () => {
   const router = useRouter();
   const [error, setError] = useState(null);
+  const pathname = usePathname();
+
   const form = useForm({
     defaultValues: {
       manual: false,
@@ -77,264 +79,274 @@ const DepositForm = () => {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        {error && (
-          <div className="flex items-center gap-4 justify-between bg-p-300 border border-p-300 text-p-900 px-4 py-3 rounded-md">
-            {error}
+    <>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          {error && (
+            <div className="flex items-center gap-4 justify-between bg-p-300 border border-p-300 text-p-900 px-4 py-3 rounded-md">
+              {error}
+              <Button
+                variant="icon"
+                className="p-1"
+                onClick={() => setError(null)}
+                aria-label="Close"
+              >
+                <XIcon size={16} />
+              </Button>
+            </div>
+          )}
+          {pathname === "/payment-method" && (
+            <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+              <FormField
+                control={form.control}
+                name="wallet"
+                render={({ field }) => (
+                  <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md p-4 space-y-0">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={(value) => {
+                          field.onChange(value);
+                          handleFromWallet(value);
+                        }}
+                        disabled={form.watch("online")}
+                      />
+                    </FormControl>
+                    <FormLabel>From Wallet</FormLabel>
+                    <p className="ml-auto text-sm">
+                      $ {form.watch("wallet") && 100}
+                    </p>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          )}
+
+          {pathname === "/profile/add-balance" && (
+            <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+              <FormField
+                control={form.control}
+                name="manual"
+                render={({ field }) => (
+                  <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md p-4 space-y-0">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={(value) => {
+                          field.onChange(value);
+                          handleManualBanking(value);
+                        }}
+                        disabled={form.watch("online")}
+                      />
+                    </FormControl>
+                    <FormLabel>Manual Banking</FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="online"
+                render={({ field }) => (
+                  <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md p-4 space-y-0">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={(value) => {
+                          field.onChange(value);
+                          handleOnlineBanking(value);
+                        }}
+                        disabled={form.watch("manual")}
+                      />
+                    </FormControl>
+                    <FormLabel>Online Banking</FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          )}
+
+          <Separator className="bg-[#F5F5F5]" />
+          {form.watch("manual") && (
+            <div className="grid grid-cols-2 gap-x-6 gap-y-7">
+              <div className="col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED]">
+                <h3 className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
+                  Pubali Bank Limited
+                </h3>
+                <div className="px-4 md:px-5 py-6">
+                  <ul className="space-y-1">
+                    <li className="text-sm">Account: Best Travels Ltd.</li>
+                    <li className="text-sm">A/C Type: Current Account</li>
+                    <li className="text-sm">Account No: 13876342617476218</li>
+                    <li className="text-sm">Branch Name: Uttara Branch</li>
+                    <li className="text-sm">Routing No: 02026439324</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED]">
+                <h3 className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
+                  Islami Bank Ltd.
+                </h3>
+                <div className="px-4 md:px-5 py-6">
+                  <ul className="space-y-1">
+                    <li className="text-sm">Account: Best Travels Ltd.</li>
+                    <li className="text-sm">A/C Type: Current Account</li>
+                    <li className="text-sm">Account No: 13876342617476218</li>
+                    <li className="text-sm">Branch Name: Uttara Branch</li>
+                    <li className="text-sm">Routing No: 02026439324</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED]">
+                <h3 className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
+                  AB Bank Ltd.
+                </h3>
+                <div className="px-4 md:px-5 py-6">
+                  <ul className="space-y-1">
+                    <li className="text-sm">Account: Best Travels Ltd.</li>
+                    <li className="text-sm">A/C Type: Current Account</li>
+                    <li className="text-sm">Account No: 13876342617476218</li>
+                    <li className="text-sm">Branch Name: Uttara Branch</li>
+                    <li className="text-sm">Routing No: 02026439324</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED]">
+                <h3 className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
+                  Duth-Bangla Bank Limited
+                </h3>
+                <div className="px-4 md:px-5 py-6">
+                  <ul className="space-y-1">
+                    <li className="text-sm">Account: Best Travels Ltd.</li>
+                    <li className="text-sm">A/C Type: Current Account</li>
+                    <li className="text-sm">Account No: 13876342617476218</li>
+                    <li className="text-sm">Branch Name: Uttara Branch</li>
+                    <li className="text-sm">Routing No: 02026439324</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
+          {form.watch("online") && (
+            <div className="space-y-8">
+              <FormField
+                control={form.control}
+                name="ssl"
+                render={({ field }) => (
+                  <FormItem className="flex items-center gap-x-2 border border-[#F5F5F5] rounded-md p-4 space-y-0">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={(value) => {
+                          field.onChange(value);
+                          handleOnlineBanking(value);
+                        }}
+                      />
+                    </FormControl>
+                    <FormLabel className="flex items-center gap-x-2 font-normal">
+                      <Image
+                        src="/images/payment/ssl-commerz.png"
+                        width={70}
+                        height={16}
+                        alt="SSL Commerz"
+                      />
+                      SSL Commerz
+                    </FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="agree"
+                render={({ field }) => (
+                  <FormItem className="flex items-center gap-x-2 space-y-0">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={(value) => {
+                          field.onChange(value);
+                          handleOnlineBanking(value);
+                        }}
+                      />
+                    </FormControl>
+                    <FormLabel className="flex items-center gap-x-2 font-normal">
+                      I agree with Best Trips{" "}
+                      <Link
+                        href="/privacy-policy"
+                        className="text-primary duration-300 hover:text-primary/75"
+                      >
+                        Privacy Policy
+                      </Link>
+                      and{" "}
+                      <Link
+                        href="/terms-and-conditions"
+                        className="text-primary duration-300 hover:text-primary/75"
+                      >
+                        Terms & Conditions
+                      </Link>
+                    </FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          )}
+          {form.watch("wallet") && (
+            <div className="space-y-8">
+              <FormField
+                control={form.control}
+                name="agree"
+                render={({ field }) => (
+                  <FormItem className="flex items-center gap-x-2 space-y-0">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={(value) => {
+                          field.onChange(value);
+                          handleFromWallet(value);
+                        }}
+                      />
+                    </FormControl>
+                    <FormLabel className="flex items-center gap-x-2 font-normal">
+                      I agree with Best Trips{" "}
+                      <Link
+                        href="/privacy-policy"
+                        className="text-primary duration-300 hover:text-primary/75"
+                      >
+                        Privacy Policy
+                      </Link>
+                      and{" "}
+                      <Link
+                        href="/terms-and-conditions"
+                        className="text-primary duration-300 hover:text-primary/75"
+                      >
+                        Terms & Conditions
+                      </Link>
+                    </FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          )}
+          <div className="col-span-2 grid pt-6">
             <Button
-              variant="icon"
-              className="p-1"
-              onClick={() => setError(null)}
-              aria-label="Close"
+              type="submit"
+              disabled={
+                !form.watch("manual") &&
+                !form.watch("online") &&
+                !form.watch("wallet")
+              }
             >
-              <XIcon size={16} />
+              Continue
             </Button>
           </div>
-        )}
-        <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-          {/* <FormField
-            control={form.control}
-            name="manual"
-            render={({ field }) => (
-              <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md p-4 space-y-0">
-                <FormControl>
-                  <Checkbox
-                    checked={field.value}
-                    onCheckedChange={(value) => {
-                      field.onChange(value);
-                      handleManualBanking(value);
-                    }}
-                    disabled={form.watch("online")}
-                  />
-                </FormControl>
-                <FormLabel>Manual Banking</FormLabel>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="online"
-            render={({ field }) => (
-              <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md p-4 space-y-0">
-                <FormControl>
-                  <Checkbox
-                    checked={field.value}
-                    onCheckedChange={(value) => {
-                      field.onChange(value);
-                      handleOnlineBanking(value);
-                    }}
-                    disabled={form.watch("manual")}
-                  />
-                </FormControl>
-                <FormLabel>Online Banking</FormLabel>
-                <FormMessage />
-              </FormItem>
-            )}
-          /> */}
-          <FormField
-            control={form.control}
-            name="wallet"
-            render={({ field }) => (
-              <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md p-4 space-y-0">
-                <FormControl>
-                  <Checkbox
-                    checked={field.value}
-                    onCheckedChange={(value) => {
-                      field.onChange(value);
-                      handleFromWallet(value);
-                    }}
-                    disabled={form.watch("online")}
-                  />
-                </FormControl>
-                <FormLabel>From Wallet</FormLabel>
-                <p className="ml-auto text-sm">
-                  $ {form.watch("wallet") && 100}
-                </p>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-        <Separator className="bg-[#F5F5F5]" />
-        {/* {form.watch("manual") && (
-          <div className="grid grid-cols-2 gap-x-6 gap-y-7">
-            <div className="col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED]">
-              <h3 className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
-                Pubali Bank Limited
-              </h3>
-              <div className="px-4 md:px-5 py-6">
-                <ul className="space-y-1">
-                  <li className="text-sm">Account: Best Travels Ltd.</li>
-                  <li className="text-sm">A/C Type: Current Account</li>
-                  <li className="text-sm">Account No: 13876342617476218</li>
-                  <li className="text-sm">Branch Name: Uttara Branch</li>
-                  <li className="text-sm">Routing No: 02026439324</li>
-                </ul>
-              </div>
-            </div>
-            <div className="col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED]">
-              <h3 className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
-                Islami Bank Ltd.
-              </h3>
-              <div className="px-4 md:px-5 py-6">
-                <ul className="space-y-1">
-                  <li className="text-sm">Account: Best Travels Ltd.</li>
-                  <li className="text-sm">A/C Type: Current Account</li>
-                  <li className="text-sm">Account No: 13876342617476218</li>
-                  <li className="text-sm">Branch Name: Uttara Branch</li>
-                  <li className="text-sm">Routing No: 02026439324</li>
-                </ul>
-              </div>
-            </div>
-            <div className="col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED]">
-              <h3 className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
-                AB Bank Ltd.
-              </h3>
-              <div className="px-4 md:px-5 py-6">
-                <ul className="space-y-1">
-                  <li className="text-sm">Account: Best Travels Ltd.</li>
-                  <li className="text-sm">A/C Type: Current Account</li>
-                  <li className="text-sm">Account No: 13876342617476218</li>
-                  <li className="text-sm">Branch Name: Uttara Branch</li>
-                  <li className="text-sm">Routing No: 02026439324</li>
-                </ul>
-              </div>
-            </div>
-            <div className="col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED]">
-              <h3 className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
-                Duth-Bangla Bank Limited
-              </h3>
-              <div className="px-4 md:px-5 py-6">
-                <ul className="space-y-1">
-                  <li className="text-sm">Account: Best Travels Ltd.</li>
-                  <li className="text-sm">A/C Type: Current Account</li>
-                  <li className="text-sm">Account No: 13876342617476218</li>
-                  <li className="text-sm">Branch Name: Uttara Branch</li>
-                  <li className="text-sm">Routing No: 02026439324</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        )}
-        {form.watch("online") && (
-          <div className="space-y-8">
-            <FormField
-              control={form.control}
-              name="ssl"
-              render={({ field }) => (
-                <FormItem className="flex items-center gap-x-2 border border-[#F5F5F5] rounded-md p-4 space-y-0">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={(value) => {
-                        field.onChange(value);
-                        handleOnlineBanking(value);
-                      }}
-                    />
-                  </FormControl>
-                  <FormLabel className="flex items-center gap-x-2 font-normal">
-                    <Image
-                      src="/images/payment/ssl-commerz.png"
-                      width={70}
-                      height={16}
-                      alt="SSL Commerz"
-                    />
-                    SSL Commerz
-                  </FormLabel>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="agree"
-              render={({ field }) => (
-                <FormItem className="flex items-center gap-x-2 space-y-0">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={(value) => {
-                        field.onChange(value);
-                        handleOnlineBanking(value);
-                      }}
-                    />
-                  </FormControl>
-                  <FormLabel className="flex items-center gap-x-2 font-normal">
-                    I agree with Best Trips{" "}
-                    <Link
-                      href="/privacy-policy"
-                      className="text-primary duration-300 hover:text-primary/75"
-                    >
-                      Privacy Policy
-                    </Link>
-                    and{" "}
-                    <Link
-                      href="/terms-and-conditions"
-                      className="text-primary duration-300 hover:text-primary/75"
-                    >
-                      Terms & Conditions
-                    </Link>
-                  </FormLabel>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-        )} */}
-        {form.watch("wallet") && (
-          <div className="space-y-8">
-            <FormField
-              control={form.control}
-              name="agree"
-              render={({ field }) => (
-                <FormItem className="flex items-center gap-x-2 space-y-0">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={(value) => {
-                        field.onChange(value);
-                        handleFromWallet(value);
-                      }}
-                    />
-                  </FormControl>
-                  <FormLabel className="flex items-center gap-x-2 font-normal">
-                    I agree with Best Trips{" "}
-                    <Link
-                      href="/privacy-policy"
-                      className="text-primary duration-300 hover:text-primary/75"
-                    >
-                      Privacy Policy
-                    </Link>
-                    and{" "}
-                    <Link
-                      href="/terms-and-conditions"
-                      className="text-primary duration-300 hover:text-primary/75"
-                    >
-                      Terms & Conditions
-                    </Link>
-                  </FormLabel>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-        )}
-        <div className="col-span-2 grid pt-6">
-          <Button
-            type="submit"
-            disabled={
-              !form.watch("manual") &&
-              !form.watch("online") &&
-              !form.watch("wallet")
-            }
-          >
-            Continue
-          </Button>
-        </div>
-      </form>
-    </Form>
+        </form>
+      </Form>
+    </>
   );
 };
 

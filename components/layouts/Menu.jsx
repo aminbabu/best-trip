@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Separator } from "../ui/separator";
-import { menu, profileDropDownItems } from "@/data/navbar";
+import { menu, navLinks, profileDropDownItems } from "@/data/navbar";
 
 const Menu = ({ isNavbarSticky }) => {
   return (
@@ -22,10 +22,10 @@ const Menu = ({ isNavbarSticky }) => {
         </li>
       ))}
       <Separator className="lg:hidden" />
-      {profileDropDownItems.map((item) => (
+      {navLinks.map((item) => (
         <li key={item.id}>
           <Link
-            href={item.path}
+            href={item.href}
             className="text-sm lg:text-base text-t-700 inline-flex py-1 lg:px-2 duration-300 hover:text-p-900 lg:hidden"
           >
             {item.name}
