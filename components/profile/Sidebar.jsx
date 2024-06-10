@@ -9,7 +9,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <ul className="shadow-sm">
+    <ul className="shadow-sm rounded-sm">
       {navLinks.map((link, index) => (
         <li key={index}>
           <Link
