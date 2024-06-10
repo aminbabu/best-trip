@@ -113,7 +113,9 @@ const DepositForm = () => {
                         disabled={form.watch("online")}
                       />
                     </FormControl>
-                    <FormLabel>From Wallet</FormLabel>
+                    <FormLabel className="text-base font-normal">
+                      From Wallet
+                    </FormLabel>
                     <p className="ml-auto text-sm">
                       $ {form.watch("wallet") && 100}
                     </p>
@@ -142,7 +144,9 @@ const DepositForm = () => {
                         disabled={form.watch("online")}
                       />
                     </FormControl>
-                    <FormLabel>Manual Banking</FormLabel>
+                    <FormLabel className="text-base font-normal">
+                      Manual Banking
+                    </FormLabel>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -163,7 +167,9 @@ const DepositForm = () => {
                         disabled={form.watch("manual")}
                       />
                     </FormControl>
-                    <FormLabel>Online Banking</FormLabel>
+                    <FormLabel className="text-base font-normal">
+                      Online Banking
+                    </FormLabel>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -241,6 +247,7 @@ const DepositForm = () => {
                   <FormItem className="flex items-center gap-x-2 border border-[#F5F5F5] rounded-md p-4 space-y-0">
                     <FormControl>
                       <Checkbox
+                        className="border-[#EDEDED]"
                         checked={field.value}
                         onCheckedChange={(value) => {
                           field.onChange(value);
@@ -268,6 +275,7 @@ const DepositForm = () => {
                   <FormItem className="flex items-center gap-x-2 space-y-0">
                     <FormControl>
                       <Checkbox
+                        className="border-[#EDEDED]"
                         checked={field.value}
                         onCheckedChange={(value) => {
                           field.onChange(value);
