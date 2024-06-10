@@ -25,7 +25,7 @@ export const navLinks = [
   },
   {
     id: 3,
-    name: "Best-trip wallet",
+    name: "BestTrip wallet",
     href: "/profile/wallet",
     icon: <CreditCardIcon viewBox="0 0 24 24" className="h-5 w-5" />,
   },

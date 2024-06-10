@@ -104,6 +104,7 @@ const DepositForm = () => {
                   <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md p-4 space-y-0">
                     <FormControl>
                       <Checkbox
+                        className="border-[#EDEDED]"
                         checked={field.value}
                         onCheckedChange={(value) => {
                           field.onChange(value);
@@ -132,6 +133,7 @@ const DepositForm = () => {
                   <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md p-4 space-y-0">
                     <FormControl>
                       <Checkbox
+                        className="border-[#EDEDED]"
                         checked={field.value}
                         onCheckedChange={(value) => {
                           field.onChange(value);
@@ -152,6 +154,7 @@ const DepositForm = () => {
                   <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md p-4 space-y-0">
                     <FormControl>
                       <Checkbox
+                        className="border-[#EDEDED]"
                         checked={field.value}
                         onCheckedChange={(value) => {
                           field.onChange(value);
@@ -168,7 +171,7 @@ const DepositForm = () => {
             </div>
           )}
 
-          <Separator className="bg-[#F5F5F5]" />
+          {/* <Separator className="bg-[#F5F5F5]" /> */}
           {form.watch("manual") && (
             <div className="grid grid-cols-2 gap-x-6 gap-y-7">
               <div className="col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED]">
