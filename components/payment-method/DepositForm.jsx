@@ -306,6 +306,7 @@ const DepositForm = () => {
                   <FormItem className="flex items-center gap-x-2 space-y-0">
                     <FormControl>
                       <Checkbox
+                        className="border-[#EDEDED]"
                         checked={field.value}
                         onCheckedChange={(value) => {
                           field.onChange(value);
