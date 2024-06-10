@@ -1,29 +1,7 @@
 import React from "react";
 import { TickIcon } from "../icons/svgr";
 import Notice from "../global/Notice";
-
-let reqList = [
-  {
-    id: 1,
-    req: "Passport copy with minimum 6 months validity",
-  },
-  {
-    id: 2,
-    req: "Passport size photo (white background)",
-  },
-  {
-    id: 3,
-    req: "ID card/ Birth certificate",
-  },
-  {
-    id: 4,
-    req: "Return Ticket Booking copy",
-  },
-  {
-    id: 5,
-    req: "Hotel Booking copy",
-  },
-];
+import { reqmntList } from "@/data/visa";
 
 const RequirementList = () => {
   return (
@@ -41,7 +19,7 @@ const RequirementList = () => {
       </div> */}
       <div className="mt-5 mb-10">
         <ul className="space-y-4">
-          {reqList.map((item) => (
+          {reqmntList.map((item) => (
             <li
               key={item.id}
               className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal"

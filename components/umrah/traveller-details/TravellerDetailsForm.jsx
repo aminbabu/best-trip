@@ -55,9 +55,6 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
   const [dobFrom, setDobFrom] = useState(1900);
   const [dobTo, setDobTo] = useState(moment().year());
   const [countryValue, setCountryValue] = useState("Bangladesh");
-  // const [contactNumber, setContactNumber] = useState("bd");
-
-  console.log(countryValue);
 
   let initialSelectedDate = moment().toDate();
   if (travelerType === "A") {
