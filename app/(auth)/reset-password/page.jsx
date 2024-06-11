@@ -14,8 +14,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
+import { EyeIcon, EyeSlashIcon } from "@/components/icons/svgr";
 
 const formSchema = z
   .object({
@@ -57,7 +57,7 @@ const ResetPasswordPage = () => {
     <div className="max-w-[500px] mx-auto">
       <Card className="border-transparent mb-8 shadow-[0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] border border-[#f1f1f4] p-6 lg:p-10 my-10">
         <CardHeader className="p-0">
-          <CardTitle className="text-lg lg:text-2xl text-gray-900 text-center pb-5 lg:pb-8">
+          <CardTitle className="text-lg lg:text-2xl text-t-800 text-center pb-5 lg:pb-8">
             Change Password
           </CardTitle>
         </CardHeader>
@@ -72,14 +72,14 @@ const ResetPasswordPage = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="ext-gray-900 text-sm lg:text-base">
+                    <FormLabel className="text-t-800 text-sm lg:text-base">
                       Password<span className="text-primary"> *</span>
                     </FormLabel>
                     <div className="relative">
                       <FormControl>
                         <Input
                           type={showPassword ? "text" : "password"}
-                          className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
+                          className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
                           placeholder="Enter password"
                           {...field}
                         />
@@ -89,13 +89,16 @@ const ResetPasswordPage = () => {
                         className="absolute right-4 bottom-3.5"
                       >
                         {showPassword ? (
-                          <EyeOff size={16} />
+                          <EyeSlashIcon
+                            viewBox="0 0 24 24"
+                            className="w-4 h-4"
+                          />
                         ) : (
-                          <Eye size={16} />
+                          <EyeIcon viewBox="0 0 24 24" className="w-4 h-4" />
                         )}
                       </button>
                     </div>
-                    <FormMessage />
+                    <FormMessage className="font-normal" />
                   </FormItem>
                 )}
               />
@@ -104,7 +107,7 @@ const ResetPasswordPage = () => {
                 name="confirmPassword"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-gray-900 text-sm lg:text-base">
+                    <FormLabel className="text-t-800 text-sm lg:text-base">
                       Confirm password<span className="text-primary"> *</span>
                     </FormLabel>
                     <div className="relative">
@@ -112,7 +115,7 @@ const ResetPasswordPage = () => {
                         <Input
                           type={showConfirmPassword ? "text" : "password"}
                           placeholder="Enter confirm password"
-                          className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
+                          className="h-[3.25rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
                           {...field}
                         />
                       </FormControl>
@@ -121,13 +124,16 @@ const ResetPasswordPage = () => {
                         className="absolute right-4 bottom-3.5"
                       >
                         {showConfirmPassword ? (
-                          <EyeOff size={16} />
+                          <EyeSlashIcon
+                            viewBox="0 0 24 24"
+                            className="w-4 h-4"
+                          />
                         ) : (
-                          <Eye size={16} />
+                          <EyeIcon viewBox="0 0 24 24" className="w-4 h-4" />
                         )}
                       </button>
                     </div>
-                    <FormMessage />
+                    <FormMessage className="font-normal" />
                   </FormItem>
                 )}
               />
