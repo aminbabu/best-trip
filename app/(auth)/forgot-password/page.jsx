@@ -35,12 +35,9 @@ const ForgotPasswordPage = () => {
     <div className="max-w-[500px] mx-auto">
       <Card className="border-transparent mb-8 shadow-[0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] border border-[#f1f1f4] p-6 lg:p-10 my-10">
         <CardHeader className="p-0">
-          <CardTitle className="text-lg lg:text-2xl text-t-800 text-center ">
-            Forgot Password?
+          <CardTitle className="text-lg lg:text-2xl text-t-800 text-center pb-5 lg:pb-8 lg:pt-1.5">
+            Forgot Password
           </CardTitle>
-          <p className="text-center pb-5 lg:pb-8 text-t-600 lg:pt-1.5">
-            Enter your email to reset your password
-          </p>
         </CardHeader>
         <CardContent className="pb-0 p-0">
           <Form {...form}>
