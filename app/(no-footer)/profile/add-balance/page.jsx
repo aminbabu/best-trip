@@ -7,7 +7,7 @@ const AddBalance = () => {
     <div>
       <Card className="text-t-600 border-transparent max-w-3xl mx-auto">
         <CardContent className="p-4 sm:p-6 md:p-8 lg:p-10">
-          <h1 className="text-t-900 font-medium text-lg mb-8">
+          <h1 className="text-t-800 font-medium text-2xl mb-8">
             Payment Method
           </h1>
           <p className="text-t-800 mb-4">Select Payment Method</p>
