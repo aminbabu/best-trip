@@ -198,7 +198,7 @@ const SignUpPage = () => {
                       </FormControl>
                       <button
                         onClick={(e) => handleShowConfirmPassword(e)}
-                        className="absolute right-4 bottom-3.5"
+                        className="absolute right-4 bottom-4"
                       >
                         {showConfirmPassword ? (
                           <EyeSlashIcon
