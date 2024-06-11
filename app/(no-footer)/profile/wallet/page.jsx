@@ -10,12 +10,12 @@ const BestTripWallet = () => {
       <CardContent className="lg:p-10 space-y-10">
         <div className="flex items-center justify-between flex-wrap gap-3">
           <div className=" space-y-4">
-            <h2 className="text-base lg:text-lg text-t-900 leading-relaxed font-medium">
+            <h2 className="text-base lg:text-xl text-t-800 leading-relaxed font-medium">
               Wallet Balance{" "}
             </h2>
             <div className="text-base lg:text-lg text-t-800 leading-relaxed font-medium">
               ৳ 32,487.57{" "}
-              <span className="text-t-600 text-base leading-normal">BDT</span>
+              <span className="text-t-800 text-base leading-normal">BDT</span>
             </div>
           </div>
           <div>
