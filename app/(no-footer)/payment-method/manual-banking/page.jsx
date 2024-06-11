@@ -122,7 +122,7 @@ const ManualBankingPage = () => {
                     render={({ field }) => (
                       <FormItem className="space-y-3">
                         <FormLabel className="text-t-800">
-                          Payment Method<span className="text-primary">*</span>
+                          Payment Method<span className="text-primary"> *</span>
                         </FormLabel>
                         <Select
                           onValueChange={field.onChange}
@@ -150,7 +150,7 @@ const ManualBankingPage = () => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-t-800">
-                          Deposited A/C<span className="text-primary">*</span>
+                          Deposited A/C<span className="text-primary"> *</span>
                         </FormLabel>
                         <Select
                           onValueChange={field.onChange}
