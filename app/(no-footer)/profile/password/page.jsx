@@ -50,7 +50,7 @@ const ProfilePasswordPage = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    console.log(data, form.watch("password"));
   };
 
   return (
@@ -139,7 +139,14 @@ const ProfilePasswordPage = () => {
               />
             </div>
             <div className="grid">
-              <Button type="submit">Update Password</Button>
+              <Button
+                disabled={
+                  form.watch("password") != form.watch("confirmPassword")
+                }
+                type="submit"
+              >
+                Update Password
+              </Button>
             </div>
           </form>
         </Form>

@@ -54,7 +54,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
   const [travelerType, setTravellerType] = useState("");
   const [dobFrom, setDobFrom] = useState(1900);
   const [dobTo, setDobTo] = useState(moment().year());
-  const [countryValue, setCountryValue] = useState("Bangladesh");
+  const [countryValue, setCountryValue] = useState("");
 
   let initialSelectedDate = moment().toDate();
   if (travelerType === "A") {
@@ -574,7 +574,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                       onValueChange={(value) => {
                         field.onChange(value);
                       }}
-                      defaultValue={"Bangladesh"}
+                      defaultValue={countryValue}
                     >
                       <FormControl>
                         <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
