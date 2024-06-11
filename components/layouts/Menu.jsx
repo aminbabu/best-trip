@@ -5,7 +5,7 @@ import { menu, navLinks, profileDropDownItems } from "@/data/navbar";
 
 const Menu = ({ isNavbarSticky }) => {
   return (
-    <>
+    <div>
       <ul className="flex flex-col gap-y-3 lg:flex-row lg:gap-x-8 xl:gap-x-10">
         {menu.map((item) => (
           <li key={item.id}>
@@ -23,8 +23,8 @@ const Menu = ({ isNavbarSticky }) => {
           </li>
         ))}
       </ul>
-      <Separator className="lg:hidden" />
-      <ul>
+      <Separator className="lg:hidden my-3" />
+      <ul className="flex flex-col gap-y-3 lg:flex-row lg:gap-x-8 xl:gap-x-10">
         {navLinks.map((item) => (
           <li key={item.id}>
             <Link
@@ -36,7 +36,7 @@ const Menu = ({ isNavbarSticky }) => {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 

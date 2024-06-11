@@ -36,7 +36,7 @@ const ForgotPasswordPage = () => {
       <Card className="border-transparent mb-8 shadow-[0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] border border-[#f1f1f4] p-6 lg:p-10 my-10">
         <CardHeader className="p-0">
           <CardTitle className="text-lg lg:text-2xl text-t-900 text-center ">
-            Forgot Password ?
+            Forgot Password?
           </CardTitle>
           <p className="text-center pb-5 lg:pb-8 text-t-600 lg:pt-1.5">
             Enter your email to reset your password
@@ -59,7 +59,7 @@ const ForgotPasswordPage = () => {
                     <FormControl>
                       <Input
                         type="email"
-                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
+                        className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter email address"
                         {...field}
                       />
