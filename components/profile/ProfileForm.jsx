@@ -90,7 +90,7 @@ const ProfileForm = ({ edit, setEdit }) => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <div>
-            <h2 className="text-t-700 text-xl lg:text-2xl font-medium mb-6 lg:mb-8">
+            <h2 className="text-t-800 text-xl lg:text-lg font-medium mb-6 lg:mb-8">
               User Info
             </h2>
             <div className="grid grid-cols-2 gap-x-8 gap-y-5 xl:gap-x-12">
@@ -181,7 +181,7 @@ const ProfileForm = ({ edit, setEdit }) => {
             </div>
           </div>
           <div>
-            <h2 className="text-t-700 text-xl lg:text-2xl font-medium mb-6 lg:mb-8">
+            <h2 className="text-t-800 text-xl lg:text-lg font-medium mb-6 lg:mb-8">
               Contact Info
             </h2>
             <div className="grid grid-cols-2 gap-x-8 gap-y-5 xl:gap-x-12">

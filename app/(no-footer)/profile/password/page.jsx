@@ -71,7 +71,7 @@ const ProfilePasswordPage = () => {
                 control={form.control}
                 name="password"
                 render={({ field }) => (
-                  <FormItem className="space-y-3col-span-1">
+                  <FormItem className="space-y-3 col-span-2 lg:col-span-1">
                     <FormLabel className="text-t-800 text-sm lg:text-base">
                       New Password<span className="text-primary"> *</span>
                     </FormLabel>
@@ -98,8 +98,7 @@ const ProfilePasswordPage = () => {
                         )}
                       </button>
                     </div>
-
-                    <FormMessage className="font-medium" />
+                    <FormMessage className="font-normal" />
                   </FormItem>
                 )}
               />
@@ -107,7 +106,7 @@ const ProfilePasswordPage = () => {
                 control={form.control}
                 name="confirmPassword"
                 render={({ field }) => (
-                  <FormItem className="space-y-3 col-span-1">
+                  <FormItem className="space-y-3 col-span-2 lg:col-span-1">
                     <FormLabel className="text-t-800 text-sm lg:text-base">
                       Confirm Password<span className="text-primary"> *</span>
                     </FormLabel>

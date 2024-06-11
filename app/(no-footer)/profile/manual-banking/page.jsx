@@ -136,7 +136,7 @@ const ManualBankingPage = () => {
                           <SelectItem value="bank deposit">
                             Bank Deposit
                           </SelectItem>
-                          <SelectItem value="cheque">Chqeque</SelectItem>
+                          <SelectItem value="cheque">Cheque</SelectItem>
                           <SelectItem value="cash">Cash</SelectItem>
                         </SelectContent>
                       </Select>
@@ -148,7 +148,7 @@ const ManualBankingPage = () => {
                   control={form.control}
                   name="account"
                   render={({ field }) => (
-                    <FormItem className="col-span-1">
+                    <FormItem className="col-span-2 lg:col-span-1">
                       <FormLabel className="text-t-800">
                         Deposited A/C<span className="text-primary"> *</span>
                       </FormLabel>
@@ -184,7 +184,7 @@ const ManualBankingPage = () => {
                   control={form.control}
                   name="reference"
                   render={({ field }) => (
-                    <FormItem className="space-y-3 col-span-1">
+                    <FormItem className="space-y-3 col-span-2 lg:col-span-1">
                       <FormLabel className="text-t-800 text-sm lg:text-base">
                         Reference<span className="text-primary"> *</span>
                       </FormLabel>
@@ -195,7 +195,7 @@ const ManualBankingPage = () => {
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage className="font-medium" />
+                      <FormMessage className="font-normal" />
                     </FormItem>
                   )}
                 />

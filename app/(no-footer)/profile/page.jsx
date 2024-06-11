@@ -18,12 +18,10 @@ const MyProfilePage = () => {
             <AvatarImage src="/images/profile/avatar.png" />
             <AvatarFallback className="text-4xl">I.H</AvatarFallback>
           </Avatar>
-          <h1 className="text-t-800 text-2xl lg:text-[2rem] font-semibold mb-2.5">
+          <h1 className="text-t-800 text-2xl lg:text-xl font-semibold mb-2.5">
             Irfanul Haque
           </h1>
-          <p className="text-base lg:text-lg text-t-600">
-            mdirfanulhaque2020@gmail.com
-          </p>
+          <p className="text-base text-t-800">mdirfanulhaque2020@gmail.com</p>
           {!edit && (
             <div className="mt-5">
               <Button size="sm" onClick={() => setEdit(true)}>
@@ -32,7 +30,7 @@ const MyProfilePage = () => {
               </Button>
             </div>
           )}
-          <div className="flex items-start justify-center gap-x-2 text-base lg:text-lg text-t-600 leading-relaxed mt-8">
+          <div className="flex items-start justify-center gap-x-2 text-base text-t-800 leading-relaxed mt-8">
             <span className="text-primary inline-flex items-center justify-center">
               <ICircleIcon />
             </span>
