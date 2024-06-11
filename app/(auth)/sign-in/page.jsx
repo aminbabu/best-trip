@@ -15,8 +15,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
-import { CheckIcon, Eye, EyeOff } from "lucide-react";
+import { CheckIcon } from "lucide-react";
 import { useState } from "react";
+import { EyeIcon, EyeSlashIcon } from "@/components/icons/svgr";
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -100,9 +101,12 @@ const SignInPage = () => {
                         className="absolute right-4 bottom-3.5"
                       >
                         {showPassword ? (
-                          <EyeOff size={16} />
+                          <EyeSlashIcon
+                            viewBox="0 0 24 24"
+                            className="w-4 h-4"
+                          />
                         ) : (
-                          <Eye size={16} />
+                          <EyeIcon viewBox="0 0 24 24" className="w-4 h-4" />
                         )}
                       </button>
                     </div>
@@ -151,7 +155,7 @@ const SignInPage = () => {
             </form>
           </Form>
           <p className="text-t-600 text-center pt-[26px]">
-            Don’t have an account?{" "}
+            Don’t have an account ?{" "}
             <Link
               href="/sign-up"
               className="text-primary duration-300 hover:underline hover:opacity-75 focus:underline"
