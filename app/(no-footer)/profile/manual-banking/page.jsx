@@ -92,7 +92,7 @@ const ManualBankingPage = () => {
         <CardContent className="pb-0 p-0">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="">
-              <div className="grid grid-cols-2 gap-x-6 gap-y-[26px] mb-[26px]">
+              <div className="grid grid-cols-2 gap-x-6 gap-y-[26px] mb-8">
                 <FormField
                   control={form.control}
                   name="amount"
@@ -195,7 +195,7 @@ const ManualBankingPage = () => {
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="font-medium" />
                     </FormItem>
                   )}
                 />
