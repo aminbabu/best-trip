@@ -130,22 +130,14 @@ const ManualBankingPage = () => {
                         >
                           <FormControl>
                             <SelectTrigger className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0">
-                              <SelectValue placeholder="Select an account" />
+                              <SelectValue placeholder="Select a payment method" />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="1">
-                              Islami Bank Ltd./ Best Travels Ltd./
-                              13876342617476218/Uttara Branch .
-                            </SelectItem>
-                            <SelectItem value="2">
-                              Pubali Bank Ltd./ Best Travels Ltd./
-                              13876342617476218/Uttara Branch .
-                            </SelectItem>
-                            <SelectItem value="3">
-                              AB Bank Ltd./ Best Travels Ltd./
-                              13876342617476218/Uttara Branch .
-                            </SelectItem>
+                            <SelectItem value="1">Bank Transfer</SelectItem>
+                            <SelectItem value="2">Bank deposit</SelectItem>
+                            <SelectItem value="3">Cheque</SelectItem>
+                            <SelectItem value="4">cash</SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
