@@ -32,7 +32,7 @@ const Profile = () => {
       </PopoverTrigger>
       <PopoverContent
         align="end"
-        className="px-0.5 py-2 border-transparent min-w-[308px]"
+        className="px-0 py-2 border-transparent min-w-[308px]"
       >
         <ul>
           {navLinks.map((item) => (
