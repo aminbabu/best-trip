@@ -52,7 +52,7 @@ const formSchema = z.object({
   //   message: "Please agree to the terms and conditions",
   // }),
   payment_prove: z.string().min(1, "Please upload a payment proof"),
-  reference: z.string().min(1, "Please enter a reference number"),
+  reference: z.string().min(1, "Please enter a reference"),
 });
 
 const ManualBankingPage = () => {

@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { EyeIcon, EyeSlashIcon } from "@/components/icons/svgr";
+import { useState } from "react";
 
 const formSchema = z
   .object({
@@ -26,6 +28,19 @@ const formSchema = z
   });
 
 const ProfilePasswordPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const handleShowPassword = (e) => {
+    e.preventDefault();
+    setShowPassword(!showPassword);
+  };
+
+  const handleShowConfirmPassword = (e) => {
+    e.preventDefault();
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -60,15 +75,31 @@ const ProfilePasswordPage = () => {
                     <FormLabel className="text-t-800 text-sm lg:text-base">
                       New Password<span className="text-primary"> *</span>
                     </FormLabel>
-                    <FormControl>
-                      <Input
-                        type="password"
-                        className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
-                        placeholder="Enter password"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
+                    <div className="relative">
+                      <FormControl>
+                        <Input
+                          type={showPassword ? "text" : "password"}
+                          className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
+                          placeholder="Enter password"
+                          {...field}
+                        />
+                      </FormControl>
+                      <button
+                        onClick={(e) => handleShowPassword(e)}
+                        className="absolute right-4 bottom-4"
+                      >
+                        {showPassword ? (
+                          <EyeSlashIcon
+                            viewBox="0 0 24 24"
+                            className="w-4 h-4"
+                          />
+                        ) : (
+                          <EyeIcon viewBox="0 0 24 24" className="w-4 h-4" />
+                        )}
+                      </button>
+                    </div>
+
+                    <FormMessage className="font-medium" />
                   </FormItem>
                 )}
               />
@@ -80,15 +111,30 @@ const ProfilePasswordPage = () => {
                     <FormLabel className="text-t-800 text-sm lg:text-base">
                       Confirm Password<span className="text-primary"> *</span>
                     </FormLabel>
-                    <FormControl>
-                      <Input
-                        type="password"
-                        className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
-                        placeholder="Enter confirm password"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
+                    <div className="relative">
+                      <FormControl>
+                        <Input
+                          type={showConfirmPassword ? "text" : "password"}
+                          className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
+                          placeholder="Enter confirm password"
+                          {...field}
+                        />
+                      </FormControl>
+                      <button
+                        onClick={(e) => handleShowConfirmPassword(e)}
+                        className="absolute right-4 bottom-3.5"
+                      >
+                        {showConfirmPassword ? (
+                          <EyeSlashIcon
+                            viewBox="0 0 24 24"
+                            className="w-4 h-4"
+                          />
+                        ) : (
+                          <EyeIcon viewBox="0 0 24 24" className="w-4 h-4" />
+                        )}
+                      </button>
+                    </div>
+                    <FormMessage className="font-normal" />
                   </FormItem>
                 )}
               />
