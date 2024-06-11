@@ -62,6 +62,8 @@ import PassportCircleIcon from "@/public/icons/passport-circle.svg";
 import SpoonKnifeIcon from "@/public/icons/spoon-knife-red.svg";
 import PencliLineIcon from "@/public/icons/PencilLine.svg";
 import ReverseExchangeIcon from "@/public/icons/reverse-exchange.svg";
+import EyeIcon from "@/public/icons/eye.svg";
+import EyeSlashIcon from "@/public/icons/eye-slash.svg";
 
 export {
   FacebookIcon,
@@ -128,4 +130,6 @@ export {
   PencliLineIcon,
   BusRedIcon,
   ReverseExchangeIcon,
+  EyeIcon,
+  EyeSlashIcon,
 };

@@ -19,6 +19,7 @@ import validator from "validator";
 import Link from "next/link";
 import { CheckIcon, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
+import { EyeIcon, EyeSlashIcon } from "@/components/icons/svgr";
 
 const formSchema = z
   .object({
@@ -72,7 +73,7 @@ const SignUpPage = () => {
     <div className="max-w-[500px] mx-auto">
       <Card className="border-transparent mb-8 shadow-[0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] border border-[#f1f1f4] p-6 lg:p-10 my-10">
         <CardHeader className="p-0">
-          <CardTitle className="text-lg lg:text-2xl text-t-900 text-center pb-5 lg:pb-8">
+          <CardTitle className="text-lg lg:text-2xl text-t-800 text-center pb-5 lg:pb-8">
             Sign Up
           </CardTitle>
         </CardHeader>
@@ -93,12 +94,12 @@ const SignUpPage = () => {
                     <FormControl>
                       <Input
                         type="text"
-                        className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
+                        className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-t-300 focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter your name"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="font-normal" />
                   </FormItem>
                 )}
               />
@@ -113,12 +114,12 @@ const SignUpPage = () => {
                     <FormControl>
                       <Input
                         type="email"
-                        className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
+                        className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-t-300 focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter email address"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="font-normal" />
                   </FormItem>
                 )}
               />
@@ -133,12 +134,12 @@ const SignUpPage = () => {
                     <FormControl>
                       <Input
                         type="tel"
-                        className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
+                        className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-t-300 focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter phone number"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="font-normal" />
                   </FormItem>
                 )}
               />
@@ -154,24 +155,27 @@ const SignUpPage = () => {
                       <FormControl>
                         <Input
                           type={showPassword ? "text" : "password"}
-                          className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
+                          className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-t-300 focus-visible:ring-0 focus-visible:ring-offset-0"
                           placeholder="Enter password"
                           {...field}
                         />
                       </FormControl>
                       <button
                         onClick={(e) => handleShowPassword(e)}
-                        className="absolute right-4 bottom-3.5"
+                        className="absolute right-4 bottom-4"
                       >
                         {showPassword ? (
-                          <EyeOff size={16} />
+                          <EyeSlashIcon
+                            viewBox="0 0 24 24"
+                            className="w-4 h-4"
+                          />
                         ) : (
-                          <Eye size={16} />
+                          <EyeIcon viewBox="0 0 24 24" className="w-4 h-4" />
                         )}
                       </button>
                     </div>
 
-                    <FormMessage />
+                    <FormMessage className="font-normal" />
                   </FormItem>
                 )}
               />
@@ -188,7 +192,7 @@ const SignUpPage = () => {
                       <FormControl>
                         <Input
                           type={showConfirmPassword ? "text" : "password"}
-                          className="h-[3.25rem] text-base p-4 text-t-900 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
+                          className="h-[3.25rem] text-base p-4 text-t-900 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-t-300 focus-visible:ring-0 focus-visible:ring-offset-0"
                           placeholder="Enter confirm password"
                           {...field}
                         />
