@@ -29,9 +29,9 @@ const formSchema = z
     }),
     password: z.string().min(8, "Please enter a valid password"),
     confirmPassword: z.string().min(8, "Please enter a valid password"),
-    agree: z
-      .boolean()
-      .refine((v) => v, { message: "Please agree to the terms & policy" }),
+    // agree: z
+    //   .boolean()
+    //   .refine((v) => v, { message: "Please agree to the terms & policy" }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
@@ -72,7 +72,7 @@ const SignUpPage = () => {
     <div className="max-w-[500px] mx-auto">
       <Card className="border-transparent mb-8 shadow-[0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] border border-[#f1f1f4] p-6 lg:p-10 my-10">
         <CardHeader className="p-0">
-          <CardTitle className="text-lg lg:text-2xl text-gray-900 text-center pb-5 lg:pb-8">
+          <CardTitle className="text-lg lg:text-2xl text-t-900 text-center pb-5 lg:pb-8">
             Sign Up
           </CardTitle>
         </CardHeader>
@@ -87,13 +87,13 @@ const SignUpPage = () => {
                 name="fullname"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-gray-900 text-sm lg:text-base">
+                    <FormLabel className="text-t-800 text-sm lg:text-base">
                       Your name<span className="text-primary"> *</span>
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="text"
-                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
+                        className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter your name"
                         {...field}
                       />
@@ -107,13 +107,13 @@ const SignUpPage = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-gray-900 text-sm lg:text-base">
+                    <FormLabel className="text-t-800 text-sm lg:text-base">
                       Email address<span className="text-primary"> *</span>
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="email"
-                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
+                        className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter email address"
                         {...field}
                       />
@@ -127,13 +127,13 @@ const SignUpPage = () => {
                 name="phone"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-gray-900 text-sm lg:text-base">
+                    <FormLabel className="text-t-800 text-sm lg:text-base">
                       Phone number<span className="text-primary"> *</span>
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="tel"
-                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
+                        className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter phone number"
                         {...field}
                       />
@@ -147,14 +147,14 @@ const SignUpPage = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-gray-900v text-sm lg:text-base">
+                    <FormLabel className="text-t-800 text-sm lg:text-base">
                       Password<span className="text-primary"> *</span>
                     </FormLabel>
                     <div className="relative">
                       <FormControl>
                         <Input
                           type={showPassword ? "text" : "password"}
-                          className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
+                          className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
                           placeholder="Enter password"
                           {...field}
                         />
@@ -181,14 +181,14 @@ const SignUpPage = () => {
                 name="confirmPassword"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-gray-900 text-sm lg:text-base">
+                    <FormLabel className="text-t-800 text-sm lg:text-base">
                       Confirm password<span className="text-primary"> *</span>
                     </FormLabel>
                     <div className="relative">
                       <FormControl>
                         <Input
                           type={showConfirmPassword ? "text" : "password"}
-                          className="h-[2.75rem] text-base px-3 py-2.5 text-t-900 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
+                          className="h-[3.25rem] text-base p-4 text-t-900 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
                           placeholder="Enter confirm password"
                           {...field}
                         />
@@ -209,7 +209,7 @@ const SignUpPage = () => {
                   </FormItem>
                 )}
               />
-              <FormField
+              {/* <FormField
                 control={form.control}
                 name="agree"
                 render={({ field }) => (
@@ -245,9 +245,9 @@ const SignUpPage = () => {
                     <FormMessage />
                   </FormItem>
                 )}
-              />
+              /> */}
               <div className="grid">
-                <Button className="py-2.5" type="submit">
+                <Button className="py-3.5" type="submit">
                   Sign up
                 </Button>
               </div>

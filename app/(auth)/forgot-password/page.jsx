@@ -35,7 +35,7 @@ const ForgotPasswordPage = () => {
     <div className="max-w-[500px] mx-auto">
       <Card className="border-transparent mb-8 shadow-[0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] border border-[#f1f1f4] p-6 lg:p-10 my-10">
         <CardHeader className="p-0">
-          <CardTitle className="text-lg lg:text-2xl text-gray-900 text-center ">
+          <CardTitle className="text-lg lg:text-2xl text-t-900 text-center ">
             Forgot Password ?
           </CardTitle>
           <p className="text-center pb-5 lg:pb-8 text-t-600 lg:pt-1.5">
@@ -53,13 +53,13 @@ const ForgotPasswordPage = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-gray-900 text-sm lg:text-base">
+                    <FormLabel className="text-t-800 text-sm lg:text-base">
                       Email address<span className="text-primary"> *</span>
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="email"
-                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
+                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter email address"
                         {...field}
                       />
@@ -72,7 +72,7 @@ const ForgotPasswordPage = () => {
                 <Button className="py-2.5" type="submit">
                   Send
                 </Button>
-                <Button className="py-2.5 bg-[#f9f9f9] text-t-800 mt-3">
+                <Button className="py-2.5 bg-[#f9f9f9] hover:bg-[#f5f5f5] text-t-800 mt-3">
                   Cancel
                 </Button>
               </div>

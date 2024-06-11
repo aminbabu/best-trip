@@ -48,7 +48,7 @@ const SignInPage = () => {
     <div className="max-w-[500px] mx-auto">
       <Card className="border-transparent mb-8 shadow-[0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] border border-[#f1f1f4] p-6 lg:p-10 my-10">
         <CardHeader className="p-0">
-          <CardTitle className="text-lg lg:text-2xl text-gray-900 text-center pb-5 lg:pb-8">
+          <CardTitle className="text-lg lg:text-2xl text-t-900 text-center pb-5 lg:pb-8">
             Sign In
           </CardTitle>
         </CardHeader>
@@ -63,18 +63,18 @@ const SignInPage = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-gray-900 text-sm lg:text-base">
+                    <FormLabel className="text-t-800 text-sm lg:text-base">
                       Email address<span className="text-primary"> *</span>
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="email"
-                        className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
+                        className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter email address"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="font-normal" />
                   </FormItem>
                 )}
               />
@@ -83,14 +83,14 @@ const SignInPage = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-gray-900 text-sm lg:text-base">
+                    <FormLabel className="text-t-800 text-sm lg:text-base">
                       Password<span className="text-primary"> *</span>
                     </FormLabel>
                     <div className="relative">
                       <FormControl>
                         <Input
                           type={showPassword ? "text" : "password"}
-                          className="h-[2.75rem] text-base px-3 py-2.5 text-t-700 placeholder:text-t-300 placeholder:text-sm placeholder:lg:text-base border border-[#dbdfe9] focus-visible:ring-0 focus-visible:ring-offset-0"
+                          className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
                           placeholder="Enter password"
                           {...field}
                         />
@@ -107,7 +107,7 @@ const SignInPage = () => {
                       </button>
                     </div>
 
-                    <FormMessage />
+                    <FormMessage className="font-normal" />
                   </FormItem>
                 )}
               />
@@ -122,13 +122,13 @@ const SignInPage = () => {
                           <FormControl>
                             <Input
                               type="checkbox"
-                              className="appearance-none p-0 h-5 w-5 border border-t-300 rounded-sm checked:bg-primary checked:border-primary focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-primary cursor-pointer peer"
+                              className="appearance-none p-0 h-5 w-5 border border-[#f5f5f5] rounded-sm checked:bg-primary checked:border-primary focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-primary cursor-pointer peer"
                               {...field}
                             />
                           </FormControl>
                           <CheckIcon className="invisible opacity-0 duration-200 absolute inset-0 m-auto w-4 h-4 text-white pointer-events-none peer-checked:visible peer-checked:opacity-100" />
                         </div>
-                        <FormLabel className="flex-1 text-sm lg:text-base text-t-700 font-normal leading-normal">
+                        <FormLabel className="flex-1 text-sm lg:text-base text-t-600 font-normal leading-normal">
                           Remember me
                         </FormLabel>
                       </div>
