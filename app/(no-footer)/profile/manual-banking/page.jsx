@@ -52,7 +52,7 @@ const formSchema = z.object({
   //   message: "Please agree to the terms and conditions",
   // }),
   payment_prove: z.string().min(1, "Please upload a payment proof"),
-  // remarks: z.string().optional(),
+  reference: z.string().min(1, "Please enter a reference number"),
 });
 
 const ManualBankingPage = () => {
@@ -66,7 +66,7 @@ const ManualBankingPage = () => {
       method: "",
       account: "",
       date: "",
-      // remarks: "",
+      reference: "",
       // agree: false,
       payment_prove: "",
     },
@@ -148,7 +148,7 @@ const ManualBankingPage = () => {
                   control={form.control}
                   name="account"
                   render={({ field }) => (
-                    <FormItem className="col-span-2">
+                    <FormItem className="col-span-1">
                       <FormLabel className="text-t-800">
                         Deposited A/C<span className="text-primary"> *</span>
                       </FormLabel>
@@ -163,20 +163,39 @@ const ManualBankingPage = () => {
                         </FormControl>
                         <SelectContent>
                           <SelectItem value="1">
-                            Islami Bank Ltd./ Best Travels Ltd./
-                            13876342617476218/Uttara Branch .
+                            Islami Bank Ltd. - Best Travels Ltd. -
+                            13876342617476218 - Uttara Branch .
                           </SelectItem>
                           <SelectItem value="2">
-                            Pubali Bank Ltd./ Best Travels Ltd./
-                            13876342617476218/Uttara Branch .
+                            Pubali Bank Ltd. - Best Travels Ltd. -
+                            13876342617476218 - Uttara Branch .
                           </SelectItem>
                           <SelectItem value="3">
-                            AB Bank Ltd./ Best Travels Ltd./
-                            13876342617476218/Uttara Branch .
+                            AB Bank Ltd. - Best Travels Ltd. - 13876342617476218
+                            - Uttara Branch .
                           </SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage className="font-normal" />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="reference"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3 col-span-1">
+                      <FormLabel className="text-t-800 text-sm lg:text-base">
+                        Reference<span className="text-primary"> *</span>
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
+                          placeholder="Enter a reference"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
