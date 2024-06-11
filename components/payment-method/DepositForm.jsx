@@ -57,8 +57,14 @@ const DepositForm = () => {
   };
 
   function onSubmit(values) {
-    if (values.manual) {
+    if (values.manual && pathname === "/payment-method") {
       router.push("/payment-method/manual-banking");
+      console.log(values.manual && pathname === "/payment-method");
+    }
+
+    if (values.manual && pathname === "/profile/add-balance") {
+      router.push("/profile/manual-banking");
+      console.log(values.manual && pathname === "/profile/add-balance");
     }
 
     if (values.wallet) {

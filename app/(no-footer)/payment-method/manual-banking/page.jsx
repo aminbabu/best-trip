@@ -48,11 +48,11 @@ const formSchema = z.object({
     .string()
     .min(1, "Please select a valid date")
     .or(z.date("Please select a valid date")),
-  agree: z.boolean().refine((val) => val === true, {
-    message: "Please agree to the terms and conditions",
-  }),
+  // agree: z.boolean().refine((val) => val === true, {
+  //   message: "Please agree to the terms and conditions",
+  // }),
   payment_prove: z.string().min(1, "Please upload a payment proof"),
-  remarks: z.string().optional(),
+  // remarks: z.string().optional(),
 });
 
 const ManualBankingPage = () => {
@@ -63,11 +63,11 @@ const ManualBankingPage = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       amount: "",
-      method: "Bank Transfer",
+      method: "",
       account: "",
       date: "",
-      remarks: "",
-      agree: false,
+      // remarks: "",
+      // agree: false,
       payment_prove: "",
     },
   });
@@ -120,9 +120,9 @@ const ManualBankingPage = () => {
                     control={form.control}
                     name="method"
                     render={({ field }) => (
-                      <FormItem className="space-y-3">
+                      <FormItem>
                         <FormLabel className="text-t-800">
-                          Payment Method<span className="text-primary"> *</span>
+                          Payment method<span className="text-primary"> *</span>
                         </FormLabel>
                         <Select
                           onValueChange={field.onChange}
@@ -130,14 +130,18 @@ const ManualBankingPage = () => {
                         >
                           <FormControl>
                             <SelectTrigger className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0">
-                              <SelectValue placeholder="Select a payment method" />
+                              <SelectValue placeholder="Select payment method" />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="1">Bank Transfer</SelectItem>
-                            <SelectItem value="2">Bank deposit</SelectItem>
-                            <SelectItem value="3">Cheque</SelectItem>
-                            <SelectItem value="4">cash</SelectItem>
+                            <SelectItem value="bank transfer">
+                              Bank Transfer
+                            </SelectItem>
+                            <SelectItem value="bank deposit">
+                              Bank Deposit
+                            </SelectItem>
+                            <SelectItem value="cheque">Chqeque</SelectItem>
+                            <SelectItem value="cash">Cash</SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
