@@ -142,7 +142,7 @@ const ManualBankingPage = () => {
                         <SelectItem value="cash">Cash</SelectItem>
                       </SelectContent>
                     </Select>
-                    <FormMessage />
+                    <FormMessage className="font-normal" />
                   </FormItem>
                 )}
               />
@@ -178,7 +178,7 @@ const ManualBankingPage = () => {
                         </SelectItem>
                       </SelectContent>
                     </Select>
-                    <FormMessage />
+                    <FormMessage className="font-normal" />
                   </FormItem>
                 )}
               />
@@ -222,7 +222,7 @@ const ManualBankingPage = () => {
                         />
                       </PopoverContent>
                     </Popover>
-                    <FormMessage />
+                    <FormMessage className="font-normal" />
                   </FormItem>
                 )}
               />
@@ -231,7 +231,9 @@ const ManualBankingPage = () => {
                 name="payment_prove"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-t-800">Remarks</FormLabel>
+                    <FormLabel className="text-t-800">
+                      Attachment<span className="text-primary"> *</span>
+                    </FormLabel>
                     <FormControl>
                       <Input
                         type="file"
@@ -246,7 +248,7 @@ const ManualBankingPage = () => {
                         }}
                       />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="font-normal" />
                   </FormItem>
                 )}
               />
@@ -303,7 +305,7 @@ const ManualBankingPage = () => {
               <div className="grid">
                 <Button type="submit" disabled={loading}>
                   {loading && <Loader className="w-6 h-6 animate-spin" />}
-                  Sign in
+                  Sign Request
                 </Button>
               </div>
             </form>
