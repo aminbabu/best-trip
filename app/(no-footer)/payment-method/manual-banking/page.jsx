@@ -149,7 +149,7 @@ const ManualBankingPage = () => {
                           defaultValue={field.value}
                         >
                           <FormControl>
-                            <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-700 placeholder:text-t-300">
+                            <SelectTrigger className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0">
                               <SelectValue placeholder="Select an account" />
                             </SelectTrigger>
                           </FormControl>
@@ -178,14 +178,15 @@ const ManualBankingPage = () => {
                     render={({ field }) => (
                       <FormItem className="flex flex-col">
                         <FormLabel className="text-t-800">
-                          Deposited Date<span className="text-primary">*</span>
+                          Deposited Date<span className="text-primary"> *</span>
                         </FormLabel>
                         <Popover>
                           <PopoverTrigger asChild>
                             <FormControl>
                               <Button
                                 variant={"outline"}
-                                className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-600 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-600 
+                                border-[#f5f5f5] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
                               >
                                 {field.value ? (
                                   moment(field.value).format("DD-MMMM-YYYY")
@@ -225,7 +226,8 @@ const ManualBankingPage = () => {
                         <FormControl>
                           <Input
                             type="file"
-                            className="p-0 file:h-[3.25rem] file:mr-4 file:text-sm text-t-700 placeholder:text-t-300 file:py-4 file:px-5 file:rounded-l-md file:border-0 file:bg-p-300 file:text-p-900"
+                            className="p-0 file:h-[3.25rem] file:mr-4 file:text-sm text-t-700
+                            border-[#f5f5f5] placeholder:text-t-300 file:py-4 file:px-5 file:rounded-l-md file:border-0 file:bg-p-300 file:text-p-900"
                             accept=".png,.jpg,.jpeg"
                             {...field}
                             onChange={(event) => {
@@ -239,7 +241,7 @@ const ManualBankingPage = () => {
                       </FormItem>
                     )}
                   />
-                  <FormField
+                  {/* <FormField
                     control={form.control}
                     name="remarks"
                     render={({ field }) => (
@@ -288,7 +290,7 @@ const ManualBankingPage = () => {
                         <FormMessage />
                       </FormItem>
                     )}
-                  />
+                  /> */}
                   <div className="grid">
                     <Button type="submit" disabled={loading}>
                       {loading && <Loader className="w-6 h-6 animate-spin" />}
