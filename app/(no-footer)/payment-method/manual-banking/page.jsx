@@ -124,14 +124,30 @@ const ManualBankingPage = () => {
                         <FormLabel className="text-t-800">
                           Payment Method<span className="text-primary">*</span>
                         </FormLabel>
-                        <FormControl>
-                          <Input
-                            className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
-                            placeholder="Enter amount"
-                            {...field}
-                            disabled
-                          />
-                        </FormControl>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0">
+                              <SelectValue placeholder="Select an account" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="1">
+                              Islami Bank Ltd./ Best Travels Ltd./
+                              13876342617476218/Uttara Branch .
+                            </SelectItem>
+                            <SelectItem value="2">
+                              Pubali Bank Ltd./ Best Travels Ltd./
+                              13876342617476218/Uttara Branch .
+                            </SelectItem>
+                            <SelectItem value="3">
+                              AB Bank Ltd./ Best Travels Ltd./
+                              13876342617476218/Uttara Branch .
+                            </SelectItem>
+                          </SelectContent>
+                        </Select>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -185,7 +201,7 @@ const ManualBankingPage = () => {
                             <FormControl>
                               <Button
                                 variant={"outline"}
-                                className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-600 
+                                className="justify-start font-normal h-[3.25rem] text-base p-4 text-t-600 
                                 border-[#f5f5f5] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
                               >
                                 {field.value ? (
@@ -227,7 +243,7 @@ const ManualBankingPage = () => {
                           <Input
                             type="file"
                             className="p-0 file:h-[3.25rem] file:mr-4 file:text-sm text-t-700
-                            border-[#f5f5f5] placeholder:text-t-300 file:py-4 file:px-5 file:rounded-l-md file:border-0 file:bg-p-300 file:text-p-900"
+                            border-[#f5f5f5] placeholder:text-t-300 file:p-4 file:rounded-l-md file:border-0 file:bg-p-300 file:text-p-900"
                             accept=".png,.jpg,.jpeg"
                             {...field}
                             onChange={(event) => {
