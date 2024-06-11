@@ -141,7 +141,9 @@ const ProfilePasswordPage = () => {
             <div className="grid">
               <Button
                 disabled={
-                  form.watch("password") != form.watch("confirmPassword")
+                  form.watch("password") === "" ||
+                  form.watch("confirmPassword") === "" ||
+                  form.watch("password") !== form.watch("confirmPassword")
                 }
                 type="submit"
               >
