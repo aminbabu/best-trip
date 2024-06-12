@@ -18,7 +18,7 @@ const MyProfilePage = () => {
             <AvatarImage src="/images/profile/avatar.png" />
             <AvatarFallback className="text-4xl">I.H</AvatarFallback>
           </Avatar>
-          <h1 className="text-t-800 text-2xl lg:text-[28px] font-semibold mb-2.5">
+          <h1 className="text-t-800 text-2xl lg:text-[28px] font-semibold mb-5">
             Irfanul Haque
           </h1>
           <p className="text-lg text-t-800">mdirfanulhaque2020@gmail.com</p>
@@ -30,9 +30,9 @@ const MyProfilePage = () => {
               </Button>
             </div>
           )}
-          <div className="flex items-start justify-center gap-x-2 text-lg text-t-800 leading-relaxed mt-8">
+          <div className="flex items-center justify-center gap-x-2 text-lg text-black-500 leading-relaxed mt-8">
             <span className="text-primary inline-flex items-center justify-center">
-              <ICircleIcon />
+              <ICircleIcon viewBox="0 0 24 24" className="h-5 w-5" />
             </span>
             Enter details exactly as they appear on your passport
           </div>

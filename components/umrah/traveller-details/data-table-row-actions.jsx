@@ -50,7 +50,7 @@ const DataTableRowActions = ({ row }) => {
             onClick={onDelete}
           >
             <Trash2 size={16} />
-            Delete
+            View
           </DropdownMenuItem>
         )}
 

@@ -116,7 +116,7 @@ const ManualBankingPage = () => {
                   control={form.control}
                   name="method"
                   render={({ field }) => (
-                    <FormItem className="col-span-2 lg:col-span-1">
+                    <FormItem className="space-y-3 col-span-2 lg:col-span-1">
                       <FormLabel className="text-t-800">
                         Payment method<span className="text-primary"> *</span>
                       </FormLabel>
@@ -148,7 +148,7 @@ const ManualBankingPage = () => {
                   control={form.control}
                   name="account"
                   render={({ field }) => (
-                    <FormItem className="col-span-2 lg:col-span-1">
+                    <FormItem className="space-y-3 col-span-2 lg:col-span-1">
                       <FormLabel className="text-t-800">
                         Deposited A/C<span className="text-primary"> *</span>
                       </FormLabel>
@@ -203,7 +203,7 @@ const ManualBankingPage = () => {
                   control={form.control}
                   name="date"
                   render={({ field }) => (
-                    <FormItem className="col-span-2 lg:col-span-1 flex flex-col gap-3">
+                    <FormItem className="space-y-3 col-span-2 lg:col-span-1 flex flex-col gap-3">
                       <FormLabel className="text-t-800">
                         Deposited Date<span className="text-primary"> *</span>
                       </FormLabel>
