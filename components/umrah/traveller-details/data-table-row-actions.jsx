@@ -36,21 +36,25 @@ const DataTableRowActions = ({ row }) => {
         <MoreHorizontal />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="border-transparent">
-        <DropdownMenuItem
-          className="flex items-center gap-2.5 text-sm text-t-700 cursor-pointer"
-          onClick={onEdit}
-        >
-          <PencilLine size={16} />
-          Edit
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem
-          className="flex items-center gap-2.5 text-sm text-t-700 cursor-pointer"
-          onClick={onDelete}
-        >
-          <Trash2 size={16} />
-          Delete
-        </DropdownMenuItem>
+        {user.status === "incomplete" ? (
+          <DropdownMenuItem
+            className="flex items-center gap-2.5 text-sm text-t-700 cursor-pointer"
+            onClick={onEdit}
+          >
+            <PencilLine size={16} />
+            Edit
+          </DropdownMenuItem>
+        ) : (
+          <DropdownMenuItem
+            className="flex items-center gap-2.5 text-sm text-t-700 cursor-pointer"
+            onClick={onDelete}
+          >
+            <Trash2 size={16} />
+            View
+          </DropdownMenuItem>
+        )}
+
+        {/*  <DropdownMenuSeparator /> */}
       </DropdownMenuContent>
     </DropdownMenu>
   );
