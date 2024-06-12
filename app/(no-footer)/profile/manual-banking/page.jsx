@@ -117,7 +117,7 @@ const ManualBankingPage = () => {
                   name="method"
                   render={({ field }) => (
                     <FormItem className="space-y-3 col-span-2 lg:col-span-1">
-                      <FormLabel className="text-t-800">
+                      <FormLabel className="text-t-800 text-sm lg:text-base">
                         Payment method<span className="text-primary"> *</span>
                       </FormLabel>
                       <Select
@@ -149,7 +149,7 @@ const ManualBankingPage = () => {
                   name="account"
                   render={({ field }) => (
                     <FormItem className="space-y-3 col-span-2 lg:col-span-1">
-                      <FormLabel className="text-t-800">
+                      <FormLabel className="text-t-800 text-sm lg:text-base">
                         Deposited A/C<span className="text-primary"> *</span>
                       </FormLabel>
                       <Select
@@ -204,7 +204,7 @@ const ManualBankingPage = () => {
                   name="date"
                   render={({ field }) => (
                     <FormItem className="space-y-3 col-span-2 lg:col-span-1 flex flex-col justify-between">
-                      <FormLabel className="text-t-800">
+                      <FormLabel className="text-t-800 text-sm lg:text-base">
                         Deposited Date<span className="text-primary"> *</span>
                       </FormLabel>
                       <Popover>
@@ -239,7 +239,7 @@ const ManualBankingPage = () => {
                           />
                         </PopoverContent>
                       </Popover>
-                      <FormMessage className="font-normal" />
+                      <FormMessage className="font-normal !mt-0" />
                     </FormItem>
                   )}
                 />
@@ -248,7 +248,7 @@ const ManualBankingPage = () => {
                   name="payment_prove"
                   render={({ field }) => (
                     <FormItem className="space-y-3 col-span-2 lg:col-span-1">
-                      <FormLabel className="text-t-800">
+                      <FormLabel className="text-t-800 text-sm lg:text-base">
                         Attachment<span className="text-primary"> *</span>
                       </FormLabel>
                       <FormControl>
