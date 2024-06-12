@@ -1,9 +1,6 @@
-import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
 import {
   BusRedIcon,
   CalenderIcon,
-  ClockAltIcon,
   ClockRedIcon,
   HotelIcon,
   LocationCircleIcon,
@@ -12,6 +9,8 @@ import {
   PlaneIcon,
   SpoonKnifeIcon,
 } from "@/components/icons/svgr";
+import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
 import numeral from "numeral";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -51,6 +50,7 @@ const UmrahCard = ({ data }) => {
         return null;
     }
   };
+
   return (
     <Card className="border-transparent relative overflow-hidden">
       <div className="absolute top-5 -right-9 rotate-45 bg-p-300 px-10 py-2 text-sm lg:text-base text-t-700 font-medium leading-snug capitalize pointer-events-none">

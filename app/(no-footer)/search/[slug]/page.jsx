@@ -13,7 +13,6 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import VisaCardSkeleton from "@/components/serach/VisaCardSkeleton";
 
 const SearchPage = async ({ params }) => {
   const { slug } = params;
