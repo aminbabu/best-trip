@@ -45,16 +45,16 @@ const DataTableRowActions = ({ row }) => {
             Edit
           </DropdownMenuItem>
         ) : (
-          ""
+          <DropdownMenuItem
+            className="flex items-center gap-2.5 text-sm text-t-700 cursor-pointer"
+            onClick={onDelete}
+          >
+            <Trash2 size={16} />
+            Delete
+          </DropdownMenuItem>
         )}
-        {/* <DropdownMenuSeparator />
-        <DropdownMenuItem
-          className="flex items-center gap-2.5 text-sm text-t-700 cursor-pointer"
-          onClick={onDelete}
-        >
-          <Trash2 size={16} />
-          Delete
-        </DropdownMenuItem> */}
+
+        {/*  <DropdownMenuSeparator /> */}
       </DropdownMenuContent>
     </DropdownMenu>
   );

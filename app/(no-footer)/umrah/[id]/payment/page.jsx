@@ -77,7 +77,7 @@ const PaymentPage = ({ params }) => {
               </div>
             </div>
             <div>
-              <h3 className="text-lg text-t-700 bg-p-300 px-4 md:px-5 py-3.5 rounded-md">
+              <h3 className="text-base text-t-700 bg-p-300 px-4 md:px-5 py-3.5 rounded-md">
                 Adult (1 Traveller)
               </h3>
               <div className="px-4 md:px-5 py-6">
@@ -99,7 +99,7 @@ const PaymentPage = ({ params }) => {
               </div>
             </div>
             <div>
-              <h3 className="text-lg text-t-700 bg-p-300 px-4 md:px-5 py-3.5 rounded-md">
+              <h3 className="text-base text-t-700 bg-p-300 px-4 md:px-5 py-3.5 rounded-md">
                 Children (1 Traveller)
               </h3>
               <div className="px-4 md:px-5 py-6">
