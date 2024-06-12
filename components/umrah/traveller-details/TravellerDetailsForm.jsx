@@ -92,12 +92,13 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
       last_name: "",
       gender: "",
       dob: "",
+      emergency_contact: "",
       // marital_status: "",
       country: "",
       city: "",
       // division: "",
-      // present_address: "",
-      // permanent_address: "",
+      present_address: "",
+      permanent_address: "",
       passport_no: "",
       document_issue_country: "",
       passport_expiry_date: "",
@@ -173,7 +174,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 name="passport"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-t-800 lg:text-lg font-normal">
+                    <FormLabel className="text-t-800 lg:text-base font-normal">
                       Upload Passport<span className="text-primary">*</span>
                     </FormLabel>
                     <FormControl>
@@ -209,7 +210,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 name="photo"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-t-800 lg:text-lg font-normal">
+                    <FormLabel className="text-t-800 lg:text-base font-normal">
                       Upload Photo<span className="text-primary">*</span>
                     </FormLabel>
                     <FormControl>
@@ -245,7 +246,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                   name="nid"
                   render={({ field }) => (
                     <FormItem className="space-y-3">
-                      <FormLabel className="text-t-800 lg:text-lg font-normal">
+                      <FormLabel className="text-t-800 lg:text-base font-normal">
                         Upload NID<span className="text-primary">*</span>
                       </FormLabel>
                       <FormControl>
@@ -272,7 +273,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                   name="covid_certificate"
                   render={({ field }) => (
                     <FormItem className="space-y-3">
-                      <FormLabel className="text-t-800 lg:text-lg font-normal">
+                      <FormLabel className="text-t-800 lg:text-base font-normal">
                         Upload Covid Certificate
                         <span className="text-primary">*</span>
                       </FormLabel>
@@ -300,7 +301,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                   name="travellers"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-t-800 lg:text-lg font-normal">
+                      <FormLabel className="text-t-800 lg:text-base font-normal">
                         Travellers<span className="text-primary">*</span>
                       </FormLabel>
                       <Select
@@ -341,7 +342,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 name="first_name"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-t-800 lg:text-lg font-normal">
+                    <FormLabel className="text-t-800 lg:text-base font-normal">
                       First Name<span className="text-primary">*</span>
                     </FormLabel>
                     <FormControl>
@@ -363,7 +364,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 name="last_name"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-t-800 lg:text-lg font-normal">
+                    <FormLabel className="text-t-800 lg:text-base font-normal">
                       Last Name<span className="text-primary">*</span>
                     </FormLabel>
                     <FormControl>
@@ -385,7 +386,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 name="gender"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-t-800 lg:text-lg font-normal">
+                    <FormLabel className="text-t-800 lg:text-base font-normal">
                       Gender<span className="text-primary">*</span>
                     </FormLabel>
                     <Select
@@ -413,7 +414,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 name="dob"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel className="text-t-800 lg:text-lg font-normal">
+                    <FormLabel className="text-t-800 lg:text-base font-normal">
                       Date of Birth<span className="text-primary">*</span>
                     </FormLabel>
                     <Popover open={isOpenDob} onOpenChange={setIsOpenDob}>
@@ -459,7 +460,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 name="country"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-t-800 lg:text-lg font-normal">
+                    <FormLabel className="text-t-800 lg:text-base font-normal">
                       Country<span className="text-primary">*</span>
                     </FormLabel>
                     <Select
@@ -493,7 +494,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 name="division"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-t-800 lg:text-lg font-normal">
+                    <FormLabel className="text-t-800 lg:text-base font-normal">
                       Division<span className="text-primary">*</span>
                     </FormLabel>
                     <Select
@@ -522,7 +523,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 name="city"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-t-800 lg:text-lg font-normal">
+                    <FormLabel className="text-t-800 lg:text-base font-normal">
                       City Name<span className="text-primary">*</span>
                     </FormLabel>
                     <FormControl>
@@ -544,7 +545,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 name={"passport_no"}
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-t-800 lg:text-lg font-normal">
+                    <FormLabel className="text-t-800 lg:text-base font-normal">
                       Passport Number<span className="text-primary">*</span>
                     </FormLabel>
                     <FormControl>
@@ -566,7 +567,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 name="document_issue_country"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-t-800 lg:text-lg font-normal">
+                    <FormLabel className="text-t-800 lg:text-base font-normal">
                       Document Issue Country
                       <span className="text-primary">*</span>
                     </FormLabel>
@@ -600,7 +601,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 name="passport_expiry_date"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel className="text-t-800 lg:text-lg font-normal">
+                    <FormLabel className="text-t-800 lg:text-base font-normal">
                       Passport Expiry Date
                       <span className="text-primary">*</span>
                     </FormLabel>
@@ -646,8 +647,75 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 )}
               />
             </div>
+            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+              <FormField
+                control={form.control}
+                name="present_address"
+                render={({ field }) => (
+                  <FormItem className="space-y-3">
+                    <FormLabel className="text-t-800 lg:text-base font-normal">
+                      Present Address<span className="text-primary">*</span>
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type="text"
+                        placeholder="Enter last name"
+                        className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+              <FormField
+                control={form.control}
+                name="permanent_address"
+                render={({ field }) => (
+                  <FormItem className="space-y-3">
+                    <FormLabel className="text-t-800 lg:text-base font-normal">
+                      Permanent Address<span className="text-primary">*</span>
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type="text"
+                        placeholder="Enter last name"
+                        className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+              <FormField
+                control={form.control}
+                name="emergency_contact"
+                render={({ field }) => (
+                  <FormItem className="space-y-3">
+                    <FormLabel className="text-t-800 lg:text-base font-normal">
+                      Emergency Contact No.
+                      <span className="text-primary">*</span>
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type="text"
+                        placeholder="Enter emergency contact no."
+                        className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
             <div className="col-span-6">
-              <h3 className="text-t-800 lg:text-lg font-medium">
+              <h3 className="text-t-800 lg:text-base font-medium">
                 Contact Details
               </h3>
             </div>
@@ -657,7 +725,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 name="email"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-t-800 lg:text-lg font-normal">
+                    <FormLabel className="text-t-800 lg:text-base font-normal">
                       Email<span className="text-primary">*</span>
                     </FormLabel>
                     <FormControl>

@@ -77,12 +77,12 @@ export const travellerSchema = z.object({
   country: z.string().min(1, { message: "Please select a valid country" }),
   // division: z.string().min(1, { message: "Please select a valid division" }),
   city: z.string().min(1, { message: "Please provide a city name" }),
-  // present_address: z
-  //   .string()
-  //   .min(1, { message: "Please provide a valid present address" }),
-  // permanent_address: z
-  //   .string()
-  //   .min(1, { message: "Please provide a valid permanent address" }),
+  present_address: z
+    .string()
+    .min(1, { message: "Please provide a valid present address" }),
+  permanent_address: z
+    .string()
+    .min(1, { message: "Please provide a valid permanent address" }),
   passport_no: z
     .string()
     .min(1, { message: "Please provide a valid passport no" }),
@@ -101,4 +101,7 @@ export const travellerSchema = z.object({
     ),
   email: z.string().email({ message: "Please provide a valid email" }),
   phone: z.string().min(1, { message: "Please provide a valid phone" }),
+  emergency_contact: z
+    .string()
+    .min(1, { message: "Please provide a emergency contact no." }),
 });
