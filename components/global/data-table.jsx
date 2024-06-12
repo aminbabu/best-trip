@@ -69,7 +69,7 @@ const DataTable = ({
       {!errors && (
         <>
           <div className="bg-white rounded-md">
-            <Table className="text-t-800 text-center lg:text-base xl:text-lg whitespace-nowrap border-separate border-spacing-y-4">
+            <Table className="text-t-800 text-center whitespace-nowrap border-separate border-spacing-y-4">
               <TableHeader className="bg-p-300">
                 {table.getHeaderGroups().map((headerGroup) => (
                   <TableRow key={headerGroup.id} className="border-none">
@@ -78,7 +78,7 @@ const DataTable = ({
                         <TableHead
                           key={header.id}
                           colSpan={header.colSpan}
-                          className="text-t-800 font-normal text-center xl:h-[60px]"
+                          className="text-t-800 font-normal text-center xl:h-[60px] lg:text-base xl:text-lg"
                         >
                           {header.isPlaceholder
                             ? null
@@ -99,7 +99,7 @@ const DataTable = ({
                       key={row.id}
                       data-state={row.getIsSelected() && "selected"}
                       className={cn(
-                        "border-b-secondary bg-[#F8F9FB] xl:h-[82px]",
+                        "border-b-secondary bg-[#F8F9FB] xl:h-[82px]  lg:text-base",
                         {
                           "bg-[#fff]": index % 2 === 0,
                         }
