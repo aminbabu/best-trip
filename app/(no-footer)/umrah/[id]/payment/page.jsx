@@ -27,7 +27,7 @@ const PaymentPage = ({ params }) => {
             </h1>
             <p className="mb-6">1 Friday In Makkah- 1 Friday In Madinah</p>
             <div>
-              <h3 className="text-lg text-t-700 bg-p-300 px-4 md:px-5 py-3.5 rounded-md">
+              <h3 className="text-base text-t-700 bg-p-300 px-4 md:px-5 py-3.5 rounded-md">
                 Booking Summary
               </h3>
               <div className="flex flex-col md:flex-row justify-between gap-4 px-4 md:px-5 py-6">

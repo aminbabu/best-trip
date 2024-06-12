@@ -75,7 +75,7 @@ const DepositForm = () => {
       router.push("/payment-method/online-banking");
     }
 
-    if (values.online || values.wallet) {
+    if (openOnline || openManual) {
       if (!values.ssl) {
         return setError("Please select a payment method");
       }
