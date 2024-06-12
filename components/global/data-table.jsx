@@ -81,7 +81,7 @@ const DataTable = ({
                         <TableHead
                           key={header.id}
                           colSpan={header.colSpan}
-                          className="text-t-800 font-normal text-center xl:h-[60px] lg:text-base xl:text-lg px-8"
+                          className="text-t-800 font-medium text-center xl:h-[60px] lg:text-base px-8"
                         >
                           {header.isPlaceholder
                             ? null
