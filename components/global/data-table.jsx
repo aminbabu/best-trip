@@ -74,14 +74,14 @@ const DataTable = ({
                 {table.getHeaderGroups().map((headerGroup) => (
                   <TableRow
                     key={headerGroup.id}
-                    className="border-none [&>*:first-child]:text-left"
+                    className="border-none [&>*:first-child]:text-left [&>*:first-child]:pl-[90px]"
                   >
                     {headerGroup.headers.map((header) => {
                       return (
                         <TableHead
                           key={header.id}
                           colSpan={header.colSpan}
-                          className="text-t-800 font-medium text-center xl:h-[60px] lg:text-base px-8"
+                          className="text-t-800 font-medium text-center xl:h-[60px] lg:text-base"
                         >
                           {header.isPlaceholder
                             ? null

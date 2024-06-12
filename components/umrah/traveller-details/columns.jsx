@@ -11,7 +11,7 @@ export const columns = [
       <DataTableColumnHeader column={column} title="Name" />
     ),
     cell: ({ row }) => (
-      <div className="flex items-center gap-x-2.5">
+      <div className="flex items-center gap-x-3">
         {row.original?.avatar ? (
           <Image
             src={row.getValue("avatar")}
