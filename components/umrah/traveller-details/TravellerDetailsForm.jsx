@@ -747,7 +747,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 name="phone"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="text-t-800 lg:text-lg font-normal">
+                    <FormLabel className="text-t-800 lg:text-base font-normal">
                       Phone<span className="text-primary">*</span>
                     </FormLabel>
                     <FormControl>
