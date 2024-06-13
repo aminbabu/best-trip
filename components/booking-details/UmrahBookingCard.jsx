@@ -66,7 +66,7 @@ const UmrahBookingCard = () => {
         />
         <div className="flex-1 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
           <div>
-            <h4 className="text-base xl:text-lg text-t-900 font-medium leading-relaxed mb-1.5">
+            <h4 className="text-base xl:text-lg text-t-800 font-medium leading-relaxed mb-1.5">
               {data.name}
             </h4>
             <p className="text-sm lg:text-base text-t-800 mb-12 lg:mb-4 xl:mb-12">
