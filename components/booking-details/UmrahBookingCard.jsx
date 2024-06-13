@@ -56,6 +56,9 @@ const UmrahBookingCard = () => {
 
   return (
     <Card className="border-transparent relative overflow-hidden">
+      <div className="absolute top-5 -right-9 rotate-45 bg-p-300 px-10 py-2 text-sm lg:text-base text-t-700 font-medium leading-snug capitalize pointer-events-none">
+        {data.type}
+      </div>
       <CardContent className="p-4 sm:p-5 lg:p-8 xl:leading-8 flex flex-col md:flex-row lg:items-center justify-between gap-6 lg:gap-9">
         <Image
           src={cardImg}
