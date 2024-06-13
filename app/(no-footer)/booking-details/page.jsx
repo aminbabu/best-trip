@@ -27,7 +27,7 @@ const BookingDetails = () => {
                 </h2>
               </div>
               <Card className="border-transparent relative overflow-hidden">
-                <CardContent className="p-4 sm:p-5 lg:p-8 lg:leading-relaxed grid grid-cols-12 justify-between lg:items-center gap-5 xl:gap-9 text-t-700">
+                <CardContent className="p-4 sm:p-5 lg:p-8 lg:leading-relaxed grid grid-cols-12 justify-between lg:items-center gap-5 xl:gap-[38px] text-t-700">
                   <div className="grid grid-cols-3 xl:flex xl:gap-x-10 col-span-12 xl:col-span-5">
                     <ul className="col-span-1 space-y-5">
                       <li>Customer</li>
