@@ -21,7 +21,7 @@ const BookingDetails = () => {
           <div className="col-span-12 xl:col-span-9 space-y-10">
             <div>
               <div className="px-[34px] py-[25px] bg-[#FFEFEF] rounded-t">
-                <h2 className="text-base lg:text-lg leading-snug font-medium text-t-700">
+                <h2 className="text-base leading-snug font-medium text-t-700">
                   Booking Reference :{" "}
                   <span className="text-p-900">BTU24000024</span>
                 </h2>
