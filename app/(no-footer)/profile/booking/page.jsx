@@ -5,7 +5,9 @@ const Booking = () => {
   return (
     <div>
       <Link href="/booking-details">
-        <h1>Booking</h1>
+        <h1 className="underline hover:no-underline">
+          Click here to see further page
+        </h1>
       </Link>
     </div>
   );
