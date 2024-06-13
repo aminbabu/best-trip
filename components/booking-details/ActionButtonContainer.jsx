@@ -22,7 +22,7 @@ const ActionButtonContainer = () => {
       {actionButtons.map((btn) => (
         <Button
           key={btn.id}
-          className="bg-white text-t-700 rounded shadow-[0px-4px-3px-0px-#07143705] px-3.5 py-5 hover:bg-[#fefefe] justify-start"
+          className="bg-white text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start"
         >
           <FlightTokenIcon /> {btn.title}
         </Button>
