@@ -3,12 +3,19 @@ import React from "react";
 import UmrahBookingCard from "@/components/booking-details/UmrahBookingCard";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import TravellerBookingForm from "@/components/booking-details/TravellerBookingForm";
+
+const travellerList = [
+  { id: 1, type: "Adult", no: 1 },
+  { id: 2, type: "Child", no: 2 },
+  { id: 3, type: "Infant", no: 3 },
+];
 
 const BookingDetails = () => {
   return (
-    <main>
+    <main className="bg-[#FBFBFB]">
       <Container>
-        <div className="grid grid-cols-12 gap-8 mt-[72px] mb-[86px]">
+        <div className="grid grid-cols-12 gap-8 pt-[72px] pb-[86px]">
           <div className="col-span-9 space-y-10">
             <div>
               <div className="px-[34px] py-[25px] bg-[#FFEFEF] rounded-t">
@@ -57,9 +64,11 @@ const BookingDetails = () => {
               </Card>
             </div>
 
-            <div>
-              <UmrahBookingCard />
-            </div>
+            <UmrahBookingCard />
+
+            {travellerList.map((traveller) => (
+              <TravellerBookingForm key={traveller.id} traveller={traveller} />
+            ))}
           </div>
           <div className="col-span-3 grid space-y-7">
             <Button>Show More Details</Button>

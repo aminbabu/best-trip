@@ -1,0 +1,364 @@
+"use client";
+
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent } from "../ui/card";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { travellerSchema } from "@/schema/zod";
+
+const TravellerBookingForm = ({ traveller }) => {
+  const form = useForm({
+    resolver: zodResolver(travellerSchema),
+    defaultValues: {
+      //   passport: "",
+      //   photo: "",
+      //   nid: "",
+      //   covid_certificate: "",
+      travellers: "1",
+      first_name: "Md. Irfanul",
+      last_name: "Haque",
+      gender: "Male",
+      dob: "09-08-1996",
+      emergency_contact: "+88019737475665",
+      // marital_status: "",
+      country: "Bangladesh",
+      city: "Dhaka",
+      // division: "",
+      present_address: "Village, P.O, District",
+      permanent_address: "Village, P.O, District",
+      passport_no: "EA04353852",
+      document_issue_country: "Bangladesh",
+      passport_expiry_date: "01-12-2028",
+      email: "bestrip@bd.com",
+      phone: "+8801973745665",
+    },
+  });
+
+  return (
+    <Card className="border-transparent relative overflow-hidden">
+      <CardContent className="p-4 sm:p-5 lg:p-8 lg:leading-relaxed  justify-between lg:items-center gap-5 xl:gap-9 text-t-700">
+        <h3 className="text-lg font-medium text-[#494949] pb-10">
+          Traveler {traveller.no} ({traveller.type})
+        </h3>
+        <Form {...form}>
+          <form className="space-y-16">
+            <div className="grid grid-cols-6 gap-8 lg:gap-x-10">
+              <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <FormField
+                  control={form.control}
+                  name="first_name"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-t-800 lg:text-base font-normal">
+                        First Name
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          placeholder="Enter first name"
+                          disabled
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <FormField
+                  control={form.control}
+                  name="last_name"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-t-800 lg:text-base font-normal">
+                        Last Name
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          disabled
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <FormField
+                  control={form.control}
+                  name="gender"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-t-800 lg:text-base font-normal">
+                        Gender
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          disabled
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <FormField
+                  control={form.control}
+                  name="dob"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col">
+                      <FormLabel className="text-t-800 lg:text-base font-normal">
+                        Date of Birth
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          disabled
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <FormField
+                  control={form.control}
+                  name="country"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-t-800 lg:text-base font-normal">
+                        Country
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          disabled
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <FormField
+                  control={form.control}
+                  name="city"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-t-800 lg:text-base font-normal">
+                        City Name
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          disabled
+                          placeholder="Enter city name"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <FormField
+                  control={form.control}
+                  name={"passport_no"}
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-t-800 lg:text-base font-normal">
+                        Passport Number
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          disabled
+                          placeholder="Type passport number"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <FormField
+                  control={form.control}
+                  name="document_issue_country"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-t-800 lg:text-base font-normal">
+                        Document Issue Country
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          disabled
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <FormField
+                  control={form.control}
+                  disabled
+                  name="passport_expiry_date"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col">
+                      <FormLabel className="text-t-800 lg:text-base font-normal">
+                        Passport Expiry Date
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          placeholder="Enter first name"
+                          disabled
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <FormField
+                  control={form.control}
+                  name="present_address"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-t-800 lg:text-base font-normal">
+                        Present Address
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          disabled
+                          placeholder="Enter last name"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <FormField
+                  control={form.control}
+                  name="permanent_address"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-t-800 lg:text-base font-normal">
+                        Permanent Address
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          disabled
+                          placeholder="Enter last name"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <FormField
+                  control={form.control}
+                  name="emergency_contact"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-t-800 lg:text-base font-normal">
+                        Emergency Contact No.
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          disabled
+                          placeholder="Enter emergency contact no."
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-t-800 lg:text-base font-normal">
+                        Email
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="email"
+                          disabled
+                          placeholder="Enter email"
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="col-span-6 sm:col-span-3 lg:col-span-2 relative">
+                <FormField
+                  control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="text-t-800 lg:text-base font-normal">
+                        Phone
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          disabled
+                          className="h-[3.25rem] text-base px-5 py-4 text-t-600 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
+          </form>
+        </Form>
+      </CardContent>
+    </Card>
+  );
+};
+
+export default TravellerBookingForm;
