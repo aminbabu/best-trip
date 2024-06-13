@@ -17,11 +17,11 @@ const BookingDetails = () => {
   return (
     <main className="bg-[#FBFBFB]">
       <Container>
-        <div className="grid grid-cols-12 gap-8 pt-[72px] pb-[86px]">
-          <div className="col-span-9 space-y-10">
+        <div className="grid grid-cols-12 lg:gap-8 pt-[72px] pb-[86px]">
+          <div className="col-span-12 xl:col-span-9 space-y-10">
             <div>
               <div className="px-[34px] py-[25px] bg-[#FFEFEF] rounded-t">
-                <h2 className="text-lg leading-snug font-medium text-t-700">
+                <h2 className="text-base lg:text-lg leading-snug font-medium text-t-700">
                   Booking Details :{" "}
                   <span className="text-p-900">BTU24000024</span>
                 </h2>

@@ -18,7 +18,7 @@ const actionButtons = [
 
 const ActionButtonContainer = () => {
   return (
-    <div className="col-span-3 space-y-7 flex flex-col">
+    <div className="col-span-12 xl:col-span-3 space-y-7 flex flex-col">
       {actionButtons.map((btn) => (
         <Button
           key={btn.id}
