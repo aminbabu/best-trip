@@ -4,6 +4,8 @@ import UmrahBookingCard from "@/components/booking-details/UmrahBookingCard";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import TravellerBookingForm from "@/components/booking-details/TravellerBookingForm";
+import { FlightTokenIcon } from "@/components/icons/svgr";
+import ActionButtonContainer from "@/components/booking-details/ActionButtonContainer";
 
 const travellerList = [
   { id: 1, type: "Adult", no: 1 },
@@ -70,14 +72,8 @@ const BookingDetails = () => {
               <TravellerBookingForm key={traveller.id} traveller={traveller} />
             ))}
           </div>
-          <div className="col-span-3 grid space-y-7">
-            <Button>Show More Details</Button>
-            <Button>Show More Details</Button>
-            <Button>Show More Details</Button>
-            <Button>Show More Details</Button>
-            <Button>Show More Details</Button>
-            <Button>Show More Details</Button>
-          </div>
+
+          <ActionButtonContainer />
         </div>
       </Container>
     </main>
