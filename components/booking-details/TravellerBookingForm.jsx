@@ -54,6 +54,7 @@ const TravellerBookingForm = ({ traveller }) => {
                 <FormField
                   control={form.control}
                   name="first_name"
+                  disabled
                   render={({ field }) => (
                     <FormItem className="space-y-3">
                       <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -76,6 +77,7 @@ const TravellerBookingForm = ({ traveller }) => {
                 <FormField
                   control={form.control}
                   name="last_name"
+                  disabled
                   render={({ field }) => (
                     <FormItem className="space-y-3">
                       <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -97,6 +99,7 @@ const TravellerBookingForm = ({ traveller }) => {
                 <FormField
                   control={form.control}
                   name="gender"
+                  disabled
                   render={({ field }) => (
                     <FormItem className="space-y-3">
                       <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -118,6 +121,7 @@ const TravellerBookingForm = ({ traveller }) => {
                 <FormField
                   control={form.control}
                   name="dob"
+                  disabled
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
                       <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -139,6 +143,7 @@ const TravellerBookingForm = ({ traveller }) => {
                 <FormField
                   control={form.control}
                   name="country"
+                  disabled
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -160,6 +165,7 @@ const TravellerBookingForm = ({ traveller }) => {
                 <FormField
                   control={form.control}
                   name="city"
+                  disabled
                   render={({ field }) => (
                     <FormItem className="space-y-3">
                       <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -182,6 +188,7 @@ const TravellerBookingForm = ({ traveller }) => {
                 <FormField
                   control={form.control}
                   name={"passport_no"}
+                  disabled
                   render={({ field }) => (
                     <FormItem className="space-y-3">
                       <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -204,6 +211,7 @@ const TravellerBookingForm = ({ traveller }) => {
                 <FormField
                   control={form.control}
                   name="document_issue_country"
+                  disabled
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -248,6 +256,7 @@ const TravellerBookingForm = ({ traveller }) => {
                 <FormField
                   control={form.control}
                   name="present_address"
+                  disabled
                   render={({ field }) => (
                     <FormItem className="space-y-3">
                       <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -270,6 +279,7 @@ const TravellerBookingForm = ({ traveller }) => {
                 <FormField
                   control={form.control}
                   name="permanent_address"
+                  disabled
                   render={({ field }) => (
                     <FormItem className="space-y-3">
                       <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -292,6 +302,7 @@ const TravellerBookingForm = ({ traveller }) => {
                 <FormField
                   control={form.control}
                   name="emergency_contact"
+                  disabled
                   render={({ field }) => (
                     <FormItem className="space-y-3">
                       <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -314,6 +325,7 @@ const TravellerBookingForm = ({ traveller }) => {
                 <FormField
                   control={form.control}
                   name="email"
+                  disabled
                   render={({ field }) => (
                     <FormItem className="space-y-3">
                       <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -336,6 +348,7 @@ const TravellerBookingForm = ({ traveller }) => {
                 <FormField
                   control={form.control}
                   name="phone"
+                  disabled
                   render={({ field }) => (
                     <FormItem className="space-y-3">
                       <FormLabel className="text-t-800 lg:text-base font-normal">

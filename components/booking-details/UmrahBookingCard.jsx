@@ -69,7 +69,7 @@ const UmrahBookingCard = () => {
             <h4 className="text-base xl:text-lg text-t-900 font-medium leading-relaxed mb-1.5">
               {data.name}
             </h4>
-            <p className="text-sm lg:text-base text-t-800 mb-12 lg:mb-4 xl:mb-8">
+            <p className="text-sm lg:text-base text-t-800 mb-12 lg:mb-4 xl:mb-12">
               1 Friday In Makkah- 1 Friday In Madinah
             </p>
             <div className="flex flex-col xl:flex-row justify-between gap-4 xl:gap-9">
@@ -90,12 +90,6 @@ const UmrahBookingCard = () => {
                   <ClockAltIcon className="mt-0.5 flex-shrink-0" />
                   <span className="flex-shrink-0">
                     {data.days} Days | {data.nights} Nights
-                  </span>
-                </li>
-                <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
-                  <PeopleIcon className="mt-0.5 flex-shrink-0" />
-                  <span className="flex-shrink-0">
-                    Group Available : {data.group} Pax
                   </span>
                 </li>
               </ul>
