@@ -56,7 +56,7 @@ const UmrahBookingCard = () => {
 
   return (
     <Card className="border-transparent relative overflow-hidden">
-      <div className="absolute top-5 -right-9 rotate-45 bg-p-300 px-10 py-2 text-sm lg:text-base text-t-700 font-medium leading-snug capitalize pointer-events-none">
+      <div className="absolute top-5 -right-9 rotate-45 bg-p-300 px-10 py-2 text-sm text-t-700 font-medium leading-snug capitalize pointer-events-none">
         {data.type}
       </div>
       <CardContent className="p-4 sm:p-5 lg:p-8 xl:leading-8 flex flex-col md:flex-row lg:items-center justify-between gap-6 lg:gap-9">
@@ -69,7 +69,7 @@ const UmrahBookingCard = () => {
         />
         <div className="flex-1 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
           <div>
-            <h4 className="text-base xl:text-lg text-t-800 font-medium leading-relaxed mb-1.5">
+            <h4 className="text-base text-t-800 font-medium leading-relaxed mb-1.5">
               {data.name}
             </h4>
             <p className="text-sm lg:text-base text-t-800 mb-12 lg:mb-4 xl:mb-12">

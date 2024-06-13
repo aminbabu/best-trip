@@ -20,7 +20,7 @@ const BookingDetails = () => {
         <div className="grid grid-cols-12 lg:gap-8 pt-[72px] pb-[86px]">
           <div className="col-span-12 xl:col-span-9 space-y-10">
             <div>
-              <div className="px-[34px] py-[25px] bg-[#FFEFEF] rounded-t">
+              <div className="px-[34px] py-6 bg-[#FFEFEF] rounded-t">
                 <h2 className="text-base leading-snug font-medium text-t-700">
                   Booking Reference :{" "}
                   <span className="text-p-900">BTU24000024</span>
@@ -29,7 +29,7 @@ const BookingDetails = () => {
               <Card className="border-transparent relative overflow-hidden">
                 <CardContent className="p-4 sm:p-5 lg:p-8 lg:leading-relaxed grid grid-cols-12 justify-between lg:items-center gap-5 xl:gap-9 text-t-700">
                   <div className="grid grid-cols-3 xl:flex xl:gap-x-10 col-span-12 xl:col-span-5">
-                    <ul className="col-span-1 font-medium space-y-5">
+                    <ul className="col-span-1 space-y-5">
                       <li>Customer</li>
                       <li>Email</li>
                       <li>Phone</li>
@@ -47,7 +47,7 @@ const BookingDetails = () => {
                     </ul>
                   </div>
                   <div className="grid grid-cols-3 xl:flex xl:gap-x-10 col-span-12 xl:col-span-6">
-                    <ul className="col-span-1 font-medium space-y-5">
+                    <ul className="col-span-1 space-y-5">
                       <li>Booked On</li>
                       <li>Payment</li>
                       <li>Issue At</li>
