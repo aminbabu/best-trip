@@ -94,7 +94,7 @@ const UmrahBookingCard = () => {
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
                   <PeopleIcon className="mt-0.5 flex-shrink-0" />
-                  <span className="flex-shrink-0">Package Type: Standard</span>
+                  <span className="flex-shrink-0">Package Type : Standard</span>
                 </li>
               </ul>
               <div className="flex flex-col gap-y-4 justify-end">
