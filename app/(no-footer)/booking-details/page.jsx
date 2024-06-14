@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import TravellerBookingForm from "@/components/booking-details/TravellerBookingForm";
 import { FlightTokenIcon } from "@/components/icons/svgr";
 import ActionButtonContainer from "@/components/booking-details/ActionButtonContainer";
+import FareDetailsCard from "@/components/booking-details/FareDetailsCard";
 
 const travellerList = [
   { id: 1, type: "Adult", no: 1 },
@@ -17,7 +18,7 @@ const BookingDetails = () => {
   return (
     <main className="bg-[#FBFBFB]">
       <Container>
-        <div className="grid grid-cols-12 lg:gap-8 pt-[72px] pb-[86px]">
+        <div className="grid grid-cols-12 lg:gap-8 pt-[72px] pb-[86px] space-y-8">
           <div className="col-span-12 xl:col-span-9 space-y-10">
             <div>
               <div className="px-[34px] py-6 bg-[#FFEFEF] rounded-t">
@@ -67,6 +68,8 @@ const BookingDetails = () => {
             </div>
 
             <UmrahBookingCard />
+
+            <FareDetailsCard />
 
             {travellerList.map((traveller) => (
               <TravellerBookingForm key={traveller.id} traveller={traveller} />

@@ -1,7 +1,6 @@
 import React from "react";
 import { FlightTokenIcon, PrinterIcon } from "../icons/svgr";
 import { Button } from "../ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import {
   Accordion,
   AccordionContent,
@@ -9,32 +8,16 @@ import {
   AccordionTrigger,
 } from "../ui/accordion";
 
-const actionButtons = [
-  { id: 1, title: "Show More Details" },
-  { id: 2, title: "Order Booking" },
-  { id: 3, title: "Account Balance Low" },
-  { id: 4, title: "Cancel Booking" },
-  { id: 5, title: "Edit Booking Status" },
-  { id: 6, title: "Edit Booking" },
-  { id: 7, title: "Edit Supplier" },
-  { id: 8, title: "Ticket Number Update" },
-  { id: 9, title: "Print & Download" },
-  { id: 10, title: "Booking History" },
-  { id: 11, title: "Extend Time Limit" },
-];
-
 const ActionButtonContainer = () => {
   return (
     <div className="col-span-12 xl:col-span-3 space-y-7 flex flex-col">
-      {/* {actionButtons.map((btn) => ( */}
       <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
         <FlightTokenIcon /> Show More Details
       </Button>
-      {/* ))} */}
       <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
         <FlightTokenIcon /> Order Booking
       </Button>
-      <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
+      <Button className="bg-white text-base font-normal text-p-900 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
         Account Balance Low
       </Button>
       <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
