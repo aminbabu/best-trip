@@ -4,11 +4,11 @@ import { Card, CardContent } from "../ui/card";
 const FareDetailsCard = () => {
   return (
     <Card className="border-transparent relative overflow-hidden">
-      <CardContent className="p-4 sm:p-5 lg:p-8 xl:leading-8 flex flex-col md:flex-row lg:items-center justify-between gap-6 lg:gap-9">
-        <div className="w-full overflow-auto ">
-          <h3 className="text-lg font-medium text-[#494949] pb-5">
-            Fare Summary
-          </h3>
+      <CardContent className="p-4 sm:p-5 lg:p-8 xl:leading-8 flex flex-col justify-between">
+        <h3 className="text-lg font-medium text-[#494949] pb-5 text-left">
+          Fare Summary
+        </h3>
+        <div className="w-full overflow-auto">
           <div class="grid grid-rows-3 min-w-max lg:min-w-fit text-base text-center overflow-hidden text-t-800">
             <ul className="grid grid-cols-6 bg-[#FFEFEF]">
               <li className="flex items-center justify-center px-2.5 py-1.5">

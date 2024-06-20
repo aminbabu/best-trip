@@ -8,7 +8,7 @@ const ProfileLayout = ({ children }) => {
         <div className="lg:sticky lg:top-36 lg:w-80 bg-white">
           <Sidebar />
         </div>
-        <div className="flex-1">{children}</div>
+        <div className="flex-1 min-w-0">{children}</div>
       </Container>
     </section>
   );

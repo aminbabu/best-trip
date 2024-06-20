@@ -65,6 +65,8 @@ import ReverseExchangeIcon from "@/public/icons/reverse-exchange.svg";
 import EyeIcon from "@/public/icons/eye.svg";
 import EyeSlashIcon from "@/public/icons/eye-slash.svg";
 import FlightTokenIcon from "@/public/icons/flight-token.svg";
+import FilterIcon from "@/public/icons/filter.svg";
+import ExportIcon from "@/public/icons/export.svg";
 
 export {
   FacebookIcon,
@@ -134,4 +136,6 @@ export {
   EyeIcon,
   EyeSlashIcon,
   FlightTokenIcon,
+  FilterIcon,
+  ExportIcon,
 };

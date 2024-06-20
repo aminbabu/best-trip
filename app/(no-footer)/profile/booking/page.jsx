@@ -1,3 +1,4 @@
+import PaymentTable from "@/components/profile/PaymentTable";
 import Link from "next/link";
 import React from "react";
 
@@ -9,6 +10,7 @@ const Booking = () => {
           Click here to see further page
         </h1>
       </Link>
+      {/* <PaymentTable /> */}
     </div>
   );
 };

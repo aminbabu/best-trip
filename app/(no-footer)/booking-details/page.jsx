@@ -18,7 +18,7 @@ const BookingDetails = () => {
   return (
     <main className="bg-[#FBFBFB]">
       <Container>
-        <div className="grid grid-cols-12 lg:gap-8 pt-[72px] pb-[86px] space-y-8">
+        <div className="grid grid-cols-12 lg:gap-8 pt-[72px] pb-[86px] space-y-8 lg:space-y-0">
           <div className="col-span-12 xl:col-span-9 space-y-10">
             <div>
               <div className="px-[34px] py-6 bg-[#FFEFEF] rounded-t">

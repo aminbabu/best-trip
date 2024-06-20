@@ -89,10 +89,10 @@
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
-    font-size: 0.75rem;
+    /* font-size: 0.75rem; */
   }
 
-  @media screen and (min-width: 480px) {
+  /* @media screen and (min-width: 480px) {
     body {
       font-size: 0.875rem;
     }
@@ -102,6 +102,12 @@
     body {
       font-size: 1rem;
     }
+  } */
+
+  table thead th,
+  table tbody td {
+    text-align: left;
+    padding: theme("padding.2") theme("padding.4");
   }
 }
 
