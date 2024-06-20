@@ -17,6 +17,7 @@ import Counter from "@/components/global/Counter";
 import { Loader } from "lucide-react";
 import { useRouter } from "next/navigation";
 import moment from "moment";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 const schedules = [
   "january",
@@ -142,14 +143,14 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         className
       )}
     >
-      <DropdownMenu
+      <Popover
         open={open === 1}
         onOpenChange={(state) => {
           setErrors((prevState) => ({ ...prevState, schedule: null }));
           handleDropdown(state ? 1 : -1);
         }}
       >
-        <DropdownMenuTrigger asChild className="flex-1" disabled={isDisabled}>
+        <PopoverTrigger asChild className="flex-1" disabled={isDisabled}>
           <Button
             variant="outline"
             className={cn(
@@ -167,37 +168,39 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
               <ArrowIcon className="hidden lg:inline-block" />
             </span>
           </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent
+        </PopoverTrigger>
+        <PopoverContent
           align="start"
           className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
-            {schedules.map((item) => (
-              <DropdownMenuItem
-                key={item}
-                onClick={() => setSchedule(item)}
-                className={cn(
-                  "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
-                  {
-                    "bg-p-900 text-white": schedule === item,
-                  }
-                )}
-              >
-                {item}
-              </DropdownMenuItem>
-            ))}
+            <ul>
+              {schedules.map((item) => (
+                <li
+                  key={item}
+                  onClick={() => setSchedule(item)}
+                  className={cn(
+                    "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
+                    {
+                      "bg-p-900 text-white": schedule === item,
+                    }
+                  )}
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
           </ScrollArea>
-        </DropdownMenuContent>
-      </DropdownMenu>
-      <DropdownMenu
+        </PopoverContent>
+      </Popover>
+      <Popover
         open={open === 2}
         onOpenChange={(state) => {
           setErrors((prevState) => ({ ...prevState, type: null }));
           handleDropdown(state ? 2 : -1);
         }}
       >
-        <DropdownMenuTrigger asChild className="flex-1" disabled={isDisabled}>
+        <PopoverTrigger asChild className="flex-1" disabled={isDisabled}>
           <Button
             variant="outline"
             className={cn(
@@ -215,37 +218,39 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
               <ArrowIcon className="hidden lg:inline-block" />
             </span>
           </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent
+        </PopoverTrigger>
+        <PopoverContent
           align="start"
           className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
-            {types.map((item) => (
-              <DropdownMenuItem
-                key={item}
-                className={cn(
-                  "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
-                  {
-                    "bg-p-900 text-white": type === item,
-                  }
-                )}
-                onSelect={() => setType(item)}
-              >
-                {item}
-              </DropdownMenuItem>
-            ))}
+            <ul>
+              {types.map((item) => (
+                <li
+                  key={item}
+                  className={cn(
+                    "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
+                    {
+                      "bg-p-900 text-white": type === item,
+                    }
+                  )}
+                  onSelect={() => setType(item)}
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
           </ScrollArea>
-        </DropdownMenuContent>
-      </DropdownMenu>
-      <DropdownMenu
+        </PopoverContent>
+      </Popover>
+      <Popover
         open={open === 3}
         onOpenChange={(state) => {
           setErrors((prevState) => ({ ...prevState, duration: null }));
           handleDropdown(state ? 3 : -1);
         }}
       >
-        <DropdownMenuTrigger asChild className="flex-1" disabled={isDisabled}>
+        <PopoverTrigger asChild className="flex-1" disabled={isDisabled}>
           <Button
             variant="outline"
             className={cn(
@@ -263,37 +268,39 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
               <ArrowIcon className="hidden lg:inline-block" />
             </span>
           </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent
+        </PopoverTrigger>
+        <PopoverContent
           align="start"
           className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
-            {durations.map((item) => (
-              <DropdownMenuItem
-                key={item}
-                onSelect={() => setDuration(item)}
-                className={cn(
-                  "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer",
-                  {
-                    "bg-p-900 text-white": duration === item,
-                  }
-                )}
-              >
-                {item} Days
-              </DropdownMenuItem>
-            ))}
+            <ul>
+              {durations.map((item) => (
+                <li
+                  key={item}
+                  onSelect={() => setDuration(item)}
+                  className={cn(
+                    "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer",
+                    {
+                      "bg-p-900 text-white": duration === item,
+                    }
+                  )}
+                >
+                  {item} Days
+                </li>
+              ))}
+            </ul>
           </ScrollArea>
-        </DropdownMenuContent>
-      </DropdownMenu>
-      <DropdownMenu
+        </PopoverContent>
+      </Popover>
+      <Popover
         open={open === 4}
         onOpenChange={(state) => {
           setErrors((prevState) => ({ ...prevState, travellers: null }));
           handleDropdown(state ? 4 : -1);
         }}
       >
-        <DropdownMenuTrigger asChild className="flex-1" disabled={isDisabled}>
+        <PopoverTrigger asChild className="flex-1" disabled={isDisabled}>
           <Button
             variant="outline"
             className={cn(
@@ -320,8 +327,8 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
               <ArrowIcon className="hidden lg:inline-block" />
             </span>
           </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent
+        </PopoverTrigger>
+        <PopoverContent
           align="start"
           className="px-0 py-2 border-transparent min-w-[308px]"
         >
@@ -347,8 +354,8 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
           >
             Done
           </Button>
-        </DropdownMenuContent>
-      </DropdownMenu>
+        </PopoverContent>
+      </Popover>
       <Button
         size="lg"
         className="py-2.5 lg:py-5 rounded-lg lg:roundemd text-sm lg:text-base"

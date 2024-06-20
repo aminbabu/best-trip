@@ -46,7 +46,7 @@ const PaymentTable = () => {
           </div>
         </div>
         <div className="overflow-auto">
-          <table class="w-full whitespace-nowrap">
+          <table class="w-full whitespace-nowrap text-sm">
             <thead>
               <tr>
                 <th className="min-w-36">Ref. Number</th>
