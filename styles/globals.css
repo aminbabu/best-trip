@@ -107,7 +107,7 @@
   table thead th,
   table tbody td {
     text-align: left;
-    padding: theme("padding.2") theme("padding.4");
+    padding: theme("padding.4") theme("padding.5");
   }
 }
 

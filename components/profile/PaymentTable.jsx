@@ -46,31 +46,38 @@ const PaymentTable = () => {
             </Button>
           </div>
         </div>
-        <div className="overflow-auto">
+        <div className="overflow-auto scrollbar-thin scrollbar-thumb-[#CFD1D4] scrollbar-track-[#F4F4F4]">
           <table class="w-full whitespace-nowrap text-sm text-t-600 font-normal ">
             <thead>
-              <tr className="uppercase">
-                <th className="min-w-36 font-medium">Ref. Number</th>
-                <th className="min-w-36 font-medium">Status</th>
-                <th className="min-w-36 font-medium">Customer</th>
-                <th className="min-w-36 font-medium">Type</th>
-                <th className="min-w-36 font-medium">Details</th>
-                <th className="min-w-36 font-medium">Amount</th>
-                <th className="min-w-36 font-medium">Created at</th>
-                <th className="min-w-36 font-medium">Receipt</th>
-                <th className="min-w-36 font-medium">Actions</th>
+              <tr className="uppercase text-xs ">
+                <th className="min-w-36 font-semibold">Reference No.</th>
+                <th className="min-w-36 font-semibold">Status</th>
+                <th className="min-w-36 font-semibold">Customer</th>
+                <th className="min-w-36 font-semibold">Type</th>
+                <th className="min-w-36 font-semibold">Details</th>
+                <th className="min-w-36 font-semibold">Amount</th>
+                <th className="min-w-36 font-semibold">Created at</th>
+                <th className="min-w-36 font-semibold">Receipt</th>
+                <th className="min-w-36 font-semibold">Rejected Reason</th>
               </tr>
             </thead>
             <tbody>
               {"abcdefghij".split("").map((row) => (
-                <tr key={row} className="border-b border-dotted">
+                <tr
+                  key={row}
+                  className="border-b border-dotted border-[#f1f1f4] font-medium"
+                >
                   <td>BF000000009</td>
                   <td>
                     <span className="px-2.5 py-1 text-xs bg-blue-400 text-white rounded">
                       Request
                     </span>
                   </td>
-                  <td>Md. Irafnul Haque</td>
+                  <td>
+                    <a className="hover:text-primary" href="#">
+                      Md. Irafnul Haque
+                    </a>
+                  </td>
                   <td>Bank Transfer</td>
                   <td>Nagad</td>
                   <td>1,500.00 BDT</td>
@@ -83,28 +90,7 @@ const PaymentTable = () => {
                       View Receipt
                     </a>
                   </td>
-                  <td>
-                    <Popover>
-                      <PopoverTrigger>
-                        <Button className="px-3 py-1.5 text-sm font-normal bg-p-300 text-t-600 hover:text-white rounded">
-                          Actions
-                        </Button>
-                      </PopoverTrigger>
-                      <PopoverContent
-                        align={"start"}
-                        className="w-36 text-xs p-4 border-none shadow-sm"
-                      >
-                        <ul className="space-y-3 text-t-600">
-                          <li className="hover:bg-p-300 hover:text-primary px-2 py-2 rounded-sm">
-                            Approved
-                          </li>
-                          <li className="hover:bg-p-300 hover:text-primary px-2 py-2 rounded-sm">
-                            Rejected
-                          </li>
-                        </ul>
-                      </PopoverContent>
-                    </Popover>
-                  </td>
+                  <td>N/A</td>
                 </tr>
               ))}
             </tbody>
