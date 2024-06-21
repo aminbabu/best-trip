@@ -14,7 +14,7 @@ const PaymentTable = () => {
           {/* <div className="px-5 py-4 bg-p-300 rounded">
             <p>No Records!..</p>
           </div> */}
-          <table class="w-full whitespace-nowrap text-t-600 text-sm font-medium">
+          <table class="w-full whitespace-nowrap text-t-600 text-sm font-normal">
             <thead>
               <tr className="uppercase border-b border-dotted border-[#f1f1f4]">
                 <th className="min-w-36 font-semibold">Ref. Number</th>
