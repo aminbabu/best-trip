@@ -14,7 +14,7 @@ const PaymentTable = () => {
           {/* <div className="px-5 py-4 bg-p-300 rounded">
             <p>No Records!..</p>
           </div> */}
-          <table class="w-full whitespace-nowrap text-t-600 font-medium">
+          <table class="w-full whitespace-nowrap text-t-600 text-sm font-medium">
             <thead>
               <tr className="uppercase">
                 <th className="min-w-36 font-semibold">Reference No.</th>
@@ -29,7 +29,7 @@ const PaymentTable = () => {
               {"abcdefghij".split("").map((row) => (
                 <tr
                   key={row}
-                  className="border-b border-dotted border-[#f1f1f4] font-normal"
+                  className="border-b border-dotted border-[#f1f1f4] text-sm lg:text-base font-normal"
                 >
                   <td>BF000000009</td>
                   <td>
@@ -40,7 +40,7 @@ const PaymentTable = () => {
                   <td>Bank Transfer</td>
                   <td>1,500.00 BDT</td>
                   <td>14 Dec 2020, 8:43 pm</td>
-                  <td>N/A</td>
+                  <td className="text-right">NA</td>
                 </tr>
               ))}
             </tbody>
