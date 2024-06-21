@@ -17,12 +17,14 @@ const PaymentTable = () => {
           <table class="w-full whitespace-nowrap text-t-600 text-sm font-medium">
             <thead>
               <tr className="uppercase">
-                <th className="min-w-[150px] font-semibold">Reference No.</th>
+                <th className="min-w-[150px] font-semibold">Ref. Number</th>
                 <th className="min-w-[150px] font-semibold">Status</th>
                 <th className="min-w-[150px] font-semibold">Type</th>
                 <th className="min-w-[150px] font-semibold">Amount</th>
                 <th className="min-w-[150px] font-semibold">Created at</th>
-                <th className="min-w-[150px] font-semibold">Rejected Reason</th>
+                <th className="min-w-[150px] font-semibold text-right">
+                  Reason
+                </th>
               </tr>
             </thead>
             <tbody>
