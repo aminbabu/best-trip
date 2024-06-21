@@ -14,17 +14,14 @@ const PaymentTable = () => {
           {/* <div className="px-5 py-4 bg-p-300 rounded">
             <p>No Records!..</p>
           </div> */}
-          <table class="w-full whitespace-nowrap text-sm text-t-600 font-normal ">
+          <table class="w-full whitespace-nowrap text-t-600 font-medium">
             <thead>
-              <tr className="uppercase text-xs ">
+              <tr className="uppercase">
                 <th className="min-w-36 font-semibold">Reference No.</th>
                 <th className="min-w-36 font-semibold">Status</th>
-                <th className="min-w-36 font-semibold">Customer</th>
                 <th className="min-w-36 font-semibold">Type</th>
-                <th className="min-w-36 font-semibold">Details</th>
                 <th className="min-w-36 font-semibold">Amount</th>
                 <th className="min-w-36 font-semibold">Created at</th>
-                <th className="min-w-36 font-semibold">Receipt</th>
                 <th className="min-w-36 font-semibold">Rejected Reason</th>
               </tr>
             </thead>
@@ -32,7 +29,7 @@ const PaymentTable = () => {
               {"abcdefghij".split("").map((row) => (
                 <tr
                   key={row}
-                  className="border-b border-dotted border-[#f1f1f4] font-medium"
+                  className="border-b border-dotted border-[#f1f1f4] font-normal"
                 >
                   <td>BF000000009</td>
                   <td>
@@ -40,23 +37,9 @@ const PaymentTable = () => {
                       Request
                     </span>
                   </td>
-                  <td>
-                    <a className="hover:text-primary" href="#">
-                      Md. Irafnul Haque
-                    </a>
-                  </td>
                   <td>Bank Transfer</td>
-                  <td>Nagad</td>
                   <td>1,500.00 BDT</td>
                   <td>14 Dec 2020, 8:43 pm</td>
-                  <td>
-                    <a
-                      className="underline hover:no-underline hover:text-primary underline-offset-2"
-                      href="#"
-                    >
-                      View Receipt
-                    </a>
-                  </td>
                   <td>N/A</td>
                 </tr>
               ))}
