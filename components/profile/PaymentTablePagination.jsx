@@ -12,7 +12,7 @@ const PaymentTablePagination = () => {
     <div className="flex justify-between items-center">
       <div>
         <Select>
-          <SelectTrigger className="w-[70px] py-0">
+          <SelectTrigger className="w-[70px] py-0 focus:ring-0 focus:ring-offset-0">
             <SelectValue placeholder="10" />
           </SelectTrigger>
           <SelectContent>

@@ -67,6 +67,7 @@ import EyeSlashIcon from "@/public/icons/eye-slash.svg";
 import FlightTokenIcon from "@/public/icons/flight-token.svg";
 import FilterIcon from "@/public/icons/filter.svg";
 import ExportIcon from "@/public/icons/export.svg";
+import PlusSolidIcon from "@/public/icons/plus-solid.svg";
 
 export {
   FacebookIcon,
@@ -138,4 +139,5 @@ export {
   FlightTokenIcon,
   FilterIcon,
   ExportIcon,
+  PlusSolidIcon,
 };
