@@ -105,23 +105,19 @@ export const partialPaymentTable = {
   tableRows: [
     {
       id: 1,
-      item: "BF000000009",
+      item: "101",
     },
     {
       id: 2,
-      item: (
-        <span className="px-2.5 py-1 text-xs bg-blue-400 text-white rounded">
-          Request
-        </span>
-      ),
+      item: "10095",
     },
     {
       id: 3,
-      item: "Bank Transfer",
+      item: "DEF00978",
     },
     {
       id: 4,
-      item: "1,500.00 BDT",
+      item: "Bank Transfer",
     },
     {
       id: 5,
@@ -129,19 +125,19 @@ export const partialPaymentTable = {
     },
     {
       id: 6,
-      item: "NA",
+      item: "14 Dec 2020, 8:43 pm",
     },
     {
       id: 7,
-      item: "NA",
+      item: "14 Dec 2020, 8:43 pm",
     },
     {
       id: 8,
-      item: "NA",
+      item: "10,00,000 BDT",
     },
     {
       id: 9,
-      item: "NA",
+      item: "6,00,000 BDT",
     },
   ],
 };
@@ -183,7 +179,7 @@ export const generalLedgerTable = {
   tableRows: [
     {
       id: 1,
-      item: "BF000000009",
+      item: "Md. Irfanul Haque",
     },
     {
       id: 2,
@@ -199,14 +195,18 @@ export const generalLedgerTable = {
     },
     {
       id: 4,
-      item: "1,500.00 BDT",
+      item: "30,00,000 BDT",
     },
     {
       id: 5,
-      item: "14 Dec 2020, 8:43 pm",
+      item: "15,00,00 BDT",
     },
     {
       id: 6,
+      item: "14 Dec 2020, 8:43 pm",
+    },
+    {
+      id: 7,
       item: "NA",
     },
   ],
