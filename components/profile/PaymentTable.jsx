@@ -9,6 +9,7 @@ import PaymentTableFilter from "./PaymentTableFilter";
 import { usePathname } from "next/navigation";
 import {
   bestPayTable,
+  bookingListTable,
   generalLedgerTable,
   partialPaymentTable,
 } from "@/data/payment-tables";
@@ -18,8 +19,8 @@ const PaymentTable = () => {
   const [tableData, setTableData] = useState(bestPayTable);
 
   useEffect(() => {
-    if (pathname == "/profile/wallet") {
-      setTableData(bestPayTable);
+    if (pathname == "/profile/booking") {
+      setTableData(bookingListTable);
     }
     if (pathname == "/profile/partial-payment-bookings") {
       setTableData(partialPaymentTable);

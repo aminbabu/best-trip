@@ -1,3 +1,129 @@
+import Link from "next/link";
+
+export const bookingListTable = {
+  title: "Booking List",
+
+  tableHeads: [
+    {
+      id: 1,
+      item: "booking id",
+    },
+    {
+      id: 2,
+      item: "status",
+    },
+    {
+      id: 3,
+      item: "supplier",
+    },
+    {
+      id: 4,
+      item: "booking type",
+    },
+    {
+      id: 5,
+      item: "book on",
+    },
+    {
+      id: 6,
+      item: "book by",
+    },
+    {
+      id: 7,
+      item: "travel date",
+    },
+    {
+      id: 8,
+      item: "summery",
+    },
+    {
+      id: 9,
+      item: "prime pax",
+    },
+    {
+      id: 10,
+      item: "mobile app",
+    },
+    {
+      id: 11,
+      item: "api booking",
+    },
+    {
+      id: 12,
+      item: "documents",
+    },
+    {
+      id: 13,
+      item: "sales amount",
+    },
+  ],
+
+  tableRows: [
+    {
+      id: 1,
+      item: (
+        <Link href="/booking-details">
+          <span className="text-primary underline hover:no-underline">
+            BTU24000024
+          </span>
+        </Link>
+      ),
+    },
+    {
+      id: 2,
+      item: (
+        <span className="px-2.5 py-1 text-xs bg-blue-400 text-white rounded">
+          Booked
+        </span>
+      ),
+    },
+    {
+      id: 3,
+      item: "1BU-01",
+    },
+    {
+      id: 4,
+      item: "Umrah Package",
+    },
+    {
+      id: 5,
+      item: "Jan 08, 2024-16:25",
+    },
+    {
+      id: 6,
+      item: "BTC24000001",
+    },
+    {
+      id: 7,
+      item: "Jan 08, 2024",
+    },
+    {
+      id: 8,
+      item: "12 Travellers",
+    },
+    {
+      id: 9,
+      item: "Majarul Islam Safoyan",
+    },
+    {
+      id: 10,
+      item: "Yes",
+    },
+    {
+      id: 11,
+      item: "Yes",
+    },
+    {
+      id: 12,
+      item: "Yes",
+    },
+    {
+      id: 13,
+      item: "BDT 10,00,000",
+    },
+  ],
+};
+
 export const bestPayTable = {
   title: "Payment Records",
 
