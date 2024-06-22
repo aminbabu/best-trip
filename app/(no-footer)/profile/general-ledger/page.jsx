@@ -1,9 +1,10 @@
+import PaymentTable from "@/components/profile/PaymentTable";
 import React from "react";
 
 const GeneralLedger = () => {
   return (
     <div>
-      <h1>GEneral Ledger</h1>
+      <PaymentTable />
     </div>
   );
 };

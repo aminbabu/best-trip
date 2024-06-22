@@ -19,19 +19,19 @@ export const navLinks = [
     id: 1,
     name: "Profile",
     href: "/profile",
-    icon: <UserIcon viewBox="0 0 24 24" className="h-5 w-5" />,
+    icon: <UserIcon viewBox="0 0 24 24" className="h-4 w-4" />,
   },
   {
     id: 2,
     name: "My Booking",
     href: "/profile/booking",
-    icon: <CalendarCheckIcon viewBox="0 0 24 24" className="h-5 w-5" />,
+    icon: <CalendarCheckIcon viewBox="0 0 24 24" className="h-4 w-4" />,
   },
   {
     id: 3,
     name: "Best Pay",
     href: "/profile/wallet",
-    icon: <CreditCardIcon viewBox="0 0 24 24" className="h-5 w-5" />,
+    icon: <CreditCardIcon viewBox="0 0 24 24" className="h-4 w-4" />,
   },
   {
     id: 4,
@@ -41,7 +41,7 @@ export const navLinks = [
       <MoneyCheckIcon
         viewBox="0 0 576 512"
         fill="currentColor"
-        className="h-5 w-5"
+        className="h-4 w-4"
       />
     ),
   },
@@ -53,7 +53,7 @@ export const navLinks = [
       <TicketSolidIcon
         viewBox="0 0 576 512"
         fill="currentColor"
-        className="h-5 w-5"
+        className="h-4 w-4"
       />
     ),
   },
@@ -65,7 +65,7 @@ export const navLinks = [
       <LockSolidIcon
         viewBox="0 0 448 512"
         fill="currentColor"
-        className="h-5 w-5"
+        className="h-4 w-4"
       />
     ),
   },
@@ -73,7 +73,7 @@ export const navLinks = [
     id: 7,
     name: "Logout",
     href: "/logout",
-    icon: <LogoutIcon viewBox="0 0 24 25" className="h-5 w-5" />,
+    icon: <LogoutIcon viewBox="0 0 24 25" className="h-4 w-4" />,
   },
 ];
 

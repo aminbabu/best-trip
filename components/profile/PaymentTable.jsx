@@ -1,17 +1,40 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "../ui/card";
 import { Button } from "../ui/button";
 import { ExportIcon, FilterIcon, SearchIcon } from "../icons/svgr";
 import PaymentTablePagination from "./PaymentTablePagination";
 import PaymentTableFilter from "./PaymentTableFilter";
+import { usePathname } from "next/navigation";
+import {
+  bestPayTable,
+  generalLedgerTable,
+  partialPaymentTable,
+} from "@/data/payment-tables";
 
 const PaymentTable = () => {
+  const pathname = usePathname();
+  const [tableData, setTableData] = useState(bestPayTable);
+
+  useEffect(() => {
+    if (pathname == "/profile/wallet") {
+      setTableData(bestPayTable);
+    }
+    if (pathname == "/profile/partial-payment-bookings") {
+      setTableData(partialPaymentTable);
+    }
+    if (pathname == "/profile/general-ledger") {
+      setTableData(generalLedgerTable);
+    }
+  }, [pathname]);
+
   return (
     <Card className="border-transparent mb-8">
       <CardContent className="lg:p-10 space-y-7">
         <div>
           <h1 className="text-t-800 font-medium text-xl mb-8">
-            Payment Records
+            {tableData.title}
           </h1>
         </div>
         <PaymentTableFilter />
@@ -19,33 +42,25 @@ const PaymentTable = () => {
           {/* <div className="px-5 py-4 bg-p-300 rounded">
             <p>No Records!..</p>
           </div> */}
-          <table class="w-full whitespace-nowrap text-t-600 text-sm font-normal">
+          <table className="w-full whitespace-nowrap text-t-600 text-sm font-normal">
             <thead>
-              <tr className="uppercase border-b border-dashed border-[#f1f1f4]">
-                <th className="min-w-36 font-semibold">Ref. Number</th>
-                <th className="min-w-36 font-semibold">Status</th>
-                <th className="min-w-36 font-semibold">Type</th>
-                <th className="min-w-36 font-semibold">Amount</th>
-                <th className="min-w-36 font-semibold">Created at</th>
-                <th className="min-w-36 font-semibold text-right">Reason</th>
+              <tr className="uppercase border-b border-dashed border-[#f1f1f4] [&>*:last-child]:text-right">
+                {tableData.tableHeads.map((head) => (
+                  <th key={head.id} className="min-w-36 font-semibold">
+                    {head.item}
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
-              {"abcdefghij".split("").map((row) => (
+              {"abcdefghij".split("").map((row, idx) => (
                 <tr
-                  key={row}
-                  className="border-b border-dashed border-[#f1f1f4] text-sm lg:text-base font-normal"
+                  key={idx}
+                  className="border-b border-dashed border-[#f1f1f4] text-sm lg:text-base font-normal [&>*:last-child]:text-right"
                 >
-                  <td>BF000000009</td>
-                  <td>
-                    <span className="px-2.5 py-1 text-xs bg-blue-400 text-white rounded">
-                      Request
-                    </span>
-                  </td>
-                  <td>Bank Transfer</td>
-                  <td>1,500.00 BDT</td>
-                  <td>14 Dec 2020, 8:43 pm</td>
-                  <td className="text-right">NA</td>
+                  {tableData.tableRows.map((rowData) => (
+                    <td key={rowData.id}>{rowData.item}</td>
+                  ))}
                 </tr>
               ))}
             </tbody>

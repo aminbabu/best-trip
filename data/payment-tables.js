@@ -1,0 +1,213 @@
+export const bestPayTable = {
+  title: "Payment Records",
+
+  tableHeads: [
+    {
+      id: 1,
+      item: "ref. number",
+    },
+    {
+      id: 2,
+      item: "status",
+    },
+    {
+      id: 3,
+      item: "type",
+    },
+    {
+      id: 4,
+      item: "amount",
+    },
+    {
+      id: 5,
+      item: "created at",
+    },
+    {
+      id: 6,
+      item: "reason",
+    },
+  ],
+
+  tableRows: [
+    {
+      id: 1,
+      item: "BF000000009",
+    },
+    {
+      id: 2,
+      item: (
+        <span className="px-2.5 py-1 text-xs bg-blue-400 text-white rounded">
+          Request
+        </span>
+      ),
+    },
+    {
+      id: 3,
+      item: "Bank Transfer",
+    },
+    {
+      id: 4,
+      item: "1,500.00 BDT",
+    },
+    {
+      id: 5,
+      item: "14 Dec 2020, 8:43 pm",
+    },
+    {
+      id: 6,
+      item: "NA",
+    },
+  ],
+};
+
+export const partialPaymentTable = {
+  title: "Partial Payment Bookings",
+
+  tableHeads: [
+    {
+      id: 1,
+      item: "sl",
+    },
+    {
+      id: 2,
+      item: "customer number",
+    },
+    {
+      id: 3,
+      item: "booking ref. no.",
+    },
+    {
+      id: 4,
+      item: "type",
+    },
+    {
+      id: 5,
+      item: "booking date",
+    },
+    {
+      id: 6,
+      item: "travel date",
+    },
+    {
+      id: 7,
+      item: "due date",
+    },
+    {
+      id: 8,
+      item: "total amount",
+    },
+    {
+      id: 9,
+      item: "paid amount",
+    },
+  ],
+
+  tableRows: [
+    {
+      id: 1,
+      item: "BF000000009",
+    },
+    {
+      id: 2,
+      item: (
+        <span className="px-2.5 py-1 text-xs bg-blue-400 text-white rounded">
+          Request
+        </span>
+      ),
+    },
+    {
+      id: 3,
+      item: "Bank Transfer",
+    },
+    {
+      id: 4,
+      item: "1,500.00 BDT",
+    },
+    {
+      id: 5,
+      item: "14 Dec 2020, 8:43 pm",
+    },
+    {
+      id: 6,
+      item: "NA",
+    },
+    {
+      id: 7,
+      item: "NA",
+    },
+    {
+      id: 8,
+      item: "NA",
+    },
+    {
+      id: 9,
+      item: "NA",
+    },
+  ],
+};
+
+export const generalLedgerTable = {
+  title: "General Ledger",
+
+  tableHeads: [
+    {
+      id: 1,
+      item: "customer name",
+    },
+    {
+      id: 2,
+      item: "type",
+    },
+    {
+      id: 3,
+      item: "transaction type",
+    },
+    {
+      id: 4,
+      item: "amount",
+    },
+    {
+      id: 5,
+      item: "running balance",
+    },
+    {
+      id: 6,
+      item: "created at",
+    },
+    {
+      id: 7,
+      item: "description",
+    },
+  ],
+
+  tableRows: [
+    {
+      id: 1,
+      item: "BF000000009",
+    },
+    {
+      id: 2,
+      item: (
+        <span className="px-2.5 py-1 text-xs bg-blue-400 text-white rounded">
+          Request
+        </span>
+      ),
+    },
+    {
+      id: 3,
+      item: "Bank Transfer",
+    },
+    {
+      id: 4,
+      item: "1,500.00 BDT",
+    },
+    {
+      id: 5,
+      item: "14 Dec 2020, 8:43 pm",
+    },
+    {
+      id: 6,
+      item: "NA",
+    },
+  ],
+};
