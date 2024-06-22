@@ -196,7 +196,7 @@ export const partialPaymentTable = {
     },
     {
       id: 2,
-      item: "customer number",
+      item: "customer name",
     },
     {
       id: 3,
@@ -226,6 +226,10 @@ export const partialPaymentTable = {
       id: 9,
       item: "paid amount",
     },
+    {
+      id: 10,
+      item: "due amount",
+    },
   ],
 
   tableRows: [
@@ -235,7 +239,7 @@ export const partialPaymentTable = {
     },
     {
       id: 2,
-      item: "10095",
+      item: "Md. Irafnul Haque",
     },
     {
       id: 3,
@@ -264,6 +268,10 @@ export const partialPaymentTable = {
     {
       id: 9,
       item: "6,00,000 BDT",
+    },
+    {
+      id: 10,
+      item: "4,00,000 BDT",
     },
   ],
 };
