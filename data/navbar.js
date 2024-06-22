@@ -34,13 +34,13 @@ export const navLinks = [
     id: 4,
     name: "Part. Payment Bookings",
     href: "/profile/partial-payment-bookings",
-    icon: <FlightTokenIcon viewBox="0 0 24 24" className="h-7 w-7" />,
+    icon: <FlightTokenIcon viewBox="0 0 15 15" className="h-5 w-5" />,
   },
   {
     id: 5,
     name: "General Ledger",
     href: "/profile/general-ledger",
-    icon: <FlightTokenIcon viewBox="0 0 24 24" className="h-7 w-7" />,
+    icon: <FlightTokenIcon viewBox="0 0 15 15" className="h-5 w-5" />,
   },
   {
     id: 6,
