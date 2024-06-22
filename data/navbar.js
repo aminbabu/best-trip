@@ -2,6 +2,7 @@ import {
   CalendarCheckIcon,
   CalenderTickIcon,
   CreditCardIcon,
+  FlightTokenIcon,
   LockCircleIcon,
   LogoutIcon,
   SecurityLockIcon,
@@ -31,12 +32,24 @@ export const navLinks = [
   },
   {
     id: 4,
+    name: "Part. Payment Bookings",
+    href: "/profile/partial-payment-bookings",
+    icon: <FlightTokenIcon viewBox="0 0 24 24" className="h-7 w-7" />,
+  },
+  {
+    id: 5,
+    name: "General Ledger",
+    href: "/profile/general-ledger",
+    icon: <FlightTokenIcon viewBox="0 0 24 24" className="h-7 w-7" />,
+  },
+  {
+    id: 6,
     name: "Change Password",
     href: "/profile/password",
     icon: <SecurityLockIcon viewBox="0 0 24 24" className="h-5 w-5" />,
   },
   {
-    id: 5,
+    id: 7,
     name: "Logout",
     href: "/logout",
     icon: <LogoutIcon viewBox="0 0 24 25" className="h-5 w-5" />,
