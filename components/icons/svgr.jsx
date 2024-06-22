@@ -68,6 +68,9 @@ import FlightTokenIcon from "@/public/icons/flight-token.svg";
 import FilterIcon from "@/public/icons/filter.svg";
 import ExportIcon from "@/public/icons/export.svg";
 import PlusSolidIcon from "@/public/icons/plus-solid.svg";
+import MoneyCheckIcon from "@/public/icons/money-check-solid.svg";
+import TicketSolidIcon from "@/public/icons/ticket-solid.svg";
+import LockSolidIcon from "@/public/icons/lock-solid.svg";
 
 export {
   FacebookIcon,
@@ -140,4 +143,7 @@ export {
   FilterIcon,
   ExportIcon,
   PlusSolidIcon,
+  MoneyCheckIcon,
+  TicketSolidIcon,
+  LockSolidIcon,
 };

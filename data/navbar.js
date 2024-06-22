@@ -4,9 +4,12 @@ import {
   CreditCardIcon,
   FlightTokenIcon,
   LockCircleIcon,
+  LockSolidIcon,
   LogoutIcon,
+  MoneyCheckIcon,
   SecurityLockIcon,
   SignOutIcon,
+  TicketSolidIcon,
   UserIcon,
   UserProfileIcon,
 } from "@/components/icons/svgr";
@@ -34,19 +37,37 @@ export const navLinks = [
     id: 4,
     name: "Part. Payment Bookings",
     href: "/profile/partial-payment-bookings",
-    icon: <FlightTokenIcon viewBox="0 0 15 15" className="h-5 w-5" />,
+    icon: (
+      <MoneyCheckIcon
+        viewBox="0 0 576 512"
+        fill="currentColor"
+        className="h-5 w-5"
+      />
+    ),
   },
   {
     id: 5,
     name: "General Ledger",
     href: "/profile/general-ledger",
-    icon: <FlightTokenIcon viewBox="0 0 15 15" className="h-5 w-5" />,
+    icon: (
+      <TicketSolidIcon
+        viewBox="0 0 576 512"
+        fill="currentColor"
+        className="h-5 w-5"
+      />
+    ),
   },
   {
     id: 6,
     name: "Change Password",
     href: "/profile/password",
-    icon: <SecurityLockIcon viewBox="0 0 24 24" className="h-5 w-5" />,
+    icon: (
+      <LockSolidIcon
+        viewBox="0 0 448 512"
+        fill="currentColor"
+        className="h-5 w-5"
+      />
+    ),
   },
   {
     id: 7,
