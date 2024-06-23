@@ -14,46 +14,42 @@ export const bookingListTable = {
     },
     {
       id: 3,
-      item: "supplier",
-    },
-    {
-      id: 4,
       item: "booking type",
     },
     {
-      id: 5,
+      id: 4,
       item: "book on",
     },
     {
-      id: 6,
+      id: 5,
       item: "book by",
     },
     {
-      id: 7,
+      id: 6,
       item: "travel date",
     },
     {
-      id: 8,
+      id: 7,
       item: "summery",
     },
     {
-      id: 9,
+      id: 8,
       item: "prime pax",
     },
     {
-      id: 10,
+      id: 9,
       item: "mobile app",
     },
     {
-      id: 11,
+      id: 10,
       item: "api booking",
     },
     {
-      id: 12,
+      id: 11,
       item: "documents",
     },
     {
-      id: 13,
+      id: 12,
       item: "sales amount",
     },
   ],
@@ -79,31 +75,31 @@ export const bookingListTable = {
     },
     {
       id: 3,
-      item: "1BU-01",
-    },
-    {
-      id: 4,
       item: "Umrah Package",
     },
     {
-      id: 5,
+      id: 4,
       item: "Jan 08, 2024-16:25",
     },
     {
-      id: 6,
+      id: 5,
       item: "BTC24000001",
     },
     {
-      id: 7,
+      id: 6,
       item: "Jan 08, 2024",
     },
     {
-      id: 8,
+      id: 7,
       item: "12 Travellers",
     },
     {
-      id: 9,
+      id: 8,
       item: "Majarul Islam Safoyan",
+    },
+    {
+      id: 9,
+      item: "Yes",
     },
     {
       id: 10,
@@ -115,10 +111,6 @@ export const bookingListTable = {
     },
     {
       id: 12,
-      item: "Yes",
-    },
-    {
-      id: 13,
       item: "BDT 10,00,000",
     },
   ],

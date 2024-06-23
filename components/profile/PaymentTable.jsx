@@ -54,9 +54,9 @@ const PaymentTable = () => {
               </tr>
             </thead>
             <tbody>
-              {"abcdefghij".split("").map((row, idx) => (
+              {"abcdefghij".split("").map((row) => (
                 <tr
-                  key={idx}
+                  key={row}
                   className="border-b border-dashed border-[#f1f1f4] text-sm lg:text-base font-normal [&>*:last-child]:text-right"
                 >
                   {tableData.tableRows.map((rowData) => (
