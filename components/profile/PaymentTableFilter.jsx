@@ -4,6 +4,13 @@ import { Button } from "../ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 const PaymentTableFilter = () => {
   return (
@@ -38,12 +45,19 @@ const PaymentTableFilter = () => {
               <hr />
               <div className="grid gap-2">
                 <div className="grid grid-cols-3 items-center gap-4">
-                  <Label htmlFor="width">Width</Label>
-                  <Input
-                    id="width"
-                    defaultValue="100%"
-                    className="col-span-2 h-8"
-                  />
+                  <Label htmlFor="width" className="col-span-3">
+                    Select status
+                  </Label>
+                  <Select>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Theme" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="light">Light</SelectItem>
+                      <SelectItem value="dark">Dark</SelectItem>
+                      <SelectItem value="system">System</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
                 <div className="grid grid-cols-3 items-center gap-4">
                   <Label htmlFor="maxWidth">Max. width</Label>
