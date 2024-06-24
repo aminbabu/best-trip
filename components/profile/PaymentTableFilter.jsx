@@ -44,22 +44,20 @@ const PaymentTableFilter = () => {
               </div>
               <hr />
               <div className="grid gap-2">
-                <div className="grid grid-cols-3 items-center gap-4">
-                  <Label htmlFor="width" className="col-span-3">
-                    Select status
-                  </Label>
-                  <Select>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Theme" />
+                <div className="">
+                  <Label htmlFor="width">Select status :</Label>
+                  <Select className="bg-[#f1f1f4]">
+                    <SelectTrigger className="w-full focus:ring-0 focus:ring-offset-0 border-0">
+                      <SelectValue placeholder="Select status" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="light">Light</SelectItem>
-                      <SelectItem value="dark">Dark</SelectItem>
-                      <SelectItem value="system">System</SelectItem>
+                      <SelectItem value="request">Request</SelectItem>
+                      <SelectItem value="approved">Approved</SelectItem>
+                      <SelectItem value="rejected">Rejected</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="grid grid-cols-3 items-center gap-4">
+                {/* <div className="grid grid-cols-3 items-center gap-4">
                   <Label htmlFor="maxWidth">Max. width</Label>
                   <Input
                     id="maxWidth"
@@ -74,14 +72,10 @@ const PaymentTableFilter = () => {
                     defaultValue="25px"
                     className="col-span-2 h-8"
                   />
-                </div>
-                <div className="grid grid-cols-3 items-center gap-4">
-                  <Label htmlFor="maxHeight">Max. height</Label>
-                  <Input
-                    id="maxHeight"
-                    defaultValue="none"
-                    className="col-span-2 h-8"
-                  />
+                </div> */}
+                <div className="flex justify-end items-center gap-4">
+                  <Button>Reset</Button>
+                  <Button>Apply</Button>
                 </div>
               </div>
             </div>
