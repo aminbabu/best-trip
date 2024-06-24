@@ -97,7 +97,7 @@ const Footer = ({ className }) => {
                 height="56"
                 alt="Best Trip"
               />
-              <p className="xl:text-base leading-relaxed xl:leading-relaxed mt-6">
+              <p className="text-xs xl:text-base leading-relaxed xl:leading-relaxed mt-6">
                 <span className="text-p-900">Best Trip</span> Lorem Ipsum is
                 simply dummy text of the printing and typesetting industry.
                 Lorem{" "}
@@ -118,7 +118,7 @@ const Footer = ({ className }) => {
                   <li key={index}>
                     <Link
                       href={item.path}
-                      className="text-inherit duration-300 hover:text-p-900 inline-flex py-0.5"
+                      className="text-inherit text-xs xl:text-base duration-300 hover:text-p-900 inline-flex py-0.5"
                     >
                       {item.name}
                     </Link>
@@ -143,7 +143,7 @@ const Footer = ({ className }) => {
                 <li className="inline-flex">
                   <Link
                     href={`mailto:${socialMedia.email}`}
-                    className="text-inherit duration-300 hover:text-p-900 inline-flex py-0.5"
+                    className="text-inherit text-xs xl:text-base duration-300 hover:text-p-900 inline-flex py-0.5"
                     title={socialMedia.email}
                   >
                     {socialMedia.email}
@@ -152,7 +152,7 @@ const Footer = ({ className }) => {
                 <li className="inline-flex">
                   <Link
                     href={`tel:${socialMedia.phone}`}
-                    className="text-inherit duration-300 hover:text-p-900 inline-flex py-0.5"
+                    className="text-inherit text-xs xl:text-base duration-300 hover:text-p-900 inline-flex py-0.5"
                     title={socialMedia.phone}
                   >
                     {socialMedia.phone}
@@ -177,7 +177,7 @@ const Footer = ({ className }) => {
               <h2 className="text-xs xs:text-sm sm:text-base lg:text-lg text-inherit font-medium mb-3 lg:mb-5">
                 Office Address
               </h2>
-              <p className="xl:text-base leading-relaxed xl:leading-relaxed">
+              <p className="text-xs xl:text-base leading-relaxed xl:leading-relaxed">
                 Rajlazmi Complex, Lift 6 Rajlaxmi, Uttara Sector 03 Dhaka,
                 Bangladesh.
               </p>
