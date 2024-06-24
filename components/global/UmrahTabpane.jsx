@@ -69,6 +69,11 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
   const [errors, setErrors] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const [isPackScheduleOpen, setIsPackScheduleOpen] = useState(false);
+  const [isPackTypeOpen, setIsPackTypeOpen] = useState(false);
+  const [isPackDurationOpen, setIsPackDurationOpen] = useState(false);
+  const [isTravellersOpen, setIsTravellersOpen] = useState(false);
+
   const checkValidation = () => {
     try {
       const validatedData = umrahSchema.parse({
@@ -83,10 +88,6 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
       setErrors(formatError(error));
       return false;
     }
-  };
-
-  const handleDropdown = (index) => {
-    setOpen(index);
   };
 
   const handleCounterIncrement = (id) => {
@@ -127,6 +128,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
       return setLoading(false);
     }
     router.push("/search/umrah");
+    // console.log(data);
 
     // TODO: Handle submit
     // setTimeout(() => {
@@ -144,10 +146,10 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
       )}
     >
       <Popover
-        open={open === 1}
-        onOpenChange={(state) => {
+        open={isPackScheduleOpen}
+        onOpenChange={() => {
           setErrors((prevState) => ({ ...prevState, schedule: null }));
-          handleDropdown(state ? 1 : -1);
+          setIsPackScheduleOpen(!isPackScheduleOpen);
         }}
       >
         <PopoverTrigger asChild className="flex-1" disabled={isDisabled}>
@@ -178,7 +180,10 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
               {schedules.map((item) => (
                 <li
                   key={item}
-                  onClick={() => setSchedule(item)}
+                  onClick={() => {
+                    setSchedule(item);
+                    setIsPackScheduleOpen(false);
+                  }}
                   className={cn(
                     "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
                     {
@@ -194,10 +199,10 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         </PopoverContent>
       </Popover>
       <Popover
-        open={open === 2}
-        onOpenChange={(state) => {
+        open={isPackTypeOpen}
+        onOpenChange={() => {
           setErrors((prevState) => ({ ...prevState, type: null }));
-          handleDropdown(state ? 2 : -1);
+          setIsPackTypeOpen(!isPackTypeOpen);
         }}
       >
         <PopoverTrigger asChild className="flex-1" disabled={isDisabled}>
@@ -234,7 +239,10 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
                       "bg-p-900 text-white": type === item,
                     }
                   )}
-                  onSelect={() => setType(item)}
+                  onClick={() => {
+                    setType(item);
+                    setIsPackTypeOpen(false);
+                  }}
                 >
                   {item}
                 </li>
@@ -244,10 +252,10 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         </PopoverContent>
       </Popover>
       <Popover
-        open={open === 3}
-        onOpenChange={(state) => {
+        open={isPackDurationOpen}
+        onOpenChange={() => {
           setErrors((prevState) => ({ ...prevState, duration: null }));
-          handleDropdown(state ? 3 : -1);
+          setIsPackDurationOpen(!isPackDurationOpen);
         }}
       >
         <PopoverTrigger asChild className="flex-1" disabled={isDisabled}>
@@ -278,7 +286,10 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
               {durations.map((item) => (
                 <li
                   key={item}
-                  onSelect={() => setDuration(item)}
+                  onClick={() => {
+                    setDuration(item);
+                    setIsPackDurationOpen(false);
+                  }}
                   className={cn(
                     "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer",
                     {
@@ -294,10 +305,10 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         </PopoverContent>
       </Popover>
       <Popover
-        open={open === 4}
-        onOpenChange={(state) => {
+        open={isTravellersOpen}
+        onOpenChange={() => {
           setErrors((prevState) => ({ ...prevState, travellers: null }));
-          handleDropdown(state ? 4 : -1);
+          setIsTravellersOpen(!isTravellersOpen);
         }}
       >
         <PopoverTrigger asChild className="flex-1" disabled={isDisabled}>
@@ -349,7 +360,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
           ))}
           <Button
             size="sm"
-            onClick={() => handleDropdown(0)}
+            onClick={() => setIsTravellersOpen(false)}
             className="px-8 py-2 mx-4 my-4 text-sm lg:text-base"
           >
             Done
