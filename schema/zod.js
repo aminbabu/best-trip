@@ -105,3 +105,13 @@ export const travellerSchema = z.object({
     .string()
     .min(1, { message: "Please provide a emergency contact no." }),
 });
+
+/**
+ * @description Schema for traveller form
+ *
+ */
+export const filterSchema = z.object({
+  status: z.string().min(1, { message: "Please select a status" }),
+  type: z.string().min(1, { message: "Please select a status" }),
+  date: z.string().min(1, { message: "Please select a status" }),
+});
