@@ -37,17 +37,19 @@ const PaymentTableFilter = () => {
               Filter
             </Button>
           </PopoverTrigger>
-          <PopoverContent align="start" className="w-80 border-none">
+          <PopoverContent align="start" className="w-80 border-none p-0">
             <div className="grid gap-4">
-              <div className="space-y-2">
-                <h4 className="font-medium leading-none">Filter options</h4>
+              <div className="space-y-2 px-[22px] pt-4">
+                <h4 className="font-semibold leading-none">Filter options</h4>
               </div>
-              <hr />
-              <div className="grid gap-2">
-                <div className="">
-                  <Label htmlFor="width">Select status :</Label>
-                  <Select className="bg-[#f1f1f4]">
-                    <SelectTrigger className="w-full focus:ring-0 focus:ring-offset-0 border-0">
+              <hr className="border-gray-200" />
+              <div className="grid gap-4 px-[22px] pb-4">
+                <div className="space-y-3">
+                  <Label htmlFor="width" className="text-base">
+                    Select status :
+                  </Label>
+                  <Select>
+                    <SelectTrigger className="w-full focus:ring-0 focus:ring-offset-0 border-0 bg-[#f1f1f4] text-t-600">
                       <SelectValue placeholder="Select status" />
                     </SelectTrigger>
                     <SelectContent>
@@ -57,25 +59,41 @@ const PaymentTableFilter = () => {
                     </SelectContent>
                   </Select>
                 </div>
-                {/* <div className="grid grid-cols-3 items-center gap-4">
-                  <Label htmlFor="maxWidth">Max. width</Label>
-                  <Input
-                    id="maxWidth"
-                    defaultValue="300px"
-                    className="col-span-2 h-8"
-                  />
+                <div className="space-y-3">
+                  <Label htmlFor="width" className="text-base">
+                    Select status :
+                  </Label>
+                  <Select>
+                    <SelectTrigger className="w-full focus:ring-0 focus:ring-offset-0 border-0 bg-[#f1f1f4] text-t-600">
+                      <SelectValue placeholder="Select status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="request">Request</SelectItem>
+                      <SelectItem value="approved">Approved</SelectItem>
+                      <SelectItem value="rejected">Rejected</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
-                <div className="grid grid-cols-3 items-center gap-4">
-                  <Label htmlFor="height">Height</Label>
-                  <Input
-                    id="height"
-                    defaultValue="25px"
-                    className="col-span-2 h-8"
-                  />
-                </div> */}
+                <div className="space-y-3">
+                  <Label htmlFor="width" className="text-base">
+                    Select status :
+                  </Label>
+                  <Select>
+                    <SelectTrigger className="w-full focus:ring-0 focus:ring-offset-0 border-0 bg-[#f1f1f4] text-t-600">
+                      <SelectValue placeholder="Select status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="request">Request</SelectItem>
+                      <SelectItem value="approved">Approved</SelectItem>
+                      <SelectItem value="rejected">Rejected</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
                 <div className="flex justify-end items-center gap-4">
-                  <Button>Reset</Button>
-                  <Button>Apply</Button>
+                  <Button className="px-5 py-2.5 bg-[#f1f1f4] hover:bg-p-300 text-t-600 hover:text-primary">
+                    Reset
+                  </Button>
+                  <Button className="px-5 py-2.5">Apply</Button>
                 </div>
               </div>
             </div>
