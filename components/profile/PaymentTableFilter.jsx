@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { ExportIcon, FilterIcon, SearchIcon } from "../icons/svgr";
 import { Button } from "../ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
 import {
   Select,
   SelectContent,
@@ -19,13 +17,15 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import { Loader } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { filterSchema } from "@/schema/zod";
 import { useForm } from "react-hook-form";
 
 const PaymentTableFilter = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isStatus, setIsStatus] = useState("");
+  const [isType, setIsType] = useState("");
+  const [isDate, setIsDate] = useState("");
 
   const form = useForm({
     resolver: zodResolver(filterSchema),
@@ -35,6 +35,18 @@ const PaymentTableFilter = () => {
       date: "",
     },
   });
+
+  const handleReset = () => {
+    console.log("clicked reset");
+    setIsStatus("");
+    setIsType("");
+    setIsDate("");
+  };
+
+  const handleStatus = (value) => {
+    setIsStatus(value);
+  };
+  console.log(isStatus);
 
   const onSubmit = (data) => {
     setIsOpen(false);
@@ -64,7 +76,7 @@ const PaymentTableFilter = () => {
               Filter
             </Button>
           </PopoverTrigger>
-          <PopoverContent align="start" className="w-80 border-none p-0">
+          <PopoverContent align="end" className="w-80 border-none p-0">
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
@@ -88,7 +100,10 @@ const PaymentTableFilter = () => {
                               Select status :
                             </FormLabel>
                             <Select
-                              onValueChange={field.onChange}
+                              onValueChange={(value) => {
+                                field.onChange(isStatus);
+                                handleStatus(value);
+                              }}
                               defaultValue={field.value}
                             >
                               <FormControl>
@@ -178,14 +193,15 @@ const PaymentTableFilter = () => {
                       />
                     </div>
                     <div className="flex justify-end items-center gap-4">
-                      <Button className="px-5 py-2.5 text-sm bg-[#f1f1f4] hover:bg-p-300 text-t-600 hover:text-primary">
+                      <Button
+                        onClick={() => handleReset()}
+                        type="button"
+                        className="px-5 py-2.5 text-sm bg-[#f1f1f4] hover:bg-p-300 text-t-600 hover:text-primary"
+                      >
                         Reset
                       </Button>
-                      <Button
-                        className="px-5 py-2.5 text-sm"
-                        type="submit"
-                        disabled={false}
-                      >
+
+                      <Button className="px-5 py-2.5 text-sm" type="submit">
                         Apply
                       </Button>
                     </div>
