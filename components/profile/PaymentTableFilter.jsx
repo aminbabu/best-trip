@@ -89,7 +89,7 @@ const PaymentTableFilter = () => {
                     </h4>
                   </div>
                   <hr className="border-gray-200" />
-                  <div className="grid gap-4 px-[22px] pb-4">
+                  <div className="grid gap-8 px-[22px] pb-4">
                     <div className="space-y-3">
                       <FormField
                         control={form.control}
