@@ -31,7 +31,7 @@ const PaymentTable = () => {
   }, [pathname]);
 
   return (
-    <Card className="border-transparent mb-8">
+    <Card className="border-transparent mb-8 drop-shadow-[ 0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] ">
       <CardContent className="lg:p-10 space-y-7">
         <div>
           <h1 className="text-t-800 font-medium text-xl mb-8">

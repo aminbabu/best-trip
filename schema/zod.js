@@ -113,5 +113,14 @@ export const travellerSchema = z.object({
 export const filterSchema = z.object({
   status: z.string().min(1, { message: "Please select a status" }),
   type: z.string().min(1, { message: "Please select a status" }),
-  date: z.string().min(1, { message: "Please select a status" }),
+  date: z
+    .string()
+    .refine((val) => moment(val).isValid(), {
+      message: "Please provide a valid date of birth",
+    })
+    .or(
+      z.date({
+        message: "Please provide a valid date of birth",
+      })
+    ),
 });

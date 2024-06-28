@@ -20,12 +20,17 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { filterSchema } from "@/schema/zod";
 import { useForm } from "react-hook-form";
+import { Calendar } from "../ui/calendar";
+import moment from "moment";
 
 const PaymentTableFilter = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isStatus, setIsStatus] = useState("");
   const [isType, setIsType] = useState("");
   const [isDate, setIsDate] = useState("");
+  const [isOpenDate, setIsOpenDate] = useState(false);
+  const [dateFrom, setDateFrom] = useState(1900);
+  const [dateTo, setDateTo] = useState(moment().year());
 
   const form = useForm({
     resolver: zodResolver(filterSchema),
@@ -76,16 +81,19 @@ const PaymentTableFilter = () => {
               Filter
             </Button>
           </PopoverTrigger>
-          <PopoverContent align="end" className="w-80 border-none p-0">
+          <PopoverContent
+            align="end"
+            className="w-[325px] border-none p-0 drop-shadow-[0px_0px_50px_0px_rgba(82, 63, 105, 0.15)] shadow-2xl"
+          >
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-16"
               >
-                <div className="grid gap-4">
+                <div className="grid gap-[22px]">
                   <div className="space-y-2 px-[22px] pt-4">
                     <h4 className="font-semibold leading-none">
-                      Filter options
+                      Filter Options
                     </h4>
                   </div>
                   <hr className="border-gray-200" />
@@ -95,9 +103,9 @@ const PaymentTableFilter = () => {
                         control={form.control}
                         name="status"
                         render={({ field }) => (
-                          <FormItem>
+                          <FormItem className="space-y-4">
                             <FormLabel className="text-t-800 lg:text-base font-medium">
-                              Select status :
+                              Select Type :
                             </FormLabel>
                             <Select
                               onValueChange={(value) => {
@@ -114,21 +122,27 @@ const PaymentTableFilter = () => {
                               <SelectContent className="border-0">
                                 <SelectItem
                                   className="focus:bg-p-300"
-                                  value="request"
+                                  value="cash"
                                 >
-                                  Request
+                                  Cash
                                 </SelectItem>
                                 <SelectItem
                                   className="focus:bg-p-300"
-                                  value="approved"
+                                  value="bank transfer"
                                 >
-                                  Approved
+                                  Bank transfer
                                 </SelectItem>
                                 <SelectItem
                                   className="focus:bg-p-300"
-                                  value="rejected"
+                                  value="bank deposit"
                                 >
-                                  Rejected
+                                  Bank deposit
+                                </SelectItem>
+                                <SelectItem
+                                  className="focus:bg-p-300"
+                                  value="cheque"
+                                >
+                                  Cheque
                                 </SelectItem>
                               </SelectContent>
                             </Select>
@@ -142,9 +156,9 @@ const PaymentTableFilter = () => {
                         control={form.control}
                         name="type"
                         render={({ field }) => (
-                          <FormItem>
+                          <FormItem className="space-y-4">
                             <FormLabel className="text-t-800 lg:text-base font-medium">
-                              Details type :
+                              Details Type :
                             </FormLabel>
                             <Select
                               onValueChange={field.onChange}
@@ -180,35 +194,58 @@ const PaymentTableFilter = () => {
                         control={form.control}
                         name="date"
                         render={({ field }) => (
-                          <FormItem>
+                          <FormItem className="flex flex-col">
                             <FormLabel className="text-t-800 lg:text-base font-medium">
-                              Select date :
+                              Select Date Range :
                             </FormLabel>
-                            <Select
-                              onValueChange={field.onChange}
-                              defaultValue={field.value}
+                            <Popover
+                              open={isOpenDate}
+                              onOpenChange={setIsOpenDate}
                             >
-                              <FormControl>
-                                <SelectTrigger className="w-full focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-t-600">
-                                  <SelectValue placeholder="Select status" />
-                                </SelectTrigger>
-                              </FormControl>
-                              <SelectContent className="border-0">
-                                <SelectItem value="request">Request</SelectItem>
-                                <SelectItem value="approved">
-                                  Approved
-                                </SelectItem>
-                                <SelectItem value="rejected">
-                                  Rejected
-                                </SelectItem>
-                              </SelectContent>
-                            </Select>
+                              <PopoverTrigger asChild>
+                                <FormControl>
+                                  <Button
+                                    variant={"outline"}
+                                    className="justify-start font-normal border-0 text-base px-3 py-2 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                                  >
+                                    {field.value ? (
+                                      moment(field.value).format("DD-MMM-YYYY")
+                                    ) : (
+                                      <span className="text-sm leading-[1.72]">
+                                        Pick a date
+                                      </span>
+                                    )}
+                                  </Button>
+                                </FormControl>
+                              </PopoverTrigger>
+                              <PopoverContent
+                                className="w-auto p-0"
+                                align="start"
+                              >
+                                <Calendar
+                                  mode="single"
+                                  defaultMonth={
+                                    field.value //|| initialSelectedDate
+                                  }
+                                  captionLayout="dropdown-buttons"
+                                  selected={moment(field.value).toDate()}
+                                  onSelect={(value) => {
+                                    field.onChange(value);
+                                    setIsOpenDate(false);
+                                  }}
+                                  // disabled={(date) => handleDisableDate(date)}
+                                  fromYear={dateFrom}
+                                  toYear={dateTo}
+                                  initialFocus
+                                />
+                              </PopoverContent>
+                            </Popover>
                             <FormMessage />
                           </FormItem>
                         )}
                       />
                     </div>
-                    <div className="flex justify-end items-center gap-4">
+                    <div className="flex justify-end items-center gap-4 mt-2.5">
                       <Button
                         onClick={() => handleReset()}
                         type="button"
