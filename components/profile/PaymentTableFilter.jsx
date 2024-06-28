@@ -227,15 +227,6 @@ const PaymentTableFilter = () => {
             </Form>
           </PopoverContent>
         </Popover>
-
-        <Button className="px-3.5 py-2 lg:px-5 lg:py-2.5 gap-1.5 text-xs lg:text-sm bg-p-300 text-primary hover:text-white group">
-          <ExportIcon
-            className="w-3.5 h-3.5 fill-primary group-hover:fill-white"
-            viewBox="0 0 512 512"
-            fill="#f70207"
-          />{" "}
-          Export
-        </Button>
       </div>
     </div>
   );
