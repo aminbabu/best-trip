@@ -116,7 +116,7 @@ const PaymentTableFilter = () => {
                             >
                               <FormControl>
                                 <SelectTrigger className="w-full focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-t-600">
-                                  <SelectValue placeholder="Select status" />
+                                  <SelectValue placeholder="Select a type" />
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent className="border-0">
@@ -166,7 +166,7 @@ const PaymentTableFilter = () => {
                             >
                               <FormControl>
                                 <SelectTrigger className="w-full focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-t-600">
-                                  <SelectValue placeholder="Select status" />
+                                  <SelectValue placeholder="Select a type" />
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent className="border-0">
