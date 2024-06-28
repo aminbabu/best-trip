@@ -104,7 +104,7 @@ const PaymentTableFilter = () => {
                         name="status"
                         render={({ field }) => (
                           <FormItem className="space-y-4">
-                            <FormLabel className="text-t-800 lg:text-base font-medium">
+                            <FormLabel className="text-t-800 font-medium">
                               Select Type :
                             </FormLabel>
                             <Select
@@ -157,7 +157,7 @@ const PaymentTableFilter = () => {
                         name="type"
                         render={({ field }) => (
                           <FormItem className="space-y-4">
-                            <FormLabel className="text-t-800 lg:text-base font-medium">
+                            <FormLabel className="text-t-800 font-medium">
                               Details Type :
                             </FormLabel>
                             <Select
@@ -195,7 +195,7 @@ const PaymentTableFilter = () => {
                         name="date"
                         render={({ field }) => (
                           <FormItem className="flex flex-col">
-                            <FormLabel className="text-t-800 lg:text-base font-medium">
+                            <FormLabel className="text-t-800 font-medium">
                               Select Date Range :
                             </FormLabel>
                             <Popover
