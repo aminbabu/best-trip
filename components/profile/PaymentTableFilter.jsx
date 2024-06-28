@@ -46,7 +46,7 @@ const PaymentTableFilter = () => {
   const handleStatus = (value) => {
     setIsStatus(value);
   };
-  console.log(isStatus);
+  // console.log(isStatus);
 
   const onSubmit = (data) => {
     setIsOpen(false);
@@ -112,11 +112,22 @@ const PaymentTableFilter = () => {
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent className="border-0">
-                                <SelectItem value="request">Request</SelectItem>
-                                <SelectItem value="approved">
+                                <SelectItem
+                                  className="focus:bg-p-300"
+                                  value="request"
+                                >
+                                  Request
+                                </SelectItem>
+                                <SelectItem
+                                  className="focus:bg-p-300"
+                                  value="approved"
+                                >
                                   Approved
                                 </SelectItem>
-                                <SelectItem value="rejected">
+                                <SelectItem
+                                  className="focus:bg-p-300"
+                                  value="rejected"
+                                >
                                   Rejected
                                 </SelectItem>
                               </SelectContent>
@@ -133,7 +144,7 @@ const PaymentTableFilter = () => {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="text-t-800 lg:text-base font-medium">
-                              Select type :
+                              Details type :
                             </FormLabel>
                             <Select
                               onValueChange={field.onChange}
@@ -145,12 +156,17 @@ const PaymentTableFilter = () => {
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent className="border-0">
-                                <SelectItem value="request">Request</SelectItem>
-                                <SelectItem value="approved">
-                                  Approved
+                                <SelectItem
+                                  className="focus:bg-p-300"
+                                  value="nagad"
+                                >
+                                  Nagad
                                 </SelectItem>
-                                <SelectItem value="rejected">
-                                  Rejected
+                                <SelectItem
+                                  className="focus:bg-p-300"
+                                  value="bkash"
+                                >
+                                  Bkash
                                 </SelectItem>
                               </SelectContent>
                             </Select>
