@@ -141,3 +141,10 @@
 .react-tel-input .selected-flag .arrow {
   margin-left: 8px;
 }
+.swal2-popup .swal2-html-container,
+.swal2-popup .swal2-content {
+  font-size: 0.875rem;
+  font-weight: normal;
+  margin-top: 1.5rem;
+  color: #606060;
+}

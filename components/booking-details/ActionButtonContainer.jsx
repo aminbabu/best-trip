@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { FlightTokenIcon, PrinterIcon } from "../icons/svgr";
 import { Button } from "../ui/button";
@@ -21,8 +23,45 @@ import { Input } from "../ui/input";
 import Link from "next/link";
 import DepositForm from "../payment-method/DepositForm";
 import { InfoIcon } from "lucide-react";
+import Swal from "sweetalert2";
 
 const ActionButtonContainer = () => {
+  const handleCancelBooking = () => {
+    const swalWithTailwindButtons = Swal.mixin({
+      customClass: {
+        confirmButton:
+          "bg-primary text-primary-foreground hover:bg-primary/80 px-4 py-2 rounded mr-3 text-sm",
+        cancelButton:
+          "bg-slate-50 hover:bg-slate-100 text-t-800 px-4 py-2 rounded text-sm",
+        text: "!text-[14px] text-p-600 text-t-800",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithTailwindButtons
+      .fire({
+        text: "Are you sure you would like to cancel?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Yes, cancel it!",
+        cancelButtonText: "No, return",
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swalWithTailwindButtons.fire({
+            title: "Success!",
+            text: "Your booking has been cancelled.",
+            icon: "success",
+          });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          swalWithTailwindButtons.fire({
+            title: "Cancelled",
+            text: "Your imaginary file is safe :)",
+            icon: "error",
+          });
+        }
+      });
+  };
   return (
     <div className="col-span-12 xl:col-span-3 space-y-7 flex flex-col">
       <Link
@@ -119,7 +158,7 @@ const ActionButtonContainer = () => {
         </DialogContent>
       </Dialog>
 
-      <Dialog>
+      {/* <Dialog>
         <DialogTrigger asChild>
           <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
             <FlightTokenIcon /> Cancel Booking
@@ -141,7 +180,14 @@ const ActionButtonContainer = () => {
             </Button>
           </DialogFooter>
         </DialogContent>
-      </Dialog>
+      </Dialog> */}
+
+      <Button
+        onClick={handleCancelBooking}
+        className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start"
+      >
+        <FlightTokenIcon /> Cancel Booking
+      </Button>
 
       <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
         <FlightTokenIcon /> Edit Booking Status
