@@ -23,15 +23,19 @@ const DepositForm = () => {
   const router = useRouter();
   const [error, setError] = useState(null);
   const pathname = usePathname();
-  const [openOnline, setopenOnline] = useState(false);
+  const [openOnline, setOpenOnline] = useState(false);
   const [openManual, setOpenManual] = useState(false);
+  const [openWallet, setOpenWallet] = useState(false);
+  const [openFullPayment, setOpenFullPayment] = useState(false);
+  const [openPartPaymnet, setOpenPartPaymnet] = useState(false);
 
   const form = useForm({
     defaultValues: {
       manual: false,
       online: false,
       ssl: false,
-      agree: false,
+      full: false,
+      partial: false,
       wallet: false,
     },
   });
@@ -39,7 +43,7 @@ const DepositForm = () => {
   const handleManualBanking = (value) => {
     if (value) {
       console.log("manual banking selected", value);
-      setopenOnline(false);
+      setOpenOnline(false);
     }
   };
 
@@ -47,12 +51,27 @@ const DepositForm = () => {
     if (value) {
       console.log("online banking selected", value);
       setOpenManual(false);
+      setOpenWallet(false);
     }
   };
 
   const handleFromWallet = (value) => {
     if (value) {
       console.log("wallet is selected", value);
+      setOpenOnline(false);
+    }
+  };
+
+  const handleFullPayment = (value) => {
+    if (value) {
+      console.log("full payment is selected", value);
+      setOpenPartPaymnet(false);
+    }
+  };
+  const handlePartPayment = (value) => {
+    if (value) {
+      console.log("partial payment is selected", value);
+      setOpenFullPayment(false);
     }
   };
 
@@ -68,9 +87,19 @@ const DepositForm = () => {
     }
 
     if (values.wallet) {
-      // if (!values.agree) {
-      //   return setError("Please agree with our terms and conditions");
-      // }
+      if (!values.full && !values.part) {
+        return setError(
+          <>
+            <p className="text-sm">
+              You don&apos;t have enough balance to complete this payment.Please{" "}
+              <Link href="/profile/add-balance">
+                <Button className="px-2 py-1 text-xs mx-2">deposit now</Button>
+              </Link>{" "}
+              to continue
+            </p>
+          </>
+        );
+      }
 
       router.push("/payment-method/online-banking");
     }
@@ -105,39 +134,40 @@ const DepositForm = () => {
               </Button>
             </div>
           )}
-          {pathname === "/payment-method" && (
-            <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-              <FormField
-                control={form.control}
-                name="wallet"
-                render={({ field }) => (
-                  <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md px-4 py-3.5 space-y-0">
-                    <FormControl>
-                      <Checkbox
-                        className="border-[#EDEDED]"
-                        checked={field.value}
-                        onCheckedChange={(value) => {
-                          field.onChange(value);
-                          handleFromWallet(value);
-                        }}
-                        disabled={form.watch("online")}
-                      />
-                    </FormControl>
-                    <FormLabel className="text-base font-normal">
-                      From Wallet
-                    </FormLabel>
-                    <p className="ml-auto text-sm">
-                      $ {form.watch("wallet") && 100}
-                    </p>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-          )}
 
-          {pathname === "/profile/add-balance" && (
-            <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+            {/* wallet */}
+            {pathname === "/payment-method" ||
+              ("/booking-details" && (
+                <FormField
+                  control={form.control}
+                  name="wallet"
+                  render={({ field }) => (
+                    <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md px-4 py-3.5 space-y-0">
+                      <FormControl>
+                        <Checkbox
+                          className="border-[#EDEDED]"
+                          checked={openWallet}
+                          onCheckedChange={(value) => {
+                            field.onChange(value);
+                            handleFromWallet(value);
+                            setOpenWallet(value);
+                          }}
+                        />
+                      </FormControl>
+                      <FormLabel className="text-base font-normal">
+                        From Wallet
+                      </FormLabel>
+                      <p className="ml-auto text-sm">
+                        $ {form.watch("wallet") && 100}
+                      </p>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              ))}
+            {/* manual banking */}
+            {pathname === "/payment-method" && (
               <FormField
                 control={form.control}
                 name="manual"
@@ -161,31 +191,35 @@ const DepositForm = () => {
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}
-                name="online"
-                render={({ field }) => (
-                  <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md px-4 py-3.5 space-y-0">
-                    <FormControl>
-                      <Checkbox
-                        className="border-[#EDEDED]"
-                        checked={openOnline}
-                        onCheckedChange={(value) => {
-                          field.onChange(value);
-                          handleOnlineBanking(value);
-                          setopenOnline(value);
-                        }}
-                      />
-                    </FormControl>
-                    <FormLabel className="text-base font-normal">
-                      Online Banking
-                    </FormLabel>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-          )}
+            )}
+            {/* online banking */}
+            {pathname === "/profile/add-balance" ||
+              ("/booking-details" && (
+                <FormField
+                  control={form.control}
+                  name="online"
+                  render={({ field }) => (
+                    <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md px-4 py-3.5 space-y-0">
+                      <FormControl>
+                        <Checkbox
+                          className="border-[#EDEDED]"
+                          checked={openOnline}
+                          onCheckedChange={(value) => {
+                            field.onChange(value);
+                            handleOnlineBanking(value);
+                            setOpenOnline(value);
+                          }}
+                        />
+                      </FormControl>
+                      <FormLabel className="text-base font-normal">
+                        Online Banking
+                      </FormLabel>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              ))}
+          </div>
 
           {openManual && (
             <div className="grid grid-cols-2 gap-x-6 gap-y-7">
@@ -317,43 +351,78 @@ const DepositForm = () => {
               </div>
             </div>
           )}
-          {form.watch("wallet") && (
+          {openWallet && (
             <div className="space-y-8">
-              {/* <FormField
-                control={form.control}
-                name="agree"
-                render={({ field }) => (
-                  <FormItem className="flex items-center gap-x-2 space-y-0">
-                    <FormControl>
-                      <Checkbox
-                        className="border-[#EDEDED]"
-                        checked={field.value}
-                        onCheckedChange={(value) => {
-                          field.onChange(value);
-                          handleFromWallet(value);
-                        }}
-                      />
-                    </FormControl>
-                    <FormLabel className="flex items-center gap-x-2 font-normal">
-                      I agree with Best Trips{" "}
-                      <Link
-                        href="/privacy-policy"
-                        className="text-primary duration-300 hover:text-primary/75"
-                      >
-                        Privacy Policy
-                      </Link>
-                      and{" "}
-                      <Link
-                        href="/terms-and-conditions"
-                        className="text-primary duration-300 hover:text-primary/75"
-                      >
-                        Terms & Conditions
-                      </Link>
-                    </FormLabel>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              /> */}
+              {pathname === "/booking-details" && (
+                <div className="grid grid-cols-2 gap-x-6 gap-y-7">
+                  <FormField
+                    control={form.control}
+                    name="full"
+                    render={({ field }) => (
+                      <FormItem className="space-y-0 col-span-2 sm:col-span-1">
+                        <FormLabel className="flex gap-x-2 font-normal">
+                          <FormControl>
+                            <Checkbox
+                              className="border-[#EDEDED]"
+                              checked={openFullPayment}
+                              onCheckedChange={(value) => {
+                                field.onChange(value);
+                                handleFullPayment(value);
+                                setOpenFullPayment(value);
+                              }}
+                            />
+                          </FormControl>
+                          <div className="col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] flex-1">
+                            <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
+                              <span>Continue with full payment</span>
+                            </div>
+                            <div className="px-4 md:px-5 py-6 flex items-center gap-3">
+                              <div>
+                                Total to Pay BDT
+                                <span className="text-3xl block">210500</span>
+                              </div>
+                            </div>
+                          </div>
+                        </FormLabel>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="partial"
+                    render={({ field }) => (
+                      <FormItem className="space-y-0 col-span-2 sm:col-span-1">
+                        <FormLabel className="flex gap-x-2 font-normal">
+                          <FormControl>
+                            <Checkbox
+                              className="border-[#EDEDED]"
+                              checked={openPartPaymnet}
+                              onCheckedChange={(value) => {
+                                field.onChange(value);
+                                handlePartPayment(value);
+                                setOpenPartPaymnet(value);
+                              }}
+                            />
+                          </FormControl>
+                          <div className="col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] flex-1">
+                            <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
+                              <span>Continue with partial payment</span>
+                            </div>
+                            <div className="px-4 md:px-5 py-6 flex items-center gap-3">
+                              <div>
+                                Total to Pay BDT
+                                <span className="text-3xl block">29500</span>
+                              </div>
+                            </div>
+                          </div>
+                        </FormLabel>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              )}
             </div>
           )}
           <div className="col-span-2 grid">
