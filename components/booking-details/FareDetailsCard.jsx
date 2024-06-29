@@ -9,7 +9,7 @@ const FareDetailsCard = () => {
           Fare Summary
         </h3>
         <div className="w-full overflow-auto">
-          <div class="grid grid-rows-3 min-w-max lg:min-w-fit text-base text-center overflow-hidden text-t-800">
+          <div className="grid grid-rows-3 min-w-max lg:min-w-fit text-base text-center overflow-hidden text-t-800">
             <ul className="grid grid-cols-6 bg-[#FFEFEF]">
               <li className="flex items-center justify-center px-2.5 py-1.5">
                 Passenger
