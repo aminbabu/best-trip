@@ -20,11 +20,15 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import Link from "next/link";
 import DepositForm from "../payment-method/DepositForm";
+import { InfoIcon } from "lucide-react";
 
 const ActionButtonContainer = () => {
   return (
     <div className="col-span-12 xl:col-span-3 space-y-7 flex flex-col">
-      <Link href="/umrah/1">
+      <Link
+        className="bg-white text-base font-normal text-t-700 rounded shadow-sm hover:bg-[#fefefe] justify-start"
+        href="/umrah/1"
+      >
         <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
           <FlightTokenIcon /> Show More Details
         </Button>
@@ -115,15 +119,30 @@ const ActionButtonContainer = () => {
         </DialogContent>
       </Dialog>
 
-      {/* <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
-        <FlightTokenIcon /> Order Booking
-      </Button>
-      <Button className="bg-white text-base font-normal text-p-900 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
-        Account Balance Low
-      </Button> */}
-      <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
-        <FlightTokenIcon /> Cancel Booking
-      </Button>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
+            <FlightTokenIcon /> Cancel Booking
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[416px]">
+          <DialogHeader className="items-center">
+            <InfoIcon className="w-20 h-20 text-[#f78212] mb-5" />
+            <DialogDescription>
+              Are you sure you would like to cancel it?
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="sm:justify-center mt-5 mb-3">
+            <Button className="px-4 py-2 text-sm font-normal" type="submit">
+              Yes, cancel it!
+            </Button>{" "}
+            <Button className="px-4 py-2 text-sm font-normal bg-slate-50 text-t-700 hover:bg-slate-100">
+              No, return
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
       <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
         <FlightTokenIcon /> Edit Booking Status
       </Button>

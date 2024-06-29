@@ -91,9 +91,12 @@ const DepositForm = () => {
         return setError(
           <>
             <p className="text-sm">
-              You don&apos;t have enough balance to complete this payment.Please{" "}
+              You don&apos;t have enough balance to complete this payment.
+              Please{" "}
               <Link href="/profile/add-balance">
-                <Button className="px-2 py-1 text-xs mx-2">deposit now</Button>
+                <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
+                  deposit now
+                </Button>
               </Link>{" "}
               to continue
             </p>
