@@ -233,7 +233,7 @@ const PaymentTableFilter = () => {
                                     field.onChange(value);
                                     setIsOpenDate(false);
                                   }}
-                                  // disabled={(date) => handleDisableDate(date)}
+                                  // disabled={(date) => handleDisableDate(date)} // todo:update from traveller form
                                   fromYear={dateFrom}
                                   toYear={dateTo}
                                   initialFocus

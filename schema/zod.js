@@ -111,8 +111,8 @@ export const travellerSchema = z.object({
  *
  */
 export const filterSchema = z.object({
-  status: z.string().min(1, { message: "Please select a status" }),
-  type: z.string().min(1, { message: "Please select a status" }),
+  status: z.string().min(1, { message: "Please select a type" }),
+  type: z.string().min(1, { message: "Please select a type" }),
   date: z
     .string()
     .refine((val) => moment(val).isValid(), {
