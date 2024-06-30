@@ -71,11 +71,7 @@ export const travellerSchema = z.object({
         message: "Please provide a valid date of birth",
       })
     ),
-  // marital_status: z
-  //   .string()
-  //   .min(1, { message: "Please select a valid marital status" }),
   country: z.string().min(1, { message: "Please select a valid country" }),
-  // division: z.string().min(1, { message: "Please select a valid division" }),
   city: z.string().min(1, { message: "Please provide a city name" }),
   present_address: z
     .string()
@@ -107,7 +103,7 @@ export const travellerSchema = z.object({
 });
 
 /**
- * @description Schema for traveller form
+ * @description Schema for filter table
  *
  */
 export const filterSchema = z.object({
@@ -123,4 +119,14 @@ export const filterSchema = z.object({
         message: "Please provide a valid date of birth",
       })
     ),
+});
+
+/**
+ * @description Schema for ticket number update table
+ *
+ */
+export const ticketNumberSchema = z.object({
+  ticket_no_one: z.string().min(1, { message: "Type a valid ticket number" }),
+  ticket_no_two: z.number().min(1, { message: "Type a valid ticket number" }),
+  ticket_no_three: z.number().min(1, { message: "Type a valid ticket number" }),
 });

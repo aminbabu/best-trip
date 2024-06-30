@@ -93,10 +93,8 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
       gender: "",
       dob: "",
       emergency_contact: "",
-      // marital_status: "",
       country: "",
       city: "",
-      // division: "",
       present_address: "",
       permanent_address: "",
       passport_no: "",
@@ -488,35 +486,6 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                 )}
               />
             </div>
-            {/* <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-              <FormField
-                control={form.control}
-                name="division"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-t-800 lg:text-base font-normal">
-                      Division<span className="text-primary">*</span>
-                    </FormLabel>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <FormControl>
-                        <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
-                          <SelectValue placeholder="Select option" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="dhaka">Dhaka</SelectItem>
-                        <SelectItem value="chittagong">Chittagong</SelectItem>
-                        <SelectItem value="rajshahi">Rajshahi</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div> */}
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
