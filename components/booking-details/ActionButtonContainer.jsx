@@ -32,9 +32,17 @@ import { Card, CardContent } from "../ui/card";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ticketNumberSchema, travellerSchema } from "@/schema/zod";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 const ActionButtonContainer = () => {
-  const [isOpenDialog, setIsOpenDialog] = useState(false);
+  const [isOpenTicketDialog, setIsOpenTicketDialog] = useState(false);
+  const [isOpenSupplierDialog, setIsOpenSupplierDialog] = useState(false);
 
   const handleCancelBooking = () => {
     const swalWithTailwindButtons = Swal.mixin({
@@ -73,8 +81,12 @@ const ActionButtonContainer = () => {
       });
   };
 
-  const handleDialog = () => {
-    setIsOpenDialog(!isOpenDialog);
+  const handleTicketDialog = () => {
+    setIsOpenTicketDialog(!isOpenTicketDialog);
+  };
+
+  const handleSupplierDialog = () => {
+    setIsOpenSupplierDialog(!isOpenSupplierDialog);
   };
 
   const form = useForm({
@@ -129,11 +141,57 @@ const ActionButtonContainer = () => {
       <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
         <FlightTokenIcon /> Edit Booking
       </Button>
-      <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
-        <FlightTokenIcon /> Edit Supplier
-      </Button>
 
-      <Dialog open={isOpenDialog} onOpenChange={handleDialog}>
+      <Dialog open={isOpenSupplierDialog} onOpenChange={handleSupplierDialog}>
+        <DialogTrigger asChild>
+          <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
+            <FlightTokenIcon /> Edit Supplier
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[800px] p-0">
+          <DialogHeader className="bg-p-300 p-5 rounded">
+            <DialogTitle className="text-xl text-t-800">
+              Update Issuing Supplier
+            </DialogTitle>
+          </DialogHeader>
+          <div className="grid gap-4 px-5">
+            <Card className="p-6 drop-shadow-md border-0">
+              <p>PNR: 05DG2A - Airline: BS</p>
+              <br />
+              <Select>
+                <SelectTrigger className="w-1/2">
+                  <SelectValue placeholder="Select Vendor" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem className="focus:bg-p-300" value="default">
+                    Select Vendor
+                  </SelectItem>
+                  <SelectItem className="focus:bg-p-300" value="bangla">
+                    US - Bangla Airlines
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+            </Card>
+          </div>
+          <DialogFooter className="gap-x-2 mt-4 bg-p-300 px-5 py-3">
+            <Button
+              onClick={handleSupplierDialog}
+              className="py-2"
+              type="submit"
+            >
+              Update
+            </Button>
+            <Button
+              onClick={handleSupplierDialog}
+              className="bg-slate-50 text-t-800 hover:bg-slate-100 border py-2"
+            >
+              Cancel
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={isOpenTicketDialog} onOpenChange={handleTicketDialog}>
         <DialogTrigger asChild>
           <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
             <FlightTokenIcon /> Ticket Number Update
@@ -261,12 +319,16 @@ const ActionButtonContainer = () => {
                   </div>
                 </div>
                 <DialogFooter className="gap-x-2 mt-4">
-                  <Button onClick={handleDialog} className="py-3" type="submit">
+                  <Button
+                    onClick={handleTicketDialog}
+                    className="py-2"
+                    type="submit"
+                  >
                     Update
                   </Button>
                   <Button
-                    onClick={handleDialog}
-                    className="bg-slate-50 text-t-800 hover:bg-slate-100 border py-3"
+                    onClick={handleTicketDialog}
+                    className="bg-slate-50 text-t-800 hover:bg-slate-100 border py-2"
                   >
                     Cancel
                   </Button>
