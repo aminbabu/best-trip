@@ -29,6 +29,8 @@ const DepositForm = () => {
   const [openFullPayment, setOpenFullPayment] = useState(false);
   const [openPartPaymnet, setOpenPartPaymnet] = useState(false);
 
+  console.log(openWallet, pathname === "/booking-details");
+
   const form = useForm({
     defaultValues: {
       manual: false,
@@ -86,7 +88,9 @@ const DepositForm = () => {
       console.log(values.manual && pathname === "/profile/add-balance");
     }
 
-    if (values.wallet) {
+    console.log(!values.part, !values.full);
+
+    if (openWallet && pathname === "/booking-details") {
       if (!values.full && !values.part) {
         return setError(
           <>
@@ -103,7 +107,8 @@ const DepositForm = () => {
           </>
         );
       }
-
+      router.push("/payment-method/online-banking");
+    } else if (openWallet && pathname === "/profile/add-balance") {
       router.push("/payment-method/online-banking");
     }
 
