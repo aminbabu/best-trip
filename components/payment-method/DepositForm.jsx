@@ -114,7 +114,7 @@ const DepositForm = () => {
       router.push("/payment-method/online-banking");
     }
 
-    if (openOnline || openManual) {
+    if (openOnline) {
       if (!values.ssl) {
         return setError("Please select a payment method");
       }
@@ -122,7 +122,9 @@ const DepositForm = () => {
       // if (!values.agree) {
       //   return setError("Please agree with our terms and conditions");
       // }
+    }
 
+    if (openManual) {
       router.push("/payment-method/online-banking");
     }
   }
