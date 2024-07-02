@@ -122,6 +122,10 @@ const ActionButtonContainer = () => {
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[800px] px-5 py-10 lg:p-20">
+          <h1 className="text-t-800 font-medium text-xl mb-8">
+            Payment Method
+          </h1>
+          <p className="text-t-800 mb-4">Select Payment Method</p>
           <DepositForm />
         </DialogContent>
       </Dialog>

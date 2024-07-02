@@ -80,12 +80,13 @@ const DepositForm = () => {
   };
 
   function onSubmit(values) {
-    if (values.manual && pathname === "/payment-method") {
-      router.push("/payment-method/manual-banking");
-      console.log(values.manual && pathname === "/payment-method");
+    if (openManual && pathname === "/payment-method") {
+      // router.push("/payment-method/manual-banking");
+      router.push("/profile/manual-banking");
+      console.log(openManual && pathname === "/payment-method");
     }
 
-    if (values.manual && pathname === "/profile/add-balance") {
+    if (openManual && pathname === "/profile/add-balance") {
       router.push("/profile/manual-banking");
       console.log(values.manual && pathname === "/profile/add-balance");
     }
@@ -110,7 +111,7 @@ const DepositForm = () => {
         }
       }
       router.push("/payment-method/online-banking");
-    } else if (openWallet && pathname === "/profile/add-balance") {
+    } else if (openWallet && pathname === "/payment-method") {
       router.push("/payment-method/online-banking");
     }
 
@@ -118,14 +119,11 @@ const DepositForm = () => {
       if (!values.ssl) {
         return setError("Please select a payment method");
       }
+      router.push("/payment-method/online-banking");
 
       // if (!values.agree) {
       //   return setError("Please agree with our terms and conditions");
       // }
-    }
-
-    if (openManual) {
-      router.push("/payment-method/online-banking");
     }
   }
 
@@ -149,7 +147,7 @@ const DepositForm = () => {
 
           <div className="grid grid-cols-2 gap-x-6 gap-y-4">
             {/* wallet */}
-            {(pathname === "/profile/add-balance" ||
+            {(pathname === "/payment-method" ||
               pathname === "/booking-details") && (
               <FormField
                 control={form.control}
@@ -171,7 +169,7 @@ const DepositForm = () => {
                       From Wallet
                     </FormLabel>
 
-                    {pathname === "/profile/add-balance" && (
+                    {pathname === "/payment-method" && (
                       <p className="ml-auto text-sm">
                         $ {openWallet && balance}
                       </p>
@@ -183,7 +181,7 @@ const DepositForm = () => {
               />
             )}
             {/* manual banking */}
-            {pathname === "/payment-method" && (
+            {pathname === "/profile/add-balance" && (
               <FormField
                 control={form.control}
                 name="manual"
@@ -209,7 +207,7 @@ const DepositForm = () => {
               />
             )}
             {/* online banking */}
-            {(pathname === "/payment-method" ||
+            {(pathname === "/profile/add-balance" ||
               pathname === "/booking-details") && (
               <FormField
                 control={form.control}
