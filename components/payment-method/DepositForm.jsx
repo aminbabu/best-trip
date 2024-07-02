@@ -101,7 +101,9 @@ const DepositForm = () => {
                 Please{" "}
                 <Link href="/profile/add-balance">
                   <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
-                    Deposit Now
+                    {pathname === "/booking-details"
+                      ? "Add Money"
+                      : " Deposit Now"}
                   </Button>
                 </Link>{" "}
                 to continue
