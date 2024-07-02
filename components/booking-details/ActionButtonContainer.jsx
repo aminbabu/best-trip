@@ -119,7 +119,7 @@ const ActionButtonContainer = () => {
             <FlightTokenIcon /> Order Booking
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[800px] px-5 py-10 lg:p-10">
+        <DialogContent className="sm:max-w-[800px] px-5 py-10 lg:p-20">
           <DepositForm />
         </DialogContent>
       </Dialog>

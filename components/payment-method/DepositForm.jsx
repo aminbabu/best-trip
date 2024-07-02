@@ -29,8 +29,6 @@ const DepositForm = () => {
   const [openFullPayment, setOpenFullPayment] = useState(false);
   const [openPartPaymnet, setOpenPartPaymnet] = useState(false);
 
-  console.log(openWallet, pathname === "/booking-details");
-
   const form = useForm({
     defaultValues: {
       manual: false,
@@ -66,13 +64,14 @@ const DepositForm = () => {
 
   const handleFullPayment = (value) => {
     if (value) {
-      console.log("full payment is selected", value);
+      console.log("full payment is checked", value);
       setOpenPartPaymnet(false);
     }
   };
+
   const handlePartPayment = (value) => {
     if (value) {
-      console.log("partial payment is selected", value);
+      console.log("partial payment is checked", value);
       setOpenFullPayment(false);
     }
   };
@@ -371,7 +370,7 @@ const DepositForm = () => {
                         <FormLabel className="flex gap-x-2 font-normal">
                           <FormControl>
                             <Checkbox
-                              className="border-[#EDEDED]"
+                              className="hidden"
                               checked={openFullPayment}
                               onCheckedChange={(value) => {
                                 field.onChange(value);
@@ -380,7 +379,9 @@ const DepositForm = () => {
                               }}
                             />
                           </FormControl>
-                          <div className="col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] flex-1">
+                          <div
+                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openFullPayment && "border-p-900"} flex-1`}
+                          >
                             <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
                               <span>Continue with full payment</span>
                             </div>
@@ -404,7 +405,7 @@ const DepositForm = () => {
                         <FormLabel className="flex gap-x-2 font-normal">
                           <FormControl>
                             <Checkbox
-                              className="border-[#EDEDED]"
+                              className="hidden"
                               checked={openPartPaymnet}
                               onCheckedChange={(value) => {
                                 field.onChange(value);
@@ -413,7 +414,9 @@ const DepositForm = () => {
                               }}
                             />
                           </FormControl>
-                          <div className="col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] flex-1">
+                          <div
+                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openPartPaymnet && "border-p-900"} flex-1`}
+                          >
                             <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
                               <span>Continue with partial payment</span>
                             </div>
