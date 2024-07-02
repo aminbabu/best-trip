@@ -121,7 +121,7 @@ const ActionButtonContainer = () => {
             <FlightTokenIcon /> Order Booking
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[800px] px-5 py-10 lg:p-20">
+        <DialogContent className="sm:max-w-[800px] px-5 py-10 lg:p-10">
           <h1 className="text-t-800 font-medium text-xl mb-8">
             Payment Method
           </h1>

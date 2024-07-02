@@ -390,14 +390,14 @@ const DepositForm = () => {
                             className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openFullPayment && "border-p-900"} flex-1`}
                           >
                             <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
-                              <span className="leading-normal">
+                              <span className="leading-normal text-base">
                                 Continue with full payment
                               </span>
                             </div>
                             <div className="px-4 md:px-5 py-6 flex items-center gap-3">
-                              <div className="space-y-1">
+                              <div className="space-y-1 text-base">
                                 <p>Total to Pay BDT</p>
-                                <span className="text-3xl block">
+                                <span className="text-[20px] font-medium block">
                                   {fullPaymentBalance}
                                 </span>
                               </div>
@@ -429,14 +429,14 @@ const DepositForm = () => {
                             className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openPartPaymnet && "border-p-900"} flex-1`}
                           >
                             <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
-                              <span className="leading-normal">
+                              <span className="leading-normal text-base">
                                 Continue with partial payment
                               </span>
                             </div>
                             <div className="px-4 md:px-5 py-6 flex items-center gap-3">
-                              <div className="space-y-1">
+                              <div className="space-y-1 text-base">
                                 <p>Total to Pay BDT</p>
-                                <span className="text-3xl block">
+                                <span className="text-[20px] block">
                                   {partPaymentBalance}
                                 </span>
                               </div>
