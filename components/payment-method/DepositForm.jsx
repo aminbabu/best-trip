@@ -28,6 +28,9 @@ const DepositForm = () => {
   const [openWallet, setOpenWallet] = useState(false);
   const [openFullPayment, setOpenFullPayment] = useState(false);
   const [openPartPaymnet, setOpenPartPaymnet] = useState(false);
+  const [balance, setBalance] = useState(100);
+  const [partPaymentBalance, setPartPaymentBalance] = useState(29500);
+  const [fullPaymentBalance, setFullPaymentBalance] = useState(210500);
 
   const form = useForm({
     defaultValues: {
@@ -87,24 +90,24 @@ const DepositForm = () => {
       console.log(values.manual && pathname === "/profile/add-balance");
     }
 
-    console.log(!values.part, !values.full);
-
     if (openWallet && pathname === "/booking-details") {
       if (!values.full && !values.part) {
-        return setError(
-          <>
-            <p className="text-sm">
-              You don&apos;t have enough balance to complete this payment.
-              Please{" "}
-              <Link href="/profile/add-balance">
-                <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
-                  deposit now
-                </Button>
-              </Link>{" "}
-              to continue
-            </p>
-          </>
-        );
+        if (partPaymentBalance > balance && fullPaymentBalance > balance) {
+          return setError(
+            <>
+              <p className="text-sm">
+                You don&apos;t have enough balance to complete this payment.
+                Please{" "}
+                <Link href="/profile/add-balance">
+                  <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
+                    deposit now
+                  </Button>
+                </Link>{" "}
+                to continue
+              </p>
+            </>
+          );
+        }
       }
       router.push("/payment-method/online-banking");
     } else if (openWallet && pathname === "/profile/add-balance") {
@@ -123,8 +126,6 @@ const DepositForm = () => {
       router.push("/payment-method/online-banking");
     }
   }
-
-  console.log(pathname);
 
   return (
     <>
@@ -170,7 +171,7 @@ const DepositForm = () => {
 
                     {pathname === "/profile/add-balance" && (
                       <p className="ml-auto text-sm">
-                        $ {form.watch("wallet") && 100}
+                        $ {openWallet && balance}
                       </p>
                     )}
 
@@ -396,7 +397,9 @@ const DepositForm = () => {
                             <div className="px-4 md:px-5 py-6 flex items-center gap-3">
                               <div className="space-y-1">
                                 <p>Total to Pay BDT</p>
-                                <span className="text-3xl block">210500</span>
+                                <span className="text-3xl block">
+                                  {fullPaymentBalance}
+                                </span>
                               </div>
                             </div>
                           </div>
@@ -433,7 +436,9 @@ const DepositForm = () => {
                             <div className="px-4 md:px-5 py-6 flex items-center gap-3">
                               <div className="space-y-1">
                                 <p>Total to Pay BDT</p>
-                                <span className="text-3xl block">29500</span>
+                                <span className="text-3xl block">
+                                  {partPaymentBalance}
+                                </span>
                               </div>
                             </div>
                           </div>
