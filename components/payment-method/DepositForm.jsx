@@ -131,7 +131,7 @@ const DepositForm = () => {
     <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-[18px]">
-          {error && (
+          {error && !(pathname === "/booking-details") && (
             <div className="flex items-center gap-4 justify-between bg-p-300 border border-p-300 text-p-900 px-4 py-3 rounded-md">
               {error}
               <Button
@@ -533,6 +533,19 @@ const DepositForm = () => {
                   />
                 </div>
               )}
+            </div>
+          )}
+          {error && pathname === "/booking-details" && (
+            <div className="flex items-center gap-4 justify-between bg-p-300 border border-p-300 text-p-900 px-4 py-3 rounded-md">
+              {error}
+              <Button
+                variant="icon"
+                className="p-1"
+                onClick={() => setError(null)}
+                aria-label="Close"
+              >
+                <XIcon size={16} />
+              </Button>
             </div>
           )}
           <div className="col-span-2 grid">
