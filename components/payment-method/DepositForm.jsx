@@ -119,6 +119,24 @@ const DepositForm = () => {
       if (!values.ssl) {
         return setError("Please select a payment method");
       }
+      if (!values.full && !values.part) {
+        if (partPaymentBalance > balance && fullPaymentBalance > balance) {
+          return setError(
+            <>
+              <p className="text-sm">
+                You don&apos;t have enough balance to complete this payment.
+                Please{" "}
+                <Link href="/profile/add-balance">
+                  <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
+                    deposit now
+                  </Button>
+                </Link>{" "}
+                to continue
+              </p>
+            </>
+          );
+        }
+      }
       router.push("/payment-method/online-banking");
 
       // if (!values.agree) {
@@ -295,6 +313,7 @@ const DepositForm = () => {
               </div>
             </div>
           )}
+
           {openOnline && (
             <>
               <div className="grid grid-cols-2 gap-x-6">
@@ -449,6 +468,7 @@ const DepositForm = () => {
               )}
             </>
           )}
+
           {openWallet && (
             <div className="space-y-8">
               {pathname === "/booking-details" && (
@@ -535,6 +555,7 @@ const DepositForm = () => {
               )}
             </div>
           )}
+
           {error && pathname === "/booking-details" && (
             <div className="flex items-center gap-4 justify-between bg-p-300 border border-p-300 text-p-900 px-4 py-3 rounded-md">
               {error}
@@ -548,6 +569,7 @@ const DepositForm = () => {
               </Button>
             </div>
           )}
+
           <div className="col-span-2 grid">
             <Button
               className={`py-[15px] ${openOnline ? "" : "mt-6"} `}
