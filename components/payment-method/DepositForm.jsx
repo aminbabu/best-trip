@@ -296,38 +296,39 @@ const DepositForm = () => {
             </div>
           )}
           {openOnline && (
-            <div className="grid grid-cols-2 gap-x-6">
-              <Separator className="bg-[#F5F5F5] mb-[18px] col-span-2" />
-              <div className="space-y-10 col-span-1 ">
-                <FormField
-                  control={form.control}
-                  name="ssl"
-                  render={({ field }) => (
-                    <FormItem className="flex items-center gap-x-2 border border-[#F5F5F5] rounded-md px-4 py-3.5 space-y-0">
-                      <FormControl>
-                        <Checkbox
-                          className="border-[#EDEDED]"
-                          checked={field.value}
-                          onCheckedChange={(value) => {
-                            field.onChange(value);
-                            handleOnlineBanking(value);
-                          }}
-                        />
-                      </FormControl>
-                      <FormLabel className="flex items-center gap-x-2 font-normal text-base">
-                        <Image
-                          src="/images/payment/ssl-commerz.png"
-                          width={70}
-                          height={16}
-                          alt="SSL Commerz"
-                        />
-                        SSL Commerz
-                      </FormLabel>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                {/* <FormField
+            <>
+              <div className="grid grid-cols-2 gap-x-6">
+                <Separator className="bg-[#F5F5F5] mb-[18px] col-span-2" />
+                <div className="space-y-10 col-span-1 ">
+                  <FormField
+                    control={form.control}
+                    name="ssl"
+                    render={({ field }) => (
+                      <FormItem className="flex items-center gap-x-2 border border-[#F5F5F5] rounded-md px-4 py-3.5 space-y-0">
+                        <FormControl>
+                          <Checkbox
+                            className="border-[#EDEDED]"
+                            checked={field.value}
+                            onCheckedChange={(value) => {
+                              field.onChange(value);
+                              handleOnlineBanking(value);
+                            }}
+                          />
+                        </FormControl>
+                        <FormLabel className="flex items-center gap-x-2 font-normal text-base">
+                          <Image
+                            src="/images/payment/ssl-commerz.png"
+                            width={70}
+                            height={16}
+                            alt="SSL Commerz"
+                          />
+                          SSL Commerz
+                        </FormLabel>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  {/* <FormField
                   control={form.control}
                   name="agree"
                   render={({ field }) => (
@@ -362,12 +363,9 @@ const DepositForm = () => {
                     </FormItem>
                   )}
                 /> */}
+                </div>
               </div>
-            </div>
-          )}
-          {openWallet && (
-            <div className="space-y-8">
-              {pathname === "/booking-details" && (
+              {pathname === "/booking-details" && form.watch("ssl") && (
                 <div className="grid grid-cols-2 gap-x-6 gap-y-7">
                   <FormField
                     control={form.control}
@@ -395,9 +393,9 @@ const DepositForm = () => {
                               </span>
                             </div>
                             <div className="px-4 md:px-5 py-6 flex items-center gap-3">
-                              <div className="space-y-1">
+                              <div className="space-y-2">
                                 <p>Total to Pay BDT</p>
-                                <span className="text-[20px] font-medium block">
+                                <span className="text-[20px] block">
                                   {fullPaymentBalance}
                                 </span>
                               </div>
@@ -434,9 +432,95 @@ const DepositForm = () => {
                               </span>
                             </div>
                             <div className="px-4 md:px-5 py-6 flex items-center gap-3">
-                              <div className="space-y-1">
+                              <div className="space-y-2">
                                 <p>Total to Pay BDT</p>
-                                <span className="text-[20px] font-medium block">
+                                <span className="text-[20px] block">
+                                  {partPaymentBalance}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </FormLabel>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              )}
+            </>
+          )}
+          {openWallet && (
+            <div className="space-y-8">
+              {pathname === "/booking-details" && (
+                <div className="grid grid-cols-2 gap-x-6 gap-y-7">
+                  <FormField
+                    control={form.control}
+                    name="full"
+                    render={({ field }) => (
+                      <FormItem className="space-y-0 col-span-2 sm:col-span-1">
+                        <FormLabel className="flex gap-x-2 font-normal">
+                          <FormControl>
+                            <Checkbox
+                              className="hidden"
+                              checked={openFullPayment}
+                              onCheckedChange={(value) => {
+                                field.onChange(value);
+                                handleFullPayment(value);
+                                setOpenFullPayment(value);
+                              }}
+                            />
+                          </FormControl>
+                          <div
+                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openFullPayment && "border-p-900"} flex-1`}
+                          >
+                            <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
+                              <span className="leading-normal">
+                                Continue with full payment
+                              </span>
+                            </div>
+                            <div className="px-4 md:px-5 py-6 flex items-center gap-3">
+                              <div className="space-y-2">
+                                <p>Total to Pay BDT</p>
+                                <span className="text-[20px] block">
+                                  {fullPaymentBalance}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </FormLabel>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="partial"
+                    render={({ field }) => (
+                      <FormItem className="space-y-0 col-span-2 sm:col-span-1">
+                        <FormLabel className="flex gap-x-2 font-normal">
+                          <FormControl>
+                            <Checkbox
+                              className="hidden"
+                              checked={openPartPaymnet}
+                              onCheckedChange={(value) => {
+                                field.onChange(value);
+                                handlePartPayment(value);
+                                setOpenPartPaymnet(value);
+                              }}
+                            />
+                          </FormControl>
+                          <div
+                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openPartPaymnet && "border-p-900"} flex-1`}
+                          >
+                            <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
+                              <span className="leading-normal">
+                                Continue with partial payment
+                              </span>
+                            </div>
+                            <div className="px-4 md:px-5 py-6 flex items-center gap-3">
+                              <div className="space-y-2">
+                                <p>Total to Pay BDT</p>
+                                <span className="text-[20px] block">
                                   {partPaymentBalance}
                                 </span>
                               </div>
