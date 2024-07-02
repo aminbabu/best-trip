@@ -104,6 +104,7 @@ const ActionButtonContainer = () => {
 
   return (
     <div className="col-span-12 xl:col-span-3 space-y-7 flex flex-col">
+      {/* show more details */}
       <Link
         className="bg-white text-base font-normal text-t-700 rounded shadow-sm hover:bg-[#fefefe] justify-start"
         href="/umrah/1"
@@ -113,6 +114,7 @@ const ActionButtonContainer = () => {
         </Button>
       </Link>
 
+      {/* order booking */}
       <Dialog>
         <DialogTrigger asChild>
           <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
@@ -124,10 +126,12 @@ const ActionButtonContainer = () => {
         </DialogContent>
       </Dialog>
 
+      {/* Account Balance Low */}
       <Button className="bg-white text-base font-normal text-p-900 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
         Account Balance Low
       </Button>
 
+      {/* Cancel Booking */}
       <Button
         onClick={handleCancelBooking}
         className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start"
@@ -135,14 +139,22 @@ const ActionButtonContainer = () => {
         <FlightTokenIcon /> Cancel Booking
       </Button>
 
+      {/* Edit Booking Status */}
       <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
         <FlightTokenIcon /> Edit Booking Status
       </Button>
+
+      {/* Edit Booking */}
       <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
         <FlightTokenIcon /> Edit Booking
       </Button>
 
-      <Dialog open={isOpenSupplierDialog} onOpenChange={handleSupplierDialog}>
+      {/* Edit Supplier */}
+      <Dialog
+        className="bg-black/20"
+        open={isOpenSupplierDialog}
+        onOpenChange={handleSupplierDialog}
+      >
         <DialogTrigger asChild>
           <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
             <FlightTokenIcon /> Edit Supplier
@@ -150,7 +162,7 @@ const ActionButtonContainer = () => {
         </DialogTrigger>
         <DialogContent className="sm:max-w-[800px] p-0">
           <DialogHeader className="bg-p-300 p-5 rounded">
-            <DialogTitle className="text-xl text-t-800">
+            <DialogTitle className="text-[18px] text-t-800 font-medium">
               Update Issuing Supplier
             </DialogTitle>
           </DialogHeader>
@@ -159,7 +171,7 @@ const ActionButtonContainer = () => {
               <p>PNR: 05DG2A - Airline: BS</p>
               <br />
               <Select>
-                <SelectTrigger className="w-1/2">
+                <SelectTrigger className="w-1/2 focus:ring-0 focus:ring-offset-0">
                   <SelectValue placeholder="Select Vendor" />
                 </SelectTrigger>
                 <SelectContent>
@@ -191,6 +203,7 @@ const ActionButtonContainer = () => {
         </DialogContent>
       </Dialog>
 
+      {/* Ticket Number Update */}
       <Dialog open={isOpenTicketDialog} onOpenChange={handleTicketDialog}>
         <DialogTrigger asChild>
           <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
@@ -339,6 +352,7 @@ const ActionButtonContainer = () => {
         </DialogContent>
       </Dialog>
 
+      {/* Print & Download */}
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1" className="border-none">
           <AccordionTrigger className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] hover:no-underline justify-start gap-x-4">
@@ -372,6 +386,7 @@ const ActionButtonContainer = () => {
         </AccordionItem>
       </Accordion>
 
+      {/* Booking History */}
       <Dialog>
         <DialogTrigger asChild>
           <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
