@@ -436,7 +436,7 @@ const DepositForm = () => {
                             <div className="px-4 md:px-5 py-6 flex items-center gap-3">
                               <div className="space-y-1 text-base">
                                 <p>Total to Pay BDT</p>
-                                <span className="text-[20px] block">
+                                <span className="text-[20px] font-medium block">
                                   {partPaymentBalance}
                                 </span>
                               </div>
