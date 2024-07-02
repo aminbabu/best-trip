@@ -119,7 +119,7 @@ const DepositForm = () => {
       if (!values.ssl) {
         return setError("Please select a payment method");
       }
-      if (!values.full && !values.part) {
+      if (!values.full && !values.part && pathname === "/booking-details") {
         if (partPaymentBalance > balance && fullPaymentBalance > balance) {
           return setError(
             <>
@@ -128,7 +128,9 @@ const DepositForm = () => {
                 Please{" "}
                 <Link href="/profile/add-balance">
                   <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
-                    Deposit Now
+                    {pathname === "/booking-details"
+                      ? "Add Money"
+                      : " Deposit Now"}
                   </Button>
                 </Link>{" "}
                 to continue
