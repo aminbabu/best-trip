@@ -101,7 +101,7 @@ const DepositForm = () => {
                 Please{" "}
                 <Link href="/profile/add-balance">
                   <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
-                    deposit now
+                    Deposit Now
                   </Button>
                 </Link>{" "}
                 to continue
@@ -128,7 +128,7 @@ const DepositForm = () => {
                 Please{" "}
                 <Link href="/profile/add-balance">
                   <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
-                    deposit now
+                    Deposit Now
                   </Button>
                 </Link>{" "}
                 to continue
