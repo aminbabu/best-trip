@@ -43,17 +43,23 @@ const EditBooking = () => {
         <div className="grid gap-4 px-16 pt-8">
           <p>Flight Status</p>
           <Select>
-            <SelectTrigger className="focus:ring-0 focus:ring-offset-0">
+            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base h-[44px]">
               <SelectValue placeholder="Pending" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem className="focus:bg-p-300" value="pending">
+            <SelectContent className="border-0">
+              <SelectItem className="focus:bg-p-300 text-base" value="pending">
                 Pending
               </SelectItem>
-              <SelectItem className="focus:bg-p-300" value="in-process">
+              <SelectItem
+                className="focus:bg-p-300 text-base"
+                value="in-process"
+              >
                 In Process
               </SelectItem>
-              <SelectItem className="focus:bg-p-300" value="Confirmed">
+              <SelectItem
+                className="focus:bg-p-300 text-base"
+                value="Confirmed"
+              >
                 Confirmed
               </SelectItem>
             </SelectContent>
@@ -62,17 +68,23 @@ const EditBooking = () => {
         <div className="grid gap-4 px-16 pt-4">
           <p>Makkah Hotel Status</p>
           <Select>
-            <SelectTrigger className="focus:ring-0 focus:ring-offset-0">
+            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base h-[44px]">
               <SelectValue placeholder="Pending" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem className="focus:bg-p-300" value="pending">
+            <SelectContent className="border-0">
+              <SelectItem className="focus:bg-p-300 text-base" value="pending">
                 Pending
               </SelectItem>
-              <SelectItem className="focus:bg-p-300" value="processing">
+              <SelectItem
+                className="focus:bg-p-300 text-base"
+                value="processing"
+              >
                 Processing
               </SelectItem>
-              <SelectItem className="focus:bg-p-300" value="Confirmed">
+              <SelectItem
+                className="focus:bg-p-300 text-base"
+                value="Confirmed"
+              >
                 Confirmed
               </SelectItem>
             </SelectContent>
@@ -81,17 +93,23 @@ const EditBooking = () => {
         <div className="grid gap-4 px-16 pt-4">
           <p>Madinah Hotel Status</p>
           <Select>
-            <SelectTrigger className="focus:ring-0 focus:ring-offset-0">
+            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base h-[44px]">
               <SelectValue placeholder="Pending" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem className="focus:bg-p-300" value="pending">
+            <SelectContent className="border-0">
+              <SelectItem className="focus:bg-p-300 text-base" value="pending">
                 Pending
               </SelectItem>
-              <SelectItem className="focus:bg-p-300" value="processing">
+              <SelectItem
+                className="focus:bg-p-300 text-base"
+                value="processing"
+              >
                 Processing
               </SelectItem>
-              <SelectItem className="focus:bg-p-300" value="Confirmed">
+              <SelectItem
+                className="focus:bg-p-300 text-base"
+                value="Confirmed"
+              >
                 Confirmed
               </SelectItem>
             </SelectContent>
@@ -100,17 +118,23 @@ const EditBooking = () => {
         <div className="grid gap-4 px-16 pt-4">
           <p>Visa Status</p>
           <Select>
-            <SelectTrigger className="focus:ring-0 focus:ring-offset-0">
+            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base h-[44px]">
               <SelectValue placeholder="Pending" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem className="focus:bg-p-300" value="pending">
+            <SelectContent className="border-0">
+              <SelectItem className="focus:bg-p-300 text-base" value="pending">
                 Pending
               </SelectItem>
-              <SelectItem className="focus:bg-p-300" value="processing">
+              <SelectItem
+                className="focus:bg-p-300 text-base"
+                value="processing"
+              >
                 Processing
               </SelectItem>
-              <SelectItem className="focus:bg-p-300" value="Confirmed">
+              <SelectItem
+                className="focus:bg-p-300 text-base"
+                value="Confirmed"
+              >
                 Confirmed
               </SelectItem>
             </SelectContent>
@@ -119,7 +143,7 @@ const EditBooking = () => {
         <DialogFooter className="gap-x-2 px-5 py-3 sm:justify-center mt-4 mb-8">
           <Button
             onClick={handleEditBooking}
-            className="bg-slate-50 text-t-800 hover:bg-slate-100 border py-2"
+            className="border-0 bg-[#f9f9f9] text-t-800  py-2"
           >
             Discard
           </Button>
