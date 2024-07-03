@@ -36,7 +36,7 @@ const EditBooking = () => {
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[650px] p-0">
-        <DialogHeader className="shadow p-5 rounded">
+        <DialogHeader className="shadow p-[27px] rounded">
           <DialogTitle className="text-[18px] text-t-800 font-medium">
             Edit Booking
           </DialogTitle>
