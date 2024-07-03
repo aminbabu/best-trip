@@ -78,7 +78,7 @@ const ExtendTimeLimit = () => {
           </DialogTitle>
         </DialogHeader>
         <div className="grid gap-4 px-16 pt-8">
-          <p>Previous Booking Time Limit</p>
+          <p>Previous Time Limit</p>
           <div>12 July 2024 at 22:00</div>
         </div>
         <div className="grid gap-4 px-16 pt-8">

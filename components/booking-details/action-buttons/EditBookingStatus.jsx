@@ -35,19 +35,18 @@ const EditBookingStatus = () => {
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[650px] p-0">
-        <DialogHeader className="shadow-sm p-5 rounded">
+        <DialogHeader className="shadow p-[27px] rounded">
           <DialogTitle className="text-[18px] text-t-800 font-medium">
             Edit Booking Status
           </DialogTitle>
         </DialogHeader>
         <div className="grid gap-4 px-16 pt-8">
-          {/* <Card className="p-6 drop-shadow-md border-0"> */}
           <p>Booking Status :</p>
           <Select>
-            <SelectTrigger className="focus:ring-0 focus:ring-offset-0">
+            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base h-[44px]">
               <SelectValue placeholder="Select status" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="border-0 shadow">
               <SelectItem className="focus:bg-p-300" value="in-process">
                 In Process
               </SelectItem>
@@ -68,18 +67,17 @@ const EditBookingStatus = () => {
               </SelectItem>
             </SelectContent>
           </Select>
-          {/* </Card> */}
         </div>
         <DialogFooter className="gap-x-2 px-5 py-3 sm:justify-center mt-4 mb-8">
           <Button
             onClick={handleBookingStatusDialog}
-            className="bg-slate-50 text-t-800 hover:bg-slate-100 border py-2"
+            className="border-0 bg-[#f9f9f9] text-t-800 hover:bg-[#f9f9f9] py-2 font-normal"
           >
             Discard
           </Button>
           <Button
             onClick={handleBookingStatusDialog}
-            className="py-2"
+            className="py-2 font-normal"
             type="submit"
           >
             Submit
