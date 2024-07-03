@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogFooter,
   DialogHeader,
@@ -34,8 +35,9 @@ const EditBooking = () => {
           <FlightTokenIcon /> Edit Booking
         </Button>
       </DialogTrigger>
+      <DialogClose className="top-8" asChild></DialogClose>
       <DialogContent className="sm:max-w-[650px] p-0">
-        <DialogHeader className="shadow-sm p-5 rounded">
+        <DialogHeader className="shadow p-5 rounded">
           <DialogTitle className="text-[18px] text-t-800 font-medium">
             Edit Booking
           </DialogTitle>
@@ -43,26 +45,17 @@ const EditBooking = () => {
         <div className="grid gap-4 px-16 pt-8">
           <p>Flight Status</p>
           <Select>
-            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base h-[44px]">
+            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base font-medium h-[44px]">
               <SelectValue placeholder="Pending" />
             </SelectTrigger>
             <SelectContent className="border-0 shadow">
-              <SelectItem
-                className="focus:bg-p-300 font-medium"
-                value="pending"
-              >
+              <SelectItem className="focus:bg-p-300" value="pending">
                 Pending
               </SelectItem>
-              <SelectItem
-                className="focus:bg-p-300 font-medium"
-                value="in-process"
-              >
+              <SelectItem className="focus:bg-p-300" value="in-process">
                 In Process
               </SelectItem>
-              <SelectItem
-                className="focus:bg-p-300 font-medium"
-                value="Confirmed"
-              >
+              <SelectItem className="focus:bg-p-300" value="Confirmed">
                 Confirmed
               </SelectItem>
             </SelectContent>
@@ -71,26 +64,17 @@ const EditBooking = () => {
         <div className="grid gap-4 px-16 pt-4">
           <p>Makkah Hotel Status</p>
           <Select>
-            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base h-[44px]">
+            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base font-medium h-[44px]">
               <SelectValue placeholder="Pending" />
             </SelectTrigger>
             <SelectContent className="border-0 shadow">
-              <SelectItem
-                className="focus:bg-p-300 font-medium"
-                value="pending"
-              >
+              <SelectItem className="focus:bg-p-300" value="pending">
                 Pending
               </SelectItem>
-              <SelectItem
-                className="focus:bg-p-300 font-medium"
-                value="processing"
-              >
+              <SelectItem className="focus:bg-p-300" value="processing">
                 Processing
               </SelectItem>
-              <SelectItem
-                className="focus:bg-p-300 font-medium"
-                value="Confirmed"
-              >
+              <SelectItem className="focus:bg-p-300" value="Confirmed">
                 Confirmed
               </SelectItem>
             </SelectContent>
@@ -99,26 +83,17 @@ const EditBooking = () => {
         <div className="grid gap-4 px-16 pt-4">
           <p>Madinah Hotel Status</p>
           <Select>
-            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base h-[44px]">
+            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base font-medium h-[44px]">
               <SelectValue placeholder="Pending" />
             </SelectTrigger>
             <SelectContent className="border-0 shadow">
-              <SelectItem
-                className="focus:bg-p-300 font-medium"
-                value="pending"
-              >
+              <SelectItem className="focus:bg-p-300" value="pending">
                 Pending
               </SelectItem>
-              <SelectItem
-                className="focus:bg-p-300 font-medium"
-                value="processing"
-              >
+              <SelectItem className="focus:bg-p-300" value="processing">
                 Processing
               </SelectItem>
-              <SelectItem
-                className="focus:bg-p-300 font-medium"
-                value="Confirmed"
-              >
+              <SelectItem className="focus:bg-p-300" value="Confirmed">
                 Confirmed
               </SelectItem>
             </SelectContent>
@@ -127,26 +102,17 @@ const EditBooking = () => {
         <div className="grid gap-4 px-16 pt-4">
           <p>Visa Status</p>
           <Select>
-            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base h-[44px]">
+            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base font-medium h-[44px]">
               <SelectValue placeholder="Pending" />
             </SelectTrigger>
             <SelectContent className="border-0 shadow">
-              <SelectItem
-                className="focus:bg-p-300 font-medium"
-                value="pending"
-              >
+              <SelectItem className="focus:bg-p-300" value="pending">
                 Pending
               </SelectItem>
-              <SelectItem
-                className="focus:bg-p-300 font-medium"
-                value="processing"
-              >
+              <SelectItem className="focus:bg-p-300" value="processing">
                 Processing
               </SelectItem>
-              <SelectItem
-                className="focus:bg-p-300 font-medium"
-                value="Confirmed"
-              >
+              <SelectItem className="focus:bg-p-300" value="Confirmed">
                 Confirmed
               </SelectItem>
             </SelectContent>
@@ -155,11 +121,15 @@ const EditBooking = () => {
         <DialogFooter className="gap-x-2 px-5 py-3 sm:justify-center mt-4 mb-8">
           <Button
             onClick={handleEditBooking}
-            className="border-0 bg-[#f9f9f9] text-t-800 hover:bg-[#f9f9f9] py-2"
+            className="border-0 bg-[#f9f9f9] text-t-800 hover:bg-[#f9f9f9] py-2 font-normal"
           >
             Discard
           </Button>
-          <Button onClick={handleEditBooking} className="py-2" type="submit">
+          <Button
+            onClick={handleEditBooking}
+            className="py-2 font-normal"
+            type="submit"
+          >
             Submit
           </Button>
         </DialogFooter>
