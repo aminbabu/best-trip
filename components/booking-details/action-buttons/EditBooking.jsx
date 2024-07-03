@@ -35,7 +35,6 @@ const EditBooking = () => {
           <FlightTokenIcon /> Edit Booking
         </Button>
       </DialogTrigger>
-      <DialogClose className="top-8" asChild></DialogClose>
       <DialogContent className="sm:max-w-[650px] p-0">
         <DialogHeader className="shadow p-5 rounded">
           <DialogTitle className="text-[18px] text-t-800 font-medium">
@@ -45,7 +44,7 @@ const EditBooking = () => {
         <div className="grid gap-4 px-16 pt-8">
           <p>Flight Status</p>
           <Select>
-            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base font-medium h-[44px]">
+            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base h-[44px]">
               <SelectValue placeholder="Pending" />
             </SelectTrigger>
             <SelectContent className="border-0 shadow">
@@ -64,7 +63,7 @@ const EditBooking = () => {
         <div className="grid gap-4 px-16 pt-4">
           <p>Makkah Hotel Status</p>
           <Select>
-            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base font-medium h-[44px]">
+            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base h-[44px]">
               <SelectValue placeholder="Pending" />
             </SelectTrigger>
             <SelectContent className="border-0 shadow">
@@ -83,7 +82,7 @@ const EditBooking = () => {
         <div className="grid gap-4 px-16 pt-4">
           <p>Madinah Hotel Status</p>
           <Select>
-            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base font-medium h-[44px]">
+            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base h-[44px]">
               <SelectValue placeholder="Pending" />
             </SelectTrigger>
             <SelectContent className="border-0 shadow">
@@ -102,7 +101,7 @@ const EditBooking = () => {
         <div className="grid gap-4 px-16 pt-4">
           <p>Visa Status</p>
           <Select>
-            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base font-medium h-[44px]">
+            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base h-[44px]">
               <SelectValue placeholder="Pending" />
             </SelectTrigger>
             <SelectContent className="border-0 shadow">
