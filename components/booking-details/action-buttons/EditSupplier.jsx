@@ -36,7 +36,7 @@ const EditSupplier = () => {
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[650px] p-0">
-        <DialogHeader className="shadow-sm p-5 rounded">
+        <DialogHeader className="shadow p-[27px] rounded">
           <DialogTitle className="text-[18px] text-t-800 font-medium">
             Update Issuing Supplier
           </DialogTitle>
@@ -44,10 +44,10 @@ const EditSupplier = () => {
         <div className="grid gap-4 px-16 pt-8">
           <p>Select Vendor</p>
           <Select>
-            <SelectTrigger className="focus:ring-0 focus:ring-offset-0">
+            <SelectTrigger className="focus:ring-0 focus:ring-offset-0 border-0 bg-[#f9f9f9] text-base h-[44px]">
               <SelectValue placeholder="Select Vendor" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="border-0 shadow">
               <SelectItem className="focus:bg-p-300" value="default">
                 Best Trip
               </SelectItem>
@@ -60,11 +60,15 @@ const EditSupplier = () => {
         <DialogFooter className="gap-x-2 px-5 py-3 sm:justify-center mt-4 mb-8">
           <Button
             onClick={handleSupplierDialog}
-            className="bg-slate-50 text-t-800 hover:bg-slate-100 border py-2"
+            className="border-0 bg-[#f9f9f9] text-t-800 hover:bg-[#f9f9f9] py-2 font-normal"
           >
             Discard
           </Button>
-          <Button onClick={handleSupplierDialog} className="py-2" type="submit">
+          <Button
+            onClick={handleSupplierDialog}
+            className="py-2 font-normal"
+            type="submit"
+          >
             Submit
           </Button>
         </DialogFooter>

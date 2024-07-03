@@ -72,20 +72,42 @@ const ExtendTimeLimit = () => {
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[650px] p-0">
-        <DialogHeader className="shadow-sm p-5 rounded">
+        <DialogHeader className="shadow p-[27px] rounded">
           <DialogTitle className="text-[18px] text-t-800 font-medium">
             Extend Time Limit
           </DialogTitle>
         </DialogHeader>
         <div className="grid gap-4 px-16 pt-8">
-          <p>Previous Time Limit</p>
-          <div>12 July 2024 at 22:00</div>
-        </div>
-        <div className="grid gap-4 px-16 pt-8">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
               <div className="w-full overflow-auto">
-                <div className="grid min-w-max lg:min-w-fit text-base text-left overflow-hidden text-t-800">
+                <div className="grid min-w-max lg:min-w-fit text-base text-left overflow-hidden text-t-800 space-y-8">
+                  <FormField
+                    control={form.control}
+                    name="prev_time"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-col">
+                        <FormLabel className="text-t-800 lg:text-base font-normal">
+                          Previous Time Limit
+                        </FormLabel>
+                        <FormControl>
+                          <Button
+                            variant={"outline"}
+                            disabled
+                            className="justify-start font-normal h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
+                          >
+                            {/* {field.value ? (
+                                  moment(field.value).format("DD-MMM-YYYY")
+                                ) : (
+                                  <span>Select a date</span>
+                                )} */}
+                            12-July-2024
+                          </Button>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                   <FormField
                     control={form.control}
                     name="new_time"
@@ -138,13 +160,13 @@ const ExtendTimeLimit = () => {
               <DialogFooter className="gap-x-2 px-5 py-3 sm:justify-center mt-4 mb-8">
                 <Button
                   onClick={handleExtendTimeLimit}
-                  className="bg-slate-50 text-t-800 hover:bg-slate-100 border py-2"
+                  className="border-0 bg-[#f9f9f9] text-t-800 hover:bg-[#f9f9f9] py-2 font-normal"
                 >
                   Discard
                 </Button>
                 <Button
                   onClick={handleExtendTimeLimit}
-                  className="py-2"
+                  className="py-2 font-normal"
                   type="submit"
                 >
                   Submit
@@ -153,21 +175,6 @@ const ExtendTimeLimit = () => {
             </form>
           </Form>
         </div>
-        {/* <DialogFooter className="gap-x-2 px-5 py-3 sm:justify-center mt-4 mb-8">
-          <Button
-            onClick={handleExtendTimeLimit}
-            className="bg-slate-50 text-t-800 hover:bg-slate-100 border py-2"
-          >
-            Discard
-          </Button>
-          <Button
-            onClick={handleExtendTimeLimit}
-            className="py-2"
-            type="submit"
-          >
-            Submit
-          </Button>
-        </DialogFooter> */}
       </DialogContent>
     </Dialog>
   );
