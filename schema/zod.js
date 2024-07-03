@@ -130,3 +130,20 @@ export const ticketNumberSchema = z.object({
   ticket_no_two: z.number().min(1, { message: "Type a valid ticket number" }),
   ticket_no_three: z.number().min(1, { message: "Type a valid ticket number" }),
 });
+
+/**
+ * @description Schema for ticket number update table
+ *
+ */
+export const extendTimeLimitSchema = z.object({
+  new_time: z
+    .string()
+    .refine((val) => moment(val).isValid(), {
+      message: "Please provide a valid date of birth",
+    })
+    .or(
+      z.date({
+        message: "Please provide a valid date of birth",
+      })
+    ),
+});
