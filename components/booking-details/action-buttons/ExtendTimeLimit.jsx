@@ -31,6 +31,7 @@ import {
   travellerSchema,
 } from "@/schema/zod";
 import moment from "moment";
+import Swal from "sweetalert2";
 
 const ExtendTimeLimit = () => {
   const [isOpenExtendTimeLimit, setIsOpenExtendTimeLimit] = useState(false);
@@ -57,8 +58,34 @@ const ExtendTimeLimit = () => {
     },
   });
 
+  const swalWithTailwindButtons = Swal.mixin({
+    customClass: {
+      confirmButton:
+        "bg-primary text-primary-foreground hover:bg-primary/80 px-4 py-2 rounded mr-3 text-sm",
+      text: "!text-[14px] text-p-600 text-t-800",
+    },
+    buttonsStyling: false,
+  });
+
   const onSubmit = (data) => {
+    if (data) {
+      setIsOpenExtendTimeLimit(false);
+      console.log(data);
+    }
     console.log(data);
+    swalWithTailwindButtons.fire({
+      icon: "success",
+      text: "Time limit extended succeessfully",
+    });
+  };
+
+  const handleCancel = () => {
+    setIsOpenExtendTimeLimit(false);
+
+    swalWithTailwindButtons.fire({
+      text: "Time limit is not updated",
+      icon: "error",
+    });
   };
   return (
     <Dialog
@@ -77,7 +104,7 @@ const ExtendTimeLimit = () => {
             Extend Time Limit
           </DialogTitle>
         </DialogHeader>
-        <div className="grid gap-4 px-16 pt-8">
+        <div className="grid gap-4 px-5 lg:px-16 pt-8">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
               <div className="w-full overflow-auto">
@@ -157,18 +184,14 @@ const ExtendTimeLimit = () => {
                   />
                 </div>
               </div>
-              <DialogFooter className="gap-x-2 px-5 py-3 sm:justify-center mt-4 mb-8">
+              <DialogFooter className="gap-x-2 lg:px-5 py-3 sm:justify-center mt-4 mb-8">
                 <Button
-                  onClick={handleExtendTimeLimit}
+                  onClick={handleCancel}
                   className="border-0 bg-[#f9f9f9] text-t-800 hover:bg-[#f9f9f9] py-2 font-normal"
                 >
                   Discard
                 </Button>
-                <Button
-                  onClick={handleExtendTimeLimit}
-                  className="py-2 font-normal"
-                  type="submit"
-                >
+                <Button className="py-2 font-normal" type="submit">
                   Submit
                 </Button>
               </DialogFooter>

@@ -19,7 +19,7 @@ const BookingHistory = () => {
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[800px] p-0">
-        <DialogHeader className="bg-p-300 p-5 rounded">
+        <DialogHeader className="shadow p-[27px] rounded">
           <DialogTitle className="text-xl text-t-800">
             Booking History
           </DialogTitle>

@@ -147,3 +147,40 @@ export const extendTimeLimitSchema = z.object({
       })
     ),
 });
+
+/**
+ * @description Schema for edit booking status
+ *
+ */
+export const editBookingStatusSchema = z.object({
+  updated_booking_status: z
+    .string()
+    .min(1, { message: "Please select a booking status" }),
+});
+
+/**
+ * @description Schema for edit booking
+ *
+ */
+export const editBookingSchema = z.object({
+  flight_status: z
+    .string()
+    .min(1, { message: "Please select a valid flight status" }),
+  makkah_hotel_status: z
+    .string()
+    .min(1, { message: "Please select a valid makkah hotel status" }),
+  madinah_hotel_status: z
+    .string()
+    .min(1, { message: "Please select a valid madinah hotel status" }),
+  visa_status: z
+    .string()
+    .min(1, { message: "Please select a valid visa status" }),
+});
+
+/**
+ * @description Schema for edit supplier
+ *
+ */
+export const editSupplierSchema = z.object({
+  vendor_status: z.string().min(1, { message: "Please select a valid vendor" }),
+});
