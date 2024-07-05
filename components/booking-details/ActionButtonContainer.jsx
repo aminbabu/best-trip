@@ -81,28 +81,25 @@ const ActionButtonContainer = () => {
       </Button>
 
       {/* Edit Booking Status */}
-      <EditBookingStatus />
+      {/* <EditBookingStatus /> */}
 
       {/* Edit Booking */}
-      <EditBooking />
+      {/* <EditBooking /> */}
 
       {/* Edit Supplier */}
-      <EditSupplier />
+      {/* <EditSupplier /> */}
 
       {/* Ticket Number Update */}
-      <TicketNumberUpdate />
+      {/* <TicketNumberUpdate /> */}
 
       {/* Print & Download */}
       <PrintAndDownload />
 
       {/* Booking History */}
-      <BookingHistory />
+      {/* <BookingHistory /> */}
 
       {/* Extend Time Limit */}
-      {/* <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
-        <FlightTokenIcon /> Extend Time Limit
-      </Button> */}
-      <ExtendTimeLimit />
+      {/* <ExtendTimeLimit /> */}
     </div>
   );
 };
