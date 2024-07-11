@@ -152,7 +152,7 @@ const PaymentPage = ({ params }) => {
             </div>
             <div className="grid mt-10">
               <Button asChild>
-                <Link href={`/payment-method`}>Continue</Link>
+                <Link href='/payment-method/online-banking'>Continue</Link>
               </Button>
             </div>
           </CardContent>
