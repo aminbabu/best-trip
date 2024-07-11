@@ -1,8 +1,18 @@
+'use client';
+
 import MessageCard from "@/components/global/MessageCard";
 import { LoaderIcon } from "@/components/icons/svgr";
 import Container from "@/components/layouts/Container";
+import { useEffect } from "react";
 
 const OnlineBankingPage = () => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      window.location.href = "/payment-method/review";
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <main className="py-20 bg-secondary">
       <Container>
