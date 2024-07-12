@@ -12,7 +12,7 @@ const UmrahZiyarah = () => {
   const { title, description, items } = data;
 
   return (
-    <Section className="bg-secondary">
+    <Section id="umrah" className="bg-secondary">
       <SectionHeader title={title} description={description} />
       <Slider hasTrack={false} options={options}>
         <SplideTrack>

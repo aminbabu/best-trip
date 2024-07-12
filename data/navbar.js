@@ -79,8 +79,8 @@ export const navLinks = [
 
 // menu
 export const menu = [
-  { id: 1, name: "Flight", path: "/flight" },
-  { id: 2, name: "Umrah", path: "/umrah" },
-  { id: 3, name: "Hotel", path: "/hotel" },
-  { id: 4, name: "Visa", path: "/visa" },
+  { id: 1, name: "Flight", path: "#flights" },
+  { id: 2, name: "Umrah", path: "#umrah" },
+  { id: 3, name: "Hotel", path: "#hotels" },
+  { id: 4, name: "Visa", path: "#visa" },
 ];

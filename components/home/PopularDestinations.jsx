@@ -12,7 +12,7 @@ const PopularDestinations = () => {
   const { title, description, items } = data;
 
   return (
-    <Section>
+    <Section id="flights">
       <SectionHeader title={title} description={description} />
       <Slider hasTrack={false} options={options}>
         <SplideTrack>
