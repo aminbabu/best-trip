@@ -71,6 +71,9 @@ import PlusSolidIcon from "@/public/icons/plus-solid.svg";
 import MoneyCheckIcon from "@/public/icons/money-check-solid.svg";
 import TicketSolidIcon from "@/public/icons/ticket-solid.svg";
 import LockSolidIcon from "@/public/icons/lock-solid.svg";
+import CalenderTwoLineIcon from "@/public/icons/calendar-2-line.svg";
+import CrossIcon from "@/public/icons/cross.svg";
+import PlusCircleIcon from "@/public/icons/plus-circle.svg";
 
 export {
   FacebookIcon,
@@ -146,4 +149,7 @@ export {
   MoneyCheckIcon,
   TicketSolidIcon,
   LockSolidIcon,
+  CalenderTwoLineIcon,
+  CrossIcon,
+  PlusCircleIcon,
 };
