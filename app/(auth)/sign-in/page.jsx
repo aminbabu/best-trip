@@ -18,6 +18,7 @@ import Link from "next/link";
 import { CheckIcon } from "lucide-react";
 import { useState } from "react";
 import { EyeIcon, EyeSlashIcon } from "@/components/icons/svgr";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -25,6 +26,7 @@ const formSchema = z.object({
 });
 
 const SignInPage = () => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleShowPassword = (e) => {
@@ -42,7 +44,13 @@ const SignInPage = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    try {
+      console.log(data);
+      
+      router.push("/profile");
+    } catch (error) {
+      
+    }
   };
 
   return (
