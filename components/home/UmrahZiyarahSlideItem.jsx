@@ -14,7 +14,7 @@ const UmrahZiyarahSlideItem = ({ item }) => {
   return (
     <div className="group flex flex-col gap-y-4">
       <Link
-        href="#"
+        href="/umrah/1"
         className="rounded-t-md flex aspect-[262/280] overflow-hidden"
       >
         <Image
