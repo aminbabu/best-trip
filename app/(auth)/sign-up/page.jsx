@@ -20,6 +20,7 @@ import Link from "next/link";
 import { CheckIcon } from "lucide-react";
 import { useState } from "react";
 import { EyeIcon, EyeSlashIcon } from "@/components/icons/svgr";
+import { useRouter } from "next/navigation";
 
 const formSchema = z
   .object({
@@ -40,6 +41,7 @@ const formSchema = z
   });
 
 const SignUpPage = () => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -66,7 +68,15 @@ const SignUpPage = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    try {
+      
+      console.log(data);
+
+      router.push("/sign-in");
+  
+    } catch (error) {
+      
+    }
   };
 
   return (
