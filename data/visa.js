@@ -18,7 +18,7 @@ export let reqmntList = [
   },
   {
     id: 4,
-    req: "Return Ticket Booking copy",
+    req: "Return Ticket Booking copy",
   },
   {
     id: 5,

@@ -1,8 +1,8 @@
+import BaggageSummary from "@/components/umrah-fight/BaggageSummary";
+import FareSummary from "@/components/umrah-fight/FareSummary";
 import ItineraryDetails from "@/components/umrah-fight/ItineraryDetails";
 import CountryInfo from "@/components/visa/CountryInfo";
-import RequirementList from "@/components/visa/RequirementList";
 import TermsAnsConditions from "@/components/visa/TermsAnsConditions";
-import VisaBasicInfo from "@/components/visa/VisaBasicInfo";
 
 export const tabItems = [
   {
@@ -15,13 +15,13 @@ export const tabItems = [
     id: 2,
     name: "Baggage Summary",
     value: "baggage summary",
-    element: <RequirementList />,
+    element: <BaggageSummary />,
   },
   {
     id: 3,
     name: "Fare Summary",
     value: "fare summary",
-    element: <CountryInfo />,
+    element: <FareSummary />,
   },
   {
     id: 4,
