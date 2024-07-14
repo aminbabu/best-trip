@@ -3,6 +3,9 @@ import UmrahCard from "@/components/serach/UmrahCard";
 import UmrahFlightCard from "@/components/serach/UmrahFlightCard";
 import VisaCard from "@/components/serach/VisaCard";
 import visaData from "@/data/visa-result.json";
+import { Card } from "../ui/card";
+import FlightFilter from "../umrah-fight/FlightFilter";
+import { Accordion } from "../ui/accordion";
 
 const FilterResult = ({ slug, data }) => {
   if (data.length === 0) {
@@ -16,10 +19,30 @@ const FilterResult = ({ slug, data }) => {
   switch (slug) {
     case "umrah-flight":
       return (
-        <div className="grid grid-cols-1 gap-y-6 lg:gap-y-8">
-          {data.map((item) => (
-            <UmrahFlightCard key={item.id} data={item} />
-          ))}
+        <div className="grid grid-cols-11 gap-7">
+          <div className="col-span-11 lg:col-span-3">
+            <FlightFilter />
+          </div>
+          <div className="grid grid-cols-1 gap-y-6 lg:gap-y-8 col-span-11 lg:col-span-8">
+            <Card className="hidden md:grid grid-cols-9 col-span-1 gap-2 lg:gap-6 border-none px-5 h-[52px] text-xs lg:text-sm font-medium">
+              <div className="col-span-2 flex items-center justify-center">
+                Sort By : Duration
+              </div>
+              <div className="col-span-2 flex items-center justify-center">
+                Departure
+              </div>
+              <div className="col-span-1"></div>
+              <div className="col-span-2 flex items-center justify-center">
+                Arrival
+              </div>
+              <div className="col-span-2 flex items-center justify-center">
+                Price
+              </div>
+            </Card>
+            {visaData.map((item) => (
+              <UmrahFlightCard key={item.id} data={item} />
+            ))}
+          </div>
         </div>
       );
     case "umrah":

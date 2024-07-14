@@ -74,6 +74,10 @@ import LockSolidIcon from "@/public/icons/lock-solid.svg";
 import CalenderTwoLineIcon from "@/public/icons/calendar-2-line.svg";
 import CrossIcon from "@/public/icons/cross.svg";
 import PlusCircleIcon from "@/public/icons/plus-circle.svg";
+import SunIcon from "@/public/icons/sun.svg";
+import SunHorizonIcon from "@/public/icons/sun-horizon.svg";
+import HalfSunIcon from "@/public/icons/half-sun.svg";
+import MoonStarsIcon from "@/public/icons/moon-stars.svg";
 
 export {
   FacebookIcon,
@@ -152,4 +156,8 @@ export {
   CalenderTwoLineIcon,
   CrossIcon,
   PlusCircleIcon,
+  SunIcon,
+  SunHorizonIcon,
+  HalfSunIcon,
+  MoonStarsIcon,
 };

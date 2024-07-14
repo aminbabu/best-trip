@@ -23,6 +23,7 @@ import { ArrowLeftRight } from "lucide-react";
 import { flightSchema } from "@/schema/zod";
 import UnderDevelopment from "./UnderDevelopment";
 import { useRouter } from "next/navigation";
+import { Loader } from "lucide-react";
 const flightTypes = ["One way", "Round trip", "Multi - city"];
 
 const travellers = [
@@ -105,6 +106,7 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
   const [traveller, setTraveller] = useState(1);
   const [errors, setErrors] = useState(null);
   const [filterNo, setFilterNo] = useState("a");
+  const [loading, setLoading] = useState(false);
 
   const [isDisabled, setIsDisabled] = useState(disabled);
   const [isFlightTypeOpen, setIsFlightTypeOpen] = useState(false);
@@ -194,7 +196,7 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
   const handleFilter = () => {
     const data = checkValidation();
 
-    router.push("/search/umrah");
+    router.push("/search/umrah-flight");
     console.log(data);
   };
 
@@ -211,7 +213,9 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
           <PopoverTrigger className="flex items-center gap-3">
             <p className="text-xs lg:text-lg text-t-700">{flightType}</p>
             <ArrowIcon
-              className={`${isFlightTypeOpen && "rotate-180"} trasition duration-300 fill-p-900`}
+              className={`${
+                isFlightTypeOpen && "rotate-180"
+              } trasition duration-300 fill-p-900`}
             />
           </PopoverTrigger>
           <PopoverContent
@@ -252,7 +256,9 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
               , {classType}
             </p>
             <ArrowIcon
-              className={`${isTravellersOpen && "rotate-180"} trasition duration-300 fill-p-900`}
+              className={`${
+                isTravellersOpen && "rotate-180"
+              } trasition duration-300 fill-p-900`}
             />
           </PopoverTrigger>
           <PopoverContent
@@ -488,7 +494,7 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
                 )}
               >
                 <span className="text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal">
-                  Depaerture Date
+                  Departure Date
                 </span>
                 <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
                   {departureDate ? (
@@ -519,7 +525,7 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
           </Popover>
           {/* calender icon */}
           {flightType === "Multi - city" || (
-            <div className="bg-p-900 h-9 w-9 hidden lg:flex items-center justify-center rounded-full absolute z-10 top-[50%] lg:left-[64.3%] xl:left-[65.7%] translate-y-[-50%]">
+            <div className="bg-p-900 h-9 w-9 hidden lg:flex items-center justify-center rounded-full absolute z-10 top-[50%] lg:left-[63.5%] xl:left-[65.7%] translate-y-[-50%]">
               <CalenderTwoLineIcon className="text-white" />
             </div>
           )}
@@ -586,8 +592,27 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
               {icon ? icon : <CrossIcon />}
             </Button>
           ) : (
-            <Button size="lg" onClick={handleFilter}>
-              {icon ? icon : <SearchIcon />}
+            // <Button size="lg" onClick={handleFilter}>
+            //   {icon ? icon : <SearchIcon />}
+            // </Button>
+            <Button
+              size="lg"
+              className="py-2.5 lg:py-5 rounded-lg lg:roundemd text-sm lg:text-base"
+              onClick={isDisabled ? handleDisableFields : handleFilter}
+              disabled={loading}
+            >
+              {loading ? (
+                <Loader className="animate-spin w-8 h-8" />
+              ) : isDisabled ? (
+                icon
+              ) : (
+                <>
+                  <span className="hidden lg:block">
+                    <SearchIcon />
+                  </span>
+                  <span className="lg:hidden">Search</span>
+                </>
+              )}
             </Button>
           )}
         </div>
@@ -602,7 +627,7 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
             <PlusCircleIcon /> Add New City
           </Button>
           <Button className="px-10 py-4 " onClick={handleFilter} asChild>
-            <Link href="/search/umrah">
+            <Link href="/search/umrah-flight">
               {icon ? (
                 icon
               ) : (
