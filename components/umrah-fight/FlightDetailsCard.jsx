@@ -81,20 +81,22 @@ const FlightDetailsCard = () => {
           </div>
         </div>
         <hr />
-        <div className="grid grid-cols-3 gap-x-3">
-          <div className="flex items-center gap-2.5 col-span-1">
-            <TravellerIcon />
-            <p className="text-sm text-t-600 leading-6">
-              Traveler Type - Adult
-            </p>
-          </div>
-          <div className="flex items-center gap-2.5 col-span-1">
-            <LuggageIcon />
-            <p className="text-sm text-t-600 leading-6">Check in: 20KG</p>
-          </div>
-          <div className="flex items-center gap-2.5 col-span-1">
-            <LuggageIcon />
-            <p className="text-sm text-t-600 leading-6">Cabin: 10KG</p>
+        <div className="space-y-3">
+          <div className="grid grid-cols-3 gap-x-3">
+            <div className="flex items-center gap-2.5 col-span-1">
+              <TravellerIcon />
+              <p className="text-sm text-t-600 leading-6">
+                Traveler Type - Adult
+              </p>
+            </div>
+            <div className="flex items-center gap-2.5 col-span-1">
+              <LuggageIcon />
+              <p className="text-sm text-t-600 leading-6">Check in: 20KG</p>
+            </div>
+            <div className="flex items-center gap-2.5 col-span-1">
+              <LuggageIcon />
+              <p className="text-sm text-t-600 leading-6">Cabin: 10KG</p>
+            </div>
           </div>
         </div>
         <div className="flex items-center leading-relaxed gap-x-2.5 text-sm text-t-800 bg-p-300 rounded-sm p-2">
@@ -169,20 +171,38 @@ const FlightDetailsCard = () => {
           </div>
         </div>
         <hr />
-        <div className="grid grid-cols-3 gap-x-3">
-          <div className="flex items-center gap-2.5 col-span-1">
-            <TravellerIcon />
-            <p className="text-sm text-t-600 leading-6">
-              Traveler Type - Adult
-            </p>
+        <div className="space-y-3">
+          <div className="grid grid-cols-3 gap-x-3">
+            <div className="flex items-center gap-2.5 col-span-1">
+              <TravellerIcon />
+              <p className="text-sm text-t-600 leading-6">
+                Traveler Type - Adult
+              </p>
+            </div>
+            <div className="flex items-center gap-2.5 col-span-1">
+              <LuggageIcon />
+              <p className="text-sm text-t-600 leading-6">Check in: 20KG</p>
+            </div>
+            <div className="flex items-center gap-2.5 col-span-1">
+              <LuggageIcon />
+              <p className="text-sm text-t-600 leading-6">Cabin: 10KG</p>
+            </div>
           </div>
-          <div className="flex items-center gap-2.5 col-span-1">
-            <LuggageIcon />
-            <p className="text-sm text-t-600 leading-6">Check in: 20KG</p>
-          </div>
-          <div className="flex items-center gap-2.5 col-span-1">
-            <LuggageIcon />
-            <p className="text-sm text-t-600 leading-6">Cabin: 10KG</p>
+          <div className="grid grid-cols-3 gap-x-3">
+            <div className="flex items-center gap-2.5 col-span-1">
+              <TravellerIcon />
+              <p className="text-sm text-t-600 leading-6">
+                Traveler Type - Adult
+              </p>
+            </div>
+            <div className="flex items-center gap-2.5 col-span-1">
+              <LuggageIcon />
+              <p className="text-sm text-t-600 leading-6">Check in: 20KG</p>
+            </div>
+            <div className="flex items-center gap-2.5 col-span-1">
+              <LuggageIcon />
+              <p className="text-sm text-t-600 leading-6">Cabin: 10KG</p>
+            </div>
           </div>
         </div>
         <div className="flex items-center leading-relaxed gap-x-2.5 text-sm text-t-800 bg-p-300 rounded-sm p-2">
@@ -257,26 +277,56 @@ const FlightDetailsCard = () => {
           </div>
         </div>
         <hr />
-        <div className="grid grid-cols-3 gap-x-3">
-          <div className="flex items-center gap-2.5 col-span-1">
-            <TravellerIcon />
-            <p className="text-sm text-t-600 leading-6">
-              Traveler Type - Adult
-            </p>
+        <div className="space-y-3">
+          <div className="grid grid-cols-3 gap-x-3">
+            <div className="flex items-center gap-2.5 col-span-1">
+              <TravellerIcon />
+              <p className="text-sm text-t-600 leading-6">
+                Traveler Type - Adult
+              </p>
+            </div>
+            <div className="flex items-center gap-2.5 col-span-1">
+              <LuggageIcon />
+              <p className="text-sm text-t-600 leading-6">Check in: 20KG</p>
+            </div>
+            <div className="flex items-center gap-2.5 col-span-1">
+              <LuggageIcon />
+              <p className="text-sm text-t-600 leading-6">Cabin: 10KG</p>
+            </div>
           </div>
-          <div className="flex items-center gap-2.5 col-span-1">
-            <LuggageIcon />
-            <p className="text-sm text-t-600 leading-6">Check in: 20KG</p>
+          <div className="grid grid-cols-3 gap-x-3">
+            <div className="flex items-center gap-2.5 col-span-1">
+              <TravellerIcon />
+              <p className="text-sm text-t-600 leading-6">
+                Traveler Type - Adult
+              </p>
+            </div>
+            <div className="flex items-center gap-2.5 col-span-1">
+              <LuggageIcon />
+              <p className="text-sm text-t-600 leading-6">Check in: 20KG</p>
+            </div>
+            <div className="flex items-center gap-2.5 col-span-1">
+              <LuggageIcon />
+              <p className="text-sm text-t-600 leading-6">Cabin: 10KG</p>
+            </div>
           </div>
-          <div className="flex items-center gap-2.5 col-span-1">
-            <LuggageIcon />
-            <p className="text-sm text-t-600 leading-6">Cabin: 10KG</p>
+          <div className="grid grid-cols-3 gap-x-3">
+            <div className="flex items-center gap-2.5 col-span-1">
+              <TravellerIcon />
+              <p className="text-sm text-t-600 leading-6">
+                Traveler Type - Adult
+              </p>
+            </div>
+            <div className="flex items-center gap-2.5 col-span-1">
+              <LuggageIcon />
+              <p className="text-sm text-t-600 leading-6">Check in: 20KG</p>
+            </div>
+            <div className="flex items-center gap-2.5 col-span-1">
+              <LuggageIcon />
+              <p className="text-sm text-t-600 leading-6">Cabin: 10KG</p>
+            </div>
           </div>
         </div>
-        {/* <div className="flex items-center leading-relaxed gap-x-2.5 text-sm text-t-800 bg-p-300 rounded-sm p-2">
-          <ArrowLeftRight className="text-[#3D3D3D26] flex-shrink-0 h-[14px] w-[14px]" />
-          4h 20m layover in Sylhet(ZYL)
-        </div> */}
       </div>
     </div>
   );
