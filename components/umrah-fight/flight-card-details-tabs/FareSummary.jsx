@@ -1,9 +1,9 @@
 import React from "react";
-import { BulbOnIcon } from "../icons/svgr";
+import { BulbOnIcon } from "@/components/icons/svgr";
 
 const FareSummary = () => {
   return (
-    <div className="px-10 py-6">
+    <div className="px-10 py-6 space-y-9">
       <div className="w-full overflow-auto">
         <div className="grid grid-rows-3 min-w-max lg:min-w-fit text-xs text-center overflow-hidden text-t-800">
           <ul className="grid grid-cols-10 text-t-900">

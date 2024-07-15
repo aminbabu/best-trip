@@ -1,8 +1,8 @@
-import BaggageSummary from "@/components/umrah-fight/BaggageSummary";
-import FareSummary from "@/components/umrah-fight/FareSummary";
-import ItineraryDetails from "@/components/umrah-fight/ItineraryDetails";
-import CountryInfo from "@/components/visa/CountryInfo";
-import TermsAnsConditions from "@/components/visa/TermsAnsConditions";
+import BaggageSummary from "@/components/umrah-fight/flight-card-details-tabs/BaggageSummary";
+import FareRules from "@/components/umrah-fight/flight-card-details-tabs/FareRules";
+import FareSummary from "@/components/umrah-fight/flight-card-details-tabs/FareSummary";
+import ItineraryDetails from "@/components/umrah-fight/flight-card-details-tabs/ItineraryDetails";
+import FlightDetailsCard from "@/components/umrah-fight/FlightDetailsCard";
 
 export const tabItems = [
   {
@@ -27,6 +27,27 @@ export const tabItems = [
     id: 4,
     name: "Fare Rules",
     value: "fare rules",
-    element: <TermsAnsConditions />,
+    element: <FareRules />,
+  },
+];
+
+export const flightDetailsTabItems = [
+  {
+    id: 1,
+    name: "Dubai-Lisbon",
+    value: "Dubai-Lisbon",
+    element: <FlightDetailsCard />,
+  },
+  {
+    id: 2,
+    name: "Dubai-Dhaka",
+    value: "Dubai-Dhaka",
+    element: <FlightDetailsCard />,
+  },
+  {
+    id: 3,
+    name: "Dubai-Chittagong",
+    value: "Dubai-Chittagong",
+    element: <FlightDetailsCard />,
   },
 ];

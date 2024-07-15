@@ -5,7 +5,6 @@ import VisaCard from "@/components/serach/VisaCard";
 import visaData from "@/data/visa-result.json";
 import { Card } from "../ui/card";
 import FlightFilter from "../umrah-fight/FlightFilter";
-import { Accordion } from "../ui/accordion";
 
 const FilterResult = ({ slug, data }) => {
   if (data.length === 0) {

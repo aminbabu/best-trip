@@ -1,6 +1,6 @@
+import { BulbOnIcon } from "@/components/icons/svgr";
+import InfoTable from "@/components/umrah/InfoTable";
 import React from "react";
-import InfoTable from "../umrah/InfoTable";
-import { BulbOnIcon } from "../icons/svgr";
 
 const table = {
   header: [

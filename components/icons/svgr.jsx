@@ -78,6 +78,8 @@ import SunIcon from "@/public/icons/sun.svg";
 import SunHorizonIcon from "@/public/icons/sun-horizon.svg";
 import HalfSunIcon from "@/public/icons/half-sun.svg";
 import MoonStarsIcon from "@/public/icons/moon-stars.svg";
+import TravellerIcon from "@/public/icons/traveller.svg";
+import LuggageIcon from "@/public/icons/luggage.svg";
 
 export {
   FacebookIcon,
@@ -160,4 +162,6 @@ export {
   SunHorizonIcon,
   HalfSunIcon,
   MoonStarsIcon,
+  TravellerIcon,
+  LuggageIcon,
 };

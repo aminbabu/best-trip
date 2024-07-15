@@ -4,17 +4,14 @@ import { useState } from "react";
 import { ArrowIcon, BalakaIcon, LocationIcon, PlaneIcon } from "../icons/svgr";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "../ui/collapsible";
+import { Collapsible, CollapsibleTrigger } from "../ui/collapsible";
 import { Separator } from "../ui/separator";
 import CardCollapsibleContent from "../visa/CollapsibleContent";
+import Link from "next/link";
 
 const UmrahFlightCard = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [flightType, setFlightType] = useState("One Way");
+
   return (
     <Card className="border-transparent relative overflow-hidden">
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
@@ -154,8 +151,13 @@ const UmrahFlightCard = ({ data }) => {
             <div className="flex-shrink-0 flex md:flex-col items-center gap-x-4 p-4 sm:p-5 lg:pl-6 lg:pr-10 lg:py-[30px]">
               <p className="font-medium md:mb-2.5">BDT 3,35,000</p>
               <div>
-                <Button className="text-sm px-[14px] py-2 rounded">
-                  Book Now
+                <Button
+                  size="sm"
+                  className="font-semibold text-sm px-[14px] py-2 rounded"
+                  href={`/umrah-flight/${data.id}`}
+                  asChild
+                >
+                  <Link>Book Now</Link>
                 </Button>
               </div>
             </div>

@@ -1,7 +1,7 @@
-import React from "react";
-import { BalakaIcon, LocationIcon, PlaneIcon } from "../icons/svgr";
-import { Separator } from "../ui/separator";
+import { BalakaIcon, LocationIcon, PlaneIcon } from "@/components/icons/svgr";
+import { Separator } from "@/components/ui/separator";
 import { ArrowLeftRight } from "lucide-react";
+import React from "react";
 
 const ItineraryDetails = () => {
   return (
