@@ -71,6 +71,15 @@ import PlusSolidIcon from "@/public/icons/plus-solid.svg";
 import MoneyCheckIcon from "@/public/icons/money-check-solid.svg";
 import TicketSolidIcon from "@/public/icons/ticket-solid.svg";
 import LockSolidIcon from "@/public/icons/lock-solid.svg";
+import CalenderTwoLineIcon from "@/public/icons/calendar-2-line.svg";
+import CrossIcon from "@/public/icons/cross.svg";
+import PlusCircleIcon from "@/public/icons/plus-circle.svg";
+import SunIcon from "@/public/icons/sun.svg";
+import SunHorizonIcon from "@/public/icons/sun-horizon.svg";
+import HalfSunIcon from "@/public/icons/half-sun.svg";
+import MoonStarsIcon from "@/public/icons/moon-stars.svg";
+import TravellerIcon from "@/public/icons/traveller.svg";
+import LuggageIcon from "@/public/icons/luggage.svg";
 
 export {
   FacebookIcon,
@@ -146,4 +155,13 @@ export {
   MoneyCheckIcon,
   TicketSolidIcon,
   LockSolidIcon,
+  CalenderTwoLineIcon,
+  CrossIcon,
+  PlusCircleIcon,
+  SunIcon,
+  SunHorizonIcon,
+  HalfSunIcon,
+  MoonStarsIcon,
+  TravellerIcon,
+  LuggageIcon,
 };

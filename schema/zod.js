@@ -5,6 +5,61 @@ import { z } from "zod";
  * @description Schema for umrah search
  *
  */
+export const flightSchema = z.object({
+  flightType: z.string().min(1, { message: "Schedule is required" }),
+  classType: z.string().min(1, { message: "Package is required" }),
+  travellers: z
+    .string()
+    .min(1, { message: "Travellers is required" })
+    .or(z.number().min(1, { message: "Travellers is required" })),
+  fromDestination:
+    // z
+    // .string()
+    // .min(1, { message: "Duration is required" })
+    // .or(z.number().min(1, { message: "Duration is required" })),
+    z.object({
+      id: z.number(),
+      city: z.string(),
+      country: z.string(),
+      code: z.string(),
+    }),
+  toDestination:
+    // z
+    //   .string()
+    //   .min(1, { message: "Travellers is required" })
+    //   .or(z.number().min(1, { message: "Travellers is required" })),
+    z.object({
+      id: z.number(),
+      city: z.string(),
+      country: z.string(),
+      code: z.string(),
+    }),
+  departureDate: z
+    .string()
+    .refine((val) => moment(val).isValid(), {
+      message: "Please provide a valid date of birth",
+    })
+    .or(
+      z.date({
+        message: "Please provide a valid date of birth",
+      })
+    ),
+  returnDate: z
+    .string()
+    .refine((val) => moment(val).isValid(), {
+      message: "Please provide a valid date of birth",
+    })
+    .or(
+      z.date({
+        message: "Please provide a valid date of birth",
+      })
+    ),
+});
+
+/**
+ * @description Schema for umrah search
+ *
+ */
 export const umrahSchema = z.object({
   schedule: z.string().min(1, { message: "Schedule is required" }),
   type: z.string().min(1, { message: "Package is required" }),

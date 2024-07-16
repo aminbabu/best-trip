@@ -66,8 +66,6 @@ const Page = () => {
   const [isOpenExpiryDateChild, setIsOpenExpiryDateChild] = useState(false);
   const [isOpenExpiryDateInfant, setIsOpenExpiryDateInfant] = useState(false);
 
-  console.log(calendarAdultDate, calendarChildDate, calendarInfantDate);
-
   const form = useForm({
     resolver: zodResolver(travellerSchema),
     defaultValues: {

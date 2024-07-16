@@ -128,7 +128,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
       return setLoading(false);
     }
     router.push("/search/umrah");
-    // console.log(data);
+    console.log(data);
 
     // TODO: Handle submit
     // setTimeout(() => {

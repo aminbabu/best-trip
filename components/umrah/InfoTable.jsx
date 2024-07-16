@@ -37,7 +37,7 @@ const InfoTable = ({ table }) => {
           <TableRow className="border-b-[#f5f5f5]">
             <TableCell
               className="p-2 border-r border-r-[#f5f5f5]"
-              colspan={table?.header?.length}
+              colSpan={table?.header?.length}
             >
               No data found
             </TableCell>
