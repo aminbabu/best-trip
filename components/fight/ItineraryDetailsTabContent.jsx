@@ -6,7 +6,7 @@ import { ArrowLeftRight } from "lucide-react";
 const ItineraryDetailsTabContent = () => {
   return (
     <div>
-      <div className="flex-shrink-0 flex flex-col sm:flex-row gap-6 ">
+      <div className="flex-shrink-0 flex flex-col sm:flex-row gap-6">
         <div className="flex sm:flex-col justify-between gap-x-8 gap-y-4">
           <p>08:00</p>
           <p className="text-t-600">0 h 45m</p>
@@ -75,20 +75,20 @@ const ItineraryDetailsTabContent = () => {
         </div>
       </div>
       <div className="flex-shrink-0 flex flex-col sm:flex-row md:gap-6 my-[26px] md:my-2.5">
-        <div className="hidden sm:flex sm:flex-col justify-between gap-x-8 gap-y-4 invisible">
+        <div className="hidden md:flex md:flex-col justify-between gap-x-8 gap-y-4 invisible">
           <p className="text-t-600">0 h 45m</p>
         </div>
-        <div className="flex sm:flex-col items-center justify-between gap-4">
+        <div className="hidden md:flex sm:flex-col items-center justify-between gap-4 ">
           <div className="border-dashed border-r-[1px] w-full border-[#E1E1E1] ml-[5px] flex-1"></div>
         </div>
-        <div className="flex flex-1 flex-col justify-center items-center md:py-4">
+        <div className="flex flex-1 flex-col justify-center items-center md:py-4 md:ml-2.5">
           <div className="flex items-center leading-normal gap-x-2.5 text-t-800 bg-p-300 rounded-sm p-1.5 w-full">
             <ArrowLeftRight className="text-t-600 flex-shrink-0 h-4 w-4" />
             4h 20m layover in Sylhet(ZYL)
           </div>
         </div>
       </div>
-      <div className="flex-shrink-0 flex flex-col sm:flex-row gap-6 ">
+      <div className="flex-shrink-0 flex flex-col sm:flex-row gap-6">
         <div className="flex sm:flex-col justify-between gap-x-8 gap-y-4">
           <p>08:00</p>
           <p className="text-t-600">0 h 45m</p>
@@ -157,13 +157,13 @@ const ItineraryDetailsTabContent = () => {
         </div>
       </div>
       <div className="flex-shrink-0 flex flex-col sm:flex-row md:gap-6 my-[26px] md:my-2.5">
-        <div className="hidden sm:flex sm:flex-col justify-between gap-x-8 gap-y-4 invisible">
+        <div className="hidden md:flex md:flex-col justify-between gap-x-8 gap-y-4 invisible">
           <p className="text-t-600">0 h 45m</p>
         </div>
         <div className="flex sm:flex-col items-center justify-between gap-4">
           <div className="border-dashed border-r-[1px] w-full border-[#E1E1E1] ml-[5px] flex-1"></div>
         </div>
-        <div className="flex flex-1 flex-col justify-center items-center md:py-4">
+        <div className="flex flex-1 flex-col justify-center items-center md:py-4 md:ml-2.5">
           <div className="flex items-center leading-normal gap-x-2.5 text-t-800 bg-p-300 rounded-sm p-1.5 w-full">
             <ArrowLeftRight className="text-t-600 flex-shrink-0 h-4 w-4" />
             4h 20m layover in Sylhet(ZYL)

@@ -23,7 +23,7 @@ const FlightPage = () => {
                   <Tabs
                     defaultValue={flightDetailsTabItems[0].value}
                     className="w-full"
-                    data={tabItems}
+                    data={flightDetailsTabItems}
                   >
                     <TabsList className="flex justify-start gap-5 overflow-x-auto overflow-y-hidden bg-white">
                       {flightDetailsTabItems.map((tab) => (

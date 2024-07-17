@@ -80,7 +80,7 @@ const FlightDetailsCard = () => {
             </div>
           </div>
         </div>
-        <hr />
+        <hr className="border-[#F5F5F5]" />
         <div className="space-y-3">
           <div className="grid grid-cols-3 gap-x-3">
             <div className="flex items-center gap-2.5 col-span-1">
@@ -170,7 +170,7 @@ const FlightDetailsCard = () => {
             </div>
           </div>
         </div>
-        <hr />
+        <hr className="border-[#F5F5F5]" />
         <div className="space-y-3">
           <div className="grid grid-cols-3 gap-x-3">
             <div className="flex items-center gap-2.5 col-span-1">
@@ -276,7 +276,7 @@ const FlightDetailsCard = () => {
             </div>
           </div>
         </div>
-        <hr />
+        <hr className="border-[#F5F5F5]" />
         <div className="space-y-3">
           <div className="grid grid-cols-3 gap-x-3">
             <div className="flex items-center gap-2.5 col-span-1">
