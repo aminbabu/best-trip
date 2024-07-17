@@ -94,14 +94,12 @@ const destinations = [
 
 const FlightTabpane = ({ icon, disabled, className }) => {
   const router = useRouter();
-  const [open, setOpen] = useState(false);
   const [flightType, setFlightType] = useState("One way");
   const [classType, setClassType] = useState("Economy");
   const [fromDestination, setFromDestination] = useState(destinations[0]);
   const [toDestination, setToDestination] = useState(destinations[4]);
   const [departureDate, setDepartureDate] = useState(new Date());
   const [returnDate, setReturnDate] = useState(new Date());
-  const [duration, setDuration] = useState("");
   const [travellerCounts, setTravellerCounts] = useState(travellers);
   const [traveller, setTraveller] = useState(1);
   const [errors, setErrors] = useState(null);
@@ -115,10 +113,6 @@ const FlightTabpane = ({ icon, disabled, className }) => {
   const [isToDestinationOpen, setIsToDestinationOpen] = useState(false);
   const [isDepartureDateOpen, setIsDepartureDateOpen] = useState("");
   const [isReturnDateOpen, setIsReturnDateOpen] = useState("");
-
-  const handleDropdown = (index) => {
-    setOpen(index);
-  };
 
   const handleDisableFields = () => {
     setIsDisabled(false);
@@ -368,7 +362,6 @@ const FlightTabpane = ({ icon, disabled, className }) => {
                       ? fromDestination.airport
                       : "Hazrat Shahjalal International Airport"}
                   </p>
-                  {/* <ArrowIcon className="hidden lg:inline-block" /> */}
                 </span>
               </Button>
             </PopoverTrigger>
@@ -441,7 +434,6 @@ const FlightTabpane = ({ icon, disabled, className }) => {
                       ? toDestination.airport
                       : "Shah Amanat International Airport"}
                   </p>
-                  {/* <ArrowIcon className="hidden lg:inline-block" /> */}
                 </span>
               </Button>
             </PopoverTrigger>
@@ -507,7 +499,6 @@ const FlightTabpane = ({ icon, disabled, className }) => {
                   ) : (
                     <span>Select a date</span>
                   )}
-                  {/* <ArrowIcon className="hidden lg:inline-block" /> */}
                 </span>
               </Button>
             </PopoverTrigger>
