@@ -154,7 +154,7 @@ const UmrahFlightCard = ({ data }) => {
                 <Button
                   size="sm"
                   className="font-semibold text-sm px-[14px] py-2 rounded"
-                  href={`/umrah-flight/${data.id}`}
+                  href={`/flight/${data.id}`}
                   asChild
                 >
                   <Link>Book Now</Link>

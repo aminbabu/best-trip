@@ -5,7 +5,7 @@ import UmrahFlightTabpane from "../global/UmrahFlightTabpane";
 
 const Filters = ({ slug }) => {
   switch (slug) {
-    case "umrah-flight":
+    case "flight":
       return <UmrahFlightTabpane icon={<PencilIcon />} />;
     case "umrah":
       return <UmrahTabpane disabled icon={<PencilIcon />} />;

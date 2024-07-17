@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { tabItems } from "@/data/umrah-flight";
+import { tabItems } from "@/data/flight";
 
 const FlightCardDetailsTabs = () => {
   return (

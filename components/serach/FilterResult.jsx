@@ -4,7 +4,7 @@ import UmrahFlightCard from "@/components/serach/UmrahFlightCard";
 import VisaCard from "@/components/serach/VisaCard";
 import visaData from "@/data/visa-result.json";
 import { Card } from "../ui/card";
-import FlightFilter from "../umrah-fight/FlightFilter";
+import FlightFilter from "../fight/FlightFilter";
 
 const FilterResult = ({ slug, data }) => {
   if (data.length === 0) {
@@ -16,7 +16,7 @@ const FilterResult = ({ slug, data }) => {
   }
 
   switch (slug) {
-    case "umrah-flight":
+    case "flight":
       return (
         <div className="grid grid-cols-11 gap-7">
           <div className="col-span-11 lg:col-span-3">

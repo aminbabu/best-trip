@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { itineraryDetailsTabItems } from "@/data/umrah-flight";
+import { itineraryDetailsTabItems } from "@/data/flight";
 
 const ItineraryDetailsTab = () => {
   return (
@@ -8,7 +8,7 @@ const ItineraryDetailsTab = () => {
       className="space-y-9"
       defaultValue={itineraryDetailsTabItems[0].value}
     >
-      <TabsList className="gap-x-7">
+      <TabsList className="flex justify-start gap-x-7 bg-white overflow-x-auto overflow-y-hidden">
         {itineraryDetailsTabItems.map((tab) => (
           <TabsTrigger
             key={tab.id}

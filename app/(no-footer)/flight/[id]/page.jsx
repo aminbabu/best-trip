@@ -2,47 +2,11 @@
 
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
-import visaCardImg from "@/public/images/search/visa/visa-card-img.png";
-import {
-  BusRedIcon,
-  CalenderIcon,
-  ClockRedIcon,
-  DocRedIcon,
-  VisaEntryTypeIcon,
-} from "@/components/icons/svgr";
 import TravellersDetailsCard from "@/components/global/TravellersDetailsCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import FlightDetailsCard from "@/components/umrah-fight/FlightDetailsCard";
-import { flightDetailsTabItems } from "@/data/umrah-flight";
+import FlightDetailsCard from "@/components/fight/FlightDetailsCard";
+import { flightDetailsTabItems } from "@/data/flight";
 import { Button } from "@/components/ui/button";
-
-export const tabItems = [
-  {
-    id: 1,
-    name: "Itinerary Details",
-    value: "itinerary details",
-    element: <FlightDetailsCard />,
-  },
-  {
-    id: 2,
-    name: "Baggage Summary",
-    value: "baggage summary",
-    element: <FlightDetailsCard />,
-  },
-  {
-    id: 3,
-    name: "Fare Summary",
-    value: "fare summary",
-    element: <FlightDetailsCard />,
-  },
-  {
-    id: 4,
-    name: "Fare Rules",
-    value: "fare rules",
-    element: <FlightDetailsCard />,
-  },
-];
 
 const FlightPage = () => {
   return (
@@ -61,7 +25,7 @@ const FlightPage = () => {
                     className="w-full"
                     data={tabItems}
                   >
-                    <TabsList className="flex justify-start gap-5 overflow-x-auto overflow-y-hidden">
+                    <TabsList className="flex justify-start gap-5 overflow-x-auto overflow-y-hidden bg-white">
                       {flightDetailsTabItems.map((tab) => (
                         <TabsTrigger
                           className="py-2 px-2.5 data-[state=active]:bg-p-300 rounded-t rounded-b-none data-[state=active]:border-transparent border-x border-t border-b-none duration-300"

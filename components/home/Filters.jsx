@@ -20,8 +20,8 @@ const data = [
         viewBox="0 0 14 14"
       />
     ),
-    title: "Umrah Flight",
-    value: "umrah-flight",
+    title: "Flight",
+    value: "flight",
     component: (
       <UmrahFlightTabpane className="rounded-t-none sm:rounded-tr-md min-h-[174px]" />
     ),

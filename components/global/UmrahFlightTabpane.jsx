@@ -194,9 +194,14 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
   };
 
   const handleFilter = () => {
+    setLoading(true);
     const data = checkValidation();
 
-    router.push("/search/umrah-flight");
+    if (!data) {
+      return setLoading(false);
+    }
+
+    router.push("/search/flight");
     console.log(data);
   };
 
@@ -592,9 +597,6 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
               {icon ? icon : <CrossIcon />}
             </Button>
           ) : (
-            // <Button size="lg" onClick={handleFilter}>
-            //   {icon ? icon : <SearchIcon />}
-            // </Button>
             <Button
               size="lg"
               className="py-2.5 lg:py-5 rounded-lg lg:roundemd text-sm lg:text-base"
@@ -627,7 +629,7 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
             <PlusCircleIcon /> Add New City
           </Button>
           <Button className="px-10 py-4 " onClick={handleFilter} asChild>
-            <Link href="/search/umrah-flight">
+            <Link href="/search/flight">
               {icon ? (
                 icon
               ) : (
