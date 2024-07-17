@@ -1,6 +1,6 @@
 import CustomsCard from "@/components/serach/CustomsCard";
 import UmrahCard from "@/components/serach/UmrahCard";
-import UmrahFlightCard from "@/components/serach/UmrahFlightCard";
+import FlightCard from "@/components/serach/FlightCard";
 import VisaCard from "@/components/serach/VisaCard";
 import visaData from "@/data/visa-result.json";
 import { Card } from "../ui/card";
@@ -39,7 +39,7 @@ const FilterResult = ({ slug, data }) => {
               </div>
             </Card>
             {visaData.map((item) => (
-              <UmrahFlightCard key={item.id} data={item} />
+              <FlightCard key={item.id} data={item} />
             ))}
           </div>
         </div>

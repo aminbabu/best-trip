@@ -1,12 +1,12 @@
 import UmrahTabpane from "@/components/global/UmrahTabpane";
 import { PencilIcon } from "@/components/icons/svgr";
 import VisaTabpane from "../global/VisaTabpane";
-import UmrahFlightTabpane from "../global/UmrahFlightTabpane";
+import FlightTabpane from "../global/FlightTabpane";
 
 const Filters = ({ slug }) => {
   switch (slug) {
     case "flight":
-      return <UmrahFlightTabpane icon={<PencilIcon />} />;
+      return <FlightTabpane icon={<PencilIcon />} />;
     case "umrah":
       return <UmrahTabpane disabled icon={<PencilIcon />} />;
     case "visa":

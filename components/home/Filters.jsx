@@ -9,7 +9,7 @@ import Container from "@/components/layouts/Container";
 import UmrahTabpane from "@/components/global/UmrahTabpane";
 import VisaTabpane from "@/components/global/VisaTabpane";
 import CustomsTabpane from "@/components/global/CustomsTabpane";
-import UmrahFlightTabpane from "@/components/global/UmrahFlightTabpane";
+import FlightTabpane from "@/components/global/FlightTabpane";
 
 const data = [
   {
@@ -23,7 +23,7 @@ const data = [
     title: "Flight",
     value: "flight",
     component: (
-      <UmrahFlightTabpane className="rounded-t-none sm:rounded-tr-md min-h-[174px]" />
+      <FlightTabpane className="rounded-t-none sm:rounded-tr-md min-h-[174px]" />
     ),
   },
   {

@@ -9,7 +9,7 @@ import { Separator } from "../ui/separator";
 import CardCollapsibleContent from "../visa/CollapsibleContent";
 import Link from "next/link";
 
-const UmrahFlightCard = ({ data }) => {
+const FlightCard = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -187,4 +187,4 @@ const UmrahFlightCard = ({ data }) => {
   );
 };
 
-export default UmrahFlightCard;
+export default FlightCard;

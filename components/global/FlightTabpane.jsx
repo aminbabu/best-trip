@@ -92,7 +92,7 @@ const destinations = [
   },
 ];
 
-const UmrahFlightTabpane = ({ icon, disabled, className }) => {
+const FlightTabpane = ({ icon, disabled, className }) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [flightType, setFlightType] = useState("One way");
@@ -640,10 +640,8 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
           </Button>
         </div>
       )}
-
-      {/* <UnderDevelopment /> */}
     </div>
   );
 };
 
-export default UmrahFlightTabpane;
+export default FlightTabpane;
