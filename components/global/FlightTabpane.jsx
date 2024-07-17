@@ -111,8 +111,8 @@ const FlightTabpane = ({ icon, disabled, className }) => {
   const [isTravellersOpen, setIsTravellersOpen] = useState(false);
   const [isFromDestinationOpen, setIsFromDestinationOpen] = useState(false);
   const [isToDestinationOpen, setIsToDestinationOpen] = useState(false);
-  const [isDepartureDateOpen, setIsDepartureDateOpen] = useState("");
-  const [isReturnDateOpen, setIsReturnDateOpen] = useState("");
+  const [isDepartureDateOpen, setIsDepartureDateOpen] = useState(false);
+  const [isReturnDateOpen, setIsReturnDateOpen] = useState(false);
 
   const handleDisableFields = () => {
     setIsDisabled(false);
@@ -202,7 +202,7 @@ const FlightTabpane = ({ icon, disabled, className }) => {
   return (
     <div
       className={cn(
-        "bg-white  px-2 py-4 xs:px-4 xs:py-6 lg:px-6 sm:py-8 md:py-10 lg:py-12 rounded-md shadow-[0_3px_12px_0_rgba(0,0,0,0.03)] space-y-7",
+        "bg-white px-2 py-4 xs:px-4 xs:py-6 lg:px-6 sm:py-8 md:py-10 lg:py-12 rounded-md shadow-[0_3px_12px_0_rgba(0,0,0,0.03)] space-y-7",
         className
       )}
     >
@@ -212,9 +212,9 @@ const FlightTabpane = ({ icon, disabled, className }) => {
           <PopoverTrigger className="flex items-center gap-3">
             <p className="text-xs lg:text-lg text-t-700">{flightType}</p>
             <ArrowIcon
-              className={`${
-                isFlightTypeOpen && "rotate-180"
-              } trasition duration-300 fill-p-900`}
+              className={cn("trasition duration-300 fill-p-900", {
+                "rotate-180": isFlightTypeOpen,
+              })}
             />
           </PopoverTrigger>
           <PopoverContent
@@ -612,22 +612,32 @@ const FlightTabpane = ({ icon, disabled, className }) => {
       ))}
 
       {flightType === "Multi - city" && (
-        <div className="flex flex-col lg:flex-row gap-3 items-center justify-between">
+        <div className="flex flex-col md:flex-row gap-3 items-center justify-between">
           <Button
             onClick={handleFilterNoIncrement}
-            className="bg-transparent hover:bg-transparent text-p-900"
+            className="bg-transparent hover:bg-transparent text-p-900 text-sm lg:text-base w-full md:w-fit"
           >
             <PlusCircleIcon /> Add New City
           </Button>
-          <Button className="px-10 py-4 " onClick={handleFilter} asChild>
-            <Link href="/search/flight">
-              {icon ? (
-                icon
-              ) : (
-                <SearchIcon viewBox="0 0 33 33" className="w-6 h-6" />
-              )}{" "}
-              Search
-            </Link>
+          <Button
+            size="lg"
+            className="px-10 py-2.5 lg:py-4 w-full md:w-fit rounded-lg lg:roundemd text-sm lg:text-base"
+            onClick={isDisabled ? handleDisableFields : handleFilter}
+            disabled={loading}
+          >
+            {loading ? (
+              <Loader className="animate-spin w-6 h-6" />
+            ) : isDisabled ? (
+              icon
+            ) : (
+              <>
+                <span className="hidden lg:block">
+                  <SearchIcon viewBox="0 0 33 33" className="w-6 h-6" />
+                </span>
+                <span className="md:hidden">Search</span>
+              </>
+            )}
+            Search
           </Button>
         </div>
       )}
