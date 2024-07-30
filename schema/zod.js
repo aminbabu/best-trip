@@ -88,6 +88,49 @@ export const visaSchema = z.object({
 });
 
 /**
+ * @description Schema for hotel search
+ *
+ */
+export const hotelSchema = z.object({
+  roomNo: z.number().min(1, { message: "Room Number is required" }),
+  destination: z.object({
+    id: z.number(),
+    city: z.string(),
+    country: z.string(),
+    code: z.string(),
+  }),
+  nationality: z.object({
+    country: z.string(),
+    id: z.number(),
+    code: z.string(),
+  }),
+  travellers: z
+    .string()
+    .min(1, { message: "Travellers is required" })
+    .or(z.number().min(1, { message: "Travellers is required" })),
+  checkInDate: z
+    .string()
+    .refine((val) => moment(val).isValid(), {
+      message: "Please provide a valid date of birth",
+    })
+    .or(
+      z.date({
+        message: "Please provide a valid date of birth",
+      })
+    ),
+  checkOutDate: z
+    .string()
+    .refine((val) => moment(val).isValid(), {
+      message: "Please provide a valid date of birth",
+    })
+    .or(
+      z.date({
+        message: "Please provide a valid date of birth",
+      })
+    ),
+});
+
+/**
  * @description Schema for uuid validation
  *
  */
