@@ -1,5 +1,4 @@
 import BaggageSummary from "@/components/fight/flight-card-details-tabs/BaggageSummary";
-import DetailsRulesContent from "@/components/fight/flight-card-details-tabs/DetailsRulesContent";
 import FareRules from "@/components/fight/flight-card-details-tabs/FareRules";
 import FareSummary from "@/components/fight/flight-card-details-tabs/FareSummary";
 import ItineraryDetails from "@/components/fight/flight-card-details-tabs/ItineraryDetails";

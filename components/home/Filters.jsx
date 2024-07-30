@@ -1,6 +1,7 @@
 import Tabs from "@/components/global/Tabs";
 import {
   BuildingHumanIcon,
+  HotelIcon,
   KabaIcon,
   PassportIcon,
   PlaneIcon,
@@ -8,7 +9,7 @@ import {
 import Container from "@/components/layouts/Container";
 import UmrahTabpane from "@/components/global/UmrahTabpane";
 import VisaTabpane from "@/components/global/VisaTabpane";
-import CustomsTabpane from "@/components/global/CustomsTabpane";
+import HotelTabpane from "@/components/global/HotelTabpane";
 import FlightTabpane from "@/components/global/FlightTabpane";
 
 const data = [
@@ -48,16 +49,11 @@ const data = [
   },
   {
     id: 4,
-    icon: (
-      <BuildingHumanIcon
-        className="w-5 h-5 md:w-6 md:h-6"
-        viewBox="0 0 26 26"
-      />
-    ),
-    title: "Customs",
-    value: "customs",
+    icon: <HotelIcon className="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 14 14" />,
+    title: "Hotel",
+    value: "hotel",
     component: (
-      <CustomsTabpane className="rounded-t-none sm:rounded-tr-md min-h-[174px]" />
+      <HotelTabpane className="rounded-t-none sm:rounded-tr-md min-h-[174px]" />
     ),
   },
 ];
