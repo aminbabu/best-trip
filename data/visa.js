@@ -3,7 +3,7 @@ import RequirementList from "@/components/visa/RequirementList";
 import TermsAnsConditions from "@/components/visa/TermsAnsConditions";
 import VisaBasicInfo from "@/components/visa/VisaBasicInfo";
 
-export let reqmntList = [
+export const reqmntList = [
   {
     id: 1,
     req: "Passport copy with minimum 6 months validity",

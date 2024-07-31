@@ -1,13 +1,4 @@
-import {
-  BusRedIcon,
-  CalenderIcon,
-  ClockRedIcon,
-  HotelIcon,
-  LocationAltIcon,
-  LocationCircleIcon,
-  PeopleIcon,
-  StarAltIcon,
-} from "@/components/icons/svgr";
+import { LocationAltIcon, StarAltIcon } from "@/components/icons/svgr";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -96,7 +87,7 @@ const HotelCard = ({ data }) => {
             <Button
               size="sm"
               className="font-semibold text-sm lg:text-base px-3 py-2"
-              href={`/umrah/${data.id}`}
+              href={`/hotel/${data.id}`}
               asChild
             >
               <Link>Select Room</Link>
