@@ -123,9 +123,14 @@ const HotelTabpane = ({ icon, disabled, className }) => {
     }
   };
 
+  const handleDisableFields = () => {
+    setIsDisabled(false);
+  };
+
   const handleDisableCheckInDate = (date) => {
     return date > new Date() || date < new Date("1900-01-01");
   };
+
   const handleDisableCheckOutDate = (date) => {
     return date > new Date() || date < new Date("1900-01-01");
   };
@@ -163,7 +168,6 @@ const HotelTabpane = ({ icon, disabled, className }) => {
   const handleSubmit = async () => {
     setLoading(true);
     const data = checkValidation();
-    console.log(data);
 
     if (!data) {
       return setLoading(false);
@@ -174,7 +178,7 @@ const HotelTabpane = ({ icon, disabled, className }) => {
     // setTimeout(() => {
     //   console.log(data);
     //   setLoading(false);
-    //   router.push("/search/visa");
+    //   router.push("/search/hotel");
     // }, 1000);
   };
 
@@ -188,7 +192,10 @@ const HotelTabpane = ({ icon, disabled, className }) => {
       <div className="flex gap-7">
         {/* travellers  */}
         <Popover open={isTravellersOpen} onOpenChange={handleTravellers}>
-          <PopoverTrigger className="flex items-center gap-3">
+          <PopoverTrigger
+            className="flex items-center gap-3"
+            disabled={isDisabled}
+          >
             <p className="text-xs lg:text-lg text-t-700">
               {roomNo} Room ,
               {travellers.some((item) => item.count > 0)
@@ -257,7 +264,7 @@ const HotelTabpane = ({ icon, disabled, className }) => {
             setIsDestinationOpen(!isDestinationOpen);
           }}
         >
-          <PopoverTrigger asChild className="flex-1">
+          <PopoverTrigger asChild className="flex-1" disabled={isDisabled}>
             <Button
               variant="outline"
               className={cn(
@@ -319,7 +326,7 @@ const HotelTabpane = ({ icon, disabled, className }) => {
             setIsNationalityOpen(!isNationalityOpen);
           }}
         >
-          <PopoverTrigger asChild className="flex-1">
+          <PopoverTrigger asChild className="flex-1" disabled={isDisabled}>
             <Button
               variant="outline"
               className={cn(
