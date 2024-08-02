@@ -80,6 +80,7 @@ import HalfSunIcon from "@/public/icons/half-sun.svg";
 import MoonStarsIcon from "@/public/icons/moon-stars.svg";
 import TravellerIcon from "@/public/icons/traveller.svg";
 import LuggageIcon from "@/public/icons/luggage.svg";
+import XBigIcon from "@/public/icons/x-big-icon.svg";
 
 export {
   FacebookIcon,
@@ -164,4 +165,5 @@ export {
   MoonStarsIcon,
   TravellerIcon,
   LuggageIcon,
+  XBigIcon,
 };

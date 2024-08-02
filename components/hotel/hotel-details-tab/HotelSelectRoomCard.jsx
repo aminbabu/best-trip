@@ -50,7 +50,7 @@ const selectRoomDialogs = [
 
 const HotelSelectRoomCard = ({ data }) => {
   return (
-    <Card className="border-transparent relative overflow-hidden">
+    <Card className="border-transparent relative overflow-hidden drop-shadow-sm">
       <CardContent className="p-4 sm:px-5 sm:py-[22px] xl:leading-8 flex flex-col md:flex-row lg:items-center justify-between gap-5">
         <Image
           src={data.img}
@@ -120,16 +120,12 @@ const HotelSelectRoomCard = ({ data }) => {
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[620px] py-4 px-8">
-                  <DialogHeader className="flex-row justify-between items-center">
+                  <DialogHeader className="flex-row justify-between items-center space-y-0">
                     <DialogTitle className="leading-8 text-t-800 font-normal">
                       {roomDialog.name}
                     </DialogTitle>
                     <DialogClose asChild>
-                      <Button
-                        type="button"
-                        variant="secondary"
-                        className="p-2 mt-0"
-                      >
+                      <Button type="button" variant="secondary" className="p-2">
                         <X className="w-5 h-5" />
                       </Button>
                     </DialogClose>

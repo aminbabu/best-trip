@@ -4,7 +4,7 @@ import HotelSelectRoomCard from "./HotelSelectRoomCard";
 
 const SelectRoom = () => {
   return (
-    <div>
+    <div className="space-y-5 lg:space-y-[30px]">
       {hotelRoomData.map((hotelRoom) => (
         <HotelSelectRoomCard key={hotelRoom.id} data={hotelRoom} />
       ))}

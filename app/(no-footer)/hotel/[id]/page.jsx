@@ -39,7 +39,7 @@ const HotelPage = () => {
                 </span>
               </div>
             </div>
-            <hr />
+            <hr className="border-[#EBEBEB]" />
             <div>
               <div className="space-y-1.5 text-center">
                 <h2 className="text-t-800 text-lg font-medium leading-snug px-6 py-4">

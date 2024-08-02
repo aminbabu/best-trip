@@ -3,7 +3,7 @@ import React from "react";
 
 const CancelletionPolicyCard = () => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 w-full overflow-auto">
       <div className="w-full overflow-auto">
         <div className="grid grid-rows-3 min-w-max lg:min-w-fit text-sm overflow-hidden text-t-800">
           <ul className="grid grid-cols-3 bg-[#FFEFEF]">
