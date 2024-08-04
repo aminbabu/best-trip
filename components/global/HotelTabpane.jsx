@@ -303,9 +303,9 @@ const HotelTabpane = ({ icon, disabled, className }) => {
                       }
                     )}
                   >
-                    <div className="grid font-medium">
+                    <div className="grid text-sm font-medium">
                       {item.city}
-                      <span className="text-[8px] font-normal leading-normal">
+                      <span className="text-xs font-normal leading-normal">
                         {item.country}
                       </span>
                     </div>
@@ -354,21 +354,23 @@ const HotelTabpane = ({ icon, disabled, className }) => {
                 {nationalities.map((item) => (
                   <li
                     key={item.id}
-                    onClick={() => {
-                      setNationality(item);
-                      setIsNationalityOpen(false);
-                    }}
+                    onClick={() => setDestination(item.name)}
                     className={cn(
-                      "flex justify-between items-center px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 rounded-l cursor-pointer capitalize",
+                      "flex justify-between items-center px-5 py-2.5 text-base text-t-800 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer group",
                       {
-                        "bg-p-300": nationality === item,
+                        "bg-p-900 text-white": nationality === item.name,
                       }
                     )}
                   >
-                    <div className="grid font-medium">{item.country}</div>
-                    <div className="text-sm px-2.5 py-1 bg-p-900 text-white rounded font-semibold">
+                    <span>{item.country}</span>
+                    <span
+                      className={cn(
+                        "text-t-600 group-hover:text-p-900 group-focus:text-p-900",
+                        { "text-white": nationality === item.code }
+                      )}
+                    >
                       {item.code}
-                    </div>
+                    </span>
                   </li>
                 ))}
               </ul>

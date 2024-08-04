@@ -18,9 +18,11 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { XIcon } from "lucide-react";
 import { useState } from "react";
+import { hotelData } from "@/data/hotel-result";
 
 const DepositForm = () => {
   const router = useRouter();
+  const data = hotelData[0];
   const [error, setError] = useState(null);
   const pathname = usePathname();
   const [openOnline, setOpenOnline] = useState(false);
@@ -230,6 +232,7 @@ const DepositForm = () => {
             )}
             {/* online banking */}
             {(pathname === "/profile/add-balance" ||
+              pathname === `/hotel/${data.id}/payment` ||
               pathname === "/booking-details") && (
               <FormField
                 control={form.control}
@@ -408,7 +411,9 @@ const DepositForm = () => {
                             />
                           </FormControl>
                           <div
-                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openFullPayment && "border-p-900"} flex-1`}
+                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${
+                              openFullPayment && "border-p-900"
+                            } flex-1`}
                           >
                             <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
                               <span className="leading-normal">
@@ -447,7 +452,9 @@ const DepositForm = () => {
                             />
                           </FormControl>
                           <div
-                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openPartPaymnet && "border-p-900"} flex-1`}
+                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${
+                              openPartPaymnet && "border-p-900"
+                            } flex-1`}
                           >
                             <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
                               <span className="leading-normal">
@@ -495,7 +502,9 @@ const DepositForm = () => {
                             />
                           </FormControl>
                           <div
-                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openFullPayment && "border-p-900"} flex-1`}
+                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${
+                              openFullPayment && "border-p-900"
+                            } flex-1`}
                           >
                             <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
                               <span className="leading-normal">
@@ -534,7 +543,9 @@ const DepositForm = () => {
                             />
                           </FormControl>
                           <div
-                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openPartPaymnet && "border-p-900"} flex-1`}
+                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${
+                              openPartPaymnet && "border-p-900"
+                            } flex-1`}
                           >
                             <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
                               <span className="leading-normal">

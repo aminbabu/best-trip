@@ -1,30 +1,24 @@
-"use client";
-
 import React from "react";
+import DepositForm from "@/components/payment-method/DepositForm";
 import { Card, CardContent } from "@/components/ui/card";
-import TravellersDetailsCard from "@/components/global/TravellersDetailsCard";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import FlightDetailsCard from "@/components/fight/FlightDetailsCard";
-import { flightDetailsTabItems } from "@/data/flight";
-import { Button } from "@/components/ui/button";
-import HotelOverview from "@/components/hotel/HotelOverView";
-import HotelDetailsTab from "@/components/hotel/hotel-details-tab/HotelDetailsTab";
 import { StarAltIcon } from "@/components/icons/svgr";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
-const HotelPage = ({ params }) => {
-  const { id } = params;
+const page = () => {
   return (
     <main className="bg-[#F6F6F6]">
       <section className="max-w-[calc(1280px-12px)] mx-auto px-7 lg:px-12 xl:px-16 py-8">
         <div className="grid grid-cols-11 xl:gap-x-[30px] gap-y-6">
           <div className="col-span-12 xl:col-span-8 space-y-6">
-            <Card className="border-transparent relative overflow-hidden rounded-sm">
-              <CardContent className="p-4 sm:p-5 lg:pl-6 lg:pb-[26px] lg:pt-5 lg:pr-6 xl:leading-8 flex flex-col justify-between gap-6">
-                <HotelOverview />
+            <Card className="text-t-600 border-transparent max-w-3xl mx-auto">
+              <CardContent className="p-4 sm:p-6 md:p-8 lg:p-10">
+                <h1 className="text-t-800 font-medium text-xl mb-8">
+                  Payment Method
+                </h1>
+                <p className="text-t-800 mb-4">Select Payment Method</p>
+                <DepositForm />
               </CardContent>
             </Card>
-            <HotelDetailsTab />
           </div>
           <Card className="col-span-12 xl:col-span-3 h-fit border-transparent relative overflow-hidden rounded-sm">
             <div className="px-[53px] pt-[30px] pb-6">
@@ -140,9 +134,7 @@ const HotelPage = ({ params }) => {
                   </li>
                 </ul>
                 <Button className="text-base lg:text-base font-semibold w-full px-[11px] py-2.5 ">
-                  <Link href={`/hotel/${id}/traveller-details`}>
-                    Book This Room
-                  </Link>
+                  Book This Room
                 </Button>
               </div>
             </div>
@@ -153,4 +145,4 @@ const HotelPage = ({ params }) => {
   );
 };
 
-export default HotelPage;
+export default page;

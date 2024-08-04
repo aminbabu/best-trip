@@ -20,6 +20,7 @@ import { X } from "lucide-react";
 import CancelletionPolicyCard from "./CancelletionPolicyCard";
 import RoomDetailsCard from "./RoomDetailsCard";
 import GuestAllowedCard from "./GuestAllowedCard";
+import { usePathname, useRouter } from "next/navigation";
 
 const selectRoomDialogs = [
   {
@@ -49,6 +50,8 @@ const selectRoomDialogs = [
 ];
 
 const HotelSelectRoomCard = ({ data }) => {
+  const pathname = usePathname();
+
   return (
     <Card className="border-transparent relative overflow-hidden drop-shadow-sm">
       <CardContent className="p-4 sm:px-5 sm:py-[22px] xl:leading-8 flex flex-col md:flex-row lg:items-center justify-between gap-5">
@@ -89,26 +92,29 @@ const HotelSelectRoomCard = ({ data }) => {
                 </ul>
               </div>
             </div>
-            <div className="lg:self-end space-y-4 lg:text-right lg:w-[60%]">
-              <div className="flex flex-col gap-0.5 leading-relaxed">
-                <p className="text-t-600 text-xs">*Starting From per Night</p>
-                <p className="text-t-900 font-medium text-sm lg:text-base xl:text-lg">
-                  BDT {data.roomFee}
-                </p>
-                <p className="text-t-600 text-xs">
-                  {data.guestAllowed.adults} Adults -{data.guestAllowed.childs}{" "}
-                  Childs -{data.guestAllowed.room} Room
-                </p>
+            {pathname === `hotel/${data.id}/traveller-details` && (
+              <div className="lg:self-end space-y-4 lg:text-right lg:w-[60%]">
+                <div className="flex flex-col gap-0.5 leading-relaxed">
+                  <p className="text-t-600 text-xs">*Starting From per Night</p>
+                  <p className="text-t-900 font-medium text-sm lg:text-base xl:text-lg">
+                    BDT {data.roomFee}
+                  </p>
+                  <p className="text-t-600 text-xs">
+                    {data.guestAllowed.adults} Adults -
+                    {data.guestAllowed.childs} Childs -{data.guestAllowed.room}{" "}
+                    Room
+                  </p>
+                </div>
+                <Button
+                  size="sm"
+                  className="font-semibold text-sm lg:text-base px-3 py-2"
+                  href={`/hotel/${data.id}`}
+                  asChild
+                >
+                  <Link>Select Room</Link>
+                </Button>
               </div>
-              <Button
-                size="sm"
-                className="font-semibold text-sm lg:text-base px-3 py-2"
-                href={`/hotel/${data.id}`}
-                asChild
-              >
-                <Link>Select Room</Link>
-              </Button>
-            </div>
+            )}
           </div>
           <div className="bg-p-300 rounded">
             {/* Select Room Facilities Dialogs  */}
