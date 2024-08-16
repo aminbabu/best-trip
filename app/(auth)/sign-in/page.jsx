@@ -19,6 +19,10 @@ import { CheckIcon } from "lucide-react";
 import { useState } from "react";
 import { EyeIcon, EyeSlashIcon } from "@/components/icons/svgr";
 import { useRouter } from "next/navigation";
+import withReactContent from "sweetalert2-react-content";
+import Swal from "sweetalert2";
+import credentialSignIn from "@/actions/auth/credential-sign-in";
+import { LucideLoader2 } from "lucide-react";
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -28,6 +32,7 @@ const formSchema = z.object({
 const SignInPage = () => {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleShowPassword = (e) => {
     e.preventDefault();
@@ -39,17 +44,34 @@ const SignInPage = () => {
     defaultValues: {
       email: "",
       password: "",
-      remember: false,
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     try {
-      console.log(data);
-      
-      router.push("/profile");
+      setLoading(true);
+
+      const response = await credentialSignIn(data);
+
+      if (response?.error) {
+        throw new Error(
+          "An error occurred. Please check your credentials and try again"
+        );
+      }
+
+      // router.push("/profile");
     } catch (error) {
-      
+      await withReactContent(Swal).fire({
+        title: "Error",
+        text: error?.message || "An error occurred. Please try again",
+        icon: "error",
+        confirmButtonText: "Try Again",
+        confirmButtonColor: "#ff0f2f",
+        allowOutsideClick: false,
+      });
+    } finally {
+      setLoading(false);
+      form.reset();
     }
   };
 
@@ -123,7 +145,7 @@ const SignInPage = () => {
                   </FormItem>
                 )}
               />
-              <div className="flex flex-wrap gap-4 items-center justify-between">
+              {/* <div className="flex flex-wrap gap-4 items-center justify-between">
                 <FormField
                   control={form.control}
                   name="remember"
@@ -154,9 +176,10 @@ const SignInPage = () => {
                 >
                   Forgot Password?
                 </Link>
-              </div>
+              </div> */}
               <div className="grid">
-                <Button className="py-2.5" type="submit">
+                <Button className="py-2.5" type="submit" disabled={loading}>
+                  {loading ? <LucideLoader2 className="animate-spin" /> : null}
                   Sign in
                 </Button>
               </div>
