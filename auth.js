@@ -45,16 +45,13 @@ const providers = [
 export const callbacks = {
   jwt: ({ token, user }) => {
     if (user) {
-      token.picture = user?.avatar;
       token.user = user;
     }
 
     return token;
   },
   session: ({ session, token }) => {
-    session.user = token;
-
-    return session;
+    return { ...session, ...token };
   },
 };
 

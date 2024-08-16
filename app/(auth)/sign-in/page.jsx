@@ -15,7 +15,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
-import { CheckIcon } from "lucide-react";
 import { useState } from "react";
 import { EyeIcon, EyeSlashIcon } from "@/components/icons/svgr";
 import { useRouter } from "next/navigation";
@@ -59,7 +58,7 @@ const SignInPage = () => {
         );
       }
 
-      // router.push("/profile");
+      router.push("/profile");
     } catch (error) {
       await withReactContent(Swal).fire({
         title: "Error",

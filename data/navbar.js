@@ -69,12 +69,6 @@ export const navLinks = [
       />
     ),
   },
-  {
-    id: 7,
-    name: "Logout",
-    href: "/logout",
-    icon: <LogoutIcon viewBox="0 0 24 25" className="h-4 w-4" />,
-  },
 ];
 
 // menu

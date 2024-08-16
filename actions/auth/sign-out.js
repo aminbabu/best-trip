@@ -2,7 +2,7 @@
 
 import { signOut } from "@/auth";
 
-export const signOutArtist = async () => {
+const signOutUser = async () => {
   try {
     await signOut({ redirect: false });
 
@@ -12,12 +12,4 @@ export const signOutArtist = async () => {
   }
 };
 
-export const signOutAdmin = async () => {
-  try {
-    await signOut({ redirect: false });
-
-    return { message: "You have been signed out" };
-  } catch (error) {
-    throw new Error("An error occurred. Please try again");
-  }
-};
+export default signOutUser;
