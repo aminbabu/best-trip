@@ -2,11 +2,6 @@
   "name": "best-trip",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "^20.14.0",
-    "npm": "^10.7.0",
-    "pnpm": "^9.1.0"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
