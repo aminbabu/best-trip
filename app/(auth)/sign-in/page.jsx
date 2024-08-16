@@ -29,7 +29,7 @@ const formSchema = z.object({
 });
 
 const SignInPage = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -58,7 +58,8 @@ const SignInPage = () => {
         );
       }
 
-      router.push("/profile");
+      location.reload();
+      // router.push("/profile");
     } catch (error) {
       await withReactContent(Swal).fire({
         title: "Error",

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ArrowIcon, LogoutIcon } from "@/components/icons/svgr";
 import Link from "next/link";
 import { navLinks } from "@/data/navbar";
-import { redirect, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import withReactContent from "sweetalert2-react-content";
 import Swal from "sweetalert2";
@@ -13,21 +13,20 @@ import signOutUser from "@/actions/auth/sign-out";
 const Profile = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
-
-  const handleOpen = () => {
-    setIsOpen(!isOpen);
-  };
+  // const router = useRouter();
 
   const handleLogout = async () => {
     try {
+      setIsOpen(!isOpen);
+
       const response = await signOutUser();
 
       if (response?.error) {
         throw new Error(response.error);
       }
 
-      router.push("/sign-in");
+      location.reload();
+      // router.push("/sign-in");
     } catch (error) {
       await withReactContent(Swal).fire({
         title: "Error",
@@ -41,7 +40,7 @@ const Profile = ({ user }) => {
   };
 
   return (
-    <Popover open={isOpen} onOpenChange={handleOpen}>
+    <Popover open={isOpen} onOpenChange={() => setIsOpen(!isOpen)}>
       <PopoverTrigger className="flex items-center gap-3">
         {user?.avatar ? (
           <Image
@@ -75,6 +74,7 @@ const Profile = ({ user }) => {
                     ? "bg-primary text-white"
                     : "hover:bg-p-300 hover:text-primary"
                 )}
+                onClick={() => setIsOpen(!isOpen)}
               >
                 {item.icon} {item.name}
               </Link>
