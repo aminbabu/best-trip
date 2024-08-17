@@ -7,12 +7,14 @@ import { Button } from "@/components/ui/button";
 import { DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
 import { useGetPackageDurationsQuery } from "@/lib/features/queries/PACKAGE_DURATION_API";
 import { useGetPackageTypesCustomersQuery } from "@/lib/features/queries/UMRAH_PACKAGE_TYPES";
+import { setPackageData } from "@/lib/features/umrahPackageSlice/packageSlice";
 import { cn, formatError } from "@/lib/utils";
 import { umrahSchema } from "@/schema/zod";
 import { Loader } from "lucide-react";
 import moment from "moment";
 import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 const schedules = [
@@ -71,20 +73,46 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
   const [schedule, setSchedule] = useState(
     moment().format("MMMM").toLowerCase()
   );
-
   const [errors, setErrors] = useState(null);
   const [loading, setLoading] = useState(false);
-
   const [isPackScheduleOpen, setIsPackScheduleOpen] = useState(false);
   const [isPackTypeOpen, setIsPackTypeOpen] = useState(false);
   const [isPackDurationOpen, setIsPackDurationOpen] = useState(false);
   const [isTravellersOpen, setIsTravellersOpen] = useState(false);
 
   const [type, setType] = useState(null);
-
   const [duration, setDuration] = useState(null);
-
   const [travellers, setTravellers] = useState(traveller);
+
+  const searchQueries = useSelector((state) => state.package);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (durations?.umrahPackageDurations[0]._id) {
+      setDuration(durations?.umrahPackageDurations[0]._id);
+    }
+
+    if (packageTypes?.umrahPackageTypes[0]._id) {
+      setType(packageTypes?.umrahPackageTypes[0]._id);
+    }
+  }, [durations?.umrahPackageDurations, packageTypes?.umrahPackageTypes]);
+
+  useEffect(() => {
+    const data = checkValidation();
+    if (data) {
+      dispatch(
+        setPackageData({
+          packageSchedule: data.schedule,
+          packageType: data.type,
+          packageDuration: data.duration,
+          adultTravelers: data.travellers.adultTravelers,
+          childTravelers: data.travellers.childTravelers,
+          infantsTravelers: data.travellers.infantsTravelers,
+        })
+      );
+    }
+  }, [schedule, type, duration, travellers, dispatch]);
 
   const checkValidation = () => {
     try {
@@ -146,36 +174,12 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
     const data = checkValidation();
     if (!data) return;
 
-    setLoading(true); // Set loading state to true
-
-    // const searchData = {
-    //   packageSchedule: data.schedule,
-    //   packageType: data.type,
-    //   packageDuration: data.duration,
-    //   adultTravelers: data.travellers.adultTravelers,
-    //   childTravelers: data.travellers.childTravelers,
-    //   infantsTravelers: data.travellers.infantsTravelers,
-    // };
-    // return console.log(searchData);
-
-    // const searchUrl = `/search/umrah?${params.toString()}`;
-
     try {
-      // await router.push(searchUrl); // Perform navigation
+      await router.push("/search/umrah"); // Perform navigation
     } finally {
       setLoading(false); // Reset loading state after navigation
     }
   };
-
-  useEffect(() => {
-    if (durations?.umrahPackageDurations[0]._id) {
-      setDuration(durations?.umrahPackageDurations[0]._id);
-    }
-
-    if (packageTypes?.umrahPackageTypes[0]._id) {
-      setType(packageTypes?.umrahPackageTypes[0]._id);
-    }
-  }, [durations?.umrahPackageDurations, packageTypes?.umrahPackageTypes]);
 
   const packageType = packageTypes?.umrahPackageTypes.find(
     (item) => item._id === type
