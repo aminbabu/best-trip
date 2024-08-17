@@ -5,6 +5,7 @@ import ScrollArea from "@/components/global/ScrollArea";
 import { ArrowIcon, SearchIcon } from "@/components/icons/svgr";
 import { Button } from "@/components/ui/button";
 import { DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
+import { useGetPackageDurationsQuery } from "@/lib/features/queries/PACKAGE_DURATION_API";
 import { cn, formatError } from "@/lib/utils";
 import { umrahSchema } from "@/schema/zod";
 import { Loader } from "lucide-react";
@@ -28,7 +29,7 @@ const schedules = [
   "december",
 ];
 const types = ["economy", "standard", "premium"];
-const durations = [10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 90];
+// const durations = [10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 90];
 const traveller = [
   {
     id: 1,
@@ -53,6 +54,14 @@ const traveller = [
 const UmrahTabpane = ({ icon, disabled, className }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  const {
+    data: durations,
+    error: durationError,
+    isLoading: durationLoading,
+  } = useGetPackageDurationsQuery();
+
+  console.log(durations);
 
   const [isDisabled, setIsDisabled] = useState(disabled);
   const [schedule, setSchedule] = useState(
@@ -136,15 +145,15 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
 
     setLoading(true); // Set loading state to true
 
-    const searchData = {
-      packageSchedule: data.schedule,
-      packageType: data.type,
-      packageDuration: data.duration,
-      adultTravelers: data.travellers.adultTravelers,
-      childTravelers: data.travellers.childTravelers,
-      infantsTravelers: data.travellers.infantsTravelers,
-    };
-    return console.log(searchData);
+    // const searchData = {
+    //   packageSchedule: data.schedule,
+    //   packageType: data.type,
+    //   packageDuration: data.duration,
+    //   adultTravelers: data.travellers.adultTravelers,
+    //   childTravelers: data.travellers.childTravelers,
+    //   infantsTravelers: data.travellers.infantsTravelers,
+    // };
+    // return console.log(searchData);
 
     // const searchUrl = `/search/umrah?${params.toString()}`;
 
@@ -288,20 +297,26 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
           className='px-0 py-2 border-transparent min-w-[308px]'>
           <ScrollArea className='max-h-64'>
             <ul>
-              {durations.map((item) => (
+              {/* {durationLoading && !durations?.length ? (
+                <li className='bg-gray-400 animate-pulse h-[70px]'>
+                  Loading...
+                </li>
+              ) : ""} */}
+
+              {durations?.map((item) => (
                 <li
-                  key={item}
+                  key={item._id}
                   onClick={() => {
-                    setDuration(item);
+                    setDuration(item._id);
                     setIsPackDurationOpen(false);
                   }}
                   className={cn(
                     "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer",
                     {
-                      "bg-p-900 text-white": duration === item,
+                      "bg-p-900 text-white": duration === item._id,
                     }
                   )}>
-                  {item}
+                  {item.days} Days
                 </li>
               ))}
             </ul>
