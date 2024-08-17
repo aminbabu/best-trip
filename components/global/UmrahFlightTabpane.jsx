@@ -1,5 +1,7 @@
 "use client";
 
+import Counter from "@/components/global/Counter";
+import ScrollArea from "@/components/global/ScrollArea";
 import {
   ArrowIcon,
   CalenderTwoLineIcon,
@@ -9,21 +11,17 @@ import {
 } from "@/components/icons/svgr";
 import { Button } from "@/components/ui/button";
 import { DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
-import { Fragment, useState } from "react";
-import ScrollArea from "@/components/global/ScrollArea";
-import { cn } from "@/lib/utils";
-import Counter from "@/components/global/Counter";
-import Link from "next/link";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Calendar } from "../ui/calendar";
-import moment from "moment";
-import { ArrowLeftRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { flightSchema } from "@/schema/zod";
-import UnderDevelopment from "./UnderDevelopment";
+import { ArrowLeftRight, Loader } from "lucide-react";
+import moment from "moment";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Loader } from "lucide-react";
+import { Fragment, useState } from "react";
+import { Calendar } from "../ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 const flightTypes = ["One way", "Round trip", "Multi - city"];
 
 const travellers = [
@@ -205,13 +203,12 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
       className={cn(
         "bg-white  px-2 py-4 xs:px-4 xs:py-6 lg:px-6 sm:py-8 md:py-10 lg:py-12 rounded-md shadow-[0_3px_12px_0_rgba(0,0,0,0.03)] space-y-7",
         className
-      )}
-    >
-      <div className="flex gap-7">
+      )}>
+      <div className='flex gap-7'>
         {/* flight type */}
         <Popover open={isFlightTypeOpen} onOpenChange={handleFlightType}>
-          <PopoverTrigger className="flex items-center gap-3">
-            <p className="text-xs lg:text-lg text-t-700">{flightType}</p>
+          <PopoverTrigger className='flex items-center gap-3'>
+            <p className='text-xs lg:text-lg text-t-700'>{flightType}</p>
             <ArrowIcon
               className={`${
                 isFlightTypeOpen && "rotate-180"
@@ -219,9 +216,8 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
             />
           </PopoverTrigger>
           <PopoverContent
-            align="start"
-            className="px-0 py-2 border-transparent w-[134px] drop-shadow"
-          >
+            align='start'
+            className='px-0 py-2 border-transparent w-[134px] drop-shadow'>
             <ul>
               {flightTypes.map((item) => (
                 <li
@@ -238,8 +234,7 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
                     {
                       "bg-p-900 text-white": flightType === item,
                     }
-                  )}
-                >
+                  )}>
                   {item}
                 </li>
               ))}
@@ -248,8 +243,8 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
         </Popover>
         {/* travellers  */}
         <Popover open={isTravellersOpen} onOpenChange={handleTravellers}>
-          <PopoverTrigger className="flex items-center gap-3">
-            <p className="text-xs lg:text-lg text-t-700">
+          <PopoverTrigger className='flex items-center gap-3'>
+            <p className='text-xs lg:text-lg text-t-700'>
               {traveller > 1
                 ? `${traveller} Traveler`
                 : `${traveller} Travelers`}{" "}
@@ -262,10 +257,9 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
             />
           </PopoverTrigger>
           <PopoverContent
-            align="start"
-            className="px-0 py-2 border-transparent min-w-[308px]"
-          >
-            <div className="text-primary font-semibold text-lg px-4 pt-1 pb-5 mb-1">
+            align='start'
+            className='px-0 py-2 border-transparent min-w-[308px]'>
+            <div className='text-primary font-semibold text-lg px-4 pt-1 pb-5 mb-1'>
               Travelers
             </div>
             {travellerCounts.map((item) => (
@@ -277,54 +271,51 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
                   onIncrement={() => handleCounterIncrement(item.id)}
                   onDecrement={() => handleCounterDecrement(item.id)}
                 />
-                <DropdownMenuSeparator className="bg-border/25 h-[1px]" />
+                <DropdownMenuSeparator className='bg-border/25 h-[1px]' />
               </Fragment>
             ))}
             {/* class type in travellers */}
-            <div className="text-primary font-semibold text-lg p-4 mb-1">
+            <div className='text-primary font-semibold text-lg p-4 mb-1'>
               Class
             </div>
             <RadioGroup
-              className="px-4 pb-6 grid-cols-5"
+              className='px-4 pb-6 grid-cols-5'
               defaultValue={classType}
-              onValueChange={(value) => setClassType(value)}
-            >
-              <div className="flex items-center space-x-2 col-span-2">
-                <RadioGroupItem value="Economy" id="Economy" />
-                <Label className="text-xs font-normal" htmlFor="Economy">
+              onValueChange={(value) => setClassType(value)}>
+              <div className='flex items-center space-x-2 col-span-2'>
+                <RadioGroupItem value='Economy' id='Economy' />
+                <Label className='text-xs font-normal' htmlFor='Economy'>
                   Economy
                 </Label>
               </div>
-              <div className="flex items-center space-x-2 col-span-3">
+              <div className='flex items-center space-x-2 col-span-3'>
                 <RadioGroupItem
-                  value="Premium - economy"
-                  id="Premium - economy"
+                  value='Premium - economy'
+                  id='Premium - economy'
                 />
                 <Label
-                  className="text-xs font-normal"
-                  htmlFor="Premium - economy"
-                >
+                  className='text-xs font-normal'
+                  htmlFor='Premium - economy'>
                   Premium Economy
                 </Label>
               </div>
-              <div className="flex items-center space-x-2 col-span-2">
-                <RadioGroupItem value="First - class" id="First - class" />
-                <Label className="text-xs font-normal" htmlFor="First - class">
+              <div className='flex items-center space-x-2 col-span-2'>
+                <RadioGroupItem value='First - class' id='First - class' />
+                <Label className='text-xs font-normal' htmlFor='First - class'>
                   First Class
                 </Label>
               </div>
-              <div className="flex items-center space-x-2 col-span-3">
-                <RadioGroupItem value="Business" id="Business" />
-                <Label className="text-xs font-normal" htmlFor="Business">
+              <div className='flex items-center space-x-2 col-span-3'>
+                <RadioGroupItem value='Business' id='Business' />
+                <Label className='text-xs font-normal' htmlFor='Business'>
                   Business
                 </Label>
               </div>
             </RadioGroup>
             <Button
-              size="sm"
+              size='sm'
               onClick={() => setIsTravellersOpen(false)}
-              className="px-8 py-2 mx-4 my-4 text-sm lg:text-base"
-            >
+              className='px-8 py-2 mx-4 my-4 text-sm lg:text-base'>
               Done
             </Button>
           </PopoverContent>
@@ -333,31 +324,28 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
       {filterNo.split("").map((item, idx) => (
         <div
           key={idx}
-          className="flex flex-col lg:flex-row gap-x-4 gap-y-5 lg:gap-x-5 relative"
-        >
+          className='flex flex-col lg:flex-row gap-x-4 gap-y-5 lg:gap-x-5 relative'>
           {/* from destination */}
           <Popover
             open={isFromDestinationOpen}
             onOpenChange={() => {
               setErrors((prevState) => ({ ...prevState, schedule: null }));
               setIsFromDestinationOpen(!isFromDestinationOpen);
-            }}
-          >
-            <PopoverTrigger asChild className="flex-1" disabled={isDisabled}>
+            }}>
+            <PopoverTrigger asChild className='flex-1' disabled={isDisabled}>
               <Button
-                variant="outline"
+                variant='outline'
                 className={cn(
                   "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5 border-t-400/50 lg:border-border",
                   {
                     "border-p-900 text-p-900": errors?.fromDestination,
                   }
-                )}
-              >
-                <span className="text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal">
+                )}>
+                <span className='text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal'>
                   From
                 </span>
-                <span className="text-sm lg:text-base flex flex-wrap items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
-                  <p className="lg:max-w-[142px] xl:max-w-[195px] truncate">
+                <span className='text-sm lg:text-base flex flex-wrap items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize'>
+                  <p className='lg:max-w-[142px] xl:max-w-[195px] truncate'>
                     {fromDestination ? fromDestination.city : "Dhaka"}-
                     {fromDestination
                       ? fromDestination.airport
@@ -368,10 +356,9 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
               </Button>
             </PopoverTrigger>
             <PopoverContent
-              align="start"
-              className="px-0 py-2 border-transparent min-w-[360px]"
-            >
-              <ScrollArea className="max-h-64">
+              align='start'
+              className='px-0 py-2 border-transparent min-w-[360px]'>
+              <ScrollArea className='max-h-64'>
                 <ul>
                   {destinations.map((item) => (
                     <li
@@ -385,15 +372,14 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
                         {
                           "bg-p-300": fromDestination === item,
                         }
-                      )}
-                    >
-                      <div className="grid font-medium">
+                      )}>
+                      <div className='grid font-medium'>
                         {item.city}, {item.country}
-                        <span className="text-[8px] font-normal leading-normal">
+                        <span className='text-[8px] font-normal leading-normal'>
                           {item.airport}
                         </span>
                       </div>
-                      <div className="text-sm px-2.5 py-1 bg-p-900 text-white rounded font-semibold">
+                      <div className='text-sm px-2.5 py-1 bg-p-900 text-white rounded font-semibold'>
                         {item.code}
                       </div>
                     </li>
@@ -404,8 +390,8 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
           </Popover>
           {/* arrow icon */}
           {flightType === "Multi - city" || (
-            <div className="bg-p-900 hidden lg:flex h-9 w-9 items-center justify-center rounded-full absolute z-10 top-[50%] lg:left-[19.3%] xl:left-[20.3%] translate-y-[-50%]">
-              <ArrowLeftRight className="text-white" />
+            <div className='bg-p-900 hidden lg:flex h-9 w-9 items-center justify-center rounded-full absolute z-10 top-[50%] lg:left-[19.3%] xl:left-[20.3%] translate-y-[-50%]'>
+              <ArrowLeftRight className='text-white' />
             </div>
           )}
           {/* to destination */}
@@ -414,23 +400,21 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
             onOpenChange={() => {
               setErrors((prevState) => ({ ...prevState, type: null }));
               setIsToDestinationOpen(!isToDestinationOpen);
-            }}
-          >
-            <PopoverTrigger asChild className="flex-1" disabled={isDisabled}>
+            }}>
+            <PopoverTrigger asChild className='flex-1' disabled={isDisabled}>
               <Button
-                variant="outline"
+                variant='outline'
                 className={cn(
                   "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5 border-t-400/50 lg:border-border",
                   {
                     "border-p-900 text-p-900": errors?.type,
                   }
-                )}
-              >
-                <span className="text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal">
+                )}>
+                <span className='text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal'>
                   To
                 </span>
-                <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
-                  <p className="lg:max-w-[142px] xl:max-w-[195px] truncate">
+                <span className='text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize'>
+                  <p className='lg:max-w-[142px] xl:max-w-[195px] truncate'>
                     {toDestination ? toDestination.city : "Cox's Bazar"}-
                     {toDestination
                       ? toDestination.airport
@@ -441,10 +425,9 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
               </Button>
             </PopoverTrigger>
             <PopoverContent
-              align="start"
-              className="px-0 py-2 border-transparent min-w-[308px]"
-            >
-              <ScrollArea className="max-h-64">
+              align='start'
+              className='px-0 py-2 border-transparent min-w-[308px]'>
+              <ScrollArea className='max-h-64'>
                 <ul>
                   {destinations.map((item) => (
                     <li
@@ -458,15 +441,14 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
                         {
                           "bg-p-300": toDestination === item,
                         }
-                      )}
-                    >
-                      <div className="grid font-medium">
+                      )}>
+                      <div className='grid font-medium'>
                         {item.city}, {item.country}
-                        <span className="text-[8px] font-normal leading-normal">
+                        <span className='text-[8px] font-normal leading-normal'>
                           {item.airport}
                         </span>
                       </div>
-                      <div className="text-sm px-2.5 py-1 bg-p-900 text-white rounded font-semibold">
+                      <div className='text-sm px-2.5 py-1 bg-p-900 text-white rounded font-semibold'>
                         {item.code}
                       </div>
                     </li>
@@ -481,22 +463,20 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
             onOpenChange={() => {
               setErrors((prevState) => ({ ...prevState, departureDate: null }));
               setIsDepartureDateOpen(!isDepartureDateOpen);
-            }}
-          >
-            <PopoverTrigger asChild className="flex-1" disabled={isDisabled}>
+            }}>
+            <PopoverTrigger asChild className='flex-1' disabled={isDisabled}>
               <Button
-                variant="outline"
+                variant='outline'
                 className={cn(
                   "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5 border-t-400/50 lg:border-border",
                   {
                     "border-p-900 text-p-900": errors?.departureDate,
                   }
-                )}
-              >
-                <span className="text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal">
+                )}>
+                <span className='text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal'>
                   Departure Date
                 </span>
-                <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
+                <span className='text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize'>
                   {departureDate ? (
                     moment(departureDate).format("DD-MMM-YYYY")
                   ) : (
@@ -506,11 +486,11 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
                 </span>
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-auto p-0" align="start">
+            <PopoverContent className='w-auto p-0' align='start'>
               <Calendar
-                mode="single"
+                mode='single'
                 defaultMonth={moment().toDate()}
-                captionLayout="dropdown-buttons"
+                captionLayout='dropdown-buttons'
                 selected={departureDate}
                 onSelect={(value) => {
                   setDepartureDate(value);
@@ -525,8 +505,8 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
           </Popover>
           {/* calender icon */}
           {flightType === "Multi - city" || (
-            <div className="bg-p-900 h-9 w-9 hidden lg:flex items-center justify-center rounded-full absolute z-10 top-[50%] lg:left-[63.5%] xl:left-[65.7%] translate-y-[-50%]">
-              <CalenderTwoLineIcon className="text-white" />
+            <div className='bg-p-900 h-9 w-9 hidden lg:flex items-center justify-center rounded-full absolute z-10 top-[50%] lg:left-[63.5%] xl:left-[65.7%] translate-y-[-50%]'>
+              <CalenderTwoLineIcon className='text-white' />
             </div>
           )}
           {/* return date */}
@@ -536,26 +516,23 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
               onOpenChange={() => {
                 setErrors((prevState) => ({ ...prevState, returnDate: null }));
                 setIsReturnDateOpen(!isReturnDateOpen);
-              }}
-            >
+              }}>
               <PopoverTrigger
                 asChild
-                className="flex-1"
-                disabled={flightType === "One way" ? !isDisabled : isDisabled}
-              >
+                className='flex-1'
+                disabled={flightType === "One way" ? !isDisabled : isDisabled}>
                 <Button
-                  variant="outline"
+                  variant='outline'
                   className={cn(
                     "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5 border-t-400/50 lg:border-border",
                     {
                       "border-p-900 text-p-900": errors?.returnDate,
                     }
-                  )}
-                >
-                  <span className="text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal">
+                  )}>
+                  <span className='text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal'>
                     Return Date
                   </span>
-                  <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
+                  <span className='text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize'>
                     {returnDate ? (
                       moment(returnDate).format("DD-MMM-YYYY")
                     ) : (
@@ -565,11 +542,11 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
                   </span>
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="start">
+              <PopoverContent className='w-auto p-0' align='start'>
                 <Calendar
-                  mode="single"
+                  mode='single'
                   defaultMonth={moment().toDate()}
-                  captionLayout="dropdown-buttons"
+                  captionLayout='dropdown-buttons'
                   selected={returnDate}
                   onSelect={(value) => {
                     setReturnDate(value);
@@ -585,10 +562,9 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
           )}
           {flightType === "Multi - city" ? (
             <Button
-              className="bg-transparent hover:bg-transparent p-0 ml-2.5"
-              size="lg"
-              onClick={handleFilterNoDecrement}
-            >
+              className='bg-transparent hover:bg-transparent p-0 ml-2.5'
+              size='lg'
+              onClick={handleFilterNoDecrement}>
               {icon ? icon : <CrossIcon />}
             </Button>
           ) : (
@@ -596,21 +572,20 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
             //   {icon ? icon : <SearchIcon />}
             // </Button>
             <Button
-              size="lg"
-              className="py-2.5 lg:py-5 rounded-lg lg:roundemd text-sm lg:text-base"
+              size='lg'
+              className='py-2.5 lg:py-5 rounded-lg lg:roundemd text-sm lg:text-base'
               onClick={isDisabled ? handleDisableFields : handleFilter}
-              disabled={loading}
-            >
+              disabled={loading}>
               {loading ? (
-                <Loader className="animate-spin w-8 h-8" />
+                <Loader className='animate-spin w-8 h-8' />
               ) : isDisabled ? (
                 icon
               ) : (
                 <>
-                  <span className="hidden lg:block">
+                  <span className='hidden lg:block'>
                     <SearchIcon />
                   </span>
-                  <span className="lg:hidden">Search</span>
+                  <span className='lg:hidden'>Search</span>
                 </>
               )}
             </Button>
@@ -619,19 +594,18 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
       ))}
 
       {flightType === "Multi - city" && (
-        <div className="flex flex-col lg:flex-row gap-3 items-center justify-between">
+        <div className='flex flex-col lg:flex-row gap-3 items-center justify-between'>
           <Button
             onClick={handleFilterNoIncrement}
-            className="bg-transparent hover:bg-transparent text-p-900"
-          >
+            className='bg-transparent hover:bg-transparent text-p-900'>
             <PlusCircleIcon /> Add New City
           </Button>
-          <Button className="px-10 py-4 " onClick={handleFilter} asChild>
-            <Link href="/search/umrah-flight">
+          <Button className='px-10 py-4 ' onClick={handleFilter} asChild>
+            <Link href='/search/umrah-flight'>
               {icon ? (
                 icon
               ) : (
-                <SearchIcon viewBox="0 0 33 33" className="w-6 h-6" />
+                <SearchIcon viewBox='0 0 33 33' className='w-6 h-6' />
               )}{" "}
               Search
             </Link>
