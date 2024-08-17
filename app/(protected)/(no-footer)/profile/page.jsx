@@ -1,6 +1,6 @@
 "use client";
 
-import { ICircleIcon, PencilSquareIcon } from "@/components/icons/svgr";
+import { PencilSquareIcon } from "@/components/icons/svgr";
 import ProfileForm from "@/components/profile/ProfileForm";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";

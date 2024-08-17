@@ -8,9 +8,12 @@ import NavbarCta from "@/components/layouts/NavbarCta";
 import NavSheet from "@/components/layouts/NavSheet";
 import { useEffect, useState } from "react";
 import Profile from "./Profile";
+import { useSession } from "next-auth/react";
 
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
+  const { data, status } = useSession();
+  const { user } = data || {};
 
   // Handle sticky navbar
   useEffect(() => {
@@ -47,8 +50,7 @@ const Navbar = () => {
           <Menu isNavbarSticky={isSticky} />
         </div>
         <div className="hidden lg:block">
-          {/* <NavbarCta /> */}
-          <Profile />
+          {!user?._id ? <NavbarCta /> : <Profile user={user} />}
         </div>
         <NavSheet />
       </Container>

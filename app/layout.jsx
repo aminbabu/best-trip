@@ -1,11 +1,9 @@
 import Navbar from "@/components/layouts/Navbar";
-import "@/styles/globals.css";
-import "react-phone-input-2/lib/style.css";
-
-import { Poppins as FontSans } from "next/font/google";
-
 import { cn } from "@/lib/utils";
-import StoreProvider from "./StoreProvider";
+import "@/styles/globals.css";
+import { SessionProvider } from "next-auth/react";
+import { Poppins as FontSans } from "next/font/google";
+import "react-phone-input-2/lib/style.css";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -20,18 +18,18 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   return (
-    <StoreProvider>
-      <html lang='en'>
-        <body
-          className={cn(
-            "min-h-screen flex flex-col overflow-x-hidden bg-white antialiased",
-            fontSans.className
-          )}>
+    <html lang='en'>
+      <body
+        className={cn(
+          "min-h-screen flex flex-col overflow-x-hidden bg-white antialiased",
+          fontSans.className
+        )}>
+        <SessionProvider>
           <Navbar />
           {children}
-        </body>
-      </html>
-    </StoreProvider>
+        </SessionProvider>
+      </body>
+    </html>
   );
 };
 
