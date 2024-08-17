@@ -1,6 +1,6 @@
+import authenticateUser from "@/lib/db/auth/authenticate-user";
 import NextAuth from "next-auth";
 import Creadentials from "next-auth/providers/credentials";
-import authenticateUser from "@/lib/db/auth/authenticate-user";
 
 const providers = [
   Creadentials({

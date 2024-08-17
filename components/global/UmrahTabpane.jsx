@@ -56,14 +56,10 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
 
   const [isDisabled, setIsDisabled] = useState(disabled);
   const [schedule, setSchedule] = useState(
-    searchParams.get("packageSchedule") || moment().format("MMMM").toLowerCase()
+    moment().format("MMMM").toLowerCase()
   );
-  const [type, setType] = useState(
-    searchParams.get("packageType") || "economy"
-  );
-  const [duration, setDuration] = useState(
-    parseInt(searchParams.get("packageDuration")) || 15
-  );
+  const [type, setType] = useState("economy");
+  const [duration, setDuration] = useState(15);
   const [travellers, setTravellers] = useState(() => {
     const adultTravelers = parseInt(searchParams.get("adultTravelers")) || 1;
     const childTravelers = parseInt(searchParams.get("childTravelers")) || 0;
@@ -140,19 +136,20 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
 
     setLoading(true); // Set loading state to true
 
-    const params = new URLSearchParams({
+    const searchData = {
       packageSchedule: data.schedule,
       packageType: data.type,
       packageDuration: data.duration,
       adultTravelers: data.travellers.adultTravelers,
       childTravelers: data.travellers.childTravelers,
       infantsTravelers: data.travellers.infantsTravelers,
-    });
+    };
+    return console.log(searchData);
 
-    const searchUrl = `/search/umrah?${params.toString()}`;
+    // const searchUrl = `/search/umrah?${params.toString()}`;
 
     try {
-      await router.push(searchUrl); // Perform navigation
+      // await router.push(searchUrl); // Perform navigation
     } finally {
       setLoading(false); // Reset loading state after navigation
     }

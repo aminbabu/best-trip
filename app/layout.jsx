@@ -1,9 +1,11 @@
+import AccessToken from "@/components/AccessToken";
 import Navbar from "@/components/layouts/Navbar";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import { SessionProvider } from "next-auth/react";
 import { Poppins as FontSans } from "next/font/google";
 import "react-phone-input-2/lib/style.css";
+import StoreProvider from "./StoreProvider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -25,8 +27,11 @@ const RootLayout = ({ children }) => {
           fontSans.className
         )}>
         <SessionProvider>
-          <Navbar />
-          {children}
+          <StoreProvider>
+            <Navbar />
+            {children}
+            <AccessToken />
+          </StoreProvider>
         </SessionProvider>
       </body>
     </html>

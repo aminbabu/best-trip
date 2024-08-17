@@ -4,29 +4,10 @@ import UmrahCard from "@/components/serach/UmrahCard";
 import UmrahFlightCard from "@/components/serach/UmrahFlightCard";
 import VisaCard from "@/components/serach/VisaCard";
 import visaData from "@/data/visa-result.json";
-import { useGetUmrahPackagesForCustomersQuery } from "@/lib/features/queries/UMRAH_PACKAGES_API";
 import { Card } from "../ui/card";
 import FlightFilter from "../umrah-fight/FlightFilter";
 
-const FilterResult = ({ slug, data, searchParams }) => {
-  const {
-    data: packages,
-    isLoading,
-    error,
-  } = useGetUmrahPackagesForCustomersQuery({
-    packageSchedule: searchParams?.packageSchedule,
-    packageType: searchParams?.packageType,
-    packageDuration: searchParams?.packageDuration,
-    dataLength: 10, // Adjust this as needed
-    adultTravelers: searchParams?.adultTravelers,
-    childTravelers: searchParams?.childTravelers,
-    infantsTravelers: searchParams?.infantsTravelers,
-    lastItemId: null, // Or handle pagination as needed
-  });
-
-  if (!isLoading) {
-    console.log(packages);
-  }
+const FilterResult = ({ slug, data }) => {
   if (data.length === 0) {
     return (
       <h2 className='text-2xl font-semibold text-center text-gray-700'>

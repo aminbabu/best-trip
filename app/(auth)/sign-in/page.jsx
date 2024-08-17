@@ -1,9 +1,9 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
+import credentialSignIn from "@/actions/auth/credential-sign-in";
+import { EyeIcon, EyeSlashIcon } from "@/components/icons/svgr";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -13,15 +13,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { LucideLoader2 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { EyeIcon, EyeSlashIcon } from "@/components/icons/svgr";
-import { useRouter } from "next/navigation";
-import withReactContent from "sweetalert2-react-content";
+import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import credentialSignIn from "@/actions/auth/credential-sign-in";
-import { LucideLoader2 } from "lucide-react";
+import withReactContent from "sweetalert2-react-content";
+import * as z from "zod";
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -76,72 +75,70 @@ const SignInPage = () => {
   };
 
   return (
-    <div className="max-w-[500px] mx-auto">
-      <Card className="border-transparent mb-8 shadow-[0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] border border-[#f1f1f4] p-6 lg:p-10 my-10">
-        <CardHeader className="p-0">
-          <CardTitle className="text-lg lg:text-2xl text-t-800 text-center pb-5 lg:pb-8">
+    <div className='max-w-[500px] mx-auto'>
+      <Card className='border-transparent mb-8 shadow-[0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] border border-[#f1f1f4] p-6 lg:p-10 my-10'>
+        <CardHeader className='p-0'>
+          <CardTitle className='text-lg lg:text-2xl text-t-800 text-center pb-5 lg:pb-8'>
             Sign In
           </CardTitle>
         </CardHeader>
-        <CardContent className="pb-0 p-0">
+        <CardContent className='pb-0 p-0'>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-[26px]"
-            >
+              className='space-y-[26px]'>
               <FormField
                 control={form.control}
-                name="email"
+                name='email'
                 render={({ field }) => (
-                  <FormItem className="space-y-3">
-                    <FormLabel className="text-t-800 text-sm lg:text-base">
-                      Email address<span className="text-primary"> *</span>
+                  <FormItem className='space-y-3'>
+                    <FormLabel className='text-t-800 text-sm lg:text-base'>
+                      Email address<span className='text-primary'> *</span>
                     </FormLabel>
                     <FormControl>
                       <Input
-                        type="email"
-                        className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
-                        placeholder="Enter email address"
+                        type='email'
+                        className='h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0'
+                        placeholder='Enter email address'
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage className="font-normal" />
+                    <FormMessage className='font-normal' />
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
-                name="password"
+                name='password'
                 render={({ field }) => (
-                  <FormItem className="space-y-3">
-                    <FormLabel className="text-t-800 text-sm lg:text-base">
-                      Password<span className="text-primary"> *</span>
+                  <FormItem className='space-y-3'>
+                    <FormLabel className='text-t-800 text-sm lg:text-base'>
+                      Password<span className='text-primary'> *</span>
                     </FormLabel>
-                    <div className="relative">
+                    <div className='relative'>
                       <FormControl>
                         <Input
                           type={showPassword ? "text" : "password"}
-                          className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
-                          placeholder="Enter password"
+                          className='h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0'
+                          placeholder='Enter password'
                           {...field}
                         />
                       </FormControl>
                       <button
                         onClick={(e) => handleShowPassword(e)}
-                        className="absolute right-4 bottom-3.5"
-                      >
+                        className='absolute right-4 bottom-3.5'>
                         {showPassword ? (
                           <EyeSlashIcon
-                            viewBox="0 0 24 24"
-                            className="w-4 h-4"
+                            viewBox='0 0 24 24'
+                            className='w-4 h-4'
                           />
                         ) : (
-                          <EyeIcon viewBox="0 0 24 24" className="w-4 h-4" />
+                          <EyeIcon viewBox='0 0 24 24' className='w-4 h-4' />
                         )}
                       </button>
                     </div>
 
-                    <FormMessage className="font-normal" />
+                    <FormMessage className='font-normal' />
                   </FormItem>
                 )}
               />
@@ -177,20 +174,19 @@ const SignInPage = () => {
                   Forgot Password?
                 </Link>
               </div> */}
-              <div className="grid">
-                <Button className="py-2.5" type="submit" disabled={loading}>
-                  {loading ? <LucideLoader2 className="animate-spin" /> : null}
+              <div className='grid'>
+                <Button className='py-2.5' type='submit' disabled={loading}>
+                  {loading ? <LucideLoader2 className='animate-spin' /> : null}
                   Sign in
                 </Button>
               </div>
             </form>
           </Form>
-          <p className="text-t-600 text-center pt-[26px]">
+          <p className='text-t-600 text-center pt-[26px]'>
             Don’t have an account ?{" "}
             <Link
-              href="/sign-up"
-              className="text-primary duration-300 hover:underline hover:opacity-75 focus:underline"
-            >
+              href='/sign-up'
+              className='text-primary duration-300 hover:underline hover:opacity-75 focus:underline'>
               Sign up
             </Link>
           </p>
