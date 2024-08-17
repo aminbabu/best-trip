@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
 const NoFooterLayout = async ({ children }) => {
   const { user } = (await auth()) || {};
