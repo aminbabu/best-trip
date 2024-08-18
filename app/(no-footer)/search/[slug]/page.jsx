@@ -1,8 +1,7 @@
-"use client";
-
 import UmrahTabpane from "@/components/global/UmrahTabpane";
 import { ArrowIcon, PencliLineIcon } from "@/components/icons/svgr";
 import Container from "@/components/layouts/Container";
+import FilterResult from "@/components/serach/FilterResult";
 import Filters from "@/components/serach/Filters";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,20 +9,13 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { useGetUmrahPackagesForCustomersQuery } from "@/lib/features/queries/UMRAH_PACKAGES_API";
 import { cn } from "@/lib/utils";
 import BgCurve from "@/public/images/search/curve.svg?url";
 import Image from "next/image";
-import { useSelector } from "react-redux";
 
 const SearchPage = ({ params }) => {
   const { slug } = params;
 
-  const searchQueries = useSelector((state) => state.package);
-
-  const data = useGetUmrahPackagesForCustomersQuery(searchQueries);
-
-  console.log(data);
   return (
     <Collapsible>
       <div
@@ -62,7 +54,7 @@ const SearchPage = ({ params }) => {
           <div className='hidden xs:block'>
             <Filters slug={slug} />
           </div>
-          {/* <FilterResult slug={slug} data={data} /> */}
+          <FilterResult slug={slug} />
           <div className='relative flex py-4 items-center my-6'>
             <div className='flex-grow border-t border-gray-200'></div>
             <span className='flex-shrink mx-4 text-t-600'>End of Results</span>
