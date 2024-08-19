@@ -5,6 +5,8 @@ import { redirect } from "next/navigation";
 const AuthLayout = async ({ children }) => {
   const { user } = (await auth()) || {};
 
+  console.log(user);
+
   if (user?._id) {
     return redirect("/profile");
   }

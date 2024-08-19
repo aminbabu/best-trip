@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const NotFound = () => {
+  console.log("FROM NOT FOUND");
   return (
     <section className="py-12 lg:py-16">
       <Container>
