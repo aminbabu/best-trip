@@ -8,8 +8,6 @@ import Section from "@/components/global/Section";
 import { options } from "@/components/home/splideOptions";
 
 const PlacesInBD = ({ section, blogPosts }) => {
-  console.log(blogPosts);
-
   return (
     <Section>
       <SectionHeader

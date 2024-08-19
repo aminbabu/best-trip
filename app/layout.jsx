@@ -4,7 +4,7 @@ import "@/styles/globals.css";
 import { SessionProvider } from "next-auth/react";
 import { Poppins as FontSans } from "next/font/google";
 import "react-phone-input-2/lib/style.css";
-import { getSiteSettings } from "@/actions/site-settings/get-site-settings";
+import { getGeneralSiteSettings } from "@/actions/site-settings/get-site-settings";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -18,7 +18,7 @@ export const metadata = {
 };
 
 const RootLayout = async ({ children }) => {
-  const siteSettings = await getSiteSettings();
+  const generalSiteSettings = await getGeneralSiteSettings();
 
   return (
     <html lang="en">
@@ -29,7 +29,7 @@ const RootLayout = async ({ children }) => {
         )}
       >
         <SessionProvider>
-          <Navbar siteSettings={siteSettings} />
+          <Navbar generalSiteSettings={generalSiteSettings} />
           {children}
         </SessionProvider>
       </body>

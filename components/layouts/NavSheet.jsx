@@ -21,8 +21,9 @@ import profileAvatar from "@/public/images/profile/avatar.png";
 import signOutUser from "@/actions/auth/sign-out";
 import withReactContent from "sweetalert2-react-content";
 import Swal from "sweetalert2";
+import { generateImage } from "@/lib/utils";
 
-const NavSheet = ({ siteSettings, user }) => {
+const NavSheet = ({ generalSiteSettings, user }) => {
   const [open, setOpen] = useState(false);
   const [isLogout, setIsLogout] = useState(false);
 
@@ -87,10 +88,10 @@ const NavSheet = ({ siteSettings, user }) => {
       <SheetContent className="flex flex-col p-0">
         <SheetHeader className="text-left p-4">
           <Brand
-            logo={`${process.env.NEXT_PUBLIC_API_URL}/${siteSettings.logo}`}
+            logo={generateImage(generalSiteSettings?.logo)}
             width="108"
             height="46"
-            alt={siteSettings?.title}
+            alt={generalSiteSettings?.title}
           />
         </SheetHeader>
         <Menu className="flex-1 overflow-y-auto p-4" user={user} />
