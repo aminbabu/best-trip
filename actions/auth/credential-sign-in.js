@@ -17,7 +17,7 @@ const credentialSignIn = async (formData) => {
     return response;
   } catch (error) {
     throw new Error(
-      error.cause.err.message ||
+      error?.cause?.err?.message ||
         "An error occurred. Please check your credentials and try again"
     );
   }

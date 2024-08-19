@@ -63,7 +63,7 @@ export const {
 } = NextAuth({
   session: {
     strategy: "jwt",
-    maxAge: process.env.JWT_EXPIRY,
+    maxAge: Number(process.env.JWT_EXPIRY),
   },
   providers,
   callbacks,
