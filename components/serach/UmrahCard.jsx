@@ -14,43 +14,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import numeral from "numeral";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { renderInclusionIcon } from "@/lib/utils";
 
 const UmrahCard = ({ data }) => {
-  const renderInclusionIcon = (item) => {
-    switch (item.toLowerCase()) {
-      case "flight":
-        return (
-          <PlaneIcon fill="#F50308" className="w-4 h-4" viewBox="0 0 14 14" />
-        );
-      case "hotel":
-        return (
-          <HotelIcon fill="#F50308" className="w-4 h-4" viewBox="0 0 14 14" />
-        );
-      case "visa":
-        return (
-          <PassportCircleIcon
-            fill="#F50308"
-            className="w-4 h-4"
-            viewBox="0 0 14 14"
-          />
-        );
-      case "trns":
-        return (
-          <BusRedIcon fill="#F50308" className="w-4 h-4" viewBox="0 0 16 16" />
-        );
-      case "food":
-        return (
-          <SpoonKnifeIcon
-            fill="#F50308"
-            className="w-4 h-4"
-            viewBox="0 0 16 16"
-          />
-        );
-      default:
-        return null;
-    }
-  };
-
   return (
     <Card className="border-transparent relative overflow-hidden">
       <div className="absolute top-5 -right-9 rotate-45 bg-p-300 px-10 py-2 text-sm lg:text-base text-t-700 font-medium leading-snug capitalize pointer-events-none">

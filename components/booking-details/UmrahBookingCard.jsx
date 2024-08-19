@@ -2,22 +2,16 @@ import React from "react";
 import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
 import {
-  BusRedIcon,
   CalenderIcon,
   ClockAltIcon,
-  ClockIcon,
-  ClockRedIcon,
-  HotelIcon,
   LocationCircleIcon,
-  PassportCircleIcon,
   PeopleIcon,
-  PlaneIcon,
-  SpoonKnifeIcon,
 } from "../icons/svgr";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import numeral from "numeral";
 import cardImg from "@/public/images/search/01.png";
+import { renderInclusionIcon } from "@/lib/utils";
 
 const data = {
   id: 1,
@@ -37,23 +31,6 @@ const data = {
 };
 
 const UmrahBookingCard = () => {
-  const renderInclusionIcon = (item) => {
-    switch (item.toLowerCase()) {
-      case "flight":
-        return <PlaneIcon className="w-4 h-4" viewBox="0 0 14 14" />;
-      case "hotel":
-        return <HotelIcon className="w-4 h-4" viewBox="0 0 14 14" />;
-      case "visa":
-        return <PassportCircleIcon className="w-4 h-4" viewBox="0 0 14 14" />;
-      case "trns":
-        return <BusRedIcon className="w-4 h-4" viewBox="0 0 16 16" />;
-      case "food":
-        return <SpoonKnifeIcon className="w-4 h-4" viewBox="0 0 16 16" />;
-      default:
-        return null;
-    }
-  };
-
   return (
     <Card className="border-transparent relative overflow-hidden">
       <CardContent className="p-4 sm:p-5 lg:p-8 xl:leading-8 flex flex-col md:flex-row lg:items-center justify-between gap-6 lg:gap-9">

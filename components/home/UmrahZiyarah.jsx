@@ -5,20 +5,20 @@ import SectionHeader from "@/components/global/SectionHeader";
 import Slider from "@/components/global/splide/Slider";
 import UmrahZiyarahSlideItem from "@/components/home/UmrahZiyarahSlideItem";
 import Section from "@/components/global/Section";
-import data from "@/data/umrah-ziyarah.json";
 import { options } from "@/components/home/splideOptions";
 
-const UmrahZiyarah = () => {
-  const { title, description, items } = data;
-
+const UmrahZiyarah = ({ section, umrahOffers }) => {
   return (
     <Section id="umrah" className="bg-secondary">
-      <SectionHeader title={title} description={description} />
+      <SectionHeader
+        title={section?.title}
+        description={section?.description}
+      />
       <Slider hasTrack={false} options={options}>
         <SplideTrack>
-          {items.map((item, index) => (
-            <SplideSlide key={index}>
-              <UmrahZiyarahSlideItem item={item} />
+          {umrahOffers?.map((umrahOffer) => (
+            <SplideSlide key={umrahOffer?._id}>
+              <UmrahZiyarahSlideItem umrahOffer={umrahOffer} />
             </SplideSlide>
           ))}
         </SplideTrack>

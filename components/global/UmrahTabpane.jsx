@@ -1,6 +1,6 @@
 "use client";
 
-import { getPackageDurationsForCustomers } from "@/actions/packageDurations/get-package-durations";
+import { getPackageDurationsForCustomers } from "@/actions/package-durations/get-package-durations";
 import { getUmrahPackageTypesForCustomers } from "@/actions/umrahPackageTypes/get-umrah-package-types";
 import Counter from "@/components/global/Counter";
 import ScrollArea from "@/components/global/ScrollArea";
