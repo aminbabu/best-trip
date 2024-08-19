@@ -11,11 +11,9 @@ const HeroAlt = ({ data }) => {
         <Image
           src={generateImage(data.illustration)}
           alt="hero"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-          quality={100}
-          className="absolute inset-0 w-full h-full z-[-1]"
+          width="2880"
+          height="1008"
+          className="absolute inset-0 w-full h-full z-[-1] object-cover"
         />
       ) : null}
       <Container>
