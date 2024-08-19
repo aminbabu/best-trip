@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import Image from "next/image";
 import { ArrowIcon, LogoutIcon } from "@/components/icons/svgr";
@@ -13,7 +13,7 @@ import signOutUser from "@/actions/auth/sign-out";
 const Profile = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  // const router = useRouter();
+  const [isLogout, setIsLogout] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -25,8 +25,7 @@ const Profile = ({ user }) => {
         throw new Error(response.error);
       }
 
-      location.reload();
-      // router.push("/sign-in");
+      setIsLogout(true);
     } catch (error) {
       await withReactContent(Swal).fire({
         title: "Error",
@@ -38,6 +37,12 @@ const Profile = ({ user }) => {
       });
     }
   };
+
+  useEffect(() => {
+    if (isLogout) {
+      location.reload();
+    }
+  }, [isLogout]);
 
   return (
     <Popover open={isOpen} onOpenChange={() => setIsOpen(!isOpen)}>

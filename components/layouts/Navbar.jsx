@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import Profile from "./Profile";
 import { useSession } from "next-auth/react";
 
-const Navbar = () => {
+const Navbar = ({ siteSettings }) => {
   const [isSticky, setIsSticky] = useState(false);
   const { data, status } = useSession();
   const { user } = data || {};
@@ -40,19 +40,22 @@ const Navbar = () => {
       )}
     >
       <Container className="flex items-center gap-4 justify-between py-3 lg:py-6 duration-300">
-        <Brand
-          logo="/images/brand-logo.svg"
-          width="108"
-          height="46"
-          alt="Best Trip"
-        />
+        <div className="basis-[204px]">
+          <Brand
+            logo={`${process.env.NEXT_PUBLIC_API_URL}/${siteSettings.logo}`}
+            width="108"
+            height="46"
+            alt={siteSettings?.title}
+            href="/"
+          />
+        </div>
         <div className="hidden lg:block">
           <Menu isNavbarSticky={isSticky} />
         </div>
-        <div className="hidden lg:block">
+        <div className="hidden lg:block basis-[204px]">
           {!user?._id ? <NavbarCta /> : <Profile user={user} />}
         </div>
-        <NavSheet />
+        <NavSheet siteSettings={siteSettings} user={user} />
       </Container>
     </nav>
   );

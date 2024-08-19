@@ -18,9 +18,34 @@ import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import profileAvatar from "@/public/images/profile/avatar.png";
+import signOutUser from "@/actions/auth/sign-out";
+import withReactContent from "sweetalert2-react-content";
+import Swal from "sweetalert2";
 
-const NavSheet = () => {
+const NavSheet = ({ siteSettings, user }) => {
   const [open, setOpen] = useState(false);
+  const [isLogout, setIsLogout] = useState(false);
+
+  const handleLogout = async () => {
+    try {
+      const response = await signOutUser();
+
+      if (response?.error) {
+        throw new Error(response.error);
+      }
+
+      setIsLogout(true);
+    } catch (error) {
+      await withReactContent(Swal).fire({
+        title: "Error",
+        text: error?.message || "An error occurred. Please try again",
+        icon: "error",
+        confirmButtonText: "Try Again",
+        confirmButtonColor: "#ff0f2f",
+        allowOutsideClick: false,
+      });
+    }
+  };
 
   // Close the sheet when the user presses the Escape key
   useEffect(() => {
@@ -48,38 +73,54 @@ const NavSheet = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, [open]);
 
+  useEffect(() => {
+    if (isLogout) {
+      location.reload();
+    }
+  }, [isLogout]);
+
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger className="border border-border p-1 rounded-sm z-50 lg:hidden">
         <MenuIcon />
       </SheetTrigger>
-      <SheetContent className="flex lg:block flex-col gap-y-8 p-4 after:absolute after:left-0 after:bottom-0 after:-z-[1] after:w-full after:bg-p-300/50 after:h-[4.25rem]">
-        <SheetHeader className="text-left">
+      <SheetContent className="flex flex-col p-0">
+        <SheetHeader className="text-left p-4">
           <Brand
-            logo="/images/brand-logo.png"
+            logo={`${process.env.NEXT_PUBLIC_API_URL}/${siteSettings.logo}`}
             width="108"
             height="46"
-            alt="Best Trip"
+            alt={siteSettings?.title}
           />
         </SheetHeader>
-        <div className="grid gap-y-1.5 flex-1">
-          <Menu />
-          {/* <NavbarCta /> */}
-        </div>
-        <SheetFooter>
-          <div className="flex items-center justify-between gap-3">
-            <Image
-              src={profileAvatar}
-              alt="user-profile"
-              height={"40px"}
-              width={"40px"}
-              className="aspect-square w-8"
-            ></Image>
-            <p className="text-sm mr-auto line-clamp-1">Md. Irfanul Haque</p>
-            <Button className="py-1.5 px-3 text-sm font-medium">
-              Sign Out
-            </Button>
-          </div>
+        <Menu className="flex-1 overflow-y-auto p-4" user={user} />
+        <SheetFooter className="mt-auto bg-p-300/50 p-4 grid sm:justify-stretch">
+          {user?._id ? (
+            <div className="flex items-center justify-between gap-3">
+              {user?.avatar ? (
+                <Image
+                  src={user.avatar}
+                  alt="user-profile"
+                  height={"40px"}
+                  width={"40px"}
+                  className="aspect-square w-10"
+                />
+              ) : (
+                <span className="w-10 aspect-square rounded-full bg-primary/10 text-primary inline-flex items-center justify-center font-semibold">
+                  {user.name.charAt(0)}
+                </span>
+              )}
+              <p className="text-sm mr-auto line-clamp-1">{user?.name}</p>
+              <Button
+                className="py-1.5 px-3 text-sm font-medium"
+                onClick={handleLogout}
+              >
+                Sign Out
+              </Button>
+            </div>
+          ) : (
+            <NavbarCta onClose={() => setOpen(false)} />
+          )}
         </SheetFooter>
       </SheetContent>
     </Sheet>

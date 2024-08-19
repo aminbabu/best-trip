@@ -1,11 +1,10 @@
-import AccessToken from "@/components/AccessToken";
 import Navbar from "@/components/layouts/Navbar";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import { SessionProvider } from "next-auth/react";
 import { Poppins as FontSans } from "next/font/google";
 import "react-phone-input-2/lib/style.css";
-import StoreProvider from "./StoreProvider";
+import { getSiteSettings } from "@/actions/site-settings/get-site-settings";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -18,20 +17,20 @@ export const metadata = {
     "Your all-in-one travel companion on GitHub! Seamlessly book flights, hotels, and Umrah packages.",
 };
 
-const RootLayout = ({ children }) => {
+const RootLayout = async ({ children }) => {
+  const siteSettings = await getSiteSettings();
+
   return (
-    <html lang='en'>
+    <html lang="en">
       <body
         className={cn(
           "min-h-screen flex flex-col overflow-x-hidden bg-white antialiased",
           fontSans.className
-        )}>
+        )}
+      >
         <SessionProvider>
-          <StoreProvider>
-            <Navbar />
-            {children}
-            <AccessToken />
-          </StoreProvider>
+          <Navbar siteSettings={siteSettings} />
+          {children}
         </SessionProvider>
       </body>
     </html>
