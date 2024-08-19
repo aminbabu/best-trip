@@ -1,37 +1,34 @@
-"use client";
-
-import { PencilSquareIcon } from "@/components/icons/svgr";
+import { auth } from "@/auth";
 import ProfileForm from "@/components/profile/ProfileForm";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { useState } from "react";
+import { generateImage } from "@/lib/utils";
+import Link from "next/link";
 
-const MyProfilePage = () => {
-  const [edit, setEdit] = useState(false);
+const MyProfilePage = async () => {
+  const { user } = (await auth()) || {};
 
   return (
     <Card className="border-transparent mb-8">
       <CardContent className="lg:p-10 space-y-10">
         <div className="flex flex-col items-center">
           <Avatar className="h-40 w-40 mb-5 mx-auto">
-            <AvatarImage src="/images/profile/avatar.png" />
-            <AvatarFallback className="text-4xl">I.H</AvatarFallback>
+            {user?.avatar ? (
+              <AvatarImage src={generateImage(user.avatar)} />
+            ) : (
+              <AvatarFallback className="text-4xl bg-p-300 text-primary">
+                {user.name.charAt(0)}
+              </AvatarFallback>
+            )}
           </Avatar>
           <h1 className="text-t-800 text-2xl lg:text-[28px] font-semibold mb-5">
-            Irfanul Haque
+            {user?.name}
           </h1>
-          <p className="text-lg text-t-800">mdirfanulhaque2020@gmail.com</p>
-          {!edit && (
-            <div className="mt-5">
-              <Button size="sm" onClick={() => setEdit(true)}>
-                Edit Profile
-                <PencilSquareIcon />
-              </Button>
-            </div>
-          )}
+          <Link href={`mailto:${user?.email}`} className="text-lg text-t-800">
+            {user?.email}
+          </Link>
         </div>
-        <ProfileForm edit={edit} setEdit={setEdit} />
+        <ProfileForm user={user} />
       </CardContent>
     </Card>
   );

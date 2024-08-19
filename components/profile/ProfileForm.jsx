@@ -2,9 +2,10 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import * as z from "zod";
-
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { PencilSquareIcon } from "@/components/icons/svgr";
+import * as z from "zod";
 import {
   Form,
   FormControl,
@@ -54,7 +55,8 @@ const formSchema = z.object({
   flyerNo: z.string().min(1, "Please enter a valid flyer number"),
 });
 
-const ProfileForm = ({ edit, setEdit }) => {
+const ProfileForm = ({ user }) => {
+  const [edit, setEdit] = useState(false);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -68,14 +70,14 @@ const ProfileForm = ({ edit, setEdit }) => {
       flyerNo: "",
     },
     values: {
-      fullname: "Md Irfan",
-      dob: moment("06-Oct-1998", "DD-MMM-YYYY").toDate(),
-      email: "irfan@cholotrip.net",
-      phone: "+8801871249015",
-      address: "Dhaka, Bangladesh",
-      city: "Dhaka",
-      country: "Bangladesh",
-      flyerNo: "5874564000",
+      fullname: user?.name || "",
+      dob: user?.dob ? moment("16-06-1999", "DD-MMM-YYYY").toDate() : "",
+      email: user?.email || "",
+      phone: user?.phone || "",
+      address: user?.address || "",
+      city: user?.city || "",
+      country: user?.country || "",
+      flyerNo: user?.flyerNumber || "",
     },
     disabled: !edit,
   });
@@ -86,7 +88,15 @@ const ProfileForm = ({ edit, setEdit }) => {
   };
 
   return (
-    <div>
+    <div className="!mt-5">
+      {!edit && (
+        <div className="mb-10 text-center">
+          <Button size="sm" onClick={() => setEdit(true)}>
+            Edit Profile
+            <PencilSquareIcon />
+          </Button>
+        </div>
+      )}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <div>
@@ -160,7 +170,9 @@ const ProfileForm = ({ edit, setEdit }) => {
                         <PopoverContent className="w-auto p-0" align="start">
                           <Calendar
                             mode="single"
-                            defaultMonth={moment(field.value).toDate()}
+                            defaultMonth={
+                              field?.value ? moment(field.value).toDate() : null
+                            }
                             captionLayout="dropdown-buttons"
                             selected={moment(field.value).toDate()}
                             onSelect={field.onChange}
