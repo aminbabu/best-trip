@@ -13,12 +13,23 @@ import { getUmrahOffers } from "@/actions/umrah-offers/get-umrah-offers";
 import { getBlogPosts } from "@/actions/blog-posts/get-blog-posts";
 
 const Home = async () => {
-  const sections = await getSectionsData();
-  const exclusiveOffers = await getExclusiveOffers();
-  const hotelOffers = await getHotelOffers();
-  const flightOffers = await getFlightOffers();
-  const umrahOffers = await getUmrahOffers();
-  const blogPosts = await getBlogPosts();
+  let sections = [];
+  let exclusiveOffers = [];
+  let hotelOffers = [];
+  let flightOffers = [];
+  let umrahOffers = [];
+  let blogPosts = [];
+
+  try {
+    sections = await getSectionsData();
+    exclusiveOffers = await getExclusiveOffers();
+    hotelOffers = await getHotelOffers();
+    flightOffers = await getFlightOffers();
+    umrahOffers = await getUmrahOffers();
+    blogPosts = await getBlogPosts();
+  } catch (error) {
+    console.log(error);
+  }
 
   const getSection = (key) => sections?.find((section) => section?.key === key);
 

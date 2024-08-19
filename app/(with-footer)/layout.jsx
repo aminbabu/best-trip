@@ -5,8 +5,15 @@ import {
 import Footer from "@/components/layouts/Footer";
 
 const WithFooterLayout = async ({ children }) => {
-  const generalSiteSettings = await getGeneralSiteSettings();
-  const contactSiteSettings = await getContactSiteSettings();
+  let generalSiteSettings = [];
+  let contactSiteSettings = [];
+
+  try {
+    generalSiteSettings = await getGeneralSiteSettings();
+    contactSiteSettings = await getContactSiteSettings();
+  } catch (error) {
+    console.log(error);
+  }
 
   return (
     <>

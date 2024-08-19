@@ -18,7 +18,13 @@ export const metadata = {
 };
 
 const RootLayout = async ({ children }) => {
-  const generalSiteSettings = await getGeneralSiteSettings();
+  let generalSiteSettings = [];
+
+  try {
+    generalSiteSettings = await getGeneralSiteSettings();
+  } catch (error) {
+    console.log(error);
+  }
 
   return (
     <html lang="en">
