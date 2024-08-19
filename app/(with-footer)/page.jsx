@@ -11,6 +11,8 @@ import { getSectionsData } from "@/actions/sections/get-section-data";
 import { getFlightOffers } from "@/actions/flight-offers/getFlightOffers";
 import { getUmrahOffers } from "@/actions/umrah-offers/get-umrah-offers";
 import { getBlogPosts } from "@/actions/blog-posts/get-blog-posts";
+import HeroAlt from "@/components/home/HeroAlt";
+import { getTheme } from "@/actions/theme/get-theme";
 
 const Home = async () => {
   let sections = [];
@@ -19,6 +21,7 @@ const Home = async () => {
   let flightOffers = [];
   let umrahOffers = [];
   let blogPosts = [];
+  let activeTheme;
 
   try {
     sections = await getSectionsData();
@@ -27,6 +30,7 @@ const Home = async () => {
     flightOffers = await getFlightOffers();
     umrahOffers = await getUmrahOffers();
     blogPosts = await getBlogPosts();
+    activeTheme = await getTheme();
   } catch (error) {
     console.log(error);
   }
@@ -35,7 +39,11 @@ const Home = async () => {
 
   return (
     <main>
-      <Hero />
+      {activeTheme?.theme === "default" ? (
+        <Hero data={activeTheme} />
+      ) : (
+        <HeroAlt data={activeTheme} />
+      )}
       <Filters />
       <Banners exclusiveOffers={exclusiveOffers} />
       <Hotels section={getSection("hotels")} hotelOffers={hotelOffers} />
