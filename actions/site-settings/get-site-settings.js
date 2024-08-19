@@ -27,7 +27,7 @@ export const getPrivacySiteSettings = async () => {
   try {
     const response = await axios.get("/api/settings/site/policy");
 
-    return response?.data?.privacySettings;
+    return response?.data?.policies;
   } catch (error) {
     throw new Error(handleAxiosError(error));
   }
