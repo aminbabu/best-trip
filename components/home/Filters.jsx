@@ -23,7 +23,8 @@ const data = [
     title: "Umrah Flight",
     value: "umrah-flight",
     component: (
-      <UmrahFlightTabpane className="rounded-t-none sm:rounded-tr-md min-h-[174px]" />
+      // <UmrahFlightTabpane className="rounded-t-none sm:rounded-tr-md min-h-[174px]" />
+      <CustomsTabpane className="rounded-t-none sm:rounded-tr-md min-h-[174px]" />
     ),
   },
   {
@@ -43,7 +44,8 @@ const data = [
     title: "Visa",
     value: "visa",
     component: (
-      <VisaTabpane className="rounded-t-none sm:rounded-tr-md min-h-[174px] shadow-[0_2px_8px_0_rgba(0,0,0,0.07)] lg:shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]" />
+      // <VisaTabpane className="rounded-t-none sm:rounded-tr-md min-h-[174px] shadow-[0_2px_8px_0_rgba(0,0,0,0.07)] lg:shadow-[0_3px_12px_0_rgba(0,0,0,0.03)]" />
+      <CustomsTabpane className="rounded-t-none sm:rounded-tr-md min-h-[174px]" />
     ),
   },
   {
