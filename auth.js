@@ -60,4 +60,11 @@ export const {
   signIn,
   signOut,
   auth,
-} = NextAuth({ providers, callbacks });
+} = NextAuth({
+  session: {
+    strategy: "jwt",
+    maxAge: process.env.JWT_EXPIRY,
+  },
+  providers,
+  callbacks,
+});
