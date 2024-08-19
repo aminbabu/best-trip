@@ -24,6 +24,7 @@ import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import signUp from "@/actions/auth/sign-up";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const formSchema = z
   .object({
@@ -261,27 +262,28 @@ const SignUpPage = () => {
                 render={({ field }) => (
                   <FormItem className="space-y-3">
                     <div className="flex items-start flex-wrap gap-3">
-                      <div className="relative">
-                        <FormControl>
-                          <Input
-                            type="checkbox"
-                            className="appearance-none p-0 h-5 w-5 border border-[#f5f5f5] rounded-sm checked:bg-primary checked:border-primary focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-primary cursor-pointer peer"
-                            {...field}
-                          />
-                        </FormControl>
-                        <CheckIcon className="invisible opacity-0 duration-200 absolute inset-0 m-auto w-4 h-4 text-white pointer-events-none peer-checked:visible peer-checked:opacity-100" />
-                      </div>
-                      <FormLabel className="flex-1 text-t-700 text-sm lg:text-base font-normal leading-normal">
+                      <FormControl>
+                        <Checkbox
+                          id="agree"
+                          className="w-5 h-5 border-[#f5f5f5] checked:border-primary"
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <FormLabel
+                        htmlFor="agree"
+                        className="flex-1 text-t-700 text-sm lg:text-base font-normal leading-normal"
+                      >
                         I agree to the{" "}
                         <Link
-                          href="#"
+                          href="/terms-and-conditions"
                           className="text-primary hover:underline focus:underline"
                         >
                           Terms
                         </Link>{" "}
                         &{" "}
                         <Link
-                          href="#"
+                          href="/privacy-policy"
                           className="text-primary hover:underline focus:underline"
                         >
                           Privacy Policy
