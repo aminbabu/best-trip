@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import MessageCard from "@/components/global/MessageCard";
 import { LoaderIcon } from "@/components/icons/svgr";
@@ -8,7 +8,7 @@ import { useEffect } from "react";
 const OnlineBankingPage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      window.location.href = "/payment-method/review";
+      window.location.href = "/profile/payment-method/review";
     }, 3000);
 
     return () => clearTimeout(timer);

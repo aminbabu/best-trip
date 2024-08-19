@@ -58,7 +58,7 @@ export const bookingListTable = {
     {
       id: 1,
       item: (
-        <Link href="/booking-details">
+        <Link href="/profile/booking-details">
           <span className="hover:text-primary">BTU24000024</span>
         </Link>
       ),

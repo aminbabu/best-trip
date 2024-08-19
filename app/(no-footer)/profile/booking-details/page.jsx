@@ -1,12 +1,12 @@
 import Container from "@/components/layouts/Container";
 import React from "react";
-import UmrahBookingCard from "@/components/booking-details/UmrahBookingCard";
+import UmrahBookingCard from "@/components/profile/booking-details/UmrahBookingCard";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import TravellerBookingForm from "@/components/booking-details/TravellerBookingForm";
+import TravellerBookingForm from "@/components/profile/booking-details/TravellerBookingForm";
 import { FlightTokenIcon } from "@/components/icons/svgr";
-import ActionButtonContainer from "@/components/booking-details/ActionButtonContainer";
-import FareDetailsCard from "@/components/booking-details/FareDetailsCard";
+import ActionButtonContainer from "@/components/profile/booking-details/ActionButtonContainer";
+import FareDetailsCard from "@/components/profile/booking-details/FareDetailsCard";
 
 const travellerList = [
   { id: 1, type: "Adult", no: 1 },

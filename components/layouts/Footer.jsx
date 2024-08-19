@@ -43,34 +43,6 @@ const menu = {
   ],
 };
 
-const socialMedia = {
-  title: "Contact Us",
-  email: "besttrip@gmail.com",
-  phone: "+08870856 8965",
-  links: [
-    {
-      name: "Facebook",
-      path: "/",
-      icon: <FacebookIcon />,
-    },
-    {
-      name: "Twitter",
-      path: "/",
-      icon: <TwitterIcon />,
-    },
-    {
-      name: "Instagram",
-      path: "/",
-      icon: <InstagramIcon />,
-    },
-    {
-      name: "YouTube",
-      path: "/",
-      icon: <YoutubeIcon />,
-    },
-  ],
-};
-
 const noNewsletterLinks = [
   "/search/visa",
   "/search/umrah",

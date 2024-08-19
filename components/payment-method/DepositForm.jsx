@@ -80,10 +80,10 @@ const DepositForm = () => {
   };
 
   function onSubmit(values) {
-    if (openManual && pathname === "/payment-method") {
-      // router.push("/payment-method/manual-banking");
+    if (openManual && pathname === "/profile/payment-method") {
+      // router.push("/profile/payment-method/manual-banking");
       router.push("/profile/manual-banking");
-      console.log(openManual && pathname === "/payment-method");
+      console.log(openManual && pathname === "/profile/payment-method");
     }
 
     if (openManual && pathname === "/profile/add-balance") {
@@ -91,7 +91,7 @@ const DepositForm = () => {
       console.log(values.manual && pathname === "/profile/add-balance");
     }
 
-    if (openWallet && pathname === "/booking-details") {
+    if (openWallet && pathname === "/profile/booking-details") {
       if (!values.full && !values.part) {
         if (partPaymentBalance > balance && fullPaymentBalance > balance) {
           return setError(
@@ -101,7 +101,7 @@ const DepositForm = () => {
                 Please{" "}
                 <Link href="/profile/add-balance">
                   <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
-                    {pathname === "/booking-details"
+                    {pathname === "/profile/booking-details"
                       ? "Add Money"
                       : " Deposit Now"}
                   </Button>
@@ -112,16 +112,20 @@ const DepositForm = () => {
           );
         }
       }
-      router.push("/payment-method/online-banking");
-    } else if (openWallet && pathname === "/payment-method") {
-      router.push("/payment-method/online-banking");
+      router.push("/profile/payment-method/online-banking");
+    } else if (openWallet && pathname === "/profile/payment-method") {
+      router.push("/profile/payment-method/online-banking");
     }
 
     if (openOnline) {
       if (!values.ssl) {
         return setError("Please select a payment method");
       }
-      if (!values.full && !values.part && pathname === "/booking-details") {
+      if (
+        !values.full &&
+        !values.part &&
+        pathname === "/profile/booking-details"
+      ) {
         if (partPaymentBalance > balance && fullPaymentBalance > balance) {
           return setError(
             <>
@@ -130,7 +134,7 @@ const DepositForm = () => {
                 Please{" "}
                 <Link href="/profile/add-balance">
                   <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
-                    {pathname === "/booking-details"
+                    {pathname === "/profile/booking-details"
                       ? "Add Money"
                       : " Deposit Now"}
                   </Button>
@@ -141,7 +145,7 @@ const DepositForm = () => {
           );
         }
       }
-      router.push("/payment-method/online-banking");
+      router.push("/profile/payment-method/online-banking");
 
       // if (!values.agree) {
       //   return setError("Please agree with our terms and conditions");
@@ -153,7 +157,7 @@ const DepositForm = () => {
     <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-[18px]">
-          {error && !(pathname === "/booking-details") && (
+          {error && !(pathname === "/profile/booking-details") && (
             <div className="flex items-center gap-4 justify-between bg-p-300 border border-p-300 text-p-900 px-4 py-3 rounded-md">
               {error}
               <Button
@@ -169,8 +173,8 @@ const DepositForm = () => {
 
           <div className="grid grid-cols-2 gap-x-6 gap-y-4">
             {/* wallet */}
-            {(pathname === "/payment-method" ||
-              pathname === "/booking-details") && (
+            {(pathname === "/profile/payment-method" ||
+              pathname === "/profile/booking-details") && (
               <FormField
                 control={form.control}
                 name="wallet"
@@ -191,7 +195,7 @@ const DepositForm = () => {
                       From Wallet
                     </FormLabel>
 
-                    {pathname === "/payment-method" && (
+                    {pathname === "/profile/payment-method" && (
                       <p className="ml-auto text-sm">
                         $ {openWallet && balance}
                       </p>
@@ -230,7 +234,7 @@ const DepositForm = () => {
             )}
             {/* online banking */}
             {(pathname === "/profile/add-balance" ||
-              pathname === "/booking-details") && (
+              pathname === "/profile/booking-details") && (
               <FormField
                 control={form.control}
                 name="online"
@@ -388,7 +392,7 @@ const DepositForm = () => {
                 /> */}
                 </div>
               </div>
-              {pathname === "/booking-details" && form.watch("ssl") && (
+              {pathname === "/profile/booking-details" && form.watch("ssl") && (
                 <div className="grid grid-cols-2 gap-x-6 gap-y-7">
                   <FormField
                     control={form.control}
@@ -408,7 +412,9 @@ const DepositForm = () => {
                             />
                           </FormControl>
                           <div
-                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openFullPayment && "border-p-900"} flex-1`}
+                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${
+                              openFullPayment && "border-p-900"
+                            } flex-1`}
                           >
                             <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
                               <span className="leading-normal">
@@ -447,7 +453,9 @@ const DepositForm = () => {
                             />
                           </FormControl>
                           <div
-                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openPartPaymnet && "border-p-900"} flex-1`}
+                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${
+                              openPartPaymnet && "border-p-900"
+                            } flex-1`}
                           >
                             <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
                               <span className="leading-normal">
@@ -475,7 +483,7 @@ const DepositForm = () => {
 
           {openWallet && (
             <div className="space-y-8">
-              {pathname === "/booking-details" && (
+              {pathname === "/profile/booking-details" && (
                 <div className="grid grid-cols-2 gap-x-6 gap-y-7">
                   <FormField
                     control={form.control}
@@ -495,7 +503,9 @@ const DepositForm = () => {
                             />
                           </FormControl>
                           <div
-                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openFullPayment && "border-p-900"} flex-1`}
+                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${
+                              openFullPayment && "border-p-900"
+                            } flex-1`}
                           >
                             <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
                               <span className="leading-normal">
@@ -534,7 +544,9 @@ const DepositForm = () => {
                             />
                           </FormControl>
                           <div
-                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openPartPaymnet && "border-p-900"} flex-1`}
+                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${
+                              openPartPaymnet && "border-p-900"
+                            } flex-1`}
                           >
                             <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
                               <span className="leading-normal">
@@ -560,7 +572,7 @@ const DepositForm = () => {
             </div>
           )}
 
-          {error && pathname === "/booking-details" && (
+          {error && pathname === "/profile/booking-details" && (
             <div className="flex items-center gap-4 justify-between bg-p-300 border border-p-300 text-p-900 px-4 py-3 rounded-md">
               {error}
               <Button

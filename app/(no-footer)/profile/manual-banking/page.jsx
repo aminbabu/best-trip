@@ -77,7 +77,7 @@ const ManualBankingPage = () => {
     setTimeout(() => {
       setLoading(false);
       console.log(data);
-      router.push("/payment-method/review");
+      router.push("/profile/payment-method/review");
     }, 2000);
   };
 
