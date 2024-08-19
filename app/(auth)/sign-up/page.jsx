@@ -87,7 +87,7 @@ const SignUpPage = () => {
         title: "Success",
         text: response.message,
         icon: "success",
-        confirmButtonText: "Continue",
+        confirmButtonText: "Sign In",
         confirmButtonColor: "#3ad965",
         allowOutsideClick: false,
       });
