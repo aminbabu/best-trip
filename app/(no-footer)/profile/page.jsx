@@ -17,7 +17,7 @@ const MyProfilePage = async () => {
               <AvatarImage src={generateImage(user.avatar)} />
             ) : (
               <AvatarFallback className="text-4xl bg-p-300 text-primary">
-                {user.name.charAt(0)}
+                {user?.name?.charAt(0)}
               </AvatarFallback>
             )}
           </Avatar>
