@@ -14,8 +14,14 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EyeIcon, EyeSlashIcon } from "@/components/icons/svgr";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+import resetPassword from "@/actions/auth/reset-password";
+import withReactContent from "sweetalert2-react-content";
+import Swal from "sweetalert2";
+import { LucideLoader2 } from "lucide-react";
 
 const formSchema = z
   .object({
@@ -28,8 +34,12 @@ const formSchema = z
   });
 
 const ResetPasswordPage = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const token = searchParams.get("token");
 
   const handleShowPassword = (e) => {
     e.preventDefault();
@@ -49,9 +59,50 @@ const ResetPasswordPage = () => {
     },
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      setLoading(true);
+
+      const response = await resetPassword(data, token);
+
+      if (response?.error) {
+        throw new Error(
+          "An error occurred. Please check your passwords and try again"
+        );
+      }
+
+      const result = await withReactContent(Swal).fire({
+        title: "Success",
+        text: response?.message,
+        icon: "success",
+        confirmButtonText: "Ok, got it",
+        confirmButtonColor: "#3ad965",
+        allowOutsideClick: false,
+      });
+
+      if (result.isConfirmed) {
+        return router.push("/sign-in");
+      }
+    } catch (error) {
+      await withReactContent(Swal).fire({
+        title: "Error",
+        text: error?.message || "An error occurred. Please try again",
+        icon: "error",
+        confirmButtonText: "Try Again",
+        confirmButtonColor: "#ff0f2f",
+        allowOutsideClick: false,
+      });
+    } finally {
+      setLoading(false);
+      form.reset();
+    }
   };
+
+  useEffect(() => {
+    if (!token) {
+      router.push("/sign-in");
+    }
+  }, [token]);
 
   return (
     <div className="max-w-[500px] mx-auto">
@@ -139,6 +190,7 @@ const ResetPasswordPage = () => {
               />
               <div className="grid">
                 <Button className="py-2.5" type="submit">
+                  {loading ? <LucideLoader2 className="animate-spin" /> : null}
                   Update Password
                 </Button>
               </div>

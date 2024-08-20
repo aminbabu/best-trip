@@ -75,75 +75,77 @@ const SignInPage = () => {
   };
 
   return (
-    <div className='max-w-[500px] mx-auto'>
-      <Card className='border-transparent mb-8 shadow-[0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] border border-[#f1f1f4] p-6 lg:p-10 my-10'>
-        <CardHeader className='p-0'>
-          <CardTitle className='text-lg lg:text-2xl text-t-800 text-center pb-5 lg:pb-8'>
+    <div className="max-w-[500px] mx-auto">
+      <Card className="border-transparent mb-8 shadow-[0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] border border-[#f1f1f4] p-6 lg:p-10 my-10">
+        <CardHeader className="p-0">
+          <CardTitle className="text-lg lg:text-2xl text-t-800 text-center pb-5 lg:pb-8">
             Sign In
           </CardTitle>
         </CardHeader>
-        <CardContent className='pb-0 p-0'>
+        <CardContent className="pb-0 p-0">
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className='space-y-[26px]'>
+              className="space-y-[26px]"
+            >
               <FormField
                 control={form.control}
-                name='email'
+                name="email"
                 render={({ field }) => (
-                  <FormItem className='space-y-3'>
-                    <FormLabel className='text-t-800 text-sm lg:text-base'>
-                      Email address<span className='text-primary'> *</span>
+                  <FormItem className="space-y-3">
+                    <FormLabel className="text-t-800 text-sm lg:text-base">
+                      Email address<span className="text-primary"> *</span>
                     </FormLabel>
                     <FormControl>
                       <Input
-                        type='email'
-                        className='h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0'
-                        placeholder='Enter email address'
+                        type="email"
+                        className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
+                        placeholder="Enter email address"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage className='font-normal' />
+                    <FormMessage className="font-normal" />
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
-                name='password'
+                name="password"
                 render={({ field }) => (
-                  <FormItem className='space-y-3'>
-                    <FormLabel className='text-t-800 text-sm lg:text-base'>
-                      Password<span className='text-primary'> *</span>
+                  <FormItem className="space-y-3">
+                    <FormLabel className="text-t-800 text-sm lg:text-base">
+                      Password<span className="text-primary"> *</span>
                     </FormLabel>
-                    <div className='relative'>
+                    <div className="relative">
                       <FormControl>
                         <Input
                           type={showPassword ? "text" : "password"}
-                          className='h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0'
-                          placeholder='Enter password'
+                          className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
+                          placeholder="Enter password"
                           {...field}
                         />
                       </FormControl>
                       <button
                         onClick={(e) => handleShowPassword(e)}
-                        className='absolute right-4 bottom-3.5'>
+                        className="absolute right-4 bottom-3.5"
+                      >
                         {showPassword ? (
                           <EyeSlashIcon
-                            viewBox='0 0 24 24'
-                            className='w-4 h-4'
+                            viewBox="0 0 24 24"
+                            className="w-4 h-4"
                           />
                         ) : (
-                          <EyeIcon viewBox='0 0 24 24' className='w-4 h-4' />
+                          <EyeIcon viewBox="0 0 24 24" className="w-4 h-4" />
                         )}
                       </button>
                     </div>
 
-                    <FormMessage className='font-normal' />
+                    <FormMessage className="font-normal" />
                   </FormItem>
                 )}
               />
-              {/* <div className="flex flex-wrap gap-4 items-center justify-between">
-                <FormField
+              <div className="flex flex-wrap gap-4 items-center justify-between">
+                {/* <FormField
                   control={form.control}
                   name="remember"
                   render={({ field }) => (
@@ -166,27 +168,28 @@ const SignInPage = () => {
                       <FormMessage />
                     </FormItem>
                   )}
-                />
+                /> */}
                 <Link
                   href="/forgot-password"
-                  className="text-primary text-sm lg:text-base duration-300 hover:underline hover:opacity-75 focus:underline"
+                  className="text-primary text-sm lg:text-base duration-300 hover:underline hover:opacity-75 focus:underline ml-auto"
                 >
                   Forgot Password?
                 </Link>
-              </div> */}
-              <div className='grid'>
-                <Button className='py-2.5' type='submit' disabled={loading}>
-                  {loading ? <LucideLoader2 className='animate-spin' /> : null}
+              </div>
+              <div className="grid">
+                <Button className="py-2.5" type="submit" disabled={loading}>
+                  {loading ? <LucideLoader2 className="animate-spin" /> : null}
                   Sign in
                 </Button>
               </div>
             </form>
           </Form>
-          <p className='text-t-600 text-center pt-[26px]'>
+          <p className="text-t-600 text-center pt-[26px]">
             Don’t have an account ?{" "}
             <Link
-              href='/sign-up'
-              className='text-primary duration-300 hover:underline hover:opacity-75 focus:underline'>
+              href="/sign-up"
+              className="text-primary duration-300 hover:underline hover:opacity-75 focus:underline"
+            >
               Sign up
             </Link>
           </p>

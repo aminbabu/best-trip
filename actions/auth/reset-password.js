@@ -2,12 +2,15 @@
 
 import axios from "@/lib/axios";
 
-const resetPassword = async ({ password, password_confirmation }, token) => {
+const resetPassword = async ({ password, confirmPassword }, token) => {
   try {
-    const response = await axios.post(`/api/reset_password?token=${token}`, {
-      password,
-      password_confirmation,
-    });
+    const response = await axios.post(
+      `/api/auth/customers/reset-password?token=${token}`,
+      {
+        password,
+        confirmPassword,
+      }
+    );
 
     return response.data;
   } catch (error) {
