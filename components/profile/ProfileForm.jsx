@@ -32,6 +32,9 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
+import profileUpdate from "@/actions/profile/profile-update";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const formSchema = z.object({
   fullname: z.string().min(1, "Please enter your full name"),
@@ -57,6 +60,8 @@ const formSchema = z.object({
 
 const ProfileForm = ({ user }) => {
   const [edit, setEdit] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -82,9 +87,56 @@ const ProfileForm = ({ user }) => {
     disabled: !edit,
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
-    setEdit(false); // Change to false to disable editing
+  // const onSubmit = (data) => {
+  //   console.log(data);
+  //   setEdit(false); // Change to false to disable editing
+  // };
+
+  const onSubmit = async (data) => {
+    try {
+      setLoading(true);
+
+      const formData = new FormData();
+
+      formData.append("name", data?.fullname);
+      formData.append(
+        "dob",
+        moment(data?.dob, "YYYY-MM-DD").format("YYYY-MM-DD")
+      );
+      formData.append("email", data?.email);
+      formData.append("phone", data?.phone);
+      formData.append("address", data?.address);
+      formData.append("city", data?.city);
+      formData.append("country", data?.country);
+      formData.append("flyerNumber", data?.flyerNo);
+
+      const response = await profileUpdate(formData, user?.accessToken);
+
+      console.log("responses", response);
+
+      const result = await withReactContent(Swal).fire({
+        title: "Success",
+        text: response.message,
+        icon: "success",
+        confirmButtonText: "Sign In",
+        confirmButtonColor: "#3ad965",
+        allowOutsideClick: false,
+      });
+    } catch (error) {
+      console.log(error);
+
+      await withReactContent(Swal).fire({
+        title: "Error",
+        text: error?.message || "An error occurred. Please try again",
+        icon: "error",
+        confirmButtonText: "Try Again",
+        confirmButtonColor: "#ff0f2f",
+        allowOutsideClick: false,
+      });
+    } finally {
+      setLoading(false);
+      // form.reset();
+    }
   };
 
   return (
