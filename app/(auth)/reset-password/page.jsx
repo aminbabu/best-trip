@@ -189,7 +189,7 @@ const ResetPasswordPage = () => {
                 )}
               />
               <div className="grid">
-                <Button className="py-2.5" type="submit">
+                <Button className="py-2.5" type="submit" disabled={loading}>
                   {loading ? <LucideLoader2 className="animate-spin" /> : null}
                   Update Password
                 </Button>
