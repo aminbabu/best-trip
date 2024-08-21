@@ -32,30 +32,34 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
-import profileUpdate from "@/actions/profile/profile-update";
+import updateProfile from "@/actions/profile/update";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { LucideLoader2 } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(1, "Please enter your full name"),
   dob: z
     .string()
-    .refine((val) => moment(val).isValid(), {
-      message: "Please enter a valid date",
-    })
+    .optional()
     .or(
-      z.date({
-        required_error: "Please enter a valid date",
+      z.string().refine((val) => moment(val).isValid(), {
+        message: "Please enter a valid date",
       })
     ),
-  email: z.string().email("Please enter a valid email address"),
+  email: z
+    .string({
+      required_error: "Emaill Address is required",
+      invalid_type_error: "Please enter a valid email address",
+    })
+    .email("Please enter a valid email address"),
   phone: z.string().refine(validator.isMobilePhone, {
     message: "Please enter a valid phone number",
   }),
-  address: z.string().min(1, "Please enter a valid address"),
-  city: z.string().min(1, "Please enter a valid city"),
-  country: z.string().min(1, "Please enter a valid country"),
-  flyerNumber: z.string().min(1, "Please enter a valid flyer number"),
+  address: z.string().optional(),
+  city: z.string().optional(),
+  country: z.string().optional(),
+  flyerNumber: z.string().optional(),
 });
 
 const ProfileForm = ({ user }) => {
@@ -65,40 +69,49 @@ const ProfileForm = ({ user }) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fullname: "",
+      name: "",
       dob: "",
       email: "",
       phone: "",
       address: "",
       city: "",
       country: "",
-      flyerNo: "",
+      flyerNumber: "",
     },
     values: {
-      fullname: user?.name || "",
-      dob: user?.dob ? moment("16-06-1999", "DD-MMM-YYYY").toDate() : "",
+      name: user?.name || "",
+      dob: user?.dob || "",
       email: user?.email || "",
       phone: user?.phone || "",
       address: user?.address || "",
       city: user?.city || "",
       country: user?.country || "",
-      flyerNo: user?.flyerNumber || "",
+      flyerNumber: user?.flyerNumber || "",
     },
     disabled: !edit,
   });
-
-  // const onSubmit = (data) => {
-  //   console.log(data);
-  //   setEdit(false); // Change to false to disable editing
-  // };
 
   const onSubmit = async (data) => {
     try {
       setLoading(true);
 
-      const response = await profileUpdate(data);
+      // Filter out empty values
+      const filteredData = Object.entries(data).reduce((acc, [key, value]) => {
+        if (value !== "" && value !== undefined && value !== null) {
+          acc[key] = value;
+        }
+        return acc;
+      }, {});
 
-      const result = await withReactContent(Swal).fire({
+      // Prepare FormData
+      const formData = new FormData();
+      Object.keys(filteredData).forEach((key) => {
+        formData.append(key, filteredData[key]);
+      });
+
+      const response = await updateProfile(formData);
+
+      await withReactContent(Swal).fire({
         title: "Success",
         text: response.message,
         icon: "success",
@@ -117,7 +130,6 @@ const ProfileForm = ({ user }) => {
       });
     } finally {
       setLoading(false);
-      // form.reset();
     }
   };
 
@@ -150,7 +162,7 @@ const ProfileForm = ({ user }) => {
               <div className="col-span-2 md:col-span-1">
                 <FormField
                   control={form.control}
-                  name="fullname"
+                  name="name"
                   render={({ field }) => (
                     <FormItem className="space-y-3">
                       <FormControl>
@@ -158,10 +170,6 @@ const ProfileForm = ({ user }) => {
                           type="text"
                           className="h-[3.25rem] text-base px-5 py-4 text-t-600 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
                           placeholder="Enter your full name"
-                          onChange={(e) => {
-                            console.log(e.target.value);
-                            field.onChange(e);
-                          }}
                           {...field}
                         />
                       </FormControl>
@@ -383,7 +391,7 @@ const ProfileForm = ({ user }) => {
               <div className="col-span-2 md:col-span-1">
                 <FormField
                   control={form.control}
-                  name="flyerNo"
+                  name="flyerNumber"
                   render={({ field }) => (
                     <FormItem className="space-y-3">
                       <FormControl>
@@ -403,7 +411,10 @@ const ProfileForm = ({ user }) => {
           </div>
           {edit && (
             <div className="grid">
-              <Button type="submit">Update</Button>
+              <Button type="submit" disabled={loading}>
+                {loading ? <LucideLoader2 className="animate-spin" /> : null}
+                Update
+              </Button>
             </div>
           )}
         </form>

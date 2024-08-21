@@ -3,11 +3,8 @@
 import handleAxiosError from "@/handlers/axios/error";
 import axios from "@/lib/axios";
 
-const profileUpdate = async (formData) => {
+const updateProfile = async (formData) => {
   try {
-    console.log(formData);
-    // return;
-
     const response = await axios.patch("/api/customers/self", formData);
 
     return response.data;
@@ -16,4 +13,4 @@ const profileUpdate = async (formData) => {
   }
 };
 
-export default profileUpdate;
+export default updateProfile;
