@@ -37,7 +37,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 const formSchema = z.object({
-  fullname: z.string().min(1, "Please enter your full name"),
+  name: z.string().min(1, "Please enter your full name"),
   dob: z
     .string()
     .refine((val) => moment(val).isValid(), {
@@ -55,7 +55,7 @@ const formSchema = z.object({
   address: z.string().min(1, "Please enter a valid address"),
   city: z.string().min(1, "Please enter a valid city"),
   country: z.string().min(1, "Please enter a valid country"),
-  flyerNo: z.string().min(1, "Please enter a valid flyer number"),
+  flyerNumber: z.string().min(1, "Please enter a valid flyer number"),
 });
 
 const ProfileForm = ({ user }) => {
@@ -96,23 +96,7 @@ const ProfileForm = ({ user }) => {
     try {
       setLoading(true);
 
-      const formData = new FormData();
-
-      formData.append("name", data?.fullname);
-      formData.append(
-        "dob",
-        moment(data?.dob, "YYYY-MM-DD").format("YYYY-MM-DD")
-      );
-      formData.append("email", data?.email);
-      formData.append("phone", data?.phone);
-      formData.append("address", data?.address);
-      formData.append("city", data?.city);
-      formData.append("country", data?.country);
-      formData.append("flyerNumber", data?.flyerNo);
-
-      const response = await profileUpdate(formData, user?.accessToken);
-
-      console.log("responses", response);
+      const response = await profileUpdate(data);
 
       const result = await withReactContent(Swal).fire({
         title: "Success",
@@ -123,8 +107,6 @@ const ProfileForm = ({ user }) => {
         allowOutsideClick: false,
       });
     } catch (error) {
-      console.log(error);
-
       await withReactContent(Swal).fire({
         title: "Error",
         text: error?.message || "An error occurred. Please try again",
