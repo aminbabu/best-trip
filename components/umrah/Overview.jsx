@@ -39,8 +39,7 @@ const options = {
   },
 };
 
-const Overview = () => {
-  const { items } = data;
+const Overview = ({ item }) => {
   const pathname = usePathname();
   const cardId = pathname.split("/")[2];
 
@@ -51,7 +50,7 @@ const Overview = () => {
           <div className="col-span-2 lg:col-span-1 space-y-6">
             <Slider hasTrack={false} options={options}>
               <SplideTrack>
-                {items.map((item, index) => (
+                {item.extraThumbnails?.map((item, index) => (
                   <SplideSlide key={index}>
                     <div className="aspect-square overflow-hidden rounded-sm">
                       <Image
@@ -69,22 +68,20 @@ const Overview = () => {
             <div className="hidden lg:block">
               <p className="text-base text-t-600 leading-relaxed">
                 <span className="text-base text-primary">About Umrah : </span>
-                Umrah is an act of worshipping Allah by entering the state of
-                Ihram, circumambulating the House, running between Safa and
-                Marwa, and having the head shaved or trimmed{" "}
-                <Link className="text-t-800" href={`/umrah/${cardId}/about`}>
+                {item?.umrahDescription}
+                {/* <Link className="text-t-800" href={`/umrah/${cardId}/about`}>
                   Read more...
-                </Link>
+                </Link> */}
               </p>
             </div>
           </div>
           <div className="col-span-2 lg:col-span-1 space-y-7 lg:pl-[50px]">
             <div>
               <h1 className="text-lg xl:text-[22px] text-t-800 font-medium mb-2.5">
-                Quad Share Basis Package
+                {item?.title}
               </h1>
               <p className="text-sm md:text-base text-t-800">
-                1 Friday In Makkah- 1 Friday In Madinah
+                {item?.subtitle}
               </p>
             </div>
             <div className="flex flex-col gap-y-7">
@@ -94,7 +91,7 @@ const Overview = () => {
                     className="mt-0.5 flex-shrink-0 h-6 w-6 text-primary"
                     viewBox="0 0 16 17"
                   />
-                  <span className="flex-shrink-0">From Dhaka , Bangladesh</span>
+                  <span className="flex-shrink-0">From {item?.departureLocation}</span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
                   <CalenderIcon
@@ -103,7 +100,7 @@ const Overview = () => {
                     viewBox="0 0 16 17"
                   />
                   <span className="flex-shrink-0">
-                    Journey Date : 20 Jun, 2024
+                    Journey Date : {item?.journeyDate}
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
@@ -111,7 +108,7 @@ const Overview = () => {
                     className="mt-0.5 flex-shrink-0 h-6 w-6 text-primary"
                     viewBox="0 0 16 17"
                   />
-                  <span className="flex-shrink-0">15 Days | 14 Nights</span>
+                  <span className="flex-shrink-0">{item?.totalDaysAndNights.days} Days | {item?.totalDaysAndNights.nights} Nights</span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
                   <PeopleIcon
@@ -119,7 +116,7 @@ const Overview = () => {
                     viewBox="0 0 16 17"
                   />
                   <span className="flex-shrink-0">
-                    Group Available : 30 Pax
+                    Group Available : {item?.seats} Pax
                   </span>
                 </li>
               </ul>
@@ -131,42 +128,53 @@ const Overview = () => {
                   Package Inclusion
                 </div>
                 <ul className="flex items-center gap-x-4">
-                  <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
-                    <PlaneIcon
-                      className="w-6 h-6 rotate-45 text-primary"
-                      viewBox="0 0 14 14"
-                    />
-                    Flight
-                  </li>
-                  <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
-                    <HotelIcon
-                      className="w-6 h-6 text-primary"
-                      viewBox="0 0 14 14"
-                    />
-                    Hotel
-                  </li>
-                  <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
-                    <PassportIcon
-                      className="w-6 h-6 text-primary"
-                      viewBox="0 0 14 14"
-                    />
-                    Visa
-                  </li>
-                  <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
-                    <BusIcon
-                      className="w-6 h-6 text-primary"
-                      viewBox="0 0 14 14"
-                    />
-                    Transport
-                  </li>
-                  <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
-                    <SpoonKnifeIcon
-                      fill="#F50308"
-                      className="w-6 h-6 text-primary"
-                      viewBox="0 0 16 16"
-                    />
-                    Food
-                  </li>
+                  {
+                    item?.inclusions.includes("flight") && <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
+                      <PlaneIcon
+                        className="w-6 h-6 rotate-45 text-primary"
+                        viewBox="0 0 14 14"
+                      />
+                      Flight
+                    </li>
+                  }
+                  {
+                    item?.inclusions.includes("hotel") && <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
+                      <HotelIcon
+                        className="w-6 h-6 text-primary"
+                        viewBox="0 0 14 14"
+                      />
+                      Hotel
+                    </li>
+                  }
+                  {
+                    item?.inclusions.includes("visa") && <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
+                      <PassportIcon
+                        className="w-6 h-6 text-primary"
+                        viewBox="0 0 14 14"
+                      />
+                      Visa
+                    </li>
+                  }
+                  {
+                    item?.inclusions.includes("transport") && <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
+                      <BusIcon
+                        className="w-6 h-6 text-primary"
+                        viewBox="0 0 14 14"
+                      />
+                      Transport
+                    </li>
+                  }
+                  {
+                    item?.inclusions.includes("food") &&
+                    <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
+                      <SpoonKnifeIcon
+                        fill="#F50308"
+                        className="w-6 h-6 text-primary"
+                        viewBox="0 0 16 16"
+                      />
+                      Food
+                    </li>
+                  }
                 </ul>
               </div>
               <div className="lg:hidden">

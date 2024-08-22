@@ -1,3 +1,4 @@
+"use server";
 import axios from "@/lib/axios";
 
 /**
@@ -54,12 +55,13 @@ export const getUmrahPackageForCustomers = async ({
  *
  * @returns {Promise<Object>} The response object containing the Umrah package or error details.
  */
-export const getUmrahPackageByIdForCustomers = async ({ id }) => {
+export const getUmrahPackageByIdForCustomers = async (id) => {
   try {
-    const response = await axios.get(`/umrah/packages/${id}/customers`);
+    console.log(id);
+    const response = await axios.get(`/api/umrah/packages/${id}`);
 
     return {
-      umrahPackages: response?.data?.data,
+      umrahPackages: response?.data?.umrahPackage,
     };
   } catch (error) {
     console.error("Error fetching Umrah packages by ID:", error);

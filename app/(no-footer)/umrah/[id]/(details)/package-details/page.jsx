@@ -36,7 +36,7 @@ import Link from "next/link";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Minus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   busServiceList,
   madinahZiyarahList,
@@ -44,6 +44,8 @@ import {
   taifZiyarahList,
   transportTypes,
 } from "@/data/package-details";
+import { getUmrahPackageByIdForCustomers } from "@/actions/umrahPackages/get-umrah-packages";
+import { airlines } from "@/data/airline";
 
 const table = {
   header: [
@@ -125,8 +127,19 @@ const UmrahDetailsPage = ({ params }) => {
   const [showTransportTypes, isShowTransportTypes] = useState(true);
   const [showMakkah, isShowMakkah] = useState(true);
   const [showMadinah, isShowMadinah] = useState(true);
+  const [packageDetail, setPackageDetail] = useState({})
   const [showTaif, isShowTaif] = useState(true);
-
+  useEffect(() => {
+    const getDetail = async () => {
+      try {
+        const { umrahPackages } = await getUmrahPackageByIdForCustomers(id)
+        setPackageDetail(umrahPackages)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getDetail()
+  }, [id])
   const handleShowBusMore = () => {
     isShowBus(!showBus);
   };
@@ -147,6 +160,7 @@ const UmrahDetailsPage = ({ params }) => {
     isShowTaif(!showTaif);
   };
 
+  const airLineName = airlines?.find((airline) => airline.code === packageDetail?.outboundAirlineCode)
   return (
     <div className="py-4 umrah-details-cards">
       <Accordion type="multiple" className="space-y-6" collapsible="true">
@@ -166,18 +180,19 @@ const UmrahDetailsPage = ({ params }) => {
                 />
                 <div>
                   <div className="text-t-900 text-base md:text-lg">
-                    Biman Bangladesh
+                    {airLineName?.name}
+
                   </div>
-                  <div className="text-t-800 text-sm md:text-base">BG611</div>
+                  <div className="text-t-800 text-sm md:text-base"> {packageDetail?.outboundAirCraftModel}</div>
                 </div>
               </div>
               <div className="flex-1 flex items-center justify-around gap-x-4 px-4 xs:px-4 py-5 sm:px-6 md:px-4">
                 <div className="text-right space-y-1.5 border-l border-[#f4f4f4] pl-[1px]">
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
-                    Dhaka
+                    {packageDetail?.outboundDepartureAirport}
                   </p>
                   <div className="text-xs font-medium md:font-normal sm:text-base md:text-lg lg:text-[1.375rem] text-t-900">
-                    DAC 08:00
+                    {packageDetail?.outboundAirlineCode}  {packageDetail?.outboundDepartureDatetime}
                   </div>
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     Wed, 25 Dec 2023
@@ -212,10 +227,10 @@ const UmrahDetailsPage = ({ params }) => {
                 </div>
                 <div className="text-left space-y-1.5">
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
-                    Jeddah
+                    {packageDetail?.outboundArrivalAirport}
                   </p>
                   <div className="text-xs font-medium md:font-normal sm:text-base md:text-lg lg:text-[1.375rem] text-t-900">
-                    JED 13:45
+                    {packageDetail?.inboundAirlineCode}  {packageDetail?.outboundArrivalDatetime}
                   </div>
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     Wed, 26 Dec 2023
@@ -248,13 +263,14 @@ const UmrahDetailsPage = ({ params }) => {
                   />
                 </div>
                 <div className="flex flex-col justify-between gap-y-4 sm:gap-y-6">
-                  <p>Hazrat Shahjalal International Ariport (DAC)</p>
+                  <p>{packageDetail?.outboundArrivalAirport}</p>
                   <div className="flex items-center gap-x-2.5">
                     <BalakaIcon
                       className="text-primary w-6 h-6"
                       viewBox="0 0 51 51"
                     />
-                    <p>Biman Bangladesh Airlines</p>
+                    <p>{airLineName?.name}
+                    </p>
                   </div>
                   <div className="flex gap-x-2 h-5 leading-tight">
                     <div>BG611</div>
@@ -269,7 +285,7 @@ const UmrahDetailsPage = ({ params }) => {
                     />
                     <div>Boing-787</div>
                   </div>
-                  <p>Jeddah - King Abdulaziz International Airport (JED) </p>
+                  <p>{packageDetail?.inboundArrivalAirport}</p>
                 </div>
               </div>
               <div className="flex-1">
