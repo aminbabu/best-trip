@@ -1,5 +1,7 @@
+import { SessionProvider } from "next-auth/react";
+
 const NoFooterLayout = async ({ children }) => {
-  return <div>{children}</div>;
+  return <SessionProvider>{children}</SessionProvider>;
 };
 
 export default NoFooterLayout;

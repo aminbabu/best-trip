@@ -31,6 +31,7 @@ import { getImageData } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Calendar } from "@/components/ui/calendar";
 import moment from "moment";
+import Swal from "sweetalert2"
 import { Loader } from "lucide-react";
 import { DocAltIcon } from "@/components/icons/svgr";
 import { countries } from "@/data/countries";
@@ -50,7 +51,6 @@ const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
   }
   const travelerList = [];
   const { adultTravelers, childTravelers, infantsTravelers } = searchedValue;
-  // console.log(adultTravelers,childTravelers,infantsTravelers,"lkajeklfjkaljdkfa");
   const adultTravellersArray = new Array(adultTravelers).fill(0);
   const childTravellersArray = new Array(childTravelers).fill(0);
   const infantTravellersArray = new Array(infantsTravelers).fill(0);
@@ -154,43 +154,43 @@ const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
   };
 
   const onSubmit = async (data) => {
-    console.log("From traveller form", data);
-    console.log(data);
     // TODO DATA IS NOT SENDING TO SERVER
-    console.log(passport, photo, nid, covid_certificate);
-    // const { passport, photo, nid, covid_certificate, ...rest } = data
     const form = new FormData();
     form.append("passport", passport);
     form.append("travelerPhoto", photo);
     form.append("travelerNID", nid);
     form.append("travelerCovidCertificate", covid_certificate);
     form.append("firstName", data.firstName)
-    form.append("lastName", data.firstName)
-    form.append("dateOfBirth", data.firstName)
+    form.append("lastName", data.lastName)
+    form.append("dateOfBirth", moment(data.dateOfBirth).format("YYYY-MM-DD"))
     form.append("country", data.country)
     form.append("cityName", data.cityName)
+    form.append("gender", data.gender)
     form.append("passportNumber", data.passportNumber)
     form.append("documentIssueCountry", data.documentIssueCountry)
-    form.append("passportExpiryDate", data.passportExpiryDate)
+    form.append("passportExpiryDate", moment(data.passportExpiryDate).format("YYYY-MM-DD"))
     form.append("presentAddress", data.presentAddress)
     form.append("permanentAddress", data.permanentAddress)
     form.append("emergencyContactNo", data.emergencyContactNo)
     form.append("phone", data.phone)
-    form.append("umrahBooking", data.umrahBooking)
-    form.append("umrahPackage", data.umrahPackage)
-    form.append("travelerType", data.travelerType)
+    form.append("travelerType", data.travelerType.split(" ")[2]?.slice(1, -1)?.toLowerCase())
     form.append("umrahBooking", umrahBooking)
     form.append("umrahPackage", id)
-    console.log(data, "form data");
+    form.forEach((value, key) => {
+      console.log(key, value);
+    });
     const getDetail = async () => {
       try {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/umrah/travelers`, { form }, { headers: { "Authorization": `Bearer ${userData?.user?.accessToken}` } });
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/umrah/travelers`, form, { headers: { "Authorization": `Bearer ${userData?.user?.accessToken}` } });
         console.log(response, "from add traveler");
         // if (typeof window != undefined) localStorage.setItem("bookingId", response.data.data._id)
+        setLoading(false);
+        hideTravellerForm();
         Swal.fire({
+          title: "Successfully Added Traveler Detail",
           text: response?.message,
           icon: "success",
-          confirmButtonText: "Ok, got it",
+          confirmButtonText: "Ok",
           confirmButtonColor: "#3ad965",
         });
         // router.push(`/umrah/${id}/traveller-details`)
@@ -199,12 +199,6 @@ const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
       }
     }
     getDetail();
-    // // setTimeout(() => {
-    // //   console.log(data);
-    // //   setLoading(false);
-    // //   hideTravellerForm();
-    // // }, 2000);
-
   };
 
   return (
@@ -355,6 +349,7 @@ const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
                       </FormLabel>
                       <Select
                         onValueChange={(value) => {
+                          console.log(value, "travleere type from lakdjflkajdfklka");
                           field.onChange(value);
                           setTravellerType(value.split(" ")[2].split("")[1]);
                         }}
@@ -515,6 +510,7 @@ const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
                     <Select
                       onValueChange={(value) => {
                         field.onChange(value);
+                        console.log(value, "from country");
                         setCountryValue(value);
                       }}
                       defaultValue={countryValue}
@@ -540,7 +536,7 @@ const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
-                name="city"
+                name="cityName"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
                     <FormLabel className="text-t-800 lg:text-base font-normal">

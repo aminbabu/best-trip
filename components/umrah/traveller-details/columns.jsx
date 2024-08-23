@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export const columns = [
   {
-    accessorKey: "name",
+    accessorKey: "firstName",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Name" />
     ),
@@ -22,40 +22,40 @@ export const columns = [
           />
         ) : (
           <div className="flex-shrink-0 w-11 h-11 rounded-full bg-t-400/25 flex items-center justify-center text-t-700 text-lg">
-            {row.getValue("name").charAt(0)}
+            {row.getValue("firstName").charAt(0)}
           </div>
         )}
-        {row.getValue("name")}
+        {row.getValue("firstName")}
       </div>
     ),
     enableSorting: false,
     enableHiding: false,
   },
   {
-    accessorKey: "nationality",
+    accessorKey: "country",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Nationality" />
     ),
-    cell: ({ row }) => row.getValue("nationality"),
+    cell: ({ row }) => row.getValue("country"),
     enableSorting: false,
     enableHiding: false,
   },
   {
-    accessorKey: "passport",
+    accessorKey: "passportNumber",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Passport No" />
     ),
-    cell: ({ row }) => row.getValue("passport")?.number ?? "N/A",
+    cell: ({ row }) => row.getValue("passportNumber") ?? "N/A",
     enableSorting: false,
     enableHiding: false,
   },
   {
-    accessorKey: "type",
+    accessorKey: "travelerType",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Type" />
     ),
     cell: ({ row }) => (
-      <span className="uppercase">{row.getValue("type")}</span>
+      <span className="capitalize">{row.getValue("travelerType")}</span>
     ),
     enableSorting: false,
     enableHiding: false,

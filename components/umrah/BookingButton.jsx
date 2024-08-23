@@ -16,7 +16,6 @@ const BookingButton = ({ id }) => {
     const totalTravelers = Number(adultTravelers) + Number(childTravelers) + Number(infantsTravelers)
     const data2 = { umrahPackage: id, totalTravelers }
     const { data, accessToken } = useSession()
-    console.log(data?.user?.accessToken, accessToken, "lakdjflkads");
     const getDetail = async () => {
         try {
             const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/umrah/booking`, { ...data2 }, { headers: { "Authorization": `Bearer ${data?.user?.accessToken}` } });
@@ -30,7 +29,9 @@ const BookingButton = ({ id }) => {
             });
             router.push(`/umrah/${id}/traveller-details`)
         } catch (error) {
-            console.log(error);
+            router.push(`/umrah/${error.response.data?.id}/traveller-details`)
+            if (typeof window != undefined) localStorage.setItem("bookingId", error.response.data?.id)
+            console.log(error.response.data, "from bookings");
         }
     }
     return <div className="grid">

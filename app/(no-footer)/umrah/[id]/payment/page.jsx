@@ -1,3 +1,4 @@
+"use client"
 import {
   BusRedIcon,
   CalenderIcon,
@@ -11,12 +12,27 @@ import {
 import Container from "@/components/layouts/Container";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import axios from "axios";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const PaymentPage = ({ params }) => {
   const { id } = params;
-
+  const { data } = useSession()
+  const [bookingData, setBookingData] = useState([])
+  useEffect(() => {
+    const getDetail = async () => {
+      try {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/umrah/booking/customer/${id}`, { headers: { "Authorization": `Bearer ${data?.user?.accessToken}` } });
+        setBookingData(response?.data?.umrahBookings)
+      } catch (error) {
+        console.log(error, "from bookings");
+      }
+    }
+    getDetail();
+  }, [data?.user?.accessToken,id])
+  console.log(bookingData,"aljdkad");
   return (
     <main className="py-20 bg-secondary">
       <Container>

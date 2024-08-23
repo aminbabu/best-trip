@@ -7,10 +7,36 @@ import tavellers from "@/data/travellers.json";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useSession } from "next-auth/react";
 
 const TravellerList = ({ showTravellerForm, id }) => {
   const router = useRouter();
-
+  const { data } = useSession();
+  const [travelerDetails, setTravelerDetail] = useState([])
+  let bookingId;
+  if (typeof window != undefined) {
+    bookingId = localStorage.getItem("bookingId")
+  }
+  useEffect(() => {
+    const getDetail = async () => {
+      try {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/umrah/travelers/${bookingId}`, { headers: { "Authorization": `Bearer ${data?.user?.accessToken}` } });
+        setTravelerDetail(response?.data?.travelers)
+      } catch (error) {
+        console.log(error, "from bookings");
+        // Swal.fire({
+        //   title: `${"error?.response?.data?.message"}`,
+        //   text: "Try Another Package",
+        //   icon: "error",
+        //   confirmButtonText: "Ok, got it",
+        //   confirmButtonColor: "#3ad965",
+        // });
+      }
+    }
+    getDetail();
+  }, [bookingId,data?.user?.accessToken])
   const onBook = () => {
     console.log("Booked");
 
@@ -20,7 +46,7 @@ const TravellerList = ({ showTravellerForm, id }) => {
   return (
     <div className="space-y-10">
       <DataTable
-        data={tavellers || []}
+        data={travelerDetails || []}
         columns={columns}
         showTravellerForm={showTravellerForm}
         ToolbarComponent={DataTableToolbar}
@@ -30,7 +56,7 @@ const TravellerList = ({ showTravellerForm, id }) => {
           Book & Exit
         </Button>
         <Button className="w-80" onClick={onBook} asChild>
-          <Link href={`/umrah/${id}/payment`}>Continue</Link>
+          <Link href={`/umrah/${bookingId}/payment`}>Continue</Link>
         </Button>
       </div>
     </div>
