@@ -35,14 +35,49 @@ import { Loader } from "lucide-react";
 import { DocAltIcon } from "@/components/icons/svgr";
 import { countries } from "@/data/countries";
 import PhoneInputComponent from "./PhoneInputComponent";
+import axios from "axios";
+import { useSession } from "next-auth/react";
 
-const TravellerDetailsForm = ({ hideTravellerForm }) => {
+const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
   const today = new Date();
   const twoYearsBack = new Date(today);
   const twelveYearsBack = new Date(today);
   twoYearsBack.setFullYear(today.getFullYear() - 2);
   twelveYearsBack.setFullYear(today.getFullYear() - 12);
+  let searchedValue;
+  if (typeof window != undefined) {
+    searchedValue = JSON.parse(localStorage.getItem("searchedValue"));
+  }
+  const travelerList = [];
+  const { adultTravelers, childTravelers, infantsTravelers } = searchedValue;
+  // console.log(adultTravelers,childTravelers,infantsTravelers,"lkajeklfjkaljdkfa");
+  const adultTravellersArray = new Array(adultTravelers).fill(0);
+  const childTravellersArray = new Array(childTravelers).fill(0);
+  const infantTravellersArray = new Array(infantsTravelers).fill(0);
+  const addTravelers = (travellerArray, type) => {
+    // travelerList.length = 0;
+    travellerArray.forEach((_, index) => {
+      travelerList.push({
+        id: travelerList.length + 1, // Serialize the id based on the current length
+        travellerNo: travelerList.length + 1,
+        travellerType: type,
+      });
+    });
+  };
+  let umrahBooking;
+  if (typeof window != undefined) {
+    umrahBooking = localStorage.getItem("bookingId")
+  }
 
+  // Add adult travelers
+  addTravelers(adultTravellersArray, "adult");
+
+  // Add child travelers
+  addTravelers(childTravellersArray, "child");
+
+  // Add infant travelers
+  addTravelers(infantTravellersArray, "Infant");
+  const { data: userData } = useSession();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [passport, setPassport] = useState(null);
@@ -81,57 +116,30 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
   }, [travelerType]);
 
   const form = useForm({
-    resolver: zodResolver(travellerSchema),
+    // resolver: zodResolver(travellerSchema),
     defaultValues: {
       passport: "",
       photo: "",
       nid: "",
       covid_certificate: "",
-      travellers: "",
-      first_name: "",
-      last_name: "",
+      travelerType: "",
+      firstName: "",
+      lastName: "",
       gender: "",
-      dob: "",
-      emergency_contact: "",
+      dateOfBirth: "",
+      emergencyContactNo: "",
       country: "",
-      city: "",
-      present_address: "",
-      permanent_address: "",
-      passport_no: "",
-      document_issue_country: "",
-      passport_expiry_date: "",
+      cityName: "",
+      presentAddress: "",
+      permanentAddress: "",
+      passportNumber: "",
+      documentIssueCountry: "",
+      passportExpiryDate: "",
       email: "",
       phone: "",
     },
   });
 
-  const travellersList = [
-    {
-      id: 1,
-      travellerNo: 1,
-      travellerType: "Adult",
-    },
-    {
-      id: 2,
-      travellerNo: 2,
-      travellerType: "Adult",
-    },
-    {
-      id: 3,
-      travellerNo: 3,
-      travellerType: "Child",
-    },
-    {
-      id: 4,
-      travellerNo: 4,
-      travellerType: "Child",
-    },
-    {
-      id: 5,
-      travellerNo: 5,
-      travellerType: "Infant",
-    },
-  ];
 
   const handleDisableDate = (date) => {
     if (travelerType === "A") {
@@ -145,15 +153,58 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
     }
   };
 
-  const onSubmit = (data) => {
-    setError(null);
-    setLoading(true);
+  const onSubmit = async (data) => {
+    console.log("From traveller form", data);
+    console.log(data);
+    // TODO DATA IS NOT SENDING TO SERVER
+    console.log(passport, photo, nid, covid_certificate);
+    // const { passport, photo, nid, covid_certificate, ...rest } = data
+    const form = new FormData();
+    form.append("passport", passport);
+    form.append("travelerPhoto", photo);
+    form.append("travelerNID", nid);
+    form.append("travelerCovidCertificate", covid_certificate);
+    form.append("firstName", data.firstName)
+    form.append("lastName", data.firstName)
+    form.append("dateOfBirth", data.firstName)
+    form.append("country", data.country)
+    form.append("cityName", data.cityName)
+    form.append("passportNumber", data.passportNumber)
+    form.append("documentIssueCountry", data.documentIssueCountry)
+    form.append("passportExpiryDate", data.passportExpiryDate)
+    form.append("presentAddress", data.presentAddress)
+    form.append("permanentAddress", data.permanentAddress)
+    form.append("emergencyContactNo", data.emergencyContactNo)
+    form.append("phone", data.phone)
+    form.append("umrahBooking", data.umrahBooking)
+    form.append("umrahPackage", data.umrahPackage)
+    form.append("travelerType", data.travelerType)
+    form.append("umrahBooking", umrahBooking)
+    form.append("umrahPackage", id)
+    console.log(data, "form data");
+    const getDetail = async () => {
+      try {
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/umrah/travelers`, { form }, { headers: { "Authorization": `Bearer ${userData?.user?.accessToken}` } });
+        console.log(response, "from add traveler");
+        // if (typeof window != undefined) localStorage.setItem("bookingId", response.data.data._id)
+        Swal.fire({
+          text: response?.message,
+          icon: "success",
+          confirmButtonText: "Ok, got it",
+          confirmButtonColor: "#3ad965",
+        });
+        // router.push(`/umrah/${id}/traveller-details`)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getDetail();
+    // // setTimeout(() => {
+    // //   console.log(data);
+    // //   setLoading(false);
+    // //   hideTravellerForm();
+    // // }, 2000);
 
-    setTimeout(() => {
-      console.log(data);
-      setLoading(false);
-      hideTravellerForm();
-    }, 2000);
   };
 
   return (
@@ -296,7 +347,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
               <div className="col-span-2 sm:col-span-1 lg:col-span-2">
                 <FormField
                   control={form.control}
-                  name="travellers"
+                  name="travelerType"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -315,7 +366,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent className="max-h-40">
-                          {travellersList.map((traveller) => (
+                          {travelerList?.map((traveller) => (
                             <SelectItem
                               key={traveller.id}
                               value={`Travellers ${traveller.travellerNo} (${traveller.travellerType})`}
@@ -337,7 +388,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
-                name="first_name"
+                name="firstName"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
                     <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -359,7 +410,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
-                name="last_name"
+                name="lastName"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
                     <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -409,7 +460,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
-                name="dob"
+                name="dateOfBirth"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
                     <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -511,7 +562,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
-                name={"passport_no"}
+                name={"passportNumber"}
                 render={({ field }) => (
                   <FormItem className="space-y-3">
                     <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -533,7 +584,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
-                name="document_issue_country"
+                name="documentIssueCountry"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -567,7 +618,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
-                name="passport_expiry_date"
+                name="passportExpiryDate"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
                     <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -619,7 +670,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
-                name="present_address"
+                name="presentAddress"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
                     <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -641,7 +692,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
-                name="permanent_address"
+                name="permanentAddress"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
                     <FormLabel className="text-t-800 lg:text-base font-normal">
@@ -663,7 +714,7 @@ const TravellerDetailsForm = ({ hideTravellerForm }) => {
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <FormField
                 control={form.control}
-                name="emergency_contact"
+                name="emergencyContactNo"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
                     <FormLabel className="text-t-800 lg:text-base font-normal">

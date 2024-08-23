@@ -29,7 +29,7 @@ const FilterResult = ({ slug }) => {
           packageSchedule: params.schedule,
           packageType: params.type,
           packageDuration: params.duration,
-          dataLength: params.dataLength || 2,
+          dataLength: params.dataLength || 20,
           adultTravelers: params.adultTravelers,
           childTravelers: params.childTravelers,
           infantsTravelers: params.infantsTravelers,

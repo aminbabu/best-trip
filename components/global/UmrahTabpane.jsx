@@ -51,7 +51,7 @@ const UmrahTabpane = ({ icon, disabled, className, slug }) => {
   const [isPackDurationOpen, setIsPackDurationOpen] = useState(false);
   let searchedValue;
   if (typeof window != undefined) {
-     searchedValue = JSON.parse(localStorage.getItem("searchedValue"))
+    searchedValue = JSON.parse(localStorage.getItem("searchedValue"))
   }
   const [params, setParams] = useState(searchedValue ? searchedValue : {});
   const [isTravelersOpen, setIsTravelersOpen] = useState(false);
@@ -188,7 +188,7 @@ const UmrahTabpane = ({ icon, disabled, className, slug }) => {
       schedule: data.schedule,
       type: data.type,
       duration: data.duration,
-      dataLength: 2,
+      dataLength: 20,
       adultTravelers: data.travellers.adultTravelers,
       childTravelers: data.travellers.childTravelers,
       infantsTravelers: data.travellers.infantsTravelers,

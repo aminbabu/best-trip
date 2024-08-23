@@ -107,19 +107,19 @@ export const numberSchema = z.number().min(1, { message: "Invalid number" });
  *
  */
 export const travellerSchema = z.object({
-  passport: z.string().min(1, { message: "Please provide a valid password" }),
+  passport: z.string().min(1, { message: "Please provide a valid passport" }),
   photo: z.string().min(1, { message: "Please provide a valid photo" }),
-  nid: z.string().min(1, { message: "Please provide a valid nid" }),
+  nid: z.string().min(1, { message: "Please provide a valid NID" }),
   covid_certificate: z
     .string()
-    .min(1, { message: "Please provide a valid covid certificate" }),
-  travellers: z.string().min(1, { message: "Please select a traveller" }),
-  first_name: z
+    .min(1, { message: "Please provide a valid COVID certificate" }),
+  travelerType: z.string().min(1, { message: "Please select a traveler type" }),
+  firstName: z
     .string()
     .min(1, { message: "Please provide a valid first name" }),
-  last_name: z.string().min(1, { message: "Please provide a valid last name" }),
+  lastName: z.string().min(1, { message: "Please provide a valid last name" }),
   gender: z.string().min(1, { message: "Please select a valid gender" }),
-  dob: z
+  dateOfBirth: z
     .string()
     .refine((val) => moment(val).isValid(), {
       message: "Please provide a valid date of birth",
@@ -130,20 +130,20 @@ export const travellerSchema = z.object({
       })
     ),
   country: z.string().min(1, { message: "Please select a valid country" }),
-  city: z.string().min(1, { message: "Please provide a city name" }),
-  present_address: z
+  cityName: z.string().min(1, { message: "Please provide a city name" }),
+  presentAddress: z
     .string()
     .min(1, { message: "Please provide a valid present address" }),
-  permanent_address: z
+  permanentAddress: z
     .string()
     .min(1, { message: "Please provide a valid permanent address" }),
-  passport_no: z
+  passportNumber: z
     .string()
-    .min(1, { message: "Please provide a valid passport no" }),
-  document_issue_country: z
+    .min(1, { message: "Please provide a valid passport number" }),
+  documentIssueCountry: z
     .string()
     .min(1, { message: "Please select a valid document issue country" }),
-  passport_expiry_date: z
+  passportExpiryDate: z
     .string()
     .refine((val) => moment(val).isValid(), {
       message: "Please provide a valid passport expiry date",
@@ -154,10 +154,10 @@ export const travellerSchema = z.object({
       })
     ),
   email: z.string().email({ message: "Please provide a valid email" }),
-  phone: z.string().min(1, { message: "Please provide a valid phone" }),
-  emergency_contact: z
+  phone: z.string().min(1, { message: "Please provide a valid phone number" }),
+  emergencyContactNo: z
     .string()
-    .min(1, { message: "Please provide a emergency contact no." }),
+    .min(1, { message: "Please provide an emergency contact number" }),
 });
 
 /**

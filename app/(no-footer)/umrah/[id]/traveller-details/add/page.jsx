@@ -15,6 +15,7 @@ const AddTravellersPage = ({ params }) => {
         {addTraveller ? (
           <TravellerDetailsForm
             hideTravellerForm={() => setAddTraveller(false)}
+            id={id}
           />
         ) : (
           <TravellerList

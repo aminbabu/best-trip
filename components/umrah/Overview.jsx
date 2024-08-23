@@ -50,7 +50,7 @@ const Overview = ({ item }) => {
           <div className="col-span-2 lg:col-span-1 space-y-6">
             <Slider hasTrack={false} options={options}>
               <SplideTrack>
-                {item.extraThumbnails?.map((item, index) => (
+                {item?.extraThumbnails?.map((item, index) => (
                   <SplideSlide key={index}>
                     <div className="aspect-square overflow-hidden rounded-sm">
                       <Image
