@@ -176,9 +176,6 @@ const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
     form.append("travelerType", data.travelerType.split(" ")[2]?.slice(1, -1)?.toLowerCase())
     form.append("umrahBooking", umrahBooking)
     form.append("umrahPackage", id)
-    form.forEach((value, key) => {
-      console.log(key, value);
-    });
     const getDetail = async () => {
       try {
         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/umrah/travelers`, form, { headers: { "Authorization": `Bearer ${userData?.user?.accessToken}` } });
@@ -196,6 +193,12 @@ const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
         // router.push(`/umrah/${id}/traveller-details`)
       } catch (error) {
         console.log(error);
+        Swal.fire({
+          text: error?.response?.data?.message,
+          icon: "error",
+          confirmButtonText: "Ok, got it",
+          confirmButtonColor: "#F70207",
+        });
       }
     }
     getDetail();

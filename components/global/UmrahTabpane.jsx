@@ -198,18 +198,18 @@ const UmrahTabpane = ({ icon, disabled, className, slug }) => {
       localStorage.setItem("searchedValue", selectedValue)
     }
     try {
-      const queryString = new URLSearchParams({
-        schedule: data.schedule,
-        type: data.type,
-        duration: data.duration,
-        dataLength: 2,
-        adultTravelers: data.travellers.adultTravelers,
-        childTravelers: data.travellers.childTravelers,
-        infantsTravelers: data.travellers.infantsTravelers,
-        lastItemId: "",
-      }).toString();
+      // const queryString = new URLSearchParams({
+      //   schedule: data.schedule,
+      //   type: data.type,
+      //   duration: data.duration,
+      //   dataLength: 2,
+      //   adultTravelers: data.travellers.adultTravelers,
+      //   childTravelers: data.travellers.childTravelers,
+      //   infantsTravelers: data.travellers.infantsTravelers,
+      //   lastItemId: "",
+      // }).toString();
 
-      router.push(`/search/umrah?${queryString}`);
+      router.push(`/search/umrah`);
     } finally {
       setLoading(false); // Reset loading state after navigation
     }

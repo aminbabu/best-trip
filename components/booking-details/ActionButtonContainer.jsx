@@ -14,7 +14,7 @@ import EditBooking from "./action-buttons/EditBooking";
 import PrintAndDownload from "./action-buttons/PrintAndDownload";
 import ExtendTimeLimit from "./action-buttons/ExtendTimeLimit";
 
-const ActionButtonContainer = () => {
+const ActionButtonContainer = ({bookingData}) => {
   const handleCancelBooking = () => {
     const swalWithTailwindButtons = Swal.mixin({
       customClass: {
@@ -65,7 +65,7 @@ const ActionButtonContainer = () => {
       </Link>
 
       {/* order booking */}
-      <OrderBooking />
+      <OrderBooking bookingData={bookingData}/>
 
       {/* Account Balance Low */}
       <Button className="bg-white text-base font-normal text-p-900 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">

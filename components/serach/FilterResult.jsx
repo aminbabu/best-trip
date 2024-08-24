@@ -11,7 +11,11 @@ import FlightFilter from "../umrah-fight/FlightFilter";
 import UmrahCard from "./UmrahCard";
 
 const FilterResult = ({ slug }) => {
-  const [params, setParams] = useState({});
+  let searchedValue;
+  if (typeof window != undefined) {
+    searchedValue = JSON.parse(localStorage.getItem("searchedValue"))
+  }
+  const [params, setParams] = useState(searchedValue ? searchedValue : {});
   const [items, setItems] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [loadingInitial, setLoadingInitial] = useState(true);
@@ -64,13 +68,13 @@ const FilterResult = ({ slug }) => {
     [params, lastItemId]
   );
 
-  useEffect(() => {
-    const searchParamsObj = {};
-    searchParams.forEach((value, key) => {
-      searchParamsObj[key] = value;
-    });
-    setParams(searchParamsObj);
-  }, [searchParams]);
+  // useEffect(() => {
+  //   const searchParamsObj = {};
+  //   searchParams.forEach((value, key) => {
+  //     searchParamsObj[key] = value;
+  //   });
+  //   setParams(searchParamsObj);
+  // }, [searchParams]);
 
   useEffect(() => {
     loadInitialData();

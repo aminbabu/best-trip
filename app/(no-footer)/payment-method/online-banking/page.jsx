@@ -3,16 +3,18 @@
 import MessageCard from "@/components/global/MessageCard";
 import { LoaderIcon } from "@/components/icons/svgr";
 import Container from "@/components/layouts/Container";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 const OnlineBankingPage = () => {
+  const router = useRouter()
   useEffect(() => {
     const timer = setTimeout(() => {
-      window.location.href = "/profile/payment-method/review";
+      router.push("/payment-method/review")
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [router]);
   return (
     <main className="py-20 bg-secondary">
       <Container>

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { FlightTokenIcon } from "@/components/icons/svgr";
 import DepositForm from "@/components/payment-method/DepositForm";
 
-const OrderBooking = () => {
+const OrderBooking = ({bookingData}) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -15,7 +15,7 @@ const OrderBooking = () => {
       <DialogContent className="sm:max-w-[800px] px-5 py-10 lg:p-10">
         <h1 className="text-t-800 font-medium text-xl mb-8">Payment Method</h1>
         <p className="text-t-800 mb-4">Select Payment Method</p>
-        <DepositForm />
+        <DepositForm bookingData={bookingData}/>
       </DialogContent>
     </Dialog>
   );

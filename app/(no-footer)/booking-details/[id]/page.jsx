@@ -1,10 +1,14 @@
 
+"use client"
 import ActionButtonContainer from "@/components/booking-details/ActionButtonContainer";
 import FareDetailsCard from "@/components/booking-details/FareDetailsCard";
 import TravellerBookingForm from "@/components/booking-details/TravellerBookingForm";
 import UmrahBookingCard from "@/components/booking-details/UmrahBookingCard";
 import Container from "@/components/layouts/Container";
 import { Card, CardContent } from "@/components/ui/card";
+import axios from "axios";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 const travellerList = [
   { id: 1, type: "Adult", no: 1 },
@@ -12,7 +16,22 @@ const travellerList = [
   { id: 3, type: "Infant", no: 3 },
 ];
 
-const BookingDetails = () => {
+const BookingDetails = ({params}) => {
+  const {id} = params;
+  const { data } = useSession();
+const [bookingData,setBookingData] =useState([])
+  useEffect(() => {
+    const getDetail = async () => {
+      try {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/umrah/booking/customer/${id}`, { headers: { "Authorization": `Bearer ${data?.user?.accessToken}` } });
+        setBookingData(response?.data?.umrahBookings)
+      } catch (error) {
+        console.log(error, "from bookings");
+      }
+    }
+    getDetail();
+  }, [data?.user?.accessToken, id])
+  console.log(bookingData,"bookingData");
   return (
     <main className="bg-[#FBFBFB]">
       <Container>
@@ -74,7 +93,7 @@ const BookingDetails = () => {
             ))}
           </div>
 
-          <ActionButtonContainer />
+          <ActionButtonContainer bookingData={bookingData}/>
         </div>
       </Container>
     </main>

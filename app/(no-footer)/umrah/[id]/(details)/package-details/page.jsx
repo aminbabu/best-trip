@@ -46,6 +46,7 @@ import {
 } from "@/data/package-details";
 import { getUmrahPackageByIdForCustomers } from "@/actions/umrahPackages/get-umrah-packages";
 import { airlines } from "@/data/airline";
+import moment from "moment";
 
 const table = {
   header: [
@@ -161,6 +162,26 @@ const UmrahDetailsPage = ({ params }) => {
   };
 
   const airLineName = airlines?.find((airline) => airline.code === packageDetail?.outboundAirlineCode)
+  console.log(packageDetail, "umrahPackages");
+  // makkahHotelName: 'Makkah Hotel Name',
+  // makkahHotelAddress: 'Makkha Hotel Address',
+  // makkahHotelRating: 4.3,
+  // makkahHotelDistance: '10',
+  // makkahHotelDistanceUnit: 'm',
+  // makkahHotelWalkDuration: '3',
+  // makkahHotelLocation: 'https://makkahhotel.com/location',
+  // makkahHotelNote: 'Makkah Note',
+  // makkahHotelExtraThumbnails: [],
+
+  const maxRating = 5;
+  const hotelRating = packageDetail?.makkahHotelRating || 0;
+
+  const filledStars = Math.floor(hotelRating); // Number of full stars
+  const hasHalfStar = hotelRating % 1 !== 0; // Check if there's a half star
+  const emptyStars = maxRating - filledStars - (hasHalfStar ? 1 : 0); // Calculate empty stars
+
+
+
   return (
     <div className="py-4 umrah-details-cards">
       <Accordion type="multiple" className="space-y-6" collapsible="true">
@@ -192,7 +213,7 @@ const UmrahDetailsPage = ({ params }) => {
                     {packageDetail?.outboundDepartureAirport}
                   </p>
                   <div className="text-xs font-medium md:font-normal sm:text-base md:text-lg lg:text-[1.375rem] text-t-900">
-                    {packageDetail?.outboundAirlineCode}  {packageDetail?.outboundDepartureDatetime}
+                    {packageDetail?.outboundAirlineCode}  {moment(packageDetail?.outboundDepartureDatetime).format("hh:mm")}
                   </div>
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     Wed, 25 Dec 2023
@@ -230,7 +251,7 @@ const UmrahDetailsPage = ({ params }) => {
                     {packageDetail?.outboundArrivalAirport}
                   </p>
                   <div className="text-xs font-medium md:font-normal sm:text-base md:text-lg lg:text-[1.375rem] text-t-900">
-                    {packageDetail?.inboundAirlineCode}  {packageDetail?.outboundArrivalDatetime}
+                    {packageDetail?.inboundAirlineCode}        {moment(packageDetail?.outboundArrivalDatetime).format("hh:mm")}
                   </div>
                   <p className="text-xs sm:text-sm lg:text-base text-t-800">
                     Wed, 26 Dec 2023
@@ -310,7 +331,7 @@ const UmrahDetailsPage = ({ params }) => {
                 />
                 <div>
                   <div className="text-t-900 text-base md:text-lg">
-                    Stay 7 Night
+                    Stay {packageDetail?.makkahHotelNoOfNights} Night
                   </div>
                   <div className="text-t-800 text-sm md:text-base">
                     In Makkah
@@ -320,7 +341,7 @@ const UmrahDetailsPage = ({ params }) => {
               <div className="flex-1 flex items-center justify-around gap-5 px-4 xs:px-4 py-5 sm:px-6 md:px-4 lg:px-8 xl:px-14">
                 <div className="aspect-[70/85] md:aspect-[171/127] overflow-hidden flex-shrink-0 w-[75px] md:w-44 ">
                   <Image
-                    src="/images/details/umrah/01.png"
+                    src={process.env.NEXT_PUBLIC_API_URL + "/" + packageDetail?.makkahHotelThumbnail}
                     alt="Hotel"
                     width="171"
                     height="127"
@@ -329,31 +350,31 @@ const UmrahDetailsPage = ({ params }) => {
                 </div>
                 <div className="flex-1 text-sm md:text-base">
                   <h4 className="text-xs line-clamp-1 md:text-lg text-t-900 mb-1 md:line-clamp-2 leading-loose  md:leading-normal">
-                    Swissotel Al Maqam Makkah / Similar Hotel{" "}
+                    {packageDetail?.makkahHotelName}
                   </h4>
                   <p className="text-xs md:text-base line-clamp-1 text-t-800 mb-1 md:line-clamp-2 leading-loose md:leading-normal">
-                    St Tower F, Ibrahim Al Khalil, St, Tower F, Al Maqam
+                    {packageDetail?.makkahHotelAddress}
                   </p>
-                  <div className="flex items-center gap-x-2 text-t-600  leading-loose md:leading-normal">
+                  <div className="flex items-center gap-x-2 text-t-600 leading-loose md:leading-normal">
                     <ul className="flex items-center gap-x-1 md:gap-x-2">
-                      <li className="text-[#FF7B39]">
-                        <StarAltIcon size={18} />
-                      </li>
-                      <li className="text-[#FF7B39]">
-                        <StarAltIcon size={18} />
-                      </li>
-                      <li className="text-[#FF7B39]">
-                        <StarAltIcon size={18} />
-                      </li>
-                      <li className="text-[#FF7B39]">
-                        <StarAltIcon size={18} />
-                      </li>
-                      <li className="text-[#FF7B39]">
-                        <StarAltIcon size={18} />
-                      </li>
+                      {Array.from({ length: filledStars }).map((_, index) => (
+                        <li key={`filled-${index}`} className="text-[#FF7B39]">
+                          <StarAltIcon size={18} />
+                        </li>
+                      ))}
+                      {hasHalfStar && (
+                        <li className="text-[#FF7B39]">
+                          <StarAltIcon size={18} className="half-star-class" /> {/* Implement a half-star if available */}
+                        </li>
+                      )}
+                      {Array.from({ length: emptyStars }).map((_, index) => (
+                        <li key={`empty-${index}`} className="text-gray-300"> {/* You can use a different color or icon for empty stars */}
+                          <StarAltIcon size={18} />
+                        </li>
+                      ))}
                     </ul>
                     <span className="mt-1.5 md:mt-1 text-xs md:text-base">
-                      4.8
+                      {hotelRating.toFixed(1)} {/* Display the rating as a decimal with one decimal point */}
                     </span>
                   </div>
                 </div>
@@ -365,12 +386,12 @@ const UmrahDetailsPage = ({ params }) => {
               <div className="md:w-[352px]">
                 <Slider hasTrack={false} options={options}>
                   <SplideTrack>
-                    {items.map((item, index) => (
+                    {packageDetail?.makkahHotelExtraThumbnails?.map((item, index) => (
                       <SplideSlide key={index}>
                         <div className="aspect-square overflow-hidden  rounded-sm">
                           <Image
-                            src={item.image}
-                            alt={item.title}
+                            src={process.env.NEXT_PUBLIC_API_URL + "/" + item}
+                            alt={"Hotel image"}
                             width={156}
                             height={146}
                             className="w-full h-full object-cover"
@@ -387,33 +408,35 @@ const UmrahDetailsPage = ({ params }) => {
               />
               <Separator className="bg-[#E1E1E1] md:hidden" />
               <div className="text-t-600 space-y-3">
-                <p>Swissotel Al Maqam Makkah / Similar Hotel </p>
+                <p> {packageDetail?.makkahHotelName} </p>
                 <ul className="grid gap-y-3">
                   <li className="flex gap-x-2.5">
                     <LocationCircleIcon className="text-primary flex-shrink-0" />
                     <span>
-                      St Tower F, Ibrahim Al Khalil, St, Tower F, Al Maqam
+                      {packageDetail?.makkahHotelAddress}
                     </span>
                   </li>
                   <li className="flex gap-x-2.5">
                     <LocationDistanceIcon className="text-primary flex-shrink-0" />
                     <span>
-                      Hotel Distance from Masjid Al Haram : 1000 Mettter
+                      Hotel Distance from Masjid Al Haram : {packageDetail?.makkahHotelDistance} {packageDetail?.makkahHotelDistanceUnit}
                     </span>
                   </li>
                   <li className="flex gap-x-2.5">
                     <ManWalkingIcon className="text-primary flex-shrink-0" />
-                    <span>
-                      Hotel to Majid Al Haram Walking Distance : 5-10 Minutes
+                    <span> moment.duration
+                      Hotel to Majid Al Haram Walking Distance : {packageDetail?.makkahHotelWalkDuration < 60
+                        ? `${packageDetail?.makkahHotelWalkDuration} minutes`
+                        : `${moment.duration(packageDetail?.makkahHotelWalkDuration, 'minutes').asHours().toFixed(1)} hours`}
                     </span>
                   </li>
                   <li className="flex gap-x-2.5">
                     <GMapIcon className="text-primary flex-shrink-0" />
                     <span>
-                      Google Map Link :{" "}
-                      <Link href="#" className="text-primary">
+                      Google Map Link :
+                      <a href={packageDetail?.makkahHotelLocation} target="_blank" className="text-primary">
                         Click Here
-                      </Link>
+                      </a>
                     </span>
                   </li>
                 </ul>
