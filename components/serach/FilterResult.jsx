@@ -48,7 +48,6 @@ const FilterResult = ({ slug }) => {
             ...prevItems,
             ...umrahPackages.umrahPackages,
           ]);
-          console.log(umrahPackages.nextCursor);
           if (umrahPackages.nextCursor) {
             setLastItemId(umrahPackages.nextCursor);
           } else {
@@ -67,15 +66,6 @@ const FilterResult = ({ slug }) => {
     },
     [params, lastItemId]
   );
-
-  // useEffect(() => {
-  //   const searchParamsObj = {};
-  //   searchParams.forEach((value, key) => {
-  //     searchParamsObj[key] = value;
-  //   });
-  //   setParams(searchParamsObj);
-  // }, [searchParams]);
-
   useEffect(() => {
     loadInitialData();
   }, [params, loadInitialData]);

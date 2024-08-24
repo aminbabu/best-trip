@@ -16,10 +16,10 @@ const travellerList = [
   { id: 3, type: "Infant", no: 3 },
 ];
 
-const BookingDetails = ({params}) => {
-  const {id} = params;
+const BookingDetails = ({ params }) => {
+  const { id } = params;
   const { data } = useSession();
-const [bookingData,setBookingData] =useState([])
+  const [bookingData, setBookingData] = useState([])
   useEffect(() => {
     const getDetail = async () => {
       try {
@@ -31,7 +31,20 @@ const [bookingData,setBookingData] =useState([])
     }
     getDetail();
   }, [data?.user?.accessToken, id])
-  console.log(bookingData,"bookingData");
+  console.log(bookingData);
+  const {
+    _id,
+    name,
+    email,
+    phone,
+    role,
+    isVerified,
+    status,
+    twoStepAuth,
+    loginHistory,
+    customerID,
+    wallet,
+  } = bookingData?.customer || {};
   return (
     <main className="bg-[#FBFBFB]">
       <Container>
@@ -46,7 +59,7 @@ const [bookingData,setBookingData] =useState([])
               </div>
               <Card className="border-transparent relative overflow-hidden">
                 <CardContent className="p-4 sm:p-5 lg:p-8 lg:leading-relaxed grid grid-cols-12 justify-between lg:items-center gap-5 xl:gap-[38px] text-t-700">
-                  <div className="grid grid-cols-3 xl:flex xl:gap-x-10 col-span-12 xl:col-span-5">
+                  <div className="grid grid-cols-3 xl:flex xl:gap-x-10 col-span-12 xl:col-span-5 justify-center items-center">
                     <ul className="col-span-1 space-y-5">
                       <li>Customer</li>
                       <li>Email</li>
@@ -55,12 +68,12 @@ const [bookingData,setBookingData] =useState([])
                       <li>Status</li>
                     </ul>
                     <ul className="col-span-2 space-y-5">
-                      <li>: Md Irfanul Haque</li>
-                      <li>: irfan@besttrip.travel</li>
-                      <li>: 01871249015</li>
-                      <li>: Md Irfanul Haque</li>
+                      <li>: {name}</li>
+                      <li>:{email}</li>
+                      <li>: {phone}</li>
+                      <li>: N/A</li>
                       <li>
-                        : <span className="text-[#009A34]">Success</span>
+                        : <span className="text-[#009A34]">{status}</span>
                       </li>
                     </ul>
                   </div>
@@ -84,7 +97,7 @@ const [bookingData,setBookingData] =useState([])
               </Card>
             </div>
 
-            <UmrahBookingCard />
+            <UmrahBookingCard data={bookingData?.umrahPackage}/>
 
             <FareDetailsCard />
 
@@ -93,7 +106,7 @@ const [bookingData,setBookingData] =useState([])
             ))}
           </div>
 
-          <ActionButtonContainer bookingData={bookingData}/>
+          <ActionButtonContainer bookingData={bookingData} />
         </div>
       </Container>
     </main>

@@ -15,8 +15,10 @@ import numeral from "numeral";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { renderInclusionIcon } from "@/lib/utils";
+import moment from "moment";
 
 const UmrahCard = ({ data }) => {
+  console.log({data},"");
   return (
     <Card className="border-transparent relative overflow-hidden">
       <div className="absolute top-5 -right-9 rotate-45 bg-p-300 px-10 py-2 text-sm lg:text-base text-t-700 font-medium leading-snug capitalize pointer-events-none">
@@ -46,7 +48,7 @@ const UmrahCard = ({ data }) => {
                     className="mt-0.5 flex-shrink-0"
                   />
                   <span className="flex-shrink-0">
-                    From <span className="">{data?.from}</span>
+                    From <span className="">{data?.departureLocation}</span>
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
@@ -55,19 +57,19 @@ const UmrahCard = ({ data }) => {
                     className="mt-0.5 flex-shrink-0"
                   />
                   <span className="flex-shrink-0">
-                    Journey Date : 20 Jun, 2024
+                    Journey Date : {moment(data?.journeyDate).format("DD-MM-YYYY")}
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
                   <ClockRedIcon className="mt-0.5 flex-shrink-0" />
                   <span className="flex-shrink-0">
-                    {data?.days} Days | {data?.nights} Nights
+                    {data?.totalDaysAndNights?.days} Days | {data?.totalDaysAndNights?.days} Nights
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
                   <PeopleIcon fill="#F50308" className="mt-0.5 flex-shrink-0" />
                   <span className="flex-shrink-0">
-                    Group Available : {data?.group} Pax
+                    Group Available : {data?.seats} Pax
                   </span>
                 </li>
               </ul>

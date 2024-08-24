@@ -14,15 +14,17 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { XIcon } from "lucide-react";
 import { useState } from "react";
+import axios from "axios";
+import { useSession } from "next-auth/react";
+import Swal from "sweetalert2";
 
 const DepositForm = ({ bookingData }) => {
-  console.log(bookingData, "bookingData");
   const router = useRouter();
   const [error, setError] = useState(null);
+  const { data } = useSession();
   const pathname = usePathname();
   const [openOnline, setOpenOnline] = useState(false);
   const [openManual, setOpenManual] = useState(false);
@@ -30,8 +32,6 @@ const DepositForm = ({ bookingData }) => {
   const [openFullPayment, setOpenFullPayment] = useState(false);
   const [openPartPaymnet, setOpenPartPaymnet] = useState(false);
   const [balance, setBalance] = useState(100);
-  const [partPaymentBalance, setPartPaymentBalance] = useState(29500);
-  const [fullPaymentBalance, setFullPaymentBalance] = useState(210500);
 
   const form = useForm({
     defaultValues: {
@@ -79,78 +79,107 @@ const DepositForm = ({ bookingData }) => {
       setOpenFullPayment(false);
     }
   };
-  console.log(pathname.startsWith("/booking-details"));
-  function onSubmit(values) {
-    if (openManual && pathname === "/profile/payment-method") {
-      // router.push("/profile/payment-method/manual-banking");
-      router.push("/profile/manual-banking");
-      console.log(openManual && pathname === "/profile/payment-method");
-    }
+  // function onSubmit(values) {
+  //   if (openManual && pathname === "/profile/payment-method") {
+  //     // router.push("/profile/payment-method/manual-banking");
+  //     router.push("/profile/manual-banking");
+  //     console.log(openManual && pathname === "/profile/payment-method");
+  //   }
 
-    if (openManual && pathname === "/profile/add-balance") {
-      router.push("/profile/manual-banking");
-      console.log(values.manual && pathname === "/profile/add-balance");
-    }
+  //   if (openManual && pathname === "/profile/add-balance") {
+  //     router.push("/profile/manual-banking");
+  //     console.log(values.manual && pathname === "/profile/add-balance");
+  //   }
 
-    if (openWallet && pathname.startsWith("/booking-details")) {
-      if (!values.full && !values.part) {
-        if (partPaymentBalance > balance && fullPaymentBalance > balance) {
-          return setError(
-            <>
-              <p className="text-sm">
-                You don&apos;t have enough balance to complete this payment.
-                Please{" "}
-                <Link href="/profile/add-balance">
-                  <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
-                    {pathname.startsWith("/booking-details")
-                      ? "Add Money"
-                      : " Deposit Now"}
-                  </Button>
-                </Link>{" "}
-                to continue
-              </p>
-            </>
-          );
-        }
-      }
-      router.push("/profile/payment-method/online-banking");
-    } else if (openWallet && pathname === "/profile/payment-method") {
-      router.push("/profile/payment-method/online-banking");
-    }
+  //   if (openWallet && pathname.startsWith("/booking-details")) {
+  //     if (!values.full && !values.part) {
+  //       if (partialTotal > balance && subTotal > balance) {
+  //         return setError(
+  //           <>
+  //             <p className="text-sm">
+  //               You don&apos;t have enough balance to complete this payment.
+  //               Please{" "}
+  //               <Link href="/profile/add-balance">
+  //                 <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
+  //                   {pathname.startsWith("/booking-details")
+  //                     ? "Add Money"
+  //                     : " Deposit Now"}
+  //                 </Button>
+  //               </Link>{" "}
+  //               to continue
+  //             </p>
+  //           </>
+  //         );
+  //       }
+  //     }
+  //     router.push("/profile/payment-method/online-banking");
+  //   } else if (openWallet && pathname === "/profile/payment-method") {
+  //     router.push("/profile/payment-method/online-banking");
+  //   }
 
-    if (openOnline) {
-      if (!values.ssl) {
-        return setError("Please select a payment method");
-      }
-      if (
-        !values.full &&
-        !values.part &&
-        pathname.startsWith("/booking-details")
-      ) {
-        if (partPaymentBalance > balance && fullPaymentBalance > balance) {
-          return setError(
-            <>
-              <p className="text-sm">
-                You don&apos;t have enough balance to complete this payment.
-                Please{" "}
-                <Link href="/profile/add-balance">
-                  <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
-                    {pathname.startsWith("/booking-details")
-                      ? "Add Money"
-                      : " Deposit Now"}
-                  </Button>
-                </Link>{" "}
-                to continue
-              </p>
-            </>
-          );
-        }
-      }
-      router.push("/profile/payment-method/online-banking");
+  //   if (openOnline) {
+  //     if (!values.ssl) {
+  //       return setError("Please select a payment method");
+  //     }
+  //     if (
+  //       !values.full &&
+  //       !values.part &&
+  //       pathname.startsWith("/booking-details")
+  //     ) {
+  //       if (partialTotal > balance && subTotal > balance) {
+  //         return setError(
+  //           <>
+  //             <p className="text-sm">
+  //               You don&apos;t have enough balance to complete this payment.
+  //               Please{" "}
+  //               <Link href="/profile/add-balance">
+  //                 <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
+  //                   {pathname.startsWith("/booking-details")
+  //                     ? "Add Money"
+  //                     : " Deposit Now"}
+  //                 </Button>
+  //               </Link>{" "}
+  //               to continue
+  //             </p>
+  //           </>
+  //         );
+  //       }
+  //     }
+  //     router.push("/profile/payment-method/online-banking");
 
-      // if (!values.agree) {
-      //   return setError("Please agree with our terms and conditions");
-      // }
+  //     // if (!values.agree) {
+  //     //   return setError("Please agree with our terms and conditions");
+  //     // }
+  //   }
+  // }
+
+  const adultTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "adult")
+  const childTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "child")
+  const infantTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "infant")
+  const subTotal = Number(bookingData?.umrahPackage?.adultPrice) * adultTravelers?.length + Number(bookingData?.umrahPackage?.childPrice) * childTravelers?.length + Number(bookingData?.umrahPackage?.infantPrice) * infantTravelers?.length
+  const partialTotal = Number(bookingData?.umrahPackage?.adultPartialPrice) * adultTravelers?.length + Number(bookingData?.umrahPackage?.childPartialPrice) * childTravelers?.length + Number(bookingData?.umrahPackage?.infantPartialPrice) * infantTravelers?.length;
+  const onSubmit = async (values) => {
+    const paymentType = values?.full === true ? "full-payment" : "partial-payment";
+    try {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/umrah/booking/${bookingData?.umrahPackage?._id}/make-payment`, {paymentType}, { headers: { "Authorization": `Bearer ${data?.user?.accessToken}` } });
+      console.log(response?.data?.message);
+      Swal.fire({
+        text: response?.data?.message,
+        icon: "success",
+        confirmButtonText: "Ok, got it",
+        confirmButtonColor: "#3ad965",
+      });
+      // router.push(`/umrah/${id}/traveller-details`)
+    } catch (error) {
+      console.log(error?.response?.data?.message);
+      console.log(error);
+      Swal.fire({
+        title: `Error`,
+        text: error?.response?.data?.message,
+        icon: "error",
+        confirmButtonText: "Ok, got it",
+        confirmButtonColor: "#3ad965",
+      });
     }
   }
 
@@ -425,7 +454,7 @@ const DepositForm = ({ bookingData }) => {
                               <div className="space-y-2">
                                 <p>Total to Pay BDT</p>
                                 <span className="text-[20px] block">
-                                  {fullPaymentBalance}
+                                  {subTotal}
                                 </span>
                               </div>
                             </div>
@@ -465,7 +494,7 @@ const DepositForm = ({ bookingData }) => {
                               <div className="space-y-2">
                                 <p>Total to Pay BDT</p>
                                 <span className="text-[20px] block">
-                                  {partPaymentBalance}
+                                  {partialTotal}
                                 </span>
                               </div>
                             </div>
@@ -514,7 +543,7 @@ const DepositForm = ({ bookingData }) => {
                               <div className="space-y-2">
                                 <p>Total to Pay BDT</p>
                                 <span className="text-[20px] block">
-                                  {fullPaymentBalance}
+                                  {subTotal}
                                 </span>
                               </div>
                             </div>
@@ -554,7 +583,7 @@ const DepositForm = ({ bookingData }) => {
                               <div className="space-y-2">
                                 <p>Total to Pay BDT</p>
                                 <span className="text-[20px] block">
-                                  {partPaymentBalance}
+                                  {partialTotal}
                                 </span>
                               </div>
                             </div>

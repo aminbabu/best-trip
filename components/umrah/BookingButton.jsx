@@ -15,8 +15,21 @@ const BookingButton = ({ id }) => {
     const { adultTravelers, childTravelers, infantsTravelers } = searchedValue;
     const totalTravelers = Number(adultTravelers) + Number(childTravelers) + Number(infantsTravelers)
     const data2 = { umrahPackage: id, totalTravelers }
-    const { data, accessToken } = useSession()
+    const { data } = useSession()
+
     const getDetail = async () => {
+        if (!data) {
+            Swal.fire({
+                title: `You Need To Login First`,
+                icon: "error",
+                confirmButtonText: "Ok, got it",
+                confirmButtonColor: "#3ad965",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    router.push("/sign-in")
+                }
+            });
+        }
         try {
             const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/umrah/booking`, { ...data2 }, { headers: { "Authorization": `Bearer ${data?.user?.accessToken}` } });
             if (typeof window != undefined) localStorage.setItem("bookingId", response.data.data._id)
@@ -33,7 +46,6 @@ const BookingButton = ({ id }) => {
                 router.push(`/umrah/${error.response.data?.id}/traveller-details`)
                 if (typeof window != undefined) localStorage.setItem("bookingId", error.response.data?.id)
             }
-            console.log(error);
         }
     }
     return <div className="grid">
