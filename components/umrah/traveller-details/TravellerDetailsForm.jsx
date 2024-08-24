@@ -38,8 +38,9 @@ import { countries } from "@/data/countries";
 import PhoneInputComponent from "./PhoneInputComponent";
 import axios from "axios";
 import { useSession } from "next-auth/react";
+import { addNewTraveler } from "@/actions/traveler/add-new-traveler";
 
-const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
+const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
   const today = new Date();
   const twoYearsBack = new Date(today);
   const twelveYearsBack = new Date(today);
@@ -77,7 +78,8 @@ const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
 
   // Add infant travelers
   addTravelers(infantTravellersArray, "Infant");
-  const { data: userData } = useSession();
+
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [passport, setPassport] = useState(null);
@@ -116,7 +118,7 @@ const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
   }, [travelerType]);
 
   const form = useForm({
-    // resolver: zodResolver(travellerSchema),
+    resolver: zodResolver(travellerSchema),
     defaultValues: {
       passport: "",
       photo: "",
@@ -139,8 +141,6 @@ const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
       phone: "",
     },
   });
-
-
   const handleDisableDate = (date) => {
     if (travelerType === "A") {
       return date > twelveYearsBack || date < new Date("1900-01-01");
@@ -154,7 +154,6 @@ const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
   };
 
   const onSubmit = async (data) => {
-    // TODO DATA IS NOT SENDING TO SERVER
     const form = new FormData();
     form.append("passport", passport);
     form.append("travelerPhoto", photo);
@@ -176,11 +175,10 @@ const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
     form.append("travelerType", data.travelerType.split(" ")[2]?.slice(1, -1)?.toLowerCase())
     form.append("umrahBooking", umrahBooking)
     form.append("umrahPackage", id)
-    const getDetail = async () => {
+    const addTraveler = async () => {
       try {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/umrah/travelers`, form, { headers: { "Authorization": `Bearer ${userData?.user?.accessToken}` } });
+        const response = await addNewTraveler(form);
         console.log(response, "from add traveler");
-        // if (typeof window != undefined) localStorage.setItem("bookingId", response.data.data._id)
         setLoading(false);
         hideTravellerForm();
         Swal.fire({
@@ -190,9 +188,7 @@ const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
           confirmButtonText: "Ok",
           confirmButtonColor: "#3ad965",
         });
-        // router.push(`/umrah/${id}/traveller-details`)
       } catch (error) {
-        console.log(error);
         Swal.fire({
           text: error?.response?.data?.message,
           icon: "error",
@@ -201,7 +197,7 @@ const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
         });
       }
     }
-    getDetail();
+    addTraveler();
   };
 
   return (
@@ -796,4 +792,4 @@ const TravellerDetailsForm = ({ hideTravellerForm, id }) => {
   );
 };
 
-export default TravellerDetailsForm;
+export default TravelerDetailsForm;

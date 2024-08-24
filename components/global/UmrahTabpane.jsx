@@ -13,6 +13,7 @@ import moment from "moment";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import AccessToken from "../AccessToken";
 
 const schedules = [
   "january",
@@ -28,13 +29,11 @@ const schedules = [
   "november",
   "december",
 ];
-// const types = ["economy", "standard", "premium"];
-// const durations = [10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 90];
 
 
 const UmrahTabpane = ({ icon, disabled, className, slug }) => {
+  { AccessToken() }
   const router = useRouter();
-
   const [durations, setDurations] = useState([]);
   const [durationError, setDurationError] = useState(null);
   const [durationLoading, setDurationLoading] = useState(true);
@@ -55,8 +54,6 @@ const UmrahTabpane = ({ icon, disabled, className, slug }) => {
   }
   const [params, setParams] = useState(searchedValue ? searchedValue : {});
   const [isTravelersOpen, setIsTravelersOpen] = useState(false);
-  // const [type, setType] = useState(null);
-  // const [duration, setDuration] = useState(null);
   const [packageType, setPackageType] = useState(packageTypes[0]);
   const [packageDuration, setPackageDuration] = useState(null)
   const [travelers, setTravelers] = useState([
@@ -82,21 +79,16 @@ const UmrahTabpane = ({ icon, disabled, className, slug }) => {
 
 
 
-
+  // Fetch the package durations and package types on component mount
   useEffect(() => {
     const fetchPackageDurations = async () => {
       setDurationLoading(true);
       try {
-        const { umrahPackageDurations, error } =
+        const response =
           await getPackageDurationsForCustomers();
-
-        if (error) {
-          setDurationError(error);
-        } else {
-          setDurations(umrahPackageDurations);
-        }
+        setDurations(response?.data?.umrahPackageDurations || []);
       } catch (error) {
-        setDurationError(error);
+        console.log(error);
       } finally {
         setDurationLoading(false);
       }
@@ -123,7 +115,7 @@ const UmrahTabpane = ({ icon, disabled, className, slug }) => {
 
     fetchPackageTypes();
   }, []);
-
+  // Check The Validation Of Schedule Type And Duration
   const checkValidation = () => {
     try {
       const validatedData = umrahSchema.parse({
@@ -143,7 +135,7 @@ const UmrahTabpane = ({ icon, disabled, className, slug }) => {
       return false;
     }
   };
-
+  // Increment The Count Of Travelers
   const handleCounterIncrement = (id) => {
     const newTravelers = travelers.map((item) => {
       if (item.id === id) {
@@ -156,7 +148,7 @@ const UmrahTabpane = ({ icon, disabled, className, slug }) => {
     });
     setTravelers(newTravelers);
   };
-
+  // Decrement The Count Of Travelers
   const handleCounterDecrement = (id) => {
     const newTravelers = travelers.map((item) => {
       if (item.id === id) {
@@ -176,11 +168,11 @@ const UmrahTabpane = ({ icon, disabled, className, slug }) => {
 
     setTravelers(newTravelers);
   };
-
+  // Disable The Fields Conditionally
   const handleDisableFields = () => {
     setIsDisabled(false);
   };
-
+  // Submit The Form And Redirect To Umrah Search Page
   const handleSubmit = async () => {
     const data = checkValidation();
     if (!data) return;
@@ -214,6 +206,8 @@ const UmrahTabpane = ({ icon, disabled, className, slug }) => {
       setLoading(false); // Reset loading state after navigation
     }
   };
+
+  // Update the state based on the params => From LocalStorage or Default
   useEffect(() => {
     const selectedPackageType = packageTypes.find((item) => item._id === params.type);
     const selectedDuration = durations.find((item) => item._id === params.duration);

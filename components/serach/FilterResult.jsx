@@ -21,9 +21,7 @@ const FilterResult = ({ slug }) => {
   const [loadingInitial, setLoadingInitial] = useState(true);
   const [loading, setLoading] = useState(false);
   const [lastItemId, setLastItemId] = useState(""); // Initialize lastItemId
-
   const loaderRef = useRef(null);
-  const searchParams = useSearchParams();
 
   const loadInitialData = useCallback(
     async (isLoadMore = false) => {
@@ -33,29 +31,40 @@ const FilterResult = ({ slug }) => {
           packageSchedule: params.schedule,
           packageType: params.type,
           packageDuration: params.duration,
-          dataLength: params.dataLength || 20,
+          dataLength: params.dataLength || 2,
           adultTravelers: params.adultTravelers,
           childTravelers: params.childTravelers,
           infantsTravelers: params.infantsTravelers,
           lastItemId: isLoadMore ? lastItemId : ""
         });
-
+  
         const { umrahPackages } = response;
-
-        // Check if new data is actually fetched
         if (umrahPackages && umrahPackages.umrahPackages.length > 0) {
-          setItems((prevItems) => [
-            ...prevItems,
-            ...umrahPackages.umrahPackages,
-          ]);
+          setItems((prevItems) => {
+            // Create a new array combining previous items and new items
+            const combinedItems = [
+              ...prevItems,
+              ...umrahPackages.umrahPackages,
+            ];
+  
+            // Create a map to remove duplicates based on _id
+            const uniqueItemsMap = new Map();
+            combinedItems.forEach((item) => {
+              uniqueItemsMap.set(item._id, item);
+            });
+  
+            // Return an array of unique items
+            return Array.from(uniqueItemsMap.values());
+          });
+  
           if (umrahPackages.nextCursor) {
             setLastItemId(umrahPackages.nextCursor);
           } else {
             setLastItemId(null);
           }
-          setHasMore(!!umrahPackages.nextCursor); // Update hasMore based on the presence of nextCursor
+          setHasMore(umrahPackages?.hasMore);
         } else {
-          setHasMore(false); // No more data to load
+          setHasMore(false);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -66,6 +75,7 @@ const FilterResult = ({ slug }) => {
     },
     [params, lastItemId]
   );
+  
   useEffect(() => {
     loadInitialData();
   }, [params, loadInitialData]);

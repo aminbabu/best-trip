@@ -1,7 +1,7 @@
 "use client";
 
 import Container from "@/components/layouts/Container";
-import TravellerDetailsForm from "@/components/umrah/traveller-details/TravellerDetailsForm";
+import TravelerDetailsForm from "@/components/umrah/traveller-details/TravellerDetailsForm";
 import TravellerList from "@/components/umrah/traveller-details/TravellerList";
 import { useState } from "react";
 
@@ -13,7 +13,7 @@ const AddTravellersPage = ({ params }) => {
     <main className="py-16 bg-[#fbfbfb]">
       <Container>
         {addTraveller ? (
-          <TravellerDetailsForm
+          <TravelerDetailsForm
             hideTravellerForm={() => setAddTraveller(false)}
             id={id}
           />

@@ -1,5 +1,6 @@
 
 "use client"
+import { getBookingData } from "@/actions/booking/get-booking-data";
 import ActionButtonContainer from "@/components/booking-details/ActionButtonContainer";
 import FareDetailsCard from "@/components/booking-details/FareDetailsCard";
 import TravellerBookingForm from "@/components/booking-details/TravellerBookingForm";
@@ -21,29 +22,21 @@ const BookingDetails = ({ params }) => {
   const { data } = useSession();
   const [bookingData, setBookingData] = useState([])
   useEffect(() => {
-    const getDetail = async () => {
+    const getBookingDetail = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/umrah/booking/customer/${id}`, { headers: { "Authorization": `Bearer ${data?.user?.accessToken}` } });
+        const response = await getBookingData(id)
         setBookingData(response?.data?.umrahBookings)
       } catch (error) {
         console.log(error, "from bookings");
       }
     }
-    getDetail();
+    getBookingDetail();
   }, [data?.user?.accessToken, id])
-  console.log(bookingData);
   const {
-    _id,
     name,
     email,
     phone,
-    role,
-    isVerified,
     status,
-    twoStepAuth,
-    loginHistory,
-    customerID,
-    wallet,
   } = bookingData?.customer || {};
   return (
     <main className="bg-[#FBFBFB]">
@@ -97,7 +90,7 @@ const BookingDetails = ({ params }) => {
               </Card>
             </div>
 
-            <UmrahBookingCard data={bookingData?.umrahPackage}/>
+            <UmrahBookingCard data={bookingData?.umrahPackage} />
 
             <FareDetailsCard />
 

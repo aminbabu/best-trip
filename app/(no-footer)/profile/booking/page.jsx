@@ -1,10 +1,8 @@
 "use client"
+import { getMyBookings } from "@/actions/booking/get-my-bookings";
 import PaymentTable from "@/components/profile/PaymentTable";
-import axios from "axios";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import Swal from "sweetalert2";
 
 const Booking = () => {
   const { data } = useSession()
@@ -12,7 +10,7 @@ const Booking = () => {
   useEffect(() => {
     const getDetail = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/umrah/booking/my-bookings`, { headers: { "Authorization": `Bearer ${data?.user?.accessToken}` } });
+        const response = await getMyBookings()
         setBookingData(response?.data?.umrahBookings)
       } catch (error) {
         console.log(error, "from bookings");

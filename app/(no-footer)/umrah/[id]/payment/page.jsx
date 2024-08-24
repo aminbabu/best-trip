@@ -1,4 +1,6 @@
 "use client"
+import { getBookingData } from "@/actions/booking/get-booking-data";
+import { submitBookingForReview } from "@/actions/booking/submit-booking-for-review";
 import {
   BusRedIcon,
   CalenderIcon,
@@ -12,11 +14,9 @@ import {
 import Container from "@/components/layouts/Container";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import axios from "axios";
 import { BusIcon } from "lucide-react";
 import moment from "moment";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
@@ -27,27 +27,26 @@ const PaymentPage = ({ params }) => {
   const router = useRouter()
   const [bookingData, setBookingData] = useState([])
   useEffect(() => {
-    const getDetail = async () => {
+    const getBookingDetail = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/umrah/booking/customer/${id}`, { headers: { "Authorization": `Bearer ${data?.user?.accessToken}` } });
+        const response = await getBookingData(id)
         setBookingData(response?.data?.umrahBookings)
       } catch (error) {
-        // console.log(error, "from bookings");
+        console.log(error, "from get booking detail");
       }
     }
-    getDetail();
+    getBookingDetail();
   }, [data?.user?.accessToken, id])
   const adultTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "adult")
   const childTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "child")
   const infantTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "infant")
   const subtotal = Number(bookingData?.umrahPackage?.adultPrice) * adultTravelers?.length + Number(bookingData?.umrahPackage?.childPrice) * childTravelers?.length + Number(bookingData?.umrahPackage?.infantPrice) * infantTravelers?.length
-  console.log(subtotal);
 
-  // /api/umrah/booking/66c7a0b2fa348ff908e2940b/submit-review
   const submitForReview = async () => {
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/umrah/booking/${id}/submit-review`, {}, { headers: { "Authorization": `Bearer ${data?.user?.accessToken}` } });
+      const response = await submitBookingForReview(id)
       router.push("/payment-method/online-banking")
+      console.log(response);
     } catch (error) {
       console.log(error, "from bookings");
       Swal.fire({

@@ -20,6 +20,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import "@/styles/umrah/splide.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import moment from "moment";
 
 const options = {
   type: "loop",
@@ -100,7 +101,7 @@ const Overview = ({ item }) => {
                     viewBox="0 0 16 17"
                   />
                   <span className="flex-shrink-0">
-                    Journey Date : {item?.journeyDate}
+                    Journey Date : {moment(item?.journeyDate).format("DD MMM YYYY")}
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">

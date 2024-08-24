@@ -30,20 +30,11 @@ import { Separator } from "@/components/ui/separator";
 import InfoTable from "@/components/umrah/InfoTable";
 import Image from "next/image";
 import data from "@/data/umrah-ziyarah.json";
-
 import "@/styles/umrah/splide.css";
-import Link from "next/link";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Minus } from "lucide-react";
 import { useEffect, useState } from "react";
-import {
-  busServiceList,
-  madinahZiyarahList,
-  makkahZiyarahList,
-  taifZiyarahList,
-  transportTypes,
-} from "@/data/package-details";
 import { getUmrahPackageByIdForCustomers } from "@/actions/umrahPackages/get-umrah-packages";
 import { airlines } from "@/data/airline";
 import moment from "moment";
@@ -123,7 +114,6 @@ const options = {
 
 const UmrahDetailsPage = ({ params }) => {
   const { id } = params;
-  const { items } = data;
   const [showBus, isShowBus] = useState(true);
   const [showTransportTypes, isShowTransportTypes] = useState(true);
   const [showMakkah, isShowMakkah] = useState(true);

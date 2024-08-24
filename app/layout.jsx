@@ -25,7 +25,6 @@ const RootLayout = async ({ children }) => {
   } catch (error) {
     console.log(error);
   }
-
   return (
     <html lang="en">
       <body

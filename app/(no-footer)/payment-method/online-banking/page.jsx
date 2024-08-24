@@ -3,7 +3,7 @@
 import MessageCard from "@/components/global/MessageCard";
 import { LoaderIcon } from "@/components/icons/svgr";
 import Container from "@/components/layouts/Container";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const OnlineBankingPage = () => {

@@ -125,9 +125,9 @@ const DataTable = ({
                   <TableRow>
                     <TableCell
                       colSpan={columns.length}
-                      className="h-24 text-center"
+                      className="text-xl text-center"
                     >
-                      No results.
+                      No Traveler Available
                     </TableCell>
                   </TableRow>
                 )}

@@ -20,6 +20,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Swal from "sweetalert2";
+import { makePayment } from "@/actions/payment/make-payment";
 
 const DepositForm = ({ bookingData }) => {
   const router = useRouter();
@@ -161,7 +162,7 @@ const DepositForm = ({ bookingData }) => {
   const onSubmit = async (values) => {
     const paymentType = values?.full === true ? "full-payment" : "partial-payment";
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/umrah/booking/${bookingData?.umrahPackage?._id}/make-payment`, {paymentType}, { headers: { "Authorization": `Bearer ${data?.user?.accessToken}` } });
+      const response = await makePayment(bookingData?.umrahPackage?._id, paymentType)
       console.log(response?.data?.message);
       Swal.fire({
         text: response?.data?.message,

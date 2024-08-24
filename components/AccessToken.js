@@ -5,6 +5,7 @@ import { useEffect } from "react";
 
 export default function AccessToken() {
   const { data: session } = useSession();
+  console.log(session,"from this");
   useEffect(() => {
     localStorage.setItem("accessToken", session?.user?.accessToken);
   }, [session]);
