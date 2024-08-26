@@ -18,6 +18,7 @@ const Booking = () => {
     }
     getDetail();
   }, [data?.user?.accessToken])
+  console.log(bookingData);
   return (
     <div>
       <PaymentTable data={bookingData} userData={data}/>

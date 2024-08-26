@@ -17,23 +17,19 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { XIcon } from "lucide-react";
 import { useState } from "react";
-import axios from "axios";
-import { useSession } from "next-auth/react";
 import Swal from "sweetalert2";
 import { makePayment } from "@/actions/payment/make-payment";
 
 const DepositForm = ({ bookingData }) => {
-  const router = useRouter();
   const [error, setError] = useState(null);
-  const { data } = useSession();
   const pathname = usePathname();
   const [openOnline, setOpenOnline] = useState(false);
   const [openManual, setOpenManual] = useState(false);
   const [openWallet, setOpenWallet] = useState(false);
   const [openFullPayment, setOpenFullPayment] = useState(false);
   const [openPartPaymnet, setOpenPartPaymnet] = useState(false);
+  const [loading, setLoading] = useState(false)
   const [balance, setBalance] = useState(100);
-
   const form = useForm({
     defaultValues: {
       manual: false,
@@ -155,26 +151,35 @@ const DepositForm = ({ bookingData }) => {
   // }
 
   const adultTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "adult")
+
   const childTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "child")
+
   const infantTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "infant")
+
   const subTotal = Number(bookingData?.umrahPackage?.adultPrice) * adultTravelers?.length + Number(bookingData?.umrahPackage?.childPrice) * childTravelers?.length + Number(bookingData?.umrahPackage?.infantPrice) * infantTravelers?.length
+
   const partialTotal = Number(bookingData?.umrahPackage?.adultPartialPrice) * adultTravelers?.length + Number(bookingData?.umrahPackage?.childPartialPrice) * childTravelers?.length + Number(bookingData?.umrahPackage?.infantPartialPrice) * infantTravelers?.length;
+
+  
   const onSubmit = async (values) => {
+    setLoading(true);
     const paymentType = values?.full === true ? "full-payment" : "partial-payment";
     try {
       const response = await makePayment(bookingData?.umrahPackage?._id, paymentType)
       console.log(response?.data?.message);
       Swal.fire({
+        position: "top-end",
         text: response?.data?.message,
         icon: "success",
         confirmButtonText: "Ok, got it",
         confirmButtonColor: "#3ad965",
       });
-      // router.push(`/umrah/${id}/traveller-details`)
+      setLoading(false)
     } catch (error) {
-      console.log(error?.response?.data?.message);
-      console.log(error);
+      setLoading(false)
+
       Swal.fire({
+        position: "top-end",
         title: `Error`,
         text: error?.response?.data?.message,
         icon: "error",
@@ -512,88 +517,94 @@ const DepositForm = ({ bookingData }) => {
 
           {openWallet && (
             <div className="space-y-8">
-              {pathname.startsWith("/booking-details") && (
+              {pathname.startsWith("/booking-details") && !(bookingData?.invoice?.paymentType === "full-payment") && (
                 <div className="grid grid-cols-2 gap-x-6 gap-y-7">
-                  <FormField
-                    control={form.control}
-                    name="full"
-                    render={({ field }) => (
-                      <FormItem className="space-y-0 col-span-2 sm:col-span-1">
-                        <FormLabel className="flex gap-x-2 font-normal">
-                          <FormControl>
-                            <Checkbox
-                              className="hidden"
-                              checked={openFullPayment}
-                              onCheckedChange={(value) => {
-                                field.onChange(value);
-                                handleFullPayment(value);
-                                setOpenFullPayment(value);
-                              }}
-                            />
-                          </FormControl>
-                          <div
-                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openFullPayment && "border-p-900"
-                              } flex-1`}
-                          >
-                            <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
-                              <span className="leading-normal">
-                                Continue with full payment
-                              </span>
-                            </div>
-                            <div className="px-4 md:px-5 py-6 flex items-center gap-3">
-                              <div className="space-y-2">
-                                <p>Total to Pay BDT</p>
-                                <span className="text-[20px] block">
-                                  {subTotal}
+                  {
+                    !(bookingData?.invoice?.paymentType === "full-payment") &&
+                    <FormField
+                      control={form.control}
+                      name="full"
+                      render={({ field }) => (
+                        <FormItem className="space-y-0 col-span-2 sm:col-span-1">
+                          <FormLabel className="flex gap-x-2 font-normal">
+                            <FormControl>
+                              <Checkbox
+                                className="hidden"
+                                checked={openFullPayment}
+                                onCheckedChange={(value) => {
+                                  field.onChange(value);
+                                  handleFullPayment(value);
+                                  setOpenFullPayment(value);
+                                }}
+                              />
+                            </FormControl>
+                            <div
+                              className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openFullPayment && "border-p-900"
+                                } flex-1`}
+                            >
+                              <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
+                                <span className="leading-normal">
+                                  Continue with full payment
                                 </span>
                               </div>
-                            </div>
-                          </div>
-                        </FormLabel>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="partial"
-                    render={({ field }) => (
-                      <FormItem className="space-y-0 col-span-2 sm:col-span-1">
-                        <FormLabel className="flex gap-x-2 font-normal">
-                          <FormControl>
-                            <Checkbox
-                              className="hidden"
-                              checked={openPartPaymnet}
-                              onCheckedChange={(value) => {
-                                field.onChange(value);
-                                handlePartPayment(value);
-                                setOpenPartPaymnet(value);
-                              }}
-                            />
-                          </FormControl>
-                          <div
-                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openPartPaymnet && "border-p-900"
-                              } flex-1`}
-                          >
-                            <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
-                              <span className="leading-normal">
-                                Continue with partial payment
-                              </span>
-                            </div>
-                            <div className="px-4 md:px-5 py-6 flex items-center gap-3">
-                              <div className="space-y-2">
-                                <p>Total to Pay BDT</p>
-                                <span className="text-[20px] block">
-                                  {partialTotal}
-                                </span>
+                              <div className="px-4 md:px-5 py-6 flex items-center gap-3">
+                                <div className="space-y-2">
+                                  <p>Total to Pay BDT</p>
+                                  <span className="text-[20px] block">
+                                    {subTotal}
+                                  </span>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </FormLabel>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                          </FormLabel>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  }
+                  {
+                    !(bookingData?.invoice?.paymentType === "partial-payment") &&
+                    <FormField
+                      control={form.control}
+                      name="partial"
+                      render={({ field }) => (
+                        <FormItem className="space-y-0 col-span-2 sm:col-span-1">
+                          <FormLabel className="flex gap-x-2 font-normal">
+                            <FormControl>
+                              <Checkbox
+                                className="hidden"
+                                checked={openPartPaymnet}
+                                onCheckedChange={(value) => {
+                                  field.onChange(value);
+                                  handlePartPayment(value);
+                                  setOpenPartPaymnet(value);
+                                }}
+                              />
+                            </FormControl>
+                            <div
+                              className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openPartPaymnet && "border-p-900"
+                                } flex-1`}
+                            >
+                              <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
+                                <span className="leading-normal">
+                                  Continue with partial payment
+                                </span>
+                              </div>
+                              <div className="px-4 md:px-5 py-6 flex items-center gap-3">
+                                <div className="space-y-2">
+                                  <p>Total to Pay BDT</p>
+                                  <span className="text-[20px] block">
+                                    {partialTotal}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </FormLabel>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  }
                 </div>
               )}
             </div>
@@ -620,7 +631,8 @@ const DepositForm = ({ bookingData }) => {
               disabled={
                 !form.watch("manual") &&
                 !form.watch("online") &&
-                !form.watch("wallet")
+                !form.watch("wallet") &&
+                loading
               }
             >
               Continue

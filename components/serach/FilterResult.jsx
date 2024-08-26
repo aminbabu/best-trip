@@ -4,7 +4,6 @@ import CustomsCard from "@/components/serach/CustomsCard";
 import UmrahFlightCard from "@/components/serach/UmrahFlightCard";
 import VisaCard from "@/components/serach/VisaCard";
 import visaData from "@/data/visa-result.json";
-import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { Card } from "../ui/card";
 import FlightFilter from "../umrah-fight/FlightFilter";
@@ -31,7 +30,7 @@ const FilterResult = ({ slug }) => {
           packageSchedule: params.schedule,
           packageType: params.type,
           packageDuration: params.duration,
-          dataLength: params.dataLength || 2,
+          dataLength: params.dataLength || 20,
           adultTravelers: params.adultTravelers,
           childTravelers: params.childTravelers,
           infantsTravelers: params.infantsTravelers,

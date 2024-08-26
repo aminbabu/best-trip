@@ -2,19 +2,15 @@
 
 import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "../ui/card";
-import { Button } from "../ui/button";
-import { ExportIcon, FilterIcon, SearchIcon } from "../icons/svgr";
 import PaymentTablePagination from "./PaymentTablePagination";
 import PaymentTableFilter from "./PaymentTableFilter";
 import { usePathname } from "next/navigation";
 import {
-  bestPayTable,
   bookingListTable,
   generalLedgerTable,
   partialPaymentTable,
 } from "@/data/payment-tables";
 import moment from "moment";
-import { useSession } from "next-auth/react";
 import Link from "next/link";
 
 const PaymentTable = ({ data, userData }) => {
@@ -58,7 +54,7 @@ const PaymentTable = ({ data, userData }) => {
             <tbody>
               {data?.map((item, ind) => (
                 <tr key={ind} className="border-b border-dashed border-[#f1f1f4] text-sm lg:text-base font-normal [&>*:last-child]:text-right">
-                  <td ><Link href={`/booking-details/${item?._id}`} className="hover:text-red-500 ">{item?._id}</Link></td>
+                  <td ><Link href={`/booking-details/${item?._id}`} className="hover:text-red-500 ">{item?.bookingRefId}</Link></td>
                   <td >{item?.status}</td>
                   <td >{item?.bookingType||"N/A"}</td>
                   <td >{moment(item?.createdAt).format("MMM DD, YYYY-HH:mm")}</td>

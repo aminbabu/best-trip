@@ -7,7 +7,7 @@ import TravellerBookingForm from "@/components/booking-details/TravellerBookingF
 import UmrahBookingCard from "@/components/booking-details/UmrahBookingCard";
 import Container from "@/components/layouts/Container";
 import { Card, CardContent } from "@/components/ui/card";
-import axios from "axios";
+import moment from "moment";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
@@ -38,7 +38,6 @@ const BookingDetails = ({ params }) => {
     phone,
     status,
   } = bookingData?.customer || {};
-
   return (
     <main className="bg-[#FBFBFB]">
       <Container>
@@ -48,7 +47,7 @@ const BookingDetails = ({ params }) => {
               <div className="px-[34px] py-6 bg-[#FFEFEF] rounded-t">
                 <h2 className="text-base leading-snug font-medium text-t-700">
                   Booking Reference :{" "}
-                  <span className="text-p-900">BTU24000024</span>
+                  <span className="text-p-900">{bookingData?.bookingRefId}</span>
                 </h2>
               </div>
               <Card className="border-transparent relative overflow-hidden">
@@ -80,10 +79,10 @@ const BookingDetails = ({ params }) => {
                       <li>Supplier</li>
                     </ul>
                     <ul className="col-span-2 space-y-5">
-                      <li>: 18 February, 2024 - 22:00:22</li>
-                      <li>: Online - Visa Card</li>
-                      <li>: 18 February, 2024 - 22:00:22</li>
-                      <li>: INV24000001</li>
+                      <li>: {moment(bookingData?.createdAt).format("DD MMM, YYYY")}</li>
+                      <li>: N/A</li>
+                      <li>: N/A</li>
+                      <li>: {bookingData?.invoice?.invoiceId}</li>
                       <li>: Best Trip Travel</li>
                     </ul>
                   </div>
@@ -91,10 +90,10 @@ const BookingDetails = ({ params }) => {
               </Card>
             </div>
 
-            <UmrahBookingCard data={bookingData?.umrahPackage} />
+            <UmrahBookingCard data={bookingData?.umrahPackage}/>
 
-            <FareDetailsCard />
-              <TravellerBookingForm key={bookingData?._id} traveler={bookingData?.travelers} />
+            <FareDetailsCard bookingData={bookingData}/>
+            <TravellerBookingForm key={bookingData?._id} bookingData={bookingData}/>
           </div>
 
           <ActionButtonContainer bookingData={bookingData} />

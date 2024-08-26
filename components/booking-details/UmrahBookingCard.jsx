@@ -32,6 +32,7 @@ const data = {
 };
 
 const UmrahBookingCard = ({data}) => {
+  console.log(data);
 
   return (
     <Card className="border-transparent relative overflow-hidden">

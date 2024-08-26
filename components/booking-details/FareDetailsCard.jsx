@@ -1,7 +1,12 @@
 import React from "react";
 import { Card, CardContent } from "../ui/card";
 
-const FareDetailsCard = () => {
+const FareDetailsCard = ({ bookingData }) => {
+  const adultTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "adult")
+  const childTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "child")
+  const infantTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "infant")
+  const subtotal = Number(bookingData?.umrahPackage?.adultPrice) * adultTravelers?.length + Number(bookingData?.umrahPackage?.childPrice) * childTravelers?.length + Number(bookingData?.umrahPackage?.infantPrice) * infantTravelers?.length
+  console.log(subtotal);
   return (
     <Card className="border-transparent relative overflow-hidden">
       <CardContent className="p-4 sm:p-5 lg:p-8 xl:leading-8 flex flex-col justify-between">
@@ -27,32 +32,66 @@ const FareDetailsCard = () => {
                 Total Amount
               </li>
             </ul>
-            <ul className="grid grid-cols-7 bg-white">
+           {adultTravelers?.length > 0 && <ul className="grid grid-cols-7 bg-white">
               <li className="flex items-center justify-center px-2.5 py-1.5 border border-[#3D3D3D0D]">
                 Adult
               </li>
               <li className="flex items-center col-span-2 justify-center px-2.5 py-1.5 border border-[#3D3D3D0D]">
-                1,00,000
+                {bookingData?.umrahPackage?.adultPrice}
               </li>
               <li className="flex items-center justify-center px-2.5 py-1.5 border border-[#3D3D3D0D]">
                 0
               </li>
               <li className="flex items-center justify-center px-2.5 py-1.5 border border-[#3D3D3D0D]">
-                2
+                {adultTravelers?.length}
               </li>
               <li className="flex items-center justify-center col-span-2 px-2.5 py-1.5 border border-[#3D3D3D0D]">
-                2,00,000
+                {adultTravelers?.length * bookingData?.umrahPackage?.adultPrice || 0}
               </li>
-            </ul>
+            </ul>}
+           {childTravelers?.length > 0 && <ul className="grid grid-cols-7 bg-white">
+              <li className="flex items-center justify-center px-2.5 py-1.5 border border-[#3D3D3D0D]">
+                Child
+              </li>
+              <li className="flex items-center col-span-2 justify-center px-2.5 py-1.5 border border-[#3D3D3D0D]">
+                {bookingData?.umrahPackage?.childPrice}
+              </li>
+              <li className="flex items-center justify-center px-2.5 py-1.5 border border-[#3D3D3D0D]">
+                0
+              </li>
+              <li className="flex items-center justify-center px-2.5 py-1.5 border border-[#3D3D3D0D]">
+                {childTravelers?.length}
+              </li>
+              <li className="flex items-center justify-center col-span-2 px-2.5 py-1.5 border border-[#3D3D3D0D]">
+                {childTravelers?.length * bookingData?.umrahPackage?.childPrice || 0}
+              </li>
+            </ul>}
+           {infantTravelers?.length > 0 && <ul className="grid grid-cols-7 bg-white">
+              <li className="flex items-center justify-center px-2.5 py-1.5 border border-[#3D3D3D0D]">
+                Infant
+              </li>
+              <li className="flex items-center col-span-2 justify-center px-2.5 py-1.5 border border-[#3D3D3D0D]">
+                {bookingData?.umrahPackage?.infantPrice}
+              </li>
+              <li className="flex items-center justify-center px-2.5 py-1.5 border border-[#3D3D3D0D]">
+                0
+              </li>
+              <li className="flex items-center justify-center px-2.5 py-1.5 border border-[#3D3D3D0D]">
+                {infantTravelers?.length}
+              </li>
+              <li className="flex items-center justify-center col-span-2 px-2.5 py-1.5 border border-[#3D3D3D0D]">
+                {adultTravelers?.length * bookingData?.umrahPackage?.infantPrice || 0}
+              </li>
+            </ul>}
             <ul className="grid grid-cols-7 bg-white">
               <li className="flex items-center justify-center col-span-4 px-2.5 py-1.5 border border-[#3D3D3D0D]">
                 Sub-total
               </li>
               <li className="flex items-center justify-center px-2.5 py-1.5 border border-[#3D3D3D0D]">
-                2
+                {bookingData?.travelers?.length}
               </li>
               <li className="flex items-center justify-center col-span-2 px-2.5 py-1.5 border border-[#3D3D3D0D]">
-                2,00,000
+                {subtotal || 0}
               </li>
             </ul>
           </div>
