@@ -21,6 +21,7 @@ const BookingDetails = ({ params }) => {
   const { id } = params;
   const { data } = useSession();
   const [bookingData, setBookingData] = useState([])
+  const [refetch,setRefetch] = useState(false)
   useEffect(() => {
     const getBookingDetail = async () => {
       try {
@@ -31,7 +32,7 @@ const BookingDetails = ({ params }) => {
       }
     }
     getBookingDetail();
-  }, [data?.user?.accessToken, id])
+  }, [data?.user?.accessToken, id,refetch])
   const {
     name,
     email,
@@ -96,7 +97,7 @@ const BookingDetails = ({ params }) => {
             <TravellerBookingForm key={bookingData?._id} bookingData={bookingData}/>
           </div>
 
-          <ActionButtonContainer bookingData={bookingData} />
+          <ActionButtonContainer bookingData={bookingData} setRefetch={setRefetch}/>
         </div>
       </Container>
     </main>

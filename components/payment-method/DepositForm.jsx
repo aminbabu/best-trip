@@ -14,13 +14,10 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { XIcon } from "lucide-react";
 import { useState } from "react";
-import Swal from "sweetalert2";
-import { makePayment } from "@/actions/payment/make-payment";
-
-const DepositForm = ({ bookingData }) => {
+const DepositForm = ({ bookingData,onSubmit,loading }) => {
   const [error, setError] = useState(null);
   const pathname = usePathname();
   const [openOnline, setOpenOnline] = useState(false);
@@ -28,7 +25,7 @@ const DepositForm = ({ bookingData }) => {
   const [openWallet, setOpenWallet] = useState(false);
   const [openFullPayment, setOpenFullPayment] = useState(false);
   const [openPartPaymnet, setOpenPartPaymnet] = useState(false);
-  const [loading, setLoading] = useState(false)
+
   const [balance, setBalance] = useState(100);
   const form = useForm({
     defaultValues: {
@@ -58,14 +55,12 @@ const DepositForm = ({ bookingData }) => {
 
   const handleFromWallet = (value) => {
     if (value) {
-      console.log("wallet is selected", value);
       setOpenOnline(false);
     }
   };
 
   const handleFullPayment = (value) => {
     if (value) {
-      console.log("full payment is checked", value);
       setOpenPartPaymnet(false);
     }
   };
@@ -160,34 +155,8 @@ const DepositForm = ({ bookingData }) => {
 
   const partialTotal = Number(bookingData?.umrahPackage?.adultPartialPrice) * adultTravelers?.length + Number(bookingData?.umrahPackage?.childPartialPrice) * childTravelers?.length + Number(bookingData?.umrahPackage?.infantPartialPrice) * infantTravelers?.length;
 
-  
-  const onSubmit = async (values) => {
-    setLoading(true);
-    const paymentType = values?.full === true ? "full-payment" : "partial-payment";
-    try {
-      const response = await makePayment(bookingData?.umrahPackage?._id, paymentType)
-      console.log(response?.data?.message);
-      Swal.fire({
-        position: "top-end",
-        text: response?.data?.message,
-        icon: "success",
-        confirmButtonText: "Ok, got it",
-        confirmButtonColor: "#3ad965",
-      });
-      setLoading(false)
-    } catch (error) {
-      setLoading(false)
+console.log(bookingData?.invoice, "bookingData");
 
-      Swal.fire({
-        position: "top-end",
-        title: `Error`,
-        text: error?.response?.data?.message,
-        icon: "error",
-        confirmButtonText: "Ok, got it",
-        confirmButtonColor: "#3ad965",
-      });
-    }
-  }
 
   return (
     <>
@@ -517,10 +486,9 @@ const DepositForm = ({ bookingData }) => {
 
           {openWallet && (
             <div className="space-y-8">
-              {pathname.startsWith("/booking-details") && !(bookingData?.invoice?.paymentType === "full-payment") && (
+              {pathname.startsWith("/booking-details") && (
                 <div className="grid grid-cols-2 gap-x-6 gap-y-7">
-                  {
-                    !(bookingData?.invoice?.paymentType === "full-payment") &&
+                  {bookingData?.invoice?.paymentType !== "partial-payment" &&
                     <FormField
                       control={form.control}
                       name="full"
@@ -562,8 +530,7 @@ const DepositForm = ({ bookingData }) => {
                       )}
                     />
                   }
-                  {
-                    !(bookingData?.invoice?.paymentType === "partial-payment") &&
+                  { 
                     <FormField
                       control={form.control}
                       name="partial"
@@ -587,7 +554,7 @@ const DepositForm = ({ bookingData }) => {
                             >
                               <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
                                 <span className="leading-normal">
-                                  Continue with partial payment
+                                 {bookingData?.invoice?.paymentType === "partial-payment" ? "Continue With Due Payment" : "Continue with partial payment"}
                                 </span>
                               </div>
                               <div className="px-4 md:px-5 py-6 flex items-center gap-3">
@@ -629,9 +596,9 @@ const DepositForm = ({ bookingData }) => {
               className={`py-[15px] ${openOnline ? "" : "mt-6"} `}
               type="submit"
               disabled={
-                !form.watch("manual") &&
-                !form.watch("online") &&
-                !form.watch("wallet") &&
+                // !form.watch("manual") &&
+                // !form.watch("online") &&
+                // !form.watch("wallet") &&
                 loading
               }
             >

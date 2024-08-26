@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import OrderBooking from "./action-buttons/OrderBooking";
 import PrintAndDownload from "./action-buttons/PrintAndDownload";
 
-const ActionButtonContainer = ({bookingData}) => {
+const ActionButtonContainer = ({bookingData,setRefetch}) => {
   const handleCancelBooking = () => {
     const swalWithTailwindButtons = Swal.mixin({
       customClass: {
@@ -59,7 +59,7 @@ const ActionButtonContainer = ({bookingData}) => {
       </Link>
 
       {/* order booking */}
-      <OrderBooking bookingData={bookingData}/>
+      <OrderBooking bookingData={bookingData} setRefetch={setRefetch}/>
 
       {/* Account Balance Low */}
       <Button className="bg-white text-base font-normal text-p-900 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">

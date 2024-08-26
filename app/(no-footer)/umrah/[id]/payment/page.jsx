@@ -41,7 +41,7 @@ const PaymentPage = ({ params }) => {
   const childTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "child")
   const infantTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "infant")
   const subtotal = Number(bookingData?.umrahPackage?.adultPrice) * adultTravelers?.length + Number(bookingData?.umrahPackage?.childPrice) * childTravelers?.length + Number(bookingData?.umrahPackage?.infantPrice) * infantTravelers?.length
-
+  console.log(bookingData);
   const submitForReview = async () => {
     try {
       const response = await submitBookingForReview(id)
@@ -65,9 +65,9 @@ const PaymentPage = ({ params }) => {
         <Card className="text-t-600 border-transparent max-w-3xl mx-auto">
           <CardContent className="p-4 sm:p-6 md:p-8 lg:p-10">
             <h1 className="text-t-900 text-lg mb-1.5">
-              Quad Share Basis Package
+             {bookingData?.umrahPackage?.title}
             </h1>
-            <p className="mb-6">1 Friday In Makkah- 1 Friday In Madinah</p>
+            <p className="mb-6">{bookingData?.umrahPackage?.subtitle}</p>
             <div>
               <h3 className="text-base text-t-700 bg-p-300 px-4 md:px-5 py-3.5 rounded-md">
                 Booking Summary
