@@ -38,6 +38,7 @@ const BookingDetails = ({ params }) => {
     phone,
     status,
   } = bookingData?.customer || {};
+
   return (
     <main className="bg-[#FBFBFB]">
       <Container>
@@ -93,10 +94,7 @@ const BookingDetails = ({ params }) => {
             <UmrahBookingCard data={bookingData?.umrahPackage} />
 
             <FareDetailsCard />
-
-            {travellerList.map((traveller) => (
-              <TravellerBookingForm key={traveller.id} traveller={traveller} />
-            ))}
+              <TravellerBookingForm key={bookingData?._id} traveler={bookingData?.travelers} />
           </div>
 
           <ActionButtonContainer bookingData={bookingData} />

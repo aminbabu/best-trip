@@ -1,4 +1,5 @@
-import DepositForm from "@/components/profile/payment-method/DepositForm";
+
+import DepositForm from "@/components/payment-method/DepositForm";
 import { Card, CardContent } from "@/components/ui/card";
 import React from "react";
 

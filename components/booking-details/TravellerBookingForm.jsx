@@ -13,7 +13,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { travellerSchema } from "@/schema/zod";
 
-const TravellerBookingForm = ({ traveller }) => {
+const TravellerBookingForm = ({ traveler }) => {
   const form = useForm({
     resolver: zodResolver(travellerSchema),
     defaultValues: {
@@ -34,12 +34,17 @@ const TravellerBookingForm = ({ traveller }) => {
       phone: "+8801973745665",
     },
   });
-
+  // console.log(traveler);
+  const adultTravelers = traveler?.filter((traveler) => traveler?.travelerType === "adult")
+  const childTravelers = traveler?.filter((traveler) => traveler?.travelerType === "child")
+  const infantTravelers = traveler?.filter((traveler) => traveler?.travelerType === "infant")
+  console.log(adultTravelers, childTravelers, infantTravelers);
   return (
+    // <h1>Traveller</h1>
     <Card className="border-transparent relative overflow-hidden">
       <CardContent className="p-4 sm:p-5 lg:p-8 lg:leading-relaxed  justify-between lg:items-center gap-5 xl:gap-9 text-t-700">
         <h3 className="text-lg font-medium text-[#494949] pb-10">
-          Traveler {traveller.no} ({traveller.type})
+          Traveler {traveler?.[0]?.no} ({traveler?.[0]?.type})
         </h3>
         <Form {...form}>
           <form className="space-y-16">

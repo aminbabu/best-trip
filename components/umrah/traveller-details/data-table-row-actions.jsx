@@ -49,7 +49,7 @@ const DataTableRowActions = ({ row }) => {
             className="flex items-center gap-2.5 text-sm text-t-700 cursor-pointer"
             onClick={onDelete}
           >
-            <Trash2 size={16} />
+             <PencilLine size={16} />
             View
           </DropdownMenuItem>
         )}
