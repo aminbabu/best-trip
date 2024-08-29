@@ -12,7 +12,6 @@ const WithFooterLayout = async ({ children }) => {
     generalSiteSettings = await getGeneralSiteSettings();
     contactSiteSettings = await getContactSiteSettings();
   } catch (error) {
-    console.log(error);
   }
 
   return (

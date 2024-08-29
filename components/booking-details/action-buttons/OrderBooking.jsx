@@ -10,12 +10,11 @@ const OrderBooking = ({ bookingData, setRefetch }) => {
   const [loading, setLoading] = useState(false)
   const [open, setIsOpen] = useState(false)
   const onSubmit = async (values) => {
-    console.log(values,"values");
+  
     setLoading(true);
     const paymentType = values?.full === true ? "full-payment" : "partial-payment";
     try {
       const response = await makePayment(bookingData?.umrahPackage?._id, paymentType)
-      console.log(response);
       Swal.fire({
         position: "top-end",
         text: response?.data?.message,
@@ -27,7 +26,6 @@ const OrderBooking = ({ bookingData, setRefetch }) => {
       setIsOpen(false)
       setRefetch(true)
     } catch (error) {
-      console.log(error?.response?.data);
       setRefetch(true)
       setLoading(false)
       setIsOpen(false)
@@ -41,7 +39,6 @@ const OrderBooking = ({ bookingData, setRefetch }) => {
       });
     }
   }
-  console.log(bookingData?.invoice?.paymentType);
   return (
     <>
       {bookingData?.invoice?.paymentType !== "full-payment" && (

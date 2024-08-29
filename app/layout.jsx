@@ -23,7 +23,6 @@ const RootLayout = async ({ children }) => {
   try {
     generalSiteSettings = await getGeneralSiteSettings();
   } catch (error) {
-    console.log(error);
   }
   return (
     <html lang="en">

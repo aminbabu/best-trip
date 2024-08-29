@@ -13,7 +13,6 @@ const DataTableRowActions = ({ row }) => {
   const user = { ...row.original };
 
   const onEdit = () => {
-    console.log(user, "edit");
   };
 
   const onDelete = async () => {

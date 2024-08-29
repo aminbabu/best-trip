@@ -94,7 +94,6 @@ const CustomsTabpane = ({ icon, className }) => {
   };
 
   const handleFilter = () => {
-    console.log(schedule, type, duration, traveller);
   };
 
   return (

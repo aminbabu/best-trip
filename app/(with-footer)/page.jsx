@@ -32,7 +32,6 @@ const Home = async () => {
     blogPosts = await getBlogPosts();
     activeTheme = await getTheme();
   } catch (error) {
-    console.log(error);
   }
 
   const getSection = (key) => sections?.find((section) => section?.key === key);

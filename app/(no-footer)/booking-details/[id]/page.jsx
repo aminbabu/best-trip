@@ -1,5 +1,3 @@
-
-"use client"
 import { getBookingData } from "@/actions/booking/get-booking-data";
 import ActionButtonContainer from "@/components/booking-details/ActionButtonContainer";
 import FareDetailsCard from "@/components/booking-details/FareDetailsCard";
@@ -8,8 +6,7 @@ import UmrahBookingCard from "@/components/booking-details/UmrahBookingCard";
 import Container from "@/components/layouts/Container";
 import { Card, CardContent } from "@/components/ui/card";
 import moment from "moment";
-import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+
 
 const travellerList = [
   { id: 1, type: "Adult", no: 1 },
@@ -17,22 +14,16 @@ const travellerList = [
   { id: 3, type: "Infant", no: 3 },
 ];
 
-const BookingDetails = ({ params }) => {
-  const { id } = params;
-  const { data } = useSession();
-  const [bookingData, setBookingData] = useState([])
-  const [refetch,setRefetch] = useState(false)
-  useEffect(() => {
-    const getBookingDetail = async () => {
-      try {
-        const response = await getBookingData(id)
-        setBookingData(response?.data?.umrahBookings)
-      } catch (error) {
-        console.log(error, "from bookings");
-      }
-    }
-    getBookingDetail();
-  }, [data?.user?.accessToken, id,refetch])
+const BookingDetails = async ({ params }) => {
+
+  const { id } = params
+  let bookingData = {};
+  try {
+    const response = await getBookingData(id)
+    bookingData = response?.data?.umrahBookings
+  } catch (error) {
+  }
+
   const {
     name,
     email,
@@ -91,13 +82,13 @@ const BookingDetails = ({ params }) => {
               </Card>
             </div>
 
-            <UmrahBookingCard data={bookingData?.umrahPackage}/>
+            <UmrahBookingCard data={bookingData?.umrahPackage} />
 
-            <FareDetailsCard bookingData={bookingData}/>
-            <TravellerBookingForm key={bookingData?._id} bookingData={bookingData}/>
+            <FareDetailsCard bookingData={bookingData} />
+            <TravellerBookingForm key={bookingData?._id} bookingData={bookingData} />
           </div>
 
-          <ActionButtonContainer bookingData={bookingData} setRefetch={setRefetch}/>
+          <ActionButtonContainer bookingData={bookingData} setRefetch={setRefetch} />
         </div>
       </Container>
     </main>

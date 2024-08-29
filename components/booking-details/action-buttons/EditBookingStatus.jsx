@@ -56,7 +56,7 @@ const EditBookingStatus = () => {
 
   const onSubmit = (data) => {
     if (data) {
-      console.log(data);
+
       setIsOpenBookingStatus(false);
     }
     swalWithTailwindButtons.fire({

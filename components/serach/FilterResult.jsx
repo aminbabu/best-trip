@@ -8,13 +8,30 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { Card } from "../ui/card";
 import FlightFilter from "../umrah-fight/FlightFilter";
 import UmrahCard from "./UmrahCard";
+import { useSearchParams } from "next/navigation";
 
 const FilterResult = ({ slug }) => {
-  let searchedValue;
-  if (typeof window != undefined) {
-    searchedValue = JSON.parse(localStorage.getItem("searchedValue"))
-  }
-  const [params, setParams] = useState(searchedValue ? searchedValue : {});
+  const [params, setParams] = useState({});
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    const type = searchParams.get("type")
+    const schedule = searchParams.get("schedule")
+    const duration = searchParams.get("duration")
+    const adultTravelers = searchParams.get("adultTravelers")
+    const childTravelers = searchParams.get("childTravelers")
+    const infantsTravelers = searchParams.get("infantsTravelers")
+    const dataLength = searchParams.get("dataLength")
+    setParams({
+      type,
+      schedule,
+      duration,
+      adultTravelers,
+      childTravelers,
+      infantsTravelers,
+      dataLength
+    })
+  }, [searchParams])
   const [items, setItems] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [loadingInitial, setLoadingInitial] = useState(true);
@@ -36,8 +53,8 @@ const FilterResult = ({ slug }) => {
           infantsTravelers: params.infantsTravelers,
           lastItemId: isLoadMore ? lastItemId : ""
         });
-  
-        const { umrahPackages } = response;
+        const umrahPackages = response;
+
         if (umrahPackages && umrahPackages.umrahPackages.length > 0) {
           setItems((prevItems) => {
             // Create a new array combining previous items and new items
@@ -45,17 +62,17 @@ const FilterResult = ({ slug }) => {
               ...prevItems,
               ...umrahPackages.umrahPackages,
             ];
-  
+
             // Create a map to remove duplicates based on _id
             const uniqueItemsMap = new Map();
             combinedItems.forEach((item) => {
               uniqueItemsMap.set(item._id, item);
             });
-  
+
             // Return an array of unique items
             return Array.from(uniqueItemsMap.values());
           });
-  
+
           if (umrahPackages.nextCursor) {
             setLastItemId(umrahPackages.nextCursor);
           } else {
@@ -74,7 +91,7 @@ const FilterResult = ({ slug }) => {
     },
     [params, lastItemId]
   );
-  
+
   useEffect(() => {
     loadInitialData();
   }, [params, loadInitialData]);
@@ -93,7 +110,6 @@ const FilterResult = ({ slug }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [hasMore, loading, lastItemId, loadInitialData]);
-
   if (items.length === 0 && visaData.length === 0) {
     return (
       <h2 className="text-2xl font-semibold text-center text-gray-700">

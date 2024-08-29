@@ -10,7 +10,6 @@ const PrivaryPolicyPage = async () => {
 
     privacyPolicy = policies[0]?.["privacy-policy"];
   } catch (error) {
-    console.log(error);
   }
 
   return (

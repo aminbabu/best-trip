@@ -10,7 +10,7 @@ const TermsAndConditionsPage = async () => {
 
     termsAndConditions = policies[0]?.["terms-and-conditions"];
   } catch (error) {
-    console.log(error);
+
   }
 
   return (

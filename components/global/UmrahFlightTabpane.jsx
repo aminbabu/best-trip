@@ -195,7 +195,6 @@ const UmrahFlightTabpane = ({ icon, disabled, className }) => {
     const data = checkValidation();
 
     router.push("/search/umrah-flight");
-    console.log(data);
   };
 
   return (

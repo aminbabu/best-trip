@@ -1,27 +1,19 @@
-"use client"
-import { getMyBookings } from "@/actions/booking/get-my-bookings";
-import PaymentTable from "@/components/profile/PaymentTable";
-import { useSession } from "next-auth/react";
-import React, { useEffect, useState } from "react";
 
-const Booking = () => {
-  const { data } = useSession()
-  const [bookingData,setBookingData] = useState([])
-  useEffect(() => {
-    const getDetail = async () => {
-      try {
-        const response = await getMyBookings()
-        setBookingData(response?.data?.umrahBookings)
-      } catch (error) {
-        console.log(error, "from bookings");
-      }
-    }
-    getDetail();
-  }, [data?.user?.accessToken])
-  console.log(bookingData);
+import { getMyBookings } from "@/actions/booking/get-my-bookings";
+import { auth } from "@/auth";
+import PaymentTable from "@/components/profile/PaymentTable";
+
+const Booking = async () => {
+  const session = await auth();
+  let bookingData;
+  try {
+    const response = await getMyBookings()
+    bookingData = (response?.data?.umrahBookings)
+  } catch (error) {
+  }
   return (
     <div>
-      <PaymentTable data={bookingData} userData={data}/>
+      <PaymentTable data={bookingData} userData={session?.user} />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-"use server";
+"use server"
 import axios from "@/lib/axios";
 
 /**
@@ -16,6 +16,7 @@ import axios from "@/lib/axios";
  *
  * @returns {Promise<Object>} The response object containing Umrah packages or error details.
  */
+
 export const getUmrahPackageForCustomers = async ({
   packageSchedule,
   packageType,
@@ -27,23 +28,23 @@ export const getUmrahPackageForCustomers = async ({
   lastItemId,
 }) => {
   try {
-    const response = await axios.post("/api/umrah/packages/customer", {
-      packageSchedule,
-      packageType,
-      packageDuration,
-      dataLength,
-      adultTravelers,
-      childTravelers,
-      infantsTravelers,
-      lastItemId,
-    });
-
-    return {
-      umrahPackages: response?.data?.data,
-    };
+    const response = await axios.post(
+      `/api/umrah/packages/customer`,
+      {
+        packageSchedule,
+        packageType,
+        packageDuration,
+        dataLength,
+        adultTravelers: Number(adultTravelers),
+        childTravelers: Number(childTravelers),
+        infantsTravelers: Number(infantsTravelers),
+        lastItemId,
+      }
+    );
+    return response?.data?.data;
   } catch (error) {
     console.error("Error fetching Umrah packages:", error);
-    return { error: error?.response?.data || "An unexpected error occurred" };
+    return error;
   }
 };
 
@@ -57,12 +58,8 @@ export const getUmrahPackageForCustomers = async ({
  */
 export const getUmrahPackageByIdForCustomers = async (id) => {
   try {
-    console.log(id);
     const response = await axios.get(`/api/umrah/packages/${id}`);
-
-    return {
-      umrahPackages: response?.data?.umrahPackage,
-    };
+    return response?.data?.umrahPackage;
   } catch (error) {
     console.error("Error fetching Umrah packages by ID:", error);
     return { error: error?.response?.data || "An unexpected error occurred" };

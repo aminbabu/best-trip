@@ -23,7 +23,6 @@ const TravellerList = ({ showTravellerForm, id }) => {
         const response = await getTravelerDetail(bookingId)
         setTravelerDetail(response?.data?.travelers)
       } catch (error) {
-        console.log(error, "from bookings");
       }
     }
     getTravelerDetails();

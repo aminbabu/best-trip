@@ -13,8 +13,16 @@ import { cn } from "@/lib/utils";
 import BgCurve from "@/public/images/search/curve.svg?url";
 import Image from "next/image";
 
-const SearchPage = ({ params }) => {
+const SearchPage = ({ params, searchParams }) => {
   const { slug } = params;
+  const type = searchParams.type
+  const schedule = searchParams.schedule
+  const duration = searchParams.duration
+  const adultTraveler = searchParams.adultTravelers
+  const childTravelers = searchParams.childTravelers
+  const infantsTravelers = searchParams.infantsTravelers
+  const dataLength = searchParams.dataLength
+  const queryParams = { type, schedule, duration, adultTraveler, childTravelers, infantsTravelers, dataLength }
 
   return (
     <Collapsible>
@@ -54,7 +62,7 @@ const SearchPage = ({ params }) => {
           <div className='hidden xs:block'>
             <Filters slug={slug} />
           </div>
-          <FilterResult slug={slug} />
+          <FilterResult slug={slug} queryParams={queryParams} />
           <div className='relative flex py-4 items-center my-6'>
             <div className='flex-grow border-t border-gray-200'></div>
             <span className='flex-shrink mx-4 text-t-600'>End of Results</span>

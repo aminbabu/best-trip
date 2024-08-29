@@ -178,7 +178,6 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
     const addTraveler = async () => {
       try {
         const response = await addNewTraveler(form);
-        console.log(response, "from add traveler");
         setLoading(false);
         hideTravellerForm();
         Swal.fire({
@@ -348,7 +347,6 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
                       </FormLabel>
                       <Select
                         onValueChange={(value) => {
-                          console.log(value, "travleere type from lakdjflkajdfklka");
                           field.onChange(value);
                           setTravellerType(value.split(" ")[2].split("")[1]);
                         }}
@@ -509,7 +507,6 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
                     <Select
                       onValueChange={(value) => {
                         field.onChange(value);
-                        console.log(value, "from country");
                         setCountryValue(value);
                       }}
                       defaultValue={countryValue}

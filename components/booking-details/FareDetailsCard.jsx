@@ -6,7 +6,6 @@ const FareDetailsCard = ({ bookingData }) => {
   const childTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "child")
   const infantTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "infant")
   const subtotal = Number(bookingData?.umrahPackage?.adultPrice) * adultTravelers?.length + Number(bookingData?.umrahPackage?.childPrice) * childTravelers?.length + Number(bookingData?.umrahPackage?.infantPrice) * infantTravelers?.length
-  console.log(subtotal);
   return (
     <Card className="border-transparent relative overflow-hidden">
       <CardContent className="p-4 sm:p-5 lg:p-8 xl:leading-8 flex flex-col justify-between">

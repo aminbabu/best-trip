@@ -10,7 +10,6 @@ const AboutUsPage = async () => {
 
     aboutUs = policies[0]?.["about-us"];
   } catch (error) {
-    console.log(error);
   }
 
   return (

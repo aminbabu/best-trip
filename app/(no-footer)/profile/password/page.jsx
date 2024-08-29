@@ -50,7 +50,6 @@ const ProfilePasswordPage = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data, form.watch("password"));
   };
 
   return (

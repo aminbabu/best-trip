@@ -54,7 +54,6 @@ const EditSupplier = () => {
 
   const onSubmit = (data) => {
     if (data) {
-      console.log(data);
       setIsOpenSupplierDialog(false);
     }
     swalWithTailwindButtons.fire({

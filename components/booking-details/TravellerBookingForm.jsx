@@ -35,12 +35,10 @@ const TravellerBookingForm = ({ bookingData }) => {
       phone: "+8801973745665",
     },
   });
-  // console.log(traveler);
   const adultTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "adult")
   const childTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "child")
   const infantTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "infant")
   const subtotal = Number(bookingData?.umrahPackage?.adultPrice) * adultTravelers?.length + Number(bookingData?.umrahPackage?.childPrice) * childTravelers?.length + Number(bookingData?.umrahPackage?.infantPrice) * infantTravelers?.length
-  console.log(bookingData?.travelers);
   return (
     // <h1>Traveller</h1>
     <Card className="border-transparent relative overflow-hidden">

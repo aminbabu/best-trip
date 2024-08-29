@@ -1,4 +1,4 @@
-// "use server";
+"use server";
 import axios from "@/lib/axios";
 
 export const getMyBookings = async (id) => {

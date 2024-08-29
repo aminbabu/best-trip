@@ -18,7 +18,6 @@ import { renderInclusionIcon } from "@/lib/utils";
 import moment from "moment";
 
 const UmrahCard = ({ data }) => {
-  console.log({data},"");
   return (
     <Card className="border-transparent relative overflow-hidden">
       <div className="absolute top-5 -right-9 rotate-45 bg-p-300 px-10 py-2 text-sm lg:text-base text-t-700 font-medium leading-snug capitalize pointer-events-none">

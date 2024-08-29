@@ -40,14 +40,12 @@ const DepositForm = ({ bookingData,onSubmit,loading }) => {
 
   const handleManualBanking = (value) => {
     if (value) {
-      console.log("manual banking selected", value);
       setOpenOnline(false);
     }
   };
 
   const handleOnlineBanking = (value) => {
     if (value) {
-      console.log("online banking selected", value);
       setOpenManual(false);
       setOpenWallet(false);
     }
@@ -67,7 +65,6 @@ const DepositForm = ({ bookingData,onSubmit,loading }) => {
 
   const handlePartPayment = (value) => {
     if (value) {
-      console.log("partial payment is checked", value);
       setOpenFullPayment(false);
     }
   };
@@ -75,12 +72,10 @@ const DepositForm = ({ bookingData,onSubmit,loading }) => {
   //   if (openManual && pathname === "/profile/payment-method") {
   //     // router.push("/profile/payment-method/manual-banking");
   //     router.push("/profile/manual-banking");
-  //     console.log(openManual && pathname === "/profile/payment-method");
   //   }
 
   //   if (openManual && pathname === "/profile/add-balance") {
   //     router.push("/profile/manual-banking");
-  //     console.log(values.manual && pathname === "/profile/add-balance");
   //   }
 
   //   if (openWallet && pathname.startsWith("/booking-details")) {
@@ -155,7 +150,6 @@ const DepositForm = ({ bookingData,onSubmit,loading }) => {
 
   const partialTotal = Number(bookingData?.umrahPackage?.adultPartialPrice) * adultTravelers?.length + Number(bookingData?.umrahPackage?.childPartialPrice) * childTravelers?.length + Number(bookingData?.umrahPackage?.infantPartialPrice) * infantTravelers?.length;
 
-console.log(bookingData?.invoice, "bookingData");
 
 
   return (

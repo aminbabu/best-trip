@@ -10,7 +10,6 @@ const RefundPolicyPage = async () => {
 
     refundPolicy = policies[0]?.["refund-policy"];
   } catch (error) {
-    console.log(error);
   }
 
   return (

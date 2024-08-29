@@ -32,7 +32,6 @@ const PaymentPage = ({ params }) => {
         const response = await getBookingData(id)
         setBookingData(response?.data?.umrahBookings)
       } catch (error) {
-        console.log(error, "from get booking detail");
       }
     }
     getBookingDetail();
@@ -41,14 +40,11 @@ const PaymentPage = ({ params }) => {
   const childTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "child")
   const infantTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "infant")
   const subtotal = Number(bookingData?.umrahPackage?.adultPrice) * adultTravelers?.length + Number(bookingData?.umrahPackage?.childPrice) * childTravelers?.length + Number(bookingData?.umrahPackage?.infantPrice) * infantTravelers?.length
-  console.log(bookingData);
   const submitForReview = async () => {
     try {
       const response = await submitBookingForReview(id)
       router.push("/payment-method/online-banking")
-      console.log(response);
     } catch (error) {
-      console.log(error, "from bookings");
       Swal.fire({
         text: error?.response?.data?.message,
         icon: "error",
