@@ -26,7 +26,6 @@ const NewsletterForm = () => {
   });
 
   const onSubmit = (values) => {
-    console.log(values);
   };
 
   return (

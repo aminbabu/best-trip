@@ -17,22 +17,27 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import validator from "validator";
 import Link from "next/link";
-import { CheckIcon } from "lucide-react";
+import { CheckIcon, LucideLoader2 } from "lucide-react";
 import { useState } from "react";
 import { EyeIcon, EyeSlashIcon } from "@/components/icons/svgr";
+import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import signUp from "@/actions/auth/sign-up";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const formSchema = z
   .object({
-    fullname: z.string().min(1, "Please enter your full name"),
+    name: z.string().min(1, "Please enter your full name"),
     email: z.string().email("Please enter a valid email address"),
     phone: z.string().refine(validator.isMobilePhone, {
       message: "Please enter a valid phone number",
     }),
     password: z.string().min(8, "Please enter a valid password"),
     confirmPassword: z.string().min(8, "Please enter a valid password"),
-    // agree: z
-    //   .boolean()
-    //   .refine((v) => v, { message: "Please agree to the terms & policy" }),
+    agree: z
+      .boolean()
+      .refine((v) => v, { message: "Please agree to the terms & policy" }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
@@ -40,8 +45,10 @@ const formSchema = z
   });
 
 const SignUpPage = () => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleShowPassword = (e) => {
     e.preventDefault();
@@ -56,7 +63,7 @@ const SignUpPage = () => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fullname: "",
+      name: "",
       email: "",
       phone: "",
       password: "",
@@ -65,8 +72,42 @@ const SignUpPage = () => {
     },
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      setLoading(true);
+
+      const response = await signUp({
+        name: data?.name,
+        email: data?.email,
+        phone: data?.phone,
+        password: data?.password,
+      });
+
+      const result = await withReactContent(Swal).fire({
+        title: "Success",
+        text: response.message,
+        icon: "success",
+        confirmButtonText: "Sign In",
+        confirmButtonColor: "#3ad965",
+        allowOutsideClick: false,
+      });
+
+      if (result.isConfirmed) {
+        router.push("/sign-in");
+      }
+    } catch (error) {
+      await withReactContent(Swal).fire({
+        title: "Error",
+        text: error?.message || "An error occurred. Please try again",
+        icon: "error",
+        confirmButtonText: "Try Again",
+        confirmButtonColor: "#ff0f2f",
+        allowOutsideClick: false,
+      });
+    } finally {
+      setLoading(false);
+      form.reset();
+    }
   };
 
   return (
@@ -85,7 +126,7 @@ const SignUpPage = () => {
             >
               <FormField
                 control={form.control}
-                name="fullname"
+                name="name"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
                     <FormLabel className="text-t-800 text-sm lg:text-base">
@@ -215,33 +256,34 @@ const SignUpPage = () => {
                   </FormItem>
                 )}
               />
-              {/* <FormField
+              <FormField
                 control={form.control}
                 name="agree"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
                     <div className="flex items-start flex-wrap gap-3">
-                      <div className="relative">
-                        <FormControl>
-                          <Input
-                            type="checkbox"
-                            className="appearance-none p-0 h-5 w-5 border border-[#f5f5f5] rounded-sm checked:bg-primary checked:border-primary focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-primary cursor-pointer peer"
-                            {...field}
-                          />
-                        </FormControl>
-                        <CheckIcon className="invisible opacity-0 duration-200 absolute inset-0 m-auto w-4 h-4 text-white pointer-events-none peer-checked:visible peer-checked:opacity-100" />
-                      </div>
-                      <FormLabel className="flex-1 text-t-700 text-sm lg:text-base font-normal leading-normal">
+                      <FormControl>
+                        <Checkbox
+                          id="agree"
+                          className="w-5 h-5 border-[#f5f5f5] checked:border-primary"
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <FormLabel
+                        htmlFor="agree"
+                        className="flex-1 text-t-700 text-sm lg:text-base font-normal leading-normal"
+                      >
                         I agree to the{" "}
                         <Link
-                          href="#"
+                          href="/terms-and-conditions"
                           className="text-primary hover:underline focus:underline"
                         >
                           Terms
                         </Link>{" "}
                         &{" "}
                         <Link
-                          href="#"
+                          href="/privacy-policy"
                           className="text-primary hover:underline focus:underline"
                         >
                           Privacy Policy
@@ -251,9 +293,10 @@ const SignUpPage = () => {
                     <FormMessage />
                   </FormItem>
                 )}
-              /> */}
+              />
               <div className="grid">
-                <Button className="py-2.5" type="submit">
+                <Button className="py-2.5" type="submit" disabled={loading}>
+                  {loading ? <LucideLoader2 className="animate-spin" /> : null}
                   Sign up
                 </Button>
               </div>

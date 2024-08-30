@@ -5,16 +5,10 @@ import { FlightTokenIcon } from "../icons/svgr";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Swal from "sweetalert2";
-import EditBookingStatus from "./action-buttons/EditBookingStatus";
-import EditSupplier from "./action-buttons/EditSupplier";
 import OrderBooking from "./action-buttons/OrderBooking";
-import TicketNumberUpdate from "./action-buttons/TicketNumberUpdate";
-import BookingHistory from "./action-buttons/BookingHistory";
-import EditBooking from "./action-buttons/EditBooking";
 import PrintAndDownload from "./action-buttons/PrintAndDownload";
-import ExtendTimeLimit from "./action-buttons/ExtendTimeLimit";
 
-const ActionButtonContainer = () => {
+const ActionButtonContainer = ({bookingData,setRefetch}) => {
   const handleCancelBooking = () => {
     const swalWithTailwindButtons = Swal.mixin({
       customClass: {
@@ -57,7 +51,7 @@ const ActionButtonContainer = () => {
       {/* show more details */}
       <Link
         className="bg-white text-base font-normal text-t-700 rounded shadow-sm hover:bg-[#fefefe] justify-start"
-        href="/umrah/1"
+        href={`/umrah/${bookingData?.umrahPackage?._id}`}
       >
         <Button className="bg-white text-base font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
           <FlightTokenIcon /> Show More Details
@@ -65,7 +59,7 @@ const ActionButtonContainer = () => {
       </Link>
 
       {/* order booking */}
-      <OrderBooking />
+      <OrderBooking bookingData={bookingData} setRefetch={setRefetch}/>
 
       {/* Account Balance Low */}
       <Button className="bg-white text-base font-normal text-p-900 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">

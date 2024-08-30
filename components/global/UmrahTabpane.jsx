@@ -1,22 +1,15 @@
 "use client";
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { umrahSchema } from "@/schema/zod";
-import { Button } from "@/components/ui/button";
-import { ArrowIcon, SearchIcon } from "@/components/icons/svgr";
-import { Fragment, useState } from "react";
-import ScrollArea from "@/components/global/ScrollArea";
-import { cn, formatError } from "@/lib/utils";
 import Counter from "@/components/global/Counter";
+import ScrollArea from "@/components/global/ScrollArea";
+import { ArrowIcon, SearchIcon } from "@/components/icons/svgr";
+import { Button } from "@/components/ui/button";
+import { DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
+import { cn, formatError } from "@/lib/utils";
+import { umrahSchema } from "@/schema/zod";
 import { Loader } from "lucide-react";
+import moment, { duration } from "moment";
 import { useRouter } from "next/navigation";
-import moment from "moment";
+import { Fragment, useEffect, useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 const schedules = [
@@ -27,71 +20,93 @@ const schedules = [
   "may",
   "june",
   "july",
-  "auguest",
+  "august",
   "september",
-  "dctober",
+  "october",
   "november",
   "december",
 ];
-const types = ["economy", "standard", "premium"];
-const durations = [10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 90];
-const traveller = [
-  {
-    id: 1,
-    title: "Adults",
-    description: "12 years+",
-    count: 1,
-  },
-  {
-    id: 2,
-    title: "Children",
-    description: "2-12 years",
-    count: 0,
-  },
-  {
-    id: 3,
-    title: "Infants",
-    description: "0-2 years",
-    count: 0,
-  },
-];
 
-const UmrahTabpane = ({ icon, disabled, className }) => {
+const UmrahTabpane = ({
+  icon,
+  disabled,
+  className,
+  umrahData: initialUmrahData,
+}) => {
+  const [umrahData, setUmrahData] = useState(initialUmrahData || null);
   const router = useRouter();
+  const [durations, setDurations] = useState(
+    umrahData?.umrahPackageDurations || []
+  );
+  const [packageTypes, setPackageTypes] = useState(
+    umrahData?.umrahPackageTypes || []
+  );
+  const [travelers, setTravelers] = useState([
+    {
+      id: 1,
+      title: "Adults",
+      description: "12 years+",
+      count: 1,
+    },
+    {
+      id: 2,
+      title: "Children",
+      description: "2-12 years",
+      count: 0,
+    },
+    {
+      id: 3,
+      title: "Infants",
+      description: "0-2 years",
+      count: 0,
+    },
+  ]);
+  const [durationError, setDurationError] = useState(null);
+  const [durationLoading, setDurationLoading] = useState(true);
+  const [packageLoading, setPackageLoading] = useState(true);
   const [isDisabled, setIsDisabled] = useState(disabled);
-  const [open, setOpen] = useState(0);
   const [schedule, setSchedule] = useState(
     moment().format("MMMM").toLowerCase()
   );
-  const [type, setType] = useState("economy");
-  const [duration, setDuration] = useState(15);
-  const [travellers, setTravellers] = useState(traveller);
   const [errors, setErrors] = useState(null);
   const [loading, setLoading] = useState(false);
-
   const [isPackScheduleOpen, setIsPackScheduleOpen] = useState(false);
   const [isPackTypeOpen, setIsPackTypeOpen] = useState(false);
   const [isPackDurationOpen, setIsPackDurationOpen] = useState(false);
-  const [isTravellersOpen, setIsTravellersOpen] = useState(false);
 
+  const [params, setParams] = useState({});
+  const [isTravelersOpen, setIsTravelersOpen] = useState(false);
+  const [packageType, setPackageType] = useState(packageTypes[0]);
+  const [packageDuration, setPackageDuration] = useState(null);
+
+  useEffect(() => {
+    if (typeof window != undefined) {
+      setParams(JSON.parse(localStorage.getItem("searchedValue")));
+    }
+  }, []);
+
+  // Check The Validation Of Schedule Type And Duration
   const checkValidation = () => {
     try {
       const validatedData = umrahSchema.parse({
         schedule,
-        type,
-        duration,
-        travellers: travellers.reduce((acc, item) => acc + item.count, 0),
+        type: packageType._id,
+        duration: packageDuration._id,
+        travellers: {
+          adultTravelers: travelers.find((t) => t.id === 1)?.count || 0,
+          childTravelers: travelers.find((t) => t.id === 2)?.count || 0,
+          infantsTravelers: travelers.find((t) => t.id === 3)?.count || 0,
+        },
       });
       return validatedData;
     } catch (error) {
-      // parse zod error
       setErrors(formatError(error));
       return false;
     }
   };
-
+  // Increment The Count Of Travelers
   const handleCounterIncrement = (id) => {
-    const newTravellers = travellers.map((item) => {
+    const newTravelers = travelers.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -100,12 +115,18 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
       }
       return item;
     });
-    setTravellers(newTravellers);
+    setTravelers(newTravelers);
   };
-
+  // Decrement The Count Of Travelers
   const handleCounterDecrement = (id) => {
-    const newTravellers = travellers.map((item) => {
+    const newTravelers = travelers.map((item) => {
       if (item.id === id) {
+        // Prevent decrementing Adult count below 1
+        if (item.title === "Adults" && item.count === 1) {
+          return item;
+        }
+
+        // Decrement count for other items or Adults if count > 1
         return {
           ...item,
           count: item.count > 0 ? item.count - 1 : 0,
@@ -113,30 +134,108 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
       }
       return item;
     });
-    setTravellers(newTravellers);
-  };
 
+    setTravelers(newTravelers);
+  };
+  // Disable The Fields Conditionally
   const handleDisableFields = () => {
     setIsDisabled(false);
   };
-
+  // Submit The Form And Redirect To Umrah Search Page
   const handleSubmit = async () => {
     setLoading(true);
     const data = checkValidation();
-
-    if (!data) {
-      return setLoading(false);
+    if (!data) return;
+    const selectedValue = JSON.stringify({
+      schedule: data.schedule,
+      type: data.type,
+      duration: data.duration,
+      dataLength: 20,
+      adultTravelers: data.travellers.adultTravelers,
+      childTravelers: data.travellers.childTravelers,
+      infantsTravelers: data.travellers.infantsTravelers,
+      lastItemId: "",
+    });
+    if (typeof window != undefined) {
+      localStorage.setItem("searchedValue", selectedValue);
     }
-    router.push("/search/umrah");
-    console.log(data);
+    try {
+      const queryString = new URLSearchParams({
+        schedule: data.schedule,
+        type: data.type,
+        duration: data.duration,
+        dataLength: 20,
+        adultTravelers: data.travellers.adultTravelers,
+        childTravelers: data.travellers.childTravelers,
+        infantsTravelers: data.travellers.infantsTravelers,
+        lastItemId: "",
+      }).toString();
 
-    // TODO: Handle submit
-    // setTimeout(() => {
-    //   console.log(data);
-    //   setLoading(false);
-    //   router.push("/search/umrah");
-    // }, 2000);
+      router.push(`/search/umrah?${queryString}`);
+    } finally {
+      setLoading(false);
+    }
   };
+
+  useEffect(() => {
+    // On initial render, check if umrahData is in localStorage
+    const storedUmrahData = localStorage.getItem("umrahData");
+    if (storedUmrahData !== undefined && storedUmrahData !== null) {
+      setUmrahData(JSON.parse(storedUmrahData));
+    } else if (initialUmrahData) {
+      // If not found, use the umrahData from props and store it in localStorage
+      localStorage.setItem("umrahData", JSON.stringify(initialUmrahData));
+      setUmrahData(initialUmrahData);
+    }
+  }, [initialUmrahData]);
+
+  useEffect(() => {
+    setDurations(umrahData?.umrahPackageDurations || []);
+    setPackageTypes(umrahData?.umrahPackageTypes || []);
+    setPackageLoading(false);
+    setDurationLoading(false);
+  }, [umrahData]);
+
+  // Update the state based on the params => From LocalStorage or Default
+  useEffect(() => {
+    const selectedPackageType = packageTypes.find(
+      (item) => item._id === params.type
+    );
+    const selectedDuration = durations.find(
+      (item) => item._id === params.duration
+    );
+    setSchedule(params?.schedule ? params.schedule : schedules[7]);
+    setPackageType(params?.type ? selectedPackageType : packageTypes[0]);
+    setTravelers((prev) => {
+      // Create a copy of the previous travelers state
+      const updatedTravelers = [...prev];
+
+      // Update the count for each traveler type based on the params
+      updatedTravelers[0] = {
+        ...updatedTravelers[0],
+        count: params?.adultTravelers ? Number(params.adultTravelers) : 1,
+      };
+      updatedTravelers[1] = {
+        ...updatedTravelers[1],
+        count: params?.childTravelers ? Number(params.childTravelers) : 0,
+      };
+      updatedTravelers[2] = {
+        ...updatedTravelers[2],
+        count: params?.infantsTravelers ? Number(params.infantsTravelers) : 0,
+      };
+      return updatedTravelers;
+    });
+    setPackageDuration(params?.duration ? selectedDuration : durations[0]);
+  }, [
+    params?.type,
+    packageTypes,
+    params?.duration,
+    durations,
+    params?.schedule,
+    params?.adultTravelers,
+    params?.childTravelers,
+    params?.infantsTravelers,
+  ]);
 
   return (
     <div
@@ -219,7 +318,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
               Package Type
             </span>
             <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
-              {type ? type : "Select"}
+              {packageType?.name ? packageType.name : "Select"}
               <ArrowIcon className="hidden lg:inline-block" />
             </span>
           </Button>
@@ -230,28 +329,35 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         >
           <ScrollArea className="max-h-64">
             <ul>
-              {types.map((item) => (
-                <li
-                  key={item}
-                  className={cn(
-                    "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
-                    {
-                      "bg-p-900 text-white": type === item,
-                    }
-                  )}
-                  onClick={() => {
-                    setType(item);
-                    setIsPackTypeOpen(false);
-                  }}
-                >
-                  {item}
+              {packageLoading ? (
+                <li className="p-5 text-center text-t-600">
+                  <Loader className="animate-spin" />
                 </li>
-              ))}
+              ) : (
+                packageTypes.map((item) => (
+                  <li
+                    key={item._id}
+                    onClick={() => {
+                      setPackageType(item);
+                      setIsPackTypeOpen(false);
+                    }}
+                    className={cn(
+                      "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
+                      {
+                        "bg-p-900 text-white": packageType?._id === item._id,
+                      }
+                    )}
+                  >
+                    {item.name}
+                  </li>
+                ))
+              )}
             </ul>
           </ScrollArea>
         </PopoverContent>
       </Popover>
       <Popover
+        defaultOpen={true}
         open={isPackDurationOpen}
         onOpenChange={() => {
           setErrors((prevState) => ({ ...prevState, duration: null }));
@@ -271,8 +377,10 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
             <span className="text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal">
               Package Duration
             </span>
-            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
-              {duration ? `${duration} days` : "Select"}
+            <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700">
+              {packageDuration?.days
+                ? packageDuration?.days + " Days"
+                : "Select"}
               <ArrowIcon className="hidden lg:inline-block" />
             </span>
           </Button>
@@ -283,32 +391,43 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
         >
           <ScrollArea className="max-h-64">
             <ul>
-              {durations.map((item) => (
-                <li
-                  key={item}
-                  onClick={() => {
-                    setDuration(item);
-                    setIsPackDurationOpen(false);
-                  }}
-                  className={cn(
-                    "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer",
-                    {
-                      "bg-p-900 text-white": duration === item,
-                    }
-                  )}
-                >
-                  {item} Days
+              {durationLoading ? (
+                <li className="p-5 text-center text-t-600">
+                  <Loader className="animate-spin" />
                 </li>
-              ))}
+              ) : durationError ? (
+                <li className="p-5 text-center text-red-500">
+                  {durationError.message}
+                </li>
+              ) : (
+                durations.map((item) => (
+                  <li
+                    key={item._id}
+                    onClick={() => {
+                      setPackageDuration(item);
+                      setIsPackDurationOpen(false);
+                    }}
+                    className={cn(
+                      "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
+                      {
+                        "bg-p-900 text-white":
+                          packageDuration?._id === item._id,
+                      }
+                    )}
+                  >
+                    {item.days} Days
+                  </li>
+                ))
+              )}
             </ul>
           </ScrollArea>
         </PopoverContent>
       </Popover>
       <Popover
-        open={isTravellersOpen}
+        open={isTravelersOpen}
         onOpenChange={() => {
           setErrors((prevState) => ({ ...prevState, travellers: null }));
-          setIsTravellersOpen(!isTravellersOpen);
+          setIsTravelersOpen(!isTravelersOpen);
         }}
       >
         <PopoverTrigger asChild className="flex-1" disabled={isDisabled}>
@@ -325,12 +444,12 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
               Travellers
             </span>
             <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
-              {travellers.some((item) => item.count > 0)
-                ? `${travellers.reduce(
+              {travelers?.some((item) => item.count > 0)
+                ? `${travelers?.reduce(
                     (acc, item) => acc + item.count,
                     0
                   )} Traveller${
-                    travellers.reduce((acc, item) => acc + item.count, 0) > 1
+                    travelers?.reduce((acc, item) => acc + item.count, 0) > 1
                       ? "s"
                       : ""
                   }`
@@ -346,7 +465,7 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
           <div className="text-primary font-semibold text-lg px-4 pt-1 pb-5 mb-1">
             Travelers
           </div>
-          {travellers.map((item) => (
+          {travelers.map((item) => (
             <Fragment key={item.id}>
               <Counter
                 title={item.title}
@@ -360,13 +479,14 @@ const UmrahTabpane = ({ icon, disabled, className }) => {
           ))}
           <Button
             size="sm"
-            onClick={() => setIsTravellersOpen(false)}
+            onClick={() => setIsTravelersOpen(false)}
             className="px-8 py-2 mx-4 my-4 text-sm lg:text-base"
           >
             Done
           </Button>
         </PopoverContent>
       </Popover>
+      <DropdownMenuSeparator className="block lg:hidden" />
       <Button
         size="lg"
         className="py-2.5 lg:py-5 rounded-lg lg:roundemd text-sm lg:text-base"

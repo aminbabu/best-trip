@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn, generateImage } from "@/lib/utils";
 import Brand from "@/components/global/Brand";
 import Container from "@/components/layouts/Container";
 import Menu from "@/components/layouts/Menu";
@@ -8,9 +8,12 @@ import NavbarCta from "@/components/layouts/NavbarCta";
 import NavSheet from "@/components/layouts/NavSheet";
 import { useEffect, useState } from "react";
 import Profile from "./Profile";
+import { useSession } from "next-auth/react";
 
-const Navbar = () => {
+const Navbar = ({ generalSiteSettings }) => {
   const [isSticky, setIsSticky] = useState(false);
+  const { data, status } = useSession();
+  const { user } = data || {};
 
   // Handle sticky navbar
   useEffect(() => {
@@ -37,20 +40,22 @@ const Navbar = () => {
       )}
     >
       <Container className="flex items-center gap-4 justify-between py-3 lg:py-6 duration-300">
-        <Brand
-          logo="/images/brand-logo.svg"
-          width="108"
-          height="46"
-          alt="Best Trip"
-        />
+        <div className="basis-[204px]">
+          <Brand
+            logo={generateImage(generalSiteSettings?.logo)}
+            width="108"
+            height="46"
+            alt={generalSiteSettings?.title}
+            href="/"
+          />
+        </div>
         <div className="hidden lg:block">
           <Menu isNavbarSticky={isSticky} />
         </div>
-        <div className="hidden lg:block">
-          {/* <NavbarCta /> */}
-          <Profile />
+        <div className="hidden lg:block basis-[204px]">
+          {!user?._id ? <NavbarCta /> : <Profile user={user} />}
         </div>
-        <NavSheet />
+        <NavSheet generalSiteSettings={generalSiteSettings} user={user} />
       </Container>
     </nav>
   );

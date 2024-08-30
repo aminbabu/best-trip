@@ -70,9 +70,8 @@ const ExtendTimeLimit = () => {
   const onSubmit = (data) => {
     if (data) {
       setIsOpenExtendTimeLimit(false);
-      console.log(data);
+
     }
-    console.log(data);
     swalWithTailwindButtons.fire({
       icon: "success",
       text: "Time limit extended succeessfully",

@@ -2,21 +2,20 @@
 
 import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "../ui/card";
-import { Button } from "../ui/button";
-import { ExportIcon, FilterIcon, SearchIcon } from "../icons/svgr";
 import PaymentTablePagination from "./PaymentTablePagination";
 import PaymentTableFilter from "./PaymentTableFilter";
 import { usePathname } from "next/navigation";
 import {
-  bestPayTable,
   bookingListTable,
   generalLedgerTable,
   partialPaymentTable,
 } from "@/data/payment-tables";
+import moment from "moment";
+import Link from "next/link";
 
-const PaymentTable = () => {
+const PaymentTable = ({ data, userData }) => {
   const pathname = usePathname();
-  const [tableData, setTableData] = useState(bestPayTable);
+  const [tableData, setTableData] = useState(bookingListTable);
 
   useEffect(() => {
     if (pathname == "/profile/booking") {
@@ -28,14 +27,13 @@ const PaymentTable = () => {
     if (pathname == "/profile/general-ledger") {
       setTableData(generalLedgerTable);
     }
-  }, [pathname]);
-
+  }, [pathname, data]);
   return (
     <Card className="border-transparent mb-8 drop-shadow-[ 0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] ">
       <CardContent className="lg:p-10 space-y-7">
         <div>
           <h1 className="text-t-800 font-medium text-xl mb-8">
-            {tableData.title}
+            {tableData?.title}
           </h1>
         </div>
         <PaymentTableFilter />
@@ -46,7 +44,7 @@ const PaymentTable = () => {
           <table className="w-full whitespace-nowrap text-t-600 text-sm font-normal">
             <thead>
               <tr className="uppercase border-b border-dashed border-[#f1f1f4] [&>*:last-child]:text-right">
-                {tableData.tableHeads.map((head) => (
+                {tableData?.tableHeads.map((head) => (
                   <th key={head.id} className="min-w-36 font-semibold">
                     {head.item}
                   </th>
@@ -54,14 +52,20 @@ const PaymentTable = () => {
               </tr>
             </thead>
             <tbody>
-              {"abcdefghij".split("").map((row) => (
-                <tr
-                  key={row}
-                  className="border-b border-dashed border-[#f1f1f4] text-sm lg:text-base font-normal [&>*:last-child]:text-right"
-                >
-                  {tableData.tableRows.map((rowData) => (
-                    <td key={rowData.id}>{rowData.item}</td>
-                  ))}
+              {data?.map((item, ind) => (
+                <tr key={ind} className="border-b border-dashed border-[#f1f1f4] text-sm lg:text-base font-normal [&>*:last-child]:text-right">
+                  <td ><Link href={`/booking-details/${item?._id}`} className="hover:text-red-500 ">{item?.bookingRefId}</Link></td>
+                  <td >{item?.status}</td>
+                  <td >{item?.bookingType||"N/A"}</td>
+                  <td >{moment(item?.createdAt).format("MMM DD, YYYY-HH:mm")}</td>
+                  <td>{userData?.user?.name}</td>
+                  <td>{moment(item?.umrahPackage?.journeyDate).format("MMM DD, YYYY")}</td>
+                  <td>{item?.travelers?.length} Travellers</td>
+                  <td>PRIME PAX</td>
+                  <td>Yes</td>
+                  <td>Yes</td>
+                  <td>Yes</td>
+                  <td>INVOICE NAI</td>
                 </tr>
               ))}
             </tbody>

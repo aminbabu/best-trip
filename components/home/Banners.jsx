@@ -5,7 +5,7 @@ import Slider from "@/components/global/splide/Slider";
 import { SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import Link from "next/link";
 import Section from "@/components/global/Section";
-import data from "@/data/banners.json";
+import { generateImage } from "@/lib/utils";
 
 const options = {
   type: "loop",
@@ -32,19 +32,20 @@ const options = {
   },
 };
 
-const Banners = () => {
-  const { items } = data;
-
+const Banners = ({ exclusiveOffers }) => {
   return (
     <Section>
       <Slider hasTrack={false} options={options}>
         <SplideTrack>
-          {items.map((item, index) => (
-            <SplideSlide key={index}>
-              <Link href="#" className="flex overflow-hidden rounded">
+          {exclusiveOffers?.map((exclusiveOffer) => (
+            <SplideSlide key={exclusiveOffer?._id}>
+              <Link
+                href={exclusiveOffer?.link}
+                className="flex overflow-hidden rounded"
+              >
                 <Image
-                  src={item.image}
-                  alt={item.title}
+                  src={generateImage(exclusiveOffer?.thumbnail)}
+                  alt={exclusiveOffer?.link}
                   width={360}
                   height={202}
                   className="rounded object-cover w-full h-auto"

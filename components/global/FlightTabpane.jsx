@@ -1,5 +1,7 @@
 "use client";
 
+import Counter from "@/components/global/Counter";
+import ScrollArea from "@/components/global/ScrollArea";
 import {
   ArrowIcon,
   CalenderTwoLineIcon,
@@ -9,21 +11,17 @@ import {
 } from "@/components/icons/svgr";
 import { Button } from "@/components/ui/button";
 import { DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
-import { Fragment, useState } from "react";
-import ScrollArea from "@/components/global/ScrollArea";
-import { cn } from "@/lib/utils";
-import Counter from "@/components/global/Counter";
-import Link from "next/link";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Calendar } from "../ui/calendar";
-import moment from "moment";
-import { ArrowLeftRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { flightSchema } from "@/schema/zod";
-import UnderDevelopment from "./UnderDevelopment";
+import { ArrowLeftRight, Loader } from "lucide-react";
+import moment from "moment";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Loader } from "lucide-react";
+import { Fragment, useState } from "react";
+import { Calendar } from "../ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 const flightTypes = ["One way", "Round trip", "Multi - city"];
 
 const travellers = [
@@ -191,12 +189,7 @@ const FlightTabpane = ({ icon, disabled, className }) => {
     setLoading(true);
     const data = checkValidation();
 
-    if (!data) {
-      return setLoading(false);
-    }
-
-    router.push("/search/flight");
-    console.log(data);
+    router.push("/search/umrah-flight");
   };
 
   return (
@@ -612,32 +605,22 @@ const FlightTabpane = ({ icon, disabled, className }) => {
       ))}
 
       {flightType === "Multi - city" && (
-        <div className="flex flex-col md:flex-row gap-3 items-center justify-between">
+        <div className="flex flex-col lg:flex-row gap-3 items-center justify-between">
           <Button
             onClick={handleFilterNoIncrement}
-            className="bg-transparent hover:bg-transparent text-p-900 text-sm lg:text-base w-full md:w-fit"
+            className="bg-transparent hover:bg-transparent text-p-900"
           >
             <PlusCircleIcon /> Add New City
           </Button>
-          <Button
-            size="lg"
-            className="px-10 py-2.5 lg:py-4 w-full md:w-fit rounded-lg lg:roundemd text-sm lg:text-base"
-            onClick={isDisabled ? handleDisableFields : handleFilter}
-            disabled={loading}
-          >
-            {loading ? (
-              <Loader className="animate-spin w-6 h-6" />
-            ) : isDisabled ? (
-              icon
-            ) : (
-              <>
-                <span className="hidden lg:block">
-                  <SearchIcon viewBox="0 0 33 33" className="w-6 h-6" />
-                </span>
-                <span className="md:hidden">Search</span>
-              </>
-            )}
-            Search
+          <Button className="px-10 py-4 " onClick={handleFilter} asChild>
+            <Link href="/search/umrah-flight">
+              {icon ? (
+                icon
+              ) : (
+                <SearchIcon viewBox="0 0 33 33" className="w-6 h-6" />
+              )}{" "}
+              Search
+            </Link>
           </Button>
         </div>
       )}

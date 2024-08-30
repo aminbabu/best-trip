@@ -1,9 +1,9 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
+import credentialSignIn from "@/actions/auth/credential-sign-in";
+import { EyeIcon, EyeSlashIcon } from "@/components/icons/svgr";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -13,11 +13,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { LucideLoader2 } from "lucide-react";
 import Link from "next/link";
-import { CheckIcon } from "lucide-react";
 import { useState } from "react";
-import { EyeIcon, EyeSlashIcon } from "@/components/icons/svgr";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import * as z from "zod";
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -25,7 +28,9 @@ const formSchema = z.object({
 });
 
 const SignInPage = () => {
+  // const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleShowPassword = (e) => {
     e.preventDefault();
@@ -37,12 +42,36 @@ const SignInPage = () => {
     defaultValues: {
       email: "",
       password: "",
-      remember: false,
     },
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      setLoading(true);
+
+      const response = await credentialSignIn(data);
+
+      if (response?.error) {
+        throw new Error(
+          "An error occurred. Please check your credentials and try again"
+        );
+      }
+
+      location.reload();
+      // router.push("/profile");
+    } catch (error) {
+      await withReactContent(Swal).fire({
+        title: "Error",
+        text: error?.message || "An error occurred. Please try again",
+        icon: "error",
+        confirmButtonText: "Try Again",
+        confirmButtonColor: "#ff0f2f",
+        allowOutsideClick: false,
+      });
+    } finally {
+      setLoading(false);
+      form.reset();
+    }
   };
 
   return (
@@ -116,7 +145,7 @@ const SignInPage = () => {
                 )}
               />
               <div className="flex flex-wrap gap-4 items-center justify-between">
-                <FormField
+                {/* <FormField
                   control={form.control}
                   name="remember"
                   render={({ field }) => (
@@ -139,16 +168,17 @@ const SignInPage = () => {
                       <FormMessage />
                     </FormItem>
                   )}
-                />
+                /> */}
                 <Link
                   href="/forgot-password"
-                  className="text-primary text-sm lg:text-base duration-300 hover:underline hover:opacity-75 focus:underline"
+                  className="text-primary text-sm lg:text-base duration-300 hover:underline hover:opacity-75 focus:underline ml-auto"
                 >
                   Forgot Password?
                 </Link>
               </div>
               <div className="grid">
-                <Button className="py-2.5" type="submit">
+                <Button className="py-2.5" type="submit" disabled={loading}>
+                  {loading ? <LucideLoader2 className="animate-spin" /> : null}
                   Sign in
                 </Button>
               </div>

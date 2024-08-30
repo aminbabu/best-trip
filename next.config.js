@@ -27,7 +27,14 @@ const nextConfig = {
 
     return config;
   },
-
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
+    ],
+  },
   // ...other config
 };
 

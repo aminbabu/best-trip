@@ -42,7 +42,6 @@ const PaymentTableFilter = () => {
   });
 
   const handleReset = () => {
-    console.log("clicked reset");
     setIsStatus("");
     setIsType("");
     setIsDate("");
@@ -51,11 +50,9 @@ const PaymentTableFilter = () => {
   const handleStatus = (value) => {
     setIsStatus(value);
   };
-  // console.log(isStatus);
 
   const onSubmit = (data) => {
     setIsOpen(false);
-    console.log(data);
   };
   return (
     <div className="flex flex-col lg:flex-row justify-between gap-y-4 relative">

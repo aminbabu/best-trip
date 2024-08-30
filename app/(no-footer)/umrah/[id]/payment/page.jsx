@@ -1,3 +1,6 @@
+"use client"
+import { getBookingData } from "@/actions/booking/get-booking-data";
+import { submitBookingForReview } from "@/actions/booking/submit-booking-for-review";
 import {
   BusRedIcon,
   CalenderIcon,
@@ -11,11 +14,46 @@ import {
 import Container from "@/components/layouts/Container";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import Link from "next/link";
-import React from "react";
+import { BusIcon } from "lucide-react";
+import moment from "moment";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const PaymentPage = ({ params }) => {
   const { id } = params;
+  const { data } = useSession()
+  const router = useRouter()
+  const [bookingData, setBookingData] = useState([])
+  useEffect(() => {
+    const getBookingDetail = async () => {
+      try {
+        const response = await getBookingData(id)
+        setBookingData(response?.data?.umrahBookings)
+      } catch (error) {
+      }
+    }
+    getBookingDetail();
+  }, [data?.user?.accessToken, id])
+  const adultTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "adult")
+  const childTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "child")
+  const infantTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "infant")
+  const subtotal = Number(bookingData?.umrahPackage?.adultPrice) * adultTravelers?.length + Number(bookingData?.umrahPackage?.childPrice) * childTravelers?.length + Number(bookingData?.umrahPackage?.infantPrice) * infantTravelers?.length
+  const submitForReview = async () => {
+    try {
+      const response = await submitBookingForReview(id)
+      router.push("/payment-method/online-banking")
+    } catch (error) {
+      Swal.fire({
+        text: error?.response?.data?.message,
+        icon: "error",
+        confirmButtonText: "Try Another",
+        confirmButtonColor: "#3ad965",
+      });
+    }
+  }
+
 
   return (
     <main className="py-20 bg-secondary">
@@ -23,9 +61,9 @@ const PaymentPage = ({ params }) => {
         <Card className="text-t-600 border-transparent max-w-3xl mx-auto">
           <CardContent className="p-4 sm:p-6 md:p-8 lg:p-10">
             <h1 className="text-t-900 text-lg mb-1.5">
-              Quad Share Basis Package
+             {bookingData?.umrahPackage?.title}
             </h1>
-            <p className="mb-6">1 Friday In Makkah- 1 Friday In Madinah</p>
+            <p className="mb-6">{bookingData?.umrahPackage?.subtitle}</p>
             <div>
               <h3 className="text-base text-t-700 bg-p-300 px-4 md:px-5 py-3.5 rounded-md">
                 Booking Summary
@@ -35,57 +73,82 @@ const PaymentPage = ({ params }) => {
                   <li className="flex gap-x-2 text-sm lg:text-base leading-normal">
                     <LocationCircleIcon className="mt-0.5 flex-shrink-0" />
                     <span className="flex-shrink-0">
-                      From Dhaka , Bangladesh
+                      {bookingData?.umrahPackage?.outboundDepartureAirport}
                     </span>
                   </li>
                   <li className="flex gap-x-2 text-sm lg:text-base leading-normal">
                     <CalenderIcon className="mt-0.5 flex-shrink-0" />
                     <span className="flex-shrink-0">
-                      Journey Date : 20 Jun, 2024
+                      Journey Date : {moment(bookingData?.umrahPackage?.journeyDate).format("DD MMMM, YYYY")}
                     </span>
                   </li>
                   <li className="flex gap-x-2 text-sm lg:text-base leading-normal">
                     <ClockAltIcon className="mt-0.5 flex-shrink-0" />
-                    <span className="flex-shrink-0">15 Days | 14 Nights</span>
+                    <span className="flex-shrink-0">{bookingData?.umrahPackage?.totalDaysAndNights?.days} Days | {bookingData?.umrahPackage?.totalDaysAndNights?.nights} Nights</span>
                   </li>
                 </ul>
-                <ul className="flex gap-x-4">
-                  <li className="flex flex-col items-center gap-y-1 lg:text-sm capitalize">
-                    <PlaneIcon
-                      className="w-4 h-4 rotate-45"
-                      viewBox="0 0 14 14"
-                    />
-                    Flight
-                  </li>
-                  <li className="flex flex-col items-center gap-y-1 lg:text-sm capitalize">
-                    <HotelIcon className="w-4 h-4" viewBox="0 0 14 14" />
-                    Hotel
-                  </li>
-                  <li className="flex flex-col items-center gap-y-1 lg:text-sm capitalize">
-                    <PassportIcon className="w-4 h-4" viewBox="0 0 14 14" />
-                    Visa
-                  </li>
-                  <li className="flex flex-col items-center gap-y-1 lg:text-sm capitalize">
-                    <BusRedIcon className="w-4 h-4" viewBox="0 0 16 16" />
-                    Transport
-                  </li>
-                  <li className="flex flex-col items-center gap-y-1 lg:text-sm capitalize">
-                    <SpoonKnifeIcon className="w-4 h-4 " viewBox="0 0 17 15" />
-                    Food
-                  </li>
+                <ul className="flex items-center gap-x-4">
+                  {
+                    bookingData?.umrahPackage?.inclusions?.includes("flight") && <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
+                      <PlaneIcon
+                        className="w-6 h-6 rotate-45 text-primary"
+                        viewBox="0 0 14 14"
+                      />
+                      Flight
+                    </li>
+                  }
+                  {
+                    bookingData?.umrahPackage?.inclusions?.includes("hotel") && <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
+                      <HotelIcon
+                        className="w-6 h-6 text-primary"
+                        viewBox="0 0 14 14"
+                      />
+                      Hotel
+                    </li>
+                  }
+                  {
+                    bookingData?.umrahPackage?.inclusions?.includes("visa") && <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
+                      <PassportIcon
+                        className="w-6 h-6 text-primary"
+                        viewBox="0 0 14 14"
+                      />
+                      Visa
+                    </li>
+                  }
+                  {
+                    bookingData?.umrahPackage?.inclusions?.includes("transport") && <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
+                      <BusIcon
+                        className="w-6 h-6 text-primary"
+                        viewBox="0 0 14 14"
+                      />
+                      Transport
+                    </li>
+                  }
+                  {
+                    bookingData?.umrahPackage?.inclusions?.includes("food") &&
+                    <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
+                      <SpoonKnifeIcon
+                        fill="#F50308"
+                        className="w-6 h-6 text-primary"
+                        viewBox="0 0 16 16"
+                      />
+                      Food
+                    </li>
+                  }
                 </ul>
               </div>
             </div>
-            <div>
+            {adultTravelers?.length > 0 && <div>
+
               <h3 className="text-base text-t-700 bg-p-300 px-4 md:px-5 py-3.5 rounded-md">
-                Adult (1 Traveller)
+                Adult ({adultTravelers?.length} Traveller{adultTravelers?.length > 1 ? "s" : ""})
               </h3>
               <div className="px-4 md:px-5 py-6">
                 <ul className="space-y-2">
                   <li className="flex gap-x-4 items-center justify-between text-sm lg:text-base leading-normal">
                     <span>Base Fare</span>
                     <span>
-                      BDT <span className="text-t-800">1,30,000</span>
+                      BDT <span className="text-t-800">{bookingData?.umrahPackage?.adultPrice}</span>
                     </span>
                   </li>
                   <li className="flex gap-x-4 items-center justify-between text-sm lg:text-base leading-normal">
@@ -93,21 +156,22 @@ const PaymentPage = ({ params }) => {
                       <span className="text-primary">*</span>Including Tax +
                       Others
                     </span>
-                    <span>(1 x 1,30,000)</span>
+                    <span>({adultTravelers?.length} x {bookingData?.umrahPackage?.adultPrice})</span>
                   </li>
                 </ul>
               </div>
-            </div>
-            <div>
+
+            </div>}
+            {childTravelers?.length > 0 && <div >
               <h3 className="text-base text-t-700 bg-p-300 px-4 md:px-5 py-3.5 rounded-md">
-                Children (1 Traveller)
+                Children ({childTravelers?.length} Traveller{childTravelers?.length > 1 ? "s" : ""})
               </h3>
               <div className="px-4 md:px-5 py-6">
                 <ul className="space-y-2">
                   <li className="flex gap-x-4 items-center justify-between text-sm lg:text-base leading-normal">
                     <span>Base Fare</span>
                     <span>
-                      BDT <span className="text-t-800">1,10,000</span>
+                      BDT <span className="text-t-800">{bookingData?.umrahPackage?.childPrice}</span>
                     </span>
                   </li>
                   <li className="flex gap-x-4 items-center justify-between text-sm lg:text-base leading-normal">
@@ -115,21 +179,21 @@ const PaymentPage = ({ params }) => {
                       <span className="text-primary">*</span>Including Tax +
                       Others
                     </span>
-                    <span>(1 x 1,10,000)</span>
+                    <span>({childTravelers?.length} x {bookingData?.umrahPackage?.childPrice})</span>
                   </li>
                 </ul>
               </div>
-            </div>
-            <div>
+            </div>}
+            {infantTravelers?.length > 0 && <div>
               <h3 className="text-lg text-t-700 bg-p-300 px-4 md:px-5 py-3.5 rounded-md">
-                Infant (1 Traveller)
+                Infant ({infantTravelers?.length} Traveller{infantTravelers?.length > 1 ? "s" : ""})
               </h3>
               <div className="px-4 md:px-5 py-6">
                 <ul className="space-y-2">
                   <li className="flex gap-x-4 items-center justify-between text-sm lg:text-base leading-normal">
                     <span>Base Fare</span>
                     <span>
-                      BDT <span className="text-t-800">40,000</span>
+                      BDT <span className="text-t-800">{bookingData?.umrahPackage?.infantPrice}</span>
                     </span>
                   </li>
                   <li className="flex gap-x-4 items-center justify-between text-sm lg:text-base leading-normal">
@@ -137,28 +201,29 @@ const PaymentPage = ({ params }) => {
                       <span className="text-primary">*</span>Including Tax +
                       Others
                     </span>
-                    <span>(1 x 40,000)</span>
+                    <span>({infantTravelers?.length} x {bookingData?.umrahPackage?.infantPrice})</span>
                   </li>
                 </ul>
               </div>
-            </div>
+            </div>}
             <div className="px-4 md:px-5 flex gap-x-4 items-center justify-between text-sm lg:text-base leading-normal">
               <span>
                 <span className="text-primary">*</span>Subtotal
               </span>
               <span>
-                BDT <span className="text-t-800">2,80,000</span>
+                BDT <span className="text-t-800">{subtotal ?? 0}</span>
               </span>
             </div>
             <div className="grid mt-10">
-              <Button asChild>
-                <Link href={`/payment-method`}>Continue</Link>
+              <Button onClick={submitForReview}>
+
+                Continue
               </Button>
             </div>
           </CardContent>
         </Card>
       </Container>
-    </main>
+    </main >
   );
 };
 

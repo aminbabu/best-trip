@@ -1,0 +1,460 @@
+"use client";
+
+import { getPackageDurationsForCustomers } from "@/actions/packageDurations/get-package-durations";
+import { getUmrahPackageTypesForCustomers } from "@/actions/umrahPackageTypes/get-umrah-package-types";
+import Counter from "@/components/global/Counter";
+import ScrollArea from "@/components/global/ScrollArea";
+import { ArrowIcon, SearchIcon } from "@/components/icons/svgr";
+import { Button } from "@/components/ui/button";
+import { setPackageData } from "@/lib/features/umrahPackageSlice/packageSlice";
+import { cn, formatError } from "@/lib/utils";
+import { umrahSchema } from "@/schema/zod";
+import { Loader } from "lucide-react";
+import moment from "moment";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+
+const schedules = [
+  "january",
+  "february",
+  "march",
+  "april",
+  "may",
+  "june",
+  "july",
+  "august",
+  "september",
+  "october",
+  "november",
+  "december",
+];
+
+const traveller = [
+  {
+    id: 1,
+    title: "Adults",
+    description: "12 years+",
+    count: 1,
+  },
+  {
+    id: 2,
+    title: "Children",
+    description: "2-12 years",
+    count: 0,
+  },
+  {
+    id: 3,
+    title: "Infants",
+    description: "0-2 years",
+    count: 0,
+  },
+];
+
+const UmrahTabpane = ({ icon, disabled, className }) => {
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  const [durations, setDurations] = useState([]);
+  const [durationError, setDurationError] = useState(null);
+  const [durationLoading, setDurationLoading] = useState(true);
+  const [packageTypes, setPackageTypes] = useState([]);
+  const [isDisabled, setIsDisabled] = useState(disabled);
+  const [schedule, setSchedule] = useState(
+    moment().format("MMMM").toLowerCase()
+  );
+  const [errors, setErrors] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [isPackScheduleOpen, setIsPackScheduleOpen] = useState(false);
+  const [isPackTypeOpen, setIsPackTypeOpen] = useState(false);
+  const [isPackDurationOpen, setIsPackDurationOpen] = useState(false);
+  const [isTravellersOpen, setIsTravellersOpen] = useState(false);
+  const [type, setType] = useState(null);
+  const [duration, setDuration] = useState(null);
+  const [travellers, setTravellers] = useState(traveller);
+
+  const searchQueries = useSelector((state) => state.package);
+
+  useEffect(() => {
+    const fetchPackageDurations = async () => {
+      setDurationLoading(true);
+      try {
+        const { umrahPackageDurations, error } =
+          await getPackageDurationsForCustomers();
+
+        if (error) {
+          setDurationError(error);
+        } else {
+          setDurations(umrahPackageDurations);
+        }
+      } catch (error) {
+        setDurationError(error);
+      } finally {
+        setDurationLoading(false);
+      }
+    };
+
+    fetchPackageDurations();
+  }, []);
+
+  useEffect(() => {
+    const fetchPackageTypes = async () => {
+      try {
+        const { umrahPackageTypes, error } =
+          await getUmrahPackageTypesForCustomers();
+
+        if (error) {
+          console.error("Error fetching package types:", error);
+          return;
+        }
+
+        setPackageTypes(umrahPackageTypes || []);
+      } catch (error) {
+        console.error("Error fetching package types:", error);
+      }
+    };
+
+    fetchPackageTypes();
+  }, []);
+
+  useEffect(() => {
+    if (durations[0]?._id) {
+      setDuration(durations[0]._id);
+    }
+
+    if (packageTypes[0]?._id) {
+      setType(packageTypes[0]._id);
+    }
+  }, [durations, packageTypes]);
+
+  useEffect(() => {
+    const data = checkValidation();
+    if (data) {
+      dispatch(
+        setPackageData({
+          packageSchedule: data.schedule,
+          packageType: data.type,
+          packageDuration: data.duration,
+          adultTravelers: data.travellers.adultTravelers,
+          childTravelers: data.travellers.childTravelers,
+          infantsTravelers: data.travellers.infantsTravelers,
+        })
+      );
+    }
+  }, [schedule, type, duration, travellers, dispatch]);
+
+  const checkValidation = () => {
+    try {
+      const validatedData = umrahSchema.parse({
+        schedule,
+        type,
+        duration,
+        travellers: {
+          adultTravelers: travellers.find((t) => t.id === 1)?.count || 0,
+          childTravelers: travellers.find((t) => t.id === 2)?.count || 0,
+          infantsTravelers: travellers.find((t) => t.id === 3)?.count || 0,
+        },
+      });
+      return validatedData;
+    } catch (error) {
+      setErrors(formatError(error));
+      return false;
+    }
+  };
+
+  const handleCounterIncrement = (id) => {
+    const newTravellers = travellers.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          count: item.count > 0 ? item.count + 1 : 1,
+        };
+      }
+      return item;
+    });
+    setTravellers(newTravellers);
+  };
+
+  const handleCounterDecrement = (id) => {
+    const newTravellers = travellers.map((item) => {
+      if (item.id === id) {
+        // Prevent decrementing Adult count below 1
+        if (item.title === "Adults" && item.count === 1) {
+          return item;
+        }
+
+        // Decrement count for other items or Adults if count > 1
+        return {
+          ...item,
+          count: item.count > 0 ? item.count - 1 : 0,
+        };
+      }
+      return item;
+    });
+
+    setTravellers(newTravellers);
+  };
+
+  const handleDisableFields = () => {
+    setIsDisabled(false);
+  };
+
+  const handleSubmit = async () => {
+    const data = checkValidation();
+    if (!data) return;
+
+    try {
+      const queryString = new URLSearchParams({
+        schedule: data.schedule,
+        type: data.type,
+        duration: data.duration,
+        adultTravelers: data.travellers.adultTravelers,
+        childTravelers: data.travellers.childTravelers,
+        infantsTravelers: data.travellers.infantsTravelers,
+      }).toString();
+
+      await router.push(`/search/umrah?${queryString}`);
+    } finally {
+      setLoading(false); // Reset loading state after navigation
+    }
+  };
+
+  const packageType = packageTypes.find((item) => item._id === type);
+  const packageDuration = durations.find((item) => item._id === duration);
+
+  return (
+    <div
+      className={cn(
+        "bg-white flex flex-col lg:flex-row gap-x-4 gap-y-3 lg:gap-5 px-4 py-5 xs:px-4 xs:py-6 lg:px-6 sm:py-8 md:py-10 lg:py-12 rounded-md",
+        className
+      )}>
+      <Popover
+        open={isPackScheduleOpen}
+        onOpenChange={() => {
+          setErrors((prevState) => ({ ...prevState, schedule: null }));
+          setIsPackScheduleOpen(!isPackScheduleOpen);
+        }}>
+        <PopoverTrigger asChild className='flex-1' disabled={isDisabled}>
+          <Button
+            variant='outline'
+            className={cn(
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5 border-t-400/50 lg:border-border",
+              {
+                "border-p-900 text-p-900": errors?.schedule,
+              }
+            )}>
+            <span className='text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal'>
+              Package Schedule
+            </span>
+            <span className='text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize'>
+              {schedule ? schedule : "Select"}
+              <ArrowIcon className='hidden lg:inline-block' />
+            </span>
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent
+          align='start'
+          className='px-0 py-2 border-transparent min-w-[308px]'>
+          <ScrollArea className='max-h-64'>
+            <ul>
+              {schedules.map((item) => (
+                <li
+                  key={item}
+                  onClick={() => {
+                    setSchedule(item);
+                    setIsPackScheduleOpen(false);
+                  }}
+                  className={cn(
+                    "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
+                    {
+                      "bg-p-900 text-white": schedule === item,
+                    }
+                  )}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </ScrollArea>
+        </PopoverContent>
+      </Popover>
+
+      <Popover
+        open={isPackTypeOpen}
+        onOpenChange={() => {
+          setErrors((prevState) => ({ ...prevState, type: null }));
+          setIsPackTypeOpen(!isPackTypeOpen);
+        }}>
+        <PopoverTrigger asChild className='flex-1' disabled={isDisabled}>
+          <Button
+            variant='outline'
+            className={cn(
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5 border-t-400/50 lg:border-border",
+              {
+                "border-p-900 text-p-900": errors?.type,
+              }
+            )}>
+            <span className='text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal'>
+              Package Type
+            </span>
+            <span className='text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize'>
+              {packageType?.name ? packageType.name : "Select"}
+              <ArrowIcon className='hidden lg:inline-block' />
+            </span>
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent
+          align='start'
+          className='px-0 py-2 border-transparent min-w-[308px]'>
+          <ScrollArea className='max-h-64'>
+            <ul>
+              {packageTypes.map((item) => (
+                <li
+                  key={item._id}
+                  onClick={() => {
+                    setType(item._id);
+                    setIsPackTypeOpen(false);
+                  }}
+                  className={cn(
+                    "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
+                    {
+                      "bg-p-900 text-white": type === item._id,
+                    }
+                  )}>
+                  {item.name}
+                </li>
+              ))}
+            </ul>
+          </ScrollArea>
+        </PopoverContent>
+      </Popover>
+
+      <Popover
+        open={isPackDurationOpen}
+        onOpenChange={() => {
+          setErrors((prevState) => ({ ...prevState, duration: null }));
+          setIsPackDurationOpen(!isPackDurationOpen);
+        }}>
+        <PopoverTrigger asChild className='flex-1' disabled={isDisabled}>
+          <Button
+            variant='outline'
+            className={cn(
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5 border-t-400/50 lg:border-border",
+              {
+                "border-p-900 text-p-900": errors?.duration,
+              }
+            )}>
+            <span className='text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal'>
+              Package Duration
+            </span>
+            <span className='text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize'>
+              {packageDuration?.days
+                ? packageDuration.days + " Days"
+                : "Select"}
+              <ArrowIcon className='hidden lg:inline-block' />
+            </span>
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent
+          align='start'
+          className='px-0 py-2 border-transparent min-w-[308px]'>
+          <ScrollArea className='max-h-64'>
+            <ul>
+              {durationLoading ? (
+                <li className='p-5 text-center text-t-600'>
+                  <Loader className='animate-spin' />
+                </li>
+              ) : durationError ? (
+                <li className='p-5 text-center text-red-500'>
+                  {durationError.message}
+                </li>
+              ) : (
+                durations.map((item) => (
+                  <li
+                    key={item._id}
+                    onClick={() => {
+                      setDuration(item._id);
+                      setIsPackDurationOpen(false);
+                    }}
+                    className={cn(
+                      "px-5 py-2.5 text-sm lg:text-base text-t-700 hover:bg-p-900/5 focus:bg-p-900/5 hover:text-p-900 focus:text-p-900 rounded-none cursor-pointer capitalize",
+                      {
+                        "bg-p-900 text-white": duration === item._id,
+                      }
+                    )}>
+                    {item.days} Days
+                  </li>
+                ))
+              )}
+            </ul>
+          </ScrollArea>
+        </PopoverContent>
+      </Popover>
+
+      <Popover
+        open={isTravellersOpen}
+        onOpenChange={() => {
+          setErrors((prevState) => ({ ...prevState, travellers: null }));
+          setIsTravellersOpen(!isTravellersOpen);
+        }}>
+        <PopoverTrigger asChild className='flex-1' disabled={isDisabled}>
+          <Button
+            variant='outline'
+            className={cn(
+              "flex-col items-stretch gap-y-1 text-left focus-visible:ring-transparent p-3.5 border-t-400/50 lg:border-border",
+              {
+                "border-p-900 text-p-900": errors?.travellers,
+              }
+            )}>
+            <span className='text-xs lg:text-sm text-t-700 lg:text-t-600 font-normal'>
+              Travellers
+            </span>
+            <span className='text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize'>
+              {travellers
+                .filter((traveller) => traveller.count > 0)
+                .map((item) => `${item.count} ${item.title}`)
+                .join(", ") || "Select"}
+              <ArrowIcon className='hidden lg:inline-block' />
+            </span>
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent
+          align='start'
+          className='px-0 py-2 border-transparent min-w-[308px]'>
+          <ScrollArea className='max-h-64'>
+            <ul>
+              {travellers.map((item) => (
+                <li
+                  key={item.id}
+                  className='px-5 py-2.5 text-sm lg:text-base text-t-700'>
+                  <div className='flex items-center justify-between'>
+                    <span>{item.title}</span>
+                    <Counter
+                      count={item.count}
+                      onIncrement={() => handleCounterIncrement(item.id)}
+                      onDecrement={() => handleCounterDecrement(item.id)}
+                    />
+                  </div>
+                  <div className='text-xs text-t-500'>{item.description}</div>
+                </li>
+              ))}
+            </ul>
+          </ScrollArea>
+        </PopoverContent>
+      </Popover>
+
+      <div className='flex gap-x-4'>
+        <Button
+          type='button'
+          onClick={() => handleSubmit()}
+          className='flex items-center gap-x-2'
+          disabled={loading}>
+          {loading ? <Loader className='animate-spin' /> : "Search"}
+          <SearchIcon />
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default UmrahTabpane;

@@ -2,22 +2,17 @@ import React from "react";
 import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
 import {
-  BusRedIcon,
   CalenderIcon,
   ClockAltIcon,
-  ClockIcon,
-  ClockRedIcon,
-  HotelIcon,
   LocationCircleIcon,
-  PassportCircleIcon,
   PeopleIcon,
-  PlaneIcon,
-  SpoonKnifeIcon,
 } from "../icons/svgr";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import numeral from "numeral";
 import cardImg from "@/public/images/search/01.png";
+import { renderInclusionIcon } from "@/lib/utils";
+import moment from "moment";
 
 const data = {
   id: 1,
@@ -36,60 +31,44 @@ const data = {
   },
 };
 
-const UmrahBookingCard = () => {
-  const renderInclusionIcon = (item) => {
-    switch (item.toLowerCase()) {
-      case "flight":
-        return <PlaneIcon className="w-4 h-4" viewBox="0 0 14 14" />;
-      case "hotel":
-        return <HotelIcon className="w-4 h-4" viewBox="0 0 14 14" />;
-      case "visa":
-        return <PassportCircleIcon className="w-4 h-4" viewBox="0 0 14 14" />;
-      case "trns":
-        return <BusRedIcon className="w-4 h-4" viewBox="0 0 16 16" />;
-      case "food":
-        return <SpoonKnifeIcon className="w-4 h-4" viewBox="0 0 16 16" />;
-      default:
-        return null;
-    }
-  };
+const UmrahBookingCard = ({data}) => {
 
   return (
     <Card className="border-transparent relative overflow-hidden">
       <CardContent className="p-4 sm:p-5 lg:p-8 xl:leading-8 flex flex-col md:flex-row lg:items-center justify-between gap-6 lg:gap-9">
         <Image
-          src={cardImg}
+          src={process.env.NEXT_PUBLIC_API_URL+"/"+data?.thumbnail}
           width={266}
           height={266}
-          alt={data.name}
+          alt={data?.title}
           className="aspect-[263/266] w-full md:mx-0 md:w-1/2 lg:w-60 flex-shrink-0 rounded-[0.1785rem] object-cover"
         />
         <div className="flex-1 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
           <div>
             <h4 className="text-base text-t-800 font-medium leading-relaxed mb-1.5">
-              {data.name}
+            {data?.title}
             </h4>
             <p className="text-sm lg:text-base text-t-800 mb-12 lg:mb-4 xl:mb-12">
-              1 Friday In Makkah- 1 Friday In Madinah
+            {data?.subtitle}
             </p>
             <div className="flex flex-col xl:flex-row justify-between gap-4 xl:gap-9">
               <ul className="space-y-3 lg:space-y-2 xl:space-y-3">
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
                   <LocationCircleIcon className="mt-0.5 flex-shrink-0" />
                   <span className="flex-shrink-0">
-                    From <span className="">{data.from}</span>
+                    From <span className="">{data?.departureLocation}</span>
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
                   <CalenderIcon className="mt-0.5 flex-shrink-0" />
                   <span className="flex-shrink-0">
-                    Journey Date : 20 Jun, 2024
+                  Journey Date : {moment(data?.journeyDate).format("DD-MM-YYYY")}
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
                   <ClockAltIcon className="mt-0.5 flex-shrink-0" />
                   <span className="flex-shrink-0">
-                    {data.days} Days | {data.nights} Nights
+                  {data?.totalDaysAndNights?.days} Days | {data?.totalDaysAndNights?.days} Nights
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
@@ -102,7 +81,7 @@ const UmrahBookingCard = () => {
                   Package Inclusion
                 </div>
                 <ul className="flex items-center xl:justify-center gap-x-4">
-                  {data.inclusion.map((item, index) => (
+                {data?.inclusions.map((item, index) => (
                     <li
                       key={index}
                       className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize"

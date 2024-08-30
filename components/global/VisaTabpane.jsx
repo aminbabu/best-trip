@@ -162,7 +162,6 @@ const VisaTabpane = ({ icon, disabled, className }) => {
   };
 
   const handleFilter = () => {
-    console.log(destination, type, nationality, traveller);
   };
 
   const handleSubmit = async () => {
@@ -176,7 +175,6 @@ const VisaTabpane = ({ icon, disabled, className }) => {
 
     // TODO: Handle submit
     // setTimeout(() => {
-    //   console.log(data);
     //   setLoading(false);
     //   router.push("/search/visa");
     // }, 1000);

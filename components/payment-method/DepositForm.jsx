@@ -14,15 +14,10 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { XIcon } from "lucide-react";
 import { useState } from "react";
-import { hotelData } from "@/data/hotel-result";
-
-const DepositForm = () => {
-  const router = useRouter();
-  const data = hotelData[0];
+const DepositForm = ({ bookingData, onSubmit, loading }) => {
   const [error, setError] = useState(null);
   const pathname = usePathname();
   const [openOnline, setOpenOnline] = useState(false);
@@ -30,10 +25,8 @@ const DepositForm = () => {
   const [openWallet, setOpenWallet] = useState(false);
   const [openFullPayment, setOpenFullPayment] = useState(false);
   const [openPartPaymnet, setOpenPartPaymnet] = useState(false);
-  const [balance, setBalance] = useState(100);
-  const [partPaymentBalance, setPartPaymentBalance] = useState(29500);
-  const [fullPaymentBalance, setFullPaymentBalance] = useState(210500);
 
+  const [balance, setBalance] = useState(100);
   const form = useForm({
     defaultValues: {
       manual: false,
@@ -47,14 +40,12 @@ const DepositForm = () => {
 
   const handleManualBanking = (value) => {
     if (value) {
-      console.log("manual banking selected", value);
       setOpenOnline(false);
     }
   };
 
   const handleOnlineBanking = (value) => {
     if (value) {
-      console.log("online banking selected", value);
       setOpenManual(false);
       setOpenWallet(false);
     }
@@ -62,100 +53,123 @@ const DepositForm = () => {
 
   const handleFromWallet = (value) => {
     if (value) {
-      console.log("wallet is selected", value);
       setOpenOnline(false);
     }
   };
 
   const handleFullPayment = (value) => {
     if (value) {
-      console.log("full payment is checked", value);
       setOpenPartPaymnet(false);
     }
   };
 
   const handlePartPayment = (value) => {
     if (value) {
-      console.log("partial payment is checked", value);
       setOpenFullPayment(false);
     }
   };
+  // function onSubmit(values) {
+  //   if (openManual && pathname === "/profile/payment-method") {
+  //     // router.push("/profile/payment-method/manual-banking");
+  //     router.push("/profile/manual-banking");
+  //   }
 
-  function onSubmit(values) {
-    if (openManual && pathname === "/payment-method") {
-      // router.push("/payment-method/manual-banking");
-      router.push("/profile/manual-banking");
-      console.log(openManual && pathname === "/payment-method");
-    }
+  //   if (openManual && pathname === "/profile/add-balance") {
+  //     router.push("/profile/manual-banking");
+  //   }
 
-    if (openManual && pathname === "/profile/add-balance") {
-      router.push("/profile/manual-banking");
-      console.log(values.manual && pathname === "/profile/add-balance");
-    }
+  //   if (openWallet && pathname.startsWith("/booking-details")) {
+  //     if (!values.full && !values.part) {
+  //       if (partialTotal > balance && subTotal > balance) {
+  //         return setError(
+  //           <>
+  //             <p className="text-sm">
+  //               You don&apos;t have enough balance to complete this payment.
+  //               Please{" "}
+  //               <Link href="/profile/add-balance">
+  //                 <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
+  //                   {pathname.startsWith("/booking-details")
+  //                     ? "Add Money"
+  //                     : " Deposit Now"}
+  //                 </Button>
+  //               </Link>{" "}
+  //               to continue
+  //             </p>
+  //           </>
+  //         );
+  //       }
+  //     }
+  //     router.push("/profile/payment-method/online-banking");
+  //   } else if (openWallet && pathname === "/profile/payment-method") {
+  //     router.push("/profile/payment-method/online-banking");
+  //   }
 
-    if (openWallet && pathname === "/booking-details") {
-      if (!values.full && !values.part) {
-        if (partPaymentBalance > balance && fullPaymentBalance > balance) {
-          return setError(
-            <>
-              <p className="text-sm">
-                You don&apos;t have enough balance to complete this payment.
-                Please{" "}
-                <Link href="/profile/add-balance">
-                  <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
-                    {pathname === "/booking-details"
-                      ? "Add Money"
-                      : " Deposit Now"}
-                  </Button>
-                </Link>{" "}
-                to continue
-              </p>
-            </>
-          );
-        }
-      }
-      router.push("/payment-method/online-banking");
-    } else if (openWallet && pathname === "/payment-method") {
-      router.push("/payment-method/online-banking");
-    }
+  //   if (openOnline) {
+  //     if (!values.ssl) {
+  //       return setError("Please select a payment method");
+  //     }
+  //     if (
+  //       !values.full &&
+  //       !values.part &&
+  //       pathname.startsWith("/booking-details")
+  //     ) {
+  //       if (partialTotal > balance && subTotal > balance) {
+  //         return setError(
+  //           <>
+  //             <p className="text-sm">
+  //               You don&apos;t have enough balance to complete this payment.
+  //               Please{" "}
+  //               <Link href="/profile/add-balance">
+  //                 <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
+  //                   {pathname.startsWith("/booking-details")
+  //                     ? "Add Money"
+  //                     : " Deposit Now"}
+  //                 </Button>
+  //               </Link>{" "}
+  //               to continue
+  //             </p>
+  //           </>
+  //         );
+  //       }
+  //     }
+  //     router.push("/profile/payment-method/online-banking");
 
-    if (openOnline) {
-      if (!values.ssl) {
-        return setError("Please select a payment method");
-      }
-      if (!values.full && !values.part && pathname === "/booking-details") {
-        if (partPaymentBalance > balance && fullPaymentBalance > balance) {
-          return setError(
-            <>
-              <p className="text-sm">
-                You don&apos;t have enough balance to complete this payment.
-                Please{" "}
-                <Link href="/profile/add-balance">
-                  <Button className="px-2 py-1 text-xs mx-1 rounded-sm">
-                    {pathname === "/booking-details"
-                      ? "Add Money"
-                      : " Deposit Now"}
-                  </Button>
-                </Link>{" "}
-                to continue
-              </p>
-            </>
-          );
-        }
-      }
-      router.push("/payment-method/online-banking");
+  //     // if (!values.agree) {
+  //     //   return setError("Please agree with our terms and conditions");
+  //     // }
+  //   }
+  // }
 
-      // if (!values.agree) {
-      //   return setError("Please agree with our terms and conditions");
-      // }
-    }
-  }
+  const adultTravelers = bookingData?.travelers?.filter(
+    (traveler) => traveler?.travelerType === "adult"
+  );
+
+  const childTravelers = bookingData?.travelers?.filter(
+    (traveler) => traveler?.travelerType === "child"
+  );
+
+  const infantTravelers = bookingData?.travelers?.filter(
+    (traveler) => traveler?.travelerType === "infant"
+  );
+
+  const subTotal =
+    Number(bookingData?.umrahPackage?.adultPrice) * adultTravelers?.length +
+    Number(bookingData?.umrahPackage?.childPrice) * childTravelers?.length +
+    Number(bookingData?.umrahPackage?.infantPrice) * infantTravelers?.length;
+
+  const partialTotal =
+    Number(bookingData?.umrahPackage?.adultPartialPrice) *
+      adultTravelers?.length +
+    Number(bookingData?.umrahPackage?.childPartialPrice) *
+      childTravelers?.length +
+    Number(bookingData?.umrahPackage?.infantPartialPrice) *
+      infantTravelers?.length;
 
   return (
     <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-[18px]">
-          {error && !(pathname === "/booking-details") && (
+          {error && !pathname.startsWith("/booking-details") && (
             <div className="flex items-center gap-4 justify-between bg-p-300 border border-p-300 text-p-900 px-4 py-3 rounded-md">
               {error}
               <Button
@@ -171,8 +185,8 @@ const DepositForm = () => {
 
           <div className="grid grid-cols-2 gap-x-6 gap-y-4">
             {/* wallet */}
-            {(pathname === "/payment-method" ||
-              pathname === "/booking-details") && (
+            {(pathname === "/profile/payment-method" ||
+              pathname.startsWith("/booking-details")) && (
               <FormField
                 control={form.control}
                 name="wallet"
@@ -193,7 +207,7 @@ const DepositForm = () => {
                       From Wallet
                     </FormLabel>
 
-                    {pathname === "/payment-method" && (
+                    {pathname === "/profile/payment-method" && (
                       <p className="ml-auto text-sm">
                         $ {openWallet && balance}
                       </p>
@@ -232,8 +246,7 @@ const DepositForm = () => {
             )}
             {/* online banking */}
             {(pathname === "/profile/add-balance" ||
-              pathname === `/hotel/${data.id}/payment` ||
-              pathname === "/booking-details") && (
+              pathname.startsWith("/booking-details")) && (
               <FormField
                 control={form.control}
                 name="online"
@@ -391,7 +404,7 @@ const DepositForm = () => {
                 /> */}
                 </div>
               </div>
-              {pathname === "/booking-details" && form.watch("ssl") && (
+              {pathname.startsWith("/booking-details") && form.watch("ssl") && (
                 <div className="grid grid-cols-2 gap-x-6 gap-y-7">
                   <FormField
                     control={form.control}
@@ -424,7 +437,7 @@ const DepositForm = () => {
                               <div className="space-y-2">
                                 <p>Total to Pay BDT</p>
                                 <span className="text-[20px] block">
-                                  {fullPaymentBalance}
+                                  {subTotal}
                                 </span>
                               </div>
                             </div>
@@ -465,7 +478,7 @@ const DepositForm = () => {
                               <div className="space-y-2">
                                 <p>Total to Pay BDT</p>
                                 <span className="text-[20px] block">
-                                  {partPaymentBalance}
+                                  {partialTotal}
                                 </span>
                               </div>
                             </div>
@@ -482,96 +495,103 @@ const DepositForm = () => {
 
           {openWallet && (
             <div className="space-y-8">
-              {pathname === "/booking-details" && (
+              {pathname.startsWith("/booking-details") && (
                 <div className="grid grid-cols-2 gap-x-6 gap-y-7">
-                  <FormField
-                    control={form.control}
-                    name="full"
-                    render={({ field }) => (
-                      <FormItem className="space-y-0 col-span-2 sm:col-span-1">
-                        <FormLabel className="flex gap-x-2 font-normal">
-                          <FormControl>
-                            <Checkbox
-                              className="hidden"
-                              checked={openFullPayment}
-                              onCheckedChange={(value) => {
-                                field.onChange(value);
-                                handleFullPayment(value);
-                                setOpenFullPayment(value);
-                              }}
-                            />
-                          </FormControl>
-                          <div
-                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${
-                              openFullPayment && "border-p-900"
-                            } flex-1`}
-                          >
-                            <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
-                              <span className="leading-normal">
-                                Continue with full payment
-                              </span>
-                            </div>
-                            <div className="px-4 md:px-5 py-6 flex items-center gap-3">
-                              <div className="space-y-2">
-                                <p>Total to Pay BDT</p>
-                                <span className="text-[20px] block">
-                                  {fullPaymentBalance}
+                  {bookingData?.invoice?.paymentType !== "partial-payment" && (
+                    <FormField
+                      control={form.control}
+                      name="full"
+                      render={({ field }) => (
+                        <FormItem className="space-y-0 col-span-2 sm:col-span-1">
+                          <FormLabel className="flex gap-x-2 font-normal">
+                            <FormControl>
+                              <Checkbox
+                                className="hidden"
+                                checked={openFullPayment}
+                                onCheckedChange={(value) => {
+                                  field.onChange(value);
+                                  handleFullPayment(value);
+                                  setOpenFullPayment(value);
+                                }}
+                              />
+                            </FormControl>
+                            <div
+                              className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${
+                                openFullPayment && "border-p-900"
+                              } flex-1`}
+                            >
+                              <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
+                                <span className="leading-normal">
+                                  Continue with full payment
                                 </span>
                               </div>
-                            </div>
-                          </div>
-                        </FormLabel>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="partial"
-                    render={({ field }) => (
-                      <FormItem className="space-y-0 col-span-2 sm:col-span-1">
-                        <FormLabel className="flex gap-x-2 font-normal">
-                          <FormControl>
-                            <Checkbox
-                              className="hidden"
-                              checked={openPartPaymnet}
-                              onCheckedChange={(value) => {
-                                field.onChange(value);
-                                handlePartPayment(value);
-                                setOpenPartPaymnet(value);
-                              }}
-                            />
-                          </FormControl>
-                          <div
-                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${
-                              openPartPaymnet && "border-p-900"
-                            } flex-1`}
-                          >
-                            <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
-                              <span className="leading-normal">
-                                Continue with partial payment
-                              </span>
-                            </div>
-                            <div className="px-4 md:px-5 py-6 flex items-center gap-3">
-                              <div className="space-y-2">
-                                <p>Total to Pay BDT</p>
-                                <span className="text-[20px] block">
-                                  {partPaymentBalance}
-                                </span>
+                              <div className="px-4 md:px-5 py-6 flex items-center gap-3">
+                                <div className="space-y-2">
+                                  <p>Total to Pay BDT</p>
+                                  <span className="text-[20px] block">
+                                    {subTotal}
+                                  </span>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </FormLabel>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                          </FormLabel>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  )}
+                  {
+                    <FormField
+                      control={form.control}
+                      name="partial"
+                      render={({ field }) => (
+                        <FormItem className="space-y-0 col-span-2 sm:col-span-1">
+                          <FormLabel className="flex gap-x-2 font-normal">
+                            <FormControl>
+                              <Checkbox
+                                className="hidden"
+                                checked={openPartPaymnet}
+                                onCheckedChange={(value) => {
+                                  field.onChange(value);
+                                  handlePartPayment(value);
+                                  setOpenPartPaymnet(value);
+                                }}
+                              />
+                            </FormControl>
+                            <div
+                              className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${
+                                openPartPaymnet && "border-p-900"
+                              } flex-1`}
+                            >
+                              <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
+                                <span className="leading-normal">
+                                  {bookingData?.invoice?.paymentType ===
+                                  "partial-payment"
+                                    ? "Continue With Due Payment"
+                                    : "Continue with partial payment"}
+                                </span>
+                              </div>
+                              <div className="px-4 md:px-5 py-6 flex items-center gap-3">
+                                <div className="space-y-2">
+                                  <p>Total to Pay BDT</p>
+                                  <span className="text-[20px] block">
+                                    {partialTotal}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </FormLabel>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  }
                 </div>
               )}
             </div>
           )}
 
-          {error && pathname === "/booking-details" && (
+          {error && pathname.startsWith("/booking-details") && (
             <div className="flex items-center gap-4 justify-between bg-p-300 border border-p-300 text-p-900 px-4 py-3 rounded-md">
               {error}
               <Button
@@ -590,9 +610,10 @@ const DepositForm = () => {
               className={`py-[15px] ${openOnline ? "" : "mt-6"} `}
               type="submit"
               disabled={
-                !form.watch("manual") &&
-                !form.watch("online") &&
-                !form.watch("wallet")
+                // !form.watch("manual") &&
+                // !form.watch("online") &&
+                // !form.watch("wallet") &&
+                loading
               }
             >
               Continue

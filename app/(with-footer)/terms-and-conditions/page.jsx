@@ -1,32 +1,23 @@
+import { getPrivacySiteSettings } from "@/actions/site-settings/get-site-settings";
+import InnerHTML from "@/components/global/inner-html";
 import Container from "@/components/layouts/Container";
-import data from "@/data/qna.json";
 
-const TermsAndConditionsPage = () => {
+const TermsAndConditionsPage = async () => {
+  let termsAndConditions = [];
+
+  try {
+    const policies = await getPrivacySiteSettings();
+
+    termsAndConditions = policies[0]?.["terms-and-conditions"];
+  } catch (error) {
+
+  }
+
   return (
     <main>
       <section className="py-12 lg:py-16">
         <Container>
-          <ul className="space-y-8">
-            <li className="space-y-3.5">
-              <h2 className="text-lg text-t-800 font-semibold">
-                Terms and Conditions
-              </h2>
-              <p className="text-t-600">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Adipisci, unde officiis, voluptatibus facilis distinctio vel
-                corporis vero a, nesciunt cum accusamus. Placeat labore debitis
-                officia! Ab laborum magni nihil accusantium!
-              </p>
-            </li>
-            {data?.map((item, index) => (
-              <li key={index} className="space-y-3.5">
-                <h2 className="text-lg text-t-800 font-semibold">
-                  {item.question}
-                </h2>
-                <p className="text-t-600">{item.answer}</p>
-              </li>
-            ))}
-          </ul>
+          <InnerHTML dangerouslySetInnerHTML={termsAndConditions} />
         </Container>
       </section>
     </main>

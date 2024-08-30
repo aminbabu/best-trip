@@ -69,18 +69,12 @@ export const navLinks = [
       />
     ),
   },
-  {
-    id: 7,
-    name: "Logout",
-    href: "/logout",
-    icon: <LogoutIcon viewBox="0 0 24 25" className="h-4 w-4" />,
-  },
 ];
 
 // menu
 export const menu = [
-  { id: 1, name: "Flight", path: "/search/flight" },
-  { id: 2, name: "Umrah", path: "/search/umrah" },
-  { id: 3, name: "Hotel", path: "/search/hotel" },
-  { id: 4, name: "Visa", path: "/search/visa" },
+  { id: 1, name: "Flight", path: "/#flights" },
+  { id: 2, name: "Umrah", path: "/#umrah" },
+  { id: 3, name: "Hotel", path: "/#hotels" },
+  { id: 4, name: "Visa", path: "/#visa" },
 ];

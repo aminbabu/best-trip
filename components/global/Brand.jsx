@@ -15,12 +15,15 @@ const Brand = ({
     <Link
       href={href}
       {...props}
-      className={cn("inline-flex items-center", className)}
+      className={cn(
+        "inline-flex items-center text-2xl text-black font-semibold italic",
+        className
+      )}
     >
       {logo ? (
         <Image src={logo} width={width} height={height} alt={alt} />
       ) : (
-        alt || "Brand"
+        alt || "Best Trip"
       )}
     </Link>
   );

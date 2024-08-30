@@ -90,5 +90,6 @@ module.exports = {
     require("tailwindcss-animate"),
     "prettier-plugin-tailwindcss",
     require("tailwind-scrollbar"),
+    require("@tailwindcss/typography"),
   ],
 };

@@ -5,20 +5,20 @@ import SectionHeader from "@/components/global/SectionHeader";
 import Slider from "@/components/global/splide/Slider";
 import HotelSlideItem from "@/components/home/HotelSlideItem";
 import Section from "@/components/global/Section";
-import data from "@/data/hotels.json";
 import { options } from "@/components/home/splideOptions";
 
-const Hotels = () => {
-  const { title, description, items } = data;
-
+const Hotels = ({ section, hotelOffers }) => {
   return (
-    <Section className="bg-secondary">
-      <SectionHeader title={title} description={description} />
+    <Section id="hotels" className="bg-secondary">
+      <SectionHeader
+        title={section?.title}
+        description={section?.description}
+      />
       <Slider hasTrack={false} options={options}>
         <SplideTrack>
-          {items.map((item, index) => (
-            <SplideSlide key={index}>
-              <HotelSlideItem item={item} />
+          {hotelOffers?.map((hotelOffer) => (
+            <SplideSlide key={hotelOffer?._id}>
+              <HotelSlideItem hotelOffer={hotelOffer} />
             </SplideSlide>
           ))}
         </SplideTrack>

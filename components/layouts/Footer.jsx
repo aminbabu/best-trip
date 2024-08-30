@@ -11,7 +11,7 @@ import {
   TwitterIcon,
   YoutubeIcon,
 } from "@/components/icons/svgr";
-import { cn } from "@/lib/utils";
+import { cn, generateImage } from "@/lib/utils";
 
 import IataLogo from "@/public/images/footer/iata.svg";
 import AtabLogo from "@/public/images/footer/atab.svg";
@@ -43,34 +43,6 @@ const menu = {
   ],
 };
 
-const socialMedia = {
-  title: "Contact Us",
-  email: "besttrip@gmail.com",
-  phone: "+08870856 8965",
-  links: [
-    {
-      name: "Facebook",
-      path: "/",
-      icon: <FacebookIcon />,
-    },
-    {
-      name: "Twitter",
-      path: "/",
-      icon: <TwitterIcon />,
-    },
-    {
-      name: "Instagram",
-      path: "/",
-      icon: <InstagramIcon />,
-    },
-    {
-      name: "YouTube",
-      path: "/",
-      icon: <YoutubeIcon />,
-    },
-  ],
-};
-
 const noNewsletterLinks = [
   "/search/visa",
   "/search/umrah",
@@ -79,7 +51,7 @@ const noNewsletterLinks = [
   "/refund-policy",
 ];
 
-const Footer = ({ className }) => {
+const Footer = ({ className, generalSiteSettings, contactSiteSettings }) => {
   const pathname = usePathname();
 
   const hideNewsletter = noNewsletterLinks.includes(pathname);
@@ -92,15 +64,15 @@ const Footer = ({ className }) => {
           <div className="grid grid-cols-4 gap-x-5 gap-y-10 lg:gap-12 text-t-600">
             <div className="flex flex-col max-w-sm lg:max-w-[264px] col-span-4 lg:col-span-1 lg:-mr-11">
               <Brand
-                logo="/images/brand-logo.svg"
+                logo={generateImage(generalSiteSettings?.logo)}
                 width="132"
                 height="56"
-                alt="Best Trip"
+                alt={generalSiteSettings?.title}
               />
               <p className="text-xs xl:text-base leading-relaxed xl:leading-relaxed mt-6">
-                <span className="text-p-900">Best Trip</span> Lorem Ipsum is
-                simply dummy text of the printing and typesetting industry.
-                Lorem{" "}
+                <span className="line-clamp-4">
+                  {generalSiteSettings?.description}
+                </span>{" "}
                 <Link
                   href="/about-us"
                   className="text-t-800 inline-flex duration-300 hover:text-p-900"
@@ -137,40 +109,69 @@ const Footer = ({ className }) => {
             </div>
             <div className="flex flex-col col-span-2 lg:col-span-1">
               <h2 className="text-xs xs:text-sm sm:text-base lg:text-lg text-inherit font-medium mb-3 lg:mb-5">
-                {socialMedia.title}
+                Contact Us
               </h2>
               <ul className="grid gap-y-1.5 lg:gap-y-2 mb-1.5 lg:mb-2">
                 <li className="inline-flex">
                   <Link
-                    href={`mailto:${socialMedia.email}`}
+                    href={`mailto:${contactSiteSettings?.email}`}
                     className="text-inherit text-xs xl:text-base duration-300 hover:text-p-900 inline-flex py-0.5"
-                    title={socialMedia.email}
+                    title={contactSiteSettings?.email}
                   >
-                    {socialMedia.email}
+                    {contactSiteSettings?.email}
                   </Link>
                 </li>
                 <li className="inline-flex">
                   <Link
-                    href={`tel:${socialMedia.phone}`}
+                    href={`tel:+${contactSiteSettings?.phone}`}
                     className="text-inherit text-xs xl:text-base duration-300 hover:text-p-900 inline-flex py-0.5"
-                    title={socialMedia.phone}
+                    title={contactSiteSettings?.phone}
                   >
-                    {socialMedia.phone}
+                    +{contactSiteSettings?.phone}
                   </Link>
                 </li>
               </ul>
               <ul className="flex items-center gap-1.5">
-                {socialMedia.links.map((item, index) => (
-                  <li key={index}>
+                {contactSiteSettings?.facebook && (
+                  <li>
                     <Link
-                      href={item.path}
+                      href={contactSiteSettings?.facebook}
                       className="text-t-700 duration-300 hover:text-p-900 inline-flex items-center justify-center w-6 xs:w-7 lg:w-8 h-6 xs:h-7 lg:h-8 p-0.5"
-                      title={item.name}
                     >
-                      {item.icon}
+                      <FacebookIcon />
                     </Link>
                   </li>
-                ))}
+                )}
+                {contactSiteSettings?.twitter && (
+                  <li>
+                    <Link
+                      href={contactSiteSettings?.twitter}
+                      className="text-t-700 duration-300 hover:text-p-900 inline-flex items-center justify-center w-6 xs:w-7 lg:w-8 h-6 xs:h-7 lg:h-8 p-0.5"
+                    >
+                      <TwitterIcon />
+                    </Link>
+                  </li>
+                )}
+                {contactSiteSettings?.instagram && (
+                  <li>
+                    <Link
+                      href={contactSiteSettings?.instagram}
+                      className="text-t-700 duration-300 hover:text-p-900 inline-flex items-center justify-center w-6 xs:w-7 lg:w-8 h-6 xs:h-7 lg:h-8 p-0.5"
+                    >
+                      <InstagramIcon />
+                    </Link>
+                  </li>
+                )}
+                {contactSiteSettings?.youtube && (
+                  <li>
+                    <Link
+                      href={contactSiteSettings?.youtube}
+                      className="text-t-700 duration-300 hover:text-p-900 inline-flex items-center justify-center w-6 xs:w-7 lg:w-8 h-6 xs:h-7 lg:h-8 p-0.5"
+                    >
+                      <YoutubeIcon />
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
             <div className="flex lg:hidden flex-col col-span-2 lg:col-span-1">
@@ -178,8 +179,7 @@ const Footer = ({ className }) => {
                 Office Address
               </h2>
               <p className="text-xs xl:text-base leading-relaxed xl:leading-relaxed">
-                Rajlazmi Complex, Lift 6 Rajlaxmi, Uttara Sector 03 Dhaka,
-                Bangladesh.
+                {contactSiteSettings?.address}
               </p>
             </div>
           </div>
@@ -190,8 +190,7 @@ const Footer = ({ className }) => {
                 Office Address
               </h2>
               <p className="text-xs xl:text-base leading-relaxed xl:leading-relaxed">
-                Rajlazmi Complex, Lift 6 Rajlaxmi, Uttara Sector 03 Dhaka,
-                Bangladesh.
+                {contactSiteSettings?.address}
               </p>
             </div>
             <div className="flex flex-col items-center sm:items-start text-center sm:text-left col-span-2 sm:col-span-1 lg:ml-11">
@@ -200,15 +199,12 @@ const Footer = ({ className }) => {
               </h2>
               <ul className="flex items-center sm:ml-8">
                 <li className="inline-flex">
-                  <Link
-                    href="#"
-                    className="duration-300 hover:opacity-75 inline-flex py-0.5"
-                  >
+                  <span className="duration-300 hover:opacity-75 inline-flex py-0.5">
                     <IataLogo
                       viewBox="0 0 52 40"
                       className="w-10 h-auto lg:w-14"
                     />
-                  </Link>
+                  </span>
                 </li>
               </ul>
             </div>
@@ -218,26 +214,20 @@ const Footer = ({ className }) => {
               </h2>
               <ul className="flex items-center gap-x-2.5 lg:gap-x-4">
                 <li className="inline-flex">
-                  <Link
-                    href="#"
-                    className="duration-300 hover:opacity-75 inline-flex py-0.5"
-                  >
+                  <span className="duration-300 hover:opacity-75 inline-flex py-0.5">
                     <AtabLogo
                       viewBox="0 0 97 26"
                       className="w-auto h-[1.125rem] lg:h-[1.625rem]"
                     />
-                  </Link>
+                  </span>
                 </li>
                 <li className="inline-flex">
-                  <Link
-                    href="#"
-                    className="duration-300 hover:opacity-75 inline-flex py-0.5"
-                  >
+                  <span className="duration-300 hover:opacity-75 inline-flex py-0.5">
                     <ToabLogo
                       viewBox="0 0 62 26"
                       className="w-auto h-[1.125rem] lg:h-[1.625rem]"
                     />
-                  </Link>
+                  </span>
                 </li>
               </ul>
             </div>
@@ -247,26 +237,20 @@ const Footer = ({ className }) => {
               </h2>
               <ul className="flex items-center gap-x-2.5 lg:gap-x-4">
                 <li className="inline-flex">
-                  <Link
-                    href="#"
-                    className="duration-300 hover:opacity-75 inline-flex py-0.5"
-                  >
+                  <span className="duration-300 hover:opacity-75 inline-flex py-0.5">
                     <BasisLogo
                       viewBox="0 0 105 43"
                       className="w-auto h-10 lg:h-12"
                     />
-                  </Link>
+                  </span>
                 </li>
                 <li className="inline-flex">
-                  <Link
-                    href="#"
-                    className="duration-300 hover:opacity-75 inline-flex py-0.5"
-                  >
+                  <span className="duration-300 hover:opacity-75 inline-flex py-0.5">
                     <EcabLogo
                       viewBox="0 0 53 31"
                       className="w-auto h-6 lg:h-10"
                     />
-                  </Link>
+                  </span>
                 </li>
               </ul>
             </div>

@@ -61,9 +61,7 @@ const EditBooking = () => {
   const onSubmit = (data) => {
     if (data) {
       setIsOpenEditBooking(false);
-      console.log(data);
     }
-    console.log(data);
     swalWithTailwindButtons.fire({
       icon: "success",
       text: "Your booking is successfully updated",

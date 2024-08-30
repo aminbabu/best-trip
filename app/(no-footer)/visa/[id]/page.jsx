@@ -95,7 +95,6 @@ const Page = () => {
     setLoading(true);
 
     setTimeout(() => {
-      console.log(data);
       setLoading(false);
       hideTravellerForm();
     }, 2000);
@@ -326,7 +325,6 @@ const Page = () => {
                                     onSelect={(value) => {
                                       setCalendarAdultDate(value);
                                       field.onChange(value);
-                                      console.log(value, calendarAdultDate);
                                       setIsOpenDobAdult(false);
                                     }}
                                     disabled={(date) =>

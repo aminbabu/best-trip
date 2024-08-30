@@ -80,7 +80,6 @@ const TravellersDetailsCard = () => {
     setLoading(true);
 
     setTimeout(() => {
-      console.log(data);
       setLoading(false);
       hideTravellerForm();
     }, 2000);
@@ -220,7 +219,6 @@ const TravellersDetailsCard = () => {
                             onSelect={(value) => {
                               setCalendarAdultDate(value);
                               field.onChange(value);
-                              console.log(value, calendarAdultDate);
                               setIsOpenDobAdult(false);
                             }}
                             disabled={(date) =>
