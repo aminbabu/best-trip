@@ -4,7 +4,7 @@ import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import TravellersDetailsCard from "@/components/global/TravellersDetailsCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import FlightDetailsCard from "@/components/fight/FlightDetailsCard";
+import FlightDetailsCard from "@/components/umrah-fight/FlightDetailsCard";
 import { flightDetailsTabItems } from "@/data/flight";
 import { Button } from "@/components/ui/button";
 import HotelOverview from "@/components/hotel/HotelOverView";

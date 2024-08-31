@@ -1,9 +1,9 @@
-import BaggageSummary from "@/components/fight/flight-card-details-tabs/BaggageSummary";
-import FareRules from "@/components/fight/flight-card-details-tabs/FareRules";
-import FareSummary from "@/components/fight/flight-card-details-tabs/FareSummary";
-import ItineraryDetails from "@/components/fight/flight-card-details-tabs/ItineraryDetails";
-import FlightDetailsCard from "@/components/fight/FlightDetailsCard";
-import ItineraryDetailsTabContent from "@/components/fight/ItineraryDetailsTabContent";
+import BaggageSummary from "@/components/umrah-fight/flight-card-details-tabs/BaggageSummary";
+import FareRules from "@/components/umrah-fight/flight-card-details-tabs/FareRules";
+import FareSummary from "@/components/umrah-fight/flight-card-details-tabs/FareSummary";
+import ItineraryDetails from "@/components/umrah-fight/flight-card-details-tabs/ItineraryDetails";
+import FlightDetailsCard from "@/components/umrah-fight/FlightDetailsCard";
+import ItineraryDetailsTabContent from "@/components/umrah-fight/ItineraryDetailsTabContent";
 
 const detailsRuleText1 = (
   <p className="h-[300px] overflow-y-auto pr-4 text-xs text-t-600 leading-5">

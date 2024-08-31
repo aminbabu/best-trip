@@ -1,5 +1,6 @@
 "use server";
 
+import handleAxiosError from "@/handlers/axios/error";
 import axios from "@/lib/axios";
 
 const getUmrahPackageTypes = async () => {
@@ -8,7 +9,7 @@ const getUmrahPackageTypes = async () => {
 
     return response.data;
   } catch (error) {
-    throw new Error(error.response.data.message);
+    throw new Error(handleAxiosError(error));
   }
 };
 

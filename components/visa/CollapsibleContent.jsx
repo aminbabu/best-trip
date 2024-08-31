@@ -2,7 +2,7 @@ import React from "react";
 import { CollapsibleContent } from "../ui/collapsible";
 import VisaCardDetailsTabs from "./VisaCardDetailsTabs";
 import { usePathname } from "next/navigation";
-import FlightCardDetailsTabs from "../fight/flight-card-details-tabs/FlightCardDetailsTabs";
+import FlightCardDetailsTabs from "../umrah-fight/flight-card-details-tabs/FlightCardDetailsTabs";
 
 const CardCollapsibleContent = () => {
   const pathname = usePathname();

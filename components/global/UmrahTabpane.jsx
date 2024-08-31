@@ -11,6 +11,8 @@ import moment, { duration } from "moment";
 import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import getUmrahPackageTypes from "@/actions/umrahPackageTypes/get-umrah-package-types";
+import getUmrahPackageDurations from "@/actions/package-durations/get-package-durations";
 
 const schedules = [
   "january",
@@ -104,6 +106,7 @@ const UmrahTabpane = ({
       return false;
     }
   };
+
   // Increment The Count Of Travelers
   const handleCounterIncrement = (id) => {
     const newTravelers = travelers.map((item) => {
@@ -117,6 +120,7 @@ const UmrahTabpane = ({
     });
     setTravelers(newTravelers);
   };
+
   // Decrement The Count Of Travelers
   const handleCounterDecrement = (id) => {
     const newTravelers = travelers.map((item) => {
@@ -137,10 +141,12 @@ const UmrahTabpane = ({
 
     setTravelers(newTravelers);
   };
+
   // Disable The Fields Conditionally
   const handleDisableFields = () => {
     setIsDisabled(false);
   };
+
   // Submit The Form And Redirect To Umrah Search Page
   const handleSubmit = async () => {
     setLoading(true);
@@ -199,12 +205,12 @@ const UmrahTabpane = ({
   // Update the state based on the params => From LocalStorage or Default
   useEffect(() => {
     const selectedPackageType = packageTypes.find(
-      (item) => item._id === params.type
+      (item) => item?._id === params?.type
     );
     const selectedDuration = durations.find(
-      (item) => item._id === params.duration
+      (item) => item?._id === params?.duration
     );
-    setSchedule(params?.schedule ? params.schedule : schedules[7]);
+    setSchedule(params?.schedule ? params?.schedule : schedules[7]);
     setPackageType(params?.type ? selectedPackageType : packageTypes[0]);
     setTravelers((prev) => {
       // Create a copy of the previous travelers state
@@ -213,15 +219,15 @@ const UmrahTabpane = ({
       // Update the count for each traveler type based on the params
       updatedTravelers[0] = {
         ...updatedTravelers[0],
-        count: params?.adultTravelers ? Number(params.adultTravelers) : 1,
+        count: params?.adultTravelers ? Number(params?.adultTravelers) : 1,
       };
       updatedTravelers[1] = {
         ...updatedTravelers[1],
-        count: params?.childTravelers ? Number(params.childTravelers) : 0,
+        count: params?.childTravelers ? Number(params?.childTravelers) : 0,
       };
       updatedTravelers[2] = {
         ...updatedTravelers[2],
-        count: params?.infantsTravelers ? Number(params.infantsTravelers) : 0,
+        count: params?.infantsTravelers ? Number(params?.infantsTravelers) : 0,
       };
       return updatedTravelers;
     });
@@ -236,6 +242,24 @@ const UmrahTabpane = ({
     params?.childTravelers,
     params?.infantsTravelers,
   ]);
+
+  useEffect(() => {
+    // get all umarh packages types
+    const umarhPack = async () => {
+      const allUmarhPacks = await getUmrahPackageTypes();
+      console.log(allUmarhPacks);
+      setPackageTypes(allUmarhPacks?.umrahPackageTypes);
+    };
+    // get all umarh durations types
+    const umarhDuration = async () => {
+      const allUmarhDurations = await getUmrahPackageDurations();
+      console.log(allUmarhDurations);
+      setDurations(allUmarhDurations?.umrahPackageDurations);
+    };
+    // calling the functions
+    umarhPack();
+    umarhDuration();
+  }, []);
 
   return (
     <div
