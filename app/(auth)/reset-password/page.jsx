@@ -102,7 +102,7 @@ const ResetPasswordPage = () => {
     if (!token) {
       router.push("/sign-in");
     }
-  }, [token]);
+  }, [token,router]);
 
   return (
     <div className="max-w-[500px] mx-auto">

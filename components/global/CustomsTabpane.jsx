@@ -66,7 +66,7 @@ const CustomsTabpane = ({ icon, className }) => {
   };
 
   const handleCounterIncrement = (id) => {
-    const newTravellers = travellerCounts.map((item) => {
+    const newTravellers = travellerCounts?.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -80,7 +80,7 @@ const CustomsTabpane = ({ icon, className }) => {
   };
 
   const handleCounterDecrement = (id) => {
-    const newTravellers = travellerCounts.map((item) => {
+    const newTravellers = travellerCounts?.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -130,7 +130,7 @@ const CustomsTabpane = ({ icon, className }) => {
           className="px-0 py-2 border-transparent min-w-[17rem]"
         >
           <ScrollArea className="max-h-64">
-            {schedules.map((item) => (
+            {schedules?.map((item) => (
               <DropdownMenuItem
                 key={item}
                 onClick={() => setSchedule(item)}
@@ -172,7 +172,7 @@ const CustomsTabpane = ({ icon, className }) => {
           className="px-0 py-2 border-transparent min-w-[17rem]"
         >
           <ScrollArea className="max-h-64">
-            {types.map((item) => (
+            {types?.map((item) => (
               <DropdownMenuItem
                 key={item}
                 className={cn(
@@ -216,7 +216,7 @@ const CustomsTabpane = ({ icon, className }) => {
           className="px-0 py-2 border-transparent min-w-[17rem]"
         >
           <ScrollArea className="max-h-64">
-            {durations.map((item) => (
+            {durations?.map((item) => (
               <DropdownMenuItem
                 key={item}
                 onSelect={() => setDuration(item)}
@@ -260,7 +260,7 @@ const CustomsTabpane = ({ icon, className }) => {
           className="px-0 py-2 border-transparent min-w-[17rem]"
         >
           <ScrollArea className="max-h-64">
-            {travellerCounts.map((item) => (
+            {travellerCounts?.map((item) => (
               <Fragment key={item.id}>
                 <Counter
                   title={item.title}

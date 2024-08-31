@@ -15,14 +15,14 @@ import Image from "next/image";
 
 const SearchPage = ({ params, searchParams }) => {
   const { slug } = params;
-  const type = searchParams.type
-  const schedule = searchParams.schedule
-  const duration = searchParams.duration
-  const adultTraveler = searchParams.adultTravelers
-  const childTravelers = searchParams.childTravelers
-  const infantsTravelers = searchParams.infantsTravelers
-  const dataLength = searchParams.dataLength
-  const queryParams = { type, schedule, duration, adultTraveler, childTravelers, infantsTravelers, dataLength }
+  const type = searchParams?.type
+  const schedule = searchParams?.schedule
+  const duration = searchParams?.duration
+  const adultTravelers = searchParams?.adultTravelers
+  const childTravelers = searchParams?.childTravelers
+  const infantsTravelers = searchParams?.infantsTravelers
+  const dataLength = searchParams?.dataLength
+  const queryParams = { type, schedule, duration, adultTravelers, childTravelers, infantsTravelers, dataLength }
 
   return (
     <Collapsible>

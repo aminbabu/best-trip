@@ -16,7 +16,7 @@ const PlacesInBD = ({ section, blogPosts }) => {
       />
       <Slider hasTrack={false} options={options}>
         <SplideTrack>
-          {blogPosts.map((blogPost, index) => (
+          {blogPosts?.map((blogPost, index) => (
             <SplideSlide key={blogPost?._id}>
               <PlacesInBDSlideItem blogPost={blogPost} />
             </SplideSlide>

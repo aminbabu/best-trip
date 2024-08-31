@@ -67,4 +67,5 @@ export const {
   },
   providers,
   callbacks,
+  trustHost: true,
 });

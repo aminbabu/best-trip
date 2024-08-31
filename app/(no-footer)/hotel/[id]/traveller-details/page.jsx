@@ -86,7 +86,6 @@ const HotelTravellerDetailsPage = () => {
     setLoading(true);
 
     setTimeout(() => {
-      console.log(data);
       setLoading(false);
       hideTravellerForm();
     }, 2000);

@@ -5,7 +5,6 @@ import BookingForm from "./BookingForm";
 import { useEffect, useState } from "react";
 
 const BookingButton = ({ id }) => {
-    const router = useRouter();
     const [searchedValue, setSearchedValue] = useState({})
     useEffect(() => {
         if (typeof window != undefined) {

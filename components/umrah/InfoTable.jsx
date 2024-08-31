@@ -14,19 +14,19 @@ const InfoTable = ({ table }) => {
       <TableHeader>
         <TableRow className="border-b-[#f5f5f5]">
           {table?.header?.length
-            ? table.header.map((item, index) => (
-                <TableHead key={index} className={item.className}>
-                  {item.title}
-                </TableHead>
-              ))
+            ? table.header?.map((item, index) => (
+              <TableHead key={index} className={item.className}>
+                {item.title}
+              </TableHead>
+            ))
             : null}
         </TableRow>
       </TableHeader>
       <TableBody>
         {table?.body?.length ? (
-          table.body.map((item, index) => (
+          table.body?.map((item, index) => (
             <TableRow key={index} className="border-b-[#f5f5f5]">
-              {item.map((cell, index) => (
+              {item?.map((cell, index) => (
                 <TableCell key={index} className={cell.className}>
                   {cell.cell}
                 </TableCell>

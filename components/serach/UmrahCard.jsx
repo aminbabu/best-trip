@@ -25,7 +25,7 @@ const UmrahCard = ({ data }) => {
       </div>
       <CardContent className="p-4 sm:p-5 lg:p-10 xl:leading-8 flex flex-col md:flex-row lg:items-center justify-between gap-6 lg:gap-9">
         <Image
-          src={process.env.NEXT_PUBLIC_API_URL+data?.thumbnail}
+          src={process.env.NEXT_PUBLIC_API_URL + data?.thumbnail}
           width={266}
           height={266}
           alt={data?.name}
@@ -37,7 +37,7 @@ const UmrahCard = ({ data }) => {
               {data?.name}
             </h4>
             <p className="text-sm lg:text-base text-t-800 mb-12 lg:mb-4 xl:mb-12">
-             {data?.title}
+              {data?.title}
             </p>
             <div className="flex flex-col xl:flex-row justify-between gap-4 xl:gap-5">
               <ul className="space-y-3 lg:space-y-2 xl:space-y-3">
@@ -77,7 +77,7 @@ const UmrahCard = ({ data }) => {
                   Package Inclusion
                 </div>
                 <ul className="flex items-center xl:justify-center gap-x-4">
-                  {data?.inclusions.map((item, index) => (
+                  {data?.inclusions?.map((item, index) => (
                     <li
                       key={index}
                       className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize"

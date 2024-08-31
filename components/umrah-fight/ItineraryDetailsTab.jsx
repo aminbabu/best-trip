@@ -9,7 +9,7 @@ const ItineraryDetailsTab = () => {
       defaultValue={itineraryDetailsTabItems[0].value}
     >
       <TabsList className="flex justify-start gap-x-7 bg-white overflow-x-auto overflow-y-hidden">
-        {itineraryDetailsTabItems.map((tab) => (
+        {itineraryDetailsTabItems?.map((tab) => (
           <TabsTrigger
             key={tab.id}
             value={tab.value}
@@ -19,7 +19,7 @@ const ItineraryDetailsTab = () => {
           </TabsTrigger>
         ))}
       </TabsList>
-      {itineraryDetailsTabItems.map((tab) => (
+      {itineraryDetailsTabItems?.map((tab) => (
         <TabsContent key={tab.id} value={tab.value}>
           {tab.element}
         </TabsContent>

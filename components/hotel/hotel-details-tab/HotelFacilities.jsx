@@ -15,7 +15,7 @@ const HotelFacilities = () => {
           </h4>
           <div className="mt-5 mb-10">
             <ul className="gap-4 grid grid-cols-2 max-h-[456px] overflow-y-auto">
-              {hotelFacilities.map((item) => (
+              {hotelFacilities?.map((item) => (
                 <li
                   key={item.id}
                   className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal col-span-2 md:col-span-1"

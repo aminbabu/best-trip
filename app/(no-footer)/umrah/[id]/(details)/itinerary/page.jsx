@@ -1,11 +1,15 @@
+import { getUmrahPackageByIdForCustomers } from "@/actions/umrahPackages/get-umrah-packages";
 import { Card, CardContent } from "@/components/ui/card";
 import data from "@/data/itinerary.json";
 import Image from "next/image";
-const ItineraryPage = () => {
+const ItineraryPage =async ({ params }) => {
+  const { id } = params;
+  const { umrahPackages: packageDetail } = await getUmrahPackageByIdForCustomers(id)
+  console.log(packageDetail);
   return (
     <div className="space-y-4">
       {data?.length ? (
-        data.map((item, index) => (
+        data?.map((item, index) => (
           <Card key={item?.id} className="border-transparent">
             <CardContent className="flex flex-col sm:flex-row gap-5 p-4 sm:p-6 lg:p-8">
               <div className="flex-shrink-0 rounded-md sm:w-[173px] aspect-[173/122] overflow-hidden">

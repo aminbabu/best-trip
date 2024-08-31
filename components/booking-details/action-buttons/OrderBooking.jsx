@@ -16,7 +16,7 @@ const OrderBooking = ({ bookingData, setRefetch }) => {
       const response = await makePayment(bookingData?.umrahPackage?._id, paymentType)
       Swal.fire({
         position: "top-end",
-        text: response?.data?.message,
+        text: response?.message,
         icon: "success",
         confirmButtonText: "Ok, got it",
         confirmButtonColor: "#3ad965",
@@ -25,6 +25,7 @@ const OrderBooking = ({ bookingData, setRefetch }) => {
       setIsOpen(false)
       setRefetch(true)
     } catch (error) {
+      console.log(error);
       setRefetch(true)
       setLoading(false)
       setIsOpen(false)

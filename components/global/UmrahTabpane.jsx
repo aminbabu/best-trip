@@ -109,7 +109,7 @@ const UmrahTabpane = ({
 
   // Increment The Count Of Travelers
   const handleCounterIncrement = (id) => {
-    const newTravelers = travelers.map((item) => {
+    const newTravelers = travelers?.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -123,7 +123,7 @@ const UmrahTabpane = ({
 
   // Decrement The Count Of Travelers
   const handleCounterDecrement = (id) => {
-    const newTravelers = travelers.map((item) => {
+    const newTravelers = travelers?.map((item) => {
       if (item.id === id) {
         // Prevent decrementing Adult count below 1
         if (item.title === "Adults" && item.count === 1) {
@@ -300,7 +300,7 @@ const UmrahTabpane = ({
         >
           <ScrollArea className="max-h-64">
             <ul>
-              {schedules.map((item) => (
+              {schedules?.map((item) => (
                 <li
                   key={item}
                   onClick={() => {
@@ -358,7 +358,7 @@ const UmrahTabpane = ({
                   <Loader className="animate-spin" />
                 </li>
               ) : (
-                packageTypes.map((item) => (
+                packageTypes?.map((item) => (
                   <li
                     key={item._id}
                     onClick={() => {
@@ -424,7 +424,7 @@ const UmrahTabpane = ({
                   {durationError.message}
                 </li>
               ) : (
-                durations.map((item) => (
+                durations?.map((item) => (
                   <li
                     key={item._id}
                     onClick={() => {
@@ -470,13 +470,12 @@ const UmrahTabpane = ({
             <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
               {travelers?.some((item) => item.count > 0)
                 ? `${travelers?.reduce(
-                    (acc, item) => acc + item.count,
-                    0
-                  )} Traveller${
-                    travelers?.reduce((acc, item) => acc + item.count, 0) > 1
-                      ? "s"
-                      : ""
-                  }`
+                  (acc, item) => acc + item.count,
+                  0
+                )} Traveller${travelers?.reduce((acc, item) => acc + item.count, 0) > 1
+                  ? "s"
+                  : ""
+                }`
                 : "Select"}
               <ArrowIcon className="hidden lg:inline-block" />
             </span>
@@ -489,7 +488,7 @@ const UmrahTabpane = ({
           <div className="text-primary font-semibold text-lg px-4 pt-1 pb-5 mb-1">
             Travelers
           </div>
-          {travelers.map((item) => (
+          {travelers?.map((item) => (
             <Fragment key={item.id}>
               <Counter
                 title={item.title}

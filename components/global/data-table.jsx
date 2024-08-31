@@ -71,12 +71,12 @@ const DataTable = ({
           <div className="bg-white rounded-md">
             <Table className="text-t-800 text-center whitespace-nowrap border-separate border-spacing-y-4">
               <TableHeader className="bg-p-300">
-                {table.getHeaderGroups().map((headerGroup) => (
+                {table.getHeaderGroups()?.map((headerGroup) => (
                   <TableRow
                     key={headerGroup.id}
                     className="border-none [&>*:first-child]:text-left [&>*:first-child]:pl-[90px]"
                   >
-                    {headerGroup.headers.map((header) => {
+                    {headerGroup.headers?.map((header) => {
                       return (
                         <TableHead
                           key={header.id}
@@ -86,9 +86,9 @@ const DataTable = ({
                           {header.isPlaceholder
                             ? null
                             : flexRender(
-                                header.column.columnDef.header,
-                                header.getContext()
-                              )}
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
                         </TableHead>
                       );
                     })}
@@ -97,7 +97,7 @@ const DataTable = ({
               </TableHeader>
               <TableBody>
                 {table.getRowModel().rows?.length ? (
-                  table.getRowModel().rows.map((row, index) => (
+                  table.getRowModel().rows?.map((row, index) => (
                     <TableRow
                       key={row.id}
                       data-state={row.getIsSelected() && "selected"}
@@ -108,7 +108,7 @@ const DataTable = ({
                         }
                       )}
                     >
-                      {row.getVisibleCells().map((cell) => (
+                      {row.getVisibleCells()?.map((cell) => (
                         <TableCell
                           key={cell.id}
                           className="first:text-left first:pl-8 mb-6"

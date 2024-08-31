@@ -60,7 +60,7 @@ const HotelCard = ({ data }) => {
             </div>
             <div className="flex flex-col xl:flex-row justify-between gap-4 xl:gap-5">
               <ul className="space-y-3 lg:space-y-2">
-                {data.includes.map((spec) => (
+                {data.includes?.map((spec) => (
                   <li
                     key={spec.id}
                     className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal"

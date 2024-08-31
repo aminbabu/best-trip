@@ -12,7 +12,7 @@ const Menu = ({ className, isNavbarSticky, user }) => {
   return (
     <div className={className}>
       <ul className="flex flex-col gap-y-3 lg:flex-row lg:gap-x-8 xl:gap-x-10">
-        {menu.map((item) => (
+        {menu?.map((item) => (
           <li key={item.id}>
             <Link
               href={item.path}
@@ -33,7 +33,7 @@ const Menu = ({ className, isNavbarSticky, user }) => {
         <>
           <Separator className="lg:hidden my-3" />
           <ul className="flex flex-col gap-y-3 lg:flex-row lg:gap-x-8 xl:gap-x-10">
-            {navLinks.map((item) => (
+            {navLinks?.map((item) => (
               <li key={item.id}>
                 <Link
                   href={item.href}

@@ -194,7 +194,7 @@ const HotelFilter = () => {
         <div className="py-1.5 mb-4">
           <h4 className="text-t-800 font-medium mb-4">Meal Basis</h4>
           <div className="space-y-3 grid">
-            {mealBasis.map((meal) => (
+            {mealBasis?.map((meal) => (
               <div
                 key={meal.id}
                 className="items-center flex space-x-2 col-span-1"
@@ -220,7 +220,7 @@ const HotelFilter = () => {
         <div className="py-1.5">
           <h4 className="text-t-800 font-medium mb-4">Property Type</h4>
           <div className="space-y-2.5 max-h-[212px] overflow-auto scrollbar-thin">
-            {propertyType.map((property) => (
+            {propertyType?.map((property) => (
               <div
                 key={property.id}
                 className="items-center flex space-x-2 col-span-1"

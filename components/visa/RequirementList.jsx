@@ -19,7 +19,7 @@ const RequirementList = () => {
       </div> */}
       <div className="mt-5 mb-10">
         <ul className="space-y-4">
-          {reqmntList.map((item) => (
+          {reqmntList?.map((item) => (
             <li
               key={item.id}
               className="flex gap-x-2 text-sm xl:text-base text-t-600 leading-normal"

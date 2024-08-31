@@ -9,31 +9,23 @@ import { Card } from "../ui/card";
 
 import FlightFilter from "../umrah-fight/FlightFilter";
 import UmrahCard from "./UmrahCard";
-import { useSearchParams } from "next/navigation";
 import FlightCard from "./FlightCard";
+import { Loader } from "lucide-react";
 
-const FilterResult = ({ slug }) => {
+const FilterResult = ({ slug, queryParams }) => {
   const [params, setParams] = useState({});
-  const searchParams = useSearchParams();
-
+  console.log(queryParams);
   useEffect(() => {
-    const type = searchParams.get("type");
-    const schedule = searchParams.get("schedule");
-    const duration = searchParams.get("duration");
-    const adultTravelers = searchParams.get("adultTravelers");
-    const childTravelers = searchParams.get("childTravelers");
-    const infantsTravelers = searchParams.get("infantsTravelers");
-    const dataLength = searchParams.get("dataLength");
     setParams({
-      type,
-      schedule,
-      duration,
-      adultTravelers,
-      childTravelers,
-      infantsTravelers,
-      dataLength,
+      type: queryParams.type,
+      schedule: queryParams.schedule,
+      duration: queryParams.duration,
+      adultTravelers: queryParams.adultTravelers,
+      childTravelers: queryParams.childTravelers,
+      infantsTravelers: queryParams.infantsTravelers,
+      dataLength: queryParams.dataLength,
     });
-  }, [searchParams]);
+  }, [queryParams]);
   const [items, setItems] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [loadingInitial, setLoadingInitial] = useState(true);
@@ -102,7 +94,7 @@ const FilterResult = ({ slug }) => {
     const handleScroll = () => {
       if (
         window.innerHeight + document.documentElement.scrollTop >=
-          document.documentElement.offsetHeight - 200 &&
+        document.documentElement.offsetHeight - 200 &&
         hasMore &&
         !loading
       ) {
@@ -143,7 +135,7 @@ const FilterResult = ({ slug }) => {
                 Price
               </div>
             </Card>
-            {visaData.map((item) => (
+            {visaData?.map((item) => (
               <FlightCard key={item.id} data={item} />
             ))}
           </div>
@@ -156,8 +148,8 @@ const FilterResult = ({ slug }) => {
             <UmrahCard key={index} data={item} />
           ))}
           {hasMore && (
-            <div ref={loaderRef} className="w-full text-center py-4">
-              <p>Loading more...</p>
+            <div ref={loaderRef} className="w-full text-center py-4 gap-2 flex items-center justify-center">
+              <p>Loading more</p><Loader className="animate-spin" />
             </div>
           )}
         </div>
@@ -165,7 +157,7 @@ const FilterResult = ({ slug }) => {
     case "visa":
       return (
         <div className="grid grid-cols-1 gap-y-6 lg:gap-y-8">
-          {visaData.map((item) => (
+          {visaData?.map((item) => (
             <VisaCard key={item.id} data={item} />
           ))}
         </div>
@@ -173,7 +165,7 @@ const FilterResult = ({ slug }) => {
     case "hotel":
       return (
         <div className="grid grid-cols-1 gap-y-6 lg:gap-y-8">
-          {visaData.map((item) => (
+          {visaData?.map((item) => (
             <CustomsCard key={item.id} data={item} />
           ))}
         </div>

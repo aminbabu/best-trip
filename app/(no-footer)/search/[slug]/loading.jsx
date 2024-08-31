@@ -7,7 +7,7 @@ const loading = () => {
   return (
     <Container className="bg-[#F6F6F6]">
       <Skeleton className="w-[1140px] h-[174px]"></Skeleton>
-      {"abcdefgh".split("").map((i) => (
+      {"abcdefgh".split("")?.map((i) => (
         <VisaCardSkeleton key={i} />
       ))}
     </Container>

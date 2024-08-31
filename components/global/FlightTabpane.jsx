@@ -129,7 +129,7 @@ const FlightTabpane = ({ icon, disabled, className }) => {
   };
 
   const handleCounterIncrement = (id) => {
-    const newTravellers = travellerCounts.map((item) => {
+    const newTravellers = travellerCounts?.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -143,7 +143,7 @@ const FlightTabpane = ({ icon, disabled, className }) => {
   };
 
   const handleCounterDecrement = (id) => {
-    const newTravellers = travellerCounts.map((item) => {
+    const newTravellers = travellerCounts?.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -215,7 +215,7 @@ const FlightTabpane = ({ icon, disabled, className }) => {
             className="px-0 py-2 border-transparent w-[134px] drop-shadow"
           >
             <ul>
-              {flightTypes.map((item) => (
+              {flightTypes?.map((item) => (
                 <li
                   key={item}
                   onClick={() => {
@@ -248,9 +248,8 @@ const FlightTabpane = ({ icon, disabled, className }) => {
               , {classType}
             </p>
             <ArrowIcon
-              className={`${
-                isTravellersOpen && "rotate-180"
-              } trasition duration-300 fill-p-900`}
+              className={`${isTravellersOpen && "rotate-180"
+                } trasition duration-300 fill-p-900`}
             />
           </PopoverTrigger>
           <PopoverContent
@@ -260,7 +259,7 @@ const FlightTabpane = ({ icon, disabled, className }) => {
             <div className="text-primary font-semibold text-lg px-4 pt-1 pb-5 mb-1">
               Travelers
             </div>
-            {travellerCounts.map((item) => (
+            {travellerCounts?.map((item) => (
               <Fragment key={item.id}>
                 <Counter
                   title={item.title}
@@ -322,7 +321,7 @@ const FlightTabpane = ({ icon, disabled, className }) => {
           </PopoverContent>
         </Popover>
       </div>
-      {filterNo.split("").map((item, idx) => (
+      {filterNo.split("")?.map((item, idx) => (
         <div
           key={idx}
           className="flex flex-col lg:flex-row gap-x-4 gap-y-5 lg:gap-x-5 relative"
@@ -364,7 +363,7 @@ const FlightTabpane = ({ icon, disabled, className }) => {
             >
               <ScrollArea className="max-h-64">
                 <ul>
-                  {destinations.map((item) => (
+                  {destinations?.map((item) => (
                     <li
                       key={item.id}
                       onClick={() => {
@@ -436,7 +435,7 @@ const FlightTabpane = ({ icon, disabled, className }) => {
             >
               <ScrollArea className="max-h-64">
                 <ul>
-                  {destinations.map((item) => (
+                  {destinations?.map((item) => (
                     <li
                       key={item.id}
                       onClick={() => {

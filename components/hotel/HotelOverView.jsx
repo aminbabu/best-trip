@@ -83,7 +83,7 @@ const HotelOverview = () => {
           <div className="col-span-2 space-y-6">
             <Slider hasTrack={false} options={options}>
               <SplideTrack>
-                {items.map((item, index) => (
+                {items?.map((item, index) => (
                   <SplideSlide key={index}>
                     <div className="aspect-square overflow-hidden rounded-sm">
                       <Image

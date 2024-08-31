@@ -80,9 +80,9 @@ const BookingDetails = ({ params }) => {
                     </ul>
                     <ul className="col-span-2 space-y-5">
                       <li>: {moment(bookingData?.createdAt).format("DD MMM, YYYY")}</li>
+                      <li>: {bookingData?.invoice?.paymentType ||"N/A"}</li>
                       <li>: N/A</li>
-                      <li>: N/A</li>
-                      <li>: {bookingData?.invoice?.invoiceId}</li>
+                      <li>: {bookingData?.invoice?.invoiceId||"N/A"}</li>
                       <li>: Best Trip Travel</li>
                     </ul>
                   </div>

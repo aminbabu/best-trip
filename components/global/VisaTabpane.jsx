@@ -134,7 +134,7 @@ const VisaTabpane = ({ icon, disabled, className }) => {
   };
 
   const handleCounterIncrement = (id) => {
-    const newTravellers = travellers.map((item) => {
+    const newTravellers = travellers?.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -148,7 +148,7 @@ const VisaTabpane = ({ icon, disabled, className }) => {
   };
 
   const handleCounterDecrement = (id) => {
-    const newTravellers = travellers.map((item) => {
+    const newTravellers = travellers?.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -218,7 +218,7 @@ const VisaTabpane = ({ icon, disabled, className }) => {
           className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
-            {destinations.map((item) => (
+            {destinations?.map((item) => (
               <DropdownMenuItem
                 key={item.id}
                 onClick={() => setDestination(item.name)}
@@ -274,7 +274,7 @@ const VisaTabpane = ({ icon, disabled, className }) => {
           className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
-            {nationalities.map((item) => (
+            {nationalities?.map((item) => (
               <DropdownMenuItem
                 key={item}
                 className={cn(
@@ -322,7 +322,7 @@ const VisaTabpane = ({ icon, disabled, className }) => {
           className="px-0 py-2 border-transparent min-w-[308px]"
         >
           <ScrollArea className="max-h-64">
-            {types.map((item) => (
+            {types?.map((item) => (
               <DropdownMenuItem
                 key={item}
                 onSelect={() => setType(item)}
@@ -362,13 +362,12 @@ const VisaTabpane = ({ icon, disabled, className }) => {
             <span className="text-sm lg:text-base flex items-center justify-between gap-x-4 text-t-800 lg:text-t-700 capitalize">
               {travellers.some((item) => item.count > 0)
                 ? `${travellers.reduce(
-                    (acc, item) => acc + item.count,
-                    0
-                  )} Traveller${
-                    travellers.reduce((acc, item) => acc + item.count, 0) > 1
-                      ? "s"
-                      : ""
-                  }`
+                  (acc, item) => acc + item.count,
+                  0
+                )} Traveller${travellers.reduce((acc, item) => acc + item.count, 0) > 1
+                  ? "s"
+                  : ""
+                }`
                 : "Select"}
               <ArrowIcon className="hidden lg:inline-block" />
             </span>
@@ -381,7 +380,7 @@ const VisaTabpane = ({ icon, disabled, className }) => {
           <div className="text-primary font-semibold text-lg px-4 pt-1 pb-5 mb-1">
             Travelers
           </div>
-          {travellers.map((item) => (
+          {travellers?.map((item) => (
             <Fragment key={item.id}>
               <Counter
                 title={item.title}

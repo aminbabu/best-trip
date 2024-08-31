@@ -11,7 +11,7 @@ const DetailsRulesContent = () => {
         className="grid grid-cols-7 gap-5 md:gap-7"
       >
         <TabsList className="col-span-2 flex-col gap-y-5 items-start justify-normal h-auto">
-          {detailRulesTabItems.map((tab) => (
+          {detailRulesTabItems?.map((tab) => (
             <TabsTrigger
               key={tab.id}
               value={tab.value}
@@ -34,7 +34,7 @@ const DetailsRulesContent = () => {
             </TabsTrigger>
           ))}
         </TabsList>
-        {detailRulesTabItems.map((tab) => (
+        {detailRulesTabItems?.map((tab) => (
           <TabsContent
             key={tab.id}
             value={tab.value}

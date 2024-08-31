@@ -86,7 +86,7 @@ const Footer = ({ className, generalSiteSettings, contactSiteSettings }) => {
                 {menu.title}
               </h2>
               <ul className="grid gap-y-1.5 lg:gap-y-2">
-                {menu.links.map((item, index) => (
+                {menu.links?.map((item, index) => (
                   <li key={index}>
                     <Link
                       href={item.path}

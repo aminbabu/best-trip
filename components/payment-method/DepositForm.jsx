@@ -15,7 +15,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { XIcon } from "lucide-react";
+import { Loader, XIcon } from "lucide-react";
 import { useState } from "react";
 const DepositForm = ({ bookingData, onSubmit, loading }) => {
   const [error, setError] = useState(null);
@@ -616,7 +616,7 @@ const DepositForm = ({ bookingData, onSubmit, loading }) => {
                 loading
               }
             >
-              Continue
+              {loading?<>Loading <Loader className="animate-spin" /></>: "Continue"}
             </Button>
           </div>
         </form>

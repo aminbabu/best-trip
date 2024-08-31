@@ -43,7 +43,7 @@ const DataTablePagination = ({ table }) => {
               <SelectValue placeholder={table.getState().pagination.pageSize} />
             </SelectTrigger>
             <SelectContent side="top">
-              {[10, 20, 30, 40, 50].map((pageSize) => (
+              {[10, 20, 30, 40, 50]?.map((pageSize) => (
                 <SelectItem key={pageSize} value={`${pageSize}`}>
                   {pageSize}
                 </SelectItem>
@@ -64,7 +64,7 @@ const DataTablePagination = ({ table }) => {
             <span className="sr-only">Go to previous page</span>
             <ChevronLeftIcon className="h-5 w-5" />
           </Button>
-          {table.getPageOptions().map((page) => (
+          {table.getPageOptions()?.map((page) => (
             <Button
               key={page}
               variant="outline"

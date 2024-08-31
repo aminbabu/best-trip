@@ -13,7 +13,7 @@ const roomFacilities = [
 const RoomFacilitiesCard = () => {
   return (
     <div className="flex flex-wrap justify-between gap-6 bg-p-300 py-2.5 px-5 text-t-600 leading-relaxed rounded">
-      {roomFacilities.map((facility) => (
+      {roomFacilities?.map((facility) => (
         <div className="flex items-center gap-2.5" key={facility.id}>
           <TickIcon />
           {facility.name}

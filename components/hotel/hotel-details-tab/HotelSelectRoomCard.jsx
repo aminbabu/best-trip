@@ -78,7 +78,7 @@ const HotelSelectRoomCard = ({ data }) => {
               </div>
               <div className="flex flex-col xl:flex-row justify-between gap-4 xl:gap-5">
                 <ul className="flex gap-3 lg:gap-2">
-                  {data.includes.map((spec) => (
+                  {data.includes?.map((spec) => (
                     <li
                       key={spec.id}
                       className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal"
@@ -118,7 +118,7 @@ const HotelSelectRoomCard = ({ data }) => {
           </div>
           <div className="bg-p-300 rounded">
             {/* Select Room Facilities Dialogs  */}
-            {selectRoomDialogs.map((roomDialog) => (
+            {selectRoomDialogs?.map((roomDialog) => (
               <Dialog key={roomDialog.id}>
                 <DialogTrigger asChild>
                   <Button className="bg-p-300 hover:bg-p-300 text-t-600 hover:text-p-900 py-1.5 px-3.5 text-xs">

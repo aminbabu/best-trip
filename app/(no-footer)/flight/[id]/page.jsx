@@ -26,7 +26,7 @@ const FlightPage = () => {
                     data={flightDetailsTabItems}
                   >
                     <TabsList className="flex justify-start gap-5 overflow-x-auto overflow-y-hidden bg-white">
-                      {flightDetailsTabItems.map((tab) => (
+                      {flightDetailsTabItems?.map((tab) => (
                         <TabsTrigger
                           className="py-2 px-2.5 data-[state=active]:bg-p-300 rounded-t rounded-b-none data-[state=active]:border-transparent border-x border-t border-b-none duration-300"
                           key={tab.id}
@@ -39,7 +39,7 @@ const FlightPage = () => {
                         Details Rules
                       </Button>
                     </TabsList>
-                    {flightDetailsTabItems.map((tab) => (
+                    {flightDetailsTabItems?.map((tab) => (
                       <TabsContent key={tab.id} value={tab.value}>
                         <FlightDetailsCard />
                       </TabsContent>

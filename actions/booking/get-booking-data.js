@@ -6,8 +6,9 @@ import { cookies } from "next/headers";
 export const getBookingData = async () => {
   const bookingId = cookies().get("bookingId").value;
   try {
-    const response = await axios.get(`/api/umrah/booking/customer/${bookingId}`);
-    console.log(response?.data);
+    const response = await axios.get(
+      `/api/umrah/booking/customer/${bookingId}`
+    );
     return response?.data;
   } catch (error) {
     console.log(error);

@@ -19,7 +19,10 @@ export const bookPackage = async (data) => {
       cookies().set("bookingId", error?.response?.data?.id, {
         expires: Date.now() + sevenDays,
       });
-      return { id: error?.response?.data?.id, message: error?.response?.data?.message };
+      return {
+        id: error?.response?.data?.id,
+        message: error?.response?.data?.message,
+      };
     } else {
       throw new Error(handleAxiosError(error));
     }

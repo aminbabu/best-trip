@@ -10,7 +10,7 @@ const Tabs = ({ data, defaultValue }) => {
   return (
     <TabsComponent defaultValue={defaultValue}>
       <TabsList className="h-auto p-0 rounded-t-md rounded-b-none flex sm:inline-flex bg-white">
-        {data.map((tab, index) => (
+        {data?.map((tab, index) => (
           <TabsTrigger
             key={tab.id}
             value={tab.value}
@@ -27,7 +27,7 @@ const Tabs = ({ data, defaultValue }) => {
           </TabsTrigger>
         ))}
       </TabsList>
-      {data.map((tabpane) => (
+      {data?.map((tabpane) => (
         <TabsContent key={tabpane.id} value={tabpane.value} className="mt-0">
           {tabpane.component}
         </TabsContent>

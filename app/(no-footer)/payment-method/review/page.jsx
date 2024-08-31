@@ -4,7 +4,7 @@ import Container from "@/components/layouts/Container";
 import Link from "next/link";
 
 const PaymentReviewPage = ({ searchParams }) => {
-  const bookingId = Array.isArray(searchParams.bookingId) ? searchParams.bookingId[0] : searchParams.bookingId;
+  const bookingId = searchParams?.bookingId;
   return (
     <main className="py-20 bg-secondary">
       <Container>

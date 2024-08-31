@@ -424,7 +424,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                     </p>
                                     <div className="flex items-center gap-x-2 text-t-600 leading-loose md:leading-normal">
                                         <ul className="flex items-center gap-x-1 md:gap-x-2">
-                                            {Array.from({ length: filledStars }).map((_, index) => (
+                                            {Array.from({ length: filledStars })?.map((_, index) => (
                                                 <li key={`filled-${index}`} className="text-[#FF7B39]">
                                                     <StarAltIcon size={18} />
                                                 </li>
@@ -434,7 +434,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                                     <StarAltIcon size={18} className="half-star-class" /> {/* Implement a half-star if available */}
                                                 </li>
                                             )}
-                                            {Array.from({ length: emptyStars }).map((_, index) => (
+                                            {Array.from({ length: emptyStars })?.map((_, index) => (
                                                 <li key={`empty-${index}`} className="text-gray-300"> {/* You can use a different color or icon for empty stars */}
                                                     <StarAltIcon size={18} />
                                                 </li>
@@ -558,7 +558,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                     </p>
                                     <div className="flex items-center gap-x-2 text-t-600 leading-loose md:leading-normal">
                                         <ul className="flex items-center gap-x-1 md:gap-x-2">
-                                            {Array.from({ length: filledStars }).map((_, index) => (
+                                            {Array.from({ length: filledStars })?.map((_, index) => (
                                                 <li key={`filled-${index}`} className="text-[#FF7B39]">
                                                     <StarAltIcon size={18} />
                                                 </li>
@@ -568,7 +568,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                                     <StarAltIcon size={18} className="half-star-class" /> {/* Implement a half-star if available */}
                                                 </li>
                                             )}
-                                            {Array.from({ length: emptyStars }).map((_, index) => (
+                                            {Array.from({ length: emptyStars })?.map((_, index) => (
                                                 <li key={`empty-${index}`} className="text-gray-300"> {/* You can use a different color or icon for empty stars */}
                                                     <StarAltIcon size={18} />
                                                 </li>

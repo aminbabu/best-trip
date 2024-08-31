@@ -170,7 +170,6 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
     const addTraveler = async () => {
       try {
         const response = await addNewTraveler(form);
-        console.log(response);
         setLoading(false);
         hideTravellerForm();
         Swal.fire({
@@ -511,7 +510,7 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {countries.map((country) => (
+                        {countries?.map((country) => (
                           <SelectItem value={country.name} key={country.id}>
                             {country.name}
                           </SelectItem>
@@ -589,7 +588,7 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {countries.map((country) => (
+                        {countries?.map((country) => (
                           <SelectItem value={country.name} key={country.id}>
                             {country.name}
                           </SelectItem>

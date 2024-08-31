@@ -44,7 +44,7 @@ const PaymentTable = ({ data, userData }) => {
           <table className="w-full whitespace-nowrap text-t-600 text-sm font-normal">
             <thead>
               <tr className="uppercase border-b border-dashed border-[#f1f1f4] [&>*:last-child]:text-right">
-                {tableData?.tableHeads.map((head) => (
+                {tableData?.tableHeads?.map((head) => (
                   <th key={head.id} className="min-w-36 font-semibold">
                     {head.item}
                   </th>
@@ -56,7 +56,7 @@ const PaymentTable = ({ data, userData }) => {
                 <tr key={ind} className="border-b border-dashed border-[#f1f1f4] text-sm lg:text-base font-normal [&>*:last-child]:text-right">
                   <td ><Link href={`/booking-details/${item?._id}`} className="hover:text-red-500 ">{item?.bookingRefId}</Link></td>
                   <td >{item?.status}</td>
-                  <td >{item?.bookingType||"N/A"}</td>
+                  <td >{item?.bookingType || "N/A"}</td>
                   <td >{moment(item?.createdAt).format("MMM DD, YYYY-HH:mm")}</td>
                   <td>{userData?.user?.name}</td>
                   <td>{moment(item?.umrahPackage?.journeyDate).format("MMM DD, YYYY")}</td>

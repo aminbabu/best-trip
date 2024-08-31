@@ -33,7 +33,7 @@ const DetailsTab = ({ id }) => {
   return (
     <nav>
       <ul className="bg-p-300 px-4 sm:px-6 lg:px-8 overflow-auto flex items-center justify-between gap-x-[30px]">
-        {navItems.map((item) => (
+        {navItems?.map((item) => (
           <li
             key={item.id}
             className="flex-shrink-0 flex items-center justify-center"

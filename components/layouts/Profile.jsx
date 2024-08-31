@@ -69,7 +69,7 @@ const Profile = ({ user }) => {
         className="px-0 py-2 border-transparent min-w-[308px]"
       >
         <ul>
-          {navLinks.map((item) => (
+          {navLinks?.map((item) => (
             <li key={item.id}>
               <Link
                 href={item.href}

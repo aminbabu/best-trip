@@ -7,7 +7,6 @@ export const getTravelerDetail = async () => {
   const bookingId = cookies().get("bookingId").value;
   try {
     const res = await axios.get(`/api/umrah/travelers/${bookingId}`);
-    console.log(res?.data);
     return res.data;
   } catch (error) {
     console.log(error);

@@ -5,7 +5,6 @@ import { bookPackage } from "@/actions/booking/book-package";
 
 const BookingForm = ({ data, bookingData }) => {
     const router = useRouter();
-
     const submitBooking = async (event) => {
         event.preventDefault();
         if (!data) {

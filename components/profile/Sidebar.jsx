@@ -10,7 +10,7 @@ const Sidebar = () => {
 
   return (
     <ul className="shadow-sm rounded-sm">
-      {navLinks.map((link, index) => (
+      {navLinks?.map((link, index) => (
         <li key={index}>
           <Link
             href={link.href}

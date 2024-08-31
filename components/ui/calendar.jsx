@@ -75,7 +75,7 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
               </SelectTrigger>
               <SelectContent position="popper">
                 <ScrollArea className="h-80">
-                  {options.map((option, id) => (
+                  {options?.map((option, id) => (
                     <SelectItem
                       key={`${option.props.value}-${id}`}
                       value={option.props.value?.toString() ?? ""}

@@ -140,7 +140,7 @@ const HotelTabpane = ({ icon, disabled, className }) => {
   };
 
   const handleCounterIncrement = (id) => {
-    const newTravellers = travellers.map((item) => {
+    const newTravellers = travellers?.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -153,7 +153,7 @@ const HotelTabpane = ({ icon, disabled, className }) => {
   };
 
   const handleCounterDecrement = (id) => {
-    const newTravellers = travellers.map((item) => {
+    const newTravellers = travellers?.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -200,19 +200,17 @@ const HotelTabpane = ({ icon, disabled, className }) => {
               {roomNo} Room ,
               {travellers.some((item) => item.count > 0)
                 ? `${travellers.reduce(
-                    (acc, item) => acc + item.count,
-                    0
-                  )} Guest${
-                    travellers.reduce((acc, item) => acc + item.count, 0) > 1
-                      ? "s"
-                      : ""
-                  }`
+                  (acc, item) => acc + item.count,
+                  0
+                )} Guest${travellers.reduce((acc, item) => acc + item.count, 0) > 1
+                  ? "s"
+                  : ""
+                }`
                 : "Select Guest"}
             </p>
             <ArrowIcon
-              className={`${
-                isTravellersOpen && "rotate-180"
-              } trasition duration-300 fill-p-900`}
+              className={`${isTravellersOpen && "rotate-180"
+                } trasition duration-300 fill-p-900`}
             />
           </PopoverTrigger>
           <PopoverContent
@@ -233,7 +231,7 @@ const HotelTabpane = ({ icon, disabled, className }) => {
               }}
             />
             <DropdownMenuSeparator className="bg-border/25 h-[1px]" />
-            {travellers.map((item) => (
+            {travellers?.map((item) => (
               <Fragment key={item.id}>
                 <Counter
                   title={item.title}
@@ -289,7 +287,7 @@ const HotelTabpane = ({ icon, disabled, className }) => {
           >
             <ScrollArea className="max-h-64">
               <ul>
-                {destinations.map((item) => (
+                {destinations?.map((item) => (
                   <li
                     key={item.id}
                     onClick={() => {
@@ -351,7 +349,7 @@ const HotelTabpane = ({ icon, disabled, className }) => {
           >
             <ScrollArea className="max-h-64">
               <ul>
-                {nationalities.map((item) => (
+                {nationalities?.map((item) => (
                   <li
                     key={item.id}
                     onClick={() => setDestination(item.name)}
