@@ -7,7 +7,7 @@ export const makePayment = async (id, paymentType) => {
     const response = await axios.post(`/api/umrah/booking/${id}/make-payment`, {
       paymentType,
     });
-    return response;
+    return response?.data;
   } catch (error) {
     throw new Error(handleAxiosError(error));
   }

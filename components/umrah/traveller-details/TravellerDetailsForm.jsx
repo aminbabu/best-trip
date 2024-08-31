@@ -37,6 +37,7 @@ import { DocAltIcon } from "@/components/icons/svgr";
 import { countries } from "@/data/countries";
 import PhoneInputComponent from "./PhoneInputComponent";
 import { addNewTraveler } from "@/actions/traveler/add-new-traveler";
+import { useSearchParams } from "next/navigation";
 
 const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
   const today = new Date();
@@ -44,15 +45,14 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
   const twelveYearsBack = new Date(today);
   twoYearsBack.setFullYear(today.getFullYear() - 2);
   twelveYearsBack.setFullYear(today.getFullYear() - 12);
-  let searchedValue;
-  if (typeof window != undefined) {
-    searchedValue = JSON.parse(localStorage.getItem("searchedValue"));
-  }
-  const travelerList = [];
-  const { adultTravelers, childTravelers, infantsTravelers } = searchedValue;
+  const searchParams = useSearchParams();
+  const adultTravelers = searchParams.get("adultTravelers");
+  const childTravelers = searchParams.get("childTravelers");
+  const infantsTravelers = searchParams.get("infantsTravelers");
   const adultTravellersArray = new Array(adultTravelers).fill(0);
   const childTravellersArray = new Array(childTravelers).fill(0);
   const infantTravellersArray = new Array(infantsTravelers).fill(0);
+  let travelerList = [];
   const addTravelers = (travellerArray, type) => {
     // travelerList.length = 0;
     travellerArray.forEach((_, index) => {
@@ -181,8 +181,9 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
           confirmButtonColor: "#3ad965",
         });
       } catch (error) {
+        console.log(error?.message);
         Swal.fire({
-          text: error?.response?.data?.message,
+          text: error?.message,
           icon: "error",
           confirmButtonText: "Ok, got it",
           confirmButtonColor: "#F70207",

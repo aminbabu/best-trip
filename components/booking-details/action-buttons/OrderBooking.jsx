@@ -10,7 +10,6 @@ const OrderBooking = ({ bookingData, setRefetch }) => {
   const [loading, setLoading] = useState(false)
   const [open, setIsOpen] = useState(false)
   const onSubmit = async (values) => {
-  
     setLoading(true);
     const paymentType = values?.full === true ? "full-payment" : "partial-payment";
     try {
@@ -32,7 +31,7 @@ const OrderBooking = ({ bookingData, setRefetch }) => {
       Swal.fire({
         position: "top-end",
         title: `Error`,
-        text: error?.response?.data?.message,
+        text: error?.message,
         icon: "error",
         confirmButtonText: "Ok, got it",
         confirmButtonColor: "#3ad965",

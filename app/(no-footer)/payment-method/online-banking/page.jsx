@@ -3,18 +3,20 @@
 import MessageCard from "@/components/global/MessageCard";
 import { LoaderIcon } from "@/components/icons/svgr";
 import Container from "@/components/layouts/Container";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
 const OnlineBankingPage = () => {
   const router = useRouter()
+  const searchParams = useSearchParams();
+  const bookingId = searchParams.get("bookingId");
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push("/payment-method/review")
+      router.push(`/payment-method/review?bookingId=${bookingId}`)
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, [router]);
+  }, [router, bookingId]);
   return (
     <main className="py-20 bg-secondary">
       <Container>

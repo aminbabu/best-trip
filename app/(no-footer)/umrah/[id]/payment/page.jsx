@@ -19,37 +19,34 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
-const PaymentPage = ({ params }) => {
+const PaymentPage = () => {
   const router = useRouter()
-  console.log("booking page");
   const [bookingData, setBookingData] = useState([])
-  useEffect(() => {
-    const getBookingDetail = async () => {
-      try {
-        const response = await getBookingData()
-        setBookingData(response?.data?.umrahBookings)
-      } catch (error) {
-        console.log(error);
-      }
+  const getBookingDetail = async () => {
+    try {
+      const response = await getBookingData()
+      setBookingData(response?.umrahBookings)
+    } catch (error) {
+      console.log(error);
     }
-    getBookingDetail();
-  }, [])
+  }
+  getBookingDetail();
   const adultTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "adult")
   const childTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "child")
   const infantTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "infant")
   const subtotal = Number(bookingData?.umrahPackage?.adultPrice) * adultTravelers?.length + Number(bookingData?.umrahPackage?.childPrice) * childTravelers?.length + Number(bookingData?.umrahPackage?.infantPrice) * infantTravelers?.length
   const submitForReview = async () => {
-    // try {
-    //   const response = await submitBookingForReview(id)
-    //   router.push("/payment-method/online-banking")
-    // } catch (error) {
-    //   Swal.fire({
-    //     text: error?.response?.data?.message,
-    //     icon: "error",
-    //     confirmButtonText: "Try Another",
-    //     confirmButtonColor: "#3ad965",
-    //   });
-    // }
+    try {
+      const response = await submitBookingForReview()
+      router.push(`/payment-method/online-banking?bookingId=${bookingData?.bookingRefId}`)
+    } catch (error) {
+      Swal.fire({
+        text: error?.message,
+        icon: "error",
+        confirmButtonText: "Try Another",
+        confirmButtonColor: "#3ad965",
+      });
+    }
   }
 
 
@@ -59,7 +56,7 @@ const PaymentPage = ({ params }) => {
         <Card className="text-t-600 border-transparent max-w-3xl mx-auto">
           <CardContent className="p-4 sm:p-6 md:p-8 lg:p-10">
             <h1 className="text-t-900 text-lg mb-1.5">
-             {bookingData?.umrahPackage?.title}
+              {bookingData?.umrahPackage?.title}
             </h1>
             <p className="mb-6">{bookingData?.umrahPackage?.subtitle}</p>
             <div>

@@ -20,7 +20,6 @@ const ActionButtonContainer = ({bookingData,setRefetch}) => {
       },
       buttonsStyling: false,
     });
-
     swalWithTailwindButtons
       .fire({
         text: "Are you sure you would like to cancel?",

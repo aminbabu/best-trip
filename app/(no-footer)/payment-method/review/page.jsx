@@ -3,7 +3,8 @@ import { DocIcon } from "@/components/icons/svgr";
 import Container from "@/components/layouts/Container";
 import Link from "next/link";
 
-const PaymentReviewPage = () => {
+const PaymentReviewPage = ({ searchParams }) => {
+  const bookingId = Array.isArray(searchParams.bookingId) ? searchParams.bookingId[0] : searchParams.bookingId;
   return (
     <main className="py-20 bg-secondary">
       <Container>
@@ -18,7 +19,7 @@ const PaymentReviewPage = () => {
         >
           <p className="mb-4">
             For future reference, your booking Id :{" "}
-            <span className="text-primary">BTU23000024</span>
+            <span className="text-primary">{bookingId}</span>
           </p>
           <p>
             If you have any query please call us at :{" "}

@@ -28,7 +28,7 @@ const BookingForm = ({ data, bookingData }) => {
             const response = await bookPackage(bookingData);
             Swal.fire({
                 text: `${response?.message}`,
-                icon: "warning",
+                icon: "success",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",

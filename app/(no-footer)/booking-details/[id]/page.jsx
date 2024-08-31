@@ -1,3 +1,4 @@
+"use client"
 import { getBookingData } from "@/actions/booking/get-booking-data";
 import ActionButtonContainer from "@/components/booking-details/ActionButtonContainer";
 import FareDetailsCard from "@/components/booking-details/FareDetailsCard";
@@ -6,6 +7,7 @@ import UmrahBookingCard from "@/components/booking-details/UmrahBookingCard";
 import Container from "@/components/layouts/Container";
 import { Card, CardContent } from "@/components/ui/card";
 import moment from "moment";
+import { useEffect, useState } from "react";
 
 
 const travellerList = [
@@ -14,15 +16,21 @@ const travellerList = [
   { id: 3, type: "Infant", no: 3 },
 ];
 
-const BookingDetails = async ({ params }) => {
+const BookingDetails = ({ params }) => {
 
   const { id } = params
-  let bookingData = {};
-  try {
-    const response = await getBookingData(id)
-    bookingData = response?.data?.umrahBookings
-  } catch (error) {
-  }
+  const [bookingData, setBookingData] = useState({})
+  const [refetch, setRefetch] = useState(false)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getBookingData()
+        setBookingData(response?.umrahBookings)
+      } catch (error) {
+      }
+    }
+    fetchData()
+  }, [refetch, id])
 
   const {
     name,
