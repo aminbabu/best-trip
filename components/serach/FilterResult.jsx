@@ -152,8 +152,8 @@ const FilterResult = ({ slug }) => {
     case "umrah":
       return (
         <div className="grid grid-cols-1 gap-y-6 lg:gap-y-8 relative">
-          {items?.map((item) => (
-            <UmrahCard key={item.id} data={item} />
+          {items?.map((item, index) => (
+            <UmrahCard key={index} data={item} />
           ))}
           {hasMore && (
             <div ref={loaderRef} className="w-full text-center py-4">

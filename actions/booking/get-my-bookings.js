@@ -1,7 +1,12 @@
 "use server";
+import handleAxiosError from "@/handlers/axios/error";
 import axios from "@/lib/axios";
 
 export const getMyBookings = async (id) => {
-  const response = await axios.get(`/api/umrah/booking/my-bookings`);
-  return response;
+  try {
+    const response = await axios.get(`/api/umrah/booking/my-bookings`);
+    return response;
+  } catch (error) {
+    throw new Error(handleAxiosError(error));
+  }
 };

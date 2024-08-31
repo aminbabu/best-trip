@@ -247,15 +247,15 @@ const UmrahTabpane = ({
     // get all umarh packages types
     const umarhPack = async () => {
       const allUmarhPacks = await getUmrahPackageTypes();
-      console.log(allUmarhPacks);
       setPackageTypes(allUmarhPacks?.umrahPackageTypes);
     };
+
     // get all umarh durations types
     const umarhDuration = async () => {
       const allUmarhDurations = await getUmrahPackageDurations();
-      console.log(allUmarhDurations);
       setDurations(allUmarhDurations?.umrahPackageDurations);
     };
+
     // calling the functions
     umarhPack();
     umarhDuration();

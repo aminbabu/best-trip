@@ -1,4 +1,5 @@
-"use server"
+"use server";
+import handleAxiosError from "@/handlers/axios/error";
 import axios from "@/lib/axios";
 
 /**
@@ -28,22 +29,19 @@ export const getUmrahPackageForCustomers = async ({
   lastItemId,
 }) => {
   try {
-    const response = await axios.post(
-      `/api/umrah/packages/customer`,
-      {
-        packageSchedule,
-        packageType,
-        packageDuration,
-        dataLength,
-        adultTravelers: Number(adultTravelers),
-        childTravelers: Number(childTravelers),
-        infantsTravelers: Number(infantsTravelers),
-        lastItemId,
-      }
-    );
+    const response = await axios.post(`/api/umrah/packages/customer`, {
+      packageSchedule,
+      packageType,
+      packageDuration,
+      dataLength,
+      adultTravelers: Number(adultTravelers),
+      childTravelers: Number(childTravelers),
+      infantsTravelers: Number(infantsTravelers),
+      lastItemId,
+    });
     return response?.data?.data;
   } catch (error) {
-    console.error("Error fetching Umrah packages:", error);
+    throw new Error(handleAxiosError(error));
     return error;
   }
 };
@@ -61,7 +59,6 @@ export const getUmrahPackageByIdForCustomers = async (id) => {
     const response = await axios.get(`/api/umrah/packages/${id}`);
     return response?.data?.umrahPackage;
   } catch (error) {
-    console.error("Error fetching Umrah packages by ID:", error);
-    return { error: error?.response?.data || "An unexpected error occurred" };
+    throw new Error(handleAxiosError(error));
   }
 };
