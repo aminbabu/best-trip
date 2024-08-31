@@ -13,20 +13,17 @@ import Swal from "sweetalert2";
 const TravellerList = ({ showTravellerForm, id }) => {
   const router = useRouter();
   const [travelerDetails, setTravelerDetail] = useState([])
-  let bookingId;
-  if (typeof window != undefined) {
-    bookingId = localStorage.getItem("bookingId")
-  }
   useEffect(() => {
     const getTravelerDetails = async () => {
       try {
-        const response = await getTravelerDetail(bookingId)
-        setTravelerDetail(response?.data?.travelers)
+        const response = await getTravelerDetail()
+        setTravelerDetail(response?.travelers)
       } catch (error) {
+        console.log(error);
       }
     }
     getTravelerDetails();
-  }, [bookingId])
+  }, [])
   const onBook = () => {
     if (travelerDetails.length < 1) {
       Swal.fire({
@@ -37,7 +34,7 @@ const TravellerList = ({ showTravellerForm, id }) => {
       });
       return;
     } else {
-      router.push(`/umrah/${bookingId}/payment`);
+      router.push(`/umrah/${id}/payment`);
     }
   };
 

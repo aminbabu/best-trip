@@ -36,8 +36,6 @@ import { Loader } from "lucide-react";
 import { DocAltIcon } from "@/components/icons/svgr";
 import { countries } from "@/data/countries";
 import PhoneInputComponent from "./PhoneInputComponent";
-import axios from "axios";
-import { useSession } from "next-auth/react";
 import { addNewTraveler } from "@/actions/traveler/add-new-traveler";
 
 const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
@@ -65,10 +63,6 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
       });
     });
   };
-  let umrahBooking;
-  if (typeof window != undefined) {
-    umrahBooking = localStorage.getItem("bookingId")
-  }
 
   // Add adult travelers
   addTravelers(adultTravellersArray, "adult");
@@ -81,7 +75,6 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
 
 
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [passport, setPassport] = useState(null);
   const [photo, setPhoto] = useState(null);
   const [nid, setNid] = useState(null);
@@ -173,11 +166,11 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
     form.append("emergencyContactNo", data.emergencyContactNo)
     form.append("phone", data.phone)
     form.append("travelerType", data.travelerType.split(" ")[2]?.slice(1, -1)?.toLowerCase())
-    form.append("umrahBooking", umrahBooking)
     form.append("umrahPackage", id)
     const addTraveler = async () => {
       try {
         const response = await addNewTraveler(form);
+        console.log(response);
         setLoading(false);
         hideTravellerForm();
         Swal.fire({

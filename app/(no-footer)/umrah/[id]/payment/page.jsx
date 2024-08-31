@@ -2,7 +2,6 @@
 import { getBookingData } from "@/actions/booking/get-booking-data";
 import { submitBookingForReview } from "@/actions/booking/submit-booking-for-review";
 import {
-  BusRedIcon,
   CalenderIcon,
   ClockAltIcon,
   HotelIcon,
@@ -16,42 +15,41 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { BusIcon } from "lucide-react";
 import moment from "moment";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const PaymentPage = ({ params }) => {
-  const { id } = params;
-  const { data } = useSession()
   const router = useRouter()
+  console.log("booking page");
   const [bookingData, setBookingData] = useState([])
   useEffect(() => {
     const getBookingDetail = async () => {
       try {
-        const response = await getBookingData(id)
+        const response = await getBookingData()
         setBookingData(response?.data?.umrahBookings)
       } catch (error) {
+        console.log(error);
       }
     }
     getBookingDetail();
-  }, [data?.user?.accessToken, id])
+  }, [])
   const adultTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "adult")
   const childTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "child")
   const infantTravelers = bookingData?.travelers?.filter((traveler) => traveler?.travelerType === "infant")
   const subtotal = Number(bookingData?.umrahPackage?.adultPrice) * adultTravelers?.length + Number(bookingData?.umrahPackage?.childPrice) * childTravelers?.length + Number(bookingData?.umrahPackage?.infantPrice) * infantTravelers?.length
   const submitForReview = async () => {
-    try {
-      const response = await submitBookingForReview(id)
-      router.push("/payment-method/online-banking")
-    } catch (error) {
-      Swal.fire({
-        text: error?.response?.data?.message,
-        icon: "error",
-        confirmButtonText: "Try Another",
-        confirmButtonColor: "#3ad965",
-      });
-    }
+    // try {
+    //   const response = await submitBookingForReview(id)
+    //   router.push("/payment-method/online-banking")
+    // } catch (error) {
+    //   Swal.fire({
+    //     text: error?.response?.data?.message,
+    //     icon: "error",
+    //     confirmButtonText: "Try Another",
+    //     confirmButtonColor: "#3ad965",
+    //   });
+    // }
   }
 
 
