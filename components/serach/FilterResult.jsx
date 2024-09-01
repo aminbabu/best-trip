@@ -1,7 +1,6 @@
 "use client";
 import { getUmrahPackageForCustomers } from "@/actions/umrahPackages/get-umrah-packages";
 import CustomsCard from "@/components/serach/CustomsCard";
-import UmrahFlightCard from "@/components/serach/UmrahFlightCard";
 import VisaCard from "@/components/serach/VisaCard";
 import visaData from "@/data/visa-result.json";
 import { useEffect, useRef, useState, useCallback } from "react";
@@ -11,21 +10,23 @@ import FlightFilter from "../umrah-fight/FlightFilter";
 import UmrahCard from "./UmrahCard";
 import FlightCard from "./FlightCard";
 import { Loader } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 
-const FilterResult = ({ slug, queryParams }) => {
+const FilterResult = ({ slug }) => {
   const [params, setParams] = useState({});
-  console.log(queryParams);
+  const searchParams = useSearchParams();
   useEffect(() => {
     setParams({
-      type: queryParams.type,
-      schedule: queryParams.schedule,
-      duration: queryParams.duration,
-      adultTravelers: queryParams.adultTravelers,
-      childTravelers: queryParams.childTravelers,
-      infantsTravelers: queryParams.infantsTravelers,
-      dataLength: queryParams.dataLength,
+      type: searchParams.get("type"),
+      schedule: searchParams.get("schedule"),
+      duration: searchParams.get("duration"),
+      adultTravelers: searchParams.get("adultTravelers"),
+      childTravelers: searchParams.get("childTravelers"),
+      infantsTravelers: searchParams.get("infantsTravelers"),
+      dataLength: searchParams.get("dataLength"),
     });
-  }, [queryParams]);
+  }, [searchParams]);
+
   const [items, setItems] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [loadingInitial, setLoadingInitial] = useState(true);
@@ -47,14 +48,16 @@ const FilterResult = ({ slug, queryParams }) => {
           infantsTravelers: params.infantsTravelers,
           lastItemId: isLoadMore ? lastItemId : "",
         });
-        const umrahPackages = response;
-
-        if (umrahPackages && umrahPackages.umrahPackages.length > 0) {
+        const { umrahPackages, hasMore, nextCursor } = response;
+        if (umrahPackages?.length<1&&hasMore===false&&nextCursor===null) {
+          setItems([])
+        }
+        if (umrahPackages && umrahPackages.length > 0) {
           setItems((prevItems) => {
             // Create a new array combining previous items and new items
             const combinedItems = [
               ...prevItems,
-              ...umrahPackages.umrahPackages,
+              ...umrahPackages,
             ];
 
             // Create a map to remove duplicates based on _id
@@ -67,12 +70,12 @@ const FilterResult = ({ slug, queryParams }) => {
             return Array.from(uniqueItemsMap.values());
           });
 
-          if (umrahPackages.nextCursor) {
-            setLastItemId(umrahPackages.nextCursor);
+          if (nextCursor) {
+            setLastItemId(nextCursor);
           } else {
             setLastItemId(null);
           }
-          setHasMore(umrahPackages?.hasMore);
+          setHasMore(hasMore);
         } else {
           setHasMore(false);
         }
@@ -147,9 +150,14 @@ const FilterResult = ({ slug, queryParams }) => {
           {items?.map((item, index) => (
             <UmrahCard key={index} data={item} />
           ))}
-          {hasMore && (
+          {hasMore && !loading &&(
             <div ref={loaderRef} className="w-full text-center py-4 gap-2 flex items-center justify-center">
               <p>Loading more</p><Loader className="animate-spin" />
+            </div>
+          )}
+          {loading && !hasMore && (
+            <div ref={loaderRef} className="w-full text-center py-4 gap-2 flex items-center justify-center">
+              <p>Loading </p><Loader className="animate-spin" />
             </div>
           )}
         </div>
