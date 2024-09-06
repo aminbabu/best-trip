@@ -33,11 +33,11 @@ const UmrahCard = ({ data }) => {
         />
         <div className="flex-1 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
           <div>
-            <h4 className="text-base xl:text-lg text-t-900 font-medium leading-relaxed mb-1.5">
-              {data?.name}
-            </h4>
-            <p className="text-sm lg:text-base text-t-800 mb-12 lg:mb-4 xl:mb-12">
+            <p className="text-sm lg:text-base text-t-800  lg:mb-4">
               {data?.title}
+            </p>
+            <p className="text-sm lg:text-base text-t-800 lg:mb-4">
+              {data?.subtitle}
             </p>
             <div className="flex flex-col xl:flex-row justify-between gap-4 xl:gap-5">
               <ul className="space-y-3 lg:space-y-2 xl:space-y-3">
@@ -56,7 +56,7 @@ const UmrahCard = ({ data }) => {
                     className="mt-0.5 flex-shrink-0"
                   />
                   <span className="flex-shrink-0">
-                    Journey Date : {moment(data?.journeyDate).format("DD-MM-YYYY")}
+                  Journey Date : {moment(data?.journeyDate).format("DD MMM, YYYY")}
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">

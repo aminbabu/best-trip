@@ -8,7 +8,7 @@ import { cn, formatError } from "@/lib/utils";
 import { umrahSchema } from "@/schema/zod";
 import { Loader } from "lucide-react";
 import moment, { duration } from "moment";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import getUmrahPackageTypes from "@/actions/umrahPackageTypes/get-umrah-package-types";
@@ -43,24 +43,28 @@ const UmrahTabpane = ({
   const [packageTypes, setPackageTypes] = useState(
     umrahData?.umrahPackageTypes || []
   );
+  const searchParams = useSearchParams();
+  const adultTravelerCount = searchParams.get("adultTravelers")
+  const childTravelerCount = searchParams.get("childTravelers")
+  const infantTravelerCount = searchParams.get("infantTravelers")
   const [travelers, setTravelers] = useState([
     {
       id: 1,
       title: "Adults",
       description: "12 years+",
-      count: 1,
+      count: Number(adultTravelerCount) || 1,
     },
     {
       id: 2,
       title: "Children",
       description: "2-12 years",
-      count: 0,
+      count: Number(childTravelerCount) || 0,
     },
     {
       id: 3,
       title: "Infants",
       description: "0-2 years",
-      count: 0,
+      count: Number(infantTravelerCount) || 0,
     },
   ]);
   const [durationError, setDurationError] = useState(null);
@@ -219,15 +223,12 @@ const UmrahTabpane = ({
       // Update the count for each traveler type based on the params
       updatedTravelers[0] = {
         ...updatedTravelers[0],
-        count: params?.adultTravelers ? Number(params?.adultTravelers) : 1,
       };
       updatedTravelers[1] = {
         ...updatedTravelers[1],
-        count: params?.childTravelers ? Number(params?.childTravelers) : 0,
       };
       updatedTravelers[2] = {
         ...updatedTravelers[2],
-        count: params?.infantsTravelers ? Number(params?.infantsTravelers) : 0,
       };
       return updatedTravelers;
     });

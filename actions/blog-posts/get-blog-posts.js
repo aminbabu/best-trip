@@ -11,3 +11,13 @@ export const getBlogPosts = async () => {
     throw new Error(handleAxiosError(error));
   }
 };
+
+
+export const getBlogPost = async (id) => {
+  try {
+    const response = await axios.get(`/api/settings/content/blog-posts/${id}`);
+    return response?.data?.blogPost;
+  } catch (error) {
+    throw new Error(handleAxiosError(error));
+  }
+};

@@ -11,7 +11,12 @@ import numeral from "numeral";
 
 const UmrahDetailsLayout = async ({ children, params }) => {
   const { id } = params;
-  const { umrahPackages: packageDetail } = await getUmrahPackageByIdForCustomers(id)
+  let packageDetail;
+  try {
+    packageDetail = await getUmrahPackageByIdForCustomers(id)
+  } catch (error) {
+    console.log(error);
+  }
   if (numberSchema.safeParse(numeral(id).value()).success !== true) {
     return notFound();
   }

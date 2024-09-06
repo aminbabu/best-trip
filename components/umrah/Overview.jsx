@@ -21,6 +21,7 @@ import "@/styles/umrah/splide.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import moment from "moment";
+import { renderInclusionIcon } from "@/lib/utils";
 
 const options = {
   type: "loop",
@@ -101,7 +102,7 @@ const Overview = ({ item }) => {
                     viewBox="0 0 16 17"
                   />
                   <span className="flex-shrink-0">
-                    Journey Date : {moment(item?.journeyDate).format("DD MMM YYYY")}
+                  Journey Date : {moment(item?.journeyDate).format("DD MMM, YYYY")}
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
@@ -129,53 +130,15 @@ const Overview = ({ item }) => {
                   Package Inclusion
                 </div>
                 <ul className="flex items-center gap-x-4">
-                  {
-                    item?.inclusions.includes("flight") && <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
-                      <PlaneIcon
-                        className="w-6 h-6 rotate-45 text-primary"
-                        viewBox="0 0 14 14"
-                      />
-                      Flight
+                  {item?.inclusions?.map((item, index) => (
+                    <li
+                      key={index}
+                      className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize"
+                    >
+                      {renderInclusionIcon(item)}
+                      {item}
                     </li>
-                  }
-                  {
-                    item?.inclusions.includes("hotel") && <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
-                      <HotelIcon
-                        className="w-6 h-6 text-primary"
-                        viewBox="0 0 14 14"
-                      />
-                      Hotel
-                    </li>
-                  }
-                  {
-                    item?.inclusions.includes("visa") && <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
-                      <PassportIcon
-                        className="w-6 h-6 text-primary"
-                        viewBox="0 0 14 14"
-                      />
-                      Visa
-                    </li>
-                  }
-                  {
-                    item?.inclusions.includes("transport") && <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
-                      <BusIcon
-                        className="w-6 h-6 text-primary"
-                        viewBox="0 0 14 14"
-                      />
-                      Transport
-                    </li>
-                  }
-                  {
-                    item?.inclusions.includes("food") &&
-                    <li className="flex flex-col items-center gap-y-1 text-xs lg:text-sm text-t-600 capitalize">
-                      <SpoonKnifeIcon
-                        fill="#F50308"
-                        className="w-6 h-6 text-primary"
-                        viewBox="0 0 16 16"
-                      />
-                      Food
-                    </li>
-                  }
+                  ))}
                 </ul>
               </div>
               <div className="lg:hidden">

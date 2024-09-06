@@ -2,7 +2,9 @@ import Image from "next/image";
 import {
   ExchangeAltIcon,
   ExchangeIcon,
+  OneWayIcon,
   ReverseExchangeIcon,
+  TwoWayIcon,
 } from "@/components/icons/svgr";
 import numeral from "numeral";
 import Link from "next/link";
@@ -31,7 +33,7 @@ const PopularDestinationSlideItem = ({ flightOffer }) => {
           >
             {flightOffer?.departure}
             <span className="text-p-900">
-              <ReverseExchangeIcon />
+            {flightOffer?.flightType === "one-way" ? <OneWayIcon className="rotate-[180deg]"/> : <TwoWayIcon />}
             </span>
             {flightOffer?.arrival}
           </Link>

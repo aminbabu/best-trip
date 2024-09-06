@@ -81,7 +81,8 @@ import MoonStarsIcon from "@/public/icons/moon-stars.svg";
 import TravellerIcon from "@/public/icons/traveller.svg";
 import LuggageIcon from "@/public/icons/luggage.svg";
 import XBigIcon from "@/public/icons/x-big-icon.svg";
-
+import OneWayIcon from "@/public/icons/one_way.svg"
+import TwoWayIcon from "@/public/icons/two_way.svg"
 export {
   FacebookIcon,
   TwitterIcon,
@@ -166,4 +167,6 @@ export {
   TravellerIcon,
   LuggageIcon,
   XBigIcon,
+  OneWayIcon,
+  TwoWayIcon
 };
