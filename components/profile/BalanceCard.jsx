@@ -4,7 +4,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import React from "react";
 
-const BalanceCard = () => {
+const BalanceCard = ({ user }) => {
+
   return (
     <Card className="border-transparent mb-8">
       <CardContent className="lg:p-10 space-y-10">
@@ -14,8 +15,7 @@ const BalanceCard = () => {
               Wallet Balance{" "}
             </h2>
             <div className="text-base lg:text-lg text-t-800 leading-relaxed font-medium">
-              ৳ 32,487.57{" "}
-              <span className="text-t-800 text-base leading-normal">BDT</span>
+              ৳ {user?.wallet?.balance || 0}  <span className="text-t-800 text-base leading-normal">BDT</span>
             </div>
           </div>
           <div>

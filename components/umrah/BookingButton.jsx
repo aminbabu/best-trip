@@ -1,26 +1,34 @@
 "use client"
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import Swal from "sweetalert2";
 import { bookPackage } from "@/actions/booking/book-package";
 
-const BookingButton = ({ id }) => {
+const BookingButton = ({ id,user }) => {
+
     const [searchedValue, setSearchedValue] = useState({})
     const router = useRouter();
+
+    // Get Searched Value From Local Storage
     useEffect(() => {
         if (typeof window != undefined) {
             setSearchedValue(JSON.parse(localStorage.getItem("searchedValue")))
         }
     }, [])
+
+    // Get Total Travelers From Local Storage
     const { adultTravelers, childTravelers, infantsTravelers } = searchedValue;
     const totalTravelers = Number(adultTravelers) + Number(childTravelers) + Number(infantsTravelers)
+    console.log(totalTravelers);
+
+    // Booking Data For Sending To Server
     const bookingData = { umrahPackage: id, totalTravelers }
-    const { data } = useSession()
+
+    // Submit Booking Handler Function
     const submitBooking = async (event) => {
         event.preventDefault();
-        if (!data) {
+        if (!user) {
             Swal.fire({
                 title: "Login Required",
                 text: "You have to log in to book a package!",

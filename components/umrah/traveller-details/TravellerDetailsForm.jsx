@@ -37,21 +37,42 @@ import { DocAltIcon } from "@/components/icons/svgr";
 import { countries } from "@/data/countries";
 import PhoneInputComponent from "./PhoneInputComponent";
 import { addNewTraveler } from "@/actions/traveler/add-new-traveler";
-import { useSearchParams } from "next/navigation";
 
 const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
+  const [loading, setLoading] = useState(false);
+  const [passport, setPassport] = useState(null);
+  const [photo, setPhoto] = useState(null);
+  const [nid, setNid] = useState(null);
+  const [covid_certificate, setCovidCertificate] = useState(null);
+  const [isOpenDob, setIsOpenDob] = useState(false);
+  const [isOpenExpiryDate, setIsOpenExpiryDate] = useState(false);
+  const [travelerType, setTravellerType] = useState("");
+  const [dobFrom, setDobFrom] = useState(1900);
+  const [dobTo, setDobTo] = useState(moment().year());
+  const [countryValue, setCountryValue] = useState("");
   const today = new Date();
   const twoYearsBack = new Date(today);
   const twelveYearsBack = new Date(today);
   twoYearsBack.setFullYear(today.getFullYear() - 2);
   twelveYearsBack.setFullYear(today.getFullYear() - 12);
-  const searchParams = useSearchParams();
-  const adultTravelers = searchParams.get("adultTravelers");
-  const childTravelers = searchParams.get("childTravelers");
-  const infantsTravelers = searchParams.get("infantsTravelers");
+  const [searchedValue, setSearchedValue] = useState({})
+
+
+  // Get Searched Value From Local Storage
+  useEffect(() => {
+      if (typeof window != undefined) {
+          setSearchedValue(JSON.parse(localStorage.getItem("searchedValue")))
+      }
+  }, [])
+  // Get Total Travelers From Local Storage
+  const { adultTravelers, childTravelers, infantsTravelers } = searchedValue;
+  
+  // Make An Array Up To The Total Number Of Travelers
   const adultTravellersArray = new Array(adultTravelers).fill(0);
   const childTravellersArray = new Array(childTravelers).fill(0);
   const infantTravellersArray = new Array(infantsTravelers).fill(0);
+
+
   let travelerList = [];
   const addTravelers = (travellerArray, type) => {
     // travelerList.length = 0;
@@ -74,17 +95,7 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
   addTravelers(infantTravellersArray, "Infant");
 
 
-  const [loading, setLoading] = useState(false);
-  const [passport, setPassport] = useState(null);
-  const [photo, setPhoto] = useState(null);
-  const [nid, setNid] = useState(null);
-  const [covid_certificate, setCovidCertificate] = useState(null);
-  const [isOpenDob, setIsOpenDob] = useState(false);
-  const [isOpenExpiryDate, setIsOpenExpiryDate] = useState(false);
-  const [travelerType, setTravellerType] = useState("");
-  const [dobFrom, setDobFrom] = useState(1900);
-  const [dobTo, setDobTo] = useState(moment().year());
-  const [countryValue, setCountryValue] = useState("");
+
 
   let initialSelectedDate = moment().toDate();
   if (travelerType === "A") {
@@ -110,6 +121,7 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
     }
   }, [travelerType]);
 
+  // Create A Form Instance With The Schema And Default Values
   const form = useForm({
     resolver: zodResolver(travellerSchema),
     defaultValues: {
@@ -134,6 +146,9 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
       phone: "",
     },
   });
+
+
+
   const handleDisableDate = (date) => {
     if (travelerType === "A") {
       return date > twelveYearsBack || date < new Date("1900-01-01");
@@ -146,6 +161,8 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
     }
   };
 
+
+  //Create A FormData And Append The Values Send To The Server
   const onSubmit = async (data) => {
     const form = new FormData();
     form.append("passport", passport);

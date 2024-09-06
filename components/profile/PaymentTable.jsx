@@ -14,6 +14,7 @@ import moment from "moment";
 import Link from "next/link";
 
 const PaymentTable = ({ data, userData }) => {
+
   const pathname = usePathname();
   const [tableData, setTableData] = useState(bookingListTable);
 

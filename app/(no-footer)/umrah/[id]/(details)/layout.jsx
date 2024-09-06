@@ -1,5 +1,6 @@
 
 import { getUmrahPackageByIdForCustomers } from "@/actions/umrahPackages/get-umrah-packages";
+import { auth } from "@/auth";
 import Container from "@/components/layouts/Container";
 import BookingButton from "@/components/umrah/BookingButton";
 import DetailsTab from "@/components/umrah/DetailsTab";
@@ -10,6 +11,8 @@ import { notFound } from "next/navigation";
 import numeral from "numeral";
 
 const UmrahDetailsLayout = async ({ children, params }) => {
+  const session = await auth();
+  const user = session?.user;
   const { id } = params;
   let packageDetail;
   try {
@@ -27,7 +30,7 @@ const UmrahDetailsLayout = async ({ children, params }) => {
           <Overview item={packageDetail} />
           <DetailsTab id={id} />
           {children}
-          <BookingButton id={id} />
+          <BookingButton id={id} user={user} />
         </SessionProvider>
       </Container>
     </main>
