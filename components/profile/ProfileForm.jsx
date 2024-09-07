@@ -92,6 +92,7 @@ const ProfileForm = ({ user }) => {
   });
 
   const onSubmit = async (data) => {
+    console.log(data);
     try {
       setLoading(true);
 
@@ -314,7 +315,7 @@ const ProfileForm = ({ user }) => {
                         <Input
                           type="text"
                           className="h-[3.25rem] text-base px-5 py-4 text-t-600 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                          placeholder="Enter phone number"
+                          placeholder="Enter Your Address"
                           {...field}
                         />
                       </FormControl>
@@ -342,7 +343,7 @@ const ProfileForm = ({ user }) => {
                         <Input
                           type="text"
                           className="h-[3.25rem] text-base px-5 py-4 text-t-600 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                          placeholder="Enter phone number"
+                          placeholder="Enter Your City Name"
                           {...field}
                         />
                       </FormControl>
@@ -370,7 +371,7 @@ const ProfileForm = ({ user }) => {
                         <Input
                           type="text"
                           className="h-[3.25rem] text-base px-5 py-4 text-t-600 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                          placeholder="Enter phone number"
+                          placeholder="Enter Your Country Name"
                           {...field}
                         />
                       </FormControl>
@@ -398,7 +399,7 @@ const ProfileForm = ({ user }) => {
                         <Input
                           type="text"
                           className="h-[3.25rem] text-base px-5 py-4 text-t-600 placeholder:text-t-300 disabled:bg-primary-foreground disabled:text-t-600 disabled:border-primary-foreground disabled:opacity-100"
-                          placeholder="Enter phone number"
+                          placeholder="Enter Frequent Flyer Number"
                           {...field}
                         />
                       </FormControl>

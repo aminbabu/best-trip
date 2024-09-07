@@ -50,6 +50,7 @@ const ProfilePasswordPage = () => {
   });
 
   const onSubmit = (data) => {
+    console.log(data);
   };
 
   return (

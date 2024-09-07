@@ -13,6 +13,7 @@ const DetailsPage = async ({ params }) => {
   } catch (error) {
     console.log(error);
   }
+  console.log(blogPost);
   const airLine = airlines?.find((airline) => airline.code === blogPost?.nearestAirport)
   return (
     <main className="py-12 lg:py-16">
@@ -23,7 +24,7 @@ const DetailsPage = async ({ params }) => {
               src={process.env.NEXT_PUBLIC_API_URL + blogPost?.thumbnail}
               width="1140"
               height="513"
-              alt="Patenga Sea Beach"
+              alt="Thumbnail"
               className="w-full h-full object-cover rounded-md"
             />
           </div>
@@ -45,7 +46,7 @@ const DetailsPage = async ({ params }) => {
                   ))
                 }
               </ul>
-              6,755 Google Reviews
+              {blogPost?.numberOfReviews}  Reviews
             </div>
             <p>
               {blogPost?.description}

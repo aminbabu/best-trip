@@ -42,7 +42,7 @@ const PlacesInBDSlideblogPost = ({ blogPost }) => {
             }
             <span>{blogPost?.rating}</span>
           </div>
-          {/* <span>({numeral(blogPost?.count).format("0a.0")})</span> */}
+          <span>({numeral(blogPost?.numberOfReviews).format("0a.0")})</span>
         </div>
         <p className="text-xs lg:text-sm text-white line-clamp-1 pointer-events-auto">
           {blogPost?.location}
