@@ -1,9 +1,14 @@
-
+"use client"
 import DepositForm from "@/components/payment-method/DepositForm";
 import { Card, CardContent } from "@/components/ui/card";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const AddBalance = () => {
+  const router = useRouter();
+  const onSubmit = async () => {
+    router.push("/profile/manual-banking");
+  }
   return (
     <div>
       <Card className="text-t-600 border-transparent max-w-3xl mx-auto">
@@ -12,7 +17,7 @@ const AddBalance = () => {
             Payment Method
           </h1>
           <p className="text-t-800 mb-4">Select Payment Method</p>
-          <DepositForm />
+          <DepositForm onSubmit={onSubmit} />
         </CardContent>
       </Card>
     </div>

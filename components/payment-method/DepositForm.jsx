@@ -159,11 +159,11 @@ const DepositForm = ({ bookingData, onSubmit, loading }) => {
 
   const partialTotal =
     Number(bookingData?.umrahPackage?.adultPartialPrice) *
-      adultTravelers?.length +
+    adultTravelers?.length +
     Number(bookingData?.umrahPackage?.childPartialPrice) *
-      childTravelers?.length +
+    childTravelers?.length +
     Number(bookingData?.umrahPackage?.infantPartialPrice) *
-      infantTravelers?.length;
+    infantTravelers?.length;
 
   return (
     <>
@@ -187,37 +187,37 @@ const DepositForm = ({ bookingData, onSubmit, loading }) => {
             {/* wallet */}
             {(pathname === "/profile/payment-method" ||
               pathname.startsWith("/booking-details")) && (
-              <FormField
-                control={form.control}
-                name="wallet"
-                render={({ field }) => (
-                  <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md px-4 py-3.5 space-y-0">
-                    <FormControl>
-                      <Checkbox
-                        className="border-[#EDEDED]"
-                        checked={openWallet}
-                        onCheckedChange={(value) => {
-                          field.onChange(value);
-                          handleFromWallet(value);
-                          setOpenWallet(value);
-                        }}
-                      />
-                    </FormControl>
-                    <FormLabel className="text-base font-normal">
-                      From Wallet
-                    </FormLabel>
+                <FormField
+                  control={form.control}
+                  name="wallet"
+                  render={({ field }) => (
+                    <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md px-4 py-3.5 space-y-0">
+                      <FormControl>
+                        <Checkbox
+                          className="border-[#EDEDED]"
+                          checked={openWallet}
+                          onCheckedChange={(value) => {
+                            field.onChange(value);
+                            handleFromWallet(value);
+                            setOpenWallet(value);
+                          }}
+                        />
+                      </FormControl>
+                      <FormLabel className="text-base font-normal">
+                        From Wallet
+                      </FormLabel>
 
-                    {pathname === "/profile/payment-method" && (
-                      <p className="ml-auto text-sm">
-                        $ {openWallet && balance}
-                      </p>
-                    )}
+                      {pathname === "/profile/payment-method" && (
+                        <p className="ml-auto text-sm">
+                          $ {openWallet && balance}
+                        </p>
+                      )}
 
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            )}
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
             {/* manual banking */}
             {pathname === "/profile/add-balance" && (
               <FormField
@@ -247,30 +247,30 @@ const DepositForm = ({ bookingData, onSubmit, loading }) => {
             {/* online banking */}
             {(pathname === "/profile/add-balance" ||
               pathname.startsWith("/booking-details")) && (
-              <FormField
-                control={form.control}
-                name="online"
-                render={({ field }) => (
-                  <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md px-4 py-3.5 space-y-0">
-                    <FormControl>
-                      <Checkbox
-                        className="border-[#EDEDED]"
-                        checked={openOnline}
-                        onCheckedChange={(value) => {
-                          field.onChange(value);
-                          handleOnlineBanking(value);
-                          setOpenOnline(value);
-                        }}
-                      />
-                    </FormControl>
-                    <FormLabel className="text-base font-normal">
-                      Online Banking
-                    </FormLabel>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            )}
+                <FormField
+                  control={form.control}
+                  name="online"
+                  render={({ field }) => (
+                    <FormItem className="col-span-2 sm:col-span-1 flex items-center gap-x-2 border border-[#F5F5F5] rounded-md px-4 py-3.5 space-y-0">
+                      <FormControl>
+                        <Checkbox
+                          className="border-[#EDEDED]"
+                          checked={openOnline}
+                          onCheckedChange={(value) => {
+                            field.onChange(value);
+                            handleOnlineBanking(value);
+                            setOpenOnline(value);
+                          }}
+                        />
+                      </FormControl>
+                      <FormLabel className="text-base font-normal">
+                        Online Banking
+                      </FormLabel>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
           </div>
 
           {openManual && (
@@ -424,9 +424,8 @@ const DepositForm = ({ bookingData, onSubmit, loading }) => {
                             />
                           </FormControl>
                           <div
-                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${
-                              openFullPayment && "border-p-900"
-                            } flex-1`}
+                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openFullPayment && "border-p-900"
+                              } flex-1`}
                           >
                             <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
                               <span className="leading-normal">
@@ -465,9 +464,8 @@ const DepositForm = ({ bookingData, onSubmit, loading }) => {
                             />
                           </FormControl>
                           <div
-                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${
-                              openPartPaymnet && "border-p-900"
-                            } flex-1`}
+                            className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openPartPaymnet && "border-p-900"
+                              } flex-1`}
                           >
                             <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
                               <span className="leading-normal">
@@ -516,9 +514,8 @@ const DepositForm = ({ bookingData, onSubmit, loading }) => {
                               />
                             </FormControl>
                             <div
-                              className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${
-                                openFullPayment && "border-p-900"
-                              } flex-1`}
+                              className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openFullPayment && "border-p-900"
+                                } flex-1`}
                             >
                               <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
                                 <span className="leading-normal">
@@ -559,14 +556,13 @@ const DepositForm = ({ bookingData, onSubmit, loading }) => {
                               />
                             </FormControl>
                             <div
-                              className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${
-                                openPartPaymnet && "border-p-900"
-                              } flex-1`}
+                              className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openPartPaymnet && "border-p-900"
+                                } flex-1`}
                             >
                               <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
                                 <span className="leading-normal">
                                   {bookingData?.invoice?.paymentType ===
-                                  "partial-payment"
+                                    "partial-payment"
                                     ? "Continue With Due Payment"
                                     : "Continue with partial payment"}
                                 </span>
@@ -610,13 +606,13 @@ const DepositForm = ({ bookingData, onSubmit, loading }) => {
               className={`py-[15px] ${openOnline ? "" : "mt-6"} `}
               type="submit"
               disabled={
-                // !form.watch("manual") &&
-                // !form.watch("online") &&
-                // !form.watch("wallet") &&
+                !form.watch("manual") &&
+                !form.watch("online") &&
+                !form.watch("wallet") &&
                 loading
               }
             >
-              {loading?<>Loading <Loader className="animate-spin" /></>: "Continue"}
+              Continue {loading && <Loader className="animate-spin" />}
             </Button>
           </div>
         </form>

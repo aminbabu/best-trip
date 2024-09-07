@@ -15,7 +15,7 @@ const BalanceCard = ({ user }) => {
               Wallet Balance{" "}
             </h2>
             <div className="text-base lg:text-lg text-t-800 leading-relaxed font-medium">
-              ৳ {user?.wallet?.balance || 0}  <span className="text-t-800 text-base leading-normal">BDT</span>
+              ৳ {user?.wallet?.balance?.toLocaleString() || 0}  <span className="text-t-800 text-base leading-normal">BDT</span>
             </div>
           </div>
           <div>

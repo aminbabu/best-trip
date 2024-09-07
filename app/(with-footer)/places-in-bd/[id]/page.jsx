@@ -11,9 +11,7 @@ const DetailsPage = async ({ params }) => {
   try {
     blogPost = await getBlogPost(id);
   } catch (error) {
-    console.log(error);
   }
-  console.log(blogPost);
   const airLine = airlines?.find((airline) => airline.code === blogPost?.nearestAirport)
   return (
     <main className="py-12 lg:py-16">

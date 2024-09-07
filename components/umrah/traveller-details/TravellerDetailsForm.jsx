@@ -197,7 +197,6 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
           confirmButtonColor: "#3ad965",
         });
       } catch (error) {
-        console.log(error?.message);
         Swal.fire({
           text: error?.message,
           icon: "error",

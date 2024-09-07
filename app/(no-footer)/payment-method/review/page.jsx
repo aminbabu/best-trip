@@ -5,6 +5,8 @@ import Link from "next/link";
 
 const PaymentReviewPage = ({ searchParams }) => {
   const bookingId = searchParams?.bookingId;
+  const status = searchParams.status;
+  const refId = searchParams.refId;
   return (
     <main className="py-20 bg-secondary">
       <Container>
@@ -14,12 +16,12 @@ const PaymentReviewPage = ({ searchParams }) => {
               <DocIcon />
             </div>
           }
-          title="Your Booking Under Review"
-          description="Your booking confirmation we will send you soon!"
+          title={`Your ${bookingId ? "Booking" : "Payment"} Is On Under Review`}
+          description={`Your ${bookingId ? "Booking" : "Payment"} confirmation we will send you soon!`}
         >
           <p className="mb-4">
-            For future reference, your booking Id :{" "}
-            <span className="text-primary">{bookingId}</span>
+            For future reference, your {bookingId ? "bookingId" : "refId"} :
+            <span className="text-primary"> {bookingId ? bookingId : refId ? refId : ''}</span>
           </p>
           <p>
             If you have any query please call us at :{" "}

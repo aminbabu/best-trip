@@ -1,20 +1,20 @@
-import { getMyBookings } from "@/actions/booking/get-my-bookings";
+import { getPaymentRequest } from "@/actions/payment/get-payment-request";
 import { auth } from "@/auth";
 import BalanceCard from "@/components/profile/BalanceCard";
-import PaymentTable from "@/components/profile/PaymentTable";
+import PaymentRequestTable from "@/components/profile/PaymentRequestTable";
 
 const BestTripWallet =async () => {
   const user = await auth()
-  let bookingData;
+  let paymentRequest;
   try {
-    const response = await getMyBookings()
-    bookingData = (response?.data?.umrahBookings)
+    const response = await getPaymentRequest()
+    paymentRequest = (response.paymentRequests)
   } catch (error) {
   }
   return (
     <>
       <BalanceCard user={user?.user}/>
-      <PaymentTable userData={user} data={bookingData}/>
+      <PaymentRequestTable userData={user} data={paymentRequest}/>
     </>
   );
 };

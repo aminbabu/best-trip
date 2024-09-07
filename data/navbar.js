@@ -45,18 +45,18 @@ export const navLinks = [
       />
     ),
   },
-  {
-    id: 5,
-    name: "General Ledger",
-    href: "/profile/general-ledger",
-    icon: (
-      <TicketSolidIcon
-        viewBox="0 0 576 512"
-        fill="currentColor"
-        className="h-4 w-4"
-      />
-    ),
-  },
+  // {
+  //   id: 5,
+  //   name: "General Ledger",
+  //   href: "/profile/general-ledger",
+  //   icon: (
+  //     <TicketSolidIcon
+  //       viewBox="0 0 576 512"
+  //       fill="currentColor"
+  //       className="h-4 w-4"
+  //     />
+  //   ),
+  // },
   {
     id: 6,
     name: "Change Password",

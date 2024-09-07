@@ -27,7 +27,6 @@ const PaymentPage = () => {
       const response = await getBookingData()
       setBookingData(response?.umrahBookings)
     } catch (error) {
-      console.log(error);
     }
   }
   getBookingDetail();

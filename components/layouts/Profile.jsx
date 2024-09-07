@@ -49,10 +49,10 @@ const Profile = ({ user }) => {
       <PopoverTrigger className="flex items-center gap-3">
         {user?.avatar ? (
           <Image
-            src={user.avatar}
+            src={process.env.NEXT_PUBLIC_API_URL + "/" + user?.avatar}
             alt="user-profile"
-            height={"40px"}
-            width={"40px"}
+            height={40}
+            width={40}
             className="aspect-square w-10"
           />
         ) : (

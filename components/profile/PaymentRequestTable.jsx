@@ -6,29 +6,15 @@ import PaymentTablePagination from "./PaymentTablePagination";
 import PaymentTableFilter from "./PaymentTableFilter";
 import { usePathname } from "next/navigation";
 import {
-  bookingListTable,
-  generalLedgerTable,
   paymentRequestTable,
 } from "@/data/payment-tables";
 import moment from "moment";
 import Link from "next/link";
 
-const PaymentTable = ({ data, userData }) => {
+const PaymentRequestTable = ({ data, userData }) => {
 
-  const pathname = usePathname();
-  const [tableData, setTableData] = useState(bookingListTable);
-
-  useEffect(() => {
-    if (pathname == "/profile/booking") {
-      setTableData(bookingListTable);
-    }
-    if (pathname == "/profile/partial-payment-bookings") {
-      setTableData(paymentRequestTable);
-    }
-    if (pathname == "/profile/general-ledger") {
-      setTableData(generalLedgerTable);
-    }
-  }, [pathname, data]);
+  const [tableData, setTableData] = useState(paymentRequestTable);
+  console.log(data);
   return (
     <Card className="border-transparent mb-8 drop-shadow-[ 0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] ">
       <CardContent className="lg:p-10 space-y-7">
@@ -55,18 +41,14 @@ const PaymentTable = ({ data, userData }) => {
             <tbody>
               {data?.map((item, ind) => (
                 <tr key={ind} className="border-b border-dashed border-[#f1f1f4] text-sm lg:text-base font-normal [&>*:last-child]:text-right">
-                  <td ><Link href={`/booking-details/${item?._id}`} className="hover:text-red-500 ">{item?.bookingRefId}</Link></td>
+                  {console.log(item)}
+                  <td ><Link href={`/booking-details/${item?._id}`} className="hover:text-red-500 ">{item?.refId}</Link></td>
                   <td >{item?.status}</td>
-                  <td >{item?.bookingType || "N/A"}</td>
-                  <td >{moment(item?.createdAt).format("MMM DD, YYYY-HH:mm")}</td>
-                  <td>{userData?.user?.name}</td>
-                  <td>{moment(item?.umrahPackage?.journeyDate).format("MMM DD, YYYY")}</td>
-                  <td>{item?.travelers?.length} Travellers</td>
-                  <td>PRIME PAX</td>
-                  <td>Yes</td>
-                  <td>Yes</td>
-                  <td>Yes</td>
-                  <td>N/A</td>
+                  <td >{userData?.name || "N/A"}</td>
+                  <td >{item?.paymentMethod}</td>
+                  <td>{userData?.name}</td>
+                  <td>{item?.amount}</td>
+                  <td>{moment(item?.createdAt).format("MMM DD, YYYY")}</td>
                 </tr>
               ))}
             </tbody>
@@ -78,4 +60,4 @@ const PaymentTable = ({ data, userData }) => {
   );
 };
 
-export default PaymentTable;
+export default PaymentRequestTable;

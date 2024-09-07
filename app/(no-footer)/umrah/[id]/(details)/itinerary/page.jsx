@@ -5,7 +5,6 @@ import Image from "next/image";
 const ItineraryPage =async ({ params }) => {
   const { id } = params;
   const { umrahPackages: packageDetail } = await getUmrahPackageByIdForCustomers(id)
-  console.log(packageDetail);
   return (
     <div className="space-y-4">
       {data?.length ? (

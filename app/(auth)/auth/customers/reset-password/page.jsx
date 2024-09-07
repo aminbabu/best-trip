@@ -62,9 +62,7 @@ const ResetPasswordPage = () => {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-
       const response = await resetPassword(data, token);
-
       if (response?.error) {
         throw new Error(
           "An error occurred. Please check your passwords and try again"

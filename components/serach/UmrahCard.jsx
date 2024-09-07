@@ -31,8 +31,8 @@ const UmrahCard = ({ data }) => {
           alt={data?.name}
           className="aspect-[240/263] w-full md:mx-0 md:w-1/2 lg:w-60 flex-shrink-0 rounded-[0.1785rem] object-cover"
         />
-        <div className="flex-1 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
-          <div>
+        <div className="flex-1 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 ">
+          <div className="flex-1">
             <p className="text-sm lg:text-base text-t-800  lg:mb-4">
               {data?.title}
             </p>
@@ -56,7 +56,7 @@ const UmrahCard = ({ data }) => {
                     className="mt-0.5 flex-shrink-0"
                   />
                   <span className="flex-shrink-0">
-                  Journey Date : {moment(data?.journeyDate).format("DD MMM, YYYY")}
+                    Journey Date : {moment(data?.journeyDate).format("DD MMM, YYYY")}
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">
@@ -72,11 +72,11 @@ const UmrahCard = ({ data }) => {
                   </span>
                 </li>
               </ul>
-              <div className="flex flex-col gap-y-4 justify-end">
+              <div className="flex flex-col gap-y-4 justify-end flex-1">
                 <div className="text-t-600 text-sm lg:text-base leading-normal xl:text-center px-4 py-2 rounded-sm bg-p-300">
                   Package Inclusion
                 </div>
-                <ul className="flex items-center xl:justify-center gap-x-4">
+                <ul className="flex flex-wrap  xl:justify-center gap-x-4 gap-y-2">
                   {data?.inclusions?.map((item, index) => (
                     <li
                       key={index}
@@ -90,7 +90,7 @@ const UmrahCard = ({ data }) => {
               </div>
             </div>
           </div>
-          <div className="lg:self-end space-y-4 lg:text-right">
+          <div className="lg:self-end space-y-4 lg:text-right flex-shrink-0">
             <ul className="grid grid-cols-2 gap-1.5">
               <li className="col-span-2 text-t-600 text-sm lg:text-base xl:text-lg">
                 Adult Price :

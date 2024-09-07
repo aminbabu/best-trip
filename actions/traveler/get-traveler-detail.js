@@ -9,7 +9,6 @@ export const getTravelerDetail = async () => {
     const res = await axios.get(`/api/umrah/travelers/${bookingId}`);
     return res.data;
   } catch (error) {
-    console.log(error);
     throw new Error(handleAxiosError(error));
   }
 };

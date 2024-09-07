@@ -16,9 +16,15 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { EyeIcon, EyeSlashIcon } from "@/components/icons/svgr";
 import { useState } from "react";
+import resetPassword from "@/actions/auth/reset-password";
+import { useSession } from "next-auth/react";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import changePassword from "@/actions/auth/change-password";
 
 const formSchema = z
   .object({
+    currentPassword: z.string().min(8, "Please enter a valid Current password"),
     password: z.string().min(8, "Please enter a valid password"),
     confirmPassword: z.string().min(8, "Please enter a valid password"),
   })
@@ -28,12 +34,18 @@ const formSchema = z
   });
 
 const ProfilePasswordPage = () => {
+  const { data: userData } = useSession();
   const [showPassword, setShowPassword] = useState(false);
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleShowPassword = (e) => {
     e.preventDefault();
     setShowPassword(!showPassword);
+  };
+  const handleShowCurrentPassword = (e) => {
+    e.preventDefault();
+    setShowCurrentPassword(!showCurrentPassword);
   };
 
   const handleShowConfirmPassword = (e) => {
@@ -49,8 +61,27 @@ const ProfilePasswordPage = () => {
     },
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    data.userId = userData?.user?._id;
+    try {
+      const response = await changePassword(data)
+      await withReactContent(Swal).fire({
+        title: "Success",
+        text: response?.message,
+        icon: "success",
+        confirmButtonText: "Ok, got it",
+        confirmButtonColor: "#3ad965",
+      });
+    } catch (error) {
+      await withReactContent(Swal).fire({
+        title: "Error",
+        text: error?.message || "An error occurred. Please try again",
+        icon: "error",
+        confirmButtonText: "Try Again",
+        confirmButtonColor: "#ff0f2f",
+        allowOutsideClick: false,
+      });
+    }
   };
 
   return (
@@ -66,7 +97,42 @@ const ProfilePasswordPage = () => {
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-[26px]"
           >
-            <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+            <div className="grid grid-cols-2 grid-rows-2 gap-x-6 gap-y-4">
+              <FormField
+                control={form.control}
+                name="currentPassword"
+                render={({ field }) => (
+                  <FormItem className="space-y-3 col-span-2 lg:col-span-1">
+                    <FormLabel className="text-t-800 text-sm lg:text-base">
+                      Current Password<span className="text-primary"> *</span>
+                    </FormLabel>
+                    <div className="relative">
+                      <FormControl>
+                        <Input
+                          type={showCurrentPassword ? "text" : "password"}
+                          className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
+                          placeholder="Enter Current password"
+                          {...field}
+                        />
+                      </FormControl>
+                      <button
+                        onClick={(e) => handleShowCurrentPassword(e)}
+                        className="absolute right-4 bottom-4"
+                      >
+                        {showCurrentPassword ? (
+                          <EyeSlashIcon
+                            viewBox="0 0 24 24"
+                            className="w-4 h-4"
+                          />
+                        ) : (
+                          <EyeIcon viewBox="0 0 24 24" className="w-4 h-4" />
+                        )}
+                      </button>
+                    </div>
+                    <FormMessage className="font-normal" />
+                  </FormItem>
+                )}
+              />
               <FormField
                 control={form.control}
                 name="password"
@@ -80,7 +146,7 @@ const ProfilePasswordPage = () => {
                         <Input
                           type={showPassword ? "text" : "password"}
                           className="h-[3.25rem] text-base p-4 text-t-700 placeholder:text-t-600 placeholder:text-sm placeholder:lg:text-base border border-[#f5f5f5] focus-visible:ring-0 focus-visible:ring-offset-0"
-                          placeholder="Enter password"
+                          placeholder="Enter New password"
                           {...field}
                         />
                       </FormControl>

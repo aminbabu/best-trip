@@ -1,26 +1,113 @@
+"use client";
 import { auth } from "@/auth";
 import ProfileForm from "@/components/profile/ProfileForm";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
-import { generateImage } from "@/lib/utils";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useState } from "react";
+import { generateImage } from "@/lib/utils";
+import withReactContent from "sweetalert2-react-content";
+import Swal from "sweetalert2";
+import updateProfile from "@/actions/profile/update";
+import moment from "moment";
 
-const MyProfilePage = async () => {
-  const { user } = (await auth()) || {};
+const MyProfilePage = () => {
+  const [edit, setEdit] = useState(false);
+  const { data } = useSession();
+  const [profileData, setProfileData] = useState();
+  const user = data?.user;
+  const [loading, setLoading] = useState(false);
+  const [avatarPreview, setAvatarPreview] = useState(user?.avatar || "");
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setAvatarPreview(reader.result); // Set preview to the uploaded image
+      };
+      reader.readAsDataURL(file);
+      setProfileData(file);
+    }
+  };
+
+  const onSubmit = async (data) => {
+    data.dob = moment(data.dob).format("YYYY-MM-DD");
+    data.avatar = profileData;
+    try {
+      setLoading(true);
+
+      // Filter out empty values
+      const filteredData = Object.entries(data).reduce((acc, [key, value]) => {
+        if (value !== "" && value !== undefined && value !== null) {
+          acc[key] = value;
+        }
+        return acc;
+      }, {});
+
+      // Prepare FormData
+      const formData = new FormData();
+      Object.keys(filteredData).forEach((key) => {
+        formData.append(key, filteredData[key]);
+      });
+
+      const response = await updateProfile(formData);
+      async () => {
+        // Trigger a sign-in to refresh the session
+        await signIn("credentials", { redirect: false });
+      };
+      await withReactContent(Swal).fire({
+        title: "Success",
+        text: response.message,
+        icon: "success",
+        confirmButtonText: "Sign In",
+        confirmButtonColor: "#3ad965",
+        allowOutsideClick: false,
+      });
+    } catch (error) {
+      await withReactContent(Swal).fire({
+        title: "Error",
+        text: error?.message || "An error occurred. Please try again",
+        icon: "error",
+        confirmButtonText: "Try Again",
+        confirmButtonColor: "#ff0f2f",
+        allowOutsideClick: false,
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <Card className="border-transparent mb-8">
       <CardContent className="lg:p-10 space-y-10">
         <div className="flex flex-col items-center">
-          <Avatar className="h-40 w-40 mb-5 mx-auto">
-            {user?.avatar ? (
-              <AvatarImage src={generateImage(user.avatar)} />
-            ) : (
-              <AvatarFallback className="text-4xl bg-p-300 text-primary">
-                {user?.name?.charAt(0)}
-              </AvatarFallback>
-            )}
-          </Avatar>
+          {/* Wrap avatar with a label to make it clickable */}
+          <label htmlFor="avatar" className="cursor-pointer">
+            <Avatar className="h-40 w-40 mb-5 mx-auto relative">
+              {
+                avatarPreview ? (
+                  <AvatarImage src={avatarPreview} alt="avatar" />
+                ) : user?.avatar ? (
+                  <AvatarImage src={`${process.env.NEXT_PUBLIC_API_URL}${user?.avatar}`} alt="avatar" />
+                ) : (
+                  <AvatarFallback>
+                    {generateImage(user?.name?.charAt(0))}
+                  </AvatarFallback>
+                )
+              }
+
+              <input
+                id="avatar"
+                name="avatar"
+                type="file"
+                disabled={!edit}
+                className="absolute inset-0 opacity-0 cursor-pointer"
+                onChange={handleFileChange}
+                accept="image/*"
+              />
+            </Avatar>
+          </label>
           <h1 className="text-t-800 text-2xl lg:text-[28px] font-semibold mb-5">
             {user?.name}
           </h1>
@@ -28,7 +115,7 @@ const MyProfilePage = async () => {
             {user?.email}
           </Link>
         </div>
-        <ProfileForm user={user} />
+        <ProfileForm user={user} onSubmit={onSubmit} loading={loading} edit={edit} setEdit={setEdit} />
       </CardContent>
     </Card>
   );

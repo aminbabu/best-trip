@@ -32,21 +32,13 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
-import updateProfile from "@/actions/profile/update";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
 import { LucideLoader2 } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(1, "Please enter your full name"),
-  dob: z
-    .string()
-    .optional()
-    .or(
-      z.string().refine((val) => moment(val).isValid(), {
-        message: "Please enter a valid date",
-      })
-    ),
+  dob: z.coerce.date().refine((val) => moment(val).isValid(), {
+    message: "Please enter a valid date",
+  }),
   email: z
     .string({
       required_error: "Emaill Address is required",
@@ -62,9 +54,8 @@ const formSchema = z.object({
   flyerNumber: z.string().optional(),
 });
 
-const ProfileForm = ({ user }) => {
-  const [edit, setEdit] = useState(false);
-  const [loading, setLoading] = useState(false);
+const ProfileForm = ({ user, onSubmit, loading,edit,setEdit }) => {
+
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -91,48 +82,6 @@ const ProfileForm = ({ user }) => {
     disabled: !edit,
   });
 
-  const onSubmit = async (data) => {
-    console.log(data);
-    try {
-      setLoading(true);
-
-      // Filter out empty values
-      const filteredData = Object.entries(data).reduce((acc, [key, value]) => {
-        if (value !== "" && value !== undefined && value !== null) {
-          acc[key] = value;
-        }
-        return acc;
-      }, {});
-
-      // Prepare FormData
-      const formData = new FormData();
-      Object.keys(filteredData).forEach((key) => {
-        formData.append(key, filteredData[key]);
-      });
-
-      const response = await updateProfile(formData);
-
-      await withReactContent(Swal).fire({
-        title: "Success",
-        text: response.message,
-        icon: "success",
-        confirmButtonText: "Sign In",
-        confirmButtonColor: "#3ad965",
-        allowOutsideClick: false,
-      });
-    } catch (error) {
-      await withReactContent(Swal).fire({
-        title: "Error",
-        text: error?.message || "An error occurred. Please try again",
-        icon: "error",
-        confirmButtonText: "Try Again",
-        confirmButtonColor: "#ff0f2f",
-        allowOutsideClick: false,
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <div className="!mt-5">
@@ -203,7 +152,7 @@ const ProfileForm = ({ user }) => {
                               disabled={!edit}
                             >
                               {field.value ? (
-                                moment(field.value).format("DD-MMM-YYYY")
+                                moment(field.value).format("YYYY-MM-DD")
                               ) : (
                                 <span>Select your date of birth</span>
                               )}

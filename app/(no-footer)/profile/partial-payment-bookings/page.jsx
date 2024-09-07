@@ -1,10 +1,17 @@
-import PaymentTable from "@/components/profile/PaymentTable";
+import { getPartialPaymentRequest } from "@/actions/payment/get-payment-request";
+import PartialPaymentTable from "@/components/profile/PartialPaymentTable";
 import React from "react";
 
-const PartialPaymentBookings = () => {
+const PartialPaymentBookings = async () => {
+  let partialPayment;
+  try {
+    const response = await getPartialPaymentRequest()
+    partialPayment = (response?.invoices)
+  } catch (error) {
+  }
   return (
     <div>
-      <PaymentTable />
+      <PartialPaymentTable data={partialPayment} />
     </div>
   );
 };

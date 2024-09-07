@@ -335,3 +335,42 @@ export const generalLedgerTable = {
     },
   ],
 };
+
+export const paymentRequestTable = {
+  title: "Partial Payment Bookings",
+
+  tableHeads: [
+    {
+      id: 1,
+      item: "REF.NUMBER",
+    },
+    {
+      id: 2,
+      item: "STATUS",
+    },
+    {
+      id: 3,
+      item: "CUSTOMERS",
+    },
+    {
+      id: 4,
+      item: "TYPE",
+    },
+    {
+      id: 5,
+      item: "DETAILS",
+    },
+    {
+      id: 6,
+      item: "AMOUNT",
+    },
+    {
+      id: 7,
+      item: "CREATED AT",
+    },
+    {
+      id: 8,
+      item: "RECEIPT",
+    }
+  ],
+};

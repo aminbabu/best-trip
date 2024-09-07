@@ -10,7 +10,6 @@ export const addNewTraveler = async (data) => {
     const response = await axios.post("/api/umrah/travelers", data);
     return response?.data;
   } catch (error) {
-    console.log(error?.response?.data);
     throw new Error(handleAxiosError(error));
   }
 };

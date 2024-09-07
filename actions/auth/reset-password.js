@@ -11,9 +11,9 @@ const resetPassword = async ({ password, confirmPassword }, token) => {
         confirmPassword,
       }
     );
-
     return response.data;
   } catch (error) {
+    console.log(error?.response?.data);
     throw new Error(error.response.data.message);
   }
 };

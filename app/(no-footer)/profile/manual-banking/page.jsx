@@ -14,16 +14,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import Container from "@/components/layouts/Container";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   Select,
   SelectContent,
@@ -35,6 +31,10 @@ import { useState } from "react";
 import moment from "moment";
 import { Loader } from "lucide-react";
 import { getImageData } from "@/lib/utils";
+import { addBalanceRequest } from "@/actions/payment/add-balance-request";
+import withReactContent from "sweetalert2-react-content";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   amount: z
@@ -42,16 +42,16 @@ const formSchema = z.object({
     .positive()
     .min(1, "Please enter a valid amount")
     .or(z.string().min(1, "Please enter a valid amount")),
-  method: z.string().min(1, "Please select a payment method"),
+  paymentMethod: z.string().min(1, "Please select a payment method"),
   account: z.string().min(1, "Please select an account"),
-  date: z
+  paymentDate: z
     .string()
     .min(1, "Please select a valid date")
     .or(z.date("Please select a valid date")),
   // agree: z.boolean().refine((val) => val === true, {
   //   message: "Please agree to the terms and conditions",
   // }),
-  payment_prove: z.string().min(1, "Please upload a payment proof"),
+  attachment: z.string().min(1, "Please upload a payment proof"),
   reference: z.string().min(1, "Please enter a reference"),
 });
 
@@ -63,21 +63,49 @@ const ManualBankingPage = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       amount: "",
-      method: "",
+      paymentMethod: "",
       account: "",
-      date: "",
+      paymentDate: "",
       reference: "",
-      // agree: false,
-      payment_prove: "",
+      attachment: "",
     },
   });
 
-  const onSubmit = (data) => {
-    setLoading(true);
-    setTimeout(() => {
+  const onSubmit = async (data) => {
+    setLoading(true)
+    data.attachment = file;
+    const formData = new FormData();
+    formData.append("amount", data.amount);
+    formData.append("paymentMethod", data.paymentMethod);
+    formData.append("attachment", file)
+    formData.append("account", data.account);
+    formData.append("paymentDate", moment(data.paymentDate).format("YYYY-MM-DD"));
+    try {
+      const response = await addBalanceRequest(formData);
+      await withReactContent(Swal).fire({
+        title: "Success",
+        text: response?.message,
+        icon: "success",
+        confirmButtonText: "Continue",
+        confirmButtonColor: "#3ad965",
+        allowOutsideClick: false,
+      });
+      router.push(`/payment-method/review?status=${response?.paymentsRequest?.status}&refId=${response?.paymentsRequest?.refId}`);
+    } catch (error) {
+      console.log(error?.message);
+      await withReactContent(Swal).fire({
+        title: "Error",
+        text: error?.message || "Something Went Wrong. Please try again",
+        icon: "Error",
+        confirmButtonText: "Ok",
+        confirmButtonColor: "#F70207",
+        allowOutsideClick: false,
+      });
+    } finally {
+
       setLoading(false);
-      router.push("/profile/payment-method/review");
-    }, 2000);
+    }
+
   };
 
   return (
@@ -113,7 +141,7 @@ const ManualBankingPage = () => {
                 />
                 <FormField
                   control={form.control}
-                  name="method"
+                  name="paymentMethod"
                   render={({ field }) => (
                     <FormItem className="space-y-3 col-span-2 lg:col-span-1">
                       <FormLabel className="text-t-800 text-sm lg:text-base">
@@ -161,16 +189,20 @@ const ManualBankingPage = () => {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="1">
+                          <SelectItem value="Islami Bank Ltd">
                             Islami Bank Ltd. - Best Travels Ltd. -
                             13876342617476218 - Uttara Branch .
                           </SelectItem>
-                          <SelectItem value="2">
+                          <SelectItem value="Pubali Bank Ltd">
                             Pubali Bank Ltd. - Best Travels Ltd. -
                             13876342617476218 - Uttara Branch .
                           </SelectItem>
-                          <SelectItem value="3">
+                          <SelectItem value="AB Bank Ltd">
                             AB Bank Ltd. - Best Travels Ltd. - 13876342617476218
+                            - Uttara Branch .
+                          </SelectItem>
+                          <SelectItem value="Duth-Bangla Bank Limited">
+                            Duth-Bangla Bank Limited. - Best Travels Ltd. - 13876342617476218
                             - Uttara Branch .
                           </SelectItem>
                         </SelectContent>
@@ -200,7 +232,7 @@ const ManualBankingPage = () => {
                 />
                 <FormField
                   control={form.control}
-                  name="date"
+                  name="paymentDate"
                   render={({ field }) => (
                     <FormItem className="space-y-3 col-span-2 lg:col-span-1 flex flex-col justify-between">
                       <FormLabel className="text-t-800 text-sm lg:text-base">
@@ -244,7 +276,7 @@ const ManualBankingPage = () => {
                 />
                 <FormField
                   control={form.control}
-                  name="payment_prove"
+                  name="attachment"
                   render={({ field }) => (
                     <FormItem className="space-y-3 col-span-2 lg:col-span-1">
                       <FormLabel className="text-t-800 text-sm lg:text-base">

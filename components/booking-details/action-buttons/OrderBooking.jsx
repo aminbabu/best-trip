@@ -25,7 +25,6 @@ const OrderBooking = ({ bookingData, setRefetch }) => {
       setIsOpen(false)
       setRefetch(true)
     } catch (error) {
-      console.log(error);
       setRefetch(true)
       setLoading(false)
       setIsOpen(false)

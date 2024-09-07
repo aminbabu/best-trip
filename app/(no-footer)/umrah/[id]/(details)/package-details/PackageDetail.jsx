@@ -34,6 +34,7 @@ import { Minus } from "lucide-react";
 import { useState } from "react";
 import { airlines } from "@/data/airline";
 import moment from "moment";
+import { cn } from "@/lib/utils";
 
 const table = {
     header: [
@@ -1035,7 +1036,11 @@ const PackageDetail = ({ umrahPackage }) => {
                                     <p className="text-t-800">Makkah Ziyarah</p>
                                     <div>
                                         <ul
-                                            className={`space-y-3 h-40 lg:h-44 ${showMakkah ? "overflow-hidden" : "overflow-y-auto"} pr-4 scrollbar-thin scrollbar-thumb-[#CFD1D4] scrollbar-track-[#F4F4F4]`}
+                                            className={cn("space-y-3  pr-4 scrollbar-thin scrollbar-thumb-[#CFD1D4] scrollbar-track-[#F4F4F4]", {
+                                                "overflow-hidden": showMakkah,
+                                                "overflow-y-auto": !showMakkah,
+                                                "h-40 lg:h-44": ziyarahMakkahDetails?.length > 4
+                                            })}
                                         >
                                             {ziyarahMakkahDetails?.map((item, ind) => (
                                                 <li key={ind} className="flex gap-x-2 items-center">
@@ -1044,16 +1049,20 @@ const PackageDetail = ({ umrahPackage }) => {
                                                 </li>
                                             ))}
                                         </ul>
-                                        <Button
-                                            variant="ghost"
-                                            className="text-primary justify-start px-0.5 hover:bg-transparent"
-                                            onClick={handleShowMakkahMore}
-                                        >
-                                            <span className="flex-shrink-0 w-4 h-4 inline-flex items-center justify-center bg-primary text-white rounded-full">
-                                                {showMakkah ? <Plus size={16} /> : <Minus size={16} />}
-                                            </span>
-                                            {showMakkah ? "Show more" : "Show less"}
-                                        </Button>
+                                        {
+                                            ziyarahMakkahDetails?.length > 4 && (
+                                                <Button
+                                                    variant="ghost"
+                                                    className="text-primary justify-start px-0.5 hover:bg-transparent"
+                                                    onClick={handleShowMakkahMore}
+                                                >
+                                                    <span className="flex-shrink-0 w-4 h-4 inline-flex items-center justify-center bg-primary text-white rounded-full">
+                                                        {showMakkah ? <Plus size={16} /> : <Minus size={16} />}
+                                                    </span>
+                                                    {showMakkah ? "Show more" : "Show less"}
+                                                </Button>
+                                            )
+                                        }
                                     </div>
                                 </div>
                                 <div className="flex flex-col md:items-start gap-y-4">

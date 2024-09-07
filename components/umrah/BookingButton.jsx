@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import Swal from "sweetalert2";
 import { bookPackage } from "@/actions/booking/book-package";
 
-const BookingButton = ({ id,user }) => {
+const BookingButton = ({ id, user }) => {
 
     const [searchedValue, setSearchedValue] = useState({})
     const router = useRouter();
@@ -52,7 +52,7 @@ const BookingButton = ({ id,user }) => {
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Ok!",
+                confirmButtonText: "Continue",
             }).then((result) => {
                 if (result.isConfirmed) {
                     router.push(`/umrah/${response?.id}/traveller-details`);
@@ -68,10 +68,10 @@ const BookingButton = ({ id,user }) => {
         }
     };
     return <form onSubmit={submitBooking}>
-    <div className="grid">
-        <Button type="submit">Continue Booking</Button>
-    </div>
-</form>
+        <div className="grid">
+            <Button type="submit">Continue Booking</Button>
+        </div>
+    </form>
 };
 
 export default BookingButton;
