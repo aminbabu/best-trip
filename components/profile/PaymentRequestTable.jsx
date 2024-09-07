@@ -10,6 +10,7 @@ import {
 } from "@/data/payment-tables";
 import moment from "moment";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 const PaymentRequestTable = ({ data, userData }) => {
 
@@ -41,9 +42,14 @@ const PaymentRequestTable = ({ data, userData }) => {
             <tbody>
               {data?.map((item, ind) => (
                 <tr key={ind} className="border-b border-dashed border-[#f1f1f4] text-sm lg:text-base font-normal [&>*:last-child]:text-right">
-                  {console.log(item)}
                   <td ><Link href={`/booking-details/${item?._id}`} className="hover:text-red-500 ">{item?.refId}</Link></td>
-                  <td >{item?.status}</td>
+                  <td ><span className={cn("px-2 py-2 bg-[#0B8CDD] rounded-md text-white text-[12px] capitalize", {
+                    "bg-[#0B8CDD]": item?.status === "requested",
+                    "bg-[#6F8593]": item?.status === "pending",
+                    "bg-[#0B8CDD]": item?.status === "booked",
+                    "bg-[#059b48]": item?.status === "approved",
+                    "bg-[#ff0707]": item?.status === "rejected",
+                  })}>{item?.status}</span></td>
                   <td >{userData?.name || "N/A"}</td>
                   <td >{item?.paymentMethod}</td>
                   <td>{userData?.name}</td>
