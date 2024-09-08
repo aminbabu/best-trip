@@ -54,8 +54,8 @@ const formSchema = z.object({
   flyerNumber: z.string().optional(),
 });
 
-const ProfileForm = ({ user, onSubmit, loading,edit,setEdit }) => {
-
+const ProfileForm = ({ user, onSubmit, loading, edit, setEdit }) => {
+  const [dobOpen, setDobOpen] = useState(false);
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -143,7 +143,7 @@ const ProfileForm = ({ user, onSubmit, loading,edit,setEdit }) => {
                   name="dob"
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
-                      <Popover>
+                      <Popover open={dobOpen} onOpenChange={setDobOpen}>
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
@@ -167,7 +167,10 @@ const ProfileForm = ({ user, onSubmit, loading,edit,setEdit }) => {
                             }
                             captionLayout="dropdown-buttons"
                             selected={moment(field.value).toDate()}
-                            onSelect={field.onChange}
+                            onSelect={(e) => {
+                              field.onChange(e),
+                                setDobOpen(false)
+                            }}
                             disabled={(date) =>
                               date > new Date() || date < new Date("1900-01-01")
                             }

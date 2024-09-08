@@ -36,69 +36,7 @@ import { airlines } from "@/data/airline";
 import moment from "moment";
 import { cn, generateImage } from "@/lib/utils";
 
-const table = {
-    header: [
-        {
-            title: "Traveller Type",
-            className:
-                "text-t-700 text-center font-normal h-auto px-3 py-2 border-r border-r-[#f5f5f5] last:border-r-0",
-        },
-        {
-            title: "Check in",
-            className:
-                "text-t-700 text-center font-normal h-auto px-3 py-2 border-r border-r-[#f5f5f5] last:border-r-0",
-        },
-        {
-            title: "Cabin",
-            className:
-                "text-t-700 text-center font-normal h-auto px-3 py-2 border-r border-r-[#f5f5f5] last:border-r-0",
-        },
-    ],
-    body: [
-        [
-            {
-                cell: "Adult",
-                className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
-            },
-            {
-                cell: 20,
-                className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
-            },
-            {
-                cell: 7,
-                className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
-            },
-        ],
-        [
-            {
-                cell: "Children",
-                className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
-            },
-            {
-                cell: 20,
-                className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
-            },
-            {
-                cell: 7,
-                className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
-            },
-        ],
-        [
-            {
-                cell: "Infant",
-                className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
-            },
-            {
-                cell: 0,
-                className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
-            },
-            {
-                cell: 0,
-                className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
-            },
-        ],
-    ],
-};
+
 
 const options = {
     type: "loop",
@@ -251,23 +189,150 @@ const PackageDetail = ({ umrahPackage }) => {
     const emptyStars = maxRating - filledStars - (hasHalfStar ? 1 : 0); // Calculate empty stars
 
 
+    // Calculate OurBound Duration
+    const outBoundDuration = moment.duration(moment(outboundArrivalDatetime).diff(moment(outboundDepartureDatetime)));
+    const outBoundTotalHours = outBoundDuration.asHours();
+    const outBoundDays = Math.floor(outBoundDuration.asDays());
+    const outBoundHours = outBoundDuration.hours();
+    const outBoundMinutes = outBoundDuration.minutes();
 
+    // Calculate inbound Duration
+    const inBoundDuration = moment.duration(moment(inboundArrivalDatetime).diff(moment(inboundDepartureDatetime)));
+    const inBoundTotalHours = inBoundDuration.asHours();
+    const inBoundDays = Math.floor(inBoundDuration.asDays());
+    const inBoundHours = inBoundDuration.hours();
+    const inBoundMinutes = inBoundDuration.minutes();
 
-    // outboundAirlineCode
-    // "3L"
-    // outboundFlightNumber
-    // "3L A787"
-    // outboundBookingClass
-    // "economy"
-    // outboundAirCraftModel
-    // "Airbus A320"
-    // outboundDepartureAirport
-    // "Dhaka"
-    // outboundArrivalAirport
-    // "Katar"
+    // Out Bound Flight Traveler Checking And Baggage Detail
+    const outBoundTable = {
+        header: [
+            {
+                title: "Traveller Type",
+                className:
+                    "text-t-700 text-center font-normal h-auto px-3 py-2 border-r border-r-[#f5f5f5] last:border-r-0",
+            },
+            {
+                title: "Check in",
+                className:
+                    "text-t-700 text-center font-normal h-auto px-3 py-2 border-r border-r-[#f5f5f5] last:border-r-0",
+            },
+            {
+                title: "Cabin",
+                className:
+                    "text-t-700 text-center font-normal h-auto px-3 py-2 border-r border-r-[#f5f5f5] last:border-r-0",
+            },
+        ],
+        body: [
+            [
+                {
+                    cell: "Adult",
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+                {
+                    cell: outboundAdultBaggageCheckin,
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+                {
+                    cell: outboundAdultBaggageCabin,
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+            ],
+            [
+                {
+                    cell: "Children",
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+                {
+                    cell: outboundChildBaggageCheckin,
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+                {
+                    cell: outboundChildBaggageCabin,
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+            ],
+            [
+                {
+                    cell: "Infant",
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+                {
+                    cell: outboundInfantBaggageCheckin,
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+                {
+                    cell: outboundInfantBaggageCabin,
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+            ],
+        ],
+    };
+    // In Bound Flight Traveler Checking And Baggage Detail
+    const inBoundTable = {
+        header: [
+            {
+                title: "Traveller Type",
+                className:
+                    "text-t-700 text-center font-normal h-auto px-3 py-2 border-r border-r-[#f5f5f5] last:border-r-0",
+            },
+            {
+                title: "Check in",
+                className:
+                    "text-t-700 text-center font-normal h-auto px-3 py-2 border-r border-r-[#f5f5f5] last:border-r-0",
+            },
+            {
+                title: "Cabin",
+                className:
+                    "text-t-700 text-center font-normal h-auto px-3 py-2 border-r border-r-[#f5f5f5] last:border-r-0",
+            },
+        ],
+        body: [
+            [
+                {
+                    cell: "Adult",
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+                {
+                    cell: inboundAdultBaggageCheckin,
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+                {
+                    cell: inboundAdultBaggageCabin,
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+            ],
+            [
+                {
+                    cell: "Children",
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+                {
+                    cell: inboundChildBaggageCheckin,
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+                {
+                    cell: inboundChildBaggageCabin,
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+            ],
+            [
+                {
+                    cell: "Infant",
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+                {
+                    cell: inboundInfantBaggageCheckin,
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+                {
+                    cell: inboundInfantBaggageCabin,
+                    className: "px-3 py-2 border-r border-r-[#f5f5f5] last:borer-r-0",
+                },
+            ],
+        ],
+    };
 
-
-
+    console.log(packageDetail);
 
     return (
         <div className="py-4 umrah-details-cards">
@@ -306,7 +371,9 @@ const PackageDetail = ({ umrahPackage }) => {
                                 </div>
                                 <div className="text-center space-y-1.5">
                                     <p className="text-xs sm:text-sm lg:text-base text-t-800">
-                                        06h 46m
+                                        {outBoundTotalHours >= 24
+                                            ? `${outBoundDays}d  ${outBoundHours}h`
+                                            : `${outBoundHours.toString().padStart(2, '0')}h ${outBoundMinutes.toString().padStart(2, '0')}m`}
                                     </p>
                                     <div className="flex items-center gap-x-2 md:gap-x-4">
                                         <PlaneIcon
@@ -320,7 +387,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                         />
                                     </div>
                                     <p className="text-xs sm:text-sm lg:text-base text-t-800">
-                                        (Non Stop)
+                                        ({outboundFlightStops <= 2 ? "Non Stops" : outboundFlightStops + " Stops"})
                                     </p>
                                 </div>
                                 <div className="text-left space-y-1.5">
@@ -342,7 +409,9 @@ const PackageDetail = ({ umrahPackage }) => {
                             <div className="flex-shrink-0 flex flex-col sm:flex-row gap-6">
                                 <div className="flex sm:flex-col justify-between gap-x-8 gap-y-4">
                                     <p>{moment(outboundDepartureDatetime).format("hh:mm")}</p>
-                                    <p>01 h 25m</p>
+                                    <p> {outBoundTotalHours >= 24
+                                        ? `${outBoundDays}d  ${outBoundHours}h`
+                                        : `${outBoundHours.toString().padStart(2, '0')}h ${outBoundMinutes.toString().padStart(2, '0')}m`}</p>
                                     <p>{moment(outboundArrivalDatetime).format("hh:mm")}</p>
                                 </div>
                                 <div className="flex sm:flex-col items-center justify-between gap-4">
@@ -384,7 +453,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                 </div>
                             </div>
                             <div className="flex-1">
-                                <InfoTable table={table} />
+                                <InfoTable table={outBoundTable} />
                             </div>
                         </div>
                     </AccordionContent>
@@ -693,7 +762,9 @@ const PackageDetail = ({ umrahPackage }) => {
                                 </div>
                                 <div className="text-center space-y-1.5">
                                     <p className="text-xs sm:text-sm lg:text-base text-t-800">
-                                        06h 46m
+                                        {inBoundTotalHours >= 24
+                                            ? `${inBoundDays}d  ${inBoundHours}h`
+                                            : `${inBoundHours.toString().padStart(2, '0')}h ${inBoundMinutes.toString().padStart(2, '0')}m`}
                                     </p>
                                     <div className="flex items-center gap-x-2 md:gap-x-4">
                                         <PlaneIcon
@@ -707,7 +778,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                         />
                                     </div>
                                     <p className="text-xs sm:text-sm lg:text-base text-t-800">
-                                        (Non Stop)
+                                         ({inboundFlightStops <= 2 ? "Non Stops" : inboundFlightStops + " Stops"})
                                     </p>
                                 </div>
                                 <div className="text-left space-y-1.5">
@@ -729,7 +800,9 @@ const PackageDetail = ({ umrahPackage }) => {
                             <div className="flex-shrink-0 flex flex-col sm:flex-row gap-6">
                                 <div className="flex sm:flex-col justify-between gap-x-8 gap-y-4">
                                     <p>{moment(inboundDepartureDatetime).format("hh:mm")}</p>
-                                    <p>01 h 25m</p>
+                                    <p>{inBoundTotalHours >= 24
+                                        ? `${inBoundDays}d  ${inBoundHours}h`
+                                        : `${inBoundHours.toString().padStart(2, '0')}h ${inBoundMinutes.toString().padStart(2, '0')}m`}</p>
                                     <p>{moment(inboundArrivalDatetime).format("hh:mm")}</p>
                                 </div>
                                 <div className="flex sm:flex-col items-center justify-between gap-4">
@@ -748,7 +821,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                     />
                                 </div>
                                 <div className="flex flex-col justify-between gap-y-4 sm:gap-y-6">
-                                    <p>{inboundArrivalAirport}</p>
+                                    <p>{inboundDepartureAirport}</p>
                                     <div className="flex items-center gap-x-2.5">
                                         <Image src={`/images/airlines-logo/${airLineName?.code}.png`} alt={airLineName?.name} className="text-primary" width={16} height={16} />
                                         <p>{airLineName?.name}
@@ -771,7 +844,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                 </div>
                             </div>
                             <div className="flex-1">
-                                <InfoTable table={table} />
+                                <InfoTable table={inBoundTable} />
                             </div>
                         </div>
                     </AccordionContent>

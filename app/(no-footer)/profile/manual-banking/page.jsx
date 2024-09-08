@@ -58,6 +58,7 @@ const formSchema = z.object({
 const ManualBankingPage = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
   const [file, setFile] = useState(null);
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -238,7 +239,7 @@ const ManualBankingPage = () => {
                       <FormLabel className="text-t-800 text-sm lg:text-base">
                         Deposited Date<span className="text-primary"> *</span>
                       </FormLabel>
-                      <Popover>
+                      <Popover open={isOpen} onOpenChange={setIsOpen}>
                         <PopoverTrigger asChild>
                           <FormControl>
                             <Button
@@ -260,7 +261,10 @@ const ManualBankingPage = () => {
                             // defaultMonth={moment(field.value).toDate()}
                             captionLayout="dropdown-buttons"
                             // selected={moment(field.value).toDate()}
-                            onSelect={field.onChange}
+                            onSelect={(e) => {
+                              field.onChange(e),
+                                setIsOpen(false)
+                            }}
                             disabled={(date) =>
                               date > new Date() || date < new Date("1900-01-01")
                             }

@@ -6,8 +6,10 @@ import React from "react";
 
 const AddBalance = () => {
   const router = useRouter();
-  const onSubmit = async () => {
-    router.push("/profile/manual-banking");
+  const onSubmit = async (data) => {
+    if (data?.manual) {
+      router.push("/profile/manual-banking");
+    }
   }
   return (
     <div>

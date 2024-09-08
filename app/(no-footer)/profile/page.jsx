@@ -50,7 +50,7 @@ const MyProfilePage = () => {
         title: "Success",
         text: response.message,
         icon: "success",
-        confirmButtonText: "Sign In",
+        confirmButtonText: "Continue",
         confirmButtonColor: "#3ad965",
         allowOutsideClick: false,
       });
