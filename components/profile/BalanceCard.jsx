@@ -1,11 +1,19 @@
+import { getCustomerData } from "@/actions/customers/get-customer-data";
+import { auth } from "@/auth";
 import { PlusIcon, PlusSolidIcon } from "@/components/icons/svgr";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import React from "react";
 
-const BalanceCard = ({ user }) => {
-
+const BalanceCard = async ({ user }) => {
+  let userData;
+  try {
+    const response = await getCustomerData(user?._id);
+    userData = response?.customer;
+  } catch (error) {
+    console.log(error);
+  }
   return (
     <Card className="border-transparent mb-8">
       <CardContent className="lg:p-10 space-y-10">
@@ -15,7 +23,7 @@ const BalanceCard = ({ user }) => {
               Wallet Balance{" "}
             </h2>
             <div className="text-base lg:text-lg text-t-800 leading-relaxed font-medium">
-              ৳ {user?.wallet?.balance?.toLocaleString() || 0}  <span className="text-t-800 text-base leading-normal">BDT</span>
+              ৳ {userData?.wallet?.balance?.toLocaleString() || 0}  <span className="text-t-800 text-base leading-normal">BDT</span>
             </div>
           </div>
           <div>
