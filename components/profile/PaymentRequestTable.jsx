@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Card, CardContent } from "../ui/card";
 import PaymentTablePagination from "./PaymentTablePagination";
 import PaymentTableFilter from "./PaymentTableFilter";
-import { usePathname } from "next/navigation";
 import {
   paymentRequestTable,
 } from "@/data/payment-tables";
@@ -55,6 +54,7 @@ const PaymentRequestTable = ({ data, userData }) => {
                   <td>{userData?.name}</td>
                   <td>{item?.amount}</td>
                   <td>{moment(item?.createdAt).format("MMM DD, YYYY")}</td>
+                  <td>{item?.recept}</td>
                 </tr>
               ))}
             </tbody>

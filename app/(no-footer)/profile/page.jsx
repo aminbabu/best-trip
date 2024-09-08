@@ -14,22 +14,15 @@ import moment from "moment";
 
 const MyProfilePage = () => {
   const [edit, setEdit] = useState(false);
-  const { data } = useSession();
+  const { data, update } = useSession();
   const [profileData, setProfileData] = useState();
   const user = data?.user;
   const [loading, setLoading] = useState(false);
-  const [avatarPreview, setAvatarPreview] = useState(user?.avatar || "");
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setAvatarPreview(reader.result); // Set preview to the uploaded image
-      };
-      reader.readAsDataURL(file);
-      setProfileData(file);
-    }
+    setProfileData(file)
+
   };
 
   const onSubmit = async (data) => {
@@ -37,7 +30,6 @@ const MyProfilePage = () => {
     data.avatar = profileData;
     try {
       setLoading(true);
-
       // Filter out empty values
       const filteredData = Object.entries(data).reduce((acc, [key, value]) => {
         if (value !== "" && value !== undefined && value !== null) {
@@ -53,10 +45,7 @@ const MyProfilePage = () => {
       });
 
       const response = await updateProfile(formData);
-      async () => {
-        // Trigger a sign-in to refresh the session
-        await signIn("credentials", { redirect: false });
-      };
+      update({ ...response?.customer })
       await withReactContent(Swal).fire({
         title: "Success",
         text: response.message,
@@ -65,6 +54,9 @@ const MyProfilePage = () => {
         confirmButtonColor: "#3ad965",
         allowOutsideClick: false,
       });
+      if (typeof window != undefined) {
+        window.location.reload();
+      }
     } catch (error) {
       await withReactContent(Swal).fire({
         title: "Error",
@@ -78,25 +70,26 @@ const MyProfilePage = () => {
       setLoading(false);
     }
   };
+  console.log();
   return (
     <Card className="border-transparent mb-8">
       <CardContent className="lg:p-10 space-y-10">
         <div className="flex flex-col items-center">
           {/* Wrap avatar with a label to make it clickable */}
           <label htmlFor="avatar" className="cursor-pointer">
-            <Avatar className="h-40 w-40 mb-5 mx-auto relative">
+            <Avatar className="h-40 w-40 mb-5 mx-auto relative ">
               {
-                avatarPreview ? (
-                  <AvatarImage src={avatarPreview} alt="avatar" />
-                ) : user?.avatar ? (
-                  <AvatarImage src={`${process.env.NEXT_PUBLIC_API_URL}${user?.avatar}`} alt="avatar" />
+                profileData instanceof File && <AvatarImage src={URL.createObjectURL(profileData)} alt={user?.name} />
+              }
+              {
+                user?.avatar && !(profileData instanceof File )? (
+                  <AvatarImage src={generateImage(user?.avatar)} alt={user?.name} />
                 ) : (
                   <AvatarFallback>
-                    {generateImage(user?.name?.charAt(0))}
+                    {user?.name?.charAt(0)}
                   </AvatarFallback>
                 )
               }
-
               <input
                 id="avatar"
                 name="avatar"

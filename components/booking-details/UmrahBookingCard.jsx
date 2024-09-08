@@ -11,7 +11,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import numeral from "numeral";
 import cardImg from "@/public/images/search/01.png";
-import { renderInclusionIcon } from "@/lib/utils";
+import { generateImage, renderInclusionIcon } from "@/lib/utils";
 import moment from "moment";
 
 const data = {
@@ -37,7 +37,7 @@ const UmrahBookingCard = ({ data }) => {
     <Card className="border-transparent relative overflow-hidden">
       <CardContent className="p-4 sm:p-5 lg:p-8 xl:leading-8 flex flex-col md:flex-row lg:items-center justify-between gap-6 lg:gap-9">
         <Image
-          src={process.env.NEXT_PUBLIC_API_URL + "/" + data?.thumbnail}
+          src={generateImage(data?.thumbnail)}
           width={266}
           height={266}
           alt={data?.title}

@@ -34,7 +34,7 @@ import { Minus } from "lucide-react";
 import { useState } from "react";
 import { airlines } from "@/data/airline";
 import moment from "moment";
-import { cn } from "@/lib/utils";
+import { cn, generateImage } from "@/lib/utils";
 
 const table = {
     header: [
@@ -250,9 +250,29 @@ const PackageDetail = ({ umrahPackage }) => {
     const hasHalfStar = hotelRating % 1 !== 0; // Check if there's a half star
     const emptyStars = maxRating - filledStars - (hasHalfStar ? 1 : 0); // Calculate empty stars
 
+
+
+
+    // outboundAirlineCode
+    // "3L"
+    // outboundFlightNumber
+    // "3L A787"
+    // outboundBookingClass
+    // "economy"
+    // outboundAirCraftModel
+    // "Airbus A320"
+    // outboundDepartureAirport
+    // "Dhaka"
+    // outboundArrivalAirport
+    // "Katar"
+
+
+
+
     return (
         <div className="py-4 umrah-details-cards">
             <Accordion type="multiple" className="space-y-6" collapsible="true">
+                {/* Outbound Flight Details */}
                 <AccordionItem className="border-none" value="item-1">
                     <h2 className="text-sm md:text-base text-t-800 mb-4 lg:mb-6">
                         Outbound Flight Details
@@ -263,10 +283,7 @@ const PackageDetail = ({ umrahPackage }) => {
                     >
                         <div className="flex-1 flex flex-col lg:flex-row">
                             <div className="flex-shrink-0 flex items-center gap-x-4 bg-p-300 px-4 py-6 md:p-6 lg:px-8 lg:py-12 lg:w-80">
-                                <BalakaIcon
-                                    className="text-primary h-10 w-10 md:h-[51px] md:w-[51px]"
-                                    viewBox="0 0 51 51"
-                                />
+                                <Image src={`/images/airlines-logo/${airLineName?.code}.png`} alt={airLineName?.name} className="text-primary h-10 w-10 md:h-[51px] md:w-[51px]" width={51} height={51} />
                                 <div>
                                     <div className="text-t-900 text-base md:text-lg">
                                         {airLineName?.name}
@@ -284,7 +301,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                         {outboundAirlineCode}  {moment(outboundDepartureDatetime).format("hh:mm")}
                                     </div>
                                     <p className="text-xs sm:text-sm lg:text-base text-t-800">
-                                        Wed, 25 Dec 2023
+                                        {moment(outboundDepartureDatetime).format("DD MMM, YYYY")}
                                     </p>
                                 </div>
                                 <div className="text-center space-y-1.5">
@@ -302,14 +319,6 @@ const PackageDetail = ({ umrahPackage }) => {
                                             viewBox="0 0 14 14"
                                         />
                                     </div>
-                                    {/* <div className="flex md:hidden items-center gap-x-1">
-                    <Separator className="flex-1 bg-t-800 w-6 sm:w-10" />
-                    <BalakaIcon
-                      className="text-primary w-5 h-5 sm:w-6 sm:h-6"
-                      viewBox="0 0 51 51"
-                    />
-                    <Separator className="flex-1 bg-t-800 w-6 sm:w-10" />
-                  </div> */}
                                     <p className="text-xs sm:text-sm lg:text-base text-t-800">
                                         (Non Stop)
                                     </p>
@@ -319,10 +328,10 @@ const PackageDetail = ({ umrahPackage }) => {
                                         {outboundArrivalAirport}
                                     </p>
                                     <div className="text-xs font-medium md:font-normal sm:text-base md:text-lg lg:text-[1.375rem] text-t-900">
-                                        {inboundAirlineCode}        {moment(outboundArrivalDatetime).format("hh:mm")}
+                                        {outboundAirlineCode}        {moment(outboundArrivalDatetime).format("hh:mm")}
                                     </div>
                                     <p className="text-xs sm:text-sm lg:text-base text-t-800">
-                                        Wed, 26 Dec 2023
+                                        {moment(outboundArrivalDatetime).format("DD MMM, YYYY")}
                                     </p>
                                 </div>
                             </div>
@@ -332,9 +341,9 @@ const PackageDetail = ({ umrahPackage }) => {
                         <div className="flex flex-col lg:flex-row gap-8 xl:gap-x-10">
                             <div className="flex-shrink-0 flex flex-col sm:flex-row gap-6">
                                 <div className="flex sm:flex-col justify-between gap-x-8 gap-y-4">
-                                    <p>08:00</p>
+                                    <p>{moment(outboundDepartureDatetime).format("hh:mm")}</p>
                                     <p>01 h 25m</p>
-                                    <p>13:45</p>
+                                    <p>{moment(outboundArrivalDatetime).format("hh:mm")}</p>
                                 </div>
                                 <div className="flex sm:flex-col items-center justify-between gap-4">
                                     <PlaneIcon
@@ -354,25 +363,22 @@ const PackageDetail = ({ umrahPackage }) => {
                                 <div className="flex flex-col justify-between gap-y-4 sm:gap-y-6">
                                     <p>{outboundArrivalAirport}</p>
                                     <div className="flex items-center gap-x-2.5">
-                                        <BalakaIcon
-                                            className="text-primary w-6 h-6"
-                                            viewBox="0 0 51 51"
-                                        />
+                                        <Image src={`/images/airlines-logo/${airLineName?.code}.png`} alt={airLineName?.name} className="text-primary" width={16} height={16} />
                                         <p>{airLineName?.name}
                                         </p>
                                     </div>
                                     <div className="flex gap-x-2 h-5 leading-tight">
-                                        <div>BG611</div>
+                                        <div>{outboundAirlineCode}</div>
                                         <Separator
                                             className="bg-[#E1E1E1]"
                                             orientation="vertical"
                                         />
-                                        <div>Economy</div>
+                                        <div>{outboundBookingClass}</div>
                                         <Separator
                                             className="bg-[#E1E1E1]"
                                             orientation="vertical"
                                         />
-                                        <div>Boing-787</div>
+                                        <div>{outboundAirCraftModel}</div>
                                     </div>
                                     <p>{inboundArrivalAirport}</p>
                                 </div>
@@ -383,6 +389,7 @@ const PackageDetail = ({ umrahPackage }) => {
                         </div>
                     </AccordionContent>
                 </AccordionItem>
+                {/* Makkah Hotel Detail */}
                 <AccordionItem className="border-none" value="item-2">
                     <h2 className="text-sm md:text-base text-t-800 mb-4 lg:mb-6">
                         Makkah Hotel Details
@@ -409,7 +416,7 @@ const PackageDetail = ({ umrahPackage }) => {
                             <div className="flex-1 flex items-center justify-around gap-5 px-4 xs:px-4 py-5 sm:px-6 md:px-4 lg:px-8 xl:px-14">
                                 <div className="aspect-[70/85] md:aspect-[171/127] overflow-hidden flex-shrink-0 w-[75px] md:w-44 ">
                                     <Image
-                                        src={process.env.NEXT_PUBLIC_API_URL + "/" + makkahHotelThumbnail}
+                                        src={generateImage(makkahHotelThumbnail)}
                                         alt="Hotel"
                                         width="171"
                                         height="127"
@@ -458,7 +465,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                             <SplideSlide key={index}>
                                                 <div className="aspect-square overflow-hidden  rounded-sm">
                                                     <Image
-                                                        src={process.env.NEXT_PUBLIC_API_URL + "/" + item}
+                                                        src={generateImage(item)}
                                                         alt={"Hotel image"}
                                                         width={156}
                                                         height={146}
@@ -517,6 +524,7 @@ const PackageDetail = ({ umrahPackage }) => {
                         </div>
                     </AccordionContent>
                 </AccordionItem>
+                {/* Madinah Hotel */}
                 <AccordionItem className="border-none" value="item-3">
                     <h2 className="text-sm md:text-base text-t-800 mb-4 lg:mb-6">
                         madinah Hotel Details
@@ -543,7 +551,7 @@ const PackageDetail = ({ umrahPackage }) => {
                             <div className="flex-1 flex items-center justify-around gap-5 px-4 xs:px-4 py-5 sm:px-6 md:px-4 lg:px-8 xl:px-14">
                                 <div className="aspect-[70/85] md:aspect-[171/127] overflow-hidden flex-shrink-0 w-[75px] md:w-44 ">
                                     <Image
-                                        src={process.env.NEXT_PUBLIC_API_URL + "/" + madinahHotelThumbnail}
+                                        src={generateImage(madinahHotelThumbnail)}
                                         alt="Hotel"
                                         width="171"
                                         height="127"
@@ -592,7 +600,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                             <SplideSlide key={index}>
                                                 <div className="aspect-square overflow-hidden  rounded-sm">
                                                     <Image
-                                                        src={process.env.NEXT_PUBLIC_API_URL + "/" + item}
+                                                        src={generateImage(item)}
                                                         alt={"Hotel image"}
                                                         width={156}
                                                         height={146}
@@ -651,6 +659,7 @@ const PackageDetail = ({ umrahPackage }) => {
                         </div>
                     </AccordionContent>
                 </AccordionItem>
+                {/* Inbound Flight Detail */}
                 <AccordionItem className="border-none" value="item-4">
                     <h2 className="text-sm md:text-base text-t-800 mb-4 lg:mb-6">
                         Inbound Flight Details
@@ -661,10 +670,7 @@ const PackageDetail = ({ umrahPackage }) => {
                     >
                         <div className="flex-1 flex flex-col lg:flex-row">
                             <div className="flex-shrink-0 flex items-center gap-x-4 bg-p-300 px-4 py-6 md:p-6 lg:px-8 lg:py-12 lg:w-80">
-                                <BalakaIcon
-                                    className="text-primary h-10 w-10 md:h-[51px] md:w-[51px]"
-                                    viewBox="0 0 51 51"
-                                />
+                                <Image src={`/images/airlines-logo/${airLineName?.code}.png`} alt={airLineName?.name} className="text-primary h-10 w-10 md:h-[51px] md:w-[51px]" width={51} height={51} />
                                 <div>
                                     <div className="text-t-900 text-base md:text-lg">
                                         {airLineName?.name}
@@ -682,7 +688,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                         {inboundAirlineCode}  {moment(inboundDepartureDatetime).format("hh:mm")}
                                     </div>
                                     <p className="text-xs sm:text-sm lg:text-base text-t-800">
-                                        Wed, 25 Dec 2023
+                                        {moment(inboundDepartureDatetime).format("DD MMM, YYYY")}
                                     </p>
                                 </div>
                                 <div className="text-center space-y-1.5">
@@ -700,14 +706,6 @@ const PackageDetail = ({ umrahPackage }) => {
                                             viewBox="0 0 14 14"
                                         />
                                     </div>
-                                    {/* <div className="flex md:hidden items-center gap-x-1">
-                    <Separator className="flex-1 bg-t-800 w-6 sm:w-10" />
-                    <BalakaIcon
-                      className="text-primary w-5 h-5 sm:w-6 sm:h-6"
-                      viewBox="0 0 51 51"
-                    />
-                    <Separator className="flex-1 bg-t-800 w-6 sm:w-10" />
-                  </div> */}
                                     <p className="text-xs sm:text-sm lg:text-base text-t-800">
                                         (Non Stop)
                                     </p>
@@ -720,7 +718,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                         {inboundAirlineCode}        {moment(inboundArrivalDatetime).format("hh:mm")}
                                     </div>
                                     <p className="text-xs sm:text-sm lg:text-base text-t-800">
-                                        Wed, 26 Dec 2023
+                                        {moment(inboundArrivalDatetime).format("DD MMM, YYYY")}
                                     </p>
                                 </div>
                             </div>
@@ -730,9 +728,9 @@ const PackageDetail = ({ umrahPackage }) => {
                         <div className="flex flex-col lg:flex-row gap-8 xl:gap-x-10">
                             <div className="flex-shrink-0 flex flex-col sm:flex-row gap-6">
                                 <div className="flex sm:flex-col justify-between gap-x-8 gap-y-4">
-                                    <p>08:00</p>
+                                    <p>{moment(inboundDepartureDatetime).format("hh:mm")}</p>
                                     <p>01 h 25m</p>
-                                    <p>13:45</p>
+                                    <p>{moment(inboundArrivalDatetime).format("hh:mm")}</p>
                                 </div>
                                 <div className="flex sm:flex-col items-center justify-between gap-4">
                                     <PlaneIcon
@@ -752,25 +750,22 @@ const PackageDetail = ({ umrahPackage }) => {
                                 <div className="flex flex-col justify-between gap-y-4 sm:gap-y-6">
                                     <p>{inboundArrivalAirport}</p>
                                     <div className="flex items-center gap-x-2.5">
-                                        <BalakaIcon
-                                            className="text-primary w-6 h-6"
-                                            viewBox="0 0 51 51"
-                                        />
+                                        <Image src={`/images/airlines-logo/${airLineName?.code}.png`} alt={airLineName?.name} className="text-primary" width={16} height={16} />
                                         <p>{airLineName?.name}
                                         </p>
                                     </div>
                                     <div className="flex gap-x-2 h-5 leading-tight">
-                                        <div>BG611</div>
+                                        <div>{inboundAirlineCode}</div>
                                         <Separator
                                             className="bg-[#E1E1E1]"
                                             orientation="vertical"
                                         />
-                                        <div>Economy</div>
+                                        <div>{inboundBookingClass}</div>
                                         <Separator
                                             className="bg-[#E1E1E1]"
                                             orientation="vertical"
                                         />
-                                        <div>Boing-787</div>
+                                        <div>{inboundAirCraftModel}</div>
                                     </div>
                                     <p>{inboundArrivalAirport}</p>
                                 </div>
@@ -781,6 +776,7 @@ const PackageDetail = ({ umrahPackage }) => {
                         </div>
                     </AccordionContent>
                 </AccordionItem>
+                {/* Visa Detail */}
                 <AccordionItem className="border-none" value="item-5">
                     <h2 className="text-sm md:text-base text-t-800 mb-4 lg:mb-6">
                         Visa Details
@@ -867,6 +863,7 @@ const PackageDetail = ({ umrahPackage }) => {
                         </div>
                     </AccordionContent>
                 </AccordionItem>
+                {/* Transport Details */}
                 <AccordionItem className="border-none" value="item-6">
                     <h2 className="text-sm md:text-base text-t-800 mb-4 lg:mb-6">
                         Transport Details
@@ -922,7 +919,11 @@ const PackageDetail = ({ umrahPackage }) => {
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="col-span-2 md:col-span-1 flex flex-col md:items-start">
                                     <ul
-                                        className={`space-y-3 h-40 lg:h-44 ${showBus ? "overflow-hidden" : "overflow-y-auto"} pr-4 scrollbar-thin scrollbar-thumb-[#CFD1D4] scrollbar-track-[#F4F4F4]`}
+                                        className={cn("space-y-3  pr-4 scrollbar-thin scrollbar-thumb-[#CFD1D4] scrollbar-track-[#F4F4F4]", {
+                                            "overflow-hidden": showBus,
+                                            "overflow-y-auto": !showBus,
+                                            "h-40 lg:h-44": transportServices?.length > 4
+                                        })}
                                     >
                                         {transportServices?.map((service, ind) => (
                                             <li key={ind} className="flex gap-x-2 items-center">
@@ -931,7 +932,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                             </li>
                                         ))}
                                     </ul>
-                                    <Button
+                                    {transportServices?.length > 4 && <Button
                                         variant="ghost"
                                         className="text-primary justify-start px-0.5 hover:bg-transparent"
                                         onClick={handleShowBusMore}
@@ -940,11 +941,15 @@ const PackageDetail = ({ umrahPackage }) => {
                                             {showBus ? <Plus size={16} /> : <Minus size={16} />}
                                         </span>
                                         {showBus ? "Show more" : "Show less"}
-                                    </Button>
+                                    </Button>}
                                 </div>
                                 <div className="col-span-2 md:col-span-1 flex flex-col md:items-start">
                                     <ul
-                                        className={`space-y-3 h-40 lg:h-44 ${showTransportTypes ? "overflow-hidden" : "overflow-y-auto"} pr-4 scrollbar-thin scrollbar-thumb-[#CFD1D4] scrollbar-track-[#F4F4F4]`}
+                                        className={cn("space-y-3  pr-4 scrollbar-thin scrollbar-thumb-[#CFD1D4] scrollbar-track-[#F4F4F4]", {
+                                            "overflow-hidden": showTransportTypes,
+                                            "overflow-y-auto": !showTransportTypes,
+                                            "h-40 lg:h-44": transportServiceTypes?.length > 4
+                                        })}
                                     >
                                         {transportServiceTypes?.map((type, ind) => (
                                             <li key={ind} className="flex gap-x-2 items-center">
@@ -953,7 +958,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                             </li>
                                         ))}
                                     </ul>
-                                    <Button
+                                    {transportServiceTypes?.length > 4 && <Button
                                         variant="ghost"
                                         className="text-primary justify-start px-0.5 hover:bg-transparent"
                                         onClick={handleShowTrasnportTypesMore}
@@ -966,7 +971,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                             )}
                                         </span>
                                         {showTransportTypes ? "Show more" : "Show less"}
-                                    </Button>
+                                    </Button>}
                                 </div>
                             </div>
                         </div>
@@ -978,6 +983,7 @@ const PackageDetail = ({ umrahPackage }) => {
                         </div>
                     </AccordionContent>
                 </AccordionItem>
+                {/* Ziyara Detail */}
                 <AccordionItem className="border-none" value="item-7">
                     <h2 className="text-sm md:text-base text-t-800 mb-4 lg:mb-6">
                         Ziyara Details
@@ -1069,7 +1075,11 @@ const PackageDetail = ({ umrahPackage }) => {
                                     <p className="text-t-800">Madinah Ziyarah</p>
                                     <div>
                                         <ul
-                                            className={`space-y-3 h-40 lg:h-44 ${showMadinah ? "overflow-hidden" : "overflow-y-auto"} pr-4 scrollbar-thin scrollbar-thumb-[#CFD1D4] scrollbar-track-[#F4F4F4]`}
+                                            className={cn("space-y-3  pr-4 scrollbar-thin scrollbar-thumb-[#CFD1D4] scrollbar-track-[#F4F4F4]", {
+                                                "overflow-hidden": showMadinah,
+                                                "overflow-y-auto": !showMadinah,
+                                                "h-40 lg:h-44": ziyarahMadinahDetails?.length > 4
+                                            })}
                                         >
                                             {ziyarahMadinahDetails?.map((item, ind) => (
                                                 <li key={ind} className="flex gap-x-2 items-center">
@@ -1078,7 +1088,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                                 </li>
                                             ))}
                                         </ul>
-                                        <Button
+                                        {ziyarahMadinahDetails?.length > 4 && <Button
                                             variant="ghost"
                                             className="text-primary justify-start px-0.5 hover:bg-transparent"
                                             onClick={handleShowMadinahMore}
@@ -1087,14 +1097,18 @@ const PackageDetail = ({ umrahPackage }) => {
                                                 {showMadinah ? <Plus size={16} /> : <Minus size={16} />}
                                             </span>
                                             {showMadinah ? "Show more" : "Show less"}
-                                        </Button>
+                                        </Button>}
                                     </div>
                                 </div>
                                 <div className="flex flex-col md:items-start gap-y-4">
                                     <p className="text-t-800">Taif Ziyarah</p>
                                     <div>
                                         <ul
-                                            className={`space-y-3 h-40 lg:h-44 ${showTaif ? "overflow-hidden" : "overflow-y-auto"} pr-4 scrollbar-thin scrollbar-thumb-[#CFD1D4] scrollbar-track-[#F4F4F4]`}
+                                            className={cn("space-y-3  pr-4 scrollbar-thin scrollbar-thumb-[#CFD1D4] scrollbar-track-[#F4F4F4]", {
+                                                "overflow-hidden": showTaif,
+                                                "overflow-y-auto": !showTaif,
+                                                "h-40 lg:h-44": ziyarahTaifDetails?.length > 4
+                                            })}
                                         >
                                             {ziyarahTaifDetails?.map((item, ind) => (
                                                 <li key={ind} className="flex gap-x-2 items-center">
@@ -1103,7 +1117,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                                 </li>
                                             ))}
                                         </ul>
-                                        <Button
+                                        {ziyarahTaifDetails?.length > 4 && <Button
                                             variant="ghost"
                                             className="text-primary justify-start px-0.5 hover:bg-transparent"
                                             onClick={handleShowTaifMore}
@@ -1112,7 +1126,7 @@ const PackageDetail = ({ umrahPackage }) => {
                                                 {showTaif ? <Plus size={16} /> : <Minus size={16} />}
                                             </span>
                                             {showTaif ? "Show more" : "Show less"}
-                                        </Button>
+                                        </Button>}
                                     </div>
                                 </div>
                             </div>

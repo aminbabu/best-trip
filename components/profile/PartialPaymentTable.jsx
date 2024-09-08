@@ -42,7 +42,7 @@ const PartialPaymentTable = ({ data }) => {
               {data?.map((item, ind) => (
                 <tr key={ind} className="border-b border-dashed border-[#f1f1f4] text-sm lg:text-base font-normal [&>*:last-child]:text-right">
                   {console.log(item)}
-                  <td >{item?.serialNumber || "N/A"}</td>
+                  <td >{item?.invoiceId || "N/A"}</td>
                   <td >{item?.customer?.name}</td>
                   <td className="hover:text-red-500 ">{item?.bookingDetails?.bookingRefId}</td>
                   <td >{"Partial Payment"}</td>

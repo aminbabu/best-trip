@@ -337,7 +337,7 @@ export const generalLedgerTable = {
 };
 
 export const paymentRequestTable = {
-  title: "Partial Payment Bookings",
+  title: "Payment Requests",
 
   tableHeads: [
     {
@@ -371,6 +371,6 @@ export const paymentRequestTable = {
     {
       id: 8,
       item: "RECEIPT",
-    }
+    },
   ],
 };

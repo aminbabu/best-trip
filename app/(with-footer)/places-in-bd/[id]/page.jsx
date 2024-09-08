@@ -2,6 +2,7 @@ import { getBlogPost } from "@/actions/blog-posts/get-blog-posts";
 import { StarIcon } from "@/components/icons/svgr";
 import Container from "@/components/layouts/Container";
 import { airlines } from "@/data/airline";
+import { generateImage } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,7 +20,7 @@ const DetailsPage = async ({ params }) => {
         <Container>
           <div className="aspect-[1140/513] rounded-md overflow-hidden mb-6 lg:mb-10">
             <Image
-              src={process.env.NEXT_PUBLIC_API_URL + blogPost?.thumbnail}
+              src={generateImage(blogPost?.thumbnail)}
               width="1140"
               height="513"
               alt="Thumbnail"

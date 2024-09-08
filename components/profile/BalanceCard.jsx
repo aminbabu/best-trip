@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 
 const BalanceCard = ({ user }) => {
+  console.log(user);
 
   return (
     <Card className="border-transparent mb-8">

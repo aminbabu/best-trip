@@ -68,13 +68,10 @@ const Overview = ({ item }) => {
               </SplideTrack>
             </Slider>
             <div className="hidden lg:block">
-              <p className="text-base text-t-600 leading-relaxed">
+              <div className="text-base text-t-600 leading-relaxed flex gap-2">
                 <span className="text-base text-primary">About Umrah : </span>
-                {item?.umrahDescription}
-                {/* <Link className="text-t-800" href={`/umrah/${cardId}/about`}>
-                  Read more...
-                </Link> */}
-              </p>
+                <div dangerouslySetInnerHTML={{ __html: item?.umrahDescription }} />
+              </div>
             </div>
           </div>
           <div className="col-span-2 lg:col-span-1 space-y-7 lg:pl-[50px]">
@@ -102,7 +99,7 @@ const Overview = ({ item }) => {
                     viewBox="0 0 16 17"
                   />
                   <span className="flex-shrink-0">
-                  Journey Date : {moment(item?.journeyDate).format("DD MMM, YYYY")}
+                    Journey Date : {moment(item?.journeyDate).format("DD MMM, YYYY")}
                   </span>
                 </li>
                 <li className="flex gap-x-2 text-sm lg:text-base text-t-600 leading-normal">

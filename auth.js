@@ -43,11 +43,14 @@ const providers = [
 ];
 
 export const callbacks = {
-  jwt: ({ token, user }) => {
+  jwt: ({ token, user,trigger, session }) => {
     if (user) {
       token.user = user;
     }
-
+    if (trigger === "update" && session) {
+      token = {...token, user : session}
+      return token;
+    };
     return token;
   },
   session: ({ session, token }) => {

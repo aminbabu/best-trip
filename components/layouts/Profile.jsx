@@ -5,7 +5,7 @@ import { ArrowIcon, LogoutIcon } from "@/components/icons/svgr";
 import Link from "next/link";
 import { navLinks } from "@/data/navbar";
 import { usePathname, useRouter } from "next/navigation";
-import { cn } from "@/lib/utils";
+import { cn, generateImage } from "@/lib/utils";
 import withReactContent from "sweetalert2-react-content";
 import Swal from "sweetalert2";
 import signOutUser from "@/actions/auth/sign-out";
@@ -49,7 +49,7 @@ const Profile = ({ user }) => {
       <PopoverTrigger className="flex items-center gap-3">
         {user?.avatar ? (
           <Image
-            src={process.env.NEXT_PUBLIC_API_URL + "/" + user?.avatar}
+            src={generateImage(user?.avatar)}
             alt="user-profile"
             height={40}
             width={40}
