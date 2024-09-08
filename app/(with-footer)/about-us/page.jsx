@@ -16,7 +16,7 @@ const AboutUsPage = async () => {
     <main>
       <section className="py-12 lg:py-16">
         <Container>
-          <InnerHTML dangerouslySetInnerHTML={aboutUs} />
+          <InnerHTML dangerouslySetInnerHTML={{ __html: aboutUs }} />
         </Container>
       </section>
     </main>

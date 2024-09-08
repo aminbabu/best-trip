@@ -64,9 +64,14 @@ const ResetPasswordPage = () => {
       setLoading(true);
       const response = await resetPassword(data, token);
       if (response?.error) {
-        throw new Error(
-          "An error occurred. Please check your passwords and try again"
-        );
+        return await withReactContent(Swal).fire({
+          title: "Error",
+          text: response?.error || "An error occurred. Please try again",
+          icon: "error",
+          confirmButtonText: "Try Again",
+          confirmButtonColor: "#ff0f2f",
+          allowOutsideClick: false,
+        });
       }
 
       const result = await withReactContent(Swal).fire({
@@ -100,7 +105,7 @@ const ResetPasswordPage = () => {
     if (!token) {
       router.push("/sign-in");
     }
-  }, [token,router]);
+  }, [token, router]);
 
   return (
     <div className="max-w-[500px] mx-auto">

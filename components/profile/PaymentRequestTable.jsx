@@ -14,7 +14,6 @@ import { cn } from "@/lib/utils";
 const PaymentRequestTable = ({ data, userData }) => {
 
   const [tableData, setTableData] = useState(paymentRequestTable);
-  console.log(data);
   return (
     <Card className="border-transparent mb-8 drop-shadow-[ 0px_3px_4px_0px_rgba(0, 0, 0, 0.03)] ">
       <CardContent className="lg:p-10 space-y-7">

@@ -18,7 +18,6 @@ const UmrahDetailsLayout = async ({ children, params }) => {
   try {
     packageDetail = await getUmrahPackageByIdForCustomers(id)
   } catch (error) {
-    console.log(error);
   }
   if (numberSchema.safeParse(numeral(id).value()).success !== true) {
     return notFound();

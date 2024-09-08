@@ -155,7 +155,6 @@ const UmrahTabpane = ({
   const handleSubmit = async () => {
     setLoading(true);
     const data = checkValidation();
-    console.log(data?.travellers);
     if (!data) return;
     const selectedValue = JSON.stringify({
       schedule: data.schedule,

@@ -7,6 +7,6 @@ export const getMyBookings = async (id) => {
     const response = await axios.get(`/api/umrah/booking/my-bookings`);
     return response;
   } catch (error) {
-    throw new Error(handleAxiosError(error));
+    return handleAxiosError(error);
   }
 };

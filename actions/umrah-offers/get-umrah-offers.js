@@ -8,6 +8,6 @@ export const getUmrahOffers = async () => {
     const response = await axios.get("/api/settings/content/umrah-offers");
     return response?.data?.umrahOffers;
   } catch (error) {
-    throw new Error(handleAxiosError(error));
+    return handleAxiosError(error);
   }
 };

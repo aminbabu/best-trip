@@ -9,7 +9,7 @@ const updateProfile = async (formData) => {
 
     return response.data;
   } catch (error) {
-    throw new Error(handleAxiosError(error));
+    return handleAxiosError(error);
   }
 };
 

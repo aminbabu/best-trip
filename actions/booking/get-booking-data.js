@@ -12,6 +12,6 @@ export const getBookingData = async () => {
     return response?.data;
   } catch (error) {
     console.log(error);
-    throw new Error(handleAxiosError(error));
+    return handleAxiosError(error);
   }
 };

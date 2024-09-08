@@ -8,6 +8,6 @@ export const getExclusiveOffers = async () => {
     const response = await axios.get("/api/settings/content/exclusive-offers");
     return response?.data?.exclusiveOffers;
   } catch (error) {
-    throw new Error(handleAxiosError(error));
+    return handleAxiosError(error);
   }
 };

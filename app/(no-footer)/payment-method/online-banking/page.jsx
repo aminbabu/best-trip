@@ -14,7 +14,6 @@ const OnlineBankingPage = () => {
     const timer = setTimeout(() => {
       router.push(`/payment-method/review?bookingId=${bookingId}`)
     }, 3000);
-
     return () => clearTimeout(timer);
   }, [router, bookingId]);
   return (

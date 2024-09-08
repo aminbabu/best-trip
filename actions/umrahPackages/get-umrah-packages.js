@@ -41,7 +41,7 @@ export const getUmrahPackageForCustomers = async ({
     });
     return response?.data?.data;
   } catch (error) {
-    throw new Error(handleAxiosError(error));
+    return handleAxiosError(error);
     return error;
   }
 };
@@ -59,6 +59,6 @@ export const getUmrahPackageByIdForCustomers = async (id) => {
     const response = await axios.get(`/api/umrah/packages/${id}`);
     return response?.data?.umrahPackage;
   } catch (error) {
-    throw new Error(handleAxiosError(error));
+    return handleAxiosError(error);
   }
 };

@@ -37,6 +37,7 @@ import { DocAltIcon } from "@/components/icons/svgr";
 import { countries } from "@/data/countries";
 import PhoneInputComponent from "./PhoneInputComponent";
 import { addNewTraveler } from "@/actions/traveler/add-new-traveler";
+import withReactContent from "sweetalert2-react-content";
 
 const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
   const [loading, setLoading] = useState(false);
@@ -187,6 +188,16 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
     const addTraveler = async () => {
       try {
         const response = await addNewTraveler(form);
+        if (response?.error) {
+          return await withReactContent(Swal).fire({
+             title: "Error",
+             text: response?.error || "An error occurred. Please try again",
+             icon: "error",
+             confirmButtonText: "Try Again",
+             confirmButtonColor: "#ff0f2f",
+             allowOutsideClick: false,
+           });
+         }
         setLoading(false);
         hideTravellerForm();
         Swal.fire({

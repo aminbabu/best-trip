@@ -9,7 +9,7 @@ export const getGeneralSiteSettings = async () => {
 
     return response?.data?.generalSettings;
   } catch (error) {
-    throw new Error(handleAxiosError(error));
+    return handleAxiosError(error);
   }
 };
 
@@ -19,7 +19,7 @@ export const getContactSiteSettings = async () => {
 
     return response?.data?.contactSettings;
   } catch (error) {
-    throw new Error(handleAxiosError(error));
+    return handleAxiosError(error);
   }
 };
 
@@ -29,6 +29,6 @@ export const getPrivacySiteSettings = async () => {
 
     return response?.data?.policies;
   } catch (error) {
-    throw new Error(handleAxiosError(error));
+    return handleAxiosError(error);
   }
 };

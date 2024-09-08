@@ -16,7 +16,7 @@ const RefundPolicyPage = async () => {
     <main>
       <section className="py-12 lg:py-16">
         <Container>
-          <InnerHTML dangerouslySetInnerHTML={refundPolicy} />
+          <InnerHTML dangerouslySetInnerHTML={{ __html: refundPolicy }} />
         </Container>
       </section>
     </main>

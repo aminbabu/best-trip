@@ -9,6 +9,6 @@ export const getHotelOffers = async () => {
 
     return response?.data?.hotelOffers;
   } catch (error) {
-    throw new Error(handleAxiosError(error));
+    return handleAxiosError(error);
   }
 };

@@ -32,9 +32,11 @@ const Home = async () => {
     blogPosts = await getBlogPosts();
     activeTheme = await getTheme();
   } catch (error) {
+    console.error("Error fetching data:", error);  // Log the error for debugging
   }
 
-  const getSection = (key) => sections?.find((section) => section?.key === key);
+  // Ensure sections is an array
+  const getSection = (key) => Array.isArray(sections) ? sections.find((section) => section?.key === key) : null;
 
   return (
     <main>

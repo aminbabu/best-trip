@@ -46,9 +46,14 @@ const ForgotPasswordPage = () => {
       const response = await forgotPassword(data);
 
       if (response?.error) {
-        throw new Error(
-          "An error occurred. Please check your email and try again"
-        );
+        return await withReactContent(Swal).fire({
+          title: "Error",
+          text: response?.error || "An error occurred. Please try again",
+          icon: "error",
+          confirmButtonText: "Try Again",
+          confirmButtonColor: "#ff0f2f",
+          allowOutsideClick: false,
+        });
       }
 
       await withReactContent(Swal).fire({

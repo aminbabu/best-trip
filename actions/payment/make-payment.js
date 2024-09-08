@@ -9,6 +9,6 @@ export const makePayment = async (id, paymentType) => {
     });
     return response?.data;
   } catch (error) {
-    throw new Error(handleAxiosError(error));
+    return handleAxiosError(error);
   }
 };

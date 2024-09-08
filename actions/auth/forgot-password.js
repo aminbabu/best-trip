@@ -1,5 +1,6 @@
 "use server";
 
+import handleAxiosError from "@/handlers/axios/error";
 import axios from "@/lib/axios";
 
 const forgotPassword = async ({ email }) => {
@@ -10,7 +11,7 @@ const forgotPassword = async ({ email }) => {
 
     return response.data;
   } catch (error) {
-    throw new Error(error.response.data.message);
+    return handleAxiosError(error);
   }
 };
 

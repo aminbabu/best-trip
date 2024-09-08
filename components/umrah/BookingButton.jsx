@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import Swal from "sweetalert2";
 import { bookPackage } from "@/actions/booking/book-package";
+import withReactContent from "sweetalert2-react-content";
 
 const BookingButton = ({ id, user }) => {
 
@@ -20,7 +21,6 @@ const BookingButton = ({ id, user }) => {
     // Get Total Travelers From Local Storage
     const { adultTravelers, childTravelers, infantsTravelers } = searchedValue;
     const totalTravelers = Number(adultTravelers) + Number(childTravelers) + Number(infantsTravelers)
-    console.log(totalTravelers);
 
     // Booking Data For Sending To Server
     const bookingData = { umrahPackage: id, totalTravelers }
@@ -46,6 +46,16 @@ const BookingButton = ({ id, user }) => {
         }
         try {
             const response = await bookPackage(bookingData);
+            if (response?.error) {
+                return await withReactContent(Swal).fire({
+                   title: "Error",
+                   text: response?.error || "An error occurred. Please try again",
+                   icon: "error",
+                   confirmButtonText: "Try Again",
+                   confirmButtonColor: "#ff0f2f",
+                   allowOutsideClick: false,
+                 });
+               }
             Swal.fire({
                 text: `${response?.message}`,
                 icon: "success",

@@ -45,6 +45,16 @@ const MyProfilePage = () => {
       });
 
       const response = await updateProfile(formData);
+      if (response?.error) {
+        return await withReactContent(Swal).fire({
+           title: "Error",
+           text: response?.error || "An error occurred. Please try again",
+           icon: "error",
+           confirmButtonText: "Try Again",
+           confirmButtonColor: "#ff0f2f",
+           allowOutsideClick: false,
+         });
+       }
       update({ ...response?.customer })
       await withReactContent(Swal).fire({
         title: "Success",
@@ -70,7 +80,6 @@ const MyProfilePage = () => {
       setLoading(false);
     }
   };
-  console.log();
   return (
     <Card className="border-transparent mb-8">
       <CardContent className="lg:p-10 space-y-10">

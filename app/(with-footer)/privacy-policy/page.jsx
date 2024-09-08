@@ -16,7 +16,7 @@ const PrivaryPolicyPage = async () => {
     <main>
       <section className="py-12 lg:py-16">
         <Container>
-          <InnerHTML dangerouslySetInnerHTML={privacyPolicy} />
+          <InnerHTML dangerouslySetInnerHTML={{ __html: privacyPolicy }} />
         </Container>
       </section>
     </main>

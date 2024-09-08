@@ -5,6 +5,7 @@ import { FlightTokenIcon } from "@/components/icons/svgr";
 import DepositForm from "@/components/payment-method/DepositForm";
 import { makePayment } from "@/actions/payment/make-payment";
 import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const OrderBooking = ({ bookingData, setRefetch }) => {
   const [loading, setLoading] = useState(false)
@@ -14,6 +15,16 @@ const OrderBooking = ({ bookingData, setRefetch }) => {
     const paymentType = values?.full === true ? "full-payment" : "partial-payment";
     try {
       const response = await makePayment(bookingData?.umrahPackage?._id, paymentType)
+      if (response?.error) {
+        return await withReactContent(Swal).fire({
+           title: "Error",
+           text: response?.error || "An error occurred. Please try again",
+           icon: "error",
+           confirmButtonText: "Try Again",
+           confirmButtonColor: "#ff0f2f",
+           allowOutsideClick: false,
+         });
+       }
       Swal.fire({
         position: "top-end",
         text: response?.message,

@@ -8,7 +8,6 @@ export const getCustomerData = async (id) => {
     const response = await axios.get(`/api/customers/${id}`);
     return response?.data;
   } catch (error) {
-    console.log(error);
-    throw new Error(handleAxiosError(error));
+    return handleAxiosError(error);
   }
 };

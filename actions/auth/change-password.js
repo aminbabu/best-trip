@@ -1,8 +1,14 @@
 "use server";
 
 import axios from "@/lib/axios";
+import handleAxiosError from "@/handlers/axios/error";
 
-const changePassword = async ({ currentPassword,password, confirmPassword, userId }) => {
+const changePassword = async ({
+  currentPassword,
+  password,
+  confirmPassword,
+  userId,
+}) => {
   try {
     const response = await axios.patch(
       `/api/customers/${userId}/update-password`,
@@ -14,7 +20,7 @@ const changePassword = async ({ currentPassword,password, confirmPassword, userI
     );
     return response.data;
   } catch (error) {
-    throw new Error(error.response.data.message);
+    return handleAxiosError(error);
   }
 };
 

@@ -65,6 +65,16 @@ const ProfilePasswordPage = () => {
     data.userId = userData?.user?._id;
     try {
       const response = await changePassword(data)
+      if (response?.error) {
+        return await withReactContent(Swal).fire({
+          title: "Error",
+          text: response?.error || "An error occurred. Please try again",
+          icon: "error",
+          confirmButtonText: "Try Again",
+          confirmButtonColor: "#ff0f2f",
+          allowOutsideClick: false,
+        });
+      }
       await withReactContent(Swal).fire({
         title: "Success",
         text: response?.message,
@@ -97,7 +107,7 @@ const ProfilePasswordPage = () => {
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-[26px]"
           >
-            <div className="grid grid-cols-2 grid-rows-2 gap-x-6 gap-y-4">
+            <div className="space-y-4">
               <FormField
                 control={form.control}
                 name="currentPassword"

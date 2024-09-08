@@ -24,7 +24,7 @@ export const bookPackage = async (data) => {
         message: error?.response?.data?.message,
       };
     } else {
-      throw new Error(handleAxiosError(error));
+      return handleAxiosError(error);
     }
   }
 };

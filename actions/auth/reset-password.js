@@ -1,5 +1,6 @@
 "use server";
 
+import handleAxiosError from "@/handlers/axios/error";
 import axios from "@/lib/axios";
 
 const resetPassword = async ({ password, confirmPassword }, token) => {
@@ -13,8 +14,7 @@ const resetPassword = async ({ password, confirmPassword }, token) => {
     );
     return response.data;
   } catch (error) {
-    console.log(error?.response?.data);
-    throw new Error(error.response.data.message);
+    return handleAxiosError(error);
   }
 };
 

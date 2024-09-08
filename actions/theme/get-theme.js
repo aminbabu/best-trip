@@ -9,6 +9,6 @@ export const getTheme = async () => {
 
     return response?.data?.theme;
   } catch (error) {
-    throw new Error(handleAxiosError(error));
+    return handleAxiosError(error);
   }
 };

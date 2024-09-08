@@ -9,7 +9,7 @@ export const getPaymentRequest = async (id, paymentType) => {
     });
     return response?.data;
   } catch (error) {
-    throw new Error(handleAxiosError(error));
+    return handleAxiosError(error);
   }
 };
 
@@ -18,6 +18,6 @@ export const getPartialPaymentRequest = async () => {
     const response = await axios.get(`/api/invoice/partial-payment`);
     return response?.data;
   } catch (error) {
-    throw new Error(handleAxiosError(error));
+    return handleAxiosError(error);
   }
 };

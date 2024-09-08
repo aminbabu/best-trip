@@ -18,6 +18,7 @@ import moment from "moment";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const PaymentPage = () => {
   const router = useRouter()
@@ -37,6 +38,17 @@ const PaymentPage = () => {
   const submitForReview = async () => {
     try {
       const response = await submitBookingForReview()
+      if (response?.error) {
+        return await withReactContent(Swal).fire({
+           title: "Error",
+           text: response?.error || "An error occurred. Please try again",
+           icon: "error",
+           confirmButtonText: "Try Again",
+
+           confirmButtonColor: "#ff0f2f",
+           allowOutsideClick: false,
+         });
+       }
       router.push(`/payment-method/online-banking?bookingId=${bookingData?.bookingRefId}`)
     } catch (error) {
       Swal.fire({

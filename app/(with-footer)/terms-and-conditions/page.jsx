@@ -17,7 +17,7 @@ const TermsAndConditionsPage = async () => {
     <main>
       <section className="py-12 lg:py-16">
         <Container>
-          <InnerHTML dangerouslySetInnerHTML={termsAndConditions} />
+          <InnerHTML dangerouslySetInnerHTML={{ __html: termsAndConditions }} />
         </Container>
       </section>
     </main>

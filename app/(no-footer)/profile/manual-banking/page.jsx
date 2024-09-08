@@ -83,6 +83,16 @@ const ManualBankingPage = () => {
     formData.append("paymentDate", moment(data.paymentDate).format("YYYY-MM-DD"));
     try {
       const response = await addBalanceRequest(formData);
+      if (response?.error) {
+        return await withReactContent(Swal).fire({
+           title: "Error",
+           text: response?.error || "An error occurred. Please try again",
+           icon: "error",
+           confirmButtonText: "Try Again",
+           confirmButtonColor: "#ff0f2f",
+           allowOutsideClick: false,
+         });
+       }
       await withReactContent(Swal).fire({
         title: "Success",
         text: response?.message,
