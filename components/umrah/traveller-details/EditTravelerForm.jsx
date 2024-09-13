@@ -122,28 +122,8 @@ const EditTravelerForm = ({ id }) => {
 
 
     let initialSelectedDate = moment().toDate();
-    if (travelerType === "A") {
-        initialSelectedDate = twelveYearsBack;
-    } else if (travelerType === "C") {
-        initialSelectedDate = twoYearsBack;
-    } else {
-        initialSelectedDate = moment().toDate();
-    }
 
-    useEffect(() => {
-        if (travelerType === "A") {
-            setDobFrom(1900);
-            setDobTo(moment().year() - 12);
-        }
-        if (travelerType === "C") {
-            setDobFrom(moment().year() - 12);
-            setDobTo(moment().year() - 2);
-        }
-        if (travelerType === "I") {
-            setDobFrom(moment().year() - 2);
-            setDobTo(moment().year());
-        }
-    }, [travelerType]);
+
 
 
     // Create A Form Instance With The Schema And Default Values
