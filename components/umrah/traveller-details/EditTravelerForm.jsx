@@ -66,7 +66,6 @@ const EditTravelerForm = ({ id }) => {
     const [covid_certificate, setCovidCertificate] = useState(null);
     const [isOpenDob, setIsOpenDob] = useState(false);
     const [isOpenExpiryDate, setIsOpenExpiryDate] = useState(false);
-    const [travelerType, setTravellerType] = useState("");
     const [dobFrom, setDobFrom] = useState(1900);
     const [dobTo, setDobTo] = useState(moment().year());
     const [countryValue, setCountryValue] = useState("");
@@ -175,17 +174,7 @@ const EditTravelerForm = ({ id }) => {
 
 
 
-    const handleDisableDate = (date) => {
-        if (travelerType === "A") {
-            return date > twelveYearsBack || date < new Date("1900-01-01");
-        }
-        if (travelerType === "C") {
-            return date > twoYearsBack || date < twelveYearsBack;
-        }
-        if (travelerType === "I") {
-            return date > today || date < twoYearsBack;
-        }
-    };
+
     useEffect(() => {
         form.reset({
             travelerType: travelerDetails?.travelerType || "",
@@ -309,7 +298,7 @@ const EditTravelerForm = ({ id }) => {
                             <div className="flex flex-col items-center justify-center space-y-8 text-center text-t-500 border border-[#cccccc] rounded-sm h-[150px] w-full">
                                 {
                                     travelerDetails?.passport ?
-                                        <Image className="max-h-[120px] w-full object-contain" src={generateImage(travelerDetails?.passport)} width={120} height={120} alt="Passport" />
+                                        <Image className="max-h-[120px] w-full object-contain" src={passport ? URL.createObjectURL(passport) : generateImage(travelerDetails?.passport)} width={120} height={120} alt="Passport" />
                                         :
                                         <>
                                             <DocAltIcon />
@@ -351,7 +340,7 @@ const EditTravelerForm = ({ id }) => {
                             <div className="flex flex-col items-center justify-center space-y-8 text-center text-t-500 border border-[#cccccc] rounded-sm h-[150px] w-full">
                                 {
                                     travelerDetails?.travelerPhoto ?
-                                        <Image className="max-h-[120px] w-full object-contain" src={generateImage(travelerDetails?.travelerPhoto)} width={120} height={120} alt="Photo" />
+                                        <Image className="max-h-[120px] w-full object-contain" src={photo ? URL.createObjectURL(photo) : generateImage(travelerDetails?.travelerPhoto)} width={120} height={120} alt="Photo" />
                                         :
                                         <>
                                             <DocAltIcon />
@@ -393,7 +382,7 @@ const EditTravelerForm = ({ id }) => {
                             <div className="flex flex-col items-center justify-center space-y-8 text-center text-t-500 border border-[#cccccc] rounded-sm h-[150px] w-full">
                                 {
                                     travelerDetails?.travelerNID ?
-                                        <Image className="max-h-[120px] w-full object-contain" src={generateImage(travelerDetails?.travelerNID)} width={120} height={120} alt="NID" />
+                                        <Image className="max-h-[120px] w-full object-contain" src={nid ? URL.createObjectURL(nid) : generateImage(travelerDetails?.travelerNID)} width={120} height={120} alt="NID" />
                                         :
                                         <>
                                             <DocAltIcon />
@@ -435,7 +424,7 @@ const EditTravelerForm = ({ id }) => {
                             <div className="flex flex-col items-center justify-center space-y-8 text-center text-t-500 border border-[#cccccc] rounded-sm h-[150px] w-full">
                                 {
                                     travelerDetails?.travelerCovidCertificate ?
-                                        <Image className="max-h-[120px] w-full object-contain" src={generateImage(travelerDetails?.travelerCovidCertificate)} width={120} height={120} alt="Covid Certificate" />
+                                        <Image className="max-h-[120px] w-full object-contain" src={covid_certificate ? URL.createObjectURL(covid_certificate) : generateImage(travelerDetails?.travelerCovidCertificate)} width={120} height={120} alt="Covid Certificate" />
                                         :
                                         <>
                                             <DocAltIcon />
