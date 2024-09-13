@@ -279,8 +279,8 @@ const EditTravelerForm = ({ id }) => {
             </div>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-16">
-                    <div className="grid grid-cols-6 gap-8 lg:gap-x-10">
-                        <div className="col-span-6 sm:col-span-3 lg:col-span-2 space-y-8">
+                    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-x-10">
+                        <div className="space-y-8">
                             <FormField
                                 control={form.control}
                                 name="passport"
@@ -306,18 +306,23 @@ const EditTravelerForm = ({ id }) => {
                                     </FormItem>
                                 )}
                             />
-                            <div className="px-4 py-20 flex flex-col items-center justify-center space-y-8 text-center text-t-500 border border-[#cccccc] rounded-sm">
+                            <div className="flex flex-col items-center justify-center space-y-8 text-center text-t-500 border border-[#cccccc] rounded-sm h-[150px] w-full">
                                 {
-                                    travelerDetails?.passport ? <Image src={generateImage(travelerDetails?.passport)} width={100} height={100} alt="TravelerNid"></Image> : <><DocAltIcon />
-                                        <p>
-                                            <span className="text-primary">Drag and drop</span> files here
-                                            or <span className="text-primary">browse</span> begin the
-                                            upload.
-                                        </p></>
+                                    travelerDetails?.passport ?
+                                        <Image className="max-h-[120px] w-full object-contain" src={generateImage(travelerDetails?.passport)} width={120} height={120} alt="Passport" />
+                                        :
+                                        <>
+                                            <DocAltIcon />
+                                            <p>
+                                                <span className="text-primary">Drag and drop</span> files here
+                                                or <span className="text-primary">browse</span> to begin the
+                                                upload.
+                                            </p>
+                                        </>
                                 }
                             </div>
                         </div>
-                        <div className="col-span-6 sm:col-span-3 lg:col-span-2 space-y-8">
+                        <div className="space-y-8">
                             <FormField
                                 control={form.control}
                                 name="photo"
@@ -343,109 +348,104 @@ const EditTravelerForm = ({ id }) => {
                                     </FormItem>
                                 )}
                             />
-                            <div className="px-4 py-20 flex flex-col items-center justify-center space-y-8 text-center text-t-500 border border-[#cccccc] rounded-sm">
+                            <div className="flex flex-col items-center justify-center space-y-8 text-center text-t-500 border border-[#cccccc] rounded-sm h-[150px] w-full">
                                 {
-                                    travelerDetails?.travelerPhoto ? <Image src={generateImage(travelerDetails?.travelerPhoto)} width={100} height={100} alt="TravelerNid"></Image> : <><DocAltIcon />
-                                        <p>
-                                            <span className="text-primary">Drag and drop</span> files here
-                                            or <span className="text-primary">browse</span> begin the
-                                            upload.
-                                        </p></>
+                                    travelerDetails?.travelerPhoto ?
+                                        <Image className="max-h-[120px] w-full object-contain" src={generateImage(travelerDetails?.travelerPhoto)} width={120} height={120} alt="Photo" />
+                                        :
+                                        <>
+                                            <DocAltIcon />
+                                            <p>
+                                                <span className="text-primary">Drag and drop</span> files here
+                                                or <span className="text-primary">browse</span> to begin the
+                                                upload.
+                                            </p>
+                                        </>
                                 }
                             </div>
                         </div>
-                        <div className="col-span-6 sm:col-span-3 lg:col-span-2 flex flex-col gap-8">
-                            <div className="col-span-2 sm:col-span-1 lg:col-span-2">
-                                <FormField
-                                    control={form.control}
-                                    name="nid"
-                                    render={({ field }) => (
-                                        <FormItem className="space-y-3">
-                                            <FormLabel className="text-t-800 lg:text-base font-normal">
-                                                Upload NID<span className="text-primary">*</span>
-                                            </FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    type="file"
-                                                    className="p-0 file:h-[3.25rem] file:mr-4 file:text-sm text-t-500 placeholder:text-t-300 file:py-4 file:px-5 file:rounded-l-md file:border-0 file:bg-p-300 file:text-p-900 border-transparent bg-[#F8F8F8]"
-                                                    accept=".png,.jpg,.jpeg"
-                                                    {...field}
-                                                    onChange={(event) => {
-                                                        const { file, displayUrl } = getImageData(event);
-                                                        field.onChange(event);
-                                                        setNid(file);
-                                                    }}
-                                                />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                            </div>
-                            <div className="col-span-2 sm:col-span-1 lg:col-span-2">
-                                <FormField
-                                    control={form.control}
-                                    name="covid_certificate"
-                                    render={({ field }) => (
-                                        <FormItem className="space-y-3">
-                                            <FormLabel className="text-t-800 lg:text-base font-normal">
-                                                Upload Covid Certificate
-                                                <span className="text-primary">*</span>
-                                            </FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    type="file"
-                                                    className="p-0 file:h-[3.25rem] file:mr-4 file:text-sm text-t-500 placeholder:text-t-300 file:py-4 file:px-5 file:rounded-l-md file:border-0 file:bg-p-300 file:text-p-900 border-transparent bg-[#F8F8F8]"
-                                                    accept=".png,.jpg,.jpeg"
-                                                    {...field}
-                                                    onChange={(event) => {
-                                                        const { file, displayUrl } = getImageData(event);
-                                                        field.onChange(event);
-                                                        setCovidCertificate(file);
-                                                    }}
-                                                />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                            </div>
-                            <div className="col-span-2 sm:col-span-1 lg:col-span-2">
-                                <FormField
-                                    control={form.control}
-                                    name="travelerType"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="text-t-800 lg:text-base font-normal">
-                                                Travellers<span className="text-primary">*</span>
-                                            </FormLabel>
-                                            <Select
-                                                onValueChange={(value) => {
-                                                    field.onChange(value);
-                                                    setTravellerType(value.split(" ")[2].split("")[1]);
+                        <div className="space-y-8">
+                            <FormField
+                                control={form.control}
+                                name="nid"
+                                render={({ field }) => (
+                                    <FormItem className="space-y-3">
+                                        <FormLabel className="text-t-800 lg:text-base font-normal">
+                                            Upload NID<span className="text-primary">*</span>
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                type="file"
+                                                className="p-0 file:h-[3.25rem] file:mr-4 file:text-sm text-t-500 placeholder:text-t-300 file:py-4 file:px-5 file:rounded-l-md file:border-0 file:bg-p-300 file:text-p-900 border-transparent bg-[#F8F8F8]"
+                                                accept=".png,.jpg,.jpeg"
+                                                {...field}
+                                                onChange={(event) => {
+                                                    const { file, displayUrl } = getImageData(event);
+                                                    field.onChange(event);
+                                                    setNid(file);
                                                 }}
-                                            >
-                                                <FormControl>
-                                                    <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-800">
-                                                        <SelectValue placeholder="Select traveller" />
-                                                    </SelectTrigger>
-                                                </FormControl>
-                                                <SelectContent className="max-h-40">
-                                                    {travelerList?.map((traveller) => (
-                                                        <SelectItem
-                                                            key={traveller.id}
-                                                            value={`Travellers ${traveller.travellerNo} (${traveller.travellerType})`}
-                                                        >
-                                                            Travellers {traveller.travellerNo} ({" "}
-                                                            {traveller.travellerType} )
-                                                        </SelectItem>
-                                                    ))}
-                                                </SelectContent>
-                                            </Select>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <div className="flex flex-col items-center justify-center space-y-8 text-center text-t-500 border border-[#cccccc] rounded-sm h-[150px] w-full">
+                                {
+                                    travelerDetails?.travelerNID ?
+                                        <Image className="max-h-[120px] w-full object-contain" src={generateImage(travelerDetails?.travelerNID)} width={120} height={120} alt="NID" />
+                                        :
+                                        <>
+                                            <DocAltIcon />
+                                            <p>
+                                                <span className="text-primary">Drag and drop</span> files here
+                                                or <span className="text-primary">browse</span> to begin the
+                                                upload.
+                                            </p>
+                                        </>
+                                }
+                            </div>
+                        </div>
+                        <div className="space-y-8">
+                            <FormField
+                                control={form.control}
+                                name="covid_certificate"
+                                render={({ field }) => (
+                                    <FormItem className="space-y-3">
+                                        <FormLabel className="text-t-800 lg:text-base font-normal">
+                                            Upload Covid Certificate<span className="text-primary">*</span>
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                type="file"
+                                                className="p-0 file:h-[3.25rem] file:mr-4 file:text-sm text-t-500 placeholder:text-t-300 file:py-4 file:px-5 file:rounded-l-md file:border-0 file:bg-p-300 file:text-p-900 border-transparent bg-[#F8F8F8]"
+                                                accept=".png,.jpg,.jpeg"
+                                                {...field}
+                                                onChange={(event) => {
+                                                    const { file, displayUrl } = getImageData(event);
+                                                    field.onChange(event);
+                                                    setCovidCertificate(file);
+                                                }}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <div className="flex flex-col items-center justify-center space-y-8 text-center text-t-500 border border-[#cccccc] rounded-sm h-[150px] w-full">
+                                {
+                                    travelerDetails?.travelerCovidCertificate ?
+                                        <Image className="max-h-[120px] w-full object-contain" src={generateImage(travelerDetails?.travelerCovidCertificate)} width={120} height={120} alt="Covid Certificate" />
+                                        :
+                                        <>
+                                            <DocAltIcon />
+                                            <p>
+                                                <span className="text-primary">Drag and drop</span> files here
+                                                or <span className="text-primary">browse</span> to begin the
+                                                upload.
+                                            </p>
+                                        </>
+                                }
                             </div>
                         </div>
                     </div>
