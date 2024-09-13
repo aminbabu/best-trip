@@ -13,6 +13,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { travellerSchema } from "@/schema/zod";
 import moment from "moment";
+import Link from "next/link";
+import { PencilLine } from "lucide-react";
 
 const TravellerBookingForm = ({ bookingData }) => {
   const form = useForm({
@@ -51,6 +53,7 @@ const TravellerBookingForm = ({ bookingData }) => {
             </h3>
             <Form {...form}>
               <form className="space-y-16">
+                <Link className="flex justify-end items-center gap-1 w-[70px] px-2 py-1 rounded-md hover:text-t-900 bg-gray-100 ml-auto" href={`/umrah/${traveler?._id}/traveller-details/edit`}>Edit<PencilLine size={16} /></Link>
                 <div className="grid grid-cols-6 gap-8 lg:gap-x-10">
                   <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                     <FormField

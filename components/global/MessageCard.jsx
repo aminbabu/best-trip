@@ -11,6 +11,7 @@ const MessageCard = ({
   buttonText,
   href,
   className,
+  bookingId,
 }) => {
   return (
     <Card

@@ -165,6 +165,9 @@ const DepositForm = ({ bookingData, onSubmit, loading }) => {
     Number(bookingData?.umrahPackage?.infantPartialPrice) *
     infantTravelers?.length;
 
+
+  const isPartialPayment = new Date(bookingData?.umrahPackage?.partialPaymentExpiryDate).getTime() > Date.now();
+  const isPartialPayment2 = new Date(bookingData?.invoice?.partialPaymentExpiryDate).getTime() > Date.now();
   return (
     <>
       <Form {...form}>
@@ -538,7 +541,49 @@ const DepositForm = ({ bookingData, onSubmit, loading }) => {
                     />
                   )}
                   {
-                    <FormField
+                    !bookingData?.invoice && isPartialPayment && <FormField
+                      control={form.control}
+                      name="partial"
+                      render={({ field }) => (
+                        <FormItem className="space-y-0 col-span-2 sm:col-span-1">
+                          <FormLabel className="flex gap-x-2 font-normal">
+                            <FormControl>
+                              <Checkbox
+                                className="hidden"
+                                checked={openPartPaymnet}
+                                onCheckedChange={(value) => {
+                                  field.onChange(value);
+                                  handlePartPayment(value);
+                                  setOpenPartPaymnet(value);
+                                }}
+                              />
+                            </FormControl>
+                            <div
+                              className={`col-span-2 sm:col-span-1 rounded-md border border-[#EDEDED] ${openPartPaymnet && "border-p-900"
+                                } flex-1`}
+                            >
+                              <div className="text-p-900 bg-p-300 px-4 md:px-5 py-3 rounded-t-md">
+                                <span className="leading-normal">
+                                  Continue with partial payment
+                                </span>
+                              </div>
+                              <div className="px-4 md:px-5 py-6 flex items-center gap-3">
+                                <div className="space-y-2">
+                                  <p>Total to Pay BDT</p>
+                                  <span className="text-[20px] block">
+                                    {partialTotal}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </FormLabel>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  }
+                  {
+                    bookingData?.invoice && isPartialPayment2 && <FormField
                       control={form.control}
                       name="partial"
                       render={({ field }) => (
@@ -606,13 +651,13 @@ const DepositForm = ({ bookingData, onSubmit, loading }) => {
               className={`py-[15px] ${openOnline ? "" : "mt-6"} `}
               type="submit"
               disabled={
-                !form.watch("manual") &&
-                !form.watch("online") &&
-                !form.watch("wallet") &&
+                // !form.watch("manual") &&
+                // !form.watch("online") &&
+                // !form.watch("wallet") &&
                 loading
               }
             >
-              Continue {loading && <Loader className="animate-spin" />}
+              {loading ? <>Loading <Loader className="animate-spin" /></> : "Continue"}
             </Button>
           </div>
         </form>

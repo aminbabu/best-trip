@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LucideLoader2 } from "lucide-react";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -28,7 +29,9 @@ const formSchema = z.object({
 });
 
 const SignInPage = () => {
-  // const router = useRouter();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirect = searchParams.get("redirect") || "/profile"
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -46,6 +49,7 @@ const SignInPage = () => {
   });
 
   const onSubmit = async (data) => {
+    localStorage.setItem("reload", true)
     try {
       setLoading(true);
 
@@ -57,8 +61,8 @@ const SignInPage = () => {
         );
       }
 
-      location.reload();
-      // router.push("/profile");
+      // location.reload();
+      router.push(redirect);
     } catch (error) {
       await withReactContent(Swal).fire({
         title: "Error",

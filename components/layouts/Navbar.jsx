@@ -12,8 +12,9 @@ import { useSession } from "next-auth/react";
 
 const Navbar = ({ generalSiteSettings }) => {
   const [isSticky, setIsSticky] = useState(false);
-  const { data, status } = useSession();
+  const { data } = useSession();
   const { user } = data || {};
+
   // Handle sticky navbar
   useEffect(() => {
     const handleScroll = () => {

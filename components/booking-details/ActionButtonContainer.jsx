@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import OrderBooking from "./action-buttons/OrderBooking";
 import PrintAndDownload from "./action-buttons/PrintAndDownload";
 
-const ActionButtonContainer = ({bookingData,setRefetch}) => {
+const ActionButtonContainer = ({ bookingData, setRefetch }) => {
   const handleCancelBooking = () => {
     const swalWithTailwindButtons = Swal.mixin({
       customClass: {
@@ -44,7 +44,6 @@ const ActionButtonContainer = ({bookingData,setRefetch}) => {
         }
       });
   };
-
   return (
     <div className="col-span-12 xl:col-span-3 space-y-7 flex flex-col">
       {/* show more details */}
@@ -58,7 +57,10 @@ const ActionButtonContainer = ({bookingData,setRefetch}) => {
       </Link>
 
       {/* order booking */}
-      <OrderBooking bookingData={bookingData} setRefetch={setRefetch}/>
+      {bookingData?.invoice && bookingData?.invoice?.paymentType === "full-payment" || bookingData?.invoice?.partialPaymentRestAmount <= 0 || < OrderBooking bookingData={bookingData} setRefetch={setRefetch} />}
+      {/* Add New Traveler */}
+
+      <Link className="bg-white font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start" href={`/umrah/${bookingData?._id}/traveller-details/add`}>Add New Traveler</Link>
 
       {/* Account Balance Low */}
       <Button className="bg-white text-base font-normal text-p-900 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">

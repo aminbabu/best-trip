@@ -11,6 +11,8 @@ const PaymentReviewPage = ({ searchParams }) => {
     <main className="py-20 bg-secondary">
       <Container>
         <MessageCard
+          href={bookingId ? `/profile/booking` : "/"}
+          buttonText={bookingId ? "See Bookings" : "Home"}
           icon={
             <div className="w-28 aspect-square rounded-full bg-p-900 text-white grid place-items-center p-2 mx-auto">
               <DocIcon />

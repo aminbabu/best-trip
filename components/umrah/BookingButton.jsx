@@ -7,7 +7,13 @@ import { bookPackage } from "@/actions/booking/book-package";
 import withReactContent from "sweetalert2-react-content";
 
 const BookingButton = ({ id, user }) => {
-
+    useEffect(() => {
+        const reloadOnce = localStorage.getItem("reload")
+        if (reloadOnce) {
+            localStorage.removeItem("reload");
+            window.location.reload();
+        }
+    }, [])
     const [searchedValue, setSearchedValue] = useState({})
     const router = useRouter();
 
@@ -38,8 +44,9 @@ const BookingButton = ({ id, user }) => {
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Ok!",
             }).then((result) => {
+                localStorage.setItem("redirect", `/sign-in?redirect=${encodeURIComponent(window.location.pathname)}`)
                 if (result.isConfirmed) {
-                    router.push(`/sign-in`);
+                    router.push(`/sign-in?redirect=${encodeURIComponent(window.location.pathname)}`);
                 }
             });
             return;
@@ -48,14 +55,14 @@ const BookingButton = ({ id, user }) => {
             const response = await bookPackage(bookingData);
             if (response?.error) {
                 return await withReactContent(Swal).fire({
-                   title: "Error",
-                   text: response?.error || "An error occurred. Please try again",
-                   icon: "error",
-                   confirmButtonText: "Try Again",
-                   confirmButtonColor: "#ff0f2f",
-                   allowOutsideClick: false,
-                 });
-               }
+                    title: "Error",
+                    text: response?.error || "An error occurred. Please try again",
+                    icon: "error",
+                    confirmButtonText: "Try Again",
+                    confirmButtonColor: "#ff0f2f",
+                    allowOutsideClick: false,
+                });
+            }
             Swal.fire({
                 text: `${response?.message}`,
                 icon: "success",
@@ -65,7 +72,7 @@ const BookingButton = ({ id, user }) => {
                 confirmButtonText: "Continue",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    router.push(`/umrah/${response?.id}/traveller-details`);
+                    router.push(`/profile/booking`);
                 }
             });
         } catch (error) {

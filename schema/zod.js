@@ -203,6 +203,40 @@ export const travellerSchema = z.object({
     .min(1, { message: "Please provide an emergency contact number" }),
 });
 
+
+export const editTravelerSchema = z.object({
+  passport: z.string().optional(),
+  photo: z.string().optional(),
+  nid: z.string().optional(),
+  covid_certificate: z.string().optional(),
+  travelerType: z.string().optional(),
+  firstName: z.string().optional(),
+  lastName: z.string().optional(),
+  gender: z.string().optional(),
+  dateOfBirth: z
+    .string()
+    .optional()
+    .refine(val => !val || moment(val).isValid(), {
+      message: "Please provide a valid date of birth",
+    }),
+  country: z.string().optional(),
+  cityName: z.string().optional(),
+  presentAddress: z.string().optional(),
+  permanentAddress: z.string().optional(),
+  passportNumber: z.string().optional(),
+  documentIssueCountry: z.string().optional(),
+  passportExpiryDate: z
+    .string()
+    .optional()
+    .refine(val => !val || moment(val).isValid(), {
+      message: "Please provide a valid passport expiry date",
+    }),
+  email: z.string().optional(),
+  phone: z.string().optional(),
+  emergencyContactNo: z.string().optional(),
+});
+
+
 /**
  * @description Schema for filter table
  *

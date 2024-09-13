@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { generateImage } from "@/lib/utils";
 import withReactContent from "sweetalert2-react-content";
 import Swal from "sweetalert2";
@@ -24,7 +24,13 @@ const MyProfilePage = () => {
     setProfileData(file)
 
   };
-
+  useEffect(() => {
+    const reloadOnce = localStorage.getItem("reload")
+    if (reloadOnce) {
+      localStorage.removeItem("reload");
+      window.location.reload();
+    }
+  }, [])
   const onSubmit = async (data) => {
     data.dob = moment(data.dob).format("YYYY-MM-DD");
     data.avatar = profileData;
@@ -47,14 +53,14 @@ const MyProfilePage = () => {
       const response = await updateProfile(formData);
       if (response?.error) {
         return await withReactContent(Swal).fire({
-           title: "Error",
-           text: response?.error || "An error occurred. Please try again",
-           icon: "error",
-           confirmButtonText: "Try Again",
-           confirmButtonColor: "#ff0f2f",
-           allowOutsideClick: false,
-         });
-       }
+          title: "Error",
+          text: response?.error || "An error occurred. Please try again",
+          icon: "error",
+          confirmButtonText: "Try Again",
+          confirmButtonColor: "#ff0f2f",
+          allowOutsideClick: false,
+        });
+      }
       update({ ...response?.customer })
       await withReactContent(Swal).fire({
         title: "Success",
@@ -91,7 +97,7 @@ const MyProfilePage = () => {
                 profileData instanceof File && <AvatarImage src={URL.createObjectURL(profileData)} alt={user?.name} />
               }
               {
-                user?.avatar && !(profileData instanceof File )? (
+                user?.avatar && !(profileData instanceof File) ? (
                   <AvatarImage src={generateImage(user?.avatar)} alt={user?.name} />
                 ) : (
                   <AvatarFallback>
