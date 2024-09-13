@@ -188,10 +188,6 @@ const EditTravelerForm = ({ id }) => {
     };
     useEffect(() => {
         form.reset({
-            // passport: travelerDetails?.passport || "",
-            // photo: travelerDetails?.travelerPhoto || "",
-            // nid: travelerDetails?.travelerNID || "",
-            // covid_certificate: travelerDetails?.travelerCovidCertificate || "",
             travelerType: travelerDetails?.travelerType || "",
             firstName: travelerDetails?.firstName || "",
             lastName: travelerDetails?.lastName || "",
@@ -428,7 +424,6 @@ const EditTravelerForm = ({ id }) => {
                                                     field.onChange(value);
                                                     setTravellerType(value.split(" ")[2].split("")[1]);
                                                 }}
-                                                defaultValue={travelerDetails?.travelerType}
                                             >
                                                 <FormControl>
                                                     <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-800">
@@ -510,8 +505,8 @@ const EditTravelerForm = ({ id }) => {
                                             Gender<span className="text-primary">*</span>
                                         </FormLabel>
                                         <Select
-                                            onValueChange={field.onChange}
-                                            defaultValue={travelerDetails?.gender}
+                                            value={field.value} // Use field.value here
+                                            onValueChange={field.onChange} // Use field.onChange here
                                         >
                                             <FormControl>
                                                 <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
@@ -527,6 +522,7 @@ const EditTravelerForm = ({ id }) => {
                                     </FormItem>
                                 )}
                             />
+
                         </div>
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                             <FormField
@@ -584,11 +580,11 @@ const EditTravelerForm = ({ id }) => {
                                             Country<span className="text-primary">*</span>
                                         </FormLabel>
                                         <Select
+                                            value={field.value} // Use field.value here
                                             onValueChange={(value) => {
-                                                field.onChange(value);
-                                                setCountryValue(value);
+                                                field.onChange(value); // Update form state
+                                                setCountryValue(value); // Update local state if needed
                                             }}
-                                            defaultValue={countryValue}
                                         >
                                             <FormControl>
                                                 <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
@@ -607,6 +603,7 @@ const EditTravelerForm = ({ id }) => {
                                     </FormItem>
                                 )}
                             />
+
                         </div>
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                             <FormField
@@ -663,10 +660,8 @@ const EditTravelerForm = ({ id }) => {
                                             <span className="text-primary">*</span>
                                         </FormLabel>
                                         <Select
-                                            onValueChange={(value) => {
-                                                field.onChange(value);
-                                            }}
-                                            defaultValue={countryValue}
+                                            value={field.value} // Use field.value here
+                                            onValueChange={(value) => field.onChange(value)} // Update form state
                                         >
                                             <FormControl>
                                                 <SelectTrigger className="h-[3.25rem] text-base px-5 py-4 text-t-500 border-transparent bg-[#F8F8F8] placeholder:text-t-300">
@@ -685,6 +680,7 @@ const EditTravelerForm = ({ id }) => {
                                     </FormItem>
                                 )}
                             />
+
                         </div>
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                             <FormField
