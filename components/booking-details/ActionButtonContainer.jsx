@@ -8,8 +8,10 @@ import Swal from "sweetalert2";
 import OrderBooking from "./action-buttons/OrderBooking";
 import PrintAndDownload from "./action-buttons/PrintAndDownload";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const ActionButtonContainer = ({ bookingData, setRefetch }) => {
+  const { data } = useSession();
   const router = useRouter();
   const handleCancelBooking = () => {
     const swalWithTailwindButtons = Swal.mixin({
@@ -56,7 +58,8 @@ const ActionButtonContainer = ({ bookingData, setRefetch }) => {
     router.push(`/umrah/${bookingData?._id}/traveller-details/add?umrahPackage=${bookingData?.umrahPackage?._id}`)
     localStorage.setItem("travelerCounts", JSON.stringify(travelersCounts))
   }
-
+  // data?.user?.wallet?.balance
+  // console.log(bookingData?.umrahPackage);
   return (
     <div className="col-span-12 xl:col-span-3 space-y-7 flex flex-col">
       {/* show more details */}
@@ -73,7 +76,7 @@ const ActionButtonContainer = ({ bookingData, setRefetch }) => {
       {bookingData?.invoice && bookingData?.invoice?.paymentType === "full-payment" || bookingData?.invoice?.partialPaymentRestAmount <= 0 || < OrderBooking bookingData={bookingData} setRefetch={setRefetch} />}
       {/* Add New Traveler */}
 
-      <Button onClick={handleEdit} className="bg-white font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start" >Add New Traveler</Button>
+      {Number(bookingData?.adultTravelers) + Number(bookingData?.childTravelers) + Number(bookingData?.infantTravelers) > 0 && <Button onClick={handleEdit} className="bg-white font-normal text-t-700 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start"><FlightTokenIcon /> Add New Traveler</Button>}
 
       {/* Account Balance Low */}
       <Button className="bg-white text-base font-normal text-p-900 rounded shadow-sm px-3.5 py-5 hover:bg-[#fefefe] justify-start">
@@ -108,7 +111,7 @@ const ActionButtonContainer = ({ bookingData, setRefetch }) => {
 
       {/* Extend Time Limit */}
       {/* <ExtendTimeLimit /> */}
-    </div>
+    </div >
   );
 };
 
