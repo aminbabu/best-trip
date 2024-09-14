@@ -332,8 +332,6 @@ const PackageDetail = ({ umrahPackage }) => {
         ],
     };
 
-    console.log(packageDetail);
-
     return (
         <div className="py-4 umrah-details-cards">
             <Accordion type="multiple" className="space-y-6" collapsible="true">

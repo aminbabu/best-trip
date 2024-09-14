@@ -5,7 +5,6 @@ import { cookies } from "next/headers";
 
 export const updateTraveler = async (data, travelerId) => {
   const umrahBooking = cookies().get("bookingId").value;
-//   console.log(data,"formData");
   try {
     const response = await axios.patch(
       `/api/umrah/travelers/${umrahBooking}/${travelerId}`,

@@ -50,7 +50,6 @@ const OrderBooking = ({ bookingData, setRefetch }) => {
       });
     }
   }
-console.log(bookingData?.invoice);
   return (
     <>
       {bookingData?.invoice?.paymentType !== "full-payment" && (

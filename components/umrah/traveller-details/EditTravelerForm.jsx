@@ -91,8 +91,6 @@ const EditTravelerForm = ({ id }) => {
         }
     }, [])
 
-    // Get Total Travelers From Local Storage
-    console.log(travelerDetails?.email);
 
     // Make An Array Up To The Total Number Of Travelers
     const adultTravellersArray = new Array(Number(travelerCounts?.adultTravelers || 0)).fill(0);

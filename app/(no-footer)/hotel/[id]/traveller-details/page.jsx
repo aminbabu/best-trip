@@ -240,7 +240,6 @@ const HotelTravellerDetailsPage = () => {
                                     onSelect={(value) => {
                                       setCalendarAdultDate(value);
                                       field.onChange(value);
-                                      console.log(value, calendarAdultDate);
                                       setIsOpenDobAdult(false);
                                     }}
                                     disabled={(date) =>

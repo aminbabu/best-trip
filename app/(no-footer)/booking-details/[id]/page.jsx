@@ -26,7 +26,6 @@ const BookingDetails = ({ params }) => {
     }
     fetchData()
   }, [refetch, id])
-console.log(bookingData);
   const {
     name,
     email,
