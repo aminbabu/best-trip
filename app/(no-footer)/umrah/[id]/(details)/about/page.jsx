@@ -1,5 +1,6 @@
 import { getUmrahPackageByIdForCustomers } from "@/actions/umrahPackages/get-umrah-packages";
 import { Card, CardContent } from "@/components/ui/card";
+import { generateImage } from "@/lib/utils";
 import Image from "next/image";
 const AboutPage = async ({ params }) => {
   const { id } = params;
@@ -13,15 +14,17 @@ const AboutPage = async ({ params }) => {
       <Card className="border-transparent">
         <CardContent className="space-y-8 p-4 sm:p-6 lg:p-8">
           <div className="flex flex-col sm:flex-row gap-5">
-            <div className="flex-shrink-0 rounded-md sm:w-[173px] aspect-[173/122] overflow-hidden">
-              <Image
-                src={process.env.NEXT_PUBLIC_API_URL + packageDetail?.umrahThumbnail}
-                alt="Umrah Ziyarah"
-                width={173}
-                height={122}
-                className="w-full h-full object-cover"
-              />
-            </div>
+            {
+              packageDetail?.umrahThumbnail && <div className="flex-shrink-0 rounded-md sm:w-[173px] aspect-[173/122] overflow-hidden">
+                <Image
+                  src={generateImage(packageDetail?.umrahThumbnail)}
+                  alt="Umrah Ziyarah"
+                  width={173}
+                  height={122}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            }
             <div className="flex-1">
               {/* <p className="text-lg text-primary mb-1">Day 1</p> */}
               <h3 className="text-base md:text-lg text-t-800 font-medium mb-1.5">
@@ -40,10 +43,10 @@ const AboutPage = async ({ params }) => {
             <div className="text-t-600">
               {
                 <div
-                dangerouslySetInnerHTML={{
-                  __html: packageDetail.umrahDescription,
-                }}
-              />
+                  dangerouslySetInnerHTML={{
+                    __html: packageDetail.umrahDescription,
+                  }}
+                />
               }
             </div>
           </div>
