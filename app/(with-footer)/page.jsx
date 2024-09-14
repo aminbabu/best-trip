@@ -21,7 +21,7 @@ const Home = async () => {
   let flightOffers = [];
   let umrahOffers = [];
   let blogPosts = [];
-  let activeTheme;
+  let activeTheme = {};
 
   try {
     sections = await getSectionsData();
@@ -32,11 +32,14 @@ const Home = async () => {
     blogPosts = await getBlogPosts();
     activeTheme = await getTheme();
   } catch (error) {
-    console.error("Error fetching data:", error);  // Log the error for debugging
+    console.error("Error fetching data:", error); // Log the error for debugging
   }
 
   // Ensure sections is an array
-  const getSection = (key) => Array.isArray(sections) ? sections.find((section) => section?.key === key) : null;
+  const getSection = (key) =>
+    Array.isArray(sections)
+      ? sections.find((section) => section?.key === key)
+      : null;
 
   return (
     <main>

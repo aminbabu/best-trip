@@ -104,7 +104,7 @@ const NavSheet = ({ generalSiteSettings, user }) => {
                   alt="user-profile"
                   height={"40px"}
                   width={"40px"}
-                  className="aspect-square w-10"
+                  className="aspect-square w-10 rounded-full"
                 />
               ) : (
                 <span className="w-10 aspect-square rounded-full bg-primary/10 text-primary inline-flex items-center justify-center font-semibold">
