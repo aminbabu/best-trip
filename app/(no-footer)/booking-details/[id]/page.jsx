@@ -2,19 +2,14 @@
 import { getBookingData } from "@/actions/booking/get-booking-data";
 import ActionButtonContainer from "@/components/booking-details/ActionButtonContainer";
 import FareDetailsCard from "@/components/booking-details/FareDetailsCard";
-import TravellerBookingForm from "@/components/booking-details/TravellerBookingForm";
 import UmrahBookingCard from "@/components/booking-details/UmrahBookingCard";
 import Container from "@/components/layouts/Container";
 import { Card, CardContent } from "@/components/ui/card";
+import TravellerList from "@/components/umrah/traveller-details/TravellerList";
 import moment from "moment";
 import { useEffect, useState } from "react";
 
 
-const travellerList = [
-  { id: 1, type: "Adult", no: 1 },
-  { id: 2, type: "Child", no: 2 },
-  { id: 3, type: "Infant", no: 3 },
-];
 
 const BookingDetails = ({ params }) => {
 
@@ -24,14 +19,14 @@ const BookingDetails = ({ params }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getBookingData()
+        const response = await getBookingData(id)
         setBookingData(response?.umrahBookings)
       } catch (error) {
       }
     }
     fetchData()
   }, [refetch, id])
-
+console.log(bookingData);
   const {
     name,
     email,
@@ -93,7 +88,7 @@ const BookingDetails = ({ params }) => {
             <UmrahBookingCard data={bookingData?.umrahPackage} />
 
             <FareDetailsCard bookingData={bookingData} />
-            <TravellerBookingForm key={bookingData?._id} bookingData={bookingData} />
+            <TravellerList id={id}/>
           </div>
 
           <ActionButtonContainer bookingData={bookingData} setRefetch={setRefetch} />

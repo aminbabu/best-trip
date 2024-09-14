@@ -1,19 +1,22 @@
 import { getUmrahPackageByIdForCustomers } from "@/actions/umrahPackages/get-umrah-packages";
 import { Card, CardContent } from "@/components/ui/card";
-import data from "@/data/itinerary.json";
 import Image from "next/image";
-const ItineraryPage =async ({ params }) => {
+const ItineraryPage = async ({ params }) => {
   const { id } = params;
-  const { umrahPackages: packageDetail } = await getUmrahPackageByIdForCustomers(id)
+  let packageDetail;
+  try {
+    packageDetail = await getUmrahPackageByIdForCustomers(id)
+  } catch (error) {
+  }
   return (
     <div className="space-y-4">
-      {data?.length ? (
-        data?.map((item, index) => (
+      {packageDetail?.itineraryDays?.length ? (
+        packageDetail?.itineraryDays?.map((item, index) => (
           <Card key={item?.id} className="border-transparent">
             <CardContent className="flex flex-col sm:flex-row gap-5 p-4 sm:p-6 lg:p-8">
               <div className="flex-shrink-0 rounded-md sm:w-[173px] aspect-[173/122] overflow-hidden">
                 <Image
-                  src={item?.image}
+                  src={process.env.NEXT_PUBLIC_API_URL+item?.thumbnail}
                   alt={item?.title}
                   width={173}
                   height={122}
@@ -22,7 +25,7 @@ const ItineraryPage =async ({ params }) => {
               </div>
               <div className="flex-1">
                 <p className="text-base md:text-lg text-primary mb-1">
-                  {item?.day}
+                  Day {item?.day || index+1}
                 </p>
                 <h3 className="text-base md:text-lg text-t-800 font-medium mb-1.5">
                   {item?.title}

@@ -3,7 +3,9 @@ import EditTravelerForm from "@/components/umrah/traveller-details/EditTravelerF
 
 const Page = ({ params }) => {
     const { id } = params;
-    return <Container><EditTravelerForm id={id} /></Container>;
+    return (<Container>
+        <EditTravelerForm id={id} />
+    </Container>);
 };
 
 export default Page;

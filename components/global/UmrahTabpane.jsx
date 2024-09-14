@@ -46,7 +46,8 @@ const UmrahTabpane = ({
   const searchParams = useSearchParams();
   const adultTravelerCount = searchParams.get("adultTravelers")
   const childTravelerCount = searchParams.get("childTravelers")
-  const infantTravelerCount = searchParams.get("infantTravelers")
+  const infantTravelerCount = searchParams.get("infantsTravelers")
+
   const [travelers, setTravelers] = useState([
     {
       id: 1,

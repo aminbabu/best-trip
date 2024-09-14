@@ -25,7 +25,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { editTravelerSchema, travellerSchema } from "@/schema/zod";
+import { editTravelerSchema } from "@/schema/zod";
 import { useEffect, useState } from "react";
 import { generateImage, getImageData } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
@@ -37,28 +37,34 @@ import { DocAltIcon } from "@/components/icons/svgr";
 import { countries } from "@/data/countries";
 import PhoneInputComponent from "./PhoneInputComponent";
 import withReactContent from "sweetalert2-react-content";
-import { getTravelerDetail } from "@/actions/traveler/get-traveler-detail";
 import { updateTraveler } from "@/actions/traveler/update-traveler";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+import { getTravelerDetail } from "@/actions/traveler/get-traveler-detail";
+import { useRouter } from "next/navigation";
 
 const EditTravelerForm = ({ id }) => {
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const umrahBookingId = searchParams.get("umrahBookingId")
     const [travelerDetails, setTravelerDetail] = useState({})
+    const [travelerType, setTravellerType] = useState("");
     const [travelers, setTravelers] = useState([])
     const [refetch, setRefetch] = useState(false)
     useEffect(() => {
         const getTravelerDetails = async () => {
             try {
-                const response = await getTravelerDetail()
-                const travelers = response?.travelers;
-                setTravelers(travelers)
-                const filteredTraveler = travelers?.find((traveler) => traveler?._id === id); // Use find instead of filter for a
-                setTravelerDetail(filteredTraveler ? filteredTraveler : {});
+                const response = await getTravelerDetail(umrahBookingId)
+                const totalTravelers = response?.travelers;
+                setTravelers(totalTravelers);
+                const traveler = totalTravelers.find((traveler) => traveler._id === id);
+                setTravelerDetail(traveler)
             } catch (error) {
                 console.log(error);
             }
         }
         getTravelerDetails();
-    }, [id, refetch])
+    }, [id, refetch, umrahBookingId])
     const [loading, setLoading] = useState(false);
     const [passport, setPassport] = useState(null);
     const [photo, setPhoto] = useState(null);
@@ -74,27 +80,24 @@ const EditTravelerForm = ({ id }) => {
     const twelveYearsBack = new Date(today);
     twoYearsBack.setFullYear(today.getFullYear() - 2);
     twelveYearsBack.setFullYear(today.getFullYear() - 12);
-    const [searchedValue, setSearchedValue] = useState({})
+    const [travelerCounts, setTravelerCounts] = useState({})
 
 
     // Get Searched Value From Local Storage
+    // Get Searched Value From Local Storage
     useEffect(() => {
         if (typeof window != undefined) {
-            setSearchedValue(JSON.parse(localStorage.getItem("searchedValue")))
+            setTravelerCounts(JSON.parse(localStorage.getItem("travelerCounts")))
         }
     }, [])
 
-
     // Get Total Travelers From Local Storage
-    const adultTravelers = travelerDetails?.travelerType === "adult" ? 1 : 0
-    const childTravelers = travelerDetails?.travelerType === "child" ? 1 : 0
-    const infantsTravelers = travelerDetails?.travelerType === "infant" ? 1 : 0
-
+    console.log(travelerDetails?.email);
 
     // Make An Array Up To The Total Number Of Travelers
-    const adultTravellersArray = new Array(adultTravelers).fill(0);
-    const childTravellersArray = new Array(childTravelers).fill(0);
-    const infantTravellersArray = new Array(infantsTravelers).fill(0);
+    const adultTravellersArray = new Array(Number(travelerCounts?.adultTravelers || 0)).fill(0);
+    const childTravellersArray = new Array(Number(travelerCounts?.childTravelers || 0)).fill(0);
+    const infantTravellersArray = new Array(Number(travelerCounts?.infantTravelers || 0)).fill(0);
 
 
     let travelerList = [];
@@ -120,9 +123,7 @@ const EditTravelerForm = ({ id }) => {
 
 
 
-
     let initialSelectedDate = moment().toDate();
-
 
 
 
@@ -153,8 +154,6 @@ const EditTravelerForm = ({ id }) => {
     });
 
 
-
-
     useEffect(() => {
         form.reset({
             travelerType: travelerDetails?.travelerType || "",
@@ -176,6 +175,7 @@ const EditTravelerForm = ({ id }) => {
     }, [travelerDetails, form]);
     //Create A FormData And Append The Values Send To The Server
     const onSubmit = async (data) => {
+        setLoading(true);
         const form = new FormData();
         // Append values to FormData only if they exist in data
         if (passport) form.append("passport", passport || travelerDetails?.passport);
@@ -201,7 +201,6 @@ const EditTravelerForm = ({ id }) => {
         if (travelerTypeFormatted) form.append("travelerType", travelerTypeFormatted || travelerDetails?.travelerType);
         // Always append umrahPackage ID if it exists
         if (id) form.append("customerId", id);
-
         const editTraveler = async () => {
             try {
                 const response = await updateTraveler(form, id);
@@ -218,13 +217,19 @@ const EditTravelerForm = ({ id }) => {
                 setRefetch(true);
                 setLoading(false);
                 Swal.fire({
-                    title: "Traveler Updated Successfully",
-                    text: response?.message,
+                    text: `${response?.message || "Successfully Updated Traveler Details"}`,
                     icon: "success",
-                    confirmButtonText: "Ok",
-                    confirmButtonColor: "#3ad965",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Continue",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        router.push(`/booking-details/${umrahBookingId}`);
+                    }
                 });
             } catch (error) {
+                setLoading(false);
                 Swal.fire({
                     text: error?.message,
                     icon: "error",
@@ -819,8 +824,10 @@ const EditTravelerForm = ({ id }) => {
                                     </FormItem>
                                 )}
                             />
+
                         </div>
-                        <div className="col-span-6 sm:col-span-3 lg:col-span-2 flex flex-col justify-end">
+
+                        <div className="col-span-6 sm:col-span-3 lg:col-span-2 flex flex-col justify-end ">
                             <Button type="submit" disabled={loading}>
                                 {loading && <Loader className="w-6 h-6 opacity-75" />}
                                 Save & Exit

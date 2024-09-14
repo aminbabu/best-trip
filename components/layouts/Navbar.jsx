@@ -14,7 +14,6 @@ const Navbar = ({ generalSiteSettings }) => {
   const [isSticky, setIsSticky] = useState(false);
   const { data } = useSession();
   const { user } = data || {};
-
   // Handle sticky navbar
   useEffect(() => {
     const handleScroll = () => {

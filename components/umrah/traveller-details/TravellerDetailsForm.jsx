@@ -38,8 +38,14 @@ import { countries } from "@/data/countries";
 import PhoneInputComponent from "./PhoneInputComponent";
 import { addNewTraveler } from "@/actions/traveler/add-new-traveler";
 import withReactContent from "sweetalert2-react-content";
+import { useRouter, useSearchParams } from "next/navigation";
 
-const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
+const TravelerDetailsForm = ({ id }) => {
+
+  const searchParams = useSearchParams();
+  const umrahPackage = searchParams.get("umrahPackage");
+
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [passport, setPassport] = useState(null);
   const [photo, setPhoto] = useState(null);
@@ -56,22 +62,23 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
   const twelveYearsBack = new Date(today);
   twoYearsBack.setFullYear(today.getFullYear() - 2);
   twelveYearsBack.setFullYear(today.getFullYear() - 12);
-  const [searchedValue, setSearchedValue] = useState({})
+  const [travelerCounts, setTravelerCounts] = useState({})
 
 
   // Get Searched Value From Local Storage
   useEffect(() => {
-      if (typeof window != undefined) {
-          setSearchedValue(JSON.parse(localStorage.getItem("searchedValue")))
-      }
+    if (typeof window != undefined) {
+      setTravelerCounts(JSON.parse(localStorage.getItem("travelerCounts")))
+    }
   }, [])
+
   // Get Total Travelers From Local Storage
-  const { adultTravelers, childTravelers, infantsTravelers } = searchedValue;
-  
+
+
   // Make An Array Up To The Total Number Of Travelers
-  const adultTravellersArray = new Array(adultTravelers).fill(0);
-  const childTravellersArray = new Array(childTravelers).fill(0);
-  const infantTravellersArray = new Array(infantsTravelers).fill(0);
+  const adultTravellersArray = new Array(Number(travelerCounts?.adultTravelers || 0)).fill(0);
+  const childTravellersArray = new Array(Number(travelerCounts?.childTravelers || 0)).fill(0);
+  const infantTravellersArray = new Array(Number(travelerCounts?.infantTravelers || 0)).fill(0);
 
 
   let travelerList = [];
@@ -161,10 +168,9 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
       return date > today || date < twoYearsBack;
     }
   };
-
-
   //Create A FormData And Append The Values Send To The Server
   const onSubmit = async (data) => {
+    setLoading(true)
     const form = new FormData();
     form.append("passport", passport);
     form.append("travelerPhoto", photo);
@@ -183,37 +189,47 @@ const TravelerDetailsForm = ({ hideTravellerForm, id }) => {
     form.append("permanentAddress", data.permanentAddress)
     form.append("emergencyContactNo", data.emergencyContactNo)
     form.append("phone", data.phone)
+    form.append("email", data.email)
     form.append("travelerType", data.travelerType.split(" ")[2]?.slice(1, -1)?.toLowerCase())
-    form.append("umrahPackage", id)
+    form.append("umrahPackage", umrahPackage)
+    form.append("umrahBooking", id);
+
     const addTraveler = async () => {
       try {
         const response = await addNewTraveler(form);
         if (response?.error) {
           return await withReactContent(Swal).fire({
-             title: "Error",
-             text: response?.error || "An error occurred. Please try again",
-             icon: "error",
-             confirmButtonText: "Try Again",
-             confirmButtonColor: "#ff0f2f",
-             allowOutsideClick: false,
-           });
-         }
+            title: "Error",
+            text: response?.error || "An error occurred. Please try again",
+            icon: "error",
+            confirmButtonText: "Try Again",
+            confirmButtonColor: "#ff0f2f",
+            allowOutsideClick: false,
+          });
+        }
         setLoading(false);
-        hideTravellerForm();
         Swal.fire({
-          title: "Successfully Added Traveler Detail",
-          text: response?.message,
+          text: `${response?.message || "Successfully Added Traveler Details"}`,
           icon: "success",
-          confirmButtonText: "Ok",
-          confirmButtonColor: "#3ad965",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Continue",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            router.push(`/booking-details/${id}`);
+          }
         });
       } catch (error) {
+        setLoading(false);
         Swal.fire({
           text: error?.message,
           icon: "error",
           confirmButtonText: "Ok, got it",
           confirmButtonColor: "#F70207",
         });
+      } finally {
+        setLoading(false)
       }
     }
     addTraveler();

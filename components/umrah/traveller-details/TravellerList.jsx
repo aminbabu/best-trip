@@ -14,34 +14,35 @@ import Image from "next/image";
 
 
 
-const TravellerList = ({ showTravellerForm, id }) => {
+const TravellerList = ({  id }) => {
 
   const router = useRouter();
   const [travelerDetails, setTravelerDetail] = useState([])
   useEffect(() => {
     const getTravelerDetails = async () => {
       try {
-        const response = await getTravelerDetail()
+        const response = await getTravelerDetail(id)
         setTravelerDetail(response?.travelers)
       } catch (error) {
         console.log(error);
       }
     }
     getTravelerDetails();
-  }, [])
-  const onBook = () => {
-    if (travelerDetails.length < 1) {
-      Swal.fire({
-        text: "Add At-least One Traveler",
-        icon: "error",
-        confirmButtonText: "Ok",
-        confirmButtonColor: "#F70207",
-      });
-      return;
-    } else {
-      router.push(`/umrah/${id}/payment`);
-    }
-  };
+  }, [id])
+  // const onBook = () => {
+  //   if (travelerDetails.length < 1) {
+  //     Swal.fire({
+  //       text: "Add At-least One Traveler",
+  //       icon: "error",
+  //       confirmButtonText: "Ok",
+  //       confirmButtonColor: "#F70207",
+  //     });
+  //     return;
+  //   } else {
+  //     router.push(`/umrah/${id}/payment`);
+  //   }
+  // };
+
   const columns = [
     {
       accessorKey: "firstName",
@@ -135,7 +136,7 @@ const TravellerList = ({ showTravellerForm, id }) => {
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title="Actions" />
       ),
-      cell: ({ row }) => <DataTableRowActions row={row} setOpen={showTravellerForm} />,
+      cell: ({ row }) => <DataTableRowActions row={row} />,
     },
   ];
   return (
@@ -143,14 +144,7 @@ const TravellerList = ({ showTravellerForm, id }) => {
       <DataTable
         data={travelerDetails || []}
         columns={columns}
-        showTravellerForm={showTravellerForm}
-        ToolbarComponent={DataTableToolbar}
       />
-      <div className="flex flex-wrap justify-end gap-x-8 gap-y-4">
-        <Button className="w-80" onClick={onBook}>
-          Continue
-        </Button>
-      </div>
     </div>
   );
 };

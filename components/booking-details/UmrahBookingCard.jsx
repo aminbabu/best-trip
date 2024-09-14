@@ -7,9 +7,6 @@ import {
   LocationCircleIcon,
   PeopleIcon,
 } from "../icons/svgr";
-import { Button } from "../ui/button";
-import Link from "next/link";
-import numeral from "numeral";
 import cardImg from "@/public/images/search/01.png";
 import { generateImage, renderInclusionIcon } from "@/lib/utils";
 import moment from "moment";
@@ -76,11 +73,11 @@ const UmrahBookingCard = ({ data }) => {
                   <span className="flex-shrink-0">Package Type : Standard</span>
                 </li>
               </ul>
-              <div className="flex flex-col gap-y-4 justify-end">
+              <div className="flex flex-col gap-y-4 justify-end flex-1">
                 <div className="text-t-600 text-sm lg:text-base leading-normal xl:text-center px-4 py-2 rounded-sm bg-p-300">
                   Package Inclusion
                 </div>
-                <ul className="flex items-center xl:justify-center gap-x-4">
+                <ul className="flex flex-wrap  xl:justify-center gap-x-4 gap-y-2">
                   {data?.inclusions?.map((item, index) => (
                     <li
                       key={index}

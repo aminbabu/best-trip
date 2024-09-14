@@ -29,7 +29,7 @@ const BookingButton = ({ id, user }) => {
     const totalTravelers = Number(adultTravelers) + Number(childTravelers) + Number(infantsTravelers)
 
     // Booking Data For Sending To Server
-    const bookingData = { umrahPackage: id, totalTravelers }
+    const bookingData = { umrahPackage: id, totalTravelers, adultTravelers: Number(adultTravelers) || 1, childTravelers: Number(childTravelers) || 0, infantTravelers: Number(infantsTravelers) || 0 }
 
     // Submit Booking Handler Function
     const submitBooking = async (event) => {
@@ -72,7 +72,7 @@ const BookingButton = ({ id, user }) => {
                 confirmButtonText: "Continue",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    router.push(`/profile/booking`);
+                    router.push(`/booking-details/${response?.id}`);
                 }
             });
         } catch (error) {

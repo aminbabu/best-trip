@@ -41,7 +41,7 @@ const DataTableRowActions = ({ row, setOpen }) => {
         <DropdownMenuItem
           className="flex items-center gap-2.5 text-sm text-t-700 cursor-pointer"
         >
-          <Link className="flex items-center gap-2" href={`/umrah/${user._id}/traveller-details/edit`}> <PencilLine size={16} />
+          <Link className="flex items-center gap-2" href={`/umrah/${user._id}/traveller-details/edit?umrahBookingId=${user?.umrahBooking}`}> <PencilLine size={16} />
           Edit</Link>
       </DropdownMenuItem>
       {/* // ) : (

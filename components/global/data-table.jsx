@@ -59,17 +59,10 @@ const DataTable = ({
 
   return (
     <div className="space-y-10">
-      {ToolbarComponent && (
-        <ToolbarComponent
-          table={table}
-          errors={errors}
-          showTravellerForm={showTravellerForm}
-        />
-      )}
       {!errors && (
         <>
           <div className="bg-white rounded-md">
-            <Table className="text-t-800 text-center whitespace-nowrap border-separate border-spacing-y-4">
+            <Table className="text-t-800 text-center whitespace-nowrap border-separate border-spacing-y-4 ">
               <TableHeader className="bg-p-300">
                 {table.getHeaderGroups()?.map((headerGroup) => (
                   <TableRow
