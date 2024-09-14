@@ -38,7 +38,7 @@ const nextConfig = {
         hostname: "besttrip.travel",
       },
       {
-        protocol: "http",
+        protocol: "https",
         hostname: "admin.besttrip.travel",
       },
     ],
