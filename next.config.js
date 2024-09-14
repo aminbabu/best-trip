@@ -33,6 +33,14 @@ const nextConfig = {
         protocol: "http",
         hostname: "localhost",
       },
+      {
+        protocol: "https",
+        hostname: "besttrip.travel",
+      },
+      {
+        protocol: "http",
+        hostname: "admin.besttrip.travel",
+      },
     ],
   },
   // ...other config
